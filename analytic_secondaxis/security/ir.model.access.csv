@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"ir_model_access_projectactivityal0","project_activity_al.user","model_project_activity_al","base.group_user",1,0,0,0
+"ir_model_access_projectactivityal1","project_activity_al.manager","model_project_activity_al","account.group_account_manager",1,1,1,1

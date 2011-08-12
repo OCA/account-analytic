@@ -1,0 +1,210 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* analytic_secondaxis
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.1\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-03-17 21:54+0000\n"
+"PO-Revision-Date: 2011-03-17 21:54+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: analytic_secondaxis
+#: field:activities.analytic.chart,from_date:0
+msgid "From"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:activities.analytic.chart:0
+msgid "Select the Period for Analysis"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:activities.analytic.chart,to_date:0
+msgid "To"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.ui.menu,name:analytic_secondaxis.menu_activity_al
+msgid "Account Analytic Activities"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:project.activity_al:0
+msgid "Amounts & Quantity"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,debit:0
+msgid "Debit"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.model,name:analytic_secondaxis.model_activities_analytic_chart
+msgid "Analytic Activities Chart"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.actions.act_window,name:analytic_secondaxis.action_activity_list
+msgid "Activities"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.model,name:analytic_secondaxis.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:activities.analytic.chart:0
+msgid "Open Charts"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,company_id:0
+msgid "Company"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,parent_id:0
+msgid "Parent activity"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,currency_id:0
+msgid "Activity currency"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:account.analytic.line:0
+msgid "Total quantity"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.module.module,shortdesc:analytic_secondaxis.module_meta_information
+msgid "Account Analytic Second Axis"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:account.analytic.account:0
+#: field:account.analytic.account,activity_ids:0
+msgid "Related activities"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:activities.analytic.chart:0
+msgid "(Keep empty to open the current situation)"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,project_ids:0
+msgid "Concerned Analytic Account"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,credit:0
+msgid "Credit"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.module.module,description:analytic_secondaxis.module_meta_information
+msgid "\n"
+"    Add a second analytical axis on analytic lines allowing you to make reporting on. \n"
+"    \n"
+"    Unless the account_analytic_plans from OpenERP SA, this module allow you to make cross-reporting\n"
+"    between those two axes, like all analytic lines that concern for example :\n"
+"    The activity \"Communication\" and the project \"Product 1 Integration\".\n"
+"    \n"
+"    This second axis is called \"activities\" and you will be able to define for each analytical account, what are the\n"
+"    allowed activities for it.\n"
+"        \n"
+"    There's also a kind of heritage between analytical account. Adding activities on parent account will allow\n"
+"    child to benefit from. So you can define a set of activities for each parent analytic account like:\n"
+"\n"
+"    Administratif\n"
+"        - Intern\n"
+"        - Project 1\n"
+"    Customers project\n"
+"        - Project X\n"
+"        - Project Y\n"
+"        \n"
+"    What will be true for Administratif, will be true for Intern too.\n"
+"    \n"
+""
+msgstr ""
+
+#. module: analytic_secondaxis
+#: constraint:account.analytic.account:0
+msgid "Error! The currency has to be the same as the currency of the selected company"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:account.analytic.line:0
+#: field:account.analytic.line,activity:0
+#: view:project.activity_al:0
+#: field:project.activity_al,name:0
+msgid "Activity"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,balance:0
+msgid "Balance"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,quantity:0
+msgid "Quantity"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,code:0
+msgid "Code"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.model,name:analytic_secondaxis.model_project_activity_al
+msgid "Second Analytical Axes"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.actions.act_window,name:analytic_secondaxis.dblc_activitiy
+msgid "Analytic's lines"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.model,name:analytic_secondaxis.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: field:project.activity_al,child_ids:0
+msgid "Childs Activities"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: model:ir.actions.act_window,name:analytic_secondaxis.action_activities_analytic_chart
+#: model:ir.actions.act_window,name:analytic_secondaxis.action_activity_tree
+#: model:ir.ui.menu,name:analytic_secondaxis.menu_action_analytic_activities_tree2
+msgid "Chart of Analytic Activities"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:activities.analytic.chart:0
+msgid "Cancel"
+msgstr ""
+
+#. module: analytic_secondaxis
+#: constraint:account.analytic.account:0
+msgid "Error! You can not create recursive analytic accounts."
+msgstr ""
+
+#. module: analytic_secondaxis
+#: view:activities.analytic.chart:0
+msgid "Analytic Activities Charts"
+msgstr ""
+

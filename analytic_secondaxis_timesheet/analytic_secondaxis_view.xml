@@ -1,0 +1,64 @@
+<openerp>
+    <data>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #   timesheet form in the timesheet_sheet
+        #---------------------------------------------------------------------------------------------------------
+        <record model="ir.ui.view" id="hr_timesheet_sheet_form_with_activity">
+            <field name="name">hr.timesheet.sheet.form</field>
+            <field name="model">hr_timesheet_sheet.sheet</field>
+            <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook/page[@string='Daily View']/field[@name='timesheet_ids']/tree[@string='Timesheet']/field[@name='name']" position="after">
+                     <field name="activity" context="account_id=account_id"/>
+                </xpath>
+                <xpath expr="/form/notebook/page[@string='Daily View']/field[@name='timesheet_ids']/form[@string='Timesheet']/field[@name='name']" position="after">
+                     <field name="activity" context="account_id=account_id"/>
+                </xpath>
+            </field>
+        </record>  
+        
+        #---------------------------------------------------------------------------------------------------------
+        #   Add activity on hr.analytic.timesheet
+        #---------------------------------------------------------------------------------------------------------
+        <record id="hr_timesheet_line_form" model="ir.ui.view">
+            <field name="name">hr.analytic.timesheet.form</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook/page[@string='Information']/group[1]/field[@name='account_id']" position="after">
+                    <field name="activity" context="account_id=account_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="hr_timesheet_line_tree" model="ir.ui.view">
+            <field name="name">hr.analytic.timesheet.tree</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='account_id']" position="after">
+                    <field name="activity" context="account_id=account_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #   Add activity on search hr.analytic.timesheet
+        #---------------------------------------------------------------------------------------------------------
+        <record id="hr_timesheet_line_search" model="ir.ui.view">
+            <field name="name">hr.analytic.timesheet.search</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <xpath expr="/search/group[@string='Group By...']/filter[@string='Anlytic account']" position="after">
+                    <filter string="Activity" icon="terp-folder-green" context="{'group_by':'activity'}"/>
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

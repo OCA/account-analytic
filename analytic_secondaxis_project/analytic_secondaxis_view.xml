@@ -1,0 +1,72 @@
+<openerp>
+    <data>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #   Add activity on project_view
+        #---------------------------------------------------------------------------------------------------------
+        <record id="edit_project" model="ir.ui.view">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <page string="Notes" position="after">
+                    <page string="Activities">
+                        <field colspan="4" name="activity_ids" nolabel="1"/>
+                    </page>
+                </page>
+            </field>
+        </record>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #   Task work
+        #---------------------------------------------------------------------------------------------------------
+        <record id="view_task_work_form" model="ir.ui.view">
+            <field name="name">project.task.work.form</field>
+            <field name="model">project.task.work</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.view_task_work_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" select="1" position="after">
+                    <field name="activity" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_task_work_tree" model="ir.ui.view">
+            <field name="name">project.task.work.tree</field>
+            <field name="model">project.task.work</field>
+            <field name="inherit_id" ref="project.view_task_work_tree"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="activity" />
+                </field>
+            </field>
+        </record>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #   Task 
+        #---------------------------------------------------------------------------------------------------------
+         <record id="view_task_form2" model="ir.ui.view">
+                <field name="name">project.task.form</field>
+                <field name="model">project.task</field>
+                <field name="inherit_id" ref="project.view_task_form2"/>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <xpath expr="/form/notebook/page[@string='Information']/field[@name='work_ids']" position="replace">
+                        <field colspan="4" name="work_ids" nolabel="1" attrs="{'invisible':[('state','in',['draft'])],'readonly':[('state','=','done')]}" >
+                            <tree string="Task Work" editable="top">
+                                <field name="name" />
+                                <field name="hours" widget="float_time" sum="Spent Hours"/>
+                                <field name="activity" context="{'project_id':parent.project_id, 'from_task':True}"/>
+                                <field name="user_id" />
+                                <field name="date" />
+                            </tree>
+                        </field>
+                    </xpath> 
+                </field>
+         </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,180 @@
+<openerp>
+    <data>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #  project.activity_al
+        #---------------------------------------------------------------------------------------------------------
+        <record model="ir.ui.view" id="view_activity_al_form">
+            <field name="name">project.activity_al.form</field>
+            <field name="model">project.activity_al</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Activity">
+                    <field name="name" select="1"/>
+                    <field name="code" select="1"/>
+                    <field name="parent_id" select="1"/>
+                    <field name="company_id" select="1"/>
+                    <field name="currency_id" select="1"/>
+                    <separator colspan="4" string="Amounts &amp; Quantity"/>
+                    <field name="debit" />
+                    <field name="credit" />
+                    <field name="balance" />
+                    <field name="quantity" />
+                    <field name="project_ids" colspan="4"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_activity_al_list">
+            <field name="name">project.activity_al.list</field>
+            <field name="model">project.activity_al</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="6"/>
+            <field name="arch" type="xml">
+                <tree string="Activity">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="company_id"/>
+                    <field name="quantity" />
+                    <field name="currency_id" />
+                    <field name="debit" />
+                    <field name="credit" />
+                    <field name="balance" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_activity_al_tree">
+            <field name="name">project.activity_al.tree</field>
+            <field name="model">project.activity_al</field>
+            <field name="type">tree</field>
+            <field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Activity">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="parent_id"/>
+                    <field name="quantity" />
+                    <field name="currency_id" />
+                    <field name="debit" />
+                    <field name="credit" />
+                    <field name="balance" />
+                </tree>
+            </field>
+        </record>
+        
+        # --------------------------------------------------------------------------------------------
+        #    Analytic account form
+        # --------------------------------------------------------------------------------------------
+        
+        <record model="ir.ui.view" id="view_account_analytic_account_form">
+            <field name="name">account.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account.view_account_analytic_account_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Related activities">
+                        <field name="activity_ids" colspan="4" nolabel="1"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+       
+        #---------------------------------------------------------------------------------------------------------
+        #  ANALYTIC ACCOUNT : Add activity on analytic line
+        #---------------------------------------------------------------------------------------------------------
+        <record model="ir.ui.view" id="view_account_analytic_line_form">
+            <field name="name">account.analytic.line.form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="unit_amount" select="2" position="after">
+                    <field name="activity" select="2" context="account_id=account_id"/>
+                </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_account_analytic_line_tree">
+            <field name="name">account.analytic.line.tree</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_tree" />
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <field name="unit_amount" sum="Total quantity" on_change="on_change_unit_amount(product_id, unit_amount, product_uom_id)" position="after">
+                    <field name="activity" select="2" context="account_id=account_id"/>
+                </field>
+            </field>
+        </record>
+        <record id="account_analytic_line_extended_form" model="ir.ui.view">
+            <field name="name">account.analytic.line.extended_form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.account_analytic_line_extended_form" />
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <field name="account_id" groups="base.group_extended" position="after">
+                    <field name="activity" select="2" context="account_id=account_id"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="view_account_analytic_line_filter" model="ir.ui.view">
+            <field name="name">account.analytic.line.select</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_filter" />
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <xpath expr="/search/group[@string='Extended Filters...']/field[@name='product_id']" position="after">
+                    <field name="activity" />
+                </xpath>
+                <xpath expr="/search/group[@string='Group By...']/filter[@string='Account']" position="after">
+                    <filter string="Activity" context="{'group_by':'activity'}" groups="base.group_extended" icon="terp-folder-green"/>
+                </xpath>
+            </field>
+        </record>
+        
+        #---------------------------------------------------------------------------------------------------------
+        #  Menu and act_windows Activity AL
+        #---------------------------------------------------------------------------------------------------------
+
+        <record model="ir.actions.act_window" id="action_activity_list">
+            <field name="name">Activities</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.activity_al</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_activity_al_list"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_activity_tree">
+            <field name="name">Chart of Analytic Activities</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.activity_al</field>
+            <field name="domain">[('parent_id','=',False)]</field>
+            <field name="view_type">tree</field>
+            <field name="view_id" ref="view_activity_al_tree"/>
+        </record>
+        
+        <menuitem name="Account Analytic Activities" id="menu_activity_al" parent="account.menu_analytic_accounting" action="action_activity_list"/>
+        
+        <!-- <menuitem name="Activities Tree" parent="menu_activity_al" id="menu_activity_al_tree" action="action_activity_tree"/> -->
+
+        <!-- Opening lines when double clicking on activities -->
+        <record id="dblc_activitiy" model="ir.actions.act_window">
+            <field name="res_model">account.analytic.line</field>
+            <field name="name">Analytic's lines</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('activity', 'child_of', [active_id])]</field>
+            <field name="context">{'activity':active_id}</field>
+        </record>
+
+        <record id="ir_analytic_line_open" model="ir.values">
+            <field eval=" 'tree_but_open'" name="key2"/>
+            <field eval="'project.activity_al'" name="model"/>
+            <field name="name">View activity's lines</field>
+            <field eval="'ir.actions.act_window,'+str(dblc_activitiy)" name="value"/>
+            <field eval="True" name="object"/>
+        </record>
+
+    </data>
+</openerp>

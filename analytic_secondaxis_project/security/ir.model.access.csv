@@ -1,0 +1,2 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"ir_model_access_project_projectactivityal1","project_activity_al.proj_manager","analytic_secondaxis.model_project_activity_al","project.group_project_manager",1,1,1,1
