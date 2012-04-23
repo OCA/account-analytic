@@ -29,9 +29,6 @@
 #
 ##############################################################################
 
-import time
-from mx import DateTime
-import netsvc
 from osv import fields
 from osv import osv
 import decimal_precision as dp
