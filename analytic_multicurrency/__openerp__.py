@@ -32,19 +32,19 @@
      "category" : "Generic Modules/Accounting",
      "description":
 """
-This improve OpenERP multi-currency handling in analytic accountiong, overall for multi-company.
+This module improves OpenERP multi-currency handling in analytic accounting, overall for multi-company.
 
 This module is based on the work made in all c2c_multicost* available on the v5.0 stable version and
-allow you to shar analytic account between company (even if currency differs in each one).
+allows you to share analytic account between company (even if currency differs in each one).
 
 What has been done here:
 
-  * Adapt the owner of analytic line (= to company that own the general account associated with en analytic line)
+  * Adapt the owner of analytic line (= to company that own the general account associated with an analytic line)
   * Add multi-currency on analytic lines (similar to financial accounting)
   * Correct all "costs" indicators into analytic account to base them on the right currency (owner's company)
-  * By default, nothing change for single company implementation.
+  * By default, nothing changes for single company implementation.
 
-As a result, we can now really share the same analytic account between companies that doesn't have the same 
+As a result, we can now really share the same analytic account between companies that do not have the same
 currency. This setup becomes True, Enjoy !
 
 - Company A : EUR

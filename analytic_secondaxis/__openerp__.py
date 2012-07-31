@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -36,15 +36,15 @@
     "category" : "Generic Modules/Accounting",
     "description":
 """
-    Add a second analytical axis on analytic lines allowing you to make reporting on. 
-    
+    Add a second analytical axis on analytic lines allowing you to make reporting on.
+
     Unless the account_analytic_plans from OpenERP SA, this module allow you to make cross-reporting
     between those two axes, like all analytic lines that concern for example :
     The activity "Communication" and the project "Product 1 Integration".
-    
+
     This second axis is called "activities" and you will be able to define for each analytical account, what are the
     allowed activities for it.
-        
+
     There's also a kind of heritage between analytical account. Adding activities on parent account will allow
     child to benefit from. So you can define a set of activities for each parent analytic account like:
 
@@ -54,9 +54,9 @@
     Customers project
         - Project X
         - Project Y
-        
+
     What will be true for Administratif, will be true for Intern too.
-    
+
 """,
     "website": "http://camptocamp.com",
     "depends" : ["account",

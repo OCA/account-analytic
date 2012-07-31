@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -36,17 +36,17 @@
     "category" : "Generic Modules/Accounting",
     "description":
 """
-   Add a second analytical axis on analytic lines allowing you to make reporting on. 
-   
+   Add a second analytical axis on analytic lines allowing you to make reporting on.
+
    Unless the account_analytic_plans from OpenERP SA, this module allow you to make cross-reporting
    between those two axes, like all analytic lines that concern for example :
    The activity "Communication" and the project "Product 1 Integration".
-   
+
    This second axis is called "activities" and you will be able to define for each analytical account, what are the
    allowed activities for it.
-   
-   This module enable the second axis on projet.
-    
+
+   This module enables the second axis on projet.
+
 """,
     "website": "http://camptocamp.com",
     "depends" : ["analytic_secondaxis_timesheet",
