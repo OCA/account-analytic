@@ -47,7 +47,7 @@ class account_move_line(osv.osv):
     _inherit = "account.move.line"
 
     def check_analytic_required(self, cr, uid, vals, context=None):
-        if vals.has_key('account_id'):
+        if vals.has_key('account_id') and (vals.get('debit',0.0) != 0.0 or vals.get('credit',0.0) != 0.0):
             account = self.pool.get('account.account').browse(cr, uid, vals['account_id'], context=context)
             if account.user_type.analytic_policy == 'always' and not vals.get('analytic_account_id', False):
                 raise osv.except_osv(_('Error :'), _("Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'." % (account.code, account.name, vals.get('name', False))))
