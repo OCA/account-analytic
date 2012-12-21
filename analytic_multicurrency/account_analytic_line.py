@@ -35,6 +35,7 @@ from osv import osv
 from tools.translate import _
 
 from tools import config
+import openerp.addons.decimal_precision as dp
 
 class account_analytic_line(osv.osv):
     _inherit = 'account.analytic.line'
@@ -82,7 +83,7 @@ class account_analytic_line(osv.osv):
                       'account.analytic.line': (lambda self,cr,uid,ids,c={}: ids, ['amount','unit_amount','product_uom_id'],10),
                   },
                   help="The related analytic account currency."),
-          'aa_amount_currency': fields.function(_amount_currency, method=True, digits=(16, int(config['price_accuracy'])), string='Amount currency',
+          'aa_amount_currency': fields.function(_amount_currency, method=True, digits_compute=dp.get_precision('Account'), string='Amount currency',
                   store={
                       'account.analytic.account': (_get_account_line, ['currency_id','company_id'], 50),
                       'account.analytic.line': (lambda self,cr,uid,ids,c={}: ids, ['amount','unit_amount','product_uom_id'],10),
