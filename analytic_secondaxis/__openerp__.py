@@ -69,5 +69,5 @@
         "wizard/analytic_activity_chart_view.xml"
     ],
     "active": False,
-    "installable": True
+    "installable": False
 }
