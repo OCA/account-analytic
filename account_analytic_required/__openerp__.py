@@ -38,7 +38,7 @@ Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during the 
     'init_xml': [],
     'update_xml': ['account_view.xml'],
     'demo_xml': [],
-    'installable': True,
+    'installable': False,
     'active': False,
 }
 
