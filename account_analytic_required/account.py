@@ -21,11 +21,11 @@
 #
 ##############################################################################
 
-from osv import fields, osv
+from openerp.osv import orm, fields
 from tools.translate import _
 
 
-class account_account_type(osv.osv):
+class account_account_type(orm.Model):
     _inherit = "account.account.type"
 
     _columns = {
@@ -40,20 +40,17 @@ class account_account_type(osv.osv):
         'analytic_policy': lambda *a: 'optional',
         }
 
-account_account_type()
-
-
-class account_move_line(osv.osv):
+class account_move_line(orm.Model):
     _inherit = "account.move.line"
 
     def check_analytic_required(self, cr, uid, vals, context=None):
         if vals.has_key('account_id') and (vals.get('debit',0.0) != 0.0 or vals.get('credit',0.0) != 0.0):
             account = self.pool.get('account.account').browse(cr, uid, vals['account_id'], context=context)
             if account.user_type.analytic_policy == 'always' and not vals.get('analytic_account_id', False):
-                raise osv.except_osv(_('Error :'), _("Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'." % (account.code, account.name, vals.get('name', False))))
+                raise orm.except_orm(_('Error :'), _("Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'." % (account.code, account.name, vals.get('name', False))))
             elif account.user_type.analytic_policy == 'never' and vals.get('analytic_account_id', False):
                 cur_analytic_account = self.pool.get('account.analytic.account').read(cr, uid, vals['analytic_account_id'], ['name', 'code'], context=context)
-                raise osv.except_osv(_('Error :'), _("Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account %s '%s'." % (account.code, account.name, vals.get('name', False), cur_analytic_account['code'], cur_analytic_account['name'])))
+                raise orm.except_orm(_('Error :'), _("Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account %s '%s'." % (account.code, account.name, vals.get('name', False), cur_analytic_account['code'], cur_analytic_account['name'])))
         return True
 
     def create(self, cr, uid, vals, context=None, check=True):
@@ -64,4 +61,3 @@ class account_move_line(osv.osv):
         self.check_analytic_required(cr, uid, vals, context=context)
         return super(account_move_line, self).write(cr, uid, ids, vals, context=context, check=check, update_check=update_check)
 
-account_move_line()
