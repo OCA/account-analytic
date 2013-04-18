@@ -1,0 +1,78 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-06-10 07:49+0000\n"
+"PO-Revision-Date: 2013-04-17 07:49+0000\n"
+"Last-Translator: <stefan@therp.nl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_required
+#: field:account.account.type,analytic_policy:0
+msgid "Policy for analytic account"
+msgstr "Kostenplaatsenbeleid"
+
+#. module: account_analytic_required
+#: help:account.account.type,analytic_policy:0
+msgid "Set the policy for analytic accounts : if you select 'Optional', the accountant is free to put an analytic account on an account move line with this type of account ; if you select 'Always', the accountant will get an error message if there is no analytic account ; if you select 'Never', the accountant will get an error message if an analytic account is present."
+msgstr "Stel het beleid in voor kostenplaatsen: bij 'Altijd' is het opgeven van een kostenplaats verplicht bij rekeningen van dit type. 'Nooit': er treedt een foutmelding op als er bij een boeking een kostenplaats wordt opgegeven. 'Optioneel': het staat de medewerker vrij om al dan niet een kostenplaats op te geven."
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "Optioneel"
+
+#. module: account_analytic_required
+#: model:ir.module.module,description:account_analytic_required.module_meta_information
+msgid "This module adds an option 'analytic policy' on account types. You have the choice between 3 policies : always, never and optional.\n"
+"\n"
+"For example, if you want to have an analytic account on all your expenses, set the policy to 'always' for the account type 'expense' ; then, if you try to save an account move line with an account of type 'expense' without analytic account, you will get an error message.\n"
+"\n"
+"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during the Akretion-Camptocamp code sprint of June 2011.\n"
+msgstr "Deze module voegt de optie 'Beleid kostenplaatsen' toe aan rekeningcategorieën. Er zijn drie mogelijkheden: altijd, nooit en optioneel.\n"
+"\n"
+"Bij voorbeeld, als je wilt afdwingen dat er altijd een kostenplaats wordt opgegeven bij boekingen op een kostenrekening, zet dan het beleid op 'altijd' voor het rekeningtype 'Kosten'. Vanaf dat moment krijgt de medewerker een foutmelding als er geprobeerd wordt om een boeking te maken op een rekening van dit type zonder dat er een kostenplaats is opgegeven.\n"
+"\n"
+"Deze module is ontwikkeld door Alexis de Lattre <alexis.delattre@akretion.com> tijdens de Akretion-Camptocamp code sprint van juni 2011.\n"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "Altijd"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "Nooit"
+
+#. module: account_analytic_required
+#: model:ir.module.module,shortdesc:account_analytic_required.module_meta_information
+msgid "Account analytic required"
+msgstr "Kostenplaatsenbeleid"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:54
+#: code:addons/account_analytic_required/account.py:62
+#, python-format
+msgid "Error :"
+msgstr "Fout:"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:55
+#, python-format
+msgid "Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'."
+msgstr "Het is verplicht een kostenplaats op te geven bij boekingen op rekening %s '%s', maar deze ontbreekt in de boekingsregel met de omschrijving '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:63
+#, python-format
+msgid "Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account %s '%s'."
+msgstr "Het is niet toegestaan om een kostenplaats op te geven bij boekingen op rekening %s '%s', maar in boekingsregel met de omschrijving '%s' staat toch de kostenplaats %s '%s'."
