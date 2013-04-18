@@ -50,10 +50,22 @@ class account_move_line(osv.osv):
         if 'account_id' in vals and (vals.get('debit', 0.0) != 0.0 or vals.get('credit', 0.0) != 0.0):
             account = self.pool.get('account.account').browse(cr, uid, vals['account_id'], context=context)
             if account.user_type.analytic_policy == 'always' and not vals.get('analytic_account_id', False):
-                raise osv.except_osv(_('Error :'), _("Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'." % (account.code, account.name, vals.get('name', False))))
+                raise osv.except_osv(
+                    _('Error :'),
+                    _("Analytic policy is set to 'Always' with account %s '%s' "
+                      "but the analytic account is missing in the account move "
+                      "line with label '%s'.") % (
+                        account.code, account.name, vals.get('name', False)))
             elif account.user_type.analytic_policy == 'never' and vals.get('analytic_account_id', False):
                 cur_analytic_account = self.pool.get('account.analytic.account').read(cr, uid, vals['analytic_account_id'], ['name', 'code'], context=context)
-                raise osv.except_osv(_('Error :'), _("Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account %s '%s'." % (account.code, account.name, vals.get('name', False), cur_analytic_account['code'], cur_analytic_account['name'])))
+                raise osv.except_osv(
+                    _('Error :'),
+                    _("Analytic policy is set to 'Never' with account %s '%s' "
+                      "but the account move line with label '%s' has an "
+                      "analytic account %s '%s'.") % (
+                        account.code, account.name, vals.get('name', False),
+                        cur_analytic_account['code'],
+                        cur_analytic_account['name']))
         return True
 
     def create(self, cr, uid, vals, context=None, check=True):
