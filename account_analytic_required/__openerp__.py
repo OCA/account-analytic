@@ -35,9 +35,7 @@ Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during the 
     'author': 'Akretion',
     'website': 'http://www.akretion.com/',
     'depends': ['account'],
-    'init_xml': [],
-    'update_xml': ['account_view.xml'],
-    'demo_xml': [],
+    'data': ['account_view.xml'],
     'installable': True,
     'active': False,
 }
