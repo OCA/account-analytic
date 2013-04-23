@@ -40,6 +40,7 @@ class account_account_type(orm.Model):
         'analytic_policy': lambda *a: 'optional',
         }
 
+
 class account_move_line(orm.Model):
     _inherit = "account.move.line"
 
