@@ -23,7 +23,7 @@
 
 {
     'name': 'Account analytic required',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'Generic Modules/Accounting',
     'license': 'AGPL-3',
     'description': """This module adds an option "analytic policy" on account types. You have the choice between 3 policies : always, never and optional.
@@ -35,10 +35,8 @@ Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during the 
     'author': 'Akretion',
     'website': 'http://www.akretion.com/',
     'depends': ['account'],
-    'init_xml': [],
-    'update_xml': ['account_view.xml'],
-    'demo_xml': [],
-    'installable': False,
+    'data': ['account_view.xml'],
+    'installable': True,
     'active': False,
 }
 
