@@ -28,9 +28,6 @@
 #
 ##############################################################################
 
-import time
-import operator
-
 from openerp.osv import orm, fields
 import decimal_precision as dp
 

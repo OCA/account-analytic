@@ -28,11 +28,8 @@
 #
 ##############################################################################
 
-import time
 
 from openerp.osv import orm, fields
-from tools.translate import _
-
 import decimal_precision as dp
 
 class AccountAnalyticLine(orm.Model):

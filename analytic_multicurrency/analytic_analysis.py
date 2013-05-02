@@ -28,11 +28,7 @@
 #
 ##############################################################################
 
-import operator
 from openerp.osv import orm, fields
-from openerp.osv.orm import intersect
-import tools.sql
-from tools.translate import _
 import decimal_precision as dp
 
 class AccountAnalyticAccount(orm.Model):
