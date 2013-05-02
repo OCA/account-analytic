@@ -38,7 +38,7 @@ import decimal_precision as dp
 class account_analytic_account(osv.osv):
     _inherit = 'account.analytic.account'
 
-    def _debit_credit_bal_qtty(self, cr, uid, ids, name, arg, context=None):
+    def _debit_credit_bal_qtty(self, cr, uid, ids, fields, arg, context=None):
         """Replace the original amount column by aa_amount_currency"""
         res = {}
         if context is None:
@@ -46,7 +46,7 @@ class account_analytic_account(osv.osv):
         child_ids = tuple(self.search(cr, uid, [('parent_id', 'child_of', ids)]))
         for i in child_ids:
             res[i] =  {}
-            for n in name:
+            for n in fields:
                 res[i][n] = 0.0
 
         if not child_ids:
@@ -81,9 +81,11 @@ class account_analytic_account(osv.osv):
               WHERE a.id IN %s
               """ + where_date + """
               GROUP BY a.id""", where_clause_args)
-        for ac_id, debit, credit, balance, quantity in cr.fetchall():
-            res[ac_id] = {'debit': debit, 'credit': credit, 'balance': balance, 'quantity': quantity}
-        return self._compute_level_tree(cr, uid, ids, child_ids, res, ['debit', 'credit', 'balance', 'quantity'], context)
+        for row in cr.dictfetchall():
+            res[row['id']] = {}
+            for field in fields:
+                res[row['id']][field] = row[field]
+        return self._compute_level_tree(cr, uid, ids, child_ids, res, fields, context)
 
     _columns = {
         'balance': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Balance', multi='debit_credit_bal_qtty', digits_compute=dp.get_precision('Account')),
@@ -96,11 +98,14 @@ class account_analytic_account(osv.osv):
     # currency than the company one. Don't be able to override properly this constraints :(
     def check_currency(self, cr, uid, ids, context=None):
         return True
+
     def check_recursion(self, cr, uid, ids, parent=None):
         return super(account_analytic_account, self)._check_recursion(cr, uid, ids, parent=parent)
     _constraints = [
         (check_recursion, 'Error! You can not create recursive analytic accounts.', ['parent_id']),
         (check_currency, 'Error! The currency has to be the same as the currency of the selected company', ['currency_id', 'company_id']),
     ]
-        
+
 account_analytic_account()
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
