@@ -30,13 +30,12 @@
 
 import time
 
-from osv import fields
-from osv import osv
+from openerp.osv import orm, fields
 from tools.translate import _
 
 import decimal_precision as dp
 
-class account_analytic_line(osv.osv):
+class AccountAnalyticLine(orm.Model):
     _inherit = 'account.analytic.line'
 
     def _amount_currency(self, cr, uid, ids, field_name, arg, context=None):
@@ -94,7 +93,7 @@ class account_analytic_line(osv.osv):
                   },
                   help="The amount expressed in the related analytic account currency."),
           'company_id': fields.related('general_account_id', 'company_id', type='many2one', relation='res.company', string='Company', store=True, readonly=True),
-    }
+       }
 
     # property_valuation_price_type property
     def on_change_unit_amount(self, cr, uid, id, prod_id, quantity, company_id,
@@ -103,10 +102,9 @@ class account_analytic_line(osv.osv):
             context = {}
         company_obj = self.pool.get('res.company')
         context['currency_id'] = company_obj.browse(cr, uid, company_id).currency_id.id
-        res=super(account_analytic_line, self).on_change_unit_amount(cr, uid, id, prod_id, quantity, company_id, \
+        res = super(AccountAnalyticLine, self).on_change_unit_amount(
+                cr, uid, id, prod_id, quantity, company_id,
                 unit=unit, journal_id=journal_id, context=context)
         return res
-
-account_analytic_line()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

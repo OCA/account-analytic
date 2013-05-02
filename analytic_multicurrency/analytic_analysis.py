@@ -29,13 +29,13 @@
 ##############################################################################
 
 import operator
-from osv import osv, fields
-from osv.orm import intersect
+from openerp.osv import orm, fields
+from openerp.osv.orm import intersect
 import tools.sql
 from tools.translate import _
 import decimal_precision as dp
 
-class account_analytic_account(osv.osv):
+class AccountAnalyticAccount(orm.Model):
     _inherit = "account.analytic.account"
 
     def _ca_invoiced_calc(self, cr, uid, ids, name, arg, context=None):
@@ -93,15 +93,13 @@ class account_analytic_account(osv.osv):
             res_final[i] = data[i][name]
         return res_final
 
-    _columns ={
+    _columns = {
         'ca_invoiced': fields.function(_ca_invoiced_calc, method=True, type='float', string='Invoiced Amount',
             help="Total customer invoiced amount for this account.",
             digits_compute=dp.get_precision('Account')),
         'total_cost': fields.function(_total_cost_calc, method=True, type='float', string='Total Costs',
             help="Total of costs for this account. It includes real costs (from invoices) and indirect costs, like time spent on timesheets.",
             digits_compute=dp.get_precision('Account')),
-     }
-
-account_analytic_account()
+         }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

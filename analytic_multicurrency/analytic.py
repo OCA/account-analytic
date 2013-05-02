@@ -31,11 +31,10 @@
 import time
 import operator
 
-from osv import fields
-from osv import osv
+from openerp.osv import orm, fields
 import decimal_precision as dp
 
-class account_analytic_account(osv.osv):
+class AccountAnalyticAccount(orm.Model):
     _inherit = 'account.analytic.account'
 
     def _debit_credit_bal_qtty(self, cr, uid, ids, fields, arg, context=None):
@@ -92,7 +91,7 @@ class account_analytic_account(osv.osv):
         'debit': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Debit', multi='debit_credit_bal_qtty', digits_compute=dp.get_precision('Account')),
         'credit': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Credit', multi='debit_credit_bal_qtty', digits_compute=dp.get_precision('Account')),
         'quantity': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Quantity', multi='debit_credit_bal_qtty'),
-   }
+        }
 
     # We remove the currency constraint cause we want to let the user choose another
     # currency than the company one. Don't be able to override properly this constraints :(
@@ -105,7 +104,5 @@ class account_analytic_account(osv.osv):
         (check_recursion, 'Error! You can not create recursive analytic accounts.', ['parent_id']),
         (check_currency, 'Error! The currency has to be the same as the currency of the selected company', ['currency_id', 'company_id']),
     ]
-
-account_analytic_account()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
