@@ -66,6 +66,5 @@ currency. This setup becomes True, Enjoy !
      "update_xml" : [
           "analytic_view.xml",
      ],
-     "active": False,
-     "installable": False
+     "installable": True
 }
