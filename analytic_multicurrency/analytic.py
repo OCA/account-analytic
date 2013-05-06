@@ -19,14 +19,10 @@
 #
 ##############################################################################
 
-import time
-import operator
+from openerp.osv import orm, fields
+import openerp.addons.decimal_precision as dp
 
-from osv import fields
-from osv import osv
-import decimal_precision as dp
-
-class account_analytic_account(osv.osv):
+class account_analytic_account(orm.Model):
     _inherit = 'account.analytic.account'
 
     def _debit_credit_bal_qtty(self, cr, uid, ids, name, arg, context=None):
@@ -93,5 +89,3 @@ class account_analytic_account(osv.osv):
         (check_recursion, 'Error! You can not create recursive analytic accounts.', ['parent_id']),
         (check_currency, 'Error! The currency has to be the same as the currency of the selected company', ['currency_id', 'company_id']),
     ]
-        
-account_analytic_account()
