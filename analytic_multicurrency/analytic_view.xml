@@ -5,7 +5,6 @@
     <record id="account.view_account_analytic_line_form" model="ir.ui.view">
         <field name="name">account.analytic.line.form</field>
         <field name="model">account.analytic.line</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Analytic Entry">
                 <group colspan="4" col="6">
@@ -42,7 +41,6 @@
     <record id="view_account_analytic_line_tree" model="ir.ui.view">
         <field name="name">account.analytic.line.tree</field>
         <field name="model">account.analytic.line</field>
-        <field name="type">tree</field>
         <field name="arch" type="xml">
             <tree editable="top" string="Analytic Entries">
                 <field name="date"/>
@@ -65,7 +63,6 @@
     <record id="account.account_analytic_line_extended_form" model="ir.ui.view">
         <field name="name">account.analytic.line.extended_form</field>
         <field name="model">account.analytic.line</field>
-        <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Project line">
                 <field name="name"/>
