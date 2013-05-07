@@ -7,10 +7,13 @@
       <field name="model">account.analytic.line</field>
       <field name="inherit_id" ref="account.view_account_analytic_line_form"/>
       <field name="arch" type="xml">
-        <field name="currency_id" position="after">
-          <field name="aa_amount_currency" class="oe_inline"/>
-          <field name="aa_currency_id" class="oe_inline"/>
-        </field>
+        <xpath expr="//label[@for='amount_currency']/following-sibling::div[1]" position="after">
+          <label for="aa_amount_currency" groups="base.group_multi_currency"/>
+          <div groups="base.group_multi_currency">
+            <field name="aa_amount_currency" class="oe_inline"/>
+            <field name="aa_currency_id" class="oe_inline"/>
+          </div>
+        </xpath>
       </field>
     </record>
 
@@ -31,10 +34,13 @@
       <field name="model">account.analytic.line</field>
       <field name="inherit_id" ref="account.account_analytic_line_extended_form"/>
       <field name="arch" type="xml">
-        <field name="amount_currency" position="after">
-            <field name="aa_currency_id" />
-            <field name="aa_amount_currency" />
-        </field>
+        <xpath expr="//label[@for='amount_currency']/following-sibling::div[1]" position="after">
+          <label for="aa_amount_currency" groups="base.group_multi_currency"/>
+          <div groups="base.group_multi_currency">
+            <field name="aa_amount_currency" class="oe_inline"/>
+            <field name="aa_currency_id" class="oe_inline"/>
+          </div>
+        </xpath>
       </field>
     </record>
 
