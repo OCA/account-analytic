@@ -72,7 +72,7 @@ class account_analytic_line(orm.Model):
             _get_account_currency,
             type='many2one',
             relation='res.currency',
-            string='Account currency',
+            string='Analytic Account currency',
             store={
                 'account.analytic.account': (_get_account_line,
                                              ['currency_id', 'company_id'],
@@ -86,7 +86,7 @@ class account_analytic_line(orm.Model):
             help="The related analytic account currency."),
         'aa_amount_currency': fields.function(
             _amount_currency,
-            string='Amount currency',
+            string='Analytic Amount currency',
             digits_compute=dp.get_precision('Account'),
             store={
                 'account.analytic.account': (_get_account_line,

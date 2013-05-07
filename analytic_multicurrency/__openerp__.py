@@ -60,6 +60,14 @@ Enjoy !
 
   - Analytic Account C: EUR, owned by Company B
 
+
+The difference with the regular 'Amount Currency':
+
+* Regular 'Amount Currency' displays the amount currency of the related
+  move line (only when linked with a move line, of course)
+* Analytic Amount Currency displays the amount of the analytic move line
+  converted to the right currency
+
 """,
  "website": "http://camptocamp.com",
  "depends": ["account",
