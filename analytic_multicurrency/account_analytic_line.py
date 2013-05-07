@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Author: Joël Grand-Guillaume
-#    Copyright 2010 Camptocamp SA
+#    Copyright 2011-2013 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,78 +20,104 @@
 ##############################################################################
 
 from openerp.osv import orm, fields
-import decimal_precision as dp
+import openerp.addons.decimal_precision as dp
 
-class AccountAnalyticLine(orm.Model):
+
+class account_analytic_line(orm.Model):
     _inherit = 'account.analytic.line'
 
     def _amount_currency(self, cr, uid, ids, field_name, arg, context=None):
         if context is None:
             context = {}
         result = {}
-        for rec in self.browse(cr, uid, ids, context=context):
-            cmp_cur_id = rec.company_id.currency_id.id if rec.company_id else rec.account_id.company_id.currency_id.id if rec.account_id.company_id else False
-            aa_cur_id=rec.account_id.currency_id.id
+        cur_obj = self.pool.get('res.currency')
+        for line in self.browse(cr, uid, ids, context=context):
+            cmp_cur_id = line.company_id.currency_id.id
+            aa_cur_id = line.account_id.currency_id.id
             # Always provide the amount in currency
-            result[rec.id]=rec.amount
-            if cmp_cur_id != aa_cur_id:
-                cur_obj = self.pool.get('res.currency')
-                ctx = {}
-                if rec.date and rec.amount:
-                    ctx['date'] = rec.date
-                    new_val = cur_obj.compute(cr, uid, rec.company_id.currency_id.id,
-                        rec.account_id.currency_id.id, rec.amount,
-                        context=ctx)
-                    if new_val:
-                        result[rec.id] = new_val
+            if cmp_cur_id == aa_cur_id:
+                result[line.id] = line.amount
+            else:
+                ctx = context.copy()
+                if not (line.date and line.amount):
+                    continue
+                ctx['date'] = line.date
+                result[line.id] = cur_obj.compute(cr, uid,
+                                                  cmp_cur_id,
+                                                  aa_cur_id,
+                                                  line.amount,
+                                                  context=ctx)
         return result
 
     def _get_account_currency(self, cr, uid, ids, field_name, arg, context=None):
         result = {}
-        for rec in self.browse(cr, uid, ids, context=context):
+        for line in self.browse(cr, uid, ids, context=context):
             # Always provide second currency
-            result[rec.id] = (rec.account_id.currency_id.id, rec.account_id.currency_id.name)
+            result[line.id] = (line.account_id.currency_id.id,
+                               line.account_id.currency_id.name)
         return result
 
     def _get_account_line(self, cr, uid, ids, context=None):
-        if context is None:
-            context = {}
-        aac_ids = {}
-        for acc in self.pool.get('account.analytic.account').browse(cr, uid, ids, context=context):
-            aac_ids[acc.id] = True
-        aal_ids = []
-        if aac_ids:
-            aal_ids = self.pool.get('account.analytic.line').search(cr, uid, [('account_id', 'in', aac_ids.keys())], context=context)
-        return aal_ids
-    # Add the account currency and amount in this currency on each analytic line
-    # The company_id of analytic line is always realted to the company of the general account
-    # linked on the line
-    _columns = {
-          'aa_currency_id': fields.function(_get_account_currency, method=True, type='many2one', relation='res.currency', string='Account currency',
-                  store={
-                      'account.analytic.account': (_get_account_line, ['currency_id', 'company_id'], 50),
-                      'account.analytic.line': (lambda self, cr, uid, ids, c={}: ids, ['general_account_id', 'account_id', 'amount', 'unit_amount', 'product_uom_id'], 10),
-                  },
-                  help="The related analytic account currency."),
-          'aa_amount_currency': fields.function(_amount_currency, method=True, digits_compute=dp.get_precision('Account'), string='Amount currency',
-                  store={
-                      'account.analytic.account': (_get_account_line, ['currency_id', 'company_id'], 50),
-                      'account.analytic.line': (lambda self, cr, uid, ids, c={}: ids, ['general_account_id', 'account_id', 'amount', 'unit_amount', 'product_uom_id'], 10),
-                  },
-                  help="The amount expressed in the related analytic account currency."),
-          'company_id': fields.related('general_account_id', 'company_id', type='many2one', relation='res.company', string='Company', store=True, readonly=True),
-       }
+        aa_line_obj = self.pool.get('account.analytic.line')
+        return aa_line_obj.search(cr, uid,
+                                  [('account_id', 'in', ids)],
+                                  context=context)
 
-    # property_valuation_price_type property
+    # Add the account currency and amount in this currency on each
+    # analytic line.
+    # The company_id of analytic line is always related to the company
+    # of the general account linked on the line
+    _columns = {
+        'aa_currency_id': fields.function(
+            _get_account_currency,
+            type='many2one',
+            relation='res.currency',
+            string='Account currency',
+            store={
+                'account.analytic.account': (_get_account_line,
+                                             ['currency_id', 'company_id'],
+                                             50),
+                'account.analytic.line': (lambda self, cr, uid, ids, c=None: ids,
+                                          ['amount',
+                                           'unit_amount',
+                                           'product_uom_id'],
+                                          10),
+            },
+            help="The related analytic account currency."),
+        'aa_amount_currency': fields.function(
+            _amount_currency,
+            string='Amount currency',
+            digits_compute=dp.get_precision('Account'),
+            store={
+                'account.analytic.account': (_get_account_line,
+                                             ['currency_id', 'company_id'],
+                                             50),
+                'account.analytic.line': (lambda self, cr, uid, ids, c=None: ids,
+                                          ['amount',
+                                           'unit_amount',
+                                           'product_uom_id'],
+                                          10),
+            },
+            help="The amount expressed in the related analytic account "
+                 "currency."),
+        'company_id': fields.related(
+            'general_account_id',
+            'company_id',
+            type='many2one',
+            relation='res.company',
+            string='Company',
+            store=True,
+            readonly=True),
+    }
+
     def on_change_unit_amount(self, cr, uid, id, prod_id, quantity, company_id,
-            unit=False, journal_id=False, context=None):
+                              unit=False, journal_id=False, context=None):
         if context is None:
             context = {}
         company_obj = self.pool.get('res.company')
-        context['currency_id'] = company_obj.browse(cr, uid, company_id).currency_id.id
-        res = super(AccountAnalyticLine, self).on_change_unit_amount(
-                cr, uid, id, prod_id, quantity, company_id,
-                unit=unit, journal_id=journal_id, context=context)
-        return res
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+        company = company_obj.browse(cr, uid, company_id, context=context)
+        ctx = context.copy()
+        ctx['currency_id'] = company.currency_id.id
+        return super(account_analytic_line, self).on_change_unit_amount(
+            cr, uid, id, prod_id, quantity, company_id,
+            unit=unit, journal_id=journal_id, context=ctx)

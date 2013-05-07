@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Author: Joël Grand-Guillaume
-#    Copyright 2010 Camptocamp SA
+#    Copyright 2011-2013 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,5 +22,3 @@
 import account_analytic_line
 import analytic
 import analytic_analysis
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
