@@ -37,8 +37,8 @@ class account_analytic_account(orm.Model):
         sums = {}
         if not child_ids:
             return sums
-        for child_id, field in product(child_ids, name):
-            sums.setdefault(child_id, {})[name] = 0.0
+        for child_id, field in product(child_ids, fields):
+            sums.setdefault(child_id, {})[field] = 0.0
 
         where_date = ''
         where_clause_args = [tuple(child_ids)]
