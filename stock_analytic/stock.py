@@ -19,8 +19,8 @@
 #
 #################################################################################
 
-from osv import fields, osv, orm
-from tools.translate import _
+from openerp.osv import fields, osv, orm
+from openerp.tools.translate import _
 
 # ----------------------------------------------------
 # Move
