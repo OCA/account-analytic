@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-<!--
-        <record id="view_inventory_in_form" model="ir.ui.view">
+        <record id="view_inventory_form" model="ir.ui.view">
             <field name="name">stock.inventory.form</field>
             <field name="model">stock.inventory</field>
 			<field name="inherit_id" ref="stock.view_inventory_form"/>
@@ -10,48 +9,31 @@
 				<xpath expr="/form/notebook/page[@string='Posted Inventory']//tree/field[@name='location_id']" position="after">
 					<field name="account_analytic_id"/>
 				</xpath>
-            </field>
-        </record>
-
-		<record id="view_picking_out_form" model="ir.ui.view"> 
-            <field name="name">stock.picking.out.form</field>
-            <field name="model">stock.picking</field>
-			<field name="inherit_id" ref="stock.view_picking_out_form"/>
-            <field name="arch" type="xml">
-				<xpath expr="/form/notebook/page/field[@name='move_lines']/tree/field[@name='location_id']" position="after">
-					<field name="account_analytic_id"/>
-				</xpath>
 				<xpath expr="/form/notebook/page/field[@name='move_lines']/form/group/field[@name='product_uom']" position="after">
 					<field name="account_analytic_id"/>
 				</xpath>
             </field>
         </record>
 
-        <record id="view_picking_form" model="ir.ui.view">
-            <field name="name">stock.picking.form</field>
-            <field name="model">stock.picking</field>
-			<field name="inherit_id" ref="stock.view_picking_form"/>
+		<record id="view_move_picking_form" model="ir.ui.view">
+            <field name="name">stock.move.picking.form</field>
+            <field name="model">stock.move</field>
+			<field name="inherit_id" ref="stock.view_move_picking_form"/>
             <field name="arch" type="xml">
-				<xpath expr="/form/notebook/page/field[@name='move_lines']/tree/field[@name='location_dest_id']" position="after">
+				<field name="location_dest_id" position="after">
 					<field name="account_analytic_id"/>
-				</xpath>
-				<xpath expr="/form/notebook/page/field[@name='move_lines']/form/group/field[@name='product_uom']" position="after">
-					<field name="account_analytic_id"/>
-				</xpath>
+				</field>
             </field>
         </record>
-
-        <record id="view_picking_in_form" model="ir.ui.view">
-            <field name="name">stock.picking.in.form</field>
-            <field name="model">stock.picking</field>
-			<field name="inherit_id" ref="stock.view_picking_in_form"/>
+        
+		<record id="view_move_picking_tree" model="ir.ui.view">
+            <field name="name">stock.move.picking.tree</field>
+            <field name="model">stock.move</field>
+			<field name="inherit_id" ref="stock.view_move_picking_tree"/>
             <field name="arch" type="xml">
-				<xpath expr="/form/notebook/page/field[@name='move_lines']/tree/field[@name='location_dest_id']" position="after">
+				<field name="product_uom" position="after">
 					<field name="account_analytic_id"/>
-				</xpath>
-				<xpath expr="/form/notebook/page/field[@name='move_lines']/form/group/field[@name='product_uom']" position="after">
-					<field name="account_analytic_id"/>
-				</xpath>
+				</field>
             </field>
         </record>-->
 
@@ -115,11 +97,10 @@
             <field name="model">stock.move</field>
 			<field name="inherit_id" ref="stock.view_move_form"/>
             <field name="arch" type="xml">
-				<field name='partner_id' position="after">
+				<field name='location_dest_id' position="after">
 					<field name="account_analytic_id"/>
 				</field>
 			</field>
 		</record>
-
     </data>
 </openerp>
