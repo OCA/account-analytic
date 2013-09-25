@@ -85,7 +85,9 @@ class account_analytic_account(orm.Model):
         if value:
             return cr.execute("""update account_analytic_account set currency_id=%s
                                  where id in %s""",
-                              (value, (tuple(ids)), ))
+                              (value, tuple(ids), ))
+        else:
+            return False
 
     def _currency(self, cr, uid, ids, field_name, arg, context=None):
         result = {}
