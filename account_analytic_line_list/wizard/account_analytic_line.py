@@ -34,8 +34,8 @@ class AccountAnalyticViewLine(orm.TransientModel):
 
     def _append_childs(self, cr, uid, accounts, analytic_obj):
         for child in analytic_obj.child_complete_ids:
-                accounts.append(child.id)
-                self._append_childs(cr, uid, accounts, child)
+            accounts.append(child.id)
+            self._append_childs(cr, uid, accounts, child)
 
     def open_account_analytic_lines(self, cr, uid, ids, context=None):
         data = self.read(cr, uid, ids, [], context=context)[0]
