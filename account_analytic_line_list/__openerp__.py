@@ -27,8 +27,9 @@
     "author": "initOS GmbH & Co. KG",
     "website": "www.initos.com",
     "category": "Generic Modules/Projects & Services",
-    "description": """Search the analytic lines for an analytic account and all their children.
-    ported module acy_account_analytic_lines from Acysos S.L. (Sponsored by Talleres Mutilva)""",
+    "description": """Search the analytic lines for an analytic account and
+        all their children. Ported module acy_account_analytic_lines from
+        Acysos S.L. (Sponsored by Talleres Mutilva)""",
     "license": "AGPL-3",
     "depends": [
         "base",

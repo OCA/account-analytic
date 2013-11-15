@@ -28,7 +28,8 @@ class AccountAnalyticViewLine(orm.TransientModel):
     _description = "Account Analytic View Line"
 
     _columns = {
-        'analytic_id': fields.many2one('account.analytic.account', 'Analytic Account', required=True),
+        'analytic_id': fields.many2one('account.analytic.account',
+                                       'Analytic Account', required=True),
         'children': fields.boolean('With children'),
     }
 
@@ -40,7 +41,8 @@ class AccountAnalyticViewLine(orm.TransientModel):
     def open_account_analytic_lines(self, cr, uid, ids, context=None):
         data = self.read(cr, uid, ids, [], context=context)[0]
         print data['analytic_id'][0]
-        analytic_obj = self.pool.get('account.analytic.account').browse(cr, uid, [data['analytic_id'][0]])[0]
+        analytic_obj = self.pool.get('account.analytic.account')\
+                                .browse(cr, uid, [data['analytic_id'][0]])[0]
         accounts = []
         accounts.append(analytic_obj.id)
         print analytic_obj.id
