@@ -40,15 +40,12 @@ class AccountAnalyticViewLine(orm.TransientModel):
 
     def open_account_analytic_lines(self, cr, uid, ids, context=None):
         data = self.read(cr, uid, ids, [], context=context)[0]
-        print data['analytic_id'][0]
         analytic_obj = self.pool.get('account.analytic.account')\
                                 .browse(cr, uid, [data['analytic_id'][0]])[0]
         accounts = []
         accounts.append(analytic_obj.id)
-        print analytic_obj.id
         if data['children'] == 1:
             self._append_childs(cr, uid, accounts, analytic_obj)
-        print accounts
         res = {
             'domain': str([('account_id', 'in', accounts)]),
             'name': 'Analytic account lines',
