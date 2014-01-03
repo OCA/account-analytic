@@ -1,10 +1,10 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#   * acy_account_analytic_lines
+#   * account_analytic_line_list
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0.3\n"
+"Project-Id-Version: OpenERP Server 7.0.0\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2011-20-10 01:31:24+0000\n"
 "PO-Revision-Date: 2011-20-10 01:31:24+0000\n"
@@ -15,29 +15,29 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: acy_account_analytic_lines
+#. module: account_analytic_line_list
 #: field:account.analytic.view.line,analytic_id:0
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
 
-#. module: acy_account_analytic_lines
+#. module: account_analytic_line_list
 #: field:account.analytic.view.line,children:0
 msgid "With children"
 msgstr "Con subcuentas"
 
-#. module: acy_account_analytic_lines
+#. module: account_analytic_line_list
 #: model:ir.actions.act_window,name:account_analytic_view_line.action_view_account_analytic_lines
-#: model:ir.ui.menu,name:acy_account_analytic_lines.menu_view_account_analytic_lines
+#: model:ir.ui.menu,name:account_analytic_line_list.menu_view_account_analytic_lines
 #: view:account.analytic.view.line:0
 msgid "Analytic account lines"
 msgstr "Apuntes por cuenta analítica"
 
-#. module: acy_account_analytic_lines
+#. module: account_analytic_line_list
 #: view:account.analytic.view.line:0
 msgid "Open Lines"
 msgstr "Abrir apuntes"
 
-#. module: acy_account_analytic_lines
+#. module: account_analytic_line_list
 #: view:account.analytic.view.line:0
 msgid "Cancel"
 msgstr "Cancelar"
