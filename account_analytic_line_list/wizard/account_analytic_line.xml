@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <record id="view_account_analytic_lines" model="ir.ui.view">
+            <field name="name">view.account.analytic.lines.form</field>
+            <field name="model">account.analytic.view.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Analytic account lines">
+                    <group colspan="4">
+                        <field name="analytic_id" />
+                        <field name="children"/>
+                    </group>
+                    <separator string="" colspan="4"/>
+                    <group colspan="4" col="6">
+                        <button icon="gtk-cancel" special="cancel" string="Cancel"/>
+                        <button icon="terp-gtk-go-back-rtl" string="Open Lines" name="open_account_analytic_lines" type="object"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_account_analytic_lines" model="ir.actions.act_window">
+            <field name="name">Analytic account lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.analytic.view.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <menuitem
+                name="Analytic account lines"
+                action="action_view_account_analytic_lines"
+                id="menu_view_account_analytic_lines"
+                parent="account.next_id_40"
+                sequence="2"
+            icon="STOCK_INDENT"/>
+        
+    </data>
+</openerp>
