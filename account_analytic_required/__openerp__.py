@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Account analytic required module for OpenERP
-#    Copyright (C) 2011 Akretion (http://www.akretion.com). All Rights Reserved
+#    Copyright (C) 2011 Akretion (http://www.akretion.com)
 #    @author Alexis de Lattre <alexis.delattre@akretion.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -22,13 +22,17 @@
 
 
 {
-    'name': 'Account analytic required',
+    'name': 'Account Analytic Required',
     'version': '0.2',
-    'category': 'Generic Modules/Accounting',
+    'category': 'Analytic Accounting',
     'license': 'AGPL-3',
-    'description': """This module adds an option "analytic policy" on account types. You have the choice between 3 policies : always, never and optional.
+    'description': """
+Account Analytic Required
+=========================
 
-For example, if you want to have an analytic account on all your expenses, set the policy to "always" for the account type "expense" ; then, if you try to save an account move line with an account of type "expense" without analytic account, you will get an error message.
+This module adds an option *analytic policy* on account types. You have the choice between 3 policies : *always*, *never* and *optional*.
+
+For example, if you want to have an analytic account on all your expenses, set the policy to *always* for the account type *expense* ; then, if you try to save an account move line with an account of type *expense* without analytic account, you will get an error message.
 
 Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during the Akretion-Camptocamp code sprint of June 2011.
 """,
@@ -39,4 +43,3 @@ Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during the 
     'installable': True,
     'active': False,
 }
-
