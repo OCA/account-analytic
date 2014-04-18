@@ -49,7 +49,7 @@ class test_account_analytic_required(common.TransactionCase):
             'date': date,
         }
         move_id = self.move_obj.create(self.cr, self.uid, move_vals)
-        self.move_line_obj.create(
+        move_line_id = self.move_line_obj.create(
             self.cr, self.uid,
             {'move_id': move_id,
              'name': '/',
@@ -57,7 +57,7 @@ class test_account_analytic_required(common.TransactionCase):
              'credit': amount,
              'account_id': self.ref('account.a_sale'),
              'analytic_account_id': self.analytic_account_id if with_analytic else False})
-        move_line_id = self.move_line_obj.create(
+        self.move_line_obj.create(
             self.cr, self.uid,
             {'move_id': move_id,
              'name': '/',
@@ -115,11 +115,11 @@ class test_account_analytic_required(common.TransactionCase):
     def test_change_account(self):
         self._set_analytic_policy('always', aref='account.a_expense')
         line_id = self._create_move(with_analytic=False)
-        # change account to a_pay with policy always but missing partner
+        # change account to a_pay with policy always but missing analytic_account
         with self.assertRaises(orm.except_orm):
             self.move_line_obj.write(self.cr, self.uid, line_id,
                                      {'account_id': self.ref('account.a_expense')})
         # change account to a_pay with policy always with partner -> ok
         self.move_line_obj.write(self.cr, self.uid, line_id,
                                  {'account_id': self.ref('account.a_expense'),
-                                  'analytic_account_id': self.analytic.account_id})
+                                  'analytic_account_id': self.analytic_account_id})

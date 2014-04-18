@@ -44,32 +44,27 @@ class account_account_type(orm.Model):
 class account_move_line(orm.Model):
     _inherit = "account.move.line"
 
-    def check_analytic_required(self, cr, uid, vals, context=None):
-        if vals.has_key('account_id') and (vals.get('debit',0.0) != 0.0 or vals.get('credit',0.0) != 0.0):
-            account = self.pool.get('account.account').browse(cr, uid, vals['account_id'], context=context)
-            if account.user_type.analytic_policy == 'always' and not vals.get('analytic_account_id', False):
-                raise osv.except_osv(
-                    _('Error :'),
-                    _("Analytic policy is set to 'Always' with account %s '%s' "
-                      "but the analytic account is missing in the account move "
-                      "line with label '%s'.") % (
-                        account.code, account.name, vals.get('name', False)))
-            elif account.user_type.analytic_policy == 'never' and vals.get('analytic_account_id', False):
-                cur_analytic_account = self.pool.get('account.analytic.account').read(cr, uid, vals['analytic_account_id'], ['name', 'code'], context=context)
-                raise osv.except_osv(
-                    _('Error :'),
-                    _("Analytic policy is set to 'Never' with account %s '%s' "
-                      "but the account move line with label '%s' has an "
-                      "analytic account %s '%s'.") % (
-                        account.code, account.name, vals.get('name', False),
-                        cur_analytic_account['code'],
-                        cur_analytic_account['name']))
+    def check_analytic_required(self, cr, uid, ids, vals, context=None):
+        if 'account_id' in vals or 'analytic_account_id' in vals or \
+                'debit' in vals or 'credit' in vals:
+            if isinstance(ids, (int, long)):
+                ids = [ids]
+            for move_line in self.browse(cr, uid, ids, context):
+                if move_line.debit == 0 and move_line.credit == 0:
+                    continue
+                analytic_policy = move_line.account_id.user_type.analytic_policy
+                if analytic_policy == 'always' and not move_line.analytic_account_id:
+                    raise orm.except_orm(_('Error :'), _("Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'." % (move_line.account_id.code, move_line.account_id.name, move_line.name)))
+                elif analytic_policy == 'never' and move_line.analytic_account_id:
+                    raise orm.except_orm(_('Error :'), _("Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account %s '%s'." % (move_line.account_id.code, move_line.account_id.name, move_line.name, move_line.analytic_account_id.code, move_line.analytic_account_id.name)))
         return True
 
     def create(self, cr, uid, vals, context=None, check=True):
-        self.check_analytic_required(cr, uid, vals, context=context)
-        return super(account_move_line, self).create(cr, uid, vals, context=context, check=check)
+        line_id = super(account_move_line, self).create(cr, uid, vals, context=context, check=check)
+        self.check_analytic_required(cr, uid, line_id, vals, context=context)
+        return line_id
 
     def write(self, cr, uid, ids, vals, context=None, check=True, update_check=True):
-        self.check_analytic_required(cr, uid, vals, context=context)
-        return super(account_move_line, self).write(cr, uid, ids, vals, context=context, check=check, update_check=update_check)
+        res = super(account_move_line, self).write(cr, uid, ids, vals, context=context, check=check, update_check=update_check)
+        self.check_analytic_required(cr, uid, ids, vals, context=context)
+        return res
