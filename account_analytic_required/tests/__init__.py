@@ -2,8 +2,8 @@
 ##############################################################################
 #
 #    Account analytic required module for OpenERP
-#    Copyright (C) 2011 Akretion (http://www.akretion.com). All Rights Reserved
-#    @author Alexis de Lattre <alexis.delattre@akretion.com>
+#    Copyright (C) 2014 Acsone (http://acsone.eu). All Rights Reserved
+#    @author Stéphane Bidoul <stephane.bidoul@acsone.eu>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,5 +20,11 @@
 #
 ##############################################################################
 
+from . import test_account_analytic_required
 
-from . import account
+fast_suite = [
+]
+
+checks = [
+    test_account_analytic_required,
+]
