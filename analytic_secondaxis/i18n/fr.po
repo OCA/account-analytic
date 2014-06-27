@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 6.0.1\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2011-03-17 21:54+0000\n"
-"PO-Revision-Date: 2011-03-21 20:36+0000\n"
-"Last-Translator: Sebastien LANGE - http://www.Syleam.fr <Unknown>\n"
+"PO-Revision-Date: 2014-06-26 11:21+0000\n"
+"Last-Translator: Pedro Manuel Baeza <pedro.baeza@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-04-16 07:04+0000\n"
-"X-Generator: Launchpad (build 12735)\n"
+"X-Launchpad-Export-Date: 2014-06-27 07:09+0000\n"
+"X-Generator: Launchpad (build 17077)\n"
 
 #. module: analytic_secondaxis
 #: field:activities.analytic.chart,from_date:0

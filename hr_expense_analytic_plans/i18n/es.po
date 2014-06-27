@@ -7,13 +7,14 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-04 18:17+0000\n"
-"PO-Revision-Date: 2014-04-04 20:18+0100\n"
-"Last-Translator: Pedro Manuel Baeza <pedro.baeza@serviciosbaeza.com>\n"
+"PO-Revision-Date: 2014-06-26 11:21+0000\n"
+"Last-Translator: Pedro Manuel Baeza <pedro.baeza@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
+"X-Launchpad-Export-Date: 2014-06-27 07:09+0000\n"
+"X-Generator: Launchpad (build 17077)\n"
 
 #. module: hr_expense_analytic_plans
 #: field:hr.expense.line,analytics_id:0
@@ -33,4 +34,3 @@ msgstr "Gasto"
 #, python-format
 msgid "Expense Line"
 msgstr "Línea de gasto"
-
