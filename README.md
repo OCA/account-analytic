@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/OCA/account-analytic.svg?branch=master)](https://travis-ci.org/OCA/account-analytic)
+[![Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png)](https://coveralls.io/r/OCA/account-analytic)
+
 OpenERP / Odoo Analytic Accounting
 ==================================
 
