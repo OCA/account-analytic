@@ -34,7 +34,7 @@ class account_analytic_account(orm.Model):
                                 context=context)
         sums = {}
         if not child_ids:
-            return res
+            return {}
         for child_id, field in product(child_ids, name):
             sums.setdefault(child_id, {})[name] = 0.0
 
