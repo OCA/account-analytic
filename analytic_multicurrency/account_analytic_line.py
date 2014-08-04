@@ -49,7 +49,8 @@ class account_analytic_line(orm.Model):
                                                   context=ctx)
         return result
 
-    def _get_account_currency(self, cr, uid, ids, field_name, arg, context=None):
+    def _get_account_currency(self, cr, uid, ids, field_name, arg,
+                              context=None):
         result = {}
         for line in self.browse(cr, uid, ids, context=context):
             # Always provide second currency
@@ -77,7 +78,8 @@ class account_analytic_line(orm.Model):
                 'account.analytic.account': (_get_account_line,
                                              ['currency_id', 'company_id'],
                                              50),
-                'account.analytic.line': (lambda self, cr, uid, ids, c=None: ids,
+                'account.analytic.line': (lambda self, cr, uid, ids, c=None:
+                                          ids,
                                           ['amount',
                                            'unit_amount',
                                            'product_uom_id'],
@@ -92,7 +94,8 @@ class account_analytic_line(orm.Model):
                 'account.analytic.account': (_get_account_line,
                                              ['currency_id', 'company_id'],
                                              50),
-                'account.analytic.line': (lambda self, cr, uid, ids, c=None: ids,
+                'account.analytic.line': (lambda self, cr, uid, ids, c=None:
+                                          ids,
                                           ['amount',
                                            'unit_amount',
                                            'product_uom_id'],

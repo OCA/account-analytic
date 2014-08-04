@@ -31,7 +31,7 @@ The base module to manage analytic distribution on HR expenses
 Using this module, you will be able to link analytic distributions to expenses.
     """,
     'author': 'Serv. Tecnolog. Avanzados - Pedro M. Baeza',
-    'website' : 'http://www.serviciosbaeza.com',
+    'website': 'http://www.serviciosbaeza.com',
     'depends': [
         'hr_expense',
         'account_analytic_plans',

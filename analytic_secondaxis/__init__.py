@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -29,5 +29,5 @@
 #
 ##############################################################################
 
-import analytic_secondaxis
-import wizard
+import analytic_secondaxis  # noqa
+import wizard  # noqa

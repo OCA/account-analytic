@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -33,24 +33,29 @@ from osv import fields
 from osv import osv
 import decimal_precision as dp
 
-####################################################################################
+##########################################################################
 #  employee activity
-####################################################################################
+##########################################################################
+
+
 class project_activity_al(osv.osv):
-    """Class that inhertis osv.osv and add 2nd analytic axe to account analytic lines.
-    The _name is kept for previous version compatibility (project.activity_al)."""
+
+    """Class that inhertis osv.osv and add 2nd analytic axe to account analytic
+    lines. The _name is kept for previous version compatibility
+    (project.activity_al)."""
     # Keep that name for back -patibility
     _inherit = "project.activity_al"
     _description = "Second Analytical Axes"
-    
+
     def _debit_credit_bal_qtty(self, cr, uid, ids, name, arg, context=None):
         """Replace the original amount column by aa_amount_currency"""
         res = {}
         if context is None:
             context = {}
-        child_ids = tuple(self.search(cr, uid, [('parent_id', 'child_of', ids)]))
+        child_ids = tuple(
+            self.search(cr, uid, [('parent_id', 'child_of', ids)]))
         for i in child_ids:
-            res[i] =  {}
+            res[i] = {}
             for n in name:
                 res[i][n] = 0.0
 
@@ -61,7 +66,7 @@ class project_activity_al(osv.osv):
         where_clause_args = [tuple(child_ids)]
         if context.get('from_date', False):
             where_date += " AND l.date >= %s"
-            where_clause_args  += [context['from_date']]
+            where_clause_args += [context['from_date']]
         if context.get('to_date', False):
             where_date += " AND l.date <= %s"
             where_clause_args += [context['to_date']]
@@ -87,16 +92,39 @@ class project_activity_al(osv.osv):
               """ + where_date + """
               GROUP BY a.id""", where_clause_args)
         for ac_id, debit, credit, balance, quantity in cr.fetchall():
-            res[ac_id] = {'debit': debit, 'credit': credit, 'balance': balance, 'quantity': quantity}
-        return self._compute_level_tree(cr, uid, ids, child_ids, res, ['debit', 'credit', 'balance', 'quantity'], context)
+            res[ac_id] = {'debit': debit, 'credit': credit,
+                          'balance': balance, 'quantity': quantity}
+        return self._compute_level_tree(cr, uid, ids, child_ids, res, [
+            'debit', 'credit', 'balance', 'quantity'
+        ], context)
 
     _columns = {
-         'balance': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Balance', multi='debit_credit_bal_qtty', digits_compute=dp.get_precision('Account')),
-         'debit': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Debit', multi='debit_credit_bal_qtty', digits_compute=dp.get_precision('Account')),
-         'credit': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Credit', multi='debit_credit_bal_qtty', digits_compute=dp.get_precision('Account')),
-         'quantity': fields.function(_debit_credit_bal_qtty, method=True, type='float', string='Quantity', multi='debit_credit_bal_qtty'),
+        'balance': fields.function(
+            _debit_credit_bal_qtty,
+            method=True,
+            type='float',
+            string='Balance',
+            multi='debit_credit_bal_qtty',
+            digits_compute=dp.get_precision('Account')),
+        'debit': fields.function(
+            _debit_credit_bal_qtty,
+            method=True,
+            type='float',
+            string='Debit',
+            multi='debit_credit_bal_qtty',
+            digits_compute=dp.get_precision('Account')),
+        'credit': fields.function(
+            _debit_credit_bal_qtty,
+            method=True,
+            type='float',
+            string='Credit',
+            multi='debit_credit_bal_qtty',
+            digits_compute=dp.get_precision('Account')),
+        'quantity': fields.function(
+            _debit_credit_bal_qtty,
+            method=True,
+            type='float',
+            string='Quantity', multi='debit_credit_bal_qtty'),
     }
 
 project_activity_al()
-
-
