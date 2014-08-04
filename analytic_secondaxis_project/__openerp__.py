@@ -30,32 +30,34 @@
 ##############################################################################
 
 {
-    "name" : "Project Analytic Second Axis",
-    "version" : "1.0",
-    "author" : "Camptocamp",
-    "category" : "Generic Modules/Accounting",
+    "name": "Project Analytic Second Axis",
+    "version": "1.0",
+    "author": "Camptocamp",
+    "category": "Generic Modules/Accounting",
     "description":
-"""
-   Add a second analytical axis on analytic lines allowing you to make reporting on.
+    """
+    Add a second analytical axis on analytic lines allowing you to make
+    reporting on.
 
-   Unless the account_analytic_plans from OpenERP SA, this module allow you to make cross-reporting
-   between those two axes, like all analytic lines that concern for example :
-   The activity "Communication" and the project "Product 1 Integration".
+    Unless the account_analytic_plans from OpenERP SA, this module allow you to
+    make cross-reporting between those two axes, like all analytic lines that
+    concern for example : The activity "Communication" and the project "Product
+    1 Integration".
 
-   This second axis is called "activities" and you will be able to define for each analytical account, what are the
-   allowed activities for it.
+    This second axis is called "activities" and you will be able to define for
+    each analytical account, what are the allowed activities for it.
 
-   This module enables the second axis on projet.
+    This module enables the second axis on projet.
 
-""",
+    """,
     "website": "http://camptocamp.com",
-    "depends" : ["analytic_secondaxis_timesheet",
+    "depends": ["analytic_secondaxis_timesheet",
                 "project",
                 "project_timesheet",
                 ],
-    "init_xml" : ["security/ir.model.access.csv"],
-    "demo_xml" : [],
-    "update_xml" : [
+    "init_xml": ["security/ir.model.access.csv"],
+    "demo_xml": [],
+    "update_xml": [
         "analytic_secondaxis_view.xml",
     ],
     "active": False,

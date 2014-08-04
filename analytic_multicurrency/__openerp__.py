@@ -19,13 +19,13 @@
 #
 ##############################################################################
 {
- "name": "Multi-Currency in Analytic Accounting",
- "version": "1.0",
- "author": "Camptocamp",
- "license": 'AGPL-3',
- "category": "Generic Modules/Accounting",
- "description":
-"""
+    "name": "Multi-Currency in Analytic Accounting",
+    "version": "1.0",
+    "author": "Camptocamp",
+    "license": 'AGPL-3',
+    "category": "Generic Modules/Accounting",
+    "description":
+    """
 Multi-Currency in Analytic Accounting
 =====================================
 
@@ -69,12 +69,12 @@ The difference with the regular 'Amount Currency':
   converted to the right currency
 
 """,
- "website": "http://camptocamp.com",
- "depends": ["account",
-             "analytic",
-             "account_analytic_analysis",
+    "website": "http://camptocamp.com",
+    "depends": ["account",
+                "analytic",
+                "account_analytic_analysis",
+                ],
+    "data": ["analytic_view.xml",
              ],
- "data": ["analytic_view.xml",
-          ],
- "installable": True
+    "installable": True
 }

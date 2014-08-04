@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -22,6 +22,7 @@
 ##############################################################################
 from osv import osv, fields
 
+
 class activities_analytic_chart(osv.osv_memory):
     _name = 'activities.analytic.chart'
     _description = 'Analytic Activities Chart'
@@ -31,13 +32,15 @@ class activities_analytic_chart(osv.osv_memory):
         'to_date': fields.date('To'),
     }
 
-    def analytic_activities_chart_open_window(self, cr, uid, ids, context=None):
+    def analytic_activities_chart_open_window(self, cr, uid, ids,
+                                              context=None):
         mod_obj = self.pool.get('ir.model.data')
         act_obj = self.pool.get('ir.actions.act_window')
         result_context = {}
         if context is None:
             context = {}
-        result = mod_obj.get_object_reference(cr, uid, 'analytic_secondaxis', 'action_activity_tree')
+        result = mod_obj.get_object_reference(cr, uid, 'analytic_secondaxis',
+                                              'action_activity_tree')
         id = result and result[1] or False
         result = act_obj.read(cr, uid, [id], context=context)[0]
         data = self.read(cr, uid, ids, [])[0]
@@ -47,6 +50,3 @@ class activities_analytic_chart(osv.osv_memory):
             result_context.update({'to_date': data['to_date']})
         result['context'] = str(result_context)
         return result
-
-activities_analytic_chart()
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

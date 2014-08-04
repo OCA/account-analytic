@@ -79,13 +79,15 @@ class account_analytic_account(orm.Model):
                                          'balance', 'quantity'],
                                         context)
 
-    def _set_company_currency(self, cr, uid, ids, name, value, arg, context=None):
+    def _set_company_currency(self, cr, uid, ids, name, value, arg,
+                              context=None):
         if isinstance(ids, (int, long)):
             ids = [ids]
         if value:
-            return cr.execute("""update account_analytic_account set currency_id=%s
-                                 where id in %s""",
-                              (value, tuple(ids), ))
+            return cr.execute(
+                """update account_analytic_account set currency_id=%s
+                where id in %s""",
+                (value, tuple(ids), ))
         else:
             return False
 
@@ -121,11 +123,15 @@ class account_analytic_account(orm.Model):
                                     multi='debit_credit_bal_qtty'),
         # We overwrite function field currency_id to set a currency different
         # from the one specified in the company
-        'currency_id': fields.function(_currency, fnct_inv=_set_company_currency,
+        'currency_id': fields.function(
+            _currency,
+            fnct_inv=_set_company_currency,
             store={
                 'res.company': (_get_analytic_account, ['currency_id'], 10),
-            }, string='Currency', type='many2one', relation='res.currency'),
-
+            },
+            string='Currency',
+            type='many2one',
+            relation='res.currency'),
     }
 
     # We remove the currency constraint cause we want to let the user
