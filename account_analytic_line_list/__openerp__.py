@@ -40,5 +40,5 @@
     "data": ["wizard/account_analytic_line.xml"],
     "demo": [],
     "active": False,
-    "installable": True
+    "installable": False,
 }
