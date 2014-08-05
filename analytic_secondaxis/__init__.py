@@ -29,5 +29,5 @@
 #
 ##############################################################################
 
-import analytic_secondaxis  # noqa
-import wizard  # noqa
+import analytic_secondaxis
+import wizard

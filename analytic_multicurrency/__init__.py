@@ -19,6 +19,6 @@
 #
 ##############################################################################
 
-import account_analytic_line  # noqa
-import analytic  # noqa
-import analytic_analysis  # noqa
+import account_analytic_line
+import analytic
+import analytic_analysis

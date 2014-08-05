@@ -29,4 +29,4 @@
 #
 ##############################################################################
 
-import analytic_secondaxis  # noqa
+import analytic_secondaxis

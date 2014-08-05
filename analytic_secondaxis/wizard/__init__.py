@@ -29,4 +29,4 @@
 #
 ##############################################################################
 
-import analytic_activity_chart  # noqa
+import analytic_activity_chart
