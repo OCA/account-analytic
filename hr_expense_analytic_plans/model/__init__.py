@@ -20,4 +20,4 @@
 #
 ##############################################################################
 
-from . import hr_expense_analytic_plans  # noqa
+from . import hr_expense_analytic_plans
