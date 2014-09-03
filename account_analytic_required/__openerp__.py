@@ -46,5 +46,5 @@ during the Akretion-Camptocamp code sprint of June 2011.
     'depends': ['account'],
     'data': ['account_view.xml'],
     'installable': True,
-    'active': True,
+    'auto_install': False,
 }
