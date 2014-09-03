@@ -1,0 +1,120 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.2\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-06-10 07:49+0000\n"
+"PO-Revision-Date: 2014-06-26 11:18+0000\n"
+"Last-Translator: jmartin (Zikzakmedia) <jmartin@zikzakmedia.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-06-27 07:08+0000\n"
+"X-Generator: Launchpad (build 17077)\n"
+
+#. module: account_analytic_required
+#: field:account.account.type,analytic_policy:0
+msgid "Policy for analytic account"
+msgstr "Política per als comptes analítics"
+
+#. module: account_analytic_required
+#: help:account.account.type,analytic_policy:0
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Never', the "
+"accountant will get an error message if an analytic account is present."
+msgstr ""
+"Configura la política per als comptes analítics: Si seleccioneu 'Opcional', "
+"el comptable és lliure de posar un compte analític en un apunt comptable amb "
+"aquest tipus de compte; si seleccioneu 'Sempre', el comptable rebrà un "
+"missatge d'error si l'apunt no té compte analític; si seleccioneu 'Mai', el "
+"comptable rebrà un missatge d'error si l'apunt té un compte analític."
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "Opcional"
+
+#. module: account_analytic_required
+#: model:ir.module.module,description:account_analytic_required.module_meta_information
+msgid ""
+"This module adds an option \"analytic policy\" on account types. You have "
+"the choice between 3 policies : always, never and optional.\n"
+"\n"
+"For example, if you want to have an analytic account on all your expenses, "
+"set the policy to \"always\" for the account type \"expense\" ; then, if you "
+"try to save an account move line with an account of type \"expense\" without "
+"analytic account, you will get an error message.\n"
+"\n"
+"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during "
+"the Akretion-Camptocamp code sprint of June 2011.\n"
+msgstr ""
+"Aquest mòdul afegeix una opció \"política analítica\" als tipus comptables. "
+"Podeu escollir entre 3 polítiques: 'Sempre', 'Mai' i 'Opcional'.\n"
+"\n"
+"Per exemple, si voleu tenir un compte analític de totes les vostres "
+"despeses, seleccioneu la política \"Sempre\" per al tipus comptable "
+"\"Despesa\"; llavors, si intenteu desar un apunt comptable de tipus "
+"comptable \"Despesa\" sense compte analític, obtindreu un missatge d'error.\n"
+"\n"
+"Mòdul desenvolupat per Alexis de Lattre <alexis.delattre@akretion.com> "
+"durant la cursa de codi Akretion-Camptocamp de juny de 2011.\n"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on closed account."
+msgstr "No podeu crear un apunt en un compte tancat."
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "Sempre"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "Mai"
+
+#. module: account_analytic_required
+#: model:ir.module.module,shortdesc:account_analytic_required.module_meta_information
+msgid "Account analytic required"
+msgstr "El compte analític és requerit."
+
+#. module: account_analytic_required
+#: sql_constraint:account.move.line:0
+msgid "Wrong credit or debit value in accounting entry !"
+msgstr "Valor erroni al deure o a l'haver de l'assentament comptable!"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on view account."
+msgstr "No podeu crear un apunt en un compte de tipus \"Vista\"."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Items"
+msgstr "Apunts comptables"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Tipus de compte"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "Company must be same for its related account and period."
+msgstr ""
+"La companyia ha de ser la mateixa que la dels comptes i períodes relacionats."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:53
+#: code:addons/account_analytic_required/account.py:56
+#, python-format
+msgid "Error :"
+msgstr "Error:"

@@ -1,0 +1,121 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.2\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-06-10 07:49+0000\n"
+"PO-Revision-Date: 2014-06-26 11:18+0000\n"
+"Last-Translator: Alexis de Lattre <alexis@via.ecp.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-06-27 07:08+0000\n"
+"X-Generator: Launchpad (build 17077)\n"
+
+#. module: account_analytic_required
+#: field:account.account.type,analytic_policy:0
+msgid "Policy for analytic account"
+msgstr "Politique pour les comptes analytiques"
+
+#. module: account_analytic_required
+#: help:account.account.type,analytic_policy:0
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Never', the "
+"accountant will get an error message if an analytic account is present."
+msgstr ""
+"Configurez la politique pour les comptes analytiques : si vous sélectionnez "
+"'Optionnel', le comptable est libre de saisir ou non un compte analytique "
+"sur une ligne comptable avec ce type de compte de comptabilité générale ; si "
+"vous sélectionnez 'Toujours', le comptable aura un message d'erreur si il "
+"n'y a pas de compte analytique ; si vous sélectionnez 'Jamais', le comptable "
+"aura un message d'erreur si un compte analytique est présent."
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "Optionnel"
+
+#. module: account_analytic_required
+#: model:ir.module.module,description:account_analytic_required.module_meta_information
+msgid ""
+"This module adds an option \"analytic policy\" on account types. You have "
+"the choice between 3 policies : always, never and optional.\n"
+"\n"
+"For example, if you want to have an analytic account on all your expenses, "
+"set the policy to \"always\" for the account type \"expense\" ; then, if you "
+"try to save an account move line with an account of type \"expense\" without "
+"analytic account, you will get an error message.\n"
+"\n"
+"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during "
+"the Akretion-Camptocamp code sprint of June 2011.\n"
+msgstr ""
+"This module adds an option \"analytic policy\" on account types. You have "
+"the choice between 3 policies : always, never and optional.\n"
+"\n"
+"For example, if you want to have an analytic account on all your expenses, "
+"set the policy to \"always\" for the account type \"expense\" ; then, if you "
+"try to save an account move line with an account of type \"expense\" without "
+"analytic account, you will get an error message.\n"
+"\n"
+"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during "
+"the Akretion-Camptocamp code sprint of June 2011.\n"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on closed account."
+msgstr "Impossible de créer une ligne d'écriture sur un compte clôturé"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "Toujours"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "Jamais"
+
+#. module: account_analytic_required
+#: model:ir.module.module,shortdesc:account_analytic_required.module_meta_information
+msgid "Account analytic required"
+msgstr "Account analytic required"
+
+#. module: account_analytic_required
+#: sql_constraint:account.move.line:0
+msgid "Wrong credit or debit value in accounting entry !"
+msgstr "Valeur erronée au crédit ou au débit de la pièce comptable !"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on view account."
+msgstr ""
+"Vous ne pouvez pas créer de ligne d'écriture sur un compte de type \"Vue\"."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Items"
+msgstr "Écritures comptables"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Type de compte"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "Company must be same for its related account and period."
+msgstr "La société doit être la même pour les comptes et périodes liées."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:53
+#: code:addons/account_analytic_required/account.py:56
+#, python-format
+msgid "Error :"
+msgstr "Erreur :"
