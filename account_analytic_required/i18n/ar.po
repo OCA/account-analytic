@@ -1,0 +1,120 @@
+# Arabic translation for openobject-addons
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the openobject-addons package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openobject-addons\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-06-10 07:49+0000\n"
+"PO-Revision-Date: 2014-06-26 11:15+0000\n"
+"Last-Translator: Pedro Manuel Baeza <pedro.baeza@gmail.com>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-06-27 07:08+0000\n"
+"X-Generator: Launchpad (build 17077)\n"
+
+#. module: account_analytic_required
+#: field:account.account.type,analytic_policy:0
+msgid "Policy for analytic account"
+msgstr "سياسة  للحسابات التحليلية"
+
+#. module: account_analytic_required
+#: help:account.account.type,analytic_policy:0
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Never', the "
+"accountant will get an error message if an analytic account is present."
+msgstr ""
+"ضع سياسة للحسابات التحليلية: إذا قمت بتحديد \"الاختياري\"، فان المحاسب حر في "
+"وضع حساب تحليلي على حساب خط التحرك مع هذا النوع من الحساب، وإذا قمت بتحديد "
+"\"دائما\"، فان المحاسب  سوف يحصل على رسالة خطأ إذا كان هناك لا يوجد حساب "
+"تحليلي، وإذا قمت بتحديد \"أبدا\"، فان المحاسب سوف يحصل على رسالة خطأ إذا كان "
+"هناك حساب تحليلي موجود"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "إختياري"
+
+#. module: account_analytic_required
+#: model:ir.module.module,description:account_analytic_required.module_meta_information
+msgid ""
+"This module adds an option \"analytic policy\" on account types. You have "
+"the choice between 3 policies : always, never and optional.\n"
+"\n"
+"For example, if you want to have an analytic account on all your expenses, "
+"set the policy to \"always\" for the account type \"expense\" ; then, if you "
+"try to save an account move line with an account of type \"expense\" without "
+"analytic account, you will get an error message.\n"
+"\n"
+"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during "
+"the Akretion-Camptocamp code sprint of June 2011.\n"
+msgstr ""
+"هذه الوحدة تضيف خيار \"السياسة التحليلية\" على أنواع الحسابات. لديك خيار بين "
+"3 سياسات: دائما، أبدا، واختياري.\n"
+"\n"
+"على سبيل المثال، إذا كنت تريد أن يكون لديك حساب تحليلي عن جميع النفقات "
+"الخاصة بك، اختار النهج \"دائما\" من أجل نوع الحساب\"مصروف\"، ثم، إذا حاولت "
+"حفظ الحركة في  حساب مع حساب \"مصروف\" من دون حساب تحليلي، وسوف تحصل على "
+"رسالة خطأ.\n"
+"\n"
+"طورت الوحدة بواسطة اتر أليكسيس دي alexis.delattre@akretion.com> Akretion-"
+"Camptocamp من يونيو 2011\n"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on closed account."
+msgstr "لا يمكنك انشاء حركة على الحساب"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "دائماً"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "أبدًا"
+
+#. module: account_analytic_required
+#: model:ir.module.module,shortdesc:account_analytic_required.module_meta_information
+msgid "Account analytic required"
+msgstr "مطلوب  حساب تحليلي"
+
+#. module: account_analytic_required
+#: sql_constraint:account.move.line:0
+msgid "Wrong credit or debit value in accounting entry !"
+msgstr "قيمة دائنة أو مدينة خاطئة في القيد المحاسبي !"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on view account."
+msgstr "لا يمكنك عمل  حركة على هذا الحساب"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Items"
+msgstr "عناصر دفتر اليومية"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "نوع الحساب"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "Company must be same for its related account and period."
+msgstr "يجب ان تكون الشركة نفس فترتها وحسابها المتعلق بها."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:53
+#: code:addons/account_analytic_required/account.py:56
+#, python-format
+msgid "Error :"
+msgstr "خطأ :"
