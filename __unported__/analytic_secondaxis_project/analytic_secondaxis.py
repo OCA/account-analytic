@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -33,61 +33,60 @@ from osv import fields
 from osv import osv
 
 
-####################################################################################
-#  Project Task Work
-# ####################################################################################
-
 class project_work(osv.osv):
     _inherit = "project.task.work"
     _columns = {
-        'activity' : fields.many2one('project.activity_al', 'Activity'),
+        'activity': fields.many2one('project.activity_al', 'Activity'),
     }
-    
+
     def create(self, cr, uid, vals, *args, **kwargs):
-        res = super(project_work,self).create(cr, uid, vals, *args, **kwargs)
-        if vals.has_key('activity'):
+        res = super(project_work, self).create(cr, uid, vals, *args, **kwargs)
+        if 'activity' in vals:
             context = kwargs.get('context', {})
             task_work_obj = self.pool.get('project.task.work')
             timesheet_obj = self.pool.get('hr.analytic.timesheet')
-            hr_ts_line_id = task_work_obj.browse(cr,uid,res).hr_analytic_timesheet_id.id
-            timesheet_obj.write(cr,uid,[hr_ts_line_id],{'activity':vals['activity']},context)
+            hr_ts_line_id = task_work_obj.browse(
+                cr, uid, res).hr_analytic_timesheet_id.id
+            timesheet_obj.write(cr, uid, [hr_ts_line_id], {
+                'activity': vals['activity']
+            }, context)
         return res
 
     def write(self, cr, uid, ids, vals, context=None):
-        res = super(project_work,self).write(cr, uid, ids, vals, context)
+        res = super(project_work, self).write(cr, uid, ids, vals, context)
         task_work_obj = self.pool.get('project.task.work')
         timesheet_obj = self.pool.get('hr.analytic.timesheet')
         for task in self.browse(cr, uid, ids, context=context):
-            hr_ts_line_id = task_work_obj.browse(cr,uid,task.id).hr_analytic_timesheet_id.id
-            timesheet_obj.write(cr,uid,[hr_ts_line_id],{'activity':task.activity.id},context)
+            hr_ts_line_id = task_work_obj.browse(
+                cr, uid, task.id).hr_analytic_timesheet_id.id
+            timesheet_obj.write(cr, uid, [hr_ts_line_id], {
+                'activity': task.activity.id
+            }, context)
         return res
-    
-project_work()
 
 
-####################################################################################
-#  employee activity
-####################################################################################
 class project_activity_al(osv.osv):
-    """Class that inhertis osv.osv and add 2nd analytic axe to account analytic lines.
-    The _name is kept for previous version compatibility (project.activity_al)."""
+    """Class that inhertis osv.osv and add 2nd analytic axe to account analytic
+    lines.  The _name is kept for previous version compatibility
+    (project.activity_al)."""
     # Keep that name for back -patibility
     _inherit = "project.activity_al"
     _description = "Second Analytical Axes"
-    
-    def search(self, cr, uid, args, offset=0, limit=None, order=None, context=None, count=False):
-        """Check if we are from project.task.work, if yes, look into the related analytic account
-        of the project."""
+
+    def search(self, cr, uid, args, offset=0, limit=None, order=None,
+               context=None, count=False):
+        """Check if we are from project.task.work, if yes, look into the
+        related analytic account of the project."""
 
         if context is None:
             context = {}
-        if context.get('from_task',False):
-            if context.get('project_id',False):
+        if context.get('from_task', False):
+            if context.get('project_id', False):
                 proj_obj = self.pool.get('project.project')
-                analytic_id=proj_obj.browse(cr,uid,context.get('project_id',False)).analytic_account_id.id
-                context.update({'account_id':analytic_id,'from_task':False})
-        
-        return super(project_activity_al, self).search(cr, uid, args, offset, limit,
-                order, context=context, count=count)
+                analytic_id = proj_obj.browse(
+                    cr, uid, context.get('project_id', False)
+                ).analytic_account_id.id
+                context.update({'account_id': analytic_id, 'from_task': False})
 
-project_activity_al()
+        return super(project_activity_al, self).search(
+            cr, uid, args, offset, limit, order, context=context, count=count)

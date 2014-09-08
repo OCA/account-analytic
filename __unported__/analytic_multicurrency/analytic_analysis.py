@@ -34,7 +34,7 @@ class account_analytic_account(orm.Model):
                                 context=context)
         sums = {}
         if not child_ids:
-            return res
+            return {}
         for child_id, field in product(child_ids, name):
             sums.setdefault(child_id, {})[name] = 0.0
 
@@ -42,7 +42,8 @@ class account_analytic_account(orm.Model):
                "       COALESCE(SUM(aa_amount_currency), 0.0) "
                "FROM account_analytic_line "
                "JOIN account_analytic_journal "
-               "ON account_analytic_line.journal_id = account_analytic_journal.id "
+               "ON account_analytic_line.journal_id = "
+               "account_analytic_journal.id "
                "WHERE account_analytic_line.account_id IN %s "
                "AND account_analytic_journal.type = 'sale' "
                "GROUP BY account_analytic_line.account_id")
@@ -72,7 +73,8 @@ class account_analytic_account(orm.Model):
                "       COALESCE(SUM(aa_amount_currency), 0.0) "
                "FROM account_analytic_line "
                "JOIN account_analytic_journal "
-               "ON account_analytic_line.journal_id = account_analytic_journal.id "
+               "ON account_analytic_line.journal_id "
+               " = account_analytic_journal.id "
                "WHERE account_analytic_line.account_id IN %s "
                "AND amount < 0 "
                "GROUP BY account_analytic_line.account_id")
