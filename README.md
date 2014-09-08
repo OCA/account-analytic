@@ -2,8 +2,8 @@
 [![Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png?branch=8.0)](https://coveralls.io/r/OCA/account-analytic?branch=8.0)
 
 
-OpenERP / Odoo Analytic Accounting
-==================================
+OCA analytic accounting modules for Odoo
+========================================
 
 You'll find modules that:
 
