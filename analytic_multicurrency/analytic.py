@@ -33,7 +33,7 @@ import operator
 
 from osv import fields
 from osv import osv
-import decimal_precision as dp
+from openerp.addons.decimal_precision import decimal_precision as dp
 
 class account_analytic_account(osv.osv):
     _inherit = 'account.analytic.account'
@@ -102,5 +102,5 @@ class account_analytic_account(osv.osv):
         (check_recursion, 'Error! You can not create recursive analytic accounts.', ['parent_id']),
         (check_currency, 'Error! The currency has to be the same as the currency of the selected company', ['currency_id', 'company_id']),
     ]
-        
+
 account_analytic_account()

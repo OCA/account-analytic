@@ -35,7 +35,7 @@ from osv import osv
 from tools.translate import _
 
 from tools import config
-import openerp.addons.decimal_precision as dp
+from openerp.addons.decimal_precision import decimal_precision as dp
 
 class account_analytic_line(osv.osv):
     _inherit = 'account.analytic.line'
@@ -57,14 +57,14 @@ class account_analytic_line(osv.osv):
             else:
                 result[rec.id]=rec.amount
         return result
-        
+
     def _get_account_currency(self, cr, uid, ids, field_name, arg, context={}):
         result = {}
         for rec in self.browse(cr, uid, ids, context):
             # Always provide second currency
             result[rec.id] = (rec.account_id.currency_id.id,rec.account_id.currency_id.name)
         return result
-    
+
     def _get_account_line(self, cr, uid, ids, context={}):
         aac_ids = {}
         for acc in self.pool.get('account.analytic.account').browse(cr, uid, ids):
@@ -102,6 +102,6 @@ class account_analytic_line(osv.osv):
         res=super(account_analytic_line,self).on_change_unit_amount(cr, uid, id, prod_id, quantity, company_id, \
                 unit=unit, journal_id=journal_id, context=context)
         return res
-        
-        
+
+
 account_analytic_line()
