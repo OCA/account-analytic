@@ -22,6 +22,7 @@
 
 from openerp.osv import fields, orm
 
+
 class HrExpenseExpense(orm.Model):
     _inherit = 'hr.expense.expense'
 
@@ -46,4 +47,3 @@ class HrExpenseLine(orm.Model):
         'analytics_id': fields.many2one('account.analytic.plan.instance',
                                         'Analytic distribution'),
     }
-
