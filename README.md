@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/OCA/account-analytic.svg?branch=7.0)](https://travis-ci.org/OCA/account-analytic)
 [![Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png?branch=7.0)](https://coveralls.io/r/OCA/account-analytic?branch=7.0)
 
-OpenERP / Odoo Analytic Accounting
-==================================
+OCA analytic accounting modules for OpenERP
+===========================================
 
 You'll find modules that:
 
@@ -10,3 +10,12 @@ You'll find modules that:
  - Handle a second analytic axis
  - Improve default values
  - Handle analytic distributions for more objects
+ - ...
+
+----
+
+OCA, or the Odoo Community Association, is a nonprofit organization whose 
+mission is to support the collaborative development of Odoo features and 
+promote its widespread use.
+
+http://odoo-community.org/
