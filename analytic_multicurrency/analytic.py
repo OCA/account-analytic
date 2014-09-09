@@ -98,8 +98,20 @@ class account_analytic_account(orm.Model):
         return result
 
     def _get_analytic_account(self, cr, uid, ids, context=None):
-        return super(account_analytic_account, self)._get_analytic_account(
-            cr, uid, ids, context=context)
+        """Copied from the original in the core.
+
+        Store triggers cannot be overridden because of
+        https://bugs.launchpad.net/openobject-server/+bug/893079
+
+        """
+        company_obj = self.pool.get('res.company')
+        analytic_obj = self.pool.get('account.analytic.account')
+        accounts = []
+        for company in company_obj.browse(cr, uid, ids, context=context):
+            accounts += analytic_obj.search(cr, uid, [
+                ('company_id', '=', company.id)
+            ])
+        return accounts
 
     _columns = {
         'balance': fields.function(_debit_credit_bal_qtty,
