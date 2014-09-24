@@ -51,53 +51,37 @@ class account_account_type(orm.Model):
 class account_move_line(orm.Model):
     _inherit = "account.move.line"
 
-    def check_analytic_required(self, cr, uid, ids, vals, context=None):
-        if 'account_id' in vals or 'analytic_account_id' in vals or \
-                'debit' in vals or 'credit' in vals:
-            if isinstance(ids, (int, long)):
-                ids = [ids]
-            for move_line in self.browse(cr, uid, ids, context):
-                if move_line.debit == 0 and move_line.credit == 0:
-                    continue
-                analytic_policy = \
-                    move_line.account_id.user_type.analytic_policy
-                if analytic_policy == 'always' and \
-                        not move_line.analytic_account_id:
-                    raise orm.except_orm(
-                        _('Error :'),
-                        _("Analytic policy is set to 'Always' with account "
-                            "%s '%s' but the analytic account is missing in "
-                            "the account move line with label '%s'.")
-                        % (
-                            move_line.account_id.code,
-                            move_line.account_id.name,
-                            move_line.name))
-                elif analytic_policy == 'never' and \
-                        move_line.analytic_account_id:
-                    raise orm.except_orm(
-                        _('Error :'),
-                        _("Analytic policy is set to 'Never' with account %s "
-                            "'%s' but the account move line with label '%s' "
-                            "has an analytic account %s '%s'.")
-                        % (
-                            move_line.account_id.code,
-                            move_line.account_id.name,
-                            move_line.name,
-                            move_line.analytic_account_id.code,
-                            move_line.analytic_account_id.name))
-        return True
+    def _check_analytic_required_msg(self, cr, uid, ids, context=None):
+        for move_line in self.browse(cr, uid, ids, context):
+            if move_line.debit == 0 and move_line.credit == 0:
+                continue
+            analytic_policy = \
+                move_line.account_id.user_type.analytic_policy
+            if analytic_policy == 'always' and \
+                    not move_line.analytic_account_id:
+                return _("Analytic policy is set to 'Always' with account "
+                        "%s '%s' but the analytic account is missing in "
+                        "the account move line with label '%s'.") % (
+                        move_line.account_id.code,
+                        move_line.account_id.name,
+                        move_line.name)
+            elif analytic_policy == 'never' and \
+                    move_line.analytic_account_id:
+                return _("Analytic policy is set to 'Never' with account %s "
+                        "'%s' but the account move line with label '%s' "
+                        "has an analytic account %s '%s'.") % (
+                        move_line.account_id.code,
+                        move_line.account_id.name,
+                        move_line.name,
+                        move_line.analytic_account_id.code,
+                        move_line.analytic_account_id.name)
 
-    def create(self, cr, uid, vals, context=None, check=True):
-        line_id = super(account_move_line, self).create(
-            cr, uid, vals, context=context, check=check)
-        self.check_analytic_required(cr, uid, line_id, vals, context=context)
-        return line_id
+    def _check_analytic_required(self, cr, uid, ids, context=None):
+        return not self._check_analytic_required_msg(cr, uid, ids,
+                                                     context=context)
 
-    def write(
-            self, cr, uid, ids, vals, context=None, check=True,
-            update_check=True):
-        res = super(account_move_line, self).write(
-            cr, uid, ids, vals, context=context, check=check,
-            update_check=update_check)
-        self.check_analytic_required(cr, uid, ids, vals, context=context)
-        return res
+    _constraints = [
+        (_check_analytic_required,
+         _check_analytic_required_msg,
+         ['analytic_account_id']),
+    ]
