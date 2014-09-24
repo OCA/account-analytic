@@ -28,12 +28,21 @@ from openerp.tools.translate import _
 class account_account_type(orm.Model):
     _inherit = "account.account.type"
 
+    def _get_policies(self, cr, uid, context=None):
+        """This is the method to be inherited for adding policies"""
+        return [('optional', 'Optional'),
+                ('always', 'Always'),
+                ('never', 'Never')
+               ]
+
+    def __get_policies(self, cr, uid, context=None):
+        """ Call method which can be inherited """
+        return self._get_policies(cr, uid, context=context)
+
     _columns = {
-        'analytic_policy': fields.selection([
-            ('optional', 'Optional'),
-            ('always', 'Always'),
-            ('never', 'Never')
-            ], 'Policy for analytic account',
+        'analytic_policy': fields.selection(
+            __get_policies,
+            'Policy for analytic account',
             help="Set the policy for analytic accounts : if you select "
             "'Optional', the accountant is free to put an analytic account "
             "on an account move line with this type of account ; if you "
