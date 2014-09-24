@@ -20,30 +20,22 @@
 #
 ##############################################################################
 
-from openerp.osv import orm, fields
+from openerp.osv import orm
 from openerp.tools.translate import _
 
 
 class account_account_type(orm.Model):
     _inherit = "account.account.type"
 
-    _columns = {
-        'analytic_policy': fields.selection([
-            ('optional', 'Optional'),
-            ('always', 'Always (analytic account)'),
-            ('always_plan', 'Always (analytic distribution)'),
-            ('always_plan_or_account',
-             'Always (analytic account or distribution)'),
-            ('never', 'Never')
-            ], 'Policy for analytic account',
-            help="Set the policy for analytic accounts : if you select "
-            "'Optional', the accountant is free to put an analytic account "
-            "on an account move line with this type of account ; if you "
-            "select 'Always', the accountant will get an error message if "
-            "there is no analytic account ; if you select 'Never', the "
-            "accountant will get an error message if an analytic account "
-            "is present."),  # TODO: help
-    }
+    def _get_policies(self, cr, uid, context=None):
+        """This is the method to be inherited for adding policies"""
+        policies = super(account_account_type, self).\
+            _get_policies(cr, uid, context=context)
+        policies.extend([('always_plan',
+                          'Always (analytic distribution)'),
+                         ('always_plan_or_account',
+                          'Always (analytic account or distribution)')])
+        return policies
 
 
 class account_move_line(orm.Model):
