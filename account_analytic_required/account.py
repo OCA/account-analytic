@@ -32,8 +32,7 @@ class account_account_type(orm.Model):
         """This is the method to be inherited for adding policies"""
         return [('optional', 'Optional'),
                 ('always', 'Always'),
-                ('never', 'Never')
-               ]
+                ('never', 'Never')]
 
     def __get_policies(self, cr, uid, context=None):
         """ Call method which can be inherited """
@@ -69,28 +68,26 @@ class account_move_line(orm.Model):
             if analytic_policy == 'always' and \
                     not move_line.analytic_account_id:
                 return _("Analytic policy is set to 'Always' with account "
-                        "%s '%s' but the analytic account is missing in "
-                        "the account move line with label '%s'.") % (
-                        move_line.account_id.code,
-                        move_line.account_id.name,
-                        move_line.name)
+                         "%s '%s' but the analytic account is missing in "
+                         "the account move line with label '%s'.") % \
+                        (move_line.account_id.code,
+                         move_line.account_id.name,
+                         move_line.name)
             elif analytic_policy == 'never' and \
                     move_line.analytic_account_id:
                 return _("Analytic policy is set to 'Never' with account %s "
-                        "'%s' but the account move line with label '%s' "
-                        "has an analytic account %s '%s'.") % (
-                        move_line.account_id.code,
-                        move_line.account_id.name,
-                        move_line.name,
-                        move_line.analytic_account_id.code,
-                        move_line.analytic_account_id.name)
+                         "'%s' but the account move line with label '%s' "
+                         "has an analytic account %s '%s'.") % \
+                        (move_line.account_id.code,
+                         move_line.account_id.name,
+                         move_line.name,
+                         move_line.analytic_account_id.code,
+                         move_line.analytic_account_id.name)
 
     def _check_analytic_required(self, cr, uid, ids, context=None):
         return not self._check_analytic_required_msg(cr, uid, ids,
                                                      context=context)
 
-    _constraints = [
-        (_check_analytic_required,
-         _check_analytic_required_msg,
-         ['analytic_account_id']),
-    ]
+    _constraints = [(_check_analytic_required,
+                     _check_analytic_required_msg,
+                     ['analytic_account_id'])]
