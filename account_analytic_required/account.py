@@ -42,6 +42,7 @@ class account_account_type(orm.Model):
         'analytic_policy': fields.selection(
             __get_policies,
             'Policy for analytic account',
+            required=True,
             help="Set the policy for analytic accounts : if you select "
             "'Optional', the accountant is free to put an analytic account "
             "on an account move line with this type of account ; if you "
@@ -53,7 +54,7 @@ class account_account_type(orm.Model):
 
     _defaults = {
         'analytic_policy': 'optional',
-        }
+    }
 
 
 class account_move_line(orm.Model):
