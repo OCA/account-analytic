@@ -52,8 +52,9 @@ class account_move_line(orm.Model):
                          'are mutually exclusive')
             if move_line.debit == 0 and move_line.credit == 0:
                 continue
-            analytic_policy = \
-                move_line.account_id.user_type.analytic_policy
+            analytic_policy = self._get_analytic_policy(cr, uid,
+                                                        move_line.account_id,
+                                                        context=context)
             if analytic_policy == 'always_plan' \
                     and not move_line.analytics_id:
                 return _("Analytic policy is set to "
