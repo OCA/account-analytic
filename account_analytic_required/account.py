@@ -59,12 +59,17 @@ class account_account_type(orm.Model):
 class account_move_line(orm.Model):
     _inherit = "account.move.line"
 
+    def _get_analytic_policy(self, cr, uid, account, context=None):
+        """ Extension point to obtain analytic policy for an account """
+        return account.user_type.analytic_policy
+
     def _check_analytic_required_msg(self, cr, uid, ids, context=None):
         for move_line in self.browse(cr, uid, ids, context):
             if move_line.debit == 0 and move_line.credit == 0:
                 continue
-            analytic_policy = \
-                move_line.account_id.user_type.analytic_policy
+            analytic_policy = self._get_analytic_policy(cr, uid,
+                                                        move_line.account_id,
+                                                        context=context)
             if analytic_policy == 'always' and \
                     not move_line.analytic_account_id:
                 return _("Analytic policy is set to 'Always' with account "
