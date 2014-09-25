@@ -61,9 +61,9 @@ class test_account_analytic_plan_required(common.TransactionCase):
              'credit': amount,
              'account_id': self.ref('account.a_sale'),
              'analytic_account_id':
-                  self.analytic_account_id if with_analytic else False,
+             self.analytic_account_id if with_analytic else False,
              'analytics_id':
-                  self.analytic_distribution_id if with_analytic_plan else False})
+             self.analytic_distribution_id if with_analytic_plan else False})
         self.move_line_obj.create(
             self.cr, self.uid,
             {'move_id': move_id,

@@ -80,11 +80,11 @@ class account_move_line(orm.Model):
                 return _("Analytic policy is set to 'Never' with account "
                          "%s '%s' but the account move line with label "
                          "'%s' has an analytic distribution %s '%s'.") % \
-                       (move_line.account_id.code,
-                        move_line.account_id.name,
-                        move_line.name,
-                        move_line.analytic_account_id.code,
-                        move_line.analytic_account_id.name)
+                        (move_line.account_id.code,
+                         move_line.account_id.name,
+                         move_line.name,
+                         move_line.analytic_account_id.code,
+                         move_line.analytic_account_id.name)
 
     def _check_analytic_required(self, cr, uid, ids, context=None):
         return not self._check_analytic_required_msg(cr, uid, ids,
