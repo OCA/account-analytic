@@ -167,7 +167,7 @@ class test_account_analytic_plan_required(common.TransactionCase):
         line_id = self._create_move(with_analytic=False,
                                     with_analytic_plan=True)
         with self.assertRaises(orm.except_orm):
-            self.move_line_obj.write(self.cr, self.uid, line_id,
+            self.move_line_obj.write(self.cr, self.uid, [line_id],
                                      {'analytics_id': False})
 
     def test_change_account(self):
@@ -178,11 +178,11 @@ class test_account_analytic_plan_required(common.TransactionCase):
         # analytic distribution
         with self.assertRaises(orm.except_orm):
             self.move_line_obj.write(
-                self.cr, self.uid, line_id,
+                self.cr, self.uid, [line_id],
                 {'account_id': self.ref('account.a_expense')})
         # change account to a_expense with policy always_plan
         # with analytic distribution -> ok
         self.move_line_obj.write(
-            self.cr, self.uid, line_id, {
+            self.cr, self.uid, [line_id], {
                 'account_id': self.ref('account.a_expense'),
                 'analytics_id': self.analytic_distribution_id})
