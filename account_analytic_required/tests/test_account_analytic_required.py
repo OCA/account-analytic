@@ -110,7 +110,7 @@ class test_account_analytic_required(common.TransactionCase):
         self._set_analytic_policy('always')
         line_id = self._create_move(with_analytic=True)
         with self.assertRaises(orm.except_orm):
-            self.move_line_obj.write(self.cr, self.uid, line_id,
+            self.move_line_obj.write(self.cr, self.uid, [line_id],
                                      {'analytic_account_id': False})
 
     def test_change_account(self):
@@ -120,11 +120,11 @@ class test_account_analytic_required(common.TransactionCase):
         # analytic_account
         with self.assertRaises(orm.except_orm):
             self.move_line_obj.write(
-                self.cr, self.uid, line_id,
+                self.cr, self.uid, [line_id],
                 {'account_id': self.ref('account.a_expense')})
         # change account to a_expense with policy always
         # with analytic account -> ok
         self.move_line_obj.write(
-            self.cr, self.uid, line_id, {
+            self.cr, self.uid, [line_id], {
                 'account_id': self.ref('account.a_expense'),
                 'analytic_account_id': self.analytic_account_id})
