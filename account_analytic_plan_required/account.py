@@ -41,11 +41,7 @@ class account_account_type(orm.Model):
 class account_move_line(orm.Model):
     _inherit = "account.move.line"
 
-    def _check_analytic_required_msg(self, cr, uid, ids, context=None):
-        msg = super(account_move_line, self).\
-            _check_analytic_required_msg(cr, uid, ids, context=context)
-        if msg:
-            return msg
+    def _check_analytic_plan_required_msg(self, cr, uid, ids, context=None):
         for move_line in self.browse(cr, uid, ids, context=context):
             if move_line.analytic_account_id and move_line.analytics_id:
                 return _('Analytic account and analytic distribution '
@@ -87,12 +83,12 @@ class account_move_line(orm.Model):
                          move_line.analytic_account_id.code,
                          move_line.analytic_account_id.name)
 
-    def _check_analytic_required(self, cr, uid, ids, context=None):
-        return not self._check_analytic_required_msg(cr, uid, ids,
-                                                     context=context)
+    def _check_analytic_plan_required(self, cr, uid, ids, context=None):
+        return not self._check_analytic_plan_required_msg(cr, uid, ids,
+                                                          context=context)
 
     _constraints = [
-        (_check_analytic_required,
-         _check_analytic_required_msg,
-         ['analytic_account_id', 'analytics_id']),
+        (_check_analytic_plan_required,
+         _check_analytic_plan_required_msg,
+         ['analytic_account_id', 'analytics_id', 'account_id']),
     ]
