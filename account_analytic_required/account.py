@@ -96,4 +96,4 @@ class account_move_line(orm.Model):
 
     _constraints = [(_check_analytic_required,
                      _check_analytic_required_msg,
-                     ['analytic_account_id', 'account_id'])]
+                     ['analytic_account_id', 'account_id', 'debit', 'credit'])]
