@@ -30,17 +30,13 @@ class account_account_type(orm.Model):
 
     def _get_policies(self, cr, uid, context=None):
         """This is the method to be inherited for adding policies"""
-        return [('optional', 'Optional'),
-                ('always', 'Always'),
-                ('never', 'Never')]
-
-    def __get_policies(self, cr, uid, context=None):
-        """ Call method which can be inherited """
-        return self._get_policies(cr, uid, context=context)
+        return [('optional', _('Optional')),
+                ('always', _('Always')),
+                ('never', _('Never'))]
 
     _columns = {
         'analytic_policy': fields.selection(
-            __get_policies,
+            lambda self, *args, **kwargs: self._get_policies(*args, **kwargs),
             'Policy for analytic account',
             required=True,
             help="Set the policy for analytic accounts : if you select "
