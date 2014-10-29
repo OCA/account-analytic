@@ -31,9 +31,9 @@
 import operator
 from osv import osv, fields
 from osv.orm import intersect
-import tools.sql 
+import tools.sql
 from tools.translate import _
-import decimal_precision as dp
+from openerp.addons.decimal_precision import decimal_precision as dp
 
 class account_analytic_account(osv.osv):
     _inherit = "account.analytic.account"
@@ -92,7 +92,7 @@ class account_analytic_account(osv.osv):
         for i in data:
             res_final[i] = data[i][name]
         return res_final
-        
+
     _columns ={
     'ca_invoiced': fields.function(_ca_invoiced_calc, method=True, type='float', string='Invoiced Amount',
         help="Total customer invoiced amount for this account.",
@@ -105,4 +105,3 @@ account_analytic_account()
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
