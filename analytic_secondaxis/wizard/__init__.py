@@ -29,4 +29,4 @@
 #
 ##############################################################################
 
-import analytic_activity_chart
+from . import analytic_activity_chart

@@ -19,6 +19,6 @@
 #
 ##############################################################################
 
-import account_analytic_line
-import analytic
-import analytic_analysis
+from . import account_analytic_line
+from . import analytic
+from . import analytic_analysis
