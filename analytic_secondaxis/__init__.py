@@ -29,5 +29,5 @@
 #
 ##############################################################################
 
-import analytic_secondaxis
-import wizard
+from . import analytic_secondaxis
+from . import wizard
