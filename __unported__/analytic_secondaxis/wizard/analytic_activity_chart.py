@@ -41,8 +41,8 @@ class activities_analytic_chart(osv.osv_memory):
             context = {}
         result = mod_obj.get_object_reference(cr, uid, 'analytic_secondaxis',
                                               'action_activity_tree')
-        id = result and result[1] or False
-        result = act_obj.read(cr, uid, [id], context=context)[0]
+        rec_id = result and result[1] or False
+        result = act_obj.read(cr, uid, [rec_id], context=context)[0]
         data = self.read(cr, uid, ids, [])[0]
         if data['from_date']:
             result_context.update({'from_date': data['from_date']})

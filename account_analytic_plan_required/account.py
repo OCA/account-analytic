@@ -32,9 +32,9 @@ class account_account_type(orm.Model):
         policies = super(account_account_type, self).\
             _get_policies(cr, uid, context=context)
         policies.extend([('always_plan',
-                          'Always (analytic distribution)'),
+                          _('Always (analytic distribution)')),
                          ('always_plan_or_account',
-                          'Always (analytic account or distribution)')])
+                          _('Always (analytic account or distribution)'))])
         return policies
 
 
