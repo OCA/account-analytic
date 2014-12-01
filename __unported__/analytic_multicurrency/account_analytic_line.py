@@ -113,8 +113,9 @@ class account_analytic_line(orm.Model):
             readonly=True),
     }
 
-    def on_change_unit_amount(self, cr, uid, id, prod_id, quantity, company_id,
-                              unit=False, journal_id=False, context=None):
+    def on_change_unit_amount(self, cr, uid, ids, prod_id, quantity,
+                              company_id, unit=False, journal_id=False,
+                              context=None):
         if context is None:
             context = {}
         company_obj = self.pool.get('res.company')
@@ -122,5 +123,5 @@ class account_analytic_line(orm.Model):
         ctx = context.copy()
         ctx['currency_id'] = company.currency_id.id
         return super(account_analytic_line, self).on_change_unit_amount(
-            cr, uid, id, prod_id, quantity, company_id,
+            cr, uid, ids, prod_id, quantity, company_id,
             unit=unit, journal_id=journal_id, context=ctx)

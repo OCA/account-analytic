@@ -29,4 +29,4 @@
 #
 ##############################################################################
 
-import analytic_secondaxis
+from . import analytic_secondaxis

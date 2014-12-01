@@ -27,7 +27,8 @@ import openerp.addons.decimal_precision as dp
 class account_analytic_account(orm.Model):
     _inherit = 'account.analytic.account'
 
-    def _debit_credit_bal_qtty(self, cr, uid, ids, fields, arg, context=None):
+    def _debit_credit_bal_qtty(self, cr, uid, ids, field_list, arg,
+                               context=None):
         """Replace the original amount column by aa_amount_currency"""
         if context is None:
             context = {}
@@ -37,7 +38,7 @@ class account_analytic_account(orm.Model):
         sums = {}
         if not child_ids:
             return sums
-        for child_id, field in product(child_ids, fields):
+        for child_id, field in product(child_ids, field_list):
             sums.setdefault(child_id, {})[field] = 0.0
 
         where_date = ''
