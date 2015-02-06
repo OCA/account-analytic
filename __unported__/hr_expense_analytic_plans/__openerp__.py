@@ -32,6 +32,7 @@ Using this module, you will be able to link analytic distributions to expenses.
     """,
     'author': 'Serv. Tecnolog. Avanzados - Pedro M. Baeza',
     'website': 'http://www.serviciosbaeza.com',
+    'license': 'AGPL-3',
     'depends': [
         'hr_expense',
         'account_analytic_plans',

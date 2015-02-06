@@ -51,6 +51,7 @@
 
     """,
     "website": "http://camptocamp.com",
+    "license": "AGPL-3",
     "depends": ["analytic_secondaxis_timesheet",
                 "project",
                 "project_timesheet",

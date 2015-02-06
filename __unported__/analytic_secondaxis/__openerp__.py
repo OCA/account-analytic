@@ -62,6 +62,7 @@
 
 """,
     "website": "http://camptocamp.com",
+    "license": "AGPL-3",
     "depends": ["account",
                 "analytic"
                 ],
