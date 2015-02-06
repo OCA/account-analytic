@@ -1,0 +1,143 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.2\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-06-10 07:49+0000\n"
+"PO-Revision-Date: 2015-02-05 22:09+0100\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: account_analytic_required
+#: field:account.account.type,analytic_policy:0
+msgid "Policy for analytic account"
+msgstr "Regel für Analytisches Konto"
+
+#. module: account_analytic_required
+#: help:account.account.type,analytic_policy:0
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Never', the "
+"accountant will get an error message if an analytic account is present."
+msgstr ""
+"Vorgehensregel für analytische Konten: Wählen Sie 'Optional' steht es dem "
+"Buchhalter frei ein analytisches Konto bei Buchungen auf diesem Konto "
+"mitzugeben; Wählen 'Immer', wird dem Buchhalter bei Fehlen des analytischen "
+"Kontos eine Fehlermeldung gegeben; Wählen Sie hingegen 'Niemals', wird dem "
+"Buchhalter eine Fehler bei Angabe eines analytischen Kontos gemeldet."
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "Optional"
+
+#. module: account_analytic_required
+#: model:ir.module.module,description:account_analytic_required.module_meta_information
+msgid ""
+"This module adds an option \"analytic policy\" on account types. You have "
+"the choice between 3 policies : always, never and optional.\n"
+"\n"
+"For example, if you want to have an analytic account on all your expenses, "
+"set the policy to \"always\" for the account type \"expense\" ; then, if you "
+"try to save an account move line with an account of type \"expense\" without "
+"analytic account, you will get an error message.\n"
+"\n"
+"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during "
+"the Akretion-Camptocamp code sprint of June 2011.\n"
+msgstr ""
+"Dieses Modul ergänzt Konten mit eine Regel zum Umgang mit analytischen "
+"Konten. Sie haben die Wahl zwischen drei Regeln: Immer, Niemals und "
+"Optional.\n"
+"\n"
+"Sie können zum Beispiel bei allen Kosten/Aufwendungen die Angabe eines "
+"analytisches Kontos erzwingen, dazu setzen Sie die Regel 'Immer' für die "
+"Kontenart 'Aufwand' ein. Wenn Sie in der Folge eine Buchung auf ein "
+"Aufwandskonto ohne Angabe eines analytischen Kontos tätigen, erhalten Sie "
+"eine Fehlermeldung.\n"
+"\n"
+"Modul durch Alexis de Lattre <alexis.delattre@akretion.com> während dem "
+"Akretion-Camptocamp code sprint im Juni 2011 entwickelt.\n"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on closed account."
+msgstr ""
+"Sie können keine Buchung auf einem bereits abgeschlossenen Konto vornehmen."
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "Immer"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "Niemals"
+
+#. module: account_analytic_required
+#: model:ir.module.module,shortdesc:account_analytic_required.module_meta_information
+msgid "Account analytic required"
+msgstr "Projekt / Kostenstelle erforderlich"
+
+#. module: account_analytic_required
+#: sql_constraint:account.move.line:0
+msgid "Wrong credit or debit value in accounting entry !"
+msgstr "Falscher Buchungsbetrag in Soll oder Haben"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "You can not create move line on view account."
+msgstr "Sie können keine Buchungen auf Konten des Typs Ansicht erstellen."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Items"
+msgstr "Journalposten"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Kontoart"
+
+#. module: account_analytic_required
+#: constraint:account.move.line:0
+msgid "Company must be same for its related account and period."
+msgstr ""
+"Das Unternehmen muss für zugehörige Konten und Perioden identisch sein."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:54
+#: code:addons/account_analytic_required/account.py:62
+#, python-format
+msgid "Error :"
+msgstr "Fehler:"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:55
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+"Analytische Regel ist bei Konto %s '%s' auf 'Immer' gesetzt, aber in der "
+"Buchungszeile '%s' ist kein analytisches Konto angegeben."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:63
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account %s '%s'."
+msgstr ""
+"Analytische Regel ist bei Konto %s '%s' auf 'Niemals' gesetzt, aber in der "
+"Buchungszeile '%s' ist das analytische Konto %s '%s' angegeben."
