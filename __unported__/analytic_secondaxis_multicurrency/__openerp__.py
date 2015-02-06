@@ -54,6 +54,7 @@
 
 """,
     "website": "http://camptocamp.com",
+    "license": "AGPL-3",
     "depends": [
         "analytic_secondaxis",
         "analytic_multicurrency",

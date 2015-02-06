@@ -51,6 +51,7 @@
 
 """,
     "website": "http://camptocamp.com",
+    "license": "AGPL-3",
     "depends": ["analytic_secondaxis",
                 "hr_timesheet_sheet",
                 "hr_timesheet",
