@@ -19,33 +19,33 @@ msgstr ""
 #: code:addons/account_analytic_project/model/account_analytic_account.py:64
 #, python-format
 msgid "This method is only valid for a single analytic account"
-msgstr "This method is only valid for a single analytic account"
+msgstr ""
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:71
 #, python-format
 msgid "This method is only valid for an analytic account having projects"
-msgstr "This method is only valid for an analytic account having projects"
+msgstr ""
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:75
 #, python-format
 msgid "Project"
-msgstr "Project"
+msgstr ""
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:83
 #, python-format
 msgid "Projects"
-msgstr "Projects"
+msgstr ""
 
 #. module: account_analytic_project
 #: view:account.analytic.account:0
 msgid "View projects"
-msgstr "View projects"
+msgstr ""
 
 #. module: account_analytic_project
 #: view:account.analytic.account:0
 msgid "Create project"
-msgstr "Create project"
+msgstr ""
 
