@@ -21,13 +21,15 @@
 #
 ##############################################################################
 from openerp.osv import orm, fields
+from openerp.tools.translate import _
 
 
 class AccountAnalyticAccount(orm.Model):
     """Extend account.analytic.account."""
     _inherit = 'account.analytic.account'
 
-    def _has_projects(self, cr, uid, ids, name, arg, context=None):
+    def _has_projects(
+            self, cr, uid, ids, dummy_name, dummy_arg, context=None):
         """Check wether any project for this analytic account."""
         project_model = self.pool['project.project']
         res = {}
@@ -47,7 +49,7 @@ class AccountAnalyticAccount(orm.Model):
         project_model = self.pool['project.project']
         for this_obj in self.browse(cr, uid, ids, context=context):
             if not this_obj.has_projects and this_obj.type != 'view':
-                project_id = project_model.create(
+                project_model.create(
                     cr, uid, {
                         'name': this_obj.name,
                         'analytic_account_id': this_obj.id,
@@ -56,7 +58,55 @@ class AccountAnalyticAccount(orm.Model):
                 )
         return True
 
+    def view_projects_for_account(self, cr, uid, ids, context=None):
+        """View list or form for project(s) related to analytic account."""
+        assert len(ids) == 1, (_(
+            'This method is only valid for a single analytic account'))
+        project_model = self.pool['project.project']
+        project_ids = project_model.search(
+            cr, uid, [('analytic_account_id', '=', ids[0])],
+            context=context
+        )
+        assert project_ids, (_(
+            'This method is only valid for an analytic account having projects'
+        ))
+        # Show form by default:
+        view_id = 'edit_project'
+        view_mode = 'form'
+        action_name = _('Project')
+        domain = False
+        res_id = project_ids[0]
+        if len(project_ids) > 1:
+            # In the future there might be more projects per analytic account,
+            # in that case we will show a tree:
+            view_id = False  # Otherwise impossible to go from tree to form
+            view_mode = 'tree,form'
+            action_name = _('Projects')
+            domain = [('id', 'in', project_ids)]
+            res_id = False
+        # Find view id to show in action
+        if view_id:
+            data_model = self.pool['ir.model.data']
+            view_ref = data_model.get_object_reference(
+                cr, uid, 'project', view_id)
+            view_id = view_ref and view_ref[1] or False,
+        return {
+            'type': 'ir.actions.act_window',
+            'name': action_name,
+            'view_mode': view_mode,
+            'view_type': 'form',
+            'view_id': view_id,
+            'res_model': 'project.project',
+            'nodestroy': True,
+            'res_id': res_id,
+            'target':'current',
+            'domain': domain,
+            'context': context,
+        }
+
     _columns = {
         'has_projects': fields.function(
             _has_projects, type='boolean', string='Has projects',),
     }
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

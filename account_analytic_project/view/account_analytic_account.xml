@@ -25,6 +25,17 @@
                                     ]
                                 }"
                             />
+                            <button
+                                name="view_projects_for_account"
+                                type="object"
+                                string="View projects"
+                                attrs="{
+                                    'invisible': [
+                                        '|', ('has_projects', '=', False),
+                                        ('type', '=', 'view'),
+                                    ]
+                                }"
+                            />
                         </group>
                     </field>
                 </data>

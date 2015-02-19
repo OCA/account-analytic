@@ -30,8 +30,9 @@ Withouth this module, if you first create an analytic account and later on you
 decide to have a project as well for this account, the situation is very
 difficult to rectify.
 """,
-    'version': '6.1.r001',
+    'version': '1.0',
     'author': 'Therp BV',
+    'category': 'Generic Modules/Accounting',
     'website': 'http://therp.nl',
     'email': 'info@therp.nl',
     'depends': [
@@ -42,3 +43,5 @@ difficult to rectify.
         'view/account_analytic_account.xml',
     ],
 }
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
