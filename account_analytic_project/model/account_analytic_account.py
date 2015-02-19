@@ -34,14 +34,11 @@ class AccountAnalyticAccount(orm.Model):
         project_model = self.pool['project.project']
         res = {}
         for analytic_id in ids:
-            has_project = False
             project_ids = project_model.search(
                 cr, uid, [('analytic_account_id', '=', analytic_id)],
                 context=context
             )
-            if project_ids:
-                has_project = True
-            res[analytic_id] = has_project
+            res[analytic_id] = bool(project_ids)
         return res
 
     def create_project_for_account(self, cr, uid, ids, context=None):

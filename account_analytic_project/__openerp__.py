@@ -20,13 +20,13 @@
 ##############################################################################
 {
     'name': 'Project and analytic account integration',
-    'description': """\
+    'description': """
 Project and analytic account integration.
 
 Gives the option to create projects directly from the analytic accounts they
 should be linked to.
 
-Withouth this module, if you first create an analytic account and later on you
+Without this module, if you first create an analytic account and later on you
 decide to have a project as well for this account, the situation is very
 difficult to rectify.
 """,
