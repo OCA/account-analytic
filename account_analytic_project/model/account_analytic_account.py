@@ -96,7 +96,7 @@ class AccountAnalyticAccount(orm.Model):
             'res_model': 'project.project',
             'nodestroy': True,
             'res_id': res_id,
-            'target':'current',
+            'target': 'current',
             'domain': domain,
             'context': context,
         }
