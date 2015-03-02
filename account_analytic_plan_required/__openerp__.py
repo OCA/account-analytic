@@ -39,7 +39,7 @@ control the use of analytic distributions. The policies behave as follow
 
 In any case analytic account and analytic distribution are mutually exclusive.
 """,
-    'author': 'ACSONE SA/NV',
+    'author': "ACSONE SA/NV,Odoo Community Association (OCA)",
     'website': 'http://www.acsone.eu/',
     'depends': ['account_analytic_required', 'account_analytic_plans'],
     'data': [],

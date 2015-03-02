@@ -30,7 +30,7 @@ The base module to manage analytic distribution on HR expenses
 
 Using this module, you will be able to link analytic distributions to expenses.
     """,
-    'author': 'Serv. Tecnolog. Avanzados - Pedro M. Baeza',
+    'author': "Serv. Tecnolog. Avanzados - Pedro M. Baeza,Odoo Community Association (OCA)",
     'website': 'http://www.serviciosbaeza.com',
     'depends': [
         'hr_expense',

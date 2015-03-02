@@ -24,7 +24,7 @@
 {
     "name": "Account Analytic Line List",
     "version": "1.1",
-    "author": "initOS GmbH & Co. KG",
+    "author": "initOS GmbH & Co. KG,Odoo Community Association (OCA)",
     "website": "www.initos.com",
     "category": "Generic Modules/Projects & Services",
     "description": """Adds a wizard on financial reporting to search

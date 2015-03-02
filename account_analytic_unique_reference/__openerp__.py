@@ -22,7 +22,7 @@
 {
     "name": "Account Analytic Unique Reference",
     "version": "0.1",
-    "author": 'Savoir-faire Linux',
+    "author": "Savoir-faire Linux,Odoo Community Association (OCA)",
     "summary": "Add unique contraint on accout.analytic.account reference",
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
