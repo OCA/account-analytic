@@ -32,7 +32,7 @@
 {
     "name" : "Account Analytic Second Axis",
     "version" : "1.1",
-    "author" : "Camptocamp",
+    "author" : "Camptocamp,Odoo Community Association (OCA)",
     "category" : "Generic Modules/Accounting",
     "description":
 """

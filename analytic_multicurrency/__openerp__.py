@@ -28,7 +28,7 @@
 {
      "name" : "Multi-Currency in Analytic",
      "version" : "1.0",
-     "author" : "Camptocamp",
+     "author" : "Camptocamp,Odoo Community Association (OCA)",
      "category" : "Generic Modules/Accounting",
      "description":
 """
