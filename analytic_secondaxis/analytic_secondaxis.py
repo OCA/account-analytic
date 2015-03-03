@@ -175,8 +175,8 @@ class project_activity_al(osv.osv):
                 res = recursive_computation(son.id, res)
                 for field in field_names:
                     if (
-                        account.currency_id.id == son.currency_id.id
-                        or field == 'quantity'
+                        account.currency_id.id == son.currency_id.id or
+                        field == 'quantity'
                     ):
                         res[account.id][field] += res[son.id][field]
                     else:
