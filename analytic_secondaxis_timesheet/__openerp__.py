@@ -2,9 +2,11 @@
 ##############################################################################
 #
 # Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
+# Copyright (c) 2015 Taktik SA (http://www.taktik.be)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
+# Author : Adil Houmadi (Taktik)
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -32,35 +34,34 @@
 {
     "name": "Timesheet Analytic Second Axis",
     "version": "1.0",
-    "author": "Camptocamp,Odoo Community Association (OCA)",
+    "author": "Camptocamp,Taktik,Odoo Community Association (OCA)",
     "category": "Generic Modules/Accounting",
     "description":
-    """
-    Add a second analytical axis on analytic lines allowing you to make
-    reporting on.
+        """
+        Add a second analytical axis on analytic lines allowing you to make
+        reporting on.
 
-    Unless the account_analytic_plans from OpenERP SA, this module allow you to
-    make cross-reporting between those two axes, like all analytic lines that
-    concern for example : The activity "Communication" and the project "Product
-    1 Integration".
+        Unless the account_analytic_plans from OpenERP SA, this module allow you to
+        make cross-reporting between those two axes, like all analytic lines that
+        concern for example : The activity "Communication" and the project "Product
+        1 Integration".
 
-    This second axis is called "activities" and you will be able to define for
-    each analytical account, what are the allowed activities for it.
+        This second axis is called "activities" and you will be able to define for
+        each analytical account, what are the allowed activities for it.
 
-    This module enables the second axis on timesheet.
+        This module enables the second axis on timesheet.
 
-""",
+    """,
     "website": "http://camptocamp.com",
     "license": "AGPL-3",
-    "depends": ["analytic_secondaxis",
-                "hr_timesheet_sheet",
-                "hr_timesheet",
-                ],
-    "init_xml": [],
-    "demo_xml": [],
-    "update_xml": [
+    "depends": [
+        "analytic_secondaxis",
+        "hr_timesheet_sheet",
+        "hr_timesheet",
+    ],
+    "data": [
         "analytic_secondaxis_view.xml",
     ],
-    "active": False,
-    "installable": False
+    "active": True,
+    "installable": True
 }
