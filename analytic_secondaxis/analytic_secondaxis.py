@@ -51,8 +51,15 @@ class ProjectActivityAl(models.Model):
             analytic_account = analytic_account_obj.browse(
                 self._context.get('account_id'))
             # take the account which have activity_ids
-            aa_activities = self._get_first_aa_which_have_activity(
-                analytic_account)
+            aa_activities = False
+            if analytic_account.activity_ids:
+                aa_activities = analytic_account
+            else:
+                while analytic_account.parent_id:
+                    analytic_account = analytic_account.parent_id
+                    if analytic_account.activity_ids:
+                        aa_activities = analytic_account
+                        break
             if aa_activities:
                 for temp_account in aa_activities:
                     analytic_account_ids.append(temp_account.id)
@@ -64,22 +71,6 @@ class ProjectActivityAl(models.Model):
             order=order,
             count=count
         )
-
-    @api.multi
-    def _get_first_aa_which_have_activity(self, account):
-        """Return browse record list of activities of the account which
-        have an activity set (goes bottom up, child, then parent)
-        """
-        account.ensure_one()
-        if account.activity_ids:
-            return account
-        else:
-            if account.parent_id:
-                return self._get_first_aa_which_have_activity(
-                    account.parent_id
-                )
-            else:
-                return False
 
     @api.model
     def name_search(self, name, args=None, operator='ilike', limit=80):
