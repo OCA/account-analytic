@@ -41,7 +41,7 @@
         Add a second analytical axis on analytic lines allowing you to make
         reporting on.
 
-        Unless the account_analytic_plans from OpenERP SA, this module allow
+        Unless the account_analytic_plans from Odoo SA, this module allow
         you to make cross-reporting between those two axes, like all analytic
         lines that concern for example:
         The activity "Communication" and the project "Product 1 Integration".
