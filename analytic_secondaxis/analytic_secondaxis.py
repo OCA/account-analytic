@@ -38,6 +38,7 @@ import openerp.addons.decimal_precision as dp
 class ProjectActivityAl(models.Model):
     _name = "project.activity_al"
     _description = "Second Analytical Axes"
+    _rec_name = 'display_name'
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -71,36 +72,6 @@ class ProjectActivityAl(models.Model):
             order=order,
             count=count
         )
-
-    @api.model
-    def name_search(self, name, args=None, operator='ilike', limit=80):
-        """Override name_search function that perform the search
-        on the name of the activities
-        """
-        if not args:
-            args = []
-        account = self.search([('code', '=', name), ] + args, limit=limit)
-        if not account:
-            account = self.search(
-                [('name', 'ilike', '%%%s%%' % name)] + args,
-                limit=limit
-            )
-        if not account:
-            account = self.search([] + args, limit=limit)
-        # For searching in parent also
-        if not account:
-            account = self.search(
-                [('name', 'ilike', '%%%s%%' % name)] + args,
-                limit=limit,
-            )
-            new_acc = account
-            while new_acc:
-                new_acc = self.search(
-                    [('parent_id', 'in', new_acc)] + args,
-                    limit=limit,
-                )
-                account += new_acc
-        return account.name_get()
 
     def recursive_computation(self, account_id, field_names):
         currency_obj = self.env['res.currency']
@@ -195,6 +166,11 @@ class ProjectActivityAl(models.Model):
     def _get_default_date(self):
         return fields.Date.context_today(self)
 
+    @api.one
+    @api.depends('name', 'code')
+    def _compute_display_name(self):
+        self.display_name = '[%s] %s' % (self.code, self.name)
+
     code = fields.Char(
         string="Code",
         required=True,
@@ -206,6 +182,11 @@ class ProjectActivityAl(models.Model):
         size=64,
         translate=True
     )
+    display_name = fields.Char(
+        string='Display Name ',
+        compute=_compute_display_name,
+    )
+
     parent_id = fields.Many2one(
         comodel_name="project.activity_al",
         string="Parent activity"
