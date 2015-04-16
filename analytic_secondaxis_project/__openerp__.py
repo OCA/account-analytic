@@ -41,16 +41,15 @@
         Add a second analytical axis on analytic lines allowing you to make
         reporting on.
 
-        Unless the account_analytic_plans from OpenERP SA, this module allow you to
-        make cross-reporting between those two axes, like all analytic lines that
-        concern for example : The activity "Communication" and the project "Product
-        1 Integration".
+        Unless the account_analytic_plans from Odoo SA, this module allow
+        you to make cross-reporting between those two axes, like all analytic
+        lines that concern for example : The activity "Communication" and the
+        project "Product 1 Integration".
 
-        This second axis is called "activities" and you will be able to define for
-        each analytical account, what are the allowed activities for it.
+        This second axis is called "activities" and you will be able to define
+        for each analytical account, what are the allowed activities for it.
 
-        This module enables the second axis on projet.
-
+        This module enables the second axis on project.
         """,
     "website": "http://camptocamp.com",
     "license": "AGPL-3",
@@ -61,7 +60,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        "analytic_secondaxis_view.xml",
+        "views/analytic_secondaxis_view.xml",
     ],
     "active": True,
     "installable": True
