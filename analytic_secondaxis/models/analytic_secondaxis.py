@@ -36,8 +36,8 @@ import openerp.addons.decimal_precision as dp
 
 
 class ProjectActivityAl(models.Model):
-    _name = "project.activity_al"
-    _description = "Second Analytical Axes"
+    _name = 'project.activity_al'
+    _description = 'Second Analytical Axes'
     _rec_name = 'display_name'
 
     @api.model
@@ -112,10 +112,10 @@ class ProjectActivityAl(models.Model):
         where_date = ''
         where_clause_args = [tuple(child_ids)]
         if self._context.get('from_date', False):
-            where_date += " AND l.date >= %s"
+            where_date += ' AND l.date >= %s'
             where_clause_args += [self._context['from_date']]
         if self._context.get('to_date', False):
-            where_date += " AND l.date <= %s"
+            where_date += ' AND l.date <= %s'
             where_clause_args += [self._context['to_date']]
         self.env.cr.execute("""
               SELECT a.id,
@@ -172,92 +172,91 @@ class ProjectActivityAl(models.Model):
         self.display_name = '[%s] %s' % (self.code, self.name)
 
     code = fields.Char(
-        string="Code",
+        string='Code',
         required=True,
         size=64
     )
     name = fields.Char(
-        string="Activity",
+        string='Activity',
         required=True,
         size=64,
         translate=True
     )
     display_name = fields.Char(
-        string='Display Name ',
-        compute=_compute_display_name,
+        string='Display Name',
+        compute='_compute_display_name',
     )
-
     parent_id = fields.Many2one(
-        comodel_name="project.activity_al",
-        string="Parent activity"
+        comodel_name='project.activity_al',
+        string='Parent activity'
     )
     project_ids = fields.Many2many(
-        comodel_name="account.analytic.account",
-        relation="proj_activity_analytic_rel",
-        column1="activity_id",
-        column2="analytic_id",
-        string="Concerned Analytic Account"
+        comodel_name='account.analytic.account',
+        relation='proj_activity_analytic_rel',
+        column1='activity_id',
+        column2='analytic_id',
+        string='Concerned Analytic Account'
     )
     child_ids = fields.One2many(
-        comodel_name="project.activity_al",
-        inverse_name="parent_id",
-        string="Child Activities"
+        comodel_name='project.activity_al',
+        inverse_name='parent_id',
+        string='Child Activities'
     )
     balance = fields.Float(
-        string="Balance",
+        string='Balance',
         digits_compute=dp.get_precision('Account'),
-        compute=_debit_credit_bal_qtty
+        compute='_debit_credit_bal_qtty'
     )
     debit = fields.Float(
-        string="Debit",
+        string='Debit',
         digits_compute=dp.get_precision('Account'),
-        compute=_debit_credit_bal_qtty
+        compute='_debit_credit_bal_qtty'
     )
     credit = fields.Float(
-        string="Credit",
+        string='Credit',
         digits_compute=dp.get_precision('Account'),
-        compute=_debit_credit_bal_qtty
+        compute='_debit_credit_bal_qtty'
     )
     quantity = fields.Float(
-        string="Quantity",
+        string='Quantity',
         digits_compute=dp.get_precision('Account'),
-        compute=_debit_credit_bal_qtty
+        compute='_debit_credit_bal_qtty'
     )
     currency_id = fields.Many2one(
-        comodel_name="res.currency",
-        string="Activity currency",
+        comodel_name='res.currency',
+        string='Activity currency',
         required=True,
-        default=_get_default_currency
+        default='_get_default_currency'
     )
     company_id = fields.Many2one(
-        comodel_name="res.company",
-        string="Company",
+        comodel_name='res.company',
+        string='Company',
         required=False,
-        default=_default_company
+        default='_default_company'
     )
     date = fields.Date(
-        string="Date",
+        string='Date',
         required=False,
-        default=_get_default_date
+        default='_get_default_date'
     )
 
 
 class AnalyticAccount(models.Model):
-    _inherit = "account.analytic.account"
+    _inherit = 'account.analytic.account'
 
     activity_ids = fields.Many2many(
-        comodel_name="project.activity_al",
-        relation="proj_activity_analytic_rel",
-        column1="analytic_id",
-        column2="activity_id",
-        string="Related activities"
+        comodel_name='project.activity_al',
+        relation='proj_activity_analytic_rel',
+        column1='analytic_id',
+        column2='activity_id',
+        string='Related activities'
     )
 
 
 class AccountAnalyticLine(models.Model):
-    _inherit = "account.analytic.line"
+    _inherit = 'account.analytic.line'
 
     activity = fields.Many2one(
-        comodel_name="project.activity_al",
-        string="Activity"
+        comodel_name='project.activity_al',
+        string='Activity'
     )
