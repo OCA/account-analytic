@@ -226,18 +226,18 @@ class ProjectActivityAl(models.Model):
         comodel_name='res.currency',
         string='Activity currency',
         required=True,
-        default='_get_default_currency'
+        default=_get_default_currency
     )
     company_id = fields.Many2one(
         comodel_name='res.company',
         string='Company',
         required=False,
-        default='_default_company'
+        default=_default_company
     )
     date = fields.Date(
         string='Date',
         required=False,
-        default='_get_default_date'
+        default=_get_default_date
     )
 
 
