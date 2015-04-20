@@ -11,11 +11,11 @@
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <page string="Notes" position="after">
+                <xpath expr="//notebook" position="inside">
                     <page string="Activities">
                         <field colspan="4" name="activity_ids" nolabel="1"/>
                     </page>
-                </page>
+                </xpath>
             </field>
         </record>
 
@@ -55,7 +55,7 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <xpath expr="/form/notebook/page[@string='Information']/field[@name='work_ids']"
+                <xpath expr="//field[@name='work_ids']"
                        position="replace">
                     <field colspan="4" name="work_ids" nolabel="1"
                            attrs="{'invisible':[('state','in',['draft'])],'readonly':[('state','=','done')]}">
@@ -65,8 +65,9 @@
                                    sum="Spent Hours"/>
                             <field name="activity"
                                    context="{'project_id':parent.project_id, 'from_task':True}"/>
-                            <field name="user_id"/>
                             <field name="date"/>
+                            <field name="user_id"
+                                   context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}"/>
                         </tree>
                     </field>
                 </xpath>
