@@ -59,6 +59,7 @@
             <field name="name">project.activity_al.list</field>
             <field name="model">project.activity_al</field>
             <field name="type">tree</field>
+            <field name="field_parent">child_ids</field>
             <field name="arch" type="xml">
                 <tree string="Activity">
                     <field name="name"/>
@@ -85,7 +86,7 @@
             <field name="arch" type="xml">
                 <notebook position="inside">
                     <page string="Related activities">
-                        <field name="activity_ids" colspan="4" nolabel="1"/>
+                            <field name="activity_ids" colspan="4" nolabel="1"/>
                     </page>
                 </notebook>
             </field>
@@ -101,8 +102,8 @@
                    ref="account.view_account_analytic_line_form"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <field name="unit_amount" select="2" position="after">
-                    <field name="activity" select="2"
+                <field name="account_id" position="after">
+                    <field name="activity"
                            context="{'account_id':account_id}"/>
                 </field>
             </field>
@@ -115,10 +116,8 @@
                    ref="account.view_account_analytic_line_tree"/>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <field name="unit_amount" sum="Total quantity"
-                       on_change="on_change_unit_amount(product_id, unit_amount, product_uom_id)"
-                       position="after">
-                    <field name="activity" select="2"
+                <field name="account_id" position="after">
+                    <field name="activity"
                            context="{'account_id':account_id}"/>
                 </field>
             </field>
@@ -131,9 +130,8 @@
                    ref="account.account_analytic_line_extended_form"/>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <field name="account_id" groups="base.group_extended"
-                       position="after">
-                    <field name="activity" select="2"
+                <field name="account_id" position="after">
+                    <field name="activity"
                            context="{'account_id':account_id}"/>
                 </field>
             </field>

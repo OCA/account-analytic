@@ -39,6 +39,16 @@ class ProjectActivityAl(models.Model):
     _name = 'project.activity_al'
     _description = 'Second Analytical Axes'
     _rec_name = 'display_name'
+    _parent_name = "parent_id"
+    _parent_store = True
+    _parent_order = 'name'
+
+    _constraints = [
+        (models.Model._check_recursion,
+         'Error ! You cannot create recursive activities.',
+         ['parent_id']
+         )
+    ]
 
     @api.model
     def search(self, args, offset=0, limit=None, order=None, count=False):
@@ -238,6 +248,14 @@ class ProjectActivityAl(models.Model):
         string='Date',
         required=False,
         default=_get_default_date
+    )
+    parent_left = fields.Integer(
+        string="Left Parent",
+        select=1,
+    )
+    parent_right = fields.Integer(
+        string="Right Parent",
+        select=1,
     )
 
 
