@@ -76,5 +76,5 @@ The difference with the regular 'Amount Currency':
                 ],
     "data": ["analytic_view.xml",
              ],
-    "installable": False
+    "installable": True
 }
