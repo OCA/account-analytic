@@ -32,7 +32,7 @@ class testAnalyticLine(common.TransactionCase):
 
         self.account_analytic_line_obj = self.registry('account.analytic.line')
         self.account_analytic_account_obj = (
-             self.registry('account.analytic.account')
+            self.registry('account.analytic.account')
         )
         self.res_currency_rate_model = self.registry('res.currency.rate')
         model_data_obj = self.registry("ir.model.data")
