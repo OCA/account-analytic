@@ -36,6 +36,8 @@ class testAnalyticLine(common.TransactionCase):
         )
         self.res_currency_rate_model = self.registry('res.currency.rate')
         model_data_obj = self.registry("ir.model.data")
+        self.main_company = model_data_obj.get_object_reference(
+            self.cr, self.uid, "base", "main_company")[1]
         self.partner_agrolait_id = model_data_obj.get_object_reference(
             self.cr, self.uid, "base", "res_partner_2")[1]
         self.currency_eur_id = model_data_obj.get_object_reference(
@@ -312,24 +314,22 @@ class testAnalyticLine(common.TransactionCase):
 
     def test_analytic_lines8(self):
         cr, uid = self.cr, self.uid
-        agrolait_analytic_brw = self.account_analytic_account_obj.browse(
+
+        new_aaa_id = self.registry('account.analytic.account').create(
+            cr, uid,
+            {'name': 'TEST currency'}
+        )
+        analytic_brw = self.account_analytic_account_obj.browse(
             cr,
             uid,
-            self.agrolait,
+            new_aaa_id,
             )
         self.assertEqual(self.currency_eur_id,
-                         agrolait_analytic_brw.currency_id.id)
-
-        self.registry('account.analytic.account').write(
-            cr, uid,
-            [self.agrolait],
+                         analytic_brw.currency_id.id)
+        self.registry('res.company').write(
+            cr, uid, self.main_company,
             {'currency_id': self.currency_usd_id}
-        )
-
-        agrolait_analytic_brw = self.account_analytic_account_obj.browse(
-            cr,
-            uid,
-            self.agrolait,
             )
+        analytic_brw.refresh()
         self.assertEqual(self.currency_usd_id,
-                         agrolait_analytic_brw.currency_id.id)
+                         analytic_brw.currency_id.id)
