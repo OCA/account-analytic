@@ -436,3 +436,23 @@ class testAnalyticLine(common.TransactionCase):
         self.assertEqual(0, aal_brw.account_id.credit)
         self.assertEqual(100, aal_brw.account_id.debit)
         self.assertEqual(100, aal_brw.account_id.balance)
+
+    def test_analytic_lines12(self):
+        cr, uid = self.cr, self.uid
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-01'),
+            'amount': 100,
+            'general_account_id': self.account_rcv_id,
+            'product_id': self.product_id,
+            'unit_amount': 2.0,
+        })
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid, aal_id)
+        res = aal_brw.on_change_unit_amount(self.product_id, 2.0,
+                                            self.main_company)
+        self.assertEquals(-1000, res['value']['amount'])
+        res = aal_brw.on_change_unit_amount(self.product_id, 4.0,
+                                            self.main_company)
+        self.assertEquals(-2000, res['value']['amount'])
