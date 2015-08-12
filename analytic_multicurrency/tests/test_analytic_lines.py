@@ -480,3 +480,10 @@ class testAnalyticLine(common.TransactionCase):
         agrolait_brw = self.account_analytic_account_obj.browse(cr, uid,
                                                                 self.agrolait)
         self.assertTrue(agrolait_brw.check_recursion())
+
+    def test_analytic_lines15(self):
+        cr, uid = self.cr, self.uid
+        agrolait_brw = self.account_analytic_account_obj.browse(cr, uid,
+                                                                self.agrolait)
+        agrolait_brw.write({'currency_id': False})
+        self.assertEqual(self.currency_eur_id, agrolait_brw.currency_id.id)
