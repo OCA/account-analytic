@@ -456,3 +456,27 @@ class testAnalyticLine(common.TransactionCase):
         res = aal_brw.on_change_unit_amount(self.product_id, 4.0,
                                             self.main_company)
         self.assertEquals(-2000, res['value']['amount'])
+
+    def test_analytic_lines13(self):
+        cr, uid = self.cr, self.uid
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-01'),
+            'general_account_id': self.account_rcv_id,
+        })
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid, aal_id)
+        self.registry('account.analytic.account').write(
+            cr, uid,
+            [aal_brw.account_id.id],
+            {'currency_id': self.currency_usd_id}
+        )
+        aal_brw.refresh()
+        self.assertEquals(0, aal_brw.amount)
+
+    def test_analytic_lines14(self):
+        cr, uid = self.cr, self.uid
+        agrolait_brw = self.account_analytic_account_obj.browse(cr, uid,
+                                                                self.agrolait)
+        self.assertTrue(agrolait_brw.check_recursion())
