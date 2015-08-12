@@ -333,3 +333,116 @@ class testAnalyticLine(common.TransactionCase):
         analytic_brw.refresh()
         self.assertEqual(self.currency_usd_id,
                          analytic_brw.currency_id.id)
+
+    def test_analytic_lines9(self):
+        cr, uid = self.cr, self.uid
+        self.res_currency_rate_model.create(cr, uid, {
+            'name': time.strftime('%Y-%m-%d') + ' 00:00:00',
+            'currency_id': self.currency_usd_id,
+            'rate': 0.50,
+        })
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-01'),
+            'amount': 100,
+            'general_account_id': self.account_rcv_id,
+        })
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid, aal_id)
+        self.assertEqual(0, aal_brw.account_id.credit)
+        self.assertEqual(100, aal_brw.account_id.debit)
+        self.assertEqual(100, aal_brw.account_id.balance)
+
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-%d'),
+            'amount': -200,
+            'general_account_id': self.account_rcv_id,
+        })
+        ctx = {'from_date': time.strftime('%Y-%m-%d')}
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid,
+                                                        aal_id, context=ctx)
+        self.assertEqual(200, aal_brw.account_id.credit)
+        self.assertEqual(0, aal_brw.account_id.debit)
+        self.assertEqual(-200, aal_brw.account_id.balance)
+
+    def test_analytic_lines10(self):
+        cr, uid = self.cr, self.uid
+        self.res_currency_rate_model.create(cr, uid, {
+            'name': time.strftime('%Y-%m-%d') + ' 00:00:00',
+            'currency_id': self.currency_usd_id,
+            'rate': 0.50,
+        })
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-01'),
+            'amount': 100,
+            'general_account_id': self.account_rcv_id,
+        })
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid, aal_id)
+        self.assertEqual(0, aal_brw.account_id.credit)
+        self.assertEqual(100, aal_brw.account_id.debit)
+        self.assertEqual(100, aal_brw.account_id.balance)
+
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-%d'),
+            'amount': -200,
+            'general_account_id': self.account_rcv_id,
+        })
+
+        ctx = {'to_date': time.strftime('%Y-%m-01')}
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid,
+                                                        aal_id, context=ctx)
+        self.assertEqual(0, aal_brw.account_id.credit)
+        self.assertEqual(100, aal_brw.account_id.debit)
+        self.assertEqual(100, aal_brw.account_id.balance)
+
+    def test_analytic_lines11(self):
+        cr, uid = self.cr, self.uid
+        self.res_currency_rate_model.create(cr, uid, {
+            'name': time.strftime('%Y-%m-%d') + ' 00:00:00',
+            'currency_id': self.currency_usd_id,
+            'rate': 0.50,
+        })
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-01'),
+            'amount': 100,
+            'general_account_id': self.account_rcv_id,
+        })
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid, aal_id)
+        self.assertEqual(0, aal_brw.account_id.credit)
+        self.assertEqual(100, aal_brw.account_id.debit)
+        self.assertEqual(100, aal_brw.account_id.balance)
+
+        aal_id = self.account_analytic_line_obj.create(cr, uid, {
+            'account_id': self.agrolait,
+            'name': 'AGROLAIT',
+            'journal_id': self.aajournal,
+            'date': time.strftime('%Y-%m-%d'),
+            'amount': -200,
+            'general_account_id': self.account_rcv_id,
+        })
+        ctx = {'from_date': time.strftime('%Y-%m-%d')}
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid,
+                                                        aal_id, context=ctx)
+        self.assertEqual(200, aal_brw.account_id.credit)
+        self.assertEqual(0, aal_brw.account_id.debit)
+        self.assertEqual(-200, aal_brw.account_id.balance)
+
+        ctx = {'to_date': time.strftime('%Y-%m-01')}
+        aal_brw = self.account_analytic_line_obj.browse(cr, uid,
+                                                        aal_id, context=ctx)
+        self.assertEqual(0, aal_brw.account_id.credit)
+        self.assertEqual(100, aal_brw.account_id.debit)
+        self.assertEqual(100, aal_brw.account_id.balance)
