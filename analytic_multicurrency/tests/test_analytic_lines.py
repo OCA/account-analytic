@@ -82,11 +82,6 @@ class testAnalyticLine(common.TransactionCase):
 
     def test_analytic_lines(self):
         cr, uid = self.cr, self.uid
-        self.res_currency_rate_model.create(cr, uid, {
-            'name': time.strftime('%Y-%m-%d') + ' 00:00:00',
-            'currency_id': self.currency_usd_id,
-            'rate': 0.033,
-        })
 
         aal_id = self.account_analytic_line_obj.create(cr, uid, {
             'account_id': self.agrolait,
@@ -99,6 +94,8 @@ class testAnalyticLine(common.TransactionCase):
         aal_brw = self.account_analytic_line_obj.browse(cr, uid, aal_id)
         self.assertEqual('EUR', aal_brw.aa_currency_id.name)
         self.assertEqual(100, aal_brw.aa_amount_currency)
+        self.assertEqual(100, aal_brw.account_id.ca_invoiced)
+        self.assertEqual(0, aal_brw.account_id.total_cost)
 
     def test_analytic_lines2(self):
         cr, uid = self.cr, self.uid
@@ -215,6 +212,9 @@ class testAnalyticLine(common.TransactionCase):
         self.assertEqual(100, aal_brw.account_id.credit)
         self.assertEqual(50, aal_brw.account_id.debit)
         self.assertEqual(-50, aal_brw.account_id.balance)
+
+        self.assertEqual(-50, aal_brw.account_id.ca_invoiced)
+        self.assertEqual(-100, aal_brw.account_id.total_cost)
 
     def test_analytic_lines6(self):
         cr, uid = self.cr, self.uid
@@ -336,11 +336,6 @@ class testAnalyticLine(common.TransactionCase):
 
     def test_analytic_lines9(self):
         cr, uid = self.cr, self.uid
-        self.res_currency_rate_model.create(cr, uid, {
-            'name': time.strftime('%Y-%m-%d') + ' 00:00:00',
-            'currency_id': self.currency_usd_id,
-            'rate': 0.50,
-        })
         aal_id = self.account_analytic_line_obj.create(cr, uid, {
             'account_id': self.agrolait,
             'name': 'AGROLAIT',
@@ -371,11 +366,6 @@ class testAnalyticLine(common.TransactionCase):
 
     def test_analytic_lines10(self):
         cr, uid = self.cr, self.uid
-        self.res_currency_rate_model.create(cr, uid, {
-            'name': time.strftime('%Y-%m-%d') + ' 00:00:00',
-            'currency_id': self.currency_usd_id,
-            'rate': 0.50,
-        })
         aal_id = self.account_analytic_line_obj.create(cr, uid, {
             'account_id': self.agrolait,
             'name': 'AGROLAIT',
