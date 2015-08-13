@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_partner_form_timesheet">
+            <field name="name">Partner Form with timesheet activities</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <div class="oe_right oe_button_box" position="inside">
+                    <button name="%(hr_timesheet.act_hr_timesheet_line_evry1_all_form)d"
+                            type="action"
+                            context="{'search_default_other_partner_id': active_id, 'default_other_partner_id': active_id}"
+                            class="oe_stat_button oe_inline"
+                            icon="fa-check-square-o"
+                            attrs="{'invisible': [('parent_id', '!=', False), ('is_company', '=', False)]}"
+                            >
+                        <field name="timesheet_count"
+                               string="Activities"
+                               widget="statinfo"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</openerp>
