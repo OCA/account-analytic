@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="hr_timesheet_line_tree_partner">
+            <field name="name">Timesheet activities tree (with partner)</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
+            <field name="arch" type="xml">
+                <field name="account_id" position="attributes">
+                    <attribute name="on_change">on_change_account_id(account_id, user_id)</attribute>
+                </field>
+                <field name="account_id" position="after">
+                    <field name="partner_id" readonly="1"/>
+                    <field name="other_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_timesheet_line_form_partner">
+            <field name="name">Timesheet activities form (with partner)</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form" />
+            <field name="arch" type="xml">
+                <field name="account_id" position="attributes">
+                    <attribute name="on_change">on_change_account_id(account_id, user_id)</attribute>
+                </field>
+                <field name="account_id" position="after">
+                    <field name="partner_id" readonly="1"/>
+                    <field name="other_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="hr_timesheet_line_search_partner">
+            <field name="name">Timesheet activities search (with partner)</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search" />
+            <field name="arch" type="xml">
+                <field name="account_id" position="after">
+                    <field name="partner_id"/>
+                    <field name="other_partner_id"/>
+                </field>
+                <filter string="Analytic account" position="after">
+                    <filter string="Account Partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Other Partner" domain="[]" context="{'group_by': 'other_partner_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+</openerp>
