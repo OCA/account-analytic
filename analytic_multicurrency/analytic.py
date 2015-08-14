@@ -36,8 +36,6 @@ class account_analytic_account(orm.Model):
                                 [('parent_id', 'child_of', ids)],
                                 context=context)
         sums = {}
-        if not child_ids:
-            return sums
         for child_id, field in product(child_ids, field_list):
             sums.setdefault(child_id, {})[field] = 0.0
 
@@ -95,7 +93,7 @@ class account_analytic_account(orm.Model):
     def _currency(self, cr, uid, ids, field_name, arg, context=None):
         result = {}
         for rec in self.browse(cr, uid, ids, context=context):
-            result[rec.id] = rec.currency_id.id
+            result[rec.id] = rec.company_id.currency_id.id
         return result
 
     def _get_analytic_account(self, cr, uid, ids, context=None):

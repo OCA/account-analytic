@@ -33,8 +33,6 @@ class account_analytic_account(orm.Model):
                                 [('parent_id', 'child_of', ids)],
                                 context=context)
         sums = {}
-        if not child_ids:
-            return {}
         for child_id, field in product(child_ids, name):
             sums.setdefault(child_id, {})[name] = 0.0
 
@@ -64,8 +62,6 @@ class account_analytic_account(orm.Model):
                                 [('parent_id', 'child_of', ids)],
                                 context=context)
         sums = {}
-        if not child_ids:
-            return sums
         for child_id, field in product(child_ids, name):
             sums.setdefault(child_id, {})[name] = 0.0
 
