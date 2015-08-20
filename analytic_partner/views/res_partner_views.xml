@@ -3,8 +3,8 @@
     <data>
 
         <record model="ir.actions.act_window" id="act_analytic_cost_revenue">
-            <field name="context">{'search_default_group_date': 1, 'search_default_group_journal': 1, 'default_partner_id': active_id}</field>
-            <field name="domain">[('partner_id', 'child_of', active_id)]</field>
+            <field name="context">{'search_default_group_date': 1, 'search_default_group_journal': 1, 'default_other_partner_id': active_id}</field>
+            <field name="domain">[('other_partner_id', 'child_of', active_id)]</field>
             <field name="name">Costs &amp; Revenues</field>
             <field name="res_model">account.analytic.line</field>
             <field name="src_model">res.partner</field>
