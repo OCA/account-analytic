@@ -8,5 +8,8 @@ class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
 
     partner_id = fields.Many2one(
-        comodel_name='res.partner', string="Partner",
-        domain="[('parent_id', '=', False)]")
+        comodel_name='res.partner', string="Account Partner",
+        related="account_id.partner_id", readonly=True, store=True)
+    other_partner_id = fields.Many2one(
+        comodel_name='res.partner', string="Other Partner",
+        domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]")

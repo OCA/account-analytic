@@ -13,6 +13,6 @@ class AccountInvoice(models.Model):
         iml = super(AccountInvoice, self)._get_analytic_lines()
         for il in iml:
             for analytic_vals in il.get('analytic_lines', []):
-                analytic_vals[2]['partner_id'] = (
+                analytic_vals[2]['other_partner_id'] = (
                     self.partner_id.commercial_partner_id.id)
         return iml
