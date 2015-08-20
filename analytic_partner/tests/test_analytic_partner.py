@@ -33,6 +33,6 @@ class TestAnalyticPartner(common.TransactionCase):
         analytic_lines = self.invoice.move_id.mapped('line_id.analytic_lines')
         for analytic_line in analytic_lines:
             self.assertEqual(
-                analytic_line.partner_id,
+                analytic_line.other_partner_id,
                 self.invoice.partner_id.commercial_partner_id,
                 'Invoice partner has not been propagated to the analytic line')
