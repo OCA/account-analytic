@@ -27,7 +27,13 @@ msgstr "Costes e ingresos"
 
 #. module: analytic_partner
 #: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
+#: field:account.analytic.line,other_partner_id:0
+msgid "Other Partner"
+msgstr "Empresa alternativa"
+
+#. module: analytic_partner
+#: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
 #: field:account.analytic.line,partner_id:0
-msgid "Partner"
-msgstr "Empresa"
+msgid "Account Partner"
+msgstr "Empresa de la cuenta"
 
