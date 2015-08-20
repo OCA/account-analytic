@@ -10,6 +10,6 @@ class AccountMoveLine(models.Model):
     @api.model
     def _prepare_analytic_line(self, obj_line):
         res = super(AccountMoveLine, self)._prepare_analytic_line(obj_line)
-        res['partner_id'] = (
+        res['other_partner_id'] = (
             obj_line.invoice.partner_id.commercial_partner_id.id)
         return res
