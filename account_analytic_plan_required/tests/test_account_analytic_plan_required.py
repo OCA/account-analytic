@@ -148,8 +148,11 @@ class test_account_analytic_plan_required(common.TransactionCase):
 
     def test_never_with_analytic(self):
         self._set_analytic_policy('never')
-        with self.assertRaises(orm.except_orm):
-            self._create_move(with_analytic=True, with_analytic_plan=False)
+        # with self.assertRaises(orm.except_orm):
+        #     self._create_move(with_analytic=True, with_analytic_plan=False)
+        # _create_move should work since account.move.line, create
+        # method removes the analytic account in case of 'never'
+        self._create_move(with_analytic=True, with_analytic_plan=False)
         with self.assertRaises(orm.except_orm):
             self._create_move(with_analytic=False, with_analytic_plan=True)
 

@@ -24,7 +24,7 @@
 from openerp import models, fields, api, _
 
 
-class account_account_type(models.Model):
+class AccountAccountType(models.Model):
     _inherit = "account.account.type"
 
     @api.model
@@ -57,7 +57,7 @@ class account_account_type(models.Model):
         "is present.")
 
 
-class account_account(models.Model):
+class AccountAccount(models.Model):
     _inherit = "account.account"
 
     analytic_policy = fields.Selection(
@@ -65,12 +65,17 @@ class account_account(models.Model):
         related='user_type.analytic_policy', readonly=True)
 
 
-class account_move_line(models.Model):
+class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     analytic_policy = fields.Selection(
         string='Policy for analytic account',
         related='account_id.analytic_policy', readonly=True)
+    move_state = fields.Selection(
+        string='Move State',
+        related='move_id.state',
+        default='draft',  # required for view attrs before object is created
+        readonly=True)
 
     def _get_analytic_policy(self, cr, uid, account, context=None):
         """ Extension point to obtain analytic policy for an account """
@@ -118,7 +123,7 @@ class account_move_line(models.Model):
         if account.analytic_policy == 'never':
             if 'analytic_account_id' in vals:
                 del vals['analytic_account_id']
-        return super(account_move_line, self).create(
+        return super(AccountMoveLine, self).create(
             cr, uid, vals, context=context, check=check)
 
     def write(self, cr, uid, ids, vals, context=None,
@@ -130,6 +135,6 @@ class account_move_line(models.Model):
                     cr, uid, vals['account_id'], context=context)
                 if account.analytic_policy == 'never':
                     vals['analytic_account_id'] = False
-        return super(account_move_line, self).write(
+        return super(AccountMoveLine, self).write(
             cr, uid, ids, vals, context=context,
             check=check, update_check=update_check)
