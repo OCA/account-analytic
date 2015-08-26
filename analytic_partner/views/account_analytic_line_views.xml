@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_account_analytic_line_tree_partner">
+            <field name="name">Analytic entries tree (with partner)</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_tree" />
+            <field name="arch" type="xml">
+                <field name="journal_id" position="after">
+                    <field name="partner_id"/>
+                    <field name="other_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_analytic_line_form_partner">
+            <field name="name">Analytic entries form (with partner)</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_form" />
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="partner_id"/>
+                    <field name="other_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_account_analytic_line_filter_partner">
+            <field name="name">Analytic entries search (with partner)</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_filter" />
+            <field name="arch" type="xml">
+                <filter name="group_journal" position="after">
+                    <filter name="group_account_partner" string="Account Partner" context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_partner" string="Other Partner" context="{'group_by': 'other_partner_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+</openerp>
