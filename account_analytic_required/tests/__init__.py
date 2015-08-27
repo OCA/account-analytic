@@ -21,10 +21,3 @@
 ##############################################################################
 
 from . import test_account_analytic_required
-
-fast_suite = [
-]
-
-checks = [
-    test_account_analytic_required,
-]
