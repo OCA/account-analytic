@@ -22,7 +22,8 @@ class HrAnalyticTimesheet(models.Model):
     def write(self, vals):
         res = super(HrAnalyticTimesheet, self).write(vals)
         if vals.get('other_partner_id') is not None:
-            self.line_id.other_partner_id = vals['other_partner_id']
+            self.mapped('line_id').write(
+                {'other_partner_id': vals['other_partner_id']})
         return res
 
     def on_change_account_id(self, cr, uid, ids, account_id, context=False):
