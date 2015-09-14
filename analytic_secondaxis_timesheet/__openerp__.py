@@ -2,9 +2,11 @@
 ##############################################################################
 #
 # Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
+# Copyright (c) 2015 Taktik SA (http://www.taktik.be)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
+# Author : Adil Houmadi (Taktik)
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -28,3 +30,22 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ##############################################################################
+
+{
+    "name": "Timesheet Analytic Second Axis",
+    "version": "1.0",
+    "author": "Camptocamp,Taktik,Odoo Community Association (OCA)",
+    "category": "Generic Modules/Accounting",
+    "website": "http://camptocamp.com",
+    "license": "AGPL-3",
+    "depends": [
+        "analytic_secondaxis",
+        "hr_timesheet_sheet",
+        "hr_timesheet",
+    ],
+    "data": [
+        "views/analytic_secondaxis_view.xml",
+    ],
+    "active": True,
+    "installable": True
+}
