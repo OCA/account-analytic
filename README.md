@@ -12,6 +12,30 @@ You'll find modules that:
  - Handle analytic distributions for more objects
  - ...
 
+[//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[account_analytic_plan_required](account_analytic_plan_required/) | 0.1 | Account Analytic Plan Required
+[account_analytic_required](account_analytic_required/) | 0.2 | Account Analytic Required
+[analytic_multicurrency](analytic_multicurrency/) | 1.0 | Multi-Currency in Analytic Accounting
+[analytic_partner](analytic_partner/) | 1.0 | Classify analytic entries by partner
+[analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 1.0 | Classify HR activities by partner
+
+Unported addons
+---------------
+addon | version | summary
+--- | --- | ---
+[account_analytic_line_list](__unported__/account_analytic_line_list/) | 1.1 (unported) | Account Analytic Line List
+[analytic_secondaxis](__unported__/analytic_secondaxis/) | 1.1 (unported) | Account Analytic Second Axis
+[analytic_secondaxis_multicurrency](__unported__/analytic_secondaxis_multicurrency/) | 1.0 (unported) | Multi-Currency Analytic Second Axis
+[analytic_secondaxis_project](__unported__/analytic_secondaxis_project/) | 1.0 (unported) | Project Analytic Second Axis
+[analytic_secondaxis_timesheet](__unported__/analytic_secondaxis_timesheet/) | 1.0 (unported) | Timesheet Analytic Second Axis
+[hr_expense_analytic_plans](__unported__/hr_expense_analytic_plans/) | 1.0 (unported) | HR expenses analytic distribution
+
+[//]: # (end addons)
+
 ----
 
 OCA, or the Odoo Community Association, is a nonprofit organization whose 
