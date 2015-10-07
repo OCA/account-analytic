@@ -2,9 +2,11 @@
 ##############################################################################
 #
 # Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
+# Copyright (c) 2015 Taktik SA (http://www.taktik.be)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
+# Author : Adil Houmadi (Taktik)
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -29,4 +31,23 @@
 #
 ##############################################################################
 
-from . import analytic_activity_chart
+{
+    "name": "Account Analytic Second Axis",
+    "version": "1.2",
+    "author": "Camptocamp,Taktik,Odoo Community Association (OCA)",
+    "category": "Generic Modules/Accounting",
+    "website": "http://camptocamp.com",
+    "license": "AGPL-3",
+    "depends": [
+        "account",
+        "analytic"
+    ],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/analytic_secondaxis_view.xml",
+        "wizard/analytic_activity_chart_view.xml",
+    ],
+    "demo": ["demo/analytic_secondaxis_demo.xml"],
+    "active": True,
+    "installable": True,
+}

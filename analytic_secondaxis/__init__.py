@@ -2,9 +2,11 @@
 ##############################################################################
 #
 # Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
+# Copyright (c) 2015 Taktik SA (http://www.taktik.be)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
+# Author : Adil Houmadi (Taktik)
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -29,5 +31,5 @@
 #
 ##############################################################################
 
-from . import analytic_secondaxis
+from . import models
 from . import wizard
