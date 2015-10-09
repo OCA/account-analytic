@@ -4,7 +4,7 @@
 
 {
     'name': 'Partner in analytics',
-    'version': '1.0',
+    'version': '8.0.1.0.0',
     'summary': 'Classify analytic entries by partner',
     'category': 'Analytic Accounting',
     'author': 'Serv. Tecnol. Avanzados - Pedro M. Baeza, '

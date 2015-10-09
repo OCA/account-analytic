@@ -22,7 +22,7 @@
 
 {
     'name': 'Account Analytic Plan Required',
-    'version': '0.1',
+    'version': '8.0.0.1.0',
     'category': 'Analytic Accounting',
     'license': 'AGPL-3',
     'description': """

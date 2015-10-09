@@ -4,7 +4,7 @@
 
 {
     'name': 'Partner in HR timesheets',
-    'version': '1.0',
+    'version': '8.0.1.0.0',
     'summary': 'Classify HR activities by partner',
     'category': 'Human Resources',
     'author': 'Antiun Ingeniería S.L., '
