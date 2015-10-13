@@ -33,14 +33,13 @@ addon | version | summary
 [analytic_secondaxis_multicurrency](analytic_secondaxis_multicurrency/) | 1.0 (unported) | Multi-Currency Analytic Second Axis
 [analytic_secondaxis_project](analytic_secondaxis_project/) | 1.0 (unported) | Project Analytic Second Axis
 [analytic_secondaxis_timesheet](analytic_secondaxis_timesheet/) | 1.0 (unported) | Timesheet Analytic Second Axis
-[hr_expense_analytic_plans](hr_expense_analytic_plans/) | 1.0 (unported) | HR expenses analytic distribution
 
 [//]: # (end addons)
 
 ----
 
-OCA, or the Odoo Community Association, is a nonprofit organization whose 
-mission is to support the collaborative development of Odoo features and 
+OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
 http://odoo-community.org/
