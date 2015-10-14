@@ -45,6 +45,6 @@ during the Akretion-Camptocamp code sprint of June 2011.
     'website': 'http://www.akretion.com/',
     'depends': ['account'],
     'data': ['account_view.xml'],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
 }
