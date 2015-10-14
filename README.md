@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/OCA/account-analytic.svg?branch=8.0)](https://travis-ci.org/OCA/account-analytic)
-[![Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png?branch=8.0)](https://coveralls.io/r/OCA/account-analytic?branch=8.0)
+[![Build Status](https://travis-ci.org/OCA/account-analytic.svg?branch=9.0)](https://travis-ci.org/OCA/account-analytic)
+[![Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png?branch=9.0)](https://coveralls.io/r/OCA/account-analytic?branch=9.0)
 
 OCA analytic accounting modules for Odoo
 ========================================
@@ -13,27 +13,6 @@ You'll find modules that:
  - ...
 
 [//]: # (addons)
-Available addons
-----------------
-addon | version | summary
---- | --- | ---
-[account_analytic_plan_required](account_analytic_plan_required/) | 8.0.0.1.0 | Account Analytic Plan Required
-[account_analytic_required](account_analytic_required/) | 8.0.0.2.0 | Account Analytic Required
-[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.0 | Multi-Currency in Analytic Accounting
-[analytic_partner](analytic_partner/) | 8.0.1.0.0 | Classify analytic entries by partner
-[analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 8.0.1.0.0 | Classify HR activities by partner
-[analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 8.0.1.0.0 | Invoice analytic lines for the specific partner in them
-
-Unported addons
----------------
-addon | version | summary
---- | --- | ---
-[account_analytic_line_list](account_analytic_line_list/) | 1.1 (unported) | Account Analytic Line List
-[analytic_secondaxis](analytic_secondaxis/) | 1.1 (unported) | Account Analytic Second Axis
-[analytic_secondaxis_multicurrency](analytic_secondaxis_multicurrency/) | 1.0 (unported) | Multi-Currency Analytic Second Axis
-[analytic_secondaxis_project](analytic_secondaxis_project/) | 1.0 (unported) | Project Analytic Second Axis
-[analytic_secondaxis_timesheet](analytic_secondaxis_timesheet/) | 1.0 (unported) | Timesheet Analytic Second Axis
-
 [//]: # (end addons)
 
 ----
