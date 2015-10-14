@@ -43,5 +43,5 @@ In any case analytic account and analytic distribution are mutually exclusive.
     'website': 'http://www.acsone.eu/',
     'depends': ['account_analytic_required', 'account_analytic_plans'],
     'data': [],
-    'installable': True,
+    'installable': False,
 }

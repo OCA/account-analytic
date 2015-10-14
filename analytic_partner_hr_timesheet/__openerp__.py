@@ -19,6 +19,6 @@
         'views/hr_analytic_timesheet_views.xml',
         'views/res_partner_views.xml',
     ],
-    "installable": True,
+    'installable': False,
     "auto_install": True,
 }
