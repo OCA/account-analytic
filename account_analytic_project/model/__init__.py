@@ -1,10 +1,7 @@
 # -*- encoding: utf-8 -*-
-"""Import modules to extend models."""
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2015 Therp BV <http://therp.nl>
-#    All Rights Reserved
+#    Copyright (C) 2015 Therp BV <http://therp.nl>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as

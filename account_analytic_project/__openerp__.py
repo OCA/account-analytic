@@ -1,8 +1,6 @@
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
-#    This module copyright (C) 2015 Therp BV <http://therp.nl>
-#    All Rights Reserved
+#    Copyright (C) 2015 Therp BV <http://therp.nl>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -22,6 +20,7 @@
     'name': 'Project and analytic account integration',
     'version': '8.0.1.0.0',
     'author': 'Therp BV,Odoo Community Association (OCA)',
+    'license': 'AGPL-3',
     'category': 'Generic Modules/Accounting',
     'website': 'https://therp.nl',
     'email': 'info@therp.nl',
