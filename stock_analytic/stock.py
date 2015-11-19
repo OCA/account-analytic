@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+###############################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2012 Julius Network Solutions SARL <contact@julius.fr>
@@ -17,27 +17,54 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+###############################################################################
 
-from openerp.osv import fields, osv, orm
-from openerp.tools.translate import _
+from openerp.osv import fields, osv
 
-# ----------------------------------------------------
-# Move
-# ----------------------------------------------------
-class stock_move(orm.Model):
+
+class stock_move(osv.Model):
     _inherit = "stock.move"
 
     _columns = {
-        'account_analytic_id': fields.many2one('account.analytic.account', 'Analytic account'),
+        'account_analytic_id': fields.many2one('account.analytic.account',
+                                               'Analytic account'),
     }
 
-    def _create_account_move_line(self, cr, uid, move, src_account_id, dest_account_id, reference_amount, reference_currency_id, context=None):
-        res = super(stock_move, self)._create_account_move_line(cr, uid, move, src_account_id, dest_account_id, reference_amount, reference_currency_id, context=context)
+    def _create_account_move_line(self, cr, uid, move, src_account_id,
+                                  dest_account_id, reference_amount,
+                                  reference_currency_id, context=None):
+        res = super(stock_move,
+                    self)._create_account_move_line(cr, uid,
+                                                    move,
+                                                    src_account_id,
+                                                    dest_account_id,
+                                                    reference_amount,
+                                                    reference_currency_id,
+                                                    context=context
+                                                    )
         if move.account_analytic_id:
-            for val1, val2, vals in res:
+            for _val1, _val2, vals in res:
                 vals['analytic_account_id'] = move.account_analytic_id.id
         return res
 
 
+class stock_quant(osv.Model):
+
+    _inherit = "stock.quant"
+
+    def _prepare_account_move_line(self, cr, uid, move, qty, cost,
+                                   credit_account_id, debit_account_id,
+                                   context=None):
+        res = super(stock_quant,
+                    self)._prepare_account_move_line(cr,
+                                                     uid, move, qty, cost,
+                                                     credit_account_id,
+                                                     debit_account_id,
+                                                     context=context
+                                                     )
+        # Add analytic account in debit line
+        res[0][2].update({
+            'analytic_account_id': move.account_analytic_id.id,
+        })
+        return res
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
