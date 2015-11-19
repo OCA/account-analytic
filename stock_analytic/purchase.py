@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+###############################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2012 Julius Network Solutions SARL <contact@julius.fr>
@@ -17,21 +17,23 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+###############################################################################
 
-from openerp.osv import fields, osv, orm
-from openerp.tools.translate import _
+from openerp import models
 
-#----------------------------------------------------------
-# Purchase order
-#----------------------------------------------------------
-class purchase_order(orm.Model):
+
+class purchase_order(models.Model):
     _inherit = "purchase.order"
 
-    def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, context=None):
-        res = super(purchase_order, self)._prepare_order_line_move(cr, uid, order, order_line, picking_id, context=context)
+    def _prepare_order_line_move(self, cr, uid, order, order_line,
+                                 picking_id, group_id, context=None):
+        res = super(
+            purchase_order, self)._prepare_order_line_move(
+                cr, uid, order, order_line, picking_id, group_id,
+                context=context)
         if order_line.account_analytic_id:
-            res['account_analytic_id'] = order_line.account_analytic_id.id
+            for move in res:
+                move['account_analytic_id'] = order_line.account_analytic_id.id
         return res
 
 
