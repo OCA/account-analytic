@@ -6,10 +6,7 @@
             <field name="model">stock.inventory</field>
 			<field name="inherit_id" ref="stock.view_inventory_form"/>
             <field name="arch" type="xml">
-				<xpath expr="/form/notebook/page[@string='Posted Inventory']//tree/field[@name='location_id']" position="after">
-					<field name="account_analytic_id"/>
-				</xpath>
-				<xpath expr="/form/notebook/page/field[@name='move_lines']/form/group/field[@name='product_uom']" position="after">
+				<xpath expr="//sheet/notebook/page/field[@name='move_ids']/tree/field[@name='location_id']" position="after">
 					<field name="account_analytic_id"/>
 				</xpath>
             </field>
@@ -35,7 +32,7 @@
 					<field name="account_analytic_id"/>
 				</field>
             </field>
-        </record>-->
+        </record>
 
         <record id="view_move_tree" model="ir.ui.view">
             <field name="name">stock.move.tree</field>
@@ -47,18 +44,6 @@
 				</field>
 			</field>
 		</record>
-
-        <record id="stock_move_tree2" model="ir.ui.view">
-            <field name="name">Stock Moves</field>
-            <field name="model">stock.move</field>
-			<field name="inherit_id" ref="stock.stock_move_tree2"/>
-            <field name="arch" type="xml">
-				<field name='location_dest_id' position="after">
-					<field name="account_analytic_id"/>
-				</field>
-			</field>
-		</record>
-
         <record id="stock_move_tree" model="ir.ui.view">
             <field name="name">Stock Moves</field>
             <field name="model">stock.move</field>
@@ -70,10 +55,10 @@
 			</field>
 		</record>
 
-        <record id="view_move_tree_reception_picking" model="ir.ui.view">
+        <record id="view_move_tree_receipt_picking" model="ir.ui.view">
             <field name="name">stock.move.tree2</field>
             <field name="model">stock.move</field>
-			<field name="inherit_id" ref="stock.view_move_tree_reception_picking"/>
+			<field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
             <field name="arch" type="xml">
 				<field name='date' position="before">
 					<field name="account_analytic_id"/>
@@ -81,10 +66,10 @@
 			</field>
 		</record>
 
-        <record id="view_move_tree_reception_picking_board" model="ir.ui.view">
+        <record id="view_move_tree_receipt_picking_board" model="ir.ui.view">
             <field name="name">stock.move.tree3</field>
             <field name="model">stock.move</field>
-			<field name="inherit_id" ref="stock.view_move_tree_reception_picking_board"/>
+			<field name="inherit_id" ref="stock.view_move_tree_receipt_picking_board"/>
             <field name="arch" type="xml">
 				<field name='date' position="before">
 					<field name="account_analytic_id"/>
@@ -97,7 +82,7 @@
             <field name="model">stock.move</field>
 			<field name="inherit_id" ref="stock.view_move_form"/>
             <field name="arch" type="xml">
-				<field name='location_dest_id' position="after">
+				<field name='partner_id' position="after">
 					<field name="account_analytic_id"/>
 				</field>
 			</field>
