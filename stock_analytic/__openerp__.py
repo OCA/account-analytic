@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+###############################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2012 Julius Network Solutions SARL <contact@julius.fr>
@@ -17,34 +17,30 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+###############################################################################
 
 {
-    "name" : "Stock analytic",
-    "version" : "1.0",
-    "author" : "Julius Network Solutions",
-    "website" : "http://www.julius.fr/",
+    "name": "Stock analytic",
+    "summary": "Adds an analytic account in stock move",
+    "version": "1.0",
+    "author": "Julius Network Solutions,"
+    "ClearCorp, Odoo Community Association (OCA)",
+    "website": "http://www.julius.fr/",
     'complexity': "easy",
-    "category" : "Warehouse Management",
-    "depends" : [
+    "category": "Warehouse Management",
+    "depends": [
         "base",
         "stock",
         "sale",
         "purchase",
-        "account",
+        "analytic",
+        "sale_stock",
     ],
-    "description": """
-    Adds an analytic account in stock move to be able to get analytic info when generating the account move line
-    """,
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
-#        "security/service_security.xml",
-#        "security/ir.model.access.csv",
+    "data": [
         "stock_view.xml",
     ],
-    'installable' : False,
-    'active' : False,
+    'installable': True,
+    'active': False,
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
