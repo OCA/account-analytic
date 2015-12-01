@@ -9,6 +9,15 @@ POS Analytic Config
 This module allows to use analytic account defined on POS configuration
 for invoices and accounting entries generated from POS orders.
 
+Configuration
+=============
+
+To configure this module, you need to:
+
+* Go to Point of Sale > Configuration > Point of Sales
+* Open an  existing or create a new one
+* You can put an analytic account on the current point of sale (pos.config)
+
 Usage
 =====
 
