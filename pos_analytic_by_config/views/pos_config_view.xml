@@ -2,7 +2,7 @@
 <openerp>
     <data>
         <record id="view_pos_config_form" model="ir.ui.view">
-            <field name="name">pos.config.form.view (pos_analytic_config)</field>
+            <field name="name">pos.config.form.view (pos_analytic_by_config)</field>
             <field name="model">pos.config</field>
             <field name="inherit_id" ref="point_of_sale.view_pos_config_form"/>
             <field name="arch" type="xml">
