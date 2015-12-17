@@ -9,9 +9,6 @@
                 ref="analytic.view_account_analytic_account_form"
             />
             <field name="arch" type="xml">
-                <form position="inside">
-                    <field name="has_projects" invisible="1" />
-                </form>
                 <div name="buttons" position="inside">
                     <button
                         name="create_project_for_account"
@@ -20,7 +17,7 @@
                         icon="fa-plus"
                         string="Create project"
                         attrs="{'invisible': [
-                            '|', ('has_projects', '=', True),
+                            '|', ('project_ids', '!=', False),
                             ('type', '=', 'view'),
                         ]}"
                     />
@@ -31,7 +28,7 @@
                         icon="fa-tasks"
                         string="View projects"
                         attrs="{'invisible': [
-                            '|', ('has_projects', '=', False),
+                            '|', ('projects_ids', '=', False),
                             ('type', '=', 'view'),
                         ]}"
                     />
