@@ -35,7 +35,7 @@ install:
   - travis_install_nightly
 
 script:
-  - travis_after_tests_success
+  - travis_run_tests
 
 after_success:
-  coveralls
+  - travis_after_tests_success
