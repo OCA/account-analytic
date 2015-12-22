@@ -24,47 +24,6 @@
 from openerp import models, fields, api, _
 
 
-class AccountAccountType(models.Model):
-    _inherit = "account.account.type"
-
-    @api.model
-    def _get_policies(self):
-        """This is the method to be inherited for adding policies"""
-        return [('optional', _('Optional')),
-                ('always', _('Always')),
-                ('never', _('Never'))]
-
-    @api.onchange('report_type')
-    def _onchange_report_type(self):
-        if self.report_type in ['none', 'asset', 'liabilty']:
-            self.analytic_policy = 'never'
-        else:
-            self.analytic_policy = 'optional'
-
-    @api.model
-    def _default_policy(self):
-        return 'optional'
-
-    analytic_policy = fields.Selection(
-        '_get_policies', string='Policy for analytic account',
-        required=True, default=_default_policy,
-        help="Set the policy for analytic accounts : if you select "
-        "'Optional', the accountant is free to put an analytic account "
-        "on an account move line with this type of account ; if you "
-        "select 'Always', the accountant will get an error message if "
-        "there is no analytic account ; if you select 'Never', the "
-        "accountant will get an error message if an analytic account "
-        "is present.")
-
-
-class AccountAccount(models.Model):
-    _inherit = "account.account"
-
-    analytic_policy = fields.Selection(
-        string='Policy for analytic account',
-        related='user_type.analytic_policy', readonly=True)
-
-
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
