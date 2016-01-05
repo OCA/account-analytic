@@ -18,9 +18,7 @@ class AccountInvoiceLine(models.Model):
             partner_id=partner_id, fposition_id=fposition_id,
             price_unit=price_unit,
             currency_id=currency_id, company_id=company_id)
-        if company_id is not None:
-            company_id = company_id
-        else:
+        if company_id is None:
             company_id = self._context.get('company_id', False)
         self = self.with_context(
             company_id=company_id, force_company=company_id)
