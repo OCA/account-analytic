@@ -8,7 +8,9 @@
     'category': 'Accounting & Finance',
     'license': 'AGPL-3',
     'summary': 'Add analytic account on products and product categories',
-    'author': 'Akretion,Odoo Community Association (OCA)',
+    'author': 'Akretion, '
+              'Antiun Ingeniería S.L., '
+              'Odoo Community Association (OCA)',
     'website': 'http://www.akretion.com',
     'depends': ['account'],
     'data': ['product_view.xml'],
