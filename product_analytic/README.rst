@@ -53,6 +53,7 @@ Contributors
 ------------
 
 * Alexis de Lattre <alexis.delattre@akretion.com>
+* Javier Iniesta <javieria@antiun.com>
 
 Maintainer
 ----------
