@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # © 2015 Akretion (http://www.akretion.com/) - Alexis de Lattre
+# © 2016 Antiun Ingeniería S.L. - Javier Iniesta
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import models, api
@@ -36,3 +37,19 @@ class AccountInvoiceLine(models.Model):
             if account_analytic_id:
                 res['value']['account_analytic_id'] = account_analytic_id
         return res
+
+    @api.model
+    def create(self, vals):
+        type = self.env.context.get('inv_type')
+        if vals.get('product_id') and type:
+            product = self.env['product.product'].browse(
+                vals.get('product_id'))
+            if type in ('out_invoice', 'out_refund'):
+                analytic_id = product.income_analytic_account_id.id or\
+                    product.categ_id.income_analytic_account_id.id
+            else:
+                analytic_id = product.expense_analytic_account_id.id or\
+                    product.categ_id.expense_analytic_account_id.id
+            if analytic_id:
+                vals['account_analytic_id'] = analytic_id
+        return super(AccountInvoiceLine, self).create(vals)
