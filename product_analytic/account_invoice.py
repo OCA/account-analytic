@@ -40,8 +40,9 @@ class AccountInvoiceLine(models.Model):
 
     @api.model
     def create(self, vals):
-        type = self.env.context.get('inv_type')
-        if vals.get('product_id') and type:
+        type = self.env.context.get('inv_type', 'out_invoice')
+        if vals.get('product_id') and type and \
+                not vals.get('account_analytic_id'):
             product = self.env['product.product'].browse(
                 vals.get('product_id'))
             if type in ('out_invoice', 'out_refund'):
