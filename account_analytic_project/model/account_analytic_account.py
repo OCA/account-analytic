@@ -13,7 +13,7 @@ class AccountAnalyticAccount(models.Model):
         """Create a project for an already existing analytic account."""
         project_model = self.env['project.project']
         for this in self:
-            if not this.projects_ids and this.type != 'view':
+            if not this.project_ids and this.type != 'view':
                 project_model.create({
                     'name': this.name,
                     'analytic_account_id': this.id,

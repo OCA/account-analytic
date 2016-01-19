@@ -28,7 +28,7 @@
                         icon="fa-tasks"
                         string="View projects"
                         attrs="{'invisible': [
-                            '|', ('projects_ids', '=', False),
+                            '|', ('project_ids', '=', False),
                             ('type', '=', 'view'),
                         ]}"
                     />
