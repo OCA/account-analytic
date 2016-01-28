@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
+# © 2011-2016 Camptocamp SA
+# © 2013 Daniel Reis
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    "name": "Analytic Department Categorization",
-    "version": "8.0.1.0.0",
+    "name": "Base Analytic Department Categorization",
+    "version": "9.0.1.0.0",
     "author": "Camptocamp, Daniel Reis,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
-    "description": """\
-Add Department to Analytic Account.
-No required dependency on Accounting modules.
-""",
     "website": "http://camptocamp.com",
     "depends": ["analytic", "hr"],
-    "data": ["analytic_view.xml"],
-    'test': ['test/analytic.yml'],
-    "installable": True,
+    "data": ["views/analytic.xml"],
+    'installable': True,
 }
