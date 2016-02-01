@@ -10,7 +10,7 @@
             />
             <field name="arch" type="xml">
                 <div name="buttons" position="inside">
-                    <field name="project_ids" invisible="1">
+                    <field name="project_ids" invisible="1" />
                     <button
                         name="create_project_for_account"
                         type="object"
@@ -18,7 +18,7 @@
                         icon="fa-plus"
                         string="Create project"
                         attrs="{'invisible': [
-                            '|', ('project_ids', '!=', False),
+                            '|', ('project_ids', '!=', [(6, False, [])]),
                             ('type', '=', 'view'),
                         ]}"
                     />
@@ -29,7 +29,7 @@
                         icon="fa-tasks"
                         string="View projects"
                         attrs="{'invisible': [
-                            '|', ('project_ids', '=', False),
+                            '|', ('project_ids', '=', [(6, False, [])]),
                             ('type', '=', 'view'),
                         ]}"
                     />
