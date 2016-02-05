@@ -14,14 +14,12 @@
     "category": "Warehouse Management",
     "license": "AGPL-3",
     "depends": [
-        "stock",
-        "sale",
-        "purchase",
+        "stock_account",
         "analytic",
-        "sale_stock",
     ],
     "data": [
-        "views/stock_view.xml",
+        "views/stock_move_views.xml",
+        "views/stock_inventory_views.xml",
     ],
     'installable': True,
     'active': False,

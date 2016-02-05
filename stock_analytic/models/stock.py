@@ -15,25 +15,6 @@ class StockMove(models.Model):
         comodel_name='account.analytic.account',
         )
 
-    @api.model
-    def _create_account_move_line(self, move, src_account_id,
-                                  dest_account_id, reference_amount,
-                                  reference_currency_id, context=None):
-        res = super(StockMove,
-                    self)._create_account_move_line(
-                        self.env.cr, self.env.user.id,
-                        move,
-                        src_account_id,
-                        dest_account_id,
-                        reference_amount,
-                        reference_currency_id,
-                        context=context
-                        )
-        if move.account_analytic_id:
-            for _val1, _val2, vals in res:
-                vals['analytic_account_id'] = move.account_analytic_id.id
-        return res
-
 
 class StockQuant(models.Model):
 
@@ -45,15 +26,18 @@ class StockQuant(models.Model):
                                    context=None):
         res = super(StockQuant,
                     self)._prepare_account_move_line(
-                        self.env.cr,
-                        self.env.user.id, move, qty, cost,
+                        move, qty, cost,
                         credit_account_id,
                         debit_account_id,
                         context=context
                         )
 
         # Add analytic account in debit line
-        res[0][2].update({
-            'analytic_account_id': move.account_analytic_id.id,
-        })
+        if move.account_analytic_id:
+            res[0][2].update({
+                'analytic_account_id': move.account_analytic_id.id,
+            })
+            res[1][2].update({
+                'analytic_account_id': move.account_analytic_id.id,
+            })
         return res
