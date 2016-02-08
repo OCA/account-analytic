@@ -6,12 +6,13 @@
 Project and analytic account integration
 ========================================
 
-Gives the option to create projects directly from the analytic accounts they
-should be linked to.
+This module adds the inverse relation from analytic accounts to projects
+(field project_ids).
 
-Without this module, if you first create an analytic account and later on you
-decide to have a project as well for this account, the situation is very
-difficult to rectify.
+The module also makes it more convenient to create a project for an analytic
+account, providing a method for this. Withouth this module you would need to
+specify that you would want to work with tasks, to indirectly create a project
+for the analytic account.
 
 Usage
 =====

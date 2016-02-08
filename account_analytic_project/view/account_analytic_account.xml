@@ -10,6 +10,7 @@
             />
             <field name="arch" type="xml">
                 <div name="buttons" position="inside">
+                    <field name="project_ids" invisible="1">
                     <button
                         name="create_project_for_account"
                         type="object"
