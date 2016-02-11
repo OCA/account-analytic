@@ -18,7 +18,7 @@
                         icon="fa-plus"
                         string="Create project"
                         attrs="{'invisible': [
-                            '|', ('project_ids', '!=', [(6, False, [])]),
+                            '|', ('project_ids', '!=', []),
                             ('type', '=', 'view'),
                         ]}"
                     />
@@ -29,7 +29,7 @@
                         icon="fa-tasks"
                         string="View projects"
                         attrs="{'invisible': [
-                            '|', ('project_ids', '=', [(6, False, [])]),
+                            '|', ('project_ids', '=', []),
                             ('type', '=', 'view'),
                         ]}"
                     />
