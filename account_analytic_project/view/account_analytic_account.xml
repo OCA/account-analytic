@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="account_analytic_account_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.form.add_project_button</field>
+            <field name="model">account.analytic.account</field>
+            <field
+                name="inherit_id"
+                ref="analytic.view_account_analytic_account_form"
+            />
+            <field name="arch" type="xml">
+                <div name="buttons" position="inside">
+                    <field name="project_ids" invisible="1" />
+                    <button
+                        name="create_project_for_account"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-plus"
+                        string="Create project"
+                        attrs="{'invisible': [
+                            '|', ('project_ids', '!=', []),
+                            ('type', '=', 'view'),
+                        ]}"
+                    />
+                    <button
+                        name="view_projects_for_account"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-tasks"
+                        string="View projects"
+                        attrs="{'invisible': [
+                            '|', ('project_ids', '=', []),
+                            ('type', '=', 'view'),
+                        ]}"
+                    />
+                </div>
+            </field>
+        </record>
+    </data>
+</openerp>
