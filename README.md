@@ -18,6 +18,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_analytic_plan_required](account_analytic_plan_required/) | 8.0.0.1.0 | Account Analytic Plan Required
+[account_analytic_project](account_analytic_project/) | 8.0.1.0.0 | Project and analytic account integration
 [account_analytic_required](account_analytic_required/) | 8.0.0.2.0 | Account Analytic Required
 [analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.0 | Multi-Currency in Analytic Accounting
 [analytic_partner](analytic_partner/) | 8.0.1.0.0 | Classify analytic entries by partner
