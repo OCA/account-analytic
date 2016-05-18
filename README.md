@@ -13,6 +13,12 @@ You'll find modules that:
  - ...
 
 [//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[analytic_base_department](analytic_base_department/) | 9.0.1.0.0 | Base Analytic Department Categorization
+
 Unported addons
 ---------------
 addon | version | summary
