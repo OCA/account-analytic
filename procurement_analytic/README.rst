@@ -6,7 +6,10 @@
 Procurement Analytic
 ====================
 
-This module adds account analytic field in procurements.
+This module adds account analytic field in procurements. This field can be
+used for propagating this data to the generated objects, like purchase orders
+or manufacturing orders.
+
 
 Configuration
 =============
@@ -25,13 +28,6 @@ Usage
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/87/8.0
-
-Known issues / Roadmap
-======================
-
-* If product supplier info min quantity is greater than procurement qty and we
-  have sale orders with distinct analytic account witch contains this product,
-  each purchase order line takes seller min quantity.
 
 Bug Tracker
 ===========
