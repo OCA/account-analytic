@@ -10,7 +10,7 @@ from openerp import exceptions
 class TestAccountAnalyticRequired(common.TransactionCase):
 
     def setUp(self):
-        super(test_account_analytic_required, self).setUp()
+        super(TestAccountAnalyticRequired, self).setUp()
         self.account_obj = self.env['account.account']
         self.account_type_obj = self.env['account.account.type']
         self.move_obj = self.env['account.move']
