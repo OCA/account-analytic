@@ -26,6 +26,7 @@ addon | version | summary
 [analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 8.0.1.0.0 | Invoice analytic lines for the specific partner in them
 [mrp_analytic](mrp_analytic/) | 8.0.1.0.0 | Adds the analytic account to the production order
 [pos_analytic_by_config](pos_analytic_by_config/) | 8.0.1.0.0 | Use analytic account defined on POS configuration for POS orders
+[procurement_analytic](procurement_analytic/) | 8.0.1.0.0 | This module adds analytic account to procurements
 [product_analytic](product_analytic/) | 8.0.1.0.0 | Add analytic account on products and product categories
 
 Unported addons
