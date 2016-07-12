@@ -3,7 +3,7 @@
 # © 2016 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
-from openerp import _, api, fields, models
+from openerp import _, api, exceptions, fields, models
 from openerp.tools import float_is_zero
 
 
@@ -66,10 +66,9 @@ class AccountMoveLine(models.Model):
                               move_line.analytic_account_id.code,
                               move_line.analytic_account_id.name)
 
-    @api.multi
+    @api.constrains('analytic_account_id', 'account_id', 'debit', 'credit')
     def _check_analytic_required(self):
-        return not self._check_analytic_required_msg()
-
-    _constraints = [(_check_analytic_required,
-                     _check_analytic_required_msg,
-                     ['analytic_account_id', 'account_id', 'debit', 'credit'])]
+        for rec in self:
+            message = rec._check_analytic_required_msg()
+            if message:
+                raise exceptions.ValidationError(message)
