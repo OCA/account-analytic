@@ -4,6 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from openerp import _, api, fields, models
+from openerp.tools import float_is_zero
 
 
 class AccountAccountType(models.Model):
@@ -41,7 +42,9 @@ class AccountMoveLine(models.Model):
     @api.multi
     def _check_analytic_required_msg(self):
         for move_line in self:
-            if move_line.debit == 0 and move_line.credit == 0:
+            prec = move_line.company_currency_id.rounding
+            if (float_is_zero(move_line.debit, precision_rounding=prec) and
+                    float_is_zero(move_line.credit, precision_rounding=prec)):
                 continue
             analytic_policy = self._get_analytic_policy(move_line.account_id)
             if (analytic_policy == 'always' and
