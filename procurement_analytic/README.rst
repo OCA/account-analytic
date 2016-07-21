@@ -17,7 +17,9 @@ Configuration
 To configure this module, you need to:
 
 #. Go to *Settings > Configuration > Accounting > Analytic Accounting*.
-#. Enable *Analytic Accounting for Purchases*.
+#. Enable *Analytic Accounting for Sales* and/or *Analytic Accounting for
+   Purchases*.
+
 
 Usage
 =====
@@ -44,6 +46,7 @@ Contributors
 ------------
 * Carlos Dauden <carlos.dauden@tecnativa.com>
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Rafael Blasco <rafael.blasco@tecnativa.com>
 
 Maintainer
 ----------
