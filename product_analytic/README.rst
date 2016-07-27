@@ -6,8 +6,8 @@
 Product Analytic
 ================
 
-This module allows to define an analytic account at product or category level
-for using it when creating invoices.
+This module allows to define an analytic account at product or product category
+level ; it will be used upon invoice line creation.
 
 This module is an alternative to the official module
 *account_analytic_default*. The advantages of this module are:
@@ -15,7 +15,7 @@ This module is an alternative to the official module
 * it only depends on the *account* module, whereas the
   *account_analytic_default* module depends on *sale_stock* ;
 
-* the analytic account is configured on the product form or the product
+* the analytic account is configured on the product form or on the product
   category form, and not on a separate object.
 
 Usage
@@ -31,7 +31,7 @@ analytic account is found, it will be set by default on the invoice line.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/8.0
+   :target: https://runbot.odoo-community.org/runbot/87/9.0
 
 
 Bug Tracker
@@ -40,11 +40,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues
 <https://github.com/OCA/account-analytic/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
-help us smashing it by providing a detailed and welcomed `feedback
-<https://github.com/OCA/
-account-analytic/issues/new?body=module:%20
-product-analytic%0Aversion:%20
-8.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+help us smashing it by providing a detailed and welcomed feedback.
 
 Credits
 =======
