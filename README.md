@@ -28,6 +28,7 @@ addon | version | summary
 [pos_analytic_by_config](pos_analytic_by_config/) | 8.0.1.0.0 | Use analytic account defined on POS configuration for POS orders
 [procurement_analytic](procurement_analytic/) | 8.0.1.0.0 | This module adds analytic account to procurements
 [product_analytic](product_analytic/) | 8.0.1.0.0 | Add analytic account on products and product categories
+[purchase_procurement_analytic](purchase_procurement_analytic/) | 8.0.1.0.0 | This module sets analytic account in purchase order line from procurement analytic account
 
 Unported addons
 ---------------
