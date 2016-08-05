@@ -3,28 +3,27 @@
 # * procurement_analytic
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
-# Pedro M. Baeza <pedro.baeza@gmail.com>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-30 22:27+0000\n"
-"PO-Revision-Date: 2016-09-30 22:27+0000\n"
-"Last-Translator: Pedro M. Baeza <pedro.baeza@gmail.com>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"POT-Creation-Date: 2017-04-06 02:55+0000\n"
+"PO-Revision-Date: 2017-04-06 02:55+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Slovak (Slovakia) (https://www.transifex.com/oca/teams/23907/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sk_SK\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. module: procurement_analytic
 #: field:procurement.order,account_analytic_id:0
 msgid "Analytic Account"
-msgstr "Cuenta analítica"
+msgstr "Analytický účet"
 
 #. module: procurement_analytic
 #: model:ir.model,name:procurement_analytic.model_procurement_order
 msgid "Procurement"
-msgstr "Abastecimiento"
+msgstr ""
