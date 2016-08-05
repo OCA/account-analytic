@@ -1,7 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * analytic_partner
+<<<<<<< HEAD
 #
+=======
+# 
+>>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
@@ -12,6 +16,7 @@ msgstr ""
 "PO-Revision-Date: 2016-12-23 23:05+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
+<<<<<<< HEAD
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,12 +24,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: analytic_partner
+=======
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: tr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: analytic_partner
+#: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
+#: field:account.analytic.line,partner_id:0
+msgid "Account Partner"
+msgstr ""
+
+#. module: analytic_partner
+>>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
 #: model:ir.model,name:analytic_partner.model_account_analytic_line
 msgid "Analytic Line"
 msgstr ""
 
 #. module: analytic_partner
+<<<<<<< HEAD
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+=======
+#: view:res.partner:analytic_partner.view_partner_form_analytic
+>>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
 msgid "Cost/Revenue"
 msgstr ""
 
@@ -34,6 +58,7 @@ msgid "Costs & Revenues"
 msgstr ""
 
 #. module: analytic_partner
+<<<<<<< HEAD
 #: model:ir.model,name:analytic_partner.model_account_move_line
 msgid "Journal Item"
 msgstr ""
@@ -41,5 +66,19 @@ msgstr ""
 #. module: analytic_partner
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__other_partner_id
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
+=======
+#: model:ir.model,name:analytic_partner.model_account_invoice
+msgid "Invoice"
+msgstr "Fatura"
+
+#. module: analytic_partner
+#: model:ir.model,name:analytic_partner.model_account_move_line
+msgid "Journal Items"
+msgstr ""
+
+#. module: analytic_partner
+#: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
+#: field:account.analytic.line,other_partner_id:0
+>>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
 msgid "Other Partner"
 msgstr ""
