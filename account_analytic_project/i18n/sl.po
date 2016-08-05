@@ -3,51 +3,51 @@
 # * account_analytic_project
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-30 09:13+0000\n"
 "PO-Revision-Date: 2016-07-30 09:13+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2016\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: nl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #. module: account_analytic_project
 #: model:ir.model,name:account_analytic_project.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "Analitični konto"
 
 #. module: account_analytic_project
 #: view:account.analytic.account:account_analytic_project.account_analytic_account_form
 msgid "Create project"
-msgstr "Maak project"
+msgstr "Ustvari projekt"
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:33
 #, python-format
 msgid "Project"
-msgstr "Project"
+msgstr "Projekt"
 
 #. module: account_analytic_project
 #: field:account.analytic.account,project_ids:0
 #: code:addons/account_analytic_project/model/account_analytic_account.py:40
 #, python-format
 msgid "Projects"
-msgstr "Projecten"
+msgstr "Projekti"
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:27
 #, python-format
 msgid "This method is only valid for an analytic account having projects."
-msgstr ""
+msgstr "Ta metoda je veljavna le za analitične konte, ki vsebujejo projekte."
 
 #. module: account_analytic_project
 #: view:account.analytic.account:account_analytic_project.account_analytic_account_form
 msgid "View projects"
-msgstr "Toon projecten"
+msgstr "Prikaz projektov"
