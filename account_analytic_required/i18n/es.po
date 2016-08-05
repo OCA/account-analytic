@@ -1,20 +1,66 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_required
-#
+# * account_analytic_required
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0.2\n"
-"Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2011-06-10 07:49+0000\n"
-"PO-Revision-Date: 2014-06-26 11:18+0000\n"
-"Last-Translator: jmartin (Zikzakmedia) <jmartin@zikzakmedia.com>\n"
-"Language-Team: \n"
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-30 09:13+0000\n"
+"PO-Revision-Date: 2016-07-30 09:13+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-06-27 07:09+0000\n"
-"X-Generator: Launchpad (build 17077)\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Tipo de cuenta"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:34
+#, python-format
+msgid "Always"
+msgstr "Siempre"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:72
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:80
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account %s '%s'."
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:35
+#, python-format
+msgid "Never"
+msgstr "Nunca"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:33
+#, python-format
+msgid "Optional"
+msgstr "Opcional"
 
 #. module: account_analytic_required
 #: field:account.account.type,analytic_policy:0
@@ -30,93 +76,9 @@ msgid ""
 "error message if there is no analytic account ; if you select 'Never', the "
 "accountant will get an error message if an analytic account is present."
 msgstr ""
-"Configura la política para las cuentas analíticas: Si selecciona 'Opcional', "
-"el contable es libre de poner una cuenta analítica en un apunte contable de "
-"este tipo de cuenta; si selecciona 'Siempre', el contable recibirá un "
+"Configura la política para las cuentas analíticas: Si selecciona 'Opcional',"
+" el contable es libre de poner una cuenta analítica en un apunte contable de"
+" este tipo de cuenta; si selecciona 'Siempre', el contable recibirá un "
 "mensaje de error si el apunte no tiene cuenta analítica; si selecciona "
 "'Nunca', el contable recibirá un mensaje de error si el apunte tiene una "
 "cuenta analítica."
-
-#. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
-msgid "Optional"
-msgstr "Opcional"
-
-#. module: account_analytic_required
-#: model:ir.module.module,description:account_analytic_required.module_meta_information
-msgid ""
-"This module adds an option \"analytic policy\" on account types. You have "
-"the choice between 3 policies : always, never and optional.\n"
-"\n"
-"For example, if you want to have an analytic account on all your expenses, "
-"set the policy to \"always\" for the account type \"expense\" ; then, if you "
-"try to save an account move line with an account of type \"expense\" without "
-"analytic account, you will get an error message.\n"
-"\n"
-"Module developped by Alexis de Lattre <alexis.delattre@akretion.com> during "
-"the Akretion-Camptocamp code sprint of June 2011.\n"
-msgstr ""
-"Este módulo añade una opción \"política analítica\" a los tipos contables. "
-"Puede escoger entre 3 políticas: 'Siempre', 'Nunca' y 'Opcional'.\n"
-"\n"
-"Por ejemplo, si quiere tener una cuenta analítica de todos sus gastos, "
-"seleccione la política \"Siempre\" para el tipo contable \"Gasto\"; "
-"entonces, si intenta guardar un apunte contable de tipo contable \"Gasto\" "
-"sin cuenta analítica, obtendrá un mensaje de error.\n"
-"\n"
-"Módulo desarrollado por Alexis de Lattre <alexis.delattre@akretion.com> "
-"durante la carrera de código Akretion-Camptocamp de junio de 2011.\n"
-
-#. module: account_analytic_required
-#: constraint:account.move.line:0
-msgid "You can not create move line on closed account."
-msgstr "No puede crear un apunte en una cuenta cerrada."
-
-#. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
-msgid "Always"
-msgstr "Siempre"
-
-#. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
-msgid "Never"
-msgstr "Nunca"
-
-#. module: account_analytic_required
-#: model:ir.module.module,shortdesc:account_analytic_required.module_meta_information
-msgid "Account analytic required"
-msgstr "La cuenta analítica es requerida."
-
-#. module: account_analytic_required
-#: sql_constraint:account.move.line:0
-msgid "Wrong credit or debit value in accounting entry !"
-msgstr "¡Valor erróneo en el debe o en el haber del asiento contable!"
-
-#. module: account_analytic_required
-#: constraint:account.move.line:0
-msgid "You can not create move line on view account."
-msgstr "No puede crear un apunte en una cuenta de tipo \"Vista\"."
-
-#. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_move_line
-msgid "Journal Items"
-msgstr "Apuntes contables"
-
-#. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_account_type
-msgid "Account Type"
-msgstr "Tipo de cuenta"
-
-#. module: account_analytic_required
-#: constraint:account.move.line:0
-msgid "Company must be same for its related account and period."
-msgstr ""
-"La compañía debe ser la misma que la de las cuentas y los periodos "
-"relacionados."
-
-#. module: account_analytic_required
-#: code:addons/account_analytic_required/account.py:53
-#: code:addons/account_analytic_required/account.py:56
-#, python-format
-msgid "Error :"
-msgstr "Error:"
