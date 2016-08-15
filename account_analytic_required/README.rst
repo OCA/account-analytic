@@ -35,13 +35,9 @@ help us smashing it by providing a detailed and welcomed feedback.
 Credits
 =======
 
-Author
-------
-* Module developed by Alexis de Lattre <alexis.delattre@akretion.com>
-  during the Akretion-Camptocamp code sprint of June 2011.
-
 Contributors
 ------------
+* Alexis de Lattre <alexis.delattre@akretion.com>
 * Stéphane Bidoul
 * Sefan Rijnhart
 * Laetitia Gangloff
