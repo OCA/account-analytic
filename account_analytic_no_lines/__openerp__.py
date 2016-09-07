@@ -20,6 +20,4 @@
         'data/data_account_analytic_group.xml',
         'views/account_analytic.xml',
     ],
-    'demo': [
-    ],
 }

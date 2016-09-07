@@ -11,7 +11,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
     def setUpClass(cls):
         super(TestAccountAnalyticNoLines, cls).setUpClass()
 
-        # ENVIRONEMENTS
+        # ENVIRONMENTS
 
         cls.account_account = cls.env['account.account']
         cls.account_analytic_line = cls.env['account.analytic.line']
@@ -81,31 +81,29 @@ class TestAccountAnalyticNoLines(SavepointCase):
         cls.invoice.action_move_create()
 
     def test_create_analytic_lines(self):
-        '''
+        """
         Test the expected result when the method ´create_analytic_lines` is
         called on an invoice.
         The expected result is that no analytic line has been created
         for this invoice.
-        '''
-        move_lines = self.account_move_line.search([('invoice_id',
-                                                     '=',
-                                                     self.invoice.id)])
+        """
+        move_lines = self.account_move_line.search([
+            ('invoice_id', '=', self.invoice.id)])
         for line in move_lines:
             line.create_analytic_lines()
 
         analytic_lines =\
-            self.account_analytic_line.search([('move_id',
-                                                'in',
-                                                move_lines.ids)]).ids
-        self.assertEqual(analytic_lines, [])
+            self.account_analytic_line.search([
+                ('move_id', 'in', move_lines.ids)]).ids
+        self.assertFalse(analytic_lines)
 
     def test_finalize_invoice_move_lines(self):
-        '''
+        """
         Test the expected result when the method ´finalize_invoice_move_lines`
         is called on an invoice.
         The expected result is that no analytic line has been created
         for this invoice.
-        '''
+        """
         move_lines = self.account_move_line.search([('invoice_id',
                                                      '=',
                                                      self.invoice.id)])
@@ -114,4 +112,4 @@ class TestAccountAnalyticNoLines(SavepointCase):
             self.account_analytic_line.search([('move_id',
                                                 'in',
                                                 move_lines.ids)]).ids
-        self.assertEqual(analytic_lines, [])
+        self.assertFalse(analytic_lines)
