@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * procurement_analytic
+# * mrp_analytic
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
@@ -18,12 +18,24 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: procurement_analytic
-#: field:procurement.order,account_analytic_id:0
+#. module: mrp_analytic
+#: model:ir.model,name:mrp_analytic.model_account_analytic_account
+#: field:mrp.production,analytic_account_id:0
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
 
-#. module: procurement_analytic
-#: model:ir.model,name:procurement_analytic.model_procurement_order
-msgid "Procurement"
+#. module: mrp_analytic
+#: model:ir.model,name:mrp_analytic.model_mrp_production
+msgid "Manufacturing Order"
+msgstr ""
+
+#. module: mrp_analytic
+#: field:account.analytic.account,num_productions:0
+msgid "Num productions"
+msgstr ""
+
+#. module: mrp_analytic
+#: view:account.analytic.account:mrp_analytic.view_account_analytic_account_form_mrp_production
+#: field:account.analytic.account,productions:0
+msgid "Productions"
 msgstr ""
