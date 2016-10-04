@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Account analytic required module for OpenERP
-#    Copyright (C) 2011 Akretion (http://www.akretion.com)
+#    Copyright (C) 2011 Akretion (http://www.akretion.com). All Rights Reserved
 #    @author Alexis de Lattre <alexis.delattre@akretion.com>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,21 +20,7 @@
 #
 ##############################################################################
 
-
-{
-    'name': 'Account Analytic Required',
-    'version': '8.0.0.3.0',
-    'category': 'Analytic Accounting',
-    'license': 'AGPL-3',
-    'summary': 'Account Analytic Required',
-    'author': "Akretion,"
-              "Odoo Community Association (OCA)",
-    'depends': ['account'],
-    'data': [
-        'views/account_account_type.xml',
-        'views/account_invoice.xml',
-        'views/account_move.xml',
-        'views/account_template.xml',
-        ],
-    'installable': True,
-}
+from . import account_account
+from . import account_account_type
+from . import account_invoice_line
+from . import account_move_line

@@ -4,6 +4,7 @@
 #    Account analytic required module for OpenERP
 #    Copyright (C) 2011 Akretion (http://www.akretion.com)
 #    @author Alexis de Lattre <alexis.delattre@akretion.com>
+#    Developped during the Akretion-Camptocamp code sprint of June 2011
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,21 +21,12 @@
 #
 ##############################################################################
 
+from openerp import models, fields
 
-{
-    'name': 'Account Analytic Required',
-    'version': '8.0.0.3.0',
-    'category': 'Analytic Accounting',
-    'license': 'AGPL-3',
-    'summary': 'Account Analytic Required',
-    'author': "Akretion,"
-              "Odoo Community Association (OCA)",
-    'depends': ['account'],
-    'data': [
-        'views/account_account_type.xml',
-        'views/account_invoice.xml',
-        'views/account_move.xml',
-        'views/account_template.xml',
-        ],
-    'installable': True,
-}
+
+class AccountAccount(models.Model):
+    _inherit = "account.account"
+
+    analytic_policy = fields.Selection(
+        string='Policy for analytic account',
+        related='user_type.analytic_policy', readonly=True)

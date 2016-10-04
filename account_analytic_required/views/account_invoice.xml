@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="invoice_form" model="ir.ui.view">
+      <field name="name">account.invoice.form.analytic_policy</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook//field[@name='invoice_line']//field[@name='account_analytic_id']" position="after">
+          <field name="analytic_policy" invisible="1"/>
+          <field name="invoice_state" invisible="1"/>
+        </xpath>
+        <xpath expr="//notebook//field[@name='invoice_line']//field[@name='account_analytic_id']" position="attributes">
+          <attribute name="attrs">{'required': [('analytic_policy', '=', 'always'), ('invoice_state', 'in', ['draft', False])], 'readonly': [('analytic_policy', '=', 'never')]}</attribute>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="invoice_supplier_form" model="ir.ui.view">
+      <field name="name">account.invoice.supplier.form.analytic_policy</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_supplier_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//notebook//field[@name='invoice_line']//field[@name='account_analytic_id']" position="after">
+          <field name="analytic_policy" invisible="1"/>
+          <field name="invoice_state" invisible="1"/>
+        </xpath>
+        <xpath expr="//notebook//field[@name='invoice_line']//field[@name='account_analytic_id']" position="attributes">
+          <attribute name="attrs">{'required': [('analytic_policy', '=', 'always'), ('invoice_state', 'in', ['draft', False])], 'readonly': [('analytic_policy', '=', 'never')]}</attribute>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</openerp>

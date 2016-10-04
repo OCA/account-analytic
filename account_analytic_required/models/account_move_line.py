@@ -21,40 +21,20 @@
 #
 ##############################################################################
 
-from openerp.osv import orm, fields
-from openerp.tools.translate import _
+from openerp import models, fields, api, _
 
 
-class account_account_type(orm.Model):
-    _inherit = "account.account.type"
-
-    def _get_policies(self, cr, uid, context=None):
-        """This is the method to be inherited for adding policies"""
-        return [('optional', _('Optional')),
-                ('always', _('Always')),
-                ('never', _('Never'))]
-
-    _columns = {
-        'analytic_policy': fields.selection(
-            lambda self, *args, **kwargs: self._get_policies(*args, **kwargs),
-            'Policy for analytic account',
-            required=True,
-            help="Set the policy for analytic accounts : if you select "
-            "'Optional', the accountant is free to put an analytic account "
-            "on an account move line with this type of account ; if you "
-            "select 'Always', the accountant will get an error message if "
-            "there is no analytic account ; if you select 'Never', the "
-            "accountant will get an error message if an analytic account "
-            "is present."),
-    }
-
-    _defaults = {
-        'analytic_policy': 'optional',
-    }
-
-
-class account_move_line(orm.Model):
+class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
+
+    analytic_policy = fields.Selection(
+        string='Policy for analytic account',
+        related='account_id.analytic_policy', readonly=True)
+    move_state = fields.Selection(
+        string='Move State',
+        related='move_id.state',
+        default='draft',  # required for view attrs before object is created
+        readonly=True)
 
     def _get_analytic_policy(self, cr, uid, account, context=None):
         """ Extension point to obtain analytic policy for an account """
@@ -90,6 +70,30 @@ class account_move_line(orm.Model):
         return not self._check_analytic_required_msg(cr, uid, ids,
                                                      context=context)
 
-    _constraints = [(_check_analytic_required,
-                     _check_analytic_required_msg,
-                     ['analytic_account_id', 'account_id', 'debit', 'credit'])]
+    _constraints = [(
+        _check_analytic_required,
+        _check_analytic_required_msg,
+        ['analytic_account_id', 'account_id', 'debit', 'credit'])]
+
+    def create(self, cr, uid, vals, context=None, check=True):
+        account_obj = self.pool['account.account']
+        account = account_obj.browse(
+            cr, uid, vals.get('account_id'), context=context)
+        if account.analytic_policy == 'never':
+            if 'analytic_account_id' in vals:
+                del vals['analytic_account_id']
+        return super(AccountMoveLine, self).create(
+            cr, uid, vals, context=context, check=check)
+
+    def write(self, cr, uid, ids, vals, context=None,
+              check=True, update_check=True):
+        account_obj = self.pool['account.account']
+        for aml in self.browse(cr, uid, ids, context=context):
+            if 'account_id' in vals:
+                account = account_obj.browse(
+                    cr, uid, vals['account_id'], context=context)
+                if account.analytic_policy == 'never':
+                    vals['analytic_account_id'] = False
+        return super(AccountMoveLine, self).write(
+            cr, uid, ids, vals, context=context,
+            check=check, update_check=update_check)
