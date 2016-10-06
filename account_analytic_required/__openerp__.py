@@ -11,6 +11,6 @@
     'website': 'http://www.akretion.com/',
     'depends': ['account'],
     'data': ['views/account.xml'],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
 }
