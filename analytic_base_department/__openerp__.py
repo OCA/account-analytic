@@ -11,5 +11,5 @@
     "website": "http://camptocamp.com",
     "depends": ["analytic", "hr"],
     "data": ["views/analytic.xml"],
-    'installable': True,
+    'installable': False,
 }

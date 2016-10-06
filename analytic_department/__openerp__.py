@@ -14,5 +14,5 @@
         "account",
         "hr"],
     "data": ["views/analytic.xml"],
-    'installable': True
+    'installable': False
 }
