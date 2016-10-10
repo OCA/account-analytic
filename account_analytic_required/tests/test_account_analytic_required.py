@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from datetime import datetime
 
-from openerp.tests import common
-from openerp import exceptions
+from odoo.tests import common
+from odoo import exceptions
 
 
 class TestAccountAnalyticRequired(common.TransactionCase):
@@ -17,7 +17,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         self.move_line_obj = self.env['account.move.line']
         self.analytic_account_obj = self.env['account.analytic.account']
         self.analytic_account = self.analytic_account_obj.create(
-            {'name': 'test aa', 'account_type': 'normal'})
+            {'name': 'test aa'})
         self.account_sales = self.env['account.account'].create({
             'code': "X1020",
             'name': "Product Sales - (test)",
@@ -75,6 +75,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         account.user_type_id.analytic_policy = policy
 
     def test_optional(self):
+        self._set_analytic_policy('optional')
         self._create_move(with_analytic=False)
         self._create_move(with_analytic=True)
 
@@ -107,7 +108,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         self._create_move(with_analytic=True, amount=0)
 
     def test_always_remove_analytic(self):
-        # remove partner when policy is always
+        # remove analytic when policy is always
         self._set_analytic_policy('always')
         line = self._create_move(with_analytic=True)
         with self.assertRaises(exceptions.ValidationError):
