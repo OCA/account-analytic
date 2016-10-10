@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-# © 2011 Akretion
+# © 2011-2016 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
 # © 2016 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
-from openerp import _, api, exceptions, fields, models
-from openerp.tools import float_is_zero
+from odoo import _, api, exceptions, fields, models
+from odoo.tools import float_is_zero
 
 
 class AccountAccountType(models.Model):
@@ -59,12 +59,11 @@ class AccountMoveLine(models.Model):
                     move_line.analytic_account_id):
                 return _("Analytic policy is set to 'Never' with account %s "
                          "'%s' but the account move line with label '%s' "
-                         "has an analytic account %s '%s'."
+                         "has an analytic account '%s'."
                          ) % (move_line.account_id.code,
                               move_line.account_id.name,
                               move_line.name,
-                              move_line.analytic_account_id.code,
-                              move_line.analytic_account_id.name)
+                              move_line.analytic_account_id.name_get()[0][1])
 
     @api.constrains('analytic_account_id', 'account_id', 'debit', 'credit')
     def _check_analytic_required(self):
