@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="account_analytic_account_form_view">
+        <field name="name">account.analytic.account.form (in account_analytic_no_lines)</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']/button[@name=%(analytic.account_analytic_line_action)d]" position="attributes">
+                <attribute name="groups">account_analytic_no_lines.hide_analytic_entries</attribute>
+            </xpath>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="account_analytic_account_tree_view">
+        <field name="name">account.analytic.account.tree (in account_analytic_no_lines)</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+        <field name="arch" type="xml">
+            <field name="debit" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="credit" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="balance" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
