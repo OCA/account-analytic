@@ -5,8 +5,8 @@
 {
     'name': 'Account Analytic No Lines',
     'summary': """
-        This module hides analytics lines from accounting menus and disable
-         their generation from an invoice or a move line.""",
+        Hide analytics lines and disable
+        their generation from a move line.""",
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'ACSONE SA/NV,Odoo Community Association (OCA)',
