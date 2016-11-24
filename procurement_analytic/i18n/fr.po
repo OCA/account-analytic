@@ -1,9 +1,8 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * pos_analytic_by_config
+# * procurement_analytic
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
 # Zwygart <zwygart@gmail.com>, 2016
 msgid ""
 msgstr ""
@@ -19,12 +18,12 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. module: pos_analytic_by_config
-#: field:pos.config,account_analytic_id:0
+#. module: procurement_analytic
+#: field:procurement.order,account_analytic_id:0
 msgid "Analytic Account"
 msgstr "Compte analytique"
 
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_pos_order
-msgid "Point of Sale"
-msgstr "Point de vente"
+#. module: procurement_analytic
+#: model:ir.model,name:procurement_analytic.model_procurement_order
+msgid "Procurement"
+msgstr ""

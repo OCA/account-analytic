@@ -33,7 +33,7 @@ msgstr ""
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_account_invoice_line
 msgid "Invoice Line"
-msgstr ""
+msgstr "Stavka računa"
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
