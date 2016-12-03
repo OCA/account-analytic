@@ -11,8 +11,8 @@ class PurchaseOrderLine(models.Model):
     def search(self, cr, uid, args, offset=0, limit=None, order=None,
                context=None, count=False):
         if 'account_analytic_id' in context and (
-                    {'order_id', 'product_id', 'product_uom'} <=
-                    set(x[0] for x in args)):
+                {'order_id', 'product_id', 'product_uom'} <=
+                set(x[0] for x in args)):
             args.insert(0, (
                 'account_analytic_id', '=', context['account_analytic_id']))
         return super(PurchaseOrderLine, self).search(
