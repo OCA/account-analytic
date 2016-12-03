@@ -35,20 +35,16 @@ class TestPurchaseProcurementAnalytic(TransactionCase):
         # Run procurement
         self.procurement_1.run()
         self.procurement_2.run()
-
-        # Search purchase order line generate by procurement run
-        pol = self.env['purchase.order.line'].search(
-            [('account_analytic_id', '=', self.analytic_account.id)])
-        self.assertTrue(pol)
-
-        po_lines = pol.order_id.line_ids.filtered(
-            lambda x: x.product_id == self.product)
-        self.assertGreater(len(po_lines), 1)
-
-        # Search stock generate by procurement
-        stock_move = self.env['stock.move'].search(
-            [('procurement_id', '=', self.procurement_2.id)])
-        self.assertTrue(stock_move)
+        self.assertTrue(
+            self.procurement_2.purchase_id)
+        # Make sure that PO line have analytic account
+        self.assertEqual(
+            self.procurement_2.purchase_line_id.account_analytic_id.id,
+            self.analytic_account.id)
+        po = self.procurement_2.purchase_id
+        # Confirm PO to create stock.move
+        po.signal_workflow("purchase_confirm")
+        stock_move = self.procurement_2.purchase_line_id.move_ids[0]
         procur_vals = self.env['stock.move']._prepare_procurement_from_move(
             stock_move)
         self.assertEqual(
