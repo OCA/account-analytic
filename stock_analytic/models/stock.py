@@ -33,10 +33,16 @@ class StockQuant(models.Model):
                         )
 
         # Add analytic account in debit line
-        if move.account_analytic_id:
+        if not move.account_analytic_id:
+            return res
+
+        if res[0][2]["account_id"] != move.product_id.\
+                categ_id.property_stock_valuation_account_id.id:
             res[0][2].update({
                 'analytic_account_id': move.account_analytic_id.id,
             })
+        if res[1][2]["account_id"] != move.product_id.\
+                categ_id.property_stock_valuation_account_id.id:
             res[1][2].update({
                 'analytic_account_id': move.account_analytic_id.id,
             })
