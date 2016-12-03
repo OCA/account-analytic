@@ -78,7 +78,7 @@ class TestStockPicking(TransactionCase):
         criteria2 = [['move_id.ref', '=', self.picking.name]]
         acc_lines = self.env['account.move.line'].search(criteria2)
         for acc_line in acc_lines:
-            if acc_line.account != self.move.product_id.categ_id.\
+            if acc_line.account_id != self.move.product_id.categ_id.\
                     property_stock_valuation_account_id:
                 self.assertEqual(
                     acc_line.analytic_account_id.id,
