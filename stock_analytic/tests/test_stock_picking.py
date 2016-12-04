@@ -25,7 +25,8 @@ class TestStockPicking(TransactionCase):
         self.warehouse = self.env.ref('stock.warehouse0')
         self.location = self.warehouse.lot_stock_id
         self.dest_location = self.env.ref('stock.stock_location_customers')
-        self.picking_type = self.env.ref('stock.picking_type_out')
+        self.outgoing_picking_type = self.env.ref('stock.picking_type_out')
+        self.incoming_picking_type = self.env.ref('stock.picking_type_in')
 
         self.stock_journal.update({
             'analytic_journal_id': self.analytic_journal.id
@@ -37,19 +38,21 @@ class TestStockPicking(TransactionCase):
             'property_stock_account_output_categ': self.stock_account.id,
         })
 
-    def test_stock_picking(self):
+    def _create_picking(
+            self, location_id, location_dest_id,
+            picking_type_id, analytic_account_id=False):
         picking_data = {
-            'picking_type_id': self.picking_type.id,
+            'picking_type_id': picking_type_id.id,
             'move_type': 'direct',
-            }
+        }
 
-        self.picking = self.env['stock.picking'].create(picking_data)
+        picking = self.env['stock.picking'].create(picking_data)
 
         move_data = {
-            'picking_id': self.picking.id,
+            'picking_id': picking.id,
             'product_id': self.product.id,
-            'location_id': self.location.id,
-            'location_dest_id': self.dest_location.id,
+            'location_id': location_id.id,
+            'location_dest_id': location_dest_id.id,
             'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'date_expected': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'invoice_state': 'none',
@@ -57,29 +60,84 @@ class TestStockPicking(TransactionCase):
             'procure_method': 'make_to_stock',
             'product_uom': self.product.uom_id.id,
             'product_uom_qty': 1.0,
-            'account_analytic_id': self.analytic_account.id
-            }
+            'account_analytic_id': analytic_account_id and
+            analytic_account_id.id or False
+        }
 
-        self.move = self.env['stock.move'].create(move_data)
+        self.env['stock.move'].create(move_data)
 
-        self.picking.action_confirm()
-        self.assertEqual(self.picking.state, 'confirmed')
+        return picking
 
-        self.picking.force_assign()
-        self.assertEqual(self.picking.state, 'assigned')
+    def _confirm_picking_no_error(self, picking):
+        picking.action_confirm()
+        self.assertEqual(picking.state, 'confirmed')
 
-        self.picking.action_done()
-        self.assertEqual(self.picking.state, 'done')
+    def _force_assign_no_error(self, picking):
+        picking.force_assign()
+        self.assertEqual(picking.state, 'assigned')
 
-        criteria1 = [['ref', '=', self.picking.name]]
+    def _picking_done_no_error(self, picking):
+        picking.action_done()
+        self.assertEqual(picking.state, 'done')
+
+    def _check_account_move_no_error(self, picking):
+        criteria1 = [['ref', '=', picking.name]]
         acc_moves = self.env['account.move'].search(criteria1)
         self.assertGreater(len(acc_moves), 0)
 
-        criteria2 = [['move_id.ref', '=', self.picking.name]]
+    def _check_analytic_account_no_error(self, picking):
+        move = picking.move_lines[0]
+        criteria2 = [['move_id.ref', '=', picking.name]]
         acc_lines = self.env['account.move.line'].search(criteria2)
         for acc_line in acc_lines:
-            if acc_line.account_id != self.move.product_id.categ_id.\
+            if acc_line.account_id != move.product_id.categ_id.\
                     property_stock_valuation_account_id:
                 self.assertEqual(
                     acc_line.analytic_account_id.id,
-                    self.move.account_analytic_id.id)
+                    move.account_analytic_id.id)
+
+    def _check_no_analytic_account(self, picking):
+        criteria2 = [
+            ("move_id.ref", "=", picking.name),
+            ("analytic_account_id", "!=", False),
+        ]
+        line_count = self.env['account.move.line'].search_count(
+            criteria2)
+        self.assertEqual(
+            line_count,
+            0)
+
+    def test_outgoing_picking_with_analytic(self):
+        picking = self._create_picking(
+            self.location, self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_account,
+        )
+        self._confirm_picking_no_error(picking)
+        self._force_assign_no_error(picking)
+        self._picking_done_no_error(picking)
+        self._check_account_move_no_error(picking)
+        self._check_analytic_account_no_error(picking)
+
+    def test_outgoing_picking_without_analytic(self):
+        picking = self._create_picking(
+            self.location, self.dest_location,
+            self.outgoing_picking_type,
+        )
+        self._confirm_picking_no_error(picking)
+        self._force_assign_no_error(picking)
+        self._picking_done_no_error(picking)
+        self._check_account_move_no_error(picking)
+        self._check_no_analytic_account(picking)
+
+    def test_incoming_picking_with_analytic(self):
+        picking = self._create_picking(
+            self.location, self.dest_location,
+            self.incoming_picking_type,
+            self.analytic_account,
+        )
+        self._confirm_picking_no_error(picking)
+        self._force_assign_no_error(picking)
+        self._picking_done_no_error(picking)
+        self._check_account_move_no_error(picking)
+        self._check_analytic_account_no_error(picking)

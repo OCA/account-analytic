@@ -13,7 +13,7 @@ class StockMove(models.Model):
     account_analytic_id = fields.Many2one(
         string='Analytic Account',
         comodel_name='account.analytic.account',
-        )
+    )
 
 
 class StockQuant(models.Model):
@@ -30,7 +30,7 @@ class StockQuant(models.Model):
                         credit_account_id,
                         debit_account_id,
                         context=context
-                        )
+        )
 
         # Add analytic account in debit line
         if not move.account_analytic_id:
