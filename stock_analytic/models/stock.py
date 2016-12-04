@@ -36,7 +36,7 @@ class StockQuant(models.Model):
         if not move.account_analytic_id:
             return res
 
-        for num in range(0,2):
+        for num in range(0, 2):
             if res[num][2]["account_id"] != move.product_id.\
                     categ_id.property_stock_valuation_account_id.id:
                 res[num][2].update({
