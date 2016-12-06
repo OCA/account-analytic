@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="stock.view_move_picking_form"/>
             <field name="arch" type="xml">
                 <field name="location_dest_id" position="after">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>
@@ -18,7 +18,7 @@
             <field name="inherit_id" ref="stock.view_move_picking_tree"/>
             <field name="arch" type="xml">
                 <field name="product_uom" position="after">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>
@@ -29,7 +29,7 @@
             <field name="inherit_id" ref="stock.view_move_tree"/>
             <field name="arch" type="xml">
                 <field name='location_dest_id' position="after">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>
@@ -39,7 +39,7 @@
             <field name="inherit_id" ref="stock.stock_move_tree"/>
             <field name="arch" type="xml">
                 <field name='location_dest_id' position="after">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>
@@ -50,7 +50,7 @@
             <field name="inherit_id" ref="stock.view_move_tree_receipt_picking"/>
             <field name="arch" type="xml">
                 <field name='date' position="before">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>
@@ -61,7 +61,7 @@
             <field name="inherit_id" ref="stock.view_move_tree_receipt_picking_board"/>
             <field name="arch" type="xml">
                 <field name='date' position="before">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>
@@ -72,7 +72,7 @@
             <field name="inherit_id" ref="stock.view_move_form"/>
             <field name="arch" type="xml">
                 <field name='partner_id' position="after">
-                    <field name="account_analytic_id"/>
+                    <field name="analytic_account_id"/>
                 </field>
             </field>
         </record>

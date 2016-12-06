@@ -60,7 +60,7 @@ class TestStockPicking(TransactionCase):
             'procure_method': 'make_to_stock',
             'product_uom': self.product.uom_id.id,
             'product_uom_qty': 1.0,
-            'account_analytic_id': analytic_account_id and
+            'analytic_account_id': analytic_account_id and
             analytic_account_id.id or False
         }
 
@@ -94,7 +94,7 @@ class TestStockPicking(TransactionCase):
                     property_stock_valuation_account_id:
                 self.assertEqual(
                     acc_line.analytic_account_id.id,
-                    move.account_analytic_id.id)
+                    move.analytic_account_id.id)
 
     def _check_no_analytic_account(self, picking):
         criteria2 = [

@@ -10,7 +10,7 @@ from openerp import fields, models, api
 class StockMove(models.Model):
     _inherit = "stock.move"
 
-    account_analytic_id = fields.Many2one(
+    analytic_account_id = fields.Many2one(
         string='Analytic Account',
         comodel_name='account.analytic.account',
     )
@@ -33,13 +33,13 @@ class StockQuant(models.Model):
         )
 
         # Add analytic account in debit line
-        if not move.account_analytic_id:
+        if not move.analytic_account_id:
             return res
 
         for num in range(0, 2):
             if res[num][2]["account_id"] != move.product_id.\
                     categ_id.property_stock_valuation_account_id.id:
                 res[num][2].update({
-                    'analytic_account_id': move.account_analytic_id.id,
+                    'analytic_account_id': move.analytic_account_id.id,
                 })
         return res
