@@ -8,7 +8,7 @@
     "summary": "Adds an analytic account in stock move",
     "version": "8.0.1.0.0",
     "author": "Julius Network Solutions,"
-    "ClearCorp, Andhitia Rama, "
+    "ClearCorp, OpenSynergy Indonesia, "
     "Odoo Community Association (OCA)",
     "website": "http://www.julius.fr/",
     "category": "Warehouse Management",
