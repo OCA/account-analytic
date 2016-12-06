@@ -29,6 +29,7 @@ Contributors
 * Mathieu VATEL <mathieu@julius.fr>
 * Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
 * Andhitia Rama <andhitia.r@gmail.com>
+* Michael Viriyananda <viriyananda.michael@gmai.com>
 
 Maintainer
 ----------
