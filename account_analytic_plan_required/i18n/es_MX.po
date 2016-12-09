@@ -1,0 +1,73 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_plan_required
+# 
+# Translators:
+# Juan González <bifomania@protonmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-03 13:34+0000\n"
+"PO-Revision-Date: 2016-12-03 13:34+0000\n"
+"Last-Translator: Juan González <bifomania@protonmail.com>, 2016\n"
+"Language-Team: Spanish (Mexico) (https://www.transifex.com/oca/teams/23907/es_MX/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_MX\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_plan_required
+#: model:ir.model,name:account_analytic_plan_required.model_account_account_type
+msgid "Account Type"
+msgstr "Tipo de cuenta"
+
+#. module: account_analytic_plan_required
+#: code:addons/account_analytic_plan_required/account.py:37
+#, python-format
+msgid "Always (analytic account or distribution)"
+msgstr "Siempre(cuenta analítica o distribución)"
+
+#. module: account_analytic_plan_required
+#: code:addons/account_analytic_plan_required/account.py:35
+#, python-format
+msgid "Always (analytic distribution)"
+msgstr "Siempre(distribución analítica)"
+
+#. module: account_analytic_plan_required
+#: code:addons/account_analytic_plan_required/account.py:47
+#, python-format
+msgid "Analytic account and analytic distribution are mutually exclusive"
+msgstr "Cuenta y distribución analítica son mutuamente exclusivas"
+
+#. module: account_analytic_plan_required
+#: code:addons/account_analytic_plan_required/account.py:67
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always (analytic account or distribution)' with "
+"account %s '%s' but the analytic distribution and the analytic account are "
+"missing in the account move line with label '%s'."
+msgstr ""
+
+#. module: account_analytic_plan_required
+#: code:addons/account_analytic_plan_required/account.py:56
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always (analytic distribution)' with account %s "
+"'%s' but the analytic distribution is missing in the account move line with "
+"label '%s'."
+msgstr ""
+
+#. module: account_analytic_plan_required
+#: code:addons/account_analytic_plan_required/account.py:77
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic distribution %s '%s'."
+msgstr ""
+
+#. module: account_analytic_plan_required
+#: model:ir.model,name:account_analytic_plan_required.model_account_move_line
+msgid "Journal Items"
+msgstr ""

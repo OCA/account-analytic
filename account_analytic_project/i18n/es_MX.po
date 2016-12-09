@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_project
+# 
+# Translators:
+# Juan González <bifomania@protonmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-03 13:34+0000\n"
+"PO-Revision-Date: 2016-12-03 13:34+0000\n"
+"Last-Translator: Juan González <bifomania@protonmail.com>, 2016\n"
+"Language-Team: Spanish (Mexico) (https://www.transifex.com/oca/teams/23907/es_MX/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_MX\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_project
+#: model:ir.model,name:account_analytic_project.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: account_analytic_project
+#: view:account.analytic.account:account_analytic_project.account_analytic_account_form
+msgid "Create project"
+msgstr "Crear proyecto"
+
+#. module: account_analytic_project
+#: code:addons/account_analytic_project/model/account_analytic_account.py:33
+#, python-format
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: account_analytic_project
+#: field:account.analytic.account,project_ids:0
+#: code:addons/account_analytic_project/model/account_analytic_account.py:40
+#, python-format
+msgid "Projects"
+msgstr "Proyectos"
+
+#. module: account_analytic_project
+#: code:addons/account_analytic_project/model/account_analytic_account.py:27
+#, python-format
+msgid "This method is only valid for an analytic account having projects."
+msgstr ""
+"Este método sólo es válido para una cuenta analítica que tenga proyectos."
+
+#. module: account_analytic_project
+#: view:account.analytic.account:account_analytic_project.account_analytic_account_form
+msgid "View projects"
+msgstr "Ver proyectos"
