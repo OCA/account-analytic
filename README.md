@@ -29,6 +29,7 @@ addon | version | summary
 [procurement_analytic](procurement_analytic/) | 8.0.1.0.0 | This module adds analytic account to procurements
 [product_analytic](product_analytic/) | 8.0.1.0.0 | Add analytic account on products and product categories
 [purchase_procurement_analytic](purchase_procurement_analytic/) | 8.0.1.0.0 | This module sets analytic account in purchase order line from procurement analytic account
+[stock_analytic](stock_analytic/) | 8.0.1.0.0 | Adds an analytic account in stock move
 
 Unported addons
 ---------------
