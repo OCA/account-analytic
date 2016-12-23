@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * purchase_procurement_analytic
+# * procurement_analytic
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
@@ -18,17 +18,12 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. module: purchase_procurement_analytic
-#: model:ir.model,name:purchase_procurement_analytic.model_procurement_order
+#. module: procurement_analytic
+#: field:procurement.order,account_analytic_id:0
+msgid "Analytic Account"
+msgstr ""
+
+#. module: procurement_analytic
+#: model:ir.model,name:procurement_analytic.model_procurement_order
 msgid "Procurement"
 msgstr "Aprovisionamento"
-
-#. module: purchase_procurement_analytic
-#: model:ir.model,name:purchase_procurement_analytic.model_purchase_order_line
-msgid "Purchase Order Line"
-msgstr "Linha da Ordem de Compra"
-
-#. module: purchase_procurement_analytic
-#: model:ir.model,name:purchase_procurement_analytic.model_stock_move
-msgid "Stock Move"
-msgstr ""
