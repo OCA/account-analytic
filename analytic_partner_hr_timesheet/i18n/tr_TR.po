@@ -3,21 +3,20 @@
 # * analytic_partner_hr_timesheet
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
-# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
+# Ozge Altinisik <ozge@altinkaya.com.tr>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-30 23:06+0000\n"
 "PO-Revision-Date: 2016-12-30 23:06+0000\n"
-"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017\n"
-"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Last-Translator: Ozge Altinisik <ozge@altinkaya.com.tr>, 2017\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/oca/teams/23907/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: analytic_partner_hr_timesheet
 #: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
@@ -37,12 +36,12 @@ msgstr ""
 #. module: analytic_partner_hr_timesheet
 #: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
 msgid "Other Partner"
-msgstr "L'autre partenaire"
+msgstr ""
 
 #. module: analytic_partner_hr_timesheet
 #: model:ir.model,name:analytic_partner_hr_timesheet.model_res_partner
 msgid "Partner"
-msgstr "Partenaire"
+msgstr "Ortak"
 
 #. module: analytic_partner_hr_timesheet
 #: field:res.partner,timesheet_count:0
@@ -52,7 +51,7 @@ msgstr ""
 #. module: analytic_partner_hr_timesheet
 #: model:ir.model,name:analytic_partner_hr_timesheet.model_hr_analytic_timesheet
 msgid "Timesheet Line"
-msgstr "Ligne de feuille de temps"
+msgstr ""
 
 #. module: analytic_partner_hr_timesheet
 #: field:res.partner,timesheets:0
