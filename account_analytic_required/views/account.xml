@@ -42,6 +42,4 @@
     </field>
   </record>
 
-  <menuitem action="account.action_account_type_form" sequence="20" id="menu_action_account_type_form" parent="account.account_account_menu" groups="base.group_no_one"/>
-
 </odoo>
