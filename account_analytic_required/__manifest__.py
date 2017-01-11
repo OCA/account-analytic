@@ -9,7 +9,7 @@
     'license': 'AGPL-3',
     'author': "Akretion,Odoo Community Association (OCA)",
     'website': 'http://www.akretion.com/',
-    'depends': ['account'],
+    'depends': ['account', 'account_type_menu'],
     'data': ['views/account.xml'],
     'installable': True,
 }
