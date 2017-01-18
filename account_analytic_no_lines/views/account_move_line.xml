@@ -17,11 +17,14 @@
     </field>
 </record>
 
-<record id="view_move_line_form" model="ir.ui.view">
-    <field name="name">analytic_groupby.account.move.line.form</field>
+<record id="view_account_move_line_filter" model="ir.ui.view">
+    <field name="name">easy_analytic_search.account.move.line.form</field>
     <field name="model">account.move.line</field>
     <field name="inherit_id" ref="account.view_account_move_line_filter"/>
     <field name="arch" type="xml">
+        <field name="account_id" position="after">
+            <field name="analytic_account_id"/>
+        </field>
         <filter context="{'group_by':'account_id'}" position="after">
             <filter name="analytic_account_groupby" string="Analytic Account"
                 context="{'group_by': 'analytic_account_id'}"/>
