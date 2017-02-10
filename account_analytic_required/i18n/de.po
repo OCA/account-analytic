@@ -1,0 +1,87 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_required
+# 
+# Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-20 23:05+0000\n"
+"PO-Revision-Date: 2017-01-20 23:05+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>, 2017\n"
+"Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Kontoart"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:34
+#, python-format
+msgid "Always"
+msgstr "Immer"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:72
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+"Verrechnungsregel besagt 'Immer' mit Konto %s '%s', aber die Kostenstelle "
+"zur Kontierung '%s' fehlt."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:80
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account %s '%s'."
+msgstr ""
+"Verrechnungsregel besagt 'Niemals' mit Konto %s '%s', aber zur Kontierung "
+"'%s' ist die Kostenstelle %s '%s' angegeben."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Items"
+msgstr "Journalposten"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:35
+#, python-format
+msgid "Never"
+msgstr "Niemals"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/account.py:33
+#, python-format
+msgid "Optional"
+msgstr "Wahlfrei"
+
+#. module: account_analytic_required
+#: field:account.account.type,analytic_policy:0
+msgid "Policy for analytic account"
+msgstr "Regel zur Kostenstelle"
+
+#. module: account_analytic_required
+#: help:account.account.type,analytic_policy:0
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Never', the "
+"accountant will get an error message if an analytic account is present."
+msgstr ""
+"Bestimmen Sie die Kostenstellen-Regel: Wählen 'Wahlfrei', stellen Sie es dem"
+" Buchhalter frei eine Kostenstelle zur Buchung dieser Kontenart mitzugeben; "
+"Legen Sie 'Immer' fest, erhält der Buchhalter eine Fehlermeldung bei "
+"fehlender Kostenstelle; Legen Sie 'Niemals' fest, erhält der Buchhalter eine"
+" Fehlermeldung bei vorhandener Kostenstelle."
