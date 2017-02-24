@@ -4,14 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
-# Zwygart <zwygart@gmail.com>, 2016
+# Hosni Hadj Taher <hajhasni@hotmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-30 22:27+0000\n"
-"PO-Revision-Date: 2016-09-30 22:27+0000\n"
-"Last-Translator: Zwygart <zwygart@gmail.com>, 2016\n"
+"POT-Creation-Date: 2017-02-17 23:05+0000\n"
+"PO-Revision-Date: 2017-02-17 23:05+0000\n"
+"Last-Translator: Hosni Hadj Taher <hajhasni@hotmail.com>, 2017\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,6 +65,9 @@ msgid ""
 "'%s' but the analytic distribution is missing in the account move line with "
 "label '%s'."
 msgstr ""
+"La politique analytique est réglée sur «Toujours (distribution analytique)» "
+"avec le compte %s '%s ', mais la distribution analytique est manquant dans "
+"la ligne de déplacement de compte avec l'étiquette '%s '."
 
 #. module: account_analytic_plan_required
 #: code:addons/account_analytic_plan_required/account.py:77
@@ -73,6 +76,9 @@ msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
 "line with label '%s' has an analytic distribution %s '%s'."
 msgstr ""
+"La politique analytique est réglée sur «Jamais» avec le compte %s '%s', mais"
+" la ligne de déplacement de compte avec l'étiquette '%s' a une distribution "
+"analytique %s '%s'."
 
 #. module: account_analytic_plan_required
 #: model:ir.model,name:account_analytic_plan_required.model_account_move_line
