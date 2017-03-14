@@ -69,6 +69,11 @@ class TestAccountAnalyticNoLines(SavepointCase):
             'price_unit': 100,
             'quantity': 1,
             'account_id': cls.account_600000.id})
+        cls.invoice_line_4 = cls.account_invoice_line.create({
+            'name': 'Test invoice line 4',
+            'price_unit': 1,
+            'quantity': 0,
+            'account_id': cls.account_600000.id})
 
         # Invoice
         cls.invoice = cls.account_invoice.create({
@@ -78,7 +83,13 @@ class TestAccountAnalyticNoLines(SavepointCase):
             'invoice_line_ids': [(6, 0, [cls.invoice_line_1.id,
                                          cls.invoice_line_2.id,
                                          cls.invoice_line_3.id])]})
-        cls.invoice.action_move_create()
+        cls.invoice_1 = cls.account_invoice.create({
+            'partner_id': cls.user.id,
+            'account_id': cls.account_440000.id,
+            'type': 'in_invoice',
+            'invoice_line_ids': [(6, 0, [cls.invoice_line_4.id])],
+            'payment_term_id': cls.env.ref('account.account_payment_term').id,
+        })
 
     def test_create_analytic_lines(self):
         """
@@ -97,19 +108,30 @@ class TestAccountAnalyticNoLines(SavepointCase):
                 ('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
 
-    def test_finalize_invoice_move_lines(self):
+    def test_finalize_invoice_move_lines_1(self):
         """
         Test the expected result when the method ´finalize_invoice_move_lines`
         is called on an invoice.
         The expected result is that no analytic line has been created
         for this invoice.
         """
-        move_lines = self.account_move_line.search([('invoice_id',
-                                                     '=',
-                                                     self.invoice.id)])
         self.invoice.action_move_create()
-        analytic_lines =\
-            self.account_analytic_line.search([('move_id',
-                                                'in',
-                                                move_lines.ids)]).ids
+        move_lines = self.account_move_line.search([
+            ('invoice_id', '=', self.invoice.id)])
+        analytic_lines = self.account_analytic_line.search(
+            [('move_id', 'in', move_lines.ids)]).ids
+        self.assertFalse(analytic_lines)
+
+    def test_finalize_invoice_move_lines_2(self):
+        """
+        Test the expected result when the method ´finalize_invoice_move_lines`
+        is called on an invoice with only one line with quantity == 0.
+        The expected result is that no analytic line has been created
+        for this invoice.
+        """
+        self.invoice_1.action_move_create()
+        move_lines = self.account_move_line.search(
+            [('invoice_id', '=', self.invoice.id)])
+        analytic_lines = self.account_analytic_line.search(
+            [('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
