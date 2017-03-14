@@ -87,6 +87,10 @@ class account_move_line(orm.Model):
                          move_line.analytic_account_id.name)
 
     def _check_analytic_required(self, cr, uid, ids, context=None):
+        if context is None:
+            context = {}
+        if context.get('skip_analytic_required'):
+            return True
         return not self._check_analytic_required_msg(cr, uid, ids,
                                                      context=context)
 
