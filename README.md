@@ -13,6 +13,7 @@ You'll find modules that:
  - ...
 
 [//]: # (addons)
+
 Available addons
 ----------------
 addon | version | summary
