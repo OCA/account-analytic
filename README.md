@@ -23,6 +23,7 @@ addon | version | summary
 [analytic_base_department](analytic_base_department/) | 9.0.1.0.0 | Base Analytic Department Categorization
 [analytic_department](analytic_department/) | 9.0.1.0.0 | Analytic Department Categorization
 
+
 Unported addons
 ---------------
 addon | version | summary
