@@ -15,27 +15,22 @@ class TestStockPicking(TransactionCase):
 
         self.product = self.env.ref('product.product_product_4')
         self.product.update({'valuation': 'real_time'})
-        self.product_categ = self.env.ref('product.ipad')
-        self.valuation_account = self.env.ref('account.stk')
-        self.stock_account = self.env.ref('account.xfa')
-        self.stock_journal = self.env.ref('stock_account.stock_journal')
-        self.analytic_journal = self.env.ref('account.sit')
+        self.product_categ = self.env.ref('product.product_category_5')
+        self.valuation_account = self.env.ref(
+            'account.data_account_type_expenses')
+        self.stock_account = self.env.ref('account.data_account_type_revenue')
         self.analytic_account = self.env.ref(
-            'account.analytic_project_1_development')
+            'analytic.analytic_agrolait')
         self.warehouse = self.env.ref('stock.warehouse0')
         self.location = self.warehouse.lot_stock_id
         self.dest_location = self.env.ref('stock.stock_location_customers')
         self.outgoing_picking_type = self.env.ref('stock.picking_type_out')
         self.incoming_picking_type = self.env.ref('stock.picking_type_in')
 
-        self.stock_journal.update({
-            'analytic_journal_id': self.analytic_journal.id
-        })
-
         self.product_categ.update({
             'property_stock_valuation_account_id': self.valuation_account.id,
-            'property_stock_account_input_categ': self.stock_account.id,
-            'property_stock_account_output_categ': self.stock_account.id,
+            'property_stock_account_input_categ_id': self.stock_account.id,
+            'property_stock_account_output_categ_id': self.stock_account.id,
         })
 
     def _create_picking(
@@ -44,6 +39,8 @@ class TestStockPicking(TransactionCase):
         picking_data = {
             'picking_type_id': picking_type_id.id,
             'move_type': 'direct',
+            'location_id': location_id.id,
+            'location_dest_id': location_dest_id.id,
         }
 
         picking = self.env['stock.picking'].create(picking_data)
@@ -55,7 +52,6 @@ class TestStockPicking(TransactionCase):
             'location_dest_id': location_dest_id.id,
             'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'date_expected': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'invoice_state': 'none',
             'name': self.product.name,
             'procure_method': 'make_to_stock',
             'product_uom': self.product.uom_id.id,
