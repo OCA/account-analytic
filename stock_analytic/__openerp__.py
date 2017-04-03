@@ -6,10 +6,10 @@
 {
     "name": "Stock Analytic",
     "summary": "Adds an analytic account in stock move",
-    "version": "8.0.1.0.0",
+    "version": "9.0.1.0.0",
     "author": "Julius Network Solutions,"
-    "ClearCorp, OpenSynergy Indonesia, "
-    "Odoo Community Association (OCA)",
+              "ClearCorp, OpenSynergy Indonesia,"
+              "Odoo Community Association (OCA)",
     "website": "http://www.julius.fr/",
     "category": "Warehouse Management",
     "license": "AGPL-3",
@@ -22,5 +22,4 @@
         "views/stock_inventory_views.xml",
     ],
     'installable': True,
-    'active': False,
 }
