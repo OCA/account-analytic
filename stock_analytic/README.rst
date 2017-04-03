@@ -9,22 +9,11 @@ Stock Analytic
 Adds an analytic account in stock move to be able to get analytic information
 when generating the journal items.
 
-Installation
-============
-
-To install this module, you need to:
-
-1.  Clone the branch 8.0 of the repository https://github.com/OCA/account-analytic
-2.  Add the path to this repository in your configuration (addons-path)
-3.  Update the module list
-4.  Go to menu *Setting -> Modules -> Local Modules*
-5.  Search For *Stock Analytic*
-6.  Install the module
 
 Usage
 =====
 
-Assigned Stock Move With Analytic Account
+To Assign an Analytic Account to a Stock Move
 -----------------------------------------
 
 You need to:
@@ -46,7 +35,7 @@ journal items with following rule:
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/8.0
+   :target: https://runbot.odoo-community.org/runbot/87/9.0
 
 Bug Tracker
 ===========
@@ -68,7 +57,8 @@ Contributors
 * Mathieu VATEL <mathieu@julius.fr>
 * Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
 * Andhitia Rama <andhitia.r@gmail.com>
-* Michael Viriyananda <viriyananda.michael@gmai.com>
+* Michael Viriyananda <viriyananda.michael@gmail.com>
+* Eficent <contact@eficent.com>
 
 Maintainer
 ----------
