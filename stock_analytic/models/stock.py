@@ -22,16 +22,9 @@ class StockQuant(models.Model):
 
     @api.model
     def _prepare_account_move_line(self, move, qty, cost,
-                                   credit_account_id, debit_account_id,
-                                   context=None):
-        res = super(StockQuant,
-                    self)._prepare_account_move_line(
-                        move, qty, cost,
-                        credit_account_id,
-                        debit_account_id,
-                        context=context
-        )
-
+                                   credit_account_id, debit_account_id):
+        res = super(StockQuant, self)._prepare_account_move_line(
+            move, qty, cost, credit_account_id, debit_account_id)
         # Add analytic account in debit line
         if not move.analytic_account_id:
             return res
