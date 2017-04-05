@@ -319,9 +319,9 @@ class TestAnalyticLine(common.TransactionCase):
             'amount': -200,
             'general_account_id': self.account_rcv_id.id,
         })
-        todate = fields.Date.to_string(fields.Date.from_string(
-            fields.Date.today()
-            ).replace(day=1))
+        todate = fields.Date.to_string(
+            fields.Date.from_string(fields.Date.today()) - timedelta(days=1)
+        )
         aal2 = aal_rs.with_context(to_date=todate)
         self.assertAlmostEqual(0, aal2.account_id.credit)
         self.assertAlmostEqual(100, aal2.account_id.debit)
@@ -360,10 +360,9 @@ class TestAnalyticLine(common.TransactionCase):
         self.assertAlmostEqual(200, aal2.account_id.credit)
         self.assertAlmostEqual(0, aal2.account_id.debit)
         self.assertAlmostEqual(-200, aal2.account_id.balance)
-
-        todate = fields.Date.to_string(fields.Date.from_string(
-            fields.Date.today()
-            ).replace(day=1))
+        todate = fields.Date.to_string(
+            fields.Date.from_string(fields.Date.today()) - timedelta(days=1)
+        )
         aal3 = aal_rs.with_context(to_date=todate)
         self.assertAlmostEqual(0, aal3.account_id.credit)
         self.assertAlmostEqual(100, aal3.account_id.debit)
