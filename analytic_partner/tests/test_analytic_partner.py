@@ -40,11 +40,7 @@ class TestAnalyticPartner(common.SavepointCase):
 
     def test_flow(self):
         workflow.trg_validate(self.uid, 'account.invoice', self.invoice.id,
-<<<<<<< HEAD
-            'invoice_open', self.cr)
-=======
-                          'invoice_open', self.cr)
->>>>>>> 8cf1e620c1b915ae1ccfc36a11faf919b128e002
+                              'invoice_open', self.cr)
         self.invoice.action_invoice_open()
         analytic_lines = self.invoice.move_id.mapped(
             'line_ids.analytic_line_ids')
