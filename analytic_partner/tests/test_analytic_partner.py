@@ -2,9 +2,11 @@
 # (c) 2015 Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 import odoo.tests.common as common
+from odoo import workflow
 
 
 class TestAnalyticPartner(common.SavepointCase):
+
     @classmethod
     def setUpClass(cls):
         super(TestAnalyticPartner, cls).setUpClass()
@@ -37,6 +39,8 @@ class TestAnalyticPartner(common.SavepointCase):
         })
 
     def test_flow(self):
+        workflow.trg_validate(self.uid, 'account.invoice', self.invoice.id,
+                          'invoice_open', self.cr)
         self.invoice.action_invoice_open()
         analytic_lines = self.invoice.move_id.mapped(
             'line_ids.analytic_line_ids')
