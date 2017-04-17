@@ -53,6 +53,7 @@ Contributors
 * Guewen Baconnier <guewen.baconnier@camptocamp.com>
 * Daniel Reis <dgreis@sapo.pt>
 * Angel Moya <angel.moya@domatix.com>
+* Dave Burkholder <dave@thinkwelldesigns.com>
 
 Maintainer
 ----------
