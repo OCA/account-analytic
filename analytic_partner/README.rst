@@ -2,7 +2,7 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=================================
+==================================
 Classify analytic items by partner
 ==================================
 
@@ -31,7 +31,6 @@ You can also:
 #. Click on the smart-button *Cost/Revenue* placed on the upper-right part.
 #. Navigate to the analytic items associated to this partner.
 
-
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/87/10.0
@@ -46,7 +45,7 @@ Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/account_invoicing/issues>`_. In case of trouble, please
+<https://github.com/OCA/account-analytic/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed feedback.
 

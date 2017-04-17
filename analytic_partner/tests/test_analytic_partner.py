@@ -21,12 +21,12 @@ class TestAnalyticPartner(common.SavepointCase):
             'user_type_id': cls.account_type.id
         })
         cls.analytic_account = cls.env['account.analytic.account'].create({
-             'name': 'Test Analytic Account',
+            'name': 'Test Analytic Account',
         })
         cls.invoice = cls.env['account.invoice'].create({
             'partner_id': cls.partner.id,
             'invoice_line_ids': [
-                (0,0,{
+                (0, 0, {
                     'name': 'Test line',
                     'account_id': cls.account.id,
                     'account_analytic_id': cls.analytic_account.id,
@@ -45,8 +45,3 @@ class TestAnalyticPartner(common.SavepointCase):
                 analytic_line.other_partner_id,
                 self.invoice.partner_id.commercial_partner_id,
                 'Invoice partner has not been propagated to the analytic line')
-
-
-
-
-

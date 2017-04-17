@@ -11,8 +11,8 @@
     'author': 'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
               'Antiun Ingeniería S.L., '
               'Odoo Community Association (OCA)',
-    "License": "AGPL-3",
-    "installable": True,
+    'License': 'AGPL-3',
+    'installable': True,
     'depends': [
         'analytic',
         'account',
