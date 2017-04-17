@@ -41,6 +41,7 @@ Known issues / Roadmap
 * This module hasn't been tested with *account_analytic_plans* module
 installed, so maybe it's incompatible with it.
 
+
 Bug Tracker
 ===========
 
