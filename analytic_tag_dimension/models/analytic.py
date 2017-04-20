@@ -23,14 +23,17 @@ class AccountAnalyticDimension(models.Model):
 
     @api.model
     def create(self, values):
-        model = self.env.ref('analytic.model_account_analytic_line')
-        self.env['ir.model.fields'].create({
-            'name': 'x_dimension_%s' % (values.get('code')),
-            'field_description': values.get('name'),
-            'model_id': model.id,
-            'ttype': 'many2one',
-            'relation': 'account.analytic.tag'
-        })
+        model_xml_ids = ['account.model_account_move_line',
+                         'analytic.model_account_analytic_line']
+        for model_xml_id in model_xml_ids:
+            model = self.env.ref(model_xml_id)
+            self.env['ir.model.fields'].create({
+                'name': 'x_dimension_%s' % (values.get('code')),
+                'field_description': values.get('name'),
+                'model_id': model.id,
+                'ttype': 'many2one',
+                'relation': 'account.analytic.tag'
+            })
         return super(AccountAnalyticDimension, self).create(values)
 
 
@@ -81,3 +84,35 @@ class AccountAnalyticLine(models.Model):
             tag_obj = self.env['account.analytic.tag']
             values.update(tag_obj.browse(tag_ids).get_dimension_values())
         return super(AccountAnalyticLine, self).write(values)
+
+
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
+
+    @api.constrains('analytic_tag_ids')
+    def _check_field(self):
+        dimension_ids = self.analytic_tag_ids.mapped(
+            'analytic_dimension_id').ids
+        if len(self.analytic_tag_ids.ids) != len(dimension_ids):
+            raise ValidationError(
+                _("You can not set two tags from same dimension."))
+
+    @api.model
+    def create(self, values):
+        tag_values = values.get('analytic_tag_ids')
+        # tag_ids can not be created from here
+        if tag_values:
+            tag_ids = tag_values[0][2]
+            tag_obj = self.env['account.analytic.tag']
+            values.update(tag_obj.browse(tag_ids).get_dimension_values())
+        return super(AccountMoveLine, self).create(values)
+
+    @api.multi
+    def write(self, values):
+        tag_values = values.get('analytic_tag_ids')
+        # tag_ids can not be created from here
+        if tag_values:
+            tag_ids = tag_values[0][2]
+            tag_obj = self.env['account.analytic.tag']
+            values.update(tag_obj.browse(tag_ids).get_dimension_values())
+        return super(AccountMoveLine, self).write(values)
