@@ -29,6 +29,15 @@ class TestAnalyticDimensionCase(TransactionCase):
         self.analytic_tag_concept_b = self.env.ref(
             'analytic_tag_dimension.analytic_tag_concept_b')
 
+        self.analytic_dimension_test = self.dimension_obj.create({
+            'name': 'Test_creation',
+            'code': 'test'
+        })
+        self.analytic_tag_test_a = self.tag_obj.create({
+            'name': 'Test A',
+            'analytic_dimension_id': self.analytic_dimension_test.id
+        })
+
         self.analytic_account_id = self.env.ref(
             'analytic.analytic_absences').id
 
@@ -39,16 +48,17 @@ class TestAnalyticDimensionCase(TransactionCase):
             'account_id': self.analytic_account_id,
             'name': 'test',
             'tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                self.analytic_tag_concept_a.id])]
+                                self.analytic_tag_concept_a.id,
+                                self.analytic_tag_test_a.id])]
         }
         line = self.analytic_line_obj.create(values)
         self.assertTrue(
             line.x_dimension_type.id == self.analytic_tag_type_a.id)
         self.assertTrue(
             line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
-        values.update({
+        values_update = {
             'tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
                                 self.analytic_tag_type_b.id])]
-        })
+        }
         with self.assertRaises(ValidationError):
-            self.analytic_line_obj.create(values)
+            line.write(values_update)
