@@ -71,7 +71,8 @@ class AnalyticDimensionLine(models.AbstractModel):
         # TODO: Is it possible to compute automatically?
         return ['account.model_account_move_line',
                 'analytic.model_account_analytic_line',
-                'account.model_account_invoice_line']
+                'account.model_account_invoice_line',
+                'account.model_account_invoice_report']
 
     @api.model
     def create(self, values):

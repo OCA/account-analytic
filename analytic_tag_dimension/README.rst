@@ -8,7 +8,10 @@ Analytic Tag Dimension
 
 This module allows to group Analytic Tags on Dimensions.
 
-Dimensions are created as custom field, then you can group by Dimensions on Analytic Entries Report.
+Dimensions are created as custom field, then you can group by Dimensions on:
+* Account/Adviser/Journal Items
+* Account/Reports/Business Intelligence/Invoices
+* Account/Reports/Business Intelligence/Analytic Entries
 
 When you set Tags on Analytic Entries each custom fields for dimensions are updated with its Tag.
 
