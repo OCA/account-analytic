@@ -23,8 +23,7 @@ class AccountAnalyticDimension(models.Model):
 
     @api.model
     def create(self, values):
-        model_xml_ids = ['account.model_account_move_line',
-                         'analytic.model_account_analytic_line']
+        model_xml_ids = self.env['analytic.dimension.line'].get_models()
         for model_xml_id in model_xml_ids:
             model = self.env.ref(model_xml_id)
             self.env['ir.model.fields'].create({
@@ -32,7 +31,9 @@ class AccountAnalyticDimension(models.Model):
                 'field_description': values.get('name'),
                 'model_id': model.id,
                 'ttype': 'many2one',
-                'relation': 'account.analytic.tag'
+                'relation': 'account.analytic.tag',
+                # 'store': True,
+                # 'compute': '_compute_analytic_dimensions'
             })
         return super(AccountAnalyticDimension, self).create(values)
 
@@ -54,65 +55,73 @@ class AccountAnalyticTag(models.Model):
                 'x_dimension_%s' % code: tag.id})
         return values
 
-
-class AccountAnalyticLine(models.Model):
-    _inherit = 'account.analytic.line'
-
-    @api.constrains('tag_ids')
-    def _check_field(self):
-        dimension_ids = self.tag_ids.mapped('analytic_dimension_id').ids
-        if len(self.tag_ids.ids) != len(dimension_ids):
+    def _check_analytic_dimension(self):
+        dimension_ids = self.mapped('analytic_dimension_id').ids
+        if len(self.ids) != len(dimension_ids):
             raise ValidationError(
                 _("You can not set two tags from same dimension."))
 
+
+class AnalyticDimensionLine(models.AbstractModel):
+    _name = 'analytic.dimension.line'
+    _analytic_tag_field_name = 'analytic_tag_ids'
+
+    @api.model
+    def get_models(self):
+        # TODO: Is it possible to compute automatically?
+        return ['account.model_account_move_line',
+                'analytic.model_account_analytic_line',
+                'account.model_account_invoice_line']
+
     @api.model
     def create(self, values):
-        tag_values = values.get('tag_ids')
-        # tag_ids can not be created from here
-        if tag_values:
-            tag_ids = tag_values[0][2]
-            tag_obj = self.env['account.analytic.tag']
-            values.update(tag_obj.browse(tag_ids).get_dimension_values())
-        return super(AccountAnalyticLine, self).create(values)
+        result = super(AnalyticDimensionLine, self).create(values)
+        if values.get(self._analytic_tag_field_name):
+            tag_ids = getattr(
+                result, self._analytic_tag_field_name)
+            tag_ids._check_analytic_dimension()
+            dimension_values = tag_ids.get_dimension_values()
+            super(AnalyticDimensionLine, result).write(dimension_values)
+        return result
 
     @api.multi
     def write(self, values):
-        tag_values = values.get('tag_ids')
-        # tag_ids can not be created from here
-        if tag_values:
-            tag_ids = tag_values[0][2]
-            tag_obj = self.env['account.analytic.tag']
-            values.update(tag_obj.browse(tag_ids).get_dimension_values())
-        return super(AccountAnalyticLine, self).write(values)
+        result = super(AnalyticDimensionLine, self).write(values)
+        if values.get(self._analytic_tag_field_name):
+            for record in self:
+                tag_ids = getattr(
+                    record, self._analytic_tag_field_name
+                )
+                tag_ids._check_analytic_dimension()
+                dimension_values = tag_ids.get_dimension_values()
+                super(AnalyticDimensionLine, record).write(dimension_values)
+        return result
+
+    # @api.multi
+    # def _compute_analytic_dimensions(self):
+    #     import pdb; pdb.set_trace()
+    #     for record in self:
+    #         tag_ids = getattr(record, self._analytic_tag_field_name)
+    #         tag_ids._check_analytic_dimension()
+    #         for tag in tag_ids:
+    #             code = tag.analytic_dimension_id.code
+    #             field_name = 'x_dimension_%s' % code
+    #             setattr(record, field_name, tag.id)
+
+
+class AccountAnalyticLine(models.Model):
+    _name = 'account.analytic.line'
+    _inherit = ['analytic.dimension.line', 'account.analytic.line']
+    _analytic_tag_field_name = 'tag_ids'
 
 
 class AccountMoveLine(models.Model):
-    _inherit = 'account.move.line'
+    _name = 'account.move.line'
+    _inherit = ['analytic.dimension.line', 'account.move.line']
+    _analytic_tag_field_name = 'analytic_tag_ids'
 
-    @api.constrains('analytic_tag_ids')
-    def _check_field(self):
-        dimension_ids = self.analytic_tag_ids.mapped(
-            'analytic_dimension_id').ids
-        if len(self.analytic_tag_ids.ids) != len(dimension_ids):
-            raise ValidationError(
-                _("You can not set two tags from same dimension."))
 
-    @api.model
-    def create(self, values):
-        tag_values = values.get('analytic_tag_ids')
-        # tag_ids can not be created from here
-        if tag_values:
-            tag_ids = tag_values[0][2]
-            tag_obj = self.env['account.analytic.tag']
-            values.update(tag_obj.browse(tag_ids).get_dimension_values())
-        return super(AccountMoveLine, self).create(values)
-
-    @api.multi
-    def write(self, values):
-        tag_values = values.get('analytic_tag_ids')
-        # tag_ids can not be created from here
-        if tag_values:
-            tag_ids = tag_values[0][2]
-            tag_obj = self.env['account.analytic.tag']
-            values.update(tag_obj.browse(tag_ids).get_dimension_values())
-        return super(AccountMoveLine, self).write(values)
+class AccountInvoiceLine(models.Model):
+    _name = 'account.invoice.line'
+    _inherit = ['analytic.dimension.line', 'account.invoice.line']
+    _analytic_tag_field_name = 'analytic_tag_ids'
