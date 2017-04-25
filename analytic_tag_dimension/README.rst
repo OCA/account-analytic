@@ -10,7 +10,6 @@ This module allows to group Analytic Tags on Dimensions.
 
 Dimensions are created as custom field, then you can group by Dimensions on:
 * Account/Adviser/Journal Items
-* Account/Reports/Business Intelligence/Invoices
 * Account/Reports/Business Intelligence/Analytic Entries
 
 When you set Tags on Analytic Entries each custom fields for dimensions are updated with its Tag.
@@ -33,6 +32,8 @@ Known issues / Roadmap
 * Set color on Analytic Dimensions, and get it on Analytic Tags.
 * Change implementation to create stored computed fields, instead of rewrite create and write functions.
 * On function that create fields, get al models that inherit from AbstractModel
+* Set dimansion on invoice report
+* Improve fields_view_get to create filters on search view
 
 Usage
 =====
