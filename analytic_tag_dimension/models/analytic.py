@@ -5,6 +5,7 @@
 
 from odoo import models, api, fields, _
 from odoo.exceptions import ValidationError
+# from lxml import etree
 
 
 class AccountAnalyticDimension(models.Model):
@@ -108,6 +109,23 @@ class AnalyticDimensionLine(models.AbstractModel):
     #             code = tag.analytic_dimension_id.code
     #             field_name = 'x_dimension_%s' % code
     #             setattr(record, field_name, tag.id)
+
+    # @api.model
+    # def fields_view_get(
+    #         self, view_id=None, view_type='form',
+    #         toolbar=False, submenu=False
+    # ):
+    #     result = super(AnalyticDimensionLine, self).fields_view_get(
+    #         view_id, view_type, toolbar=toolbar, submenu=submenu)
+    #     if view_type == 'search':
+    #         doc = etree.XML(result['arch'])
+    #         dimension_obj = self.env['account.analytic.dimension']
+    #         for dimension in dimension_obj.search([]):
+    #             field_name = 'x_dimension_%s' % (dimension.code)
+    #             doc.append(etree.Element('field', {
+    #                 'name': field_name}))
+    #         result['arch'] = etree.tostring(doc)
+    #     return result
 
 
 class AccountAnalyticLine(models.Model):
