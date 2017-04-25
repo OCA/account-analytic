@@ -19,6 +19,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_analytic_no_lines](account_analytic_no_lines/) | 9.0.1.0.0 | This module hides analytics lines from accounting menus and disable their generation from an invoice or a move line.
+[account_analytic_parent](account_analytic_parent/) | 9.0.1.0.0 | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 9.0.1.0.0 | Account Analytic Required
 [analytic_base_department](analytic_base_department/) | 9.0.1.0.0 | Base Analytic Department Categorization
 [analytic_department](analytic_department/) | 9.0.1.0.0 | Analytic Department Categorization
