@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Antonio Espinosa - <antonio.espinosa@tecnativa.com>
+     Copyright 2017 Vicent Cubells - <vicent.cubells@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <record model="ir.ui.view" id="view_move_line_form">
+        <field name="name">Add Analytic distribution field</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_form"/>
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="before">
+                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_move_line_form2">
+        <field name="name">Add Analytic distribution in form2</field>
+        <field name="model">account.move.line</field>
+        <field name="priority">2</field>
+        <field name="inherit_id" ref="account.view_move_line_form2"/>
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="before">
+                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_move_line_tree">
+        <field name="name">Add Analytic distribution column</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="before">
+                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting" einvisible="not context.get('analytic_journal_id', False)"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
