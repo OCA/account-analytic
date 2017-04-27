@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_order_form_inherit2">
+        <field name="name">sale.order.form.inherit2</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="before">
+                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree//field[@name='tax_id']" position="before">
+                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale.view_order_form_editable_list" model="ir.ui.view">
+        <field name="groups_id" eval="[(4, ref('analytic.group_analytic_accounting'))]"/>
+    </record>
+
+</odoo>
