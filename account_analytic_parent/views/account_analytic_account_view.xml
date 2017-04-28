@@ -16,9 +16,10 @@
         <record id="view_account_analytic_account_report" model="ir.ui.view">
             <field name="name">account.analytic.account.report</field>
             <field name="model">account.analytic.account</field>
+            <field name="groups_id" eval="[(4, ref('analytic.group_analytic_accounting'))]"/>
             <field name="field_parent">child_ids</field>
             <field name="arch" type="xml">
-                <tree string="Analytic Accounts">
+                <tree string="Analytic Accounts" groups="analytic.group_analytic_accounting">
                     <field name="display_name"/>
                     <field name="code"/>
                     <field name="partner_id"/>
@@ -51,6 +52,7 @@
 
         <menuitem name="Analytic Accounts"
                   action="action_analytic_account_report"
+                  groups="analytic.group_analytic_accounting"
                   id="menu_action_analytic_account_report"
                   parent="account.account_reports_business_intelligence_menu"
                   sequence="30"/>
