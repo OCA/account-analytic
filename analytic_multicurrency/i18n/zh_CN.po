@@ -3,25 +3,25 @@
 # * analytic_multicurrency
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
+# ITGeeker <alanljj@qq.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-06 02:55+0000\n"
 "PO-Revision-Date: 2017-04-06 02:55+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Finnish (https://www.transifex.com/oca/teams/23907/fi/)\n"
+"Last-Translator: ITGeeker <alanljj@qq.com>, 2017\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/oca/teams/23907/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fi\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: analytic_multicurrency
 #: model:ir.model,name:analytic_multicurrency.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Analyyttinen tili"
+msgstr "核算科目"
 
 #. module: analytic_multicurrency
 #: field:account.analytic.line,aa_currency_id:0
@@ -36,7 +36,7 @@ msgstr ""
 #. module: analytic_multicurrency
 #: model:ir.model,name:analytic_multicurrency.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Analyyttinen rivi"
+msgstr ""
 
 #. module: analytic_multicurrency
 #: constraint:account.analytic.account:0
