@@ -3,61 +3,80 @@
 # * account_analytic_required
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-25 08:50+0000\n"
-"PO-Revision-Date: 2017-04-25 08:50+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"POT-Creation-Date: 2017-06-13 09:51+0000\n"
+"PO-Revision-Date: 2017-06-13 09:51+0000\n"
+"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: ca\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
-msgstr "Tipus de compte"
+msgstr "Tipo de Conta"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "Sempre"
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
-msgstr ""
+msgstr "Política Analítica"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:52
+#: code:addons/account_analytic_required/models/account.py:47
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
+"A política analítica é definida como \"Sempre\" com conta%s '%s' Mas a conta"
+" analítica está faltando na linha de mudança de conta com o rótulo '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:60
+#: code:addons/account_analytic_required/models/account.py:55
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
+"A política analítica é definida como \"Nunca\" com conta%s '%s' mas a linha "
+"de movimento da conta com o rótulo '%s' tem uma conta analítica '%s'."
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
-msgstr ""
+msgstr "Agrupar por"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Item diário"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "Nunca"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "Opcional"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
 msgid "Policy for analytic account"
-msgstr "Política per als comptes analítics"
+msgstr "Política para conta analítica"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
@@ -68,8 +87,9 @@ msgid ""
 "error message if there is no analytic account ; if you select 'Never', the "
 "accountant will get an error message if an analytic account is present."
 msgstr ""
-"Configura la política per als comptes analítics: Si seleccioneu 'Opcional', "
-"el comptable és lliure de posar un compte analític en un apunt comptable amb"
-" aquest tipus de compte; si seleccioneu 'Sempre', el comptable rebrà un "
-"missatge d'error si l'apunt no té compte analític; si seleccioneu 'Mai', el "
-"comptable rebrà un missatge d'error si l'apunt té un compte analític."
+"Defina a política para contas analíticas: se você selecionar \"Opcional\", o"
+" contador é livre para colocar uma conta analítica em uma linha de mudança "
+"de conta com esse tipo de conta; Se você selecionar 'Sempre', o contador "
+"receberá uma mensagem de erro se não houver uma conta analítica; Se você "
+"selecionar 'Nunca', o contador receberá uma mensagem de erro se uma conta "
+"analítica estiver presente."
