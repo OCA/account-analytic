@@ -17,7 +17,7 @@
         'account_analytic_analysis',
     ],
     'data': [
-
+        'views/account_budget_view.xml',
     ],
     'installable': True,
 }

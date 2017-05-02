@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_purchase_crossovered_budget_line_tree">
+            <field name="name">purchase.crossovered.budget.line.tree</field>
+            <field name="model">crossovered.budget.lines</field>
+            <field name="inherit_id" ref="account_budget.view_crossovered_budget_line_tree"/>
+            <field name="arch" type="xml">
+                <tree string="Budget Lines">
+                    <field name="paid_date" position="replace">
+                        <field name="paid_date" invisible="1"/>
+                    </field>
+                    <field name="planned_amount" position="after">
+                        <field name="allocated_amount"/>
+                    </field>
+                    <field name="theoritical_amount" position="replace">
+                        <field name="theoritical_amount" invisible="1"/>
+                    </field>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

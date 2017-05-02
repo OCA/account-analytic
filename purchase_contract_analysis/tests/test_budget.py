@@ -28,3 +28,37 @@ class TestBudget(TransactionCase):
             budget_lines_total,
             "Budget total not equal the sum of the budget's line sum"
         )
+
+    def test_allocated_amount(self):
+        """
+        Compare if the Allocated Amount field has a value <= Planned Amount and
+         >= Pratical Amount
+        """
+        vals = {
+            'crossovered_budget_id': self.budget1.id,
+            'analytic_account_id': self.env.ref(
+                'account.analytic_consultancy'
+            ).id,
+            'general_budget_id': self.env.ref(
+                'account_budget.account_budget_post_purchase0'
+            ).id,
+            'date_from': '2007-02-05',
+            'date_to': '2017-10-05',
+            'planned_amount': 1500,
+            'allocated_amount': 1200,
+            'practical_amount': 1000,
+            'company_id': self.budget1.company_id.id,
+        }
+        crossovered_budget_line = self.env['crossovered.budget.lines'].create(
+            vals
+        )
+        self.assertTrue(
+            crossovered_budget_line.planned_amount >=
+            crossovered_budget_line.allocated_amount,
+            "Allocated amount can't be bigger than the Planned amount!"
+        )
+        self.assertTrue(
+            crossovered_budget_line.practical_amount <=
+            crossovered_budget_line.allocated_amount,
+            "Pratical amount can't be bigger than the Allocated amount!"
+        )
