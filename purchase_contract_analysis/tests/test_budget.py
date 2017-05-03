@@ -12,21 +12,32 @@ class TestBudget(TransactionCase):
         self.budget1 = self.env.ref(
             'account_budget.crossovered_budget_budgetoptimistic0'
         )
-        self.budget1.write({'total': 28325})
+        self.budget1.write({'total': 31325.00})
 
-    def _sum_budget_lines(self, budget):
-        total = 0
-        for line in budget.crossovered_budget_line:
-            total += line.planned_amount
-        return total
-
-    def test_budget_total(self):
-        "Compare the budget total with the sum of the bugdet lines"
-        budget_lines_total = self._sum_budget_lines(self.budget1)
-        self.assertEqual(
-            self.budget1.total,
-            budget_lines_total,
-            "Budget total not equal the sum of the budget's line sum"
+    def test_new_crossovered_budget_line(self):
+        """
+        The Creation of a new crossovered budget line can't make the sum of
+        the planned amount surpass the budget total
+        """
+        vals = {
+            'crossovered_budget_id': self.budget1.id,
+            'analytic_account_id': self.env.ref(
+                'account.analytic_consultancy'
+            ).id,
+            'general_budget_id': self.env.ref(
+                'account_budget.account_budget_post_purchase0'
+            ).id,
+            'date_from': '2007-02-05',
+            'date_to': '2017-10-05',
+            'planned_amount': 2000,
+            'allocated_amount': 1200,
+            'practical_amount': 1000,
+            'company_id': self.budget1.company_id.id,
+        }
+        self.assertTrue(
+            self.env['crossovered.budget.lines'].create(vals),
+            "The sum of the Planned amount surpass the Budget's total after "
+            "the creation of this new line!"
         )
 
     def test_allocated_amount(self):
@@ -62,3 +73,20 @@ class TestBudget(TransactionCase):
             crossovered_budget_line.allocated_amount,
             "Pratical amount can't be bigger than the Allocated amount!"
         )
+
+    def test_verify_all_the_lines_has_the_same_budgetary_position(self):
+        """
+        Verify if all the linas computed in the 'Contracts Budget Lines' field
+        has the same Budgetary Position.
+        """
+        budget_line_id = self.env.ref(
+            'account_budget.crossovered_budget_lines_0'
+        )
+        budget_line_id._verify_budget_lines_budgetary_position()
+        for budget_contract_line in budget_line_id.contracts_budget_lines:
+            self.assertEqual(
+                budget_contract_line.general_budget_id.id,
+                budget_line_id.general_budget_id.id,
+                "One or more of the Contracts Budget Lines don't have the "
+                "same Budgetary Position as the active Crossovered Budget Line"
+            )

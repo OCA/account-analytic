@@ -44,7 +44,8 @@
                                 </div>
                             </group>
                             <group>
-                               <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                                <field name="contracts_budget_lines"/>
+                                <field name="company_id" widget="selection" groups="base.group_multi_company"/>
                             </group>
                         </form>
                     </field>
@@ -57,17 +58,15 @@
             <field name="model">crossovered.budget.lines</field>
             <field name="inherit_id" ref="account_budget.view_crossovered_budget_line_tree"/>
             <field name="arch" type="xml">
-                <tree string="Budget Lines">
-                    <field name="paid_date" position="replace">
-                        <field name="paid_date" invisible="1"/>
-                    </field>
-                    <field name="planned_amount" position="after">
-                        <field name="allocated_amount"/>
-                    </field>
-                    <field name="theoritical_amount" position="replace">
-                        <field name="theoritical_amount" invisible="1"/>
-                    </field>
-                </tree>
+                <field name="paid_date" position="replace">
+                    <field name="paid_date" invisible="1"/>
+                </field>
+                <field name="planned_amount" position="after">
+                    <field name="allocated_amount"/>
+                </field>
+                <field name="theoritical_amount" position="replace">
+                    <field name="theoritical_amount" invisible="1"/>
+                </field>
             </field>
         </record>
 
