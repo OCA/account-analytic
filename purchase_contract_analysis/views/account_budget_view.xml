@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <openerp>
     <data>
+        <record model="ir.ui.view" id="purchase_crossovered_budget_view_form">
+            <field name="name">purchase.crossovered.budget.view.form</field>
+            <field name="model">crossovered.budget</field>
+            <field name="inherit_id" ref="account_budget.crossovered_budget_view_form"/>
+            <field name="arch" type="xml">
+                <field name="company_id" position="before">
+                    <field name="total"/>
+                </field>
+                <field name="crossovered_budget_line" position="replace">
+                    <field name="crossovered_budget_line" colspan="4" nolabel="1" attrs="{'readonly':[('state','!=','draft')]}">
+                        <tree string="Budget Lines">
+                            <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                            <field name="general_budget_id"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="paid_date" invisible="1"/>
+                            <field name="planned_amount" sum="Planned Amount"/>
+                            <field name="planned_amount" position="after">
+                                <field name="allocated_amount" sum="Allocated Amount"/>
+                            </field>
+                            <field name="practical_amount" sum="Practical Amount"/>
+                            <field name="theoritical_amount" sum="Theoretical Amount" invisible="1"/>
+                            <field name="percentage"/>
+                        </tree>
+                        <form string="Budget Lines">
+                            <group>
+                                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                            </group>
+                            <group>
+                                <field name="general_budget_id"/>
+                            </group>
+                            <group>
+                                <group><field name="planned_amount"/></group>
+                                <group><field name="allocated_amount"/></group>
+                            </group>
+                            <group>
+                                <label for="date_from" string="Duration"/>
+                                <div>
+                                    <field name="date_from" class="oe_inline"/> -
+                                    <field name="date_to" class="oe_inline"/>
+                                </div>
+                            </group>
+                            <group>
+                               <field name="company_id" widget="selection" groups="base.group_multi_company"/>
+                            </group>
+                        </form>
+                    </field>
+                </field>
+            </field>
+        </record>
 
         <record model="ir.ui.view" id="view_purchase_crossovered_budget_line_tree">
             <field name="name">purchase.crossovered.budget.line.tree</field>
