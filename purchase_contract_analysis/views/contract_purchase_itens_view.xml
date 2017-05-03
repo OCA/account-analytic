@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="contract_purchase_itens_form_view">
+            <field name="name">contract.purchase.itens.form</field>
+            <field name="model">contract.purchase.itens</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="product"/>
+                            </group>
+                        </group>
+                        <separator string="Quantity of Product/Service"/>
+                        <group>
+                            <field name="quantity"/>
+                        </group>
+                        <separator string="Values"/>
+                        <group>
+                            <field name="expected"/>
+                            <field name="invoiced"/>
+                            <field name="to_invoice"/>
+                            <field name="remaining"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contract_purchase_itens_tree_view">
+            <field name="name">contract.purchase.itens.tree</field>
+            <field name="model">contract.purchase.itens</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="product"/>
+                    <field name="quantity"/>
+                    <field name="expected"/>
+                    <field name="invoiced"/>
+                    <field name="to_invoice"/>
+                    <field name="remaining"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="contract_purchase_itens_action" model="ir.actions.act_window">
+            <field name="name">Contract Purchase Itens</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">contract.purchase.itens</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="contract_purchase_itens_action" id="menu_contract_purchase_itens_action" parent="purchase.menu_procurement_management" sequence="30"/>
+    </data>
+</openerp>

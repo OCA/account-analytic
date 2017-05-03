@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_contract_purchase_itens,contract.purchase.itens,model_contract_purchase_itens,group_contract_purchase_itens_user,1,1,1,1

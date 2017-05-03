@@ -13,11 +13,15 @@
               'Odoo Community Association (OCA)',
     'website': 'http://www.kmee.com.br',
     'depends': [
+        'purchase',
         'account_budget',
         'account_analytic_analysis',
     ],
     'data': [
+        'security/contract_purchase_itens_security.xml',
+        'security/ir.model.access.csv',
         'views/account_budget_view.xml',
+        'views/contract_purchase_itens_view.xml',
     ],
     'installable': True,
 }
