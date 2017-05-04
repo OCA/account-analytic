@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="purchase_account_analytic_account_form_form_view">
+            <field name="name">pruchase.account.analytic.account.form.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='code']" position="before">
+                    <field name="contract_type" invisible="1"/>
+                </xpath>
+                <field name="template_id" postion="after">
+                    <field name="contract_type"/>
+                </field>
+                <xpath expr="//table[@class='oe_form_analytic_account']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='pricelist_id']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
+                </xpath>
+                <xpath expr="//separator[@name='toinvoice']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
+                </xpath>
+                <xpath expr="//group[@name='invoice_on_timesheets']" position="after">
+                    <separator string="Invoicing" attrs="{'invisible': [('contract_type', '!=', 'purchase')]}"/>
+                    <field name="contract_purchase_itens_lines" attrs="{'invisible': [('contract_type', '!=', 'purchase')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="contract_purchase_action" model="ir.actions.act_window">
+            <field name="name">Contracts</field>
+            <field name="res_model">account.analytic.account</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'default_type':'contract', 'default_contract_type':'purchase', 'search_default_open':1, 'search_default_pending':1, 'default_manager_id':uid}</field>
+            <field name="domain">[('type','=','contract'),('contract_type', '=', 'purchase')]</field>
+        </record>
+
+        <menuitem
+                action="contract_purchase_action"
+                id="menu_contract_purchase_action"
+                parent="purchase.menu_procurement_management"
+                sequence="28"
+        />
+
+    </data>
+</openerp>

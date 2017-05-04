@@ -10,7 +10,7 @@ class ContractPurchaseItens(models.Model):
     _name = "contract.purchase.itens"
 
     name = fields.Char(string="Name", required=True)
-    product = fields.Many2one(
+    product_id = fields.Many2one(
         comodel_name="product.product", string="Product", required=True
     )
     quantity = fields.Float(string="Quantity")
@@ -18,3 +18,7 @@ class ContractPurchaseItens(models.Model):
     invoiced = fields.Float(string="Invoiced")
     to_invoice = fields.Float(string="To Invoice")
     remaining = fields.Float(string="Remaining")
+    contract_id = fields.Many2one(
+        comodel_name="account.analytic.account",
+        string="Contract"
+    )

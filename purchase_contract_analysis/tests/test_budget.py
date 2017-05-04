@@ -13,6 +13,37 @@ class TestBudget(TransactionCase):
             'account_budget.crossovered_budget_budgetoptimistic0'
         )
         self.budget1.write({'total': 31325.00})
+        self.budget2 = self.env['crossovered.budget'].create(
+            {
+                'name': '2018-kmee-budget',
+                'creating_user_id': self.env.ref('base.user_demo').id,
+                'code': 'kmee2018',
+                'date_from': '2018-01-01',
+                'date_to': '2018-12-31'
+            }
+        )
+        self.purchase_contract1 = self.env['account.analytic.account'].create(
+            {
+                'name': 'Equipments and Trainning Agrolait Contract',
+                'partner_id': 'base.res_partner_1',
+                'manager_id': 'base.user_root',
+                'code': 'AA041',
+                'date_start': '2008-04-04'
+            }
+        )
+        self.budget2_line1 = self.env[''].create(
+            {
+                'crossovered_budget_id': self.budget2.id,
+                'analytic_account_id': self.purchase_contract1.id,
+                'general_budget_id': self.env.ref(
+                    'account_budget.account_budget_post_purchase0'
+                ).id,
+                'planned_amount': 550.00,
+                'allocated_amount': 450.00,
+                'date_from': '2018-01-01',
+                'date_to': '2018-12-31'
+            }
+        )
 
     def test_new_crossovered_budget_line(self):
         """
@@ -90,3 +121,17 @@ class TestBudget(TransactionCase):
                 "One or more of the Contracts Budget Lines don't have the "
                 "same Budgetary Position as the active Crossovered Budget Line"
             )
+
+    def test_create_contract_purchase_item(self):
+        """
+        Creation of a new  purchase contract item
+        """
+        vals = {
+            'name': 'Equipments',
+            'product_id': self.env.ref('product.product_product_8').id,
+            'quantity': 10.0
+        }
+        self.assertTrue(
+            self.env['contract.purchase.itens'].create(vals),
+            "Can not create a Purchase contract item correctly!"
+        )

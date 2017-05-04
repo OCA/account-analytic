@@ -21,7 +21,9 @@
         'security/contract_purchase_itens_security.xml',
         'security/ir.model.access.csv',
         'views/account_budget_view.xml',
+        'views/purchase_view.xml',
         'views/contract_purchase_itens_view.xml',
+        'views/account_analytic_analysis_view.xml',
     ],
     'installable': True,
 }

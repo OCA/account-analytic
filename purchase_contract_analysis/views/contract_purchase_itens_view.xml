@@ -2,6 +2,17 @@
 <openerp>
     <data>
 
+        <record model="ir.ui.view" id="contract_purchase_order_form_view">
+            <field name="name">contract.purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_ref" position="after">
+                    <field name="project_id"/>
+                </field>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="contract_purchase_itens_form_view">
             <field name="name">contract.purchase.itens.form</field>
             <field name="model">contract.purchase.itens</field>
@@ -9,12 +20,13 @@
                 <form>
                     <sheet>
                         <group>
-                            <group>
-                                <field name="name"/>
-                            </group>
-                            <group>
-                                <field name="product"/>
-                            </group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="contract_id"/>
                         </group>
                         <separator string="Quantity of Product/Service"/>
                         <group>
@@ -38,7 +50,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="product"/>
+                    <field name="product_id"/>
+                    <field name="contract_id"/>
                     <field name="quantity"/>
                     <field name="expected"/>
                     <field name="invoiced"/>
