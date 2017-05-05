@@ -25,13 +25,13 @@ class TestBudget(TransactionCase):
         self.purchase_contract1 = self.env['account.analytic.account'].create(
             {
                 'name': 'Equipments and Trainning Agrolait Contract',
-                'partner_id': 'base.res_partner_1',
-                'manager_id': 'base.user_root',
+                'partner_id': self.env.ref('base.res_partner_1').id,
+                'manager_id': self.env.ref('base.user_root').id,
                 'code': 'AA041',
                 'date_start': '2008-04-04'
             }
         )
-        self.budget2_line1 = self.env[''].create(
+        self.budget2_line1 = self.env['crossovered.budget.lines'].create(
             {
                 'crossovered_budget_id': self.budget2.id,
                 'analytic_account_id': self.purchase_contract1.id,
@@ -129,9 +129,136 @@ class TestBudget(TransactionCase):
         vals = {
             'name': 'Equipments',
             'product_id': self.env.ref('product.product_product_8').id,
-            'quantity': 10.0
+            'quantity': 10.0,
+            'expected': 500.0,
+            'contract_id': self.purchase_contract1.id,
         }
         self.assertTrue(
             self.env['contract.purchase.itens'].create(vals),
             "Can not create a Purchase contract item correctly!"
+        )
+
+    def test_contract_purchase_item_expected_not_empty(self):
+        """
+        Verify if the value of the 'Expected' field in the
+        contract.purchase.itens' isn't 0
+        """
+        vals = {
+            'name': 'Products',
+            'product_id': self.env.ref('product.product_product_8').id,
+            'contract_id': self.purchase_contract1.id,
+            'quantity': 100,
+            'expected': 200,
+            'invoiced': 0,
+            'to_invoice': 0,
+            'remaining': 0,
+        }
+        contract_purchase_item = self.env['contract.purchase.itens'].create(
+            vals
+        )
+        self.assertTrue(
+            contract_purchase_item.expected > 0,
+            "Contract Purchase Item Expected value can't be zero!"
+        )
+        vals['expected'] = 0
+        with self.assertRaises(Exception) as context:
+            self.env['contract.purchase.itens'].create(vals)
+
+        self.assertTrue(
+            "Expected value need to be filled!"
+            in context.exception.message
+        )
+        self.assertTrue(
+            contract_purchase_item.write({'expected': 355.50}),
+            "Expected value need to be filled!"
+        )
+        with self.assertRaises(Exception) as context:
+            contract_purchase_item.write({'expected': 0})
+
+        self.assertTrue(
+            "Expected value need to be filled!"
+            in context.exception.message
+        )
+
+    def test_create_purchase_order_lines_from_wizard(self):
+        """
+        Test the creation of the purchase orders from the defined contract
+        lines with quantities bigger than 0.
+        """
+        vals = {
+            'name': 'Equipments',
+            'product_id': self.env.ref('product.product_product_8').id,
+            'quantity': 10.0,
+            'contract_id': self.purchase_contract1.id,
+            'expected': 500.0,
+        }
+        self.env['contract.purchase.itens'].create(vals)
+        vals = {
+            'name': 'Services',
+            'product_id': self.env.ref(
+                'product.product_product_consultant_product_template'
+            ).id,
+            'quantity': 5.0,
+            'expected': 500.0,
+            'contract_id': self.purchase_contract1.id
+        }
+        self.env['contract.purchase.itens'].create(vals)
+        wizard_id = self.purchase_contract1.create_purchase_orders_wizard()
+        wizard = self.env['purchase.order.partial.contract.wizard'].browse(
+            wizard_id['res_id']
+        )
+        product_ids = []
+        for line in wizard.line_ids:
+            line.quantity = 3
+            product_ids.append(line.product_id.id)
+        wizard.create_purchase_order()
+        purchase_order_lines = self.env['purchase.order.line'].search(
+            [
+                ('product_id', 'in', product_ids)
+            ]
+        )
+        purchase_order_ids = []
+        for line in purchase_order_lines:
+            if line.order_id.id not in purchase_order_ids:
+                purchase_order_ids.append(line.order_id.id)
+        purchase_orders = self.env['purchase.order'].search(
+            [
+                ('id', 'in', purchase_order_ids),
+                ('project_id', '=', self.purchase_contract1.id)
+            ]
+        )
+        self.assertEqual(
+            len(purchase_orders),
+            2,
+            "No purchase order was created or the number of purchase orders "
+            "created was differente from the number that had to be(2)!"
+        )
+
+    def test_planned_amount_bigger_than_budget_total(self):
+        """
+        Verify if the planned amount of the contracts surpass
+        the budget's total
+        """
+        vals = {
+            'crossovered_budget_id': self.budget1.id,
+            'analytic_account_id': self.env.ref(
+                'account.analytic_consultancy'
+            ).id,
+            'general_budget_id': self.env.ref(
+                'account_budget.account_budget_post_purchase0'
+            ).id,
+            'date_from': '2007-02-05',
+            'date_to': '2017-10-05',
+            'planned_amount': 5500,
+            'allocated_amount': 3200,
+            'practical_amount': 1000,
+            'company_id': self.budget1.company_id.id,
+        }
+        with self.assertRaises(Exception) as context:
+            self.env['crossovered.budget.lines'].create(vals)
+
+        self.assertTrue(
+            "The sum of the Planned amount of the lines "
+            "can't surpass the Budget's total!"
+            in context.exception.message
         )

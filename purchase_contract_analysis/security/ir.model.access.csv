@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_contract_purchase_itens,contract.purchase.itens,model_contract_purchase_itens,group_contract_purchase_itens_user,1,1,1,1
+access_contract_purchase_crossovered_budget,contract.purchase.crossovered.budget,model_crossovered_budget,group_contract_purchase_itens_user,1,0,0,0
+access_contract_purchase_crossovered_budget_lines,contract.purchase.crossovered.budget.lines,model_crossovered_budget_lines,group_contract_purchase_itens_user,1,1,1,1

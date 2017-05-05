@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="view_purchase_orders_partial_contract_wizard" model="ir.ui.view">
+            <field name="name">purchase.orders.partial.contract.wizard.form</field>
+            <field name="model">purchase.order.partial.contract.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Purchase orders Partial Contract">
+                    <separator string="Contract Lines"/>
+                    <p class="oe_grey">
+                        Select how many purchase orders do you want create. This
+                        will create a draft purchase order that can be modified
+                        before validation.
+                    </p>
+                    <field name="line_ids" nolabel="1">
+                        <tree string="Lines" create="false" editable="bottom">
+                            <field name="contract_id" invisible="1"/>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="quantity"/>
+                            <field name="expected"/>
+                            <field name="invoiced"/>
+                            <field name="to_invoice"/>
+                            <field name="remaining"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <button string="Create Orders" name="create_purchase_order" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

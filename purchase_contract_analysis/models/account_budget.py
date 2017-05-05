@@ -46,14 +46,14 @@ class AccountBudgetLine(models.Model):
         comodel_name='crossovered.budget.lines',
     )
 
-    @api.multi
+    @api.model
     def create(self, vals):
         budget_id = self.env['crossovered.budget'].browse(
             vals['crossovered_budget_id']
         )
         planned_amount_total = budget_id._budget_planned_amount_lines_total()
         planned_amount_total += vals['planned_amount']
-        if planned_amount_total > budget_id.total:
+        if budget_id.total and planned_amount_total > budget_id.total:
             raise exceptions.Warning(
                 _(
                     "The sum of the Planned amount of the lines "
