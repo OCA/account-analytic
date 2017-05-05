@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_no_lines
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-09 02:38+0000\n"
+"PO-Revision-Date: 2017-06-09 02:38+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_no_lines
+#: model:ir.ui.view,arch_db:account_analytic_no_lines.view_account_move_line_filter
+msgid "Analytic Account"
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:res.groups,name:account_analytic_no_lines.hide_analytic_entries
+msgid "Hide Analytic Entries"
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:ir.model,name:account_analytic_no_lines.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: account_analytic_no_lines
+#: model:ir.model,name:account_analytic_no_lines.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
