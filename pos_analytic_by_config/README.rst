@@ -44,6 +44,7 @@ Contributors
 ------------
 
 * Adrien Peiffer <adrien.peiffer@acsone.eu>
+* Cédric Pigeon <cedric.pigeon@acsone.eu>
 
 Maintainer
 ----------
