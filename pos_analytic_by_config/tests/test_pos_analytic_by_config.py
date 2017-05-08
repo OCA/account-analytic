@@ -43,7 +43,8 @@ class TestPosAnalyticConfig(common.TransactionCase):
         self.order_01 = self.pos_order_obj.create(order_vals)
         # I pay the created order
         payment_data = {'amount': 10,
-                        'journal': self.main_config.journal_ids[0].id}
+                        'journal': self.main_config.journal_ids[0].id,
+                        'partner_id': self.order_01.partner_id.id}
         self.order_01.add_payment(payment_data)
         if self.order_01.test_paid():
             self.order_01.action_pos_order_paid()
@@ -54,7 +55,7 @@ class TestPosAnalyticConfig(common.TransactionCase):
         # I check that there isn't lines with the analytic account in this test
         self.assertEqual(len(aml.ids), 0)
         self.session_01.action_pos_session_closing_control()
-        self.session_01.action_pos_session_close()
+        # self.session_01.action_pos_session_close()
         # I check that there is a journal item with the config analytic account
         aml = self.aml_obj.search(self.aml_analytic_domain)
         self.assertEqual(len(aml.ids), 1)
