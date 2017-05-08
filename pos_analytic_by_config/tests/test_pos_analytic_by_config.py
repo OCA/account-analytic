@@ -1,75 +1,71 @@
-# -*- coding: utf-8 -*-
-# © 2015 ACSONE SA/NV (<http://acsone.eu>)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-
-from openerp.tests import common
+# Copyright 2015 ACSONE SA/NV
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+from odoo.tests import common
 
 
-class TestPosAnalyticConfig(common.TransactionCase):
+class TestPosAnalyticConfig(common.SavepointCase):
 
-    def setUp(self):
-        super(TestPosAnalyticConfig, self).setUp()
-        self.pos_order_obj = self.env['pos.order']
-        self.pos_conig_obj = self.env['pos.config']
-        self.pos_session_obj = self.env['pos.session']
-        self.aml_obj = self.env['account.move.line']
-        self.inv_line_obj = self.env['account.invoice.line']
-        self.main_config = self.env.ref('point_of_sale.pos_config_main')
-        self.aa_01 = self.env.ref('account.analytic_root')
-        self.customer_01 = self.env.ref('base.res_partner_2')
-        self.product_01 =\
-            self.env.ref('point_of_sale.perrier_50cl')
-        self.payment_method_01 = self.env.ref('account.bank_journal')
-        self.aml_analytic_domain =\
-            [('product_id', '=', self.product_01.id),
-             ('analytic_account_id', '=', self.aa_01.id)]
-        self.inv_analytic_domain =\
-            [('product_id', '=', self.product_01.id),
-             ('account_analytic_id', '=', self.aa_01.id)]
-
-    def common_test(self):
-        self.main_config.account_analytic_id = self.aa_01
-        # I create and open a new session
-        self.session_01 = self.pos_session_obj.create(
-            {'config_id': self.main_config.id})
-        ctx = self.env.context.copy()
-        # context is updated in open_cb
-        # -> Need to call with old api to give unfrozen context
-        self.registry['pos.session'].open_cb(
-            self.cr, self.uid, [self.session_01.id], context=ctx)
-        # I create a new order
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.aml_obj = cls.env['account.move.line']
+        cls.inv_line_obj = cls.env['account.invoice.line']
+        cls.main_config = cls.env.ref('point_of_sale.pos_config_main')
+        cls.aa_01 = cls.env['account.analytic.account'].create({
+            'name': 'Test Analytic Account',
+        })
+        cls.customer_01 = cls.env['res.partner'].create({
+            'name': 'Mr. Odoo',
+        })
+        cls.product_01 = cls.env['product.product'].create({
+            'name': 'Test product',
+        })
+        cls.aml_analytic_domain = [
+            ('product_id', '=', cls.product_01.id),
+            ('analytic_account_id', '=', cls.aa_01.id),
+        ]
+        cls.inv_analytic_domain = [
+            ('product_id', '=', cls.product_01.id),
+            ('account_analytic_id', '=', cls.aa_01.id),
+        ]
+        cls.main_config.account_analytic_id = cls.aa_01
+        cls.session_01 = cls.env['pos.session'].create(
+            {'config_id': cls.main_config.id})
+        cls.session_01.action_pos_session_open()
         order_vals = {
-            'session_id': self.session_01.id,
-            'partner_id': self.customer_01.id,
-            'lines': [(0, 0, {'product_id': self.product_01.id,
-                              'price_unit': 10.0,
-                              })]
+            'session_id': cls.session_01.id,
+            'partner_id': cls.customer_01.id,
+            'lines': [(0, 0, {
+                'product_id': cls.product_01.id,
+                'price_unit': 10.0,
+            })],
         }
-        self.order_01 = self.pos_order_obj.create(order_vals)
-        # I pay the created order
-        payment_data = {'amount': 10,
-                        'journal': self.payment_method_01.id}
-        self.pos_order_obj.add_payment(self.order_01.id, payment_data)
-        if self.order_01.test_paid():
-            self.order_01.signal_workflow('paid')
+        cls.order_01 = cls.env['pos.order'].create(order_vals)
+        payment_data = {
+            'amount': 10,
+            'journal': cls.main_config.journal_ids[0].id,
+            'partner_id': cls.order_01.partner_id.id,
+        }
+        cls.order_01.add_payment(payment_data)
+        cls.order_01.action_pos_order_paid()
 
     def test_order_simple_receipt(self):
-        self.common_test()
+        """Simple ticket"""
         aml = self.aml_obj.search(self.aml_analytic_domain)
-        # I check that there isn't lines with the analytic account in this test
+        # There aren't lines with the analytic account yet
         self.assertEqual(len(aml.ids), 0)
-        self.session_01.signal_workflow('close')
-        # I check that there is a journal item with the config analytic account
+        self.session_01.action_pos_session_closing_control()
+        self.session_01.action_pos_session_close()
+        # There they are
         aml = self.aml_obj.search(self.aml_analytic_domain)
         self.assertEqual(len(aml.ids), 1)
 
     def test_order_invoice(self):
-        self.common_test()
+        """Ticket with invoice"""
         lines = self.inv_line_obj.search(self.inv_analytic_domain)
-        self.order_01.action_invoice()
-        # I check that there isn't lines with the analytic account in this test
+        self.order_01.action_pos_order_invoice()
+        # There aren't lines with the analytic account yet
         self.assertEqual(len(lines.ids), 0)
         lines = self.inv_line_obj.search(self.inv_analytic_domain)
-        # I check that there is an invoice line
-        # with the config analytic account
+        # There they are
         self.assertEqual(len(lines.ids), 1)
