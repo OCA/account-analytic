@@ -45,7 +45,10 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
                 'contract_id': line.contract_id.id,
             }
             line_values.append((0, 0, val))
-        val_wizard = {'line_ids': line_values, }
+        val_wizard = {
+            'line_ids': line_values,
+            'contract_id': self.id
+        }
         wizard = wizard_obj.create(val_wizard)
         return {
             'view_type': 'form',

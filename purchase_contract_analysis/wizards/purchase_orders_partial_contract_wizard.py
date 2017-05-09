@@ -14,44 +14,68 @@ class PurchaseOrdersPartialContractWizard(models.TransientModel):
         comodel_name="purchase.order.partial.contract.line",
         inverse_name="wizard_id"
     )
+    all_in_one_purchase_order = fields.Boolean(
+        string="One Purchase Order with all the itens"
+    )
+    contract_id = fields.Many2one(
+        comodel_name="account.analytic.account"
+    )
+
+    @api.multi
+    def _create_purchase_order_by_contract(self, contract_id):
+        purchase_order_obj = self.env['purchase.order']
+        onchange_partner = purchase_order_obj.onchange_partner_id(
+            contract_id.partner_id.id
+        )
+        purchase_order_vals = {
+            'partner_id': contract_id.partner_id.id,
+            'date_order': datetime.now(),
+            'project_id': contract_id.id,
+            'invoice_method': 'order',
+            'picking_type_id':
+                self.env.ref('stock.picking_type_in').id,
+            'location_id':
+                self.env.ref('stock.stock_location_stock').id,
+        }
+        purchase_order_vals.update(onchange_partner['value'])
+        return purchase_order_obj.create(purchase_order_vals)
+
+    @api.multi
+    def _create_purchase_order_line_by_contract(self, purchase_order_id, line):
+        purchase_order_line_obj = self.env['purchase.order.line']
+        produto_stats = purchase_order_line_obj.onchange_product_id(
+            purchase_order_id.pricelist_id.id, line.product_id.id,
+            line.quantity, False, purchase_order_id.partner_id.id
+        )
+        purchase_order_line_obj.create(
+            {
+                'order_id': purchase_order_id.id,
+                'product_id': line.product_id.id,
+                'date_planned': produto_stats['value']['date_planned'],
+                'name': produto_stats['value']['name'],
+                'price_unit': produto_stats['value']['price_unit'],
+                'product_qty': produto_stats['value']['product_qty'],
+                'product_uom': produto_stats['value']['product_uom'],
+                'taxes_id': produto_stats['value']['taxes_id']
+            }
+        )
 
     @api.multi
     def create_purchase_order(self):
-        purchase_order_obj = self.env['purchase.order']
-        purchase_order_line_obj = self.env['purchase.order.line']
+        if self.all_in_one_purchase_order:
+            purchase_order = self._create_purchase_order_by_contract(
+                self.contract_id
+            )
         for line in self.line_ids:
             if line.quantity:
-                onchange_partner = purchase_order_obj.onchange_partner_id(
-                    line.contract_id.partner_id.id
+                if not self.all_in_one_purchase_order:
+                    purchase_order = self._create_purchase_order_by_contract(
+                        line.contract_id
+                    )
+                self._create_purchase_order_line_by_contract(
+                    purchase_order, line
                 )
-                purchase_order_vals = {
-                    'partner_id': line.contract_id.partner_id.id,
-                    'date_order': datetime.now(),
-                    'project_id': line.contract_id.id,
-                    'invoice_method': 'order',
-                    'picking_type_id':
-                        self.env.ref('stock.picking_type_in').id,
-                    'location_id':
-                        self.env.ref('stock.stock_location_stock').id,
-                }
-                purchase_order_vals.update(onchange_partner['value'])
-                purchase_order = purchase_order_obj.create(purchase_order_vals)
-                produto_stats = purchase_order_line_obj.onchange_product_id(
-                    purchase_order.pricelist_id.id, line.product_id.id,
-                    line.quantity, False, purchase_order.partner_id.id
-                )
-                purchase_order_line_obj.create(
-                    {
-                        'order_id': purchase_order.id,
-                        'product_id': line.product_id.id,
-                        'date_planned': produto_stats['value']['date_planned'],
-                        'name': produto_stats['value']['name'],
-                        'price_unit': produto_stats['value']['price_unit'],
-                        'product_qty': produto_stats['value']['product_qty'],
-                        'product_uom': produto_stats['value']['product_uom'],
-                        'taxes_id': produto_stats['value']['taxes_id']
-                    }
-                )
+
         return {'type': 'ir.actions.act_window_close'}
 
 

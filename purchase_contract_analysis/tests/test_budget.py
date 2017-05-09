@@ -138,53 +138,7 @@ class TestBudget(TransactionCase):
             "Can not create a Purchase contract item correctly!"
         )
 
-    def test_contract_purchase_item_expected_not_empty(self):
-        """
-        Verify if the value of the 'Expected' field in the
-        contract.purchase.itens' isn't 0
-        """
-        vals = {
-            'name': 'Products',
-            'product_id': self.env.ref('product.product_product_8').id,
-            'contract_id': self.purchase_contract1.id,
-            'quantity': 100,
-            'expected': 200,
-            'invoiced': 0,
-            'to_invoice': 0,
-            'remaining': 0,
-        }
-        contract_purchase_item = self.env['contract.purchase.itens'].create(
-            vals
-        )
-        self.assertTrue(
-            contract_purchase_item.expected > 0,
-            "Contract Purchase Item Expected value can't be zero!"
-        )
-        vals['expected'] = 0
-        with self.assertRaises(Exception) as context:
-            self.env['contract.purchase.itens'].create(vals)
-
-        self.assertTrue(
-            "Expected value need to be filled!"
-            in context.exception.message
-        )
-        self.assertTrue(
-            contract_purchase_item.write({'expected': 355.50}),
-            "Expected value need to be filled!"
-        )
-        with self.assertRaises(Exception) as context:
-            contract_purchase_item.write({'expected': 0})
-
-        self.assertTrue(
-            "Expected value need to be filled!"
-            in context.exception.message
-        )
-
-    def test_create_purchase_order_lines_from_wizard(self):
-        """
-        Test the creation of the purchase orders from the defined contract
-        lines with quantities bigger than 0.
-        """
+    def _create_purchase_order(self, one_purchase_order=None):
         vals = {
             'name': 'Equipments',
             'product_id': self.env.ref('product.product_product_8').id,
@@ -207,6 +161,8 @@ class TestBudget(TransactionCase):
         wizard = self.env['purchase.order.partial.contract.wizard'].browse(
             wizard_id['res_id']
         )
+        if one_purchase_order:
+            wizard.all_in_one_purchase_order = True
         product_ids = []
         for line in wizard.line_ids:
             line.quantity = 3
@@ -227,11 +183,32 @@ class TestBudget(TransactionCase):
                 ('project_id', '=', self.purchase_contract1.id)
             ]
         )
+        return purchase_orders
+
+    def test_create_purchase_order_lines_from_wizard(self):
+        """
+        Test the creation of the purchase orders from the defined contract
+        lines with quantities bigger than 0.
+        """
+        purchase_orders = self._create_purchase_order()
         self.assertEqual(
             len(purchase_orders),
             2,
             "No purchase order was created or the number of purchase orders "
             "created was differente from the number that had to be(2)!"
+        )
+
+    def test_create_one_purchase_order_from_wizard(self):
+        """
+        Test the creation of the purchase orders from the defined contract
+        lines with quantities equal to one.
+        """
+        purchase_orders = self._create_purchase_order(one_purchase_order=True)
+        self.assertEqual(
+            len(purchase_orders),
+            1,
+            "No purchase order was created or the number of purchase orders "
+            "created was differente from the number that had to be(1)!"
         )
 
     def test_planned_amount_bigger_than_budget_total(self):
@@ -262,3 +239,56 @@ class TestBudget(TransactionCase):
             "can't surpass the Budget's total!"
             in context.exception.message
         )
+
+    def test_to_invoice_amount_in_contract_purchase_itens_lines(self):
+        """
+        Verify if the invoice amount is correct in each line of the contract
+        purchase itens lines.
+        """
+        purchase_orders = self._create_purchase_order()
+        for purchase_item_line in \
+                self.purchase_contract1.contract_purchase_itens_lines:
+            purchase_item_line._compute_to_invoice_amount()
+            purchase_orders_item_total = 0.0
+            for purchase_order in purchase_orders:
+                for line in purchase_order.order_line:
+                    if line.product_id.id == purchase_item_line.product_id.id:
+                        purchase_orders_item_total += line.price_subtotal
+            self.assertEqual(purchase_item_line.to_invoice,
+                             purchase_orders_item_total,
+                             "To invoice value different from the sum of the"
+                             "purchase order lines of that product!"
+                             )
+
+    def test_invoiced_amount_in_contract_purchase_itens_lines(self):
+        """
+        Verify if the invoiced amount is correct in each line of the contract
+        purchase itens lines
+        """
+        purchase_orders = self._create_purchase_order()
+        purchase_orders[0].wkf_confirm_order()
+        purchase_orders[0].action_invoice_create()
+        for purchase_item_line in \
+                self.purchase_contract1.contract_purchase_itens_lines:
+            purchase_item_line._compute_invoiced_amount()
+            purchase_invoices_item_total = 0.0
+            purchase_order_names = []
+            for purchase_order in purchase_orders:
+                for line in purchase_order.order_line:
+                    if line.product_id.id == purchase_item_line.product_id.id:
+                        if purchase_order.name not in purchase_order_names:
+                            purchase_order_names.append(purchase_order.name)
+            purchase_invoices = self.env['account.invoice'].search(
+                [
+                    ('origin', 'in', purchase_order_names)
+                ]
+            )
+            for purchase_invoice in purchase_invoices:
+                for line in purchase_invoice.invoice_line:
+                    if line.product_id.id == purchase_item_line.product_id.id:
+                        purchase_invoices_item_total += line.price_subtotal
+            self.assertEqual(purchase_item_line.invoiced,
+                             purchase_invoices_item_total,
+                             "To invoice value different from the sum of the"
+                             "purchase order lines of that product!"
+                             )

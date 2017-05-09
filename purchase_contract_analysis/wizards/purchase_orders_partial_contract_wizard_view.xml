@@ -25,6 +25,9 @@
                             <field name="remaining"/>
                         </tree>
                     </field>
+                    <group>
+                        <field name="all_in_one_purchase_order"/>
+                    </group>
                     <footer>
                         <button string="Create Orders" name="create_purchase_order" type="object" class="oe_highlight"/>
                     </footer>
