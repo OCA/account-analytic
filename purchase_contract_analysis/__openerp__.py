@@ -22,6 +22,7 @@
         'security/ir.model.access.csv',
         'views/account_budget_view.xml',
         'views/purchase_view.xml',
+        'views/contract_view.xml',
         'views/contract_purchase_itens_view.xml',
         'views/account_analytic_analysis_view.xml',
         'wizards/purchase_orders_partial_contract_wizard_view.xml',

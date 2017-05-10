@@ -24,6 +24,12 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
         string="Contract Type"
     )
 
+    garantia_contrato_ids = fields.One2many(
+        string=u'Garantias do Contrato',
+        comodel_name='garantia.contrato',
+        inverse_name='contrato_id'
+    )
+
     @api.multi
     def create_purchase_orders_wizard(self):
         """
