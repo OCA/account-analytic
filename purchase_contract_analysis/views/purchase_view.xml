@@ -2,6 +2,28 @@
 <openerp>
     <data>
 
+        <record model="ir.ui.view" id="contract_purchase_order_cotation_filter">
+            <field name="name">contract.purchase.order.cotation.filter</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_request_for_quotation_filter"/>
+            <field name="arch" type="xml">
+                <field name="create_uid" position="after">
+                    <field name="project_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="contract_purchase_order_filter">
+            <field name="name">contract.purchase.order.filter</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+                <field name="create_uid" position="after">
+                    <field name="project_id"/>
+                </field>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="contract_purchase_order_form_view">
             <field name="name">contract.purchase.order.form</field>
             <field name="model">purchase.order</field>
