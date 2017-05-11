@@ -30,11 +30,6 @@ To use this module, you need to:
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/142/8.0
 
-Known issues / Roadmap
-======================
-
-* ...
-
 Bug Tracker
 ===========
 
@@ -59,6 +54,7 @@ Contributors
 ------------
 
 * Laetitia Gangloff <laetitia.gangloff@acsone.eu>
+* Cédric Pigeon <cedric.pigeon@acsone.eu>
 
 Maintainer
 ----------
