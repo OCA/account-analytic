@@ -2,7 +2,7 @@
 # © 2016  Laetitia Gangloff, Acsone SA/NV (http://www.acsone.eu)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class PurchaseOrder(models.Model):
@@ -62,7 +62,3 @@ class PurchaseOrder(models.Model):
                 return
         self.project_id2 = self.project_id
         self.order_line = r
-
-    def _get_merge_order_key(self):
-        res = super(PurchaseOrder, self)._get_merge_order_key()
-        return res + ('project_id', )
