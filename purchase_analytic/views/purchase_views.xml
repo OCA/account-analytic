@@ -36,7 +36,6 @@
                     <field name="partner_ref" position="after">
                         <field name="project_id2" invisible="1" />
                         <field name="project_id" groups="purchase.group_analytic_accounting"
-                               domain="[('type','in',('view', 'normal', 'contract'))]"
                                options="{'no_create': True}" />
                     </field>
                     <field name="order_line" position="attributes">
