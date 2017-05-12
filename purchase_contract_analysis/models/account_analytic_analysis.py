@@ -41,16 +41,17 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
         wizard_obj = self.env['purchase.order.partial.contract.wizard']
         line_values = []
         for line in self.contract_purchase_itens_lines:
-            val = {
-                'name': line.name,
-                'product_id': line.product_id.id,
-                'expected': line.expected,
-                'invoiced': line.invoiced,
-                'to_invoice': line.to_invoice,
-                'remaining': line.remaining,
-                'contract_id': line.contract_id.id,
-            }
-            line_values.append((0, 0, val))
+            if line.remaining > 0:
+                val = {
+                    'name': line.name,
+                    'product_id': line.product_id.id,
+                    'expected': line.expected,
+                    'invoiced': line.invoiced,
+                    'to_invoice': line.to_invoice,
+                    'remaining': line.remaining,
+                    'contract_id': line.contract_id.id,
+                }
+                line_values.append((0, 0, val))
         val_wizard = {
             'line_ids': line_values,
             'contract_id': self.id

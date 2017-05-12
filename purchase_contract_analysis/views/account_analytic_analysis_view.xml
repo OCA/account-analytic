@@ -48,6 +48,48 @@
                                     context="{'default_partner_id': partner_id, 'search_default_project_id': active_id,'default_project_id': active_id, 'default_pricelist_id': pricelist_id}"
                                     />
                 </xpath>
+                <xpath expr="//field[@name='recurring_invoices']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
+                </xpath>
+                <xpath expr="//label[@for='recurring_invoices']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_purchase_contract_account_analytic_account_form">
+            <field name="name">purchase.contract.account.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="purchase_account_analytic_account_form_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Budget Lines']" position="replace">
+                    <page string="Budget Lines" groups="account.group_account_user">
+                        <field name="crossovered_budget_line" widget="one2many_list" colspan="4" nolabel="1" mode="tree">
+                            <tree string="Budget Lines" editable="top">
+                                <field name="crossovered_budget_id"/>
+                                <field name="general_budget_id"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="paid_date" invisible="1"/>
+                                <field name="planned_amount"/>
+                                <field name="planned_amount" position="after">
+                                    <field name="allocated_amount" sum="Allocated Amount"/>
+                                </field>
+                                <field name="practical_amount" sum="Practical Amount"/>
+                                <field name="theoritical_amount" sum="Theoritical Amount" invisible="1"/>
+                                <field name="percentage"/>
+                            </tree>
+                            <form string="Budget Lines">
+                                <field name="crossovered_budget_id"/>
+                                <field name="general_budget_id"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="paid_date" invisible="1"/>
+                                <field name="planned_amount"/>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
             </field>
         </record>
 

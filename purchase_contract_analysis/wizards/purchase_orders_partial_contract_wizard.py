@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from datetime import datetime
-from openerp import api, models, fields
+from openerp import api, models, fields, exceptions, _
 
 
 class PurchaseOrdersPartialContractWizard(models.TransientModel):
@@ -20,6 +20,19 @@ class PurchaseOrdersPartialContractWizard(models.TransientModel):
     contract_id = fields.Many2one(
         comodel_name="account.analytic.account"
     )
+
+    @api.multi
+    def _check_lines_remaining_amount(self):
+        for wizard_line in self.line_ids:
+            for line in self.contract_id.contract_purchase_itens_lines:
+                if wizard_line.name == \
+                        line.name and wizard_line.product_id.id == \
+                        line.product_id.id and wizard_line.contract_id.id == \
+                        line.contract_id.id:
+                    if (wizard_line.product_id.list_price *
+                            wizard_line.quantity) > line.remaining:
+                        return False
+        return True
 
     @api.multi
     def _create_purchase_order_by_contract(self, contract_id):
@@ -62,19 +75,27 @@ class PurchaseOrdersPartialContractWizard(models.TransientModel):
 
     @api.multi
     def create_purchase_order(self):
-        if self.all_in_one_purchase_order:
-            purchase_order = self._create_purchase_order_by_contract(
-                self.contract_id
-            )
-        for line in self.line_ids:
-            if line.quantity:
-                if not self.all_in_one_purchase_order:
-                    purchase_order = self._create_purchase_order_by_contract(
-                        line.contract_id
-                    )
-                self._create_purchase_order_line_by_contract(
-                    purchase_order, line
+        if self._check_lines_remaining_amount():
+            if self.all_in_one_purchase_order:
+                purchase_order = self._create_purchase_order_by_contract(
+                    self.contract_id
                 )
+            for line in self.line_ids:
+                if line.quantity:
+                    if not self.all_in_one_purchase_order:
+                        purchase_order = \
+                            self._create_purchase_order_by_contract(
+                                line.contract_id
+                            )
+                    self._create_purchase_order_line_by_contract(
+                        purchase_order, line
+                    )
+        else:
+            raise exceptions.Warning(
+                _("One or more line has the amount bigger than "
+                  "the remaining for that line!"
+                  )
+            )
 
         return {'type': 'ir.actions.act_window_close'}
 
