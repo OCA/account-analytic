@@ -50,12 +50,5 @@
             </field>
         </record>
 
-        <menuitem name="Analytic Accounts"
-                  action="action_analytic_account_report"
-                  groups="analytic.group_analytic_accounting"
-                  id="menu_action_analytic_account_report"
-                  parent="account.account_reports_business_intelligence_menu"
-                  sequence="30"/>
-
     </data>
 </odoo>
