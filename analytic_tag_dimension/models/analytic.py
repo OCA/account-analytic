@@ -44,21 +44,21 @@ class AccountAnalyticTag(models.Model):
 
     analytic_dimension_id = fields.Many2one(
         comodel_name='account.analytic.dimension',
-        string='Dimension',
-        required=True)
+        string='Dimension')
 
     @api.multi
     def get_dimension_values(self):
         values = {}
-        for tag in self:
+        for tag in self.filtered('analytic_dimension_id'):
             code = tag.analytic_dimension_id.code
             values.update({
                 'x_dimension_%s' % code: tag.id})
         return values
 
     def _check_analytic_dimension(self):
-        dimension_ids = self.mapped('analytic_dimension_id').ids
-        if len(self.ids) != len(dimension_ids):
+        tags_with_dimension = self.filtered('analytic_dimension_id')
+        dimensions = tags_with_dimension.mapped('analytic_dimension_id')
+        if len(tags_with_dimension) != len(dimensions):
             raise ValidationError(
                 _("You can not set two tags from same dimension."))
 
