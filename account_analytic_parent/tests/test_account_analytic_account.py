@@ -71,3 +71,12 @@ class TestAccountAnalyticRecursion(TransactionCase):
                          'Analytic account in the debit side')
         self.assertEqual(self.analytic_parent2.credit, 50, 'Wrong amount')
         self.assertEqual(self.analytic_parent2.balance, 50, 'Wrong amount')
+
+    def test_wizard(self):
+        self.wizard = self.env['account.analytic.chart'].create({
+            'from_date': '2017-01-01',
+            'to_date': '2017-12-31',
+        })
+        result = self.wizard.analytic_account_chart_open_window()
+        self.assertTrue('2017-01-01' in result['context'])
+        self.assertTrue('2017-12-31' in result['context'])
