@@ -25,4 +25,7 @@
     'data': [
         'views/account_analytic_account_view.xml',
     ],
+    'demo': [
+        'data/analytic_account_demo.xml',
+    ],
 }
