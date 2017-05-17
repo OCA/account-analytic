@@ -34,7 +34,7 @@ class ContractPurchaseItens(models.Model):
         for record in self:
             if record.product_id and record.quantity:
                 record.expected = \
-                    record.product_id.list_price * record.quantity
+                    record.price * record.quantity
 
     @api.depends('product_id', 'contract_id')
     @api.multi
@@ -90,7 +90,8 @@ class ContractPurchaseItens(models.Model):
     product_id = fields.Many2one(
         comodel_name="product.product", string="Product", required=True
     )
-    quantity = fields.Float(string="Quantity")
+    price = fields.Float(string="Price", required=True)
+    quantity = fields.Float(string="Quantity", required=True)
     expected = fields.Float(
         string="Expected",
         compute=_compute_expected_amount,

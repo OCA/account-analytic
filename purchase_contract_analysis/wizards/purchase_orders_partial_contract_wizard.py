@@ -29,7 +29,7 @@ class PurchaseOrdersPartialContractWizard(models.TransientModel):
                         line.name and wizard_line.product_id.id == \
                         line.product_id.id and wizard_line.contract_id.id == \
                         line.contract_id.id:
-                    if (wizard_line.product_id.list_price *
+                    if (wizard_line.price *
                             wizard_line.quantity) > line.remaining:
                         return False
         return True
@@ -66,7 +66,7 @@ class PurchaseOrdersPartialContractWizard(models.TransientModel):
                 'product_id': line.product_id.id,
                 'date_planned': produto_stats['value']['date_planned'],
                 'name': produto_stats['value']['name'],
-                'price_unit': produto_stats['value']['price_unit'],
+                'price_unit': line.price,
                 'product_qty': produto_stats['value']['product_qty'],
                 'product_uom': produto_stats['value']['product_uom'],
                 'taxes_id': produto_stats['value']['taxes_id']
@@ -107,6 +107,7 @@ class PurchaseOrdersPartialContractLine(models.TransientModel):
         comodel_name="purchase.order.partial.contract.wizard"
     )
     name = fields.Char(string="Name", required=True)
+    price = fields.Float(string="Price")
     product_id = fields.Many2one(
         comodel_name="product.product", string="Product", required=True
     )

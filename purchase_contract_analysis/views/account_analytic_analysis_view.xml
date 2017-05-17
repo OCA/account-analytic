@@ -22,12 +22,18 @@
             <field name="model">account.analytic.account</field>
             <field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form"/>
             <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <button name="return_to_draft" string="Return to draft" type="object" attrs="{'invisible': [('state', '=', 'draft')]}"/>
+                </field>
                 <xpath expr="//field[@name='code']" position="before">
                     <field name="contract_type" invisible="1"/>
                 </xpath>
                 <field name="template_id" postion="after">
                     <field name="contract_type"/>
                 </field>
+                <xpath expr="//field[@name='use_timesheets']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
+                </xpath>
                 <xpath expr="//table[@class='oe_form_analytic_account']" position="attributes">
                     <attribute name="attrs">{'invisible': [('contract_type', '=', 'purchase')]}</attribute>
                 </xpath>

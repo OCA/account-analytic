@@ -3,11 +3,19 @@
 # Luiz Felipe do Divino<luiz.divino@kmee.com.br>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, models, fields
+from openerp import api, models, fields, exceptions, _
 
 CONTRACT_TYPE = [
     ('sale', 'Sale'),
     ('purchase', 'Purchase')
+]
+STATES = [
+    ('template', 'Template'),
+    ('draft', 'New'),
+    ('open', 'In Progress'),
+    ('pending', 'To Renew'),
+    ('close', 'Closed'),
+    ('cancelled', 'Cancelled')
 ]
 
 
@@ -30,6 +38,12 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
         inverse_name='contrato_id'
     )
 
+    state = fields.Selection(
+        selection=STATES,
+        string="Status",
+        default='draft'
+    )
+
     @api.multi
     def create_purchase_orders_wizard(self):
         """
@@ -45,6 +59,7 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
                 val = {
                     'name': line.name,
                     'product_id': line.product_id.id,
+                    'price': line.price,
                     'expected': line.expected,
                     'invoiced': line.invoiced,
                     'to_invoice': line.to_invoice,
@@ -66,3 +81,22 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
             'target': 'new',
             'context': self.env.context,
         }
+
+    @api.multi
+    def _check_exist_contract_purchase_order(self):
+        teste = self.env['purchase.order'].search(
+            [
+                ("project_id", "=", self.id)
+            ]
+        )
+        return teste
+
+    @api.multi
+    def return_to_draft(self):
+        if not self._check_exist_contract_purchase_order():
+            self.write({'state': 'draft'})
+            return True
+        raise exceptions.Warning(
+            _("It's not possible to turn the state of the contract back to "
+              "draft because existis purchase orders of this contract!")
+        )
