@@ -7,4 +7,3 @@ from . import account_budget
 from . import purchase
 from . import contract_purchase_itens
 from . import account_analytic_analysis
-from . import garantia_contrato
