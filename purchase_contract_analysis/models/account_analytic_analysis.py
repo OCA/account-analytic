@@ -32,17 +32,40 @@ class PurchaseAccountAnalyticAnalysis(models.Model):
         string="Contract Type"
     )
 
-    garantia_contrato_ids = fields.One2many(
-        string=u'Garantias do Contrato',
-        comodel_name='garantia.contrato',
-        inverse_name='contrato_id'
-    )
-
     state = fields.Selection(
         selection=STATES,
         string="Status",
         default='draft'
     )
+
+    @api.multi
+    def create_purchase_contract_item(self):
+        """
+        Function that creates the wizard that will open the options to
+        create itens to the active contract
+        :return: Wizard created
+        """
+        if not self.id:
+            super(PurchaseAccountAnalyticAnalysis, self).create()
+        context = dict(self.env.context)
+        context.update({
+            'default_contract_id': self.id,
+        })
+        form = self.env.ref(
+            'purchase_contract_analysis.'
+            'view_purchase_contract_itens_wizard',
+            True
+        )
+        return {
+            'view_type': 'form',
+            'view_id': [form.id],
+            'view_mode': 'form',
+            'res_model': 'purchase.contract.itens.wizard',
+            'views': [(form.id, 'form')],
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': context,
+        }
 
     @api.multi
     def create_purchase_orders_wizard(self):

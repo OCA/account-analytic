@@ -45,7 +45,10 @@
                 </xpath>
                 <xpath expr="//group[@name='invoice_on_timesheets']" position="after">
                     <separator string="Invoicing" attrs="{'invisible': [('contract_type', '!=', 'purchase')]}"/>
-                    <field name="contract_purchase_itens_lines" attrs="{'invisible': [('contract_type', '!=', 'purchase')]}"/>
+                    <field name="contract_purchase_itens_lines" create="0" editable="0" attrs="{'invisible': [('contract_type', '!=', 'purchase')]}"/>
+                    <button name="create_purchase_contract_item" string="Create Item"
+                            class="oe_highlight" type="object"
+                            attrs="{'invisible': [('contract_type', '!=', 'purchase')]}" />
                     <button name="create_purchase_orders_wizard" string="Create Purchase Orders"
                             class="oe_highlight" type="object"
                             attrs="{'invisible': [('contract_type', '!=', 'purchase')]}" />

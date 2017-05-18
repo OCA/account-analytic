@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="view_purchase_contract_itens_wizard" model="ir.ui.view">
+            <field name="name">purchase.contract.itens.wizard.form</field>
+            <field name="model">purchase.contract.itens.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Contract Item">
+                    <separator string="Contract Item"/>
+                    <p class="oe_grey">
+                        Create a new item for the active purchase contract.
+                    </p>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <group>
+                        <field name="product_id" />
+                    </group>
+                    <group>
+                        <field name="price" />
+                    </group>
+                    <group>
+                        <field name="quantity" />
+                    </group>
+                    <field name="contract_id" invisible="1" />
+                    <footer>
+                        <button string="Create Item" name="create_purchase_contract_item" type="object" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

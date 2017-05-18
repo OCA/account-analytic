@@ -130,6 +130,7 @@ class TestBudget(TransactionCase):
             'name': 'Equipments',
             'product_id': self.env.ref('product.product_product_8').id,
             'quantity': 10.0,
+            'price': 50.0,
             'expected': 500.0,
             'contract_id': self.purchase_contract1.id,
         }
@@ -143,6 +144,7 @@ class TestBudget(TransactionCase):
             'name': 'Equipments',
             'product_id': self.env.ref('product.product_product_8').id,
             'quantity': 10.0,
+            'price': 50.0,
             'contract_id': self.purchase_contract1.id,
             'expected': 500.0,
         }
@@ -153,6 +155,7 @@ class TestBudget(TransactionCase):
                 'product.product_product_consultant_product_template'
             ).id,
             'quantity': 5.0,
+            'price': 100.0,
             'expected': 500.0,
             'contract_id': self.purchase_contract1.id
         }
