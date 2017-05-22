@@ -1,0 +1,5 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_account_analytic_distribution","account.analytic.distribution","model_account_analytic_distribution","account.group_account_user",1,1,1,1
+"access_account_analytic_distribution_group_user","account.analytic.distribution","model_account_analytic_distribution","base.group_user",1,0,0,0
+"access_account_analytic_distribution_rule","account.analytic.distribution.rule","model_account_analytic_distribution_rule","account.group_account_user",1,1,1,1
+"access_account_analytic_distribution_rule_group_user","account.analytic.distribution.rule","model_account_analytic_distribution_rule","base.group_user",1,0,0,0
