@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ===============================
 Link analytic items and partner
 ===============================
@@ -9,6 +10,18 @@ Link analytic items and partner
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
    !! source digest: sha256:41c88cb03f7dcbf656bcc3f5ba1e4d7ff7f88d37b6bf3f2b040b329eaf9a00ce
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+=======
+.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
+   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+   :alt: License: AGPL-3
+
+==================================
+Classify analytic items by partner
+==================================
+
+This module adds a commercial partner on each analytic item for allowing to
+have another dimension for data analysis.
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
@@ -42,15 +55,21 @@ analytic entries when validating invoices.
 Configuration
 =============
 
+<<<<<<< HEAD
 To configure this module, you need to:
 
 1. Go to **Setting > Users > Groups** and check that your user has the
    "Show Full Accounting Features" and "Analytic Accounting" access
    rights.
+=======
+You have to be granted as at least "Adviser" in your user profile and
+have checked the "Analytic Accounting" access right.
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
 Usage
 =====
 
+<<<<<<< HEAD
 1. Go to **Invoicing > Accounting > Analytic Items**.
 2. Set the **other partner** in the form view of an the analytic entry.
 3. Go back to list view where you can search and group by this new
@@ -63,10 +82,26 @@ You can also:
 2. Click on the smart-button **Cost/Revenue** placed on the upper-right
    part.
 3. Navigate to the analytic items associated to this partner.
+=======
+#. Go to *Invoicing > Adviser > Analytic Entries*.
+#. Set the *other partner* in the form view of an the analytic entry.
+#. Go back to list view where you can search or group by this new field.
+
+You can also:
+
+#. Go to the form view of one of the partners selected as "other partner".
+#. Click on the smart-button *Cost/Revenue* placed on the upper-right part.
+#. Navigate to the analytic items associated to this partner.
+
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
 Known issues / Roadmap
 ======================
 
+<<<<<<< HEAD
 This module hasn't been tested with *account_analytic_distribution*
 module installed, so maybe it's incompatible with it.
 
@@ -105,29 +140,52 @@ Migrated to odoo 10.
 ----------------------
 
 First version.
+=======
+This module hasn't been tested with *account_analytic_distribution* module
+installed, so maybe it's incompatible with it.
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
 Bug Tracker
 ===========
 
+<<<<<<< HEAD
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
 `feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
+=======
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/account-analytic/issues>`_. In case of trouble, please
+check there if your issue has already been reported. If you spotted it first,
+help us smashing it by providing a detailed and welcomed feedback.
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
 Credits
 =======
 
+<<<<<<< HEAD
 Authors
 -------
 
 * Tecnativa
+=======
+Images
+------
+
+* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
 Contributors
 ------------
 
+<<<<<<< HEAD
 -  `Tecnativa <https://www.tecnativa.com>`__:
+=======
+* Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
+* Luis M. Ontalba <luis.martinez@tecnativa.com>
+>>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
    -  Pedro M. Baeza
    -  Luis M. Ontalba
