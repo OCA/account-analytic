@@ -1,8 +1,13 @@
+.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
+   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+   :alt: License: AGPL-3
+
+==================================
 Classify analytic items by partner
 ==================================
 
-This module adds a partner on each analytic item for allowing to have another
-dimension for analysing data.
+This module adds a commercial partner on each analytic item for allowing to
+have another dimension for data analysis.
 
 It also handles the proper propagation of this field to the created analytic
 entries when validating invoices.
@@ -10,37 +15,53 @@ entries when validating invoices.
 Configuration
 =============
 
-You have to be granted as at least "Accountant" in your user profile and
+You have to be granted as at least "Adviser" in your user profile and
 have checked the "Analytic Accounting" access right.
 
 Usage
 =====
 
-Go to Accounting > Analytic Journal Items, and there, you can set the partner
-for the analytic items, and search or group by it.
+#. Go to *Invoicing > Adviser > Analytic Entries*.
+#. Set the *other partner* in the form view of an the analytic entry.
+#. Go back to list view where you can search or group by this new field.
 
-You can also go to a partner, and click on the smart-button "Cost/Revenue",
-placed on the upper-right part, and you will navigate to the analytic items
-associated to this partner.
+You can also:
 
+#. Go to the form view of one of the partners selected as "other partner".
+#. Click on the smart-button *Cost/Revenue* placed on the upper-right part.
+#. Navigate to the analytic items associated to this partner.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/8.0
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
 
 Known issues / Roadmap
 ======================
 
-* This module hasn't been tested with *account_analytic_plans* module
-  installed, so maybe it's incompatible with it.
+This module hasn't been tested with *account_analytic_distribution* module
+installed, so maybe it's incompatible with it.
+
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/account-analytic/issues>`_. In case of trouble, please
+check there if your issue has already been reported. If you spotted it first,
+help us smashing it by providing a detailed and welcomed feedback.
 
 Credits
 =======
+
+Images
+------
+
+* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
 
 Contributors
 ------------
 
 * Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
+* Luis M. Ontalba <luis.martinez@tecnativa.com>
 
 Maintainer
 ----------
