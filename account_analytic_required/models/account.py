@@ -10,16 +10,11 @@ from odoo.tools import float_is_zero
 class AccountAccountType(models.Model):
     _inherit = "account.account.type"
 
-    @api.model
-    def _get_policies(self):
-        """This is the method to be inherited for adding policies"""
-        return [('optional', 'Optional'),
-                ('always', 'Always'),
-                ('never', 'Never')]
-
     analytic_policy = fields.Selection(
-        _get_policies,
-        'Policy for analytic account',
+        selection=[('optional', 'Optional'),
+                   ('always', 'Always'),
+                   ('never', 'Never')],
+        string='Policy for analytic account',
         required=True,
         default='optional',
         help="Set the policy for analytic accounts : if you select "
