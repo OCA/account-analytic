@@ -10,13 +10,15 @@ This module allows you to define an analytic account per asset and creates
 expenses moves with that analytic account instead of the analytic account
 per category, as the standard does.
 
+It also propagates analytic account from invoice line to analytic account line.
+
 
 Usage
 =====
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/8.0
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
 
 
 Bug Tracker
@@ -31,11 +33,17 @@ help us smashing it by providing a detailed and welcomed feedback.
 Credits
 =======
 
+Images
+------
+
+* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
+
 Contributors
 ------------
 
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
 * Antonio Espinosa <antonio.espinosa@tecnativa.com>
+* Luis M. Ontalba <luis.martinez@tecnativa.com>
 
 Maintainer
 ----------

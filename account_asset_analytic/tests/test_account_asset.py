@@ -1,149 +1,123 @@
 # -*- coding: utf-8 -*-
-# © 2016 Antonio Espinosa - <antonio.espinosa@tecnativa.com>
+# © 2017 Luis M. Ontalba - <luis.martinez@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase
+from odoo.tests.common import SavepointCase
+from odoo import fields
+from datetime import timedelta, datetime
 
 
-class TestAccountAsset(TransactionCase):
-    def setUp(self):
-        super(TestAccountAsset, self).setUp()
-        # Create a payable account for suppliers
-        self.account_suppliers = self.env['account.account'].create({
-            'name': 'Suppliers',
-            'code': '410000',
-            'type': 'other',
-            'user_type': self.env.ref('account.data_account_type_payable').id,
-            'reconcile': True,
-        })
-        # Create a supplier
-        self.supplier = self.env['res.partner'].create({
-            'name': 'Asset provider',
-            'supplier': True,
-            'customer': False,
-        })
-        # Create an analytic journal for purchases
-        self.analytic_journal_purchase = self.env['account.analytic.journal'].\
-            create({
-                'name': 'Purchase analytic journal',
-                'code': 'PRCH',
-                'type': 'purchase',
-            })
-        # Create a journal for purchases
-        self.journal_purchase = self.env['account.journal'].create({
-            'name': 'Purchase journal',
-            'code': 'PRCH',
-            'type': 'purchase',
-            'analytic_journal_id': self.analytic_journal_purchase.id,
-        })
-        # Create an analytic journal for assets
-        self.analytic_journal_asset = self.env['account.analytic.journal'].\
-            create({
-                'name': 'Asset analytic journal',
-                'code': 'JRNL',
-                'type': 'general',
-            })
-        # Create a journal for assets
-        self.journal_asset = self.env['account.journal'].create({
-            'name': 'Asset journal',
-            'code': 'JRNL',
+class TestAccountAssetAnalytic(SavepointCase):
+
+    @classmethod
+    def setUpClass(cls):
+        super(TestAccountAssetAnalytic, cls).setUpClass()
+
+        # Create journal
+        cls.journal = cls.env['account.journal'].create({
+            'name': 'Name test',
+            'code': 'Code test',
             'type': 'general',
-            'analytic_journal_id': self.analytic_journal_asset.id,
         })
-        # Create an account for assets
-        self.account_asset = self.env['account.account'].create({
-            'name': 'Asset',
-            'code': '216000',
+        # Create account type
+        cls.account_type = cls.env['account.account.type'].create({
+            'name': 'Account type test',
             'type': 'other',
-            'user_type': self.env.ref('account.data_account_type_asset').id,
-            'reconcile': False,
         })
-        # Create an account for assets dereciation
-        self.account_asset_depreciation = self.env['account.account'].create({
-            'name': 'Asset depreciation',
-            'code': '281600',
-            'type': 'other',
-            'user_type': self.env.ref('account.data_account_type_asset').id,
-            'reconcile': False,
+        # Create account asset
+        cls.account_asset = cls.env['account.account'].create({
+            'code': 'Code aa test',
+            'name': 'Name test',
+            'user_type_id': cls.account_type.id,
         })
-        # Create an account for assets expense
-        self.account_asset_expense = self.env['account.account'].create({
-            'name': 'Asset expense',
-            'code': '681000',
-            'type': 'other',
-            'user_type': self.env.ref('account.data_account_type_expense').id,
-            'reconcile': False,
+        # Create account depreciation
+        cls.account_depreciation = cls.env['account.account'].create({
+            'code': 'Code ad test',
+            'name': 'Name test',
+            'user_type_id': cls.account_type.id,
         })
-        # Create an analytic account A
-        self.analytic_a = self.env['account.analytic.account'].create({
-            'name': 'Asset Analytic A',
-            'type': 'normal',
+        # Create account depreciation expense
+        cls.account_depreciation_expense = cls.env[
+            'account.account'].create({
+                'code': 'Code ade test',
+                'name': 'Name test',
+                'user_type_id': cls.account_type.id,
+            })
+        # Create asset category analytic account
+        cls.category_analytic_account = cls.env[
+            'account.analytic.account'].create({
+                'name': 'Category analytic account test',
+                })
+        # Create asset category
+        cls.asset_category = cls.env['account.asset.category'].create({
+            'name': 'Asset category test',
+            'journal_id': cls.journal.id,
+            'account_asset_id': cls.account_asset.id,
+            'account_depreciation_id': cls.account_depreciation.id,
+            'account_depreciation_expense_id':
+                cls.account_depreciation_expense.id,
+            'method_number': 5,
+            'method_period': 12,
+            'account_analytic_id': cls.category_analytic_account.id,
         })
-        # Create an analytic account B
-        self.analytic_b = self.env['account.analytic.account'].create({
-            'name': 'Asset Analytic B',
-            'type': 'normal',
+        date_time = fields.Datetime.to_string(
+            datetime.now() - timedelta(hours=1))
+        # Create asset analytic account
+        cls.asset_analytic_account = cls.env[
+            'account.analytic.account'].create({
+                'name': 'Asset analytic account test',
+            })
+        # Create asset
+        cls.asset = cls.env['account.asset.asset'].create({
+            'name': 'Asset test',
+            'category_id': cls.asset_category.id,
+            'date': date_time,
+            'value': 10000,
+            'analytic_account_id': cls.asset_analytic_account.id,
         })
-        # Create an assset category, with analytic account A
-        self.asset_category = self.env['account.asset.category'].create({
-            'name': 'Asset category for testing',
-            'journal_id': self.journal_asset.id,
-            'account_asset_id': self.account_asset.id,
-            'account_depreciation_id': self.account_asset_depreciation.id,
-            'account_expense_depreciation_id': self.account_asset_expense.id,
-            'account_analytic_id': self.analytic_a.id,
+        # Create a partner
+        cls.partner = cls.env['res.partner'].create({
+            'name': 'Test partner',
         })
-        # Create an invoice
-        self.asset_name = 'Office table'
-        self.invoice = self.env['account.invoice'].create({
-            'partner_id': self.supplier.id,
-            'account_id': self.account_suppliers.id,
-            'journal_id': self.journal_purchase.id,
-            'reference_type': 'none',
-            'reference': 'PURCHASE/12345',
-            'invoice_line': [
-                (0, False, {
-                    'name': self.asset_name,
-                    'account_id': self.account_asset.id,
-                    'account_analytic_id': self.analytic_b.id,
-                    'asset_category_id': self.asset_category.id,
-                    'quantity': 1.0,
-                    'price_unit': 100.00,
-                }),
-            ],
+        # Create invoice
+        cls.invoice = cls.env['account.invoice'].create({
+            'partner_id': cls.partner.id,
+            'invoice_line_ids': [
+                (0, 0, {
+                    'name': 'Test line',
+                    'asset_category_id': cls.asset_category.id,
+                    'account_analytic_id': cls.asset_analytic_account.id,
+                    'account_id': cls.asset_category.account_asset_id.id,
+                    'quantity': 10.0,
+                    'price_unit': 50.0,
+                })
+            ]
         })
-        # Validate invoice
-        self.invoice.signal_workflow('invoice_open')
 
-    def test_asset_create(self):
-        # Search asset created
-        asset = self.env['account.asset.asset'].search([
-            ('code', '=', self.invoice.number),
-        ])
-        # Asset must be created with code == invoice number
-        self.assertTrue(asset)
-        # Asset name must be invoice line description
-        self.assertEqual(self.asset_name, asset.name)
-        # Asset category must be the one selected in invoice line
-        self.assertEqual(self.asset_category.id, asset.category_id.id)
-        # Asset purchase date must be invoice date
-        self.assertEqual(self.invoice.date_invoice, asset.purchase_date)
-        # Asset analytic account must be invoice line analytic account
-        self.assertEqual(self.analytic_b.id, asset.analytic_account_id.id)
+    def test_flow_asset(self):
+        self.asset.validate()
+        self.asset.depreciation_line_ids[0].create_move()
+        move = self.asset.depreciation_line_ids[0].move_id
+        move.post()
+        analytic_lines = move.mapped(
+            'line_ids.analytic_line_ids')
+        for analytic_line in analytic_lines:
+            self.assertEqual(
+                analytic_line.account_id,
+                self.asset.analytic_account_id,
+                '''analytic account has not been propagated
+                   to the analytic line''')
 
-    def test_move_create(self):
-        # Search asset created
-        asset = self.env['account.asset.asset'].search([
-            ('code', '=', self.invoice.number),
-        ])
-        # Asset must be created with code == invoice number
-        self.assertTrue(asset)
-        line = asset.depreciation_line_ids.filtered(
-            lambda x: x.move_check is False)[0]
-        line.create_move()
-        # Journal entry must be created
-        self.assertTrue(line.move_id)
-        # Expense journal item analytic account must be asset analytic account
-        expense = line.move_id.line_id.filtered(
-            lambda x: x.account_id == self.account_asset_expense)[0]
-        self.assertEqual(self.analytic_b.id, expense.analytic_account_id.id)
+    def test_flow_invoice(self):
+        self.invoice.action_invoice_open()
+        invoice_lines = self.invoice.invoice_line_ids
+        for invoice_line in invoice_lines:
+            asset = self.env['account.asset.asset'].search([
+                ('code', '=', invoice_line.invoice_id.number),
+                ('company_id', '=', invoice_line.company_id.id),
+            ], limit=1)
+            self.assertEqual(
+                asset.analytic_account_id,
+                invoice_line.account_analytic_id,
+                '''analytic account has not been propagated
+                   to the asset''')
