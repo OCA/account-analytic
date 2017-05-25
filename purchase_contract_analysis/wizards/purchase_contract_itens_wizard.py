@@ -3,8 +3,7 @@
 # Luiz Felipe do Divino<luiz.divino@kmee.com.br>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-from openerp import api, models, fields, exceptions, _
+from openerp import api, models, fields
 
 
 class PurchaseContractItensWizard(models.TransientModel):
