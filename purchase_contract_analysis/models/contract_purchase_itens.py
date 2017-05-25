@@ -28,7 +28,7 @@ class ContractPurchaseItens(models.Model):
             ]
         )
 
-    @api.depends('product_id', 'quantity')
+    @api.depends('product_id', 'quantity', 'price')
     @api.multi
     def _compute_expected_amount(self):
         for record in self:
