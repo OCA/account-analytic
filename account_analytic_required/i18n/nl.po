@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-25 08:50+0000\n"
-"PO-Revision-Date: 2017-04-25 08:50+0000\n"
+"POT-Creation-Date: 2017-05-24 09:51+0000\n"
+"PO-Revision-Date: 2017-05-24 09:51+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +24,17 @@ msgid "Account Type"
 msgstr ""
 
 #. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:52
+#: code:addons/account_analytic_required/models/account.py:47
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -39,7 +44,7 @@ msgstr ""
 "'%s', maar deze ontbreekt in de boekingsregel met de omschrijving '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:60
+#: code:addons/account_analytic_required/models/account.py:55
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -54,6 +59,16 @@ msgstr ""
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
+msgstr ""
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr ""
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
 msgstr ""
 
 #. module: account_analytic_required
