@@ -27,5 +27,10 @@
         'wizards/purchase_contract_itens_wizard_view.xml',
         'wizards/purchase_orders_partial_contract_wizard_view.xml',
     ],
+    'demo': [
+        'demo/purchase_contract_demo.xml',
+        'demo/account_budget_demo.xml',
+        'demo/contract_purchase_itens_demo.xml',
+    ],
     'installable': True,
 }
