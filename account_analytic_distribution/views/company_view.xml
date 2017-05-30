@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_company_inherit_form">
+        <field name="name">res.company.form.inherit</field>
+        <field name="inherit_id" ref="account.view_company_inherit_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <field name="tax_calculation_rounding_method" position="after">
+                <field name="force_percent" groups="base.group_no_one"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

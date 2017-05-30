@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Antonio Espinosa - <antonio.espinosa@tecnativa.com>
+     Copyright 2017 Vicent Cubells - <vicent.cubells@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+
+    <record model="ir.ui.view" id="account_analytic_distribution_form">
+        <field name="name">account.analytic.distribution.form</field>
+        <field name="model">account.analytic.distribution</field>
+        <field name="arch" type="xml">
+            <form string="Analytic distribution">
+                <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </group>
+                <label string="Distribution rules"/>
+                <field name="rule_ids">
+                    <tree string="Rules" editable="bottom">
+                        <field name="sequence" widget="handle"/>
+                        <field name="percent"/>
+                        <field name="analytic_account_id"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="account_analytic_distribution_tree">
+        <field name="name">account.analytic.distribution.tree</field>
+        <field name="model">account.analytic.distribution</field>
+        <field name="arch" type="xml">
+            <tree string="Analytic distributions">
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="account_analytic_distribution_search">
+        <field name="name">account.analytic.distribution.search</field>
+        <field name="model">account.analytic.distribution</field>
+        <field name="arch" type="xml">
+            <search string="Analytic distributions">
+                <field name="name" string="Analytic distribution"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="account_analytic_distribution_action">
+        <field name="name">Analytic distributions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.analytic.distribution</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="account_analytic_distribution_search"/>
+    </record>
+
+    <menuitem parent="account.menu_analytic_accounting"
+              id="menu_account_analytic_distribution"
+              action="account_analytic_distribution_action"
+              groups="analytic.group_analytic_accounting" />
+
+</odoo>
