@@ -1,6 +1,7 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License
 
+====================================
 Restrict Analytic Journal on Company
 ====================================
 
@@ -22,22 +23,27 @@ wether such wrong configurations exist use the following SQL:
 # select
     aj.id, aj.name, aj.company_id,
     aaj.id, aaj.name, aaj.company_id, rc.name
-from account_journal aj 
+from account_journal aj
 join account_analytic_journal aaj on aj.analytic_journal_id = aaj.id
 join res_company rc on aj.company_id = rc.id
 where aj.company_id != aaj.company_id;
 ```
 
 
-More info
----------
-
-For further information, please visit:
-
- * https://www.odoo.com/forum/help-1
-
 Known issues / Roadmap
 ======================
+
+None at the moment.
+
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/account-analytic/issues>`_.
+In case of trouble, please check there if your issue has already been
+reported. If you spotted it first, help us smash it by providing detailed
+and welcomed feedback.
+
 
 Credits
 =======
