@@ -16,7 +16,7 @@ Installation
 
 After installing this module no more journals can be created that refer to
 the analytic journals of another company. However existing wrong
-configurations are not (and cannot) be automatically corrected. To check
+configurations are not (and cannot be) automatically corrected. To check
 wether such wrong configurations exist use the following SQL:
 
 ```
