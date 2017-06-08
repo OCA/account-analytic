@@ -1,36 +1,49 @@
 # -*- coding: utf-8 -*-
 # (c) 2015 Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
-import openerp.tests.common as common
-from openerp import workflow
+import odoo.tests.common as common
+from odoo import workflow
 
 
-class TestAnalyticPartner(common.TransactionCase):
+class TestAnalyticPartner(common.SavepointCase):
 
-    def setUp(self):
-        super(TestAnalyticPartner, self).setUp()
-        product = self.env.ref('product.product_product_5')
-        self.analytic_account = self.env['account.analytic.account'].create(
-            {'name': 'Test Analytic Account',
-             'state': 'draft',
-             'type': 'normal'}
-        )
-        self.invoice = self.env['account.invoice'].create(
-            {'journal_id': self.env.ref('account.sales_journal').id,
-             'partner_id': self.env.ref('base.res_partner_3').id,
-             'account_id': self.env.ref('account.a_recv').id,
-             'invoice_line': [
-                 (0, 0, {'product_id': product.id,
-                         'name': 'Test',
-                         'account_analytic_id': self.analytic_account.id,
-                         'quantity': 10.0,
-                         })],
-             })
+    @classmethod
+    def setUpClass(cls):
+        super(TestAnalyticPartner, cls).setUpClass()
+        cls.partner = cls.env['res.partner'].create({
+            'name': 'Test partner',
+        })
+        cls.account_type = cls.env['account.account.type'].create({
+            'name': 'Test account type',
+            'type': 'other',
+        })
+        cls.account = cls.env['account.account'].create({
+            'name': 'Test account',
+            'code': 'TEST',
+            'user_type_id': cls.account_type.id
+        })
+        cls.analytic_account = cls.env['account.analytic.account'].create({
+            'name': 'Test Analytic Account',
+        })
+        cls.invoice = cls.env['account.invoice'].create({
+            'partner_id': cls.partner.id,
+            'invoice_line_ids': [
+                (0, 0, {
+                    'name': 'Test line',
+                    'account_id': cls.account.id,
+                    'account_analytic_id': cls.analytic_account.id,
+                    'quantity': 10.0,
+                    'price_unit': 50.0,
+                })
+            ]
+        })
+
+    def test_flow(self):
         workflow.trg_validate(self.uid, 'account.invoice', self.invoice.id,
                               'invoice_open', self.cr)
-
-    def test_partner_from_invoice(self):
-        analytic_lines = self.invoice.move_id.mapped('line_id.analytic_lines')
+        self.invoice.action_invoice_open()
+        analytic_lines = self.invoice.move_id.mapped(
+            'line_ids.analytic_line_ids')
         for analytic_line in analytic_lines:
             self.assertEqual(
                 analytic_line.other_partner_id,
