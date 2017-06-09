@@ -18,6 +18,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[account_analytic_distribution](account_analytic_distribution/) | 10.0.1.0.0 | Distribute incoming/outcoming account moves to several analytic accounts
 [account_analytic_no_lines](account_analytic_no_lines/) | 10.0.1.0.0 | Hide analytics lines and disable their generation from a move line.
 [account_analytic_required](account_analytic_required/) | 10.0.1.0.0 | Account Analytic Required
 [analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
