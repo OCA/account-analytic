@@ -146,3 +146,12 @@ class TestAccountAnalyticNoLines(SavepointCase):
         analytic_lines = self.account_analytic_line.search(
             [('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
+
+    def test_gl_amounts(self):
+        self.invoice.action_move_create()
+        self.assertEquals(self.aa_1.gl_debit, 150)
+        self.assertEquals(self.aa_1.gl_credit, 0)
+        self.assertEquals(self.aa_1.gl_balance, -150)
+        self.assertEquals(self.aa_2.gl_debit, 0)
+        self.assertEquals(self.aa_2.gl_credit, 100)
+        self.assertEquals(self.aa_2.gl_balance, 100)
