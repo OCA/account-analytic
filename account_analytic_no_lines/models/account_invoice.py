@@ -13,7 +13,8 @@ class AccountInvoice(models.Model):
     def finalize_invoice_move_lines(self, move_lines):
         move_lines = super(AccountInvoice, self)\
             .finalize_invoice_move_lines(move_lines)
-        if move_lines and len(move_lines[0]) > 2 and \
-                'analytic_line_ids' in move_lines[0][2]:
-            move_lines[0][2].pop('analytic_line_ids')
+        if move_lines:
+            for move_line in move_lines:
+                if len(move_line) > 2 and 'analytic_line_ids' in move_line[2]:
+                    move_line[2].pop('analytic_line_ids')
         return move_lines
