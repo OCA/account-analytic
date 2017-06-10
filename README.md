@@ -24,6 +24,7 @@ addon | version | summary
 [account_analytic_required](account_analytic_required/) | 9.0.1.0.0 | Account Analytic Required
 [analytic_base_department](analytic_base_department/) | 9.0.1.0.0 | Base Analytic Department Categorization
 [analytic_department](analytic_department/) | 9.0.1.0.0 | Analytic Department Categorization
+[purchase_analytic_distribution](purchase_analytic_distribution/) | 9.0.1.0.0 | Purchase Analytic Plans
 [sale_analytic_distribution](sale_analytic_distribution/) | 9.0.1.0.0 | Sales Analytic Distribution
 
 
