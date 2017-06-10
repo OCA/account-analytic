@@ -4,6 +4,21 @@
 
 <odoo>
 
+    <record model="ir.actions.act_window" id="account_analytic_line_action_gl">
+        <field name="context">{'search_default_group_date': 1, 'search_default_group_journal': 1, 'default_analytic_account_id': active_id}</field>
+        <field name="domain">[('analytic_account_id','=', active_id)]</field>
+        <field name="name">Journal Items</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">tree,form,graph,pivot</field>
+        <field name="view_id" ref="account.view_move_line_tree"/>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+          <p>
+            No activity yet on this account.
+          </p>
+        </field>
+    </record>
+
     <record model="ir.ui.view" id="account_analytic_account_form_view">
         <field name="name">account.analytic.account.form (in account_analytic_no_lines)</field>
         <field name="model">account.analytic.account</field>
@@ -12,9 +27,13 @@
             <xpath expr="//div[@name='button_box']/button[@name=%(analytic.account_analytic_line_action)d]" position="attributes">
                 <attribute name="groups">account_analytic_no_lines.hide_analytic_entries</attribute>
             </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="action" name="%(account_analytic_line_action_gl)d"
+                        icon="fa-usd"  string="Journal Items" widget="statinfo"/>
+            </xpath>
         </field>
     </record>
-    
+
     <record model="ir.ui.view" id="account_analytic_account_tree_view">
         <field name="name">account.analytic.account.tree (in account_analytic_no_lines)</field>
         <field name="model">account.analytic.account</field>
@@ -23,11 +42,20 @@
             <field name="debit" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+            <field name="debit" position="after">
+                <field name="gl_debit"/>
+            </field>
             <field name="credit" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+            <field name="credit" position="after">
+                <field name="gl_credit"/>
+            </field>
             <field name="balance" position="attributes">
                 <attribute name="invisible">1</attribute>
+            </field>
+            <field name="balance" position="after">
+                <field name="gl_balance"/>
             </field>
         </field>
     </record>
