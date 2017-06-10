@@ -16,8 +16,8 @@
         'analytic',
     ],
     'data': [
+        'security/data_account_analytic_group.xml',
         'views/account_analytic_account.xml',
-        'data/data_account_analytic_group.xml',
         'views/account_move_line.xml',
         'views/account_analytic.xml',
     ],
