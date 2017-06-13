@@ -35,8 +35,8 @@ To configure your analytic distributions go to:
    percentage of total move line amount you want to distribute.
 #. Save distribution.
 #. You can set if sum of total percent of analytic accounts must be 100% or
-   not, if yo go to *Invoicing > Configuration > Settings* and set checkbox
-   **Force percent** in *Accounting & Finance*.
+   not by company. If yo go to your company settings, you can find a checkbox
+   **Force percent** in *General Information* tab.
 
 
 Usage
