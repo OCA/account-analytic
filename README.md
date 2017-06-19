@@ -19,10 +19,12 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [account_analytic_distribution](account_analytic_distribution/) | 10.0.1.0.0 | Distribute incoming/outcoming account moves to several analytic accounts
+[account_analytic_distribution_required](account_analytic_distribution_required/) | 10.0.1.0.0 | Account Analytic Distribution Required
 [account_analytic_no_lines](account_analytic_no_lines/) | 10.0.1.0.0 | Hide analytics lines and disable their generation from a move line.
 [account_analytic_required](account_analytic_required/) | 10.0.1.0.0 | Account Analytic Required
 [account_asset_analytic](account_asset_analytic/) | 10.0.1.0.0 | Adds analytic account per asset
 [analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
+[analytic_partner](analytic_partner/) | 10.0.1.0.0 | Search and group analytic entries by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
 
 
@@ -31,10 +33,8 @@ Unported addons
 addon | version | summary
 --- | --- | ---
 [account_analytic_line_list](account_analytic_line_list/) | 1.1 (unported) | Account Analytic Line List
-[account_analytic_plan_required](account_analytic_plan_required/) | 8.0.0.1.0 (unported) | Account Analytic Plan Required
 [analytic_department](analytic_department/) | 9.0.1.0.0 (unported) | Analytic Department Categorization
 [analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.0 (unported) | Multi-Currency in Analytic Accounting
-[analytic_partner](analytic_partner/) | 8.0.1.0.0 (unported) | Classify analytic entries by partner
 [analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 8.0.1.0.0 (unported) | Classify HR activities by partner
 [analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 8.0.1.0.0 (unported) | Invoice analytic lines for the specific partner in them
 [analytic_secondaxis](analytic_secondaxis/) | 1.1 (unported) | Account Analytic Second Axis
