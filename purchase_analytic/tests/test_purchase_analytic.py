@@ -2,8 +2,8 @@
 # © 2016  Laetitia Gangloff, Acsone SA/NV (http://www.acsone.eu)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import odoo.tests.common as common
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+import openerp.tests.common as common
+from openerp.tools import DEFAULT_SERVER_DATETIME_FORMAT
 from datetime import datetime
 
 

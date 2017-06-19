@@ -4,7 +4,7 @@
 
 {
     "name": "Purchase Analytic",
-    "version": "10.0.1.0.0",
+    "version": "9.0.1.0.0",
     'author': "Acsone SA/NV,Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "http://www.acsone.eu",
