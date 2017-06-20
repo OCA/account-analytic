@@ -2,9 +2,9 @@
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 
-============================
-Distribution asset analytic
-============================
+===================================
+Account Asset Analytic Distribution
+===================================
 
 This module allows you to define an analytic distribution per asset and creates
 expenses moves with that analytic distibution instead of the analytic account
