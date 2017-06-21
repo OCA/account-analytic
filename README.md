@@ -26,6 +26,7 @@ addon | version | summary
 [analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
 [analytic_partner](analytic_partner/) | 10.0.1.0.0 | Search and group analytic entries by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
+[product_analytic](product_analytic/) | 10.0.1.0.0 | Add analytic account on products and product categories
 
 
 Unported addons
