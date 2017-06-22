@@ -108,7 +108,7 @@ class ContractPurchaseItens(models.Model):
     )
     invoiced_qty = fields.Float(
         string="Invoiced Qty",
-        compute=_compute_invoiced_amount
+        compute=_compute_to_invoice_amount
     )
     to_invoice = fields.Float(
         string="To Invoice",
