@@ -260,8 +260,7 @@ class TestBudget(TransactionCase):
             self.assertEqual(purchase_item_line.to_invoice,
                              purchase_orders_item_total,
                              "To invoice value different from the sum of the"
-                             "purchase order lines of that product!"
-                             )
+                             "purchase order lines of that product!")
 
     def test_invoiced_amount_in_contract_purchase_itens_lines(self):
         """
@@ -293,8 +292,7 @@ class TestBudget(TransactionCase):
             self.assertEqual(purchase_item_line.invoiced,
                              purchase_invoices_item_total,
                              "To invoice value different from the sum of the"
-                             "purchase order lines of that product!"
-                             )
+                             "purchase order lines of that product!")
 
     def test_create_contract_purchase_item_wizard(self):
         """

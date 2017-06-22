@@ -93,8 +93,7 @@ class PurchaseOrdersPartialContractWizard(models.TransientModel):
         else:
             raise exceptions.Warning(
                 _("One or more line has the amount bigger than "
-                  "the remaining for that line!"
-                  )
+                  "the remaining for that line!")
             )
 
         return {'type': 'ir.actions.act_window_close'}

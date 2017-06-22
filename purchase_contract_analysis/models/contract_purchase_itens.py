@@ -28,13 +28,45 @@ class ContractPurchaseItens(models.Model):
             ]
         )
 
-    @api.depends('product_id', 'quantity')
+    @api.depends('expected', 'quantity')
+    @api.multi
+    def _compute_remaining_amount(self):
+        for record in self:
+            # if record.expected:
+                record.remaining = record.quantity - (
+                    record.invoiced_qty
+                )
+
+    @api.depends('expected', 'contract_id', 'quantity')
+    @api.multi
+    def _compute_to_invoice_amount(self):
+        for record in self:
+            if record.expected and record.contract_id:
+                sale_order_ids = self._get_purchase_orders_of_the_contract(
+                    record
+                )
+                if sale_order_ids:
+                    contract_sale_order_ids = \
+                        self._get_purchase_orders_of_product(
+                            record.product_id.id, sale_order_ids.ids
+                        )
+                    total = 0.0
+                    qty = 0.0
+                    for line in contract_sale_order_ids:
+                        total += line.price_subtotal
+                        qty += line.product_qty
+                    record.to_invoice = total - record.invoiced
+                    record.invoiced_qty = qty
+                    record.remaining = record.quantity - qty
+
+    @api.depends('product_id', 'quantity', 'price')
     @api.multi
     def _compute_expected_amount(self):
         for record in self:
             if record.product_id and record.quantity:
                 record.expected = \
-                    record.price * record.quantity
+                    record.price * record.remaining + record.invoiced + \
+                    record.to_invoice
 
     @api.depends('product_id', 'contract_id')
     @api.multi
@@ -59,33 +91,6 @@ class ContractPurchaseItens(models.Model):
                         total += line.price_subtotal
             record.invoiced = total
 
-    @api.depends('expected', 'contract_id')
-    @api.multi
-    def _compute_to_invoice_amount(self):
-        for record in self:
-            if record.expected and record.contract_id:
-                sale_order_ids = self._get_purchase_orders_of_the_contract(
-                    record
-                )
-                if sale_order_ids:
-                    contract_sale_order_ids = \
-                        self._get_purchase_orders_of_product(
-                            record.product_id.id, sale_order_ids.ids
-                        )
-                    total = 0.0
-                    for line in contract_sale_order_ids:
-                        total += line.price_subtotal
-                    record.to_invoice = total - record.invoiced
-
-    @api.depends('expected')
-    @api.multi
-    def _compute_remaining_amount(self):
-        for record in self:
-            if record.expected:
-                record.remaining = record.expected - (
-                    record.to_invoice + record.invoiced
-                )
-
     name = fields.Char(string="Name", required=True)
     product_id = fields.Many2one(
         comodel_name="product.product", string="Product", required=True
@@ -101,12 +106,16 @@ class ContractPurchaseItens(models.Model):
         string="Invoiced",
         compute=_compute_invoiced_amount
     )
+    invoiced_qty = fields.Float(
+        string="Invoiced Qty",
+        compute=_compute_to_invoice_amount
+    )
     to_invoice = fields.Float(
         string="To Invoice",
         compute=_compute_to_invoice_amount
     )
     remaining = fields.Float(
-        string="Remaining",
+        string="Remaining Qty",
         compute=_compute_remaining_amount
     )
     contract_id = fields.Many2one(
