@@ -120,3 +120,4 @@ class PurchaseOrdersPartialContractLine(models.TransientModel):
         comodel_name="account.analytic.account",
         string="Contract"
     )
+

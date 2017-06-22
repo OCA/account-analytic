@@ -34,7 +34,8 @@ class ContractPurchaseItens(models.Model):
         for record in self:
             if record.product_id and record.quantity:
                 record.expected = \
-                    record.price * record.quantity
+                    record.price * record.remaining + record.invoiced + \
+                    record.to_invoice
 
     @api.depends('product_id', 'contract_id')
     @api.multi
@@ -73,18 +74,23 @@ class ContractPurchaseItens(models.Model):
                             record.product_id.id, sale_order_ids.ids
                         )
                     total = 0.0
+                    qty = 0.0
                     for line in contract_sale_order_ids:
                         total += line.price_subtotal
+                        qty += line.product_qty
                     record.to_invoice = total - record.invoiced
+                    record.invoiced_qty = qty
+                    record.remaining = record.quantity - qty
 
-    @api.depends('expected')
-    @api.multi
-    def _compute_remaining_amount(self):
-        for record in self:
-            if record.expected:
-                record.remaining = record.expected - (
-                    record.to_invoice + record.invoiced
-                )
+
+    # @api.depends('expected')
+    # @api.multi
+    # def _compute_remaining_amount(self):
+    #     for record in self:
+    #         if record.expected:
+    #             record.remaining = record.expected - (
+    #                 record.to_invoice + record.invoiced
+    #             )
 
     name = fields.Char(string="Name", required=True)
     product_id = fields.Many2one(
@@ -101,13 +107,17 @@ class ContractPurchaseItens(models.Model):
         string="Invoiced",
         compute=_compute_invoiced_amount
     )
+    invoiced_qty = fields.Float(
+        string="Invoiced Qty",
+        compute=_compute_invoiced_amount
+    )
     to_invoice = fields.Float(
         string="To Invoice",
         compute=_compute_to_invoice_amount
     )
     remaining = fields.Float(
-        string="Remaining",
-        compute=_compute_remaining_amount
+        string="Remaining Qty",
+        compute=_compute_to_invoice_amount
     )
     contract_id = fields.Many2one(
         comodel_name="account.analytic.account",
