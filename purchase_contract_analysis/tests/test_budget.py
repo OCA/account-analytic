@@ -293,3 +293,49 @@ class TestBudget(TransactionCase):
                              purchase_invoices_item_total,
                              "To invoice value different from the sum of the"
                              "purchase order lines of that product!")
+
+    def test_create_contract_purchase_item_wizard(self):
+        """
+        Test the creation of a contract purchase item by wizard
+        """
+        wizard_ir = self.purchase_contract1.create_purchase_contract_item()
+        self.assertEqual(
+            wizard_ir['type'],
+            "ir.actions.act_window",
+            "Can't create contract purchase item wizard!"
+        )
+        vals = {
+            'name': 'Test Item Wizard',
+            'product_id': self.env.ref("product.product_product_9").id,
+            'price': 599.00,
+            'quantity': 10.00,
+            'contract_id': wizard_ir['context']['default_contract_id'],
+        }
+        wizard_id = self.env[wizard_ir['res_model']].create(vals)
+        wizard_id.create_purchase_contract_item()
+
+        self.assertTrue(
+            self.env['contract.purchase.itens'].search(
+                [('name', '=', 'Test Item Wizard')]),
+            "Can't create a purchase contract item with the wizard!"
+        )
+
+    def test_back_to_draft(self):
+        """
+        Test returning contract to draft state
+        """
+        self.purchase_contract1.set_open()
+        self.assertTrue(
+            self.purchase_contract1.return_to_draft(),
+            "Can't return contract to draft state!"
+        )
+        purchase_orders = self._create_purchase_order()
+        if purchase_orders:
+            with self.assertRaises(Exception) as context:
+                self.purchase_contract1.return_to_draft()
+
+            self.assertTrue(
+                "It's not possible to turn the state of the contract back to "
+                "draft because existis purchase orders of this contract!"
+                in context.exception.message
+            )

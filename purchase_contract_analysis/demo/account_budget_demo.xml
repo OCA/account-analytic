@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+
+        <!-- Budgets -->
+        <data>
+            <record id="crossovered_budget_kmee0" model="crossovered.budget">
+                <field name="code">kmee0</field>
+                <field name="name">KMEE Purchase Budget 01</field>
+                <field eval="str(time.localtime(time.time())[0]+1)+'-01-01'" name="date_from"/>
+                <field eval="&quot;&quot;&quot;draft&quot;&quot;&quot;" name="state"/>
+                <field eval="str(time.localtime(time.time())[0])+'-12-31'" name="date_to"/>
+                <field name="creating_user_id" ref="base.user_root"/>
+                <field name="total">500000</field>
+            </record>
+        </data>
+
+        <!-- Budget lines -->
+        <data>
+            <record id="crossovered_budget_kmee0_lines_0" model="crossovered.budget.lines">
+                <field name="analytic_account_id" ref="purchase_contract_asus_demo"/>
+                <field name="general_budget_id" ref="account_budget.account_budget_post_purchase0"/>
+                <field eval="str(time.localtime(time.time())[0])+'-01-01'" name="date_from"/>
+                <field eval="300000.0" name="planned_amount"/>
+                <field name="crossovered_budget_id" ref="crossovered_budget_kmee0"/>
+                <field eval="str(time.localtime(time.time())[0])+'-01-31'" name="date_to"/>
+            </record>
+            <record id="crossovered_budget_kmee0_lines_1" model="crossovered.budget.lines">
+                <field name="analytic_account_id" ref="purchase_contract_asus_demo"/>
+                <field name="general_budget_id" ref="account_budget.account_budget_post_purchase0"/>
+                <field eval="str(time.localtime(time.time())[0])+'-02-01'" name="date_from"/>
+                <field eval="200000.0" name="planned_amount"/>
+                <field name="crossovered_budget_id" ref="crossovered_budget_kmee0"/>
+                <field eval="str(time.localtime(time.time())[0])+'-02-28'" name="date_to"/>
+            </record>
+        </data>
+</openerp>

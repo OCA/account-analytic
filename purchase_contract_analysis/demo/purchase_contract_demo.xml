@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <record id="purchase_contract_asus_demo" model="account.analytic.account">
+            <field name="name">Asus Contract</field>
+            <field name="partner_id" ref="base.res_partner_1"/>
+            <field name="contract_type">purchase</field>
+            <field name="type">contract</field>
+            <field name="date_start" eval="str(time.localtime(time.time())[0]+1)+'-01-01'"/>
+            <field name="date" eval="str(time.localtime(time.time())[0]+1)+'-12-31'" />
+        </record>
+
+    </data>
+</openerp>

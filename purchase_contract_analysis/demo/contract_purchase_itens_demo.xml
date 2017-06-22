@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+
+        <record id="product_purchase_contract_asus_demo" model="contract.purchase.itens">
+            <field name="name">Product</field>
+            <field name="product_id" ref="product.product_product_8" />
+            <field name="price">1999.00</field>
+            <field name="contract_id" ref="purchase_contract_asus_demo" />
+            <field name="quantity">25.00</field>
+        </record>
+
+        <record id="service_purchase_contract_asus_demo" model="contract.purchase.itens">
+            <field name="name">Service</field>
+            <field name="product_id" ref="product.product_product_consultant" />
+            <field name="price">150.00</field>
+            <field name="contract_id" ref="purchase_contract_asus_demo" />
+            <field name="quantity">25.00</field>
+        </record>
+
+    </data>
+</openerp>
