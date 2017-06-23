@@ -9,12 +9,18 @@
 =======
 # 
 # Translators:
+<<<<<<< HEAD
 # OCA Transbot <transbot@odoo-community.org>, 2016
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
+=======
+# enjolras <yo@miguelrevilla.com>, 2017
+# OCA Transbot <transbot@odoo-community.org>, 2017
+>>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 <<<<<<< HEAD
 "POT-Creation-Date: 2018-02-21 03:54+0000\n"
 "PO-Revision-Date: 2018-02-21 03:54+0000\n"
@@ -29,6 +35,11 @@ msgstr ""
 "POT-Creation-Date: 2017-01-06 23:06+0000\n"
 "PO-Revision-Date: 2017-01-06 23:06+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+=======
+"POT-Creation-Date: 2018-02-21 03:54+0000\n"
+"PO-Revision-Date: 2018-02-21 03:54+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+>>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,24 +48,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: analytic_partner
-#: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
-#: field:account.analytic.line,partner_id:0
-msgid "Account Partner"
-msgstr "Empresa de la cuenta"
-
-#. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Línea analítica"
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
 
 #. module: analytic_partner
+<<<<<<< HEAD
 #: model:ir.model,name:analytic_partner.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Línea analítica"
 
 #. module: analytic_partner
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+=======
+#: model:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+>>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
 msgid "Cost/Revenue"
 msgstr "Coste/Beneficio"
 
@@ -62,6 +71,7 @@ msgstr "Coste/Beneficio"
 #: model:ir.actions.act_window,name:analytic_partner.act_analytic_cost_revenue
 msgid "Costs & Revenues"
 msgstr "Costes y beneficios"
+<<<<<<< HEAD
 
 #. module: analytic_partner
 <<<<<<< HEAD
@@ -78,15 +88,21 @@ msgstr "Otro asociado"
 #: model:ir.model,name:analytic_partner.model_account_invoice
 msgid "Invoice"
 msgstr "Factura"
+=======
+>>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_move_line
-msgid "Journal Items"
-msgstr "Apuntes contables"
+msgid "Journal Item"
+msgstr "Apunte contable"
 
 #. module: analytic_partner
-#: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
-#: field:account.analytic.line,other_partner_id:0
+#: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line_other_partner_id
+#: model:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
 msgid "Other Partner"
+<<<<<<< HEAD
 msgstr "Empresa alternativa"
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
+=======
+msgstr "Otro asociado"
+>>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
