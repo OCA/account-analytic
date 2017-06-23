@@ -11,38 +11,38 @@ msgstr ""
 "POT-Creation-Date: 2017-06-21 02:40+0000\n"
 "PO-Revision-Date: 2017-06-21 02:40+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
+"Language-Team: Arabic (https://www.transifex.com/oca/teams/23907/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: product_analytic
 #: model:ir.model.fields,field_description:product_analytic.field_product_category_expense_analytic_account_id
 #: model:ir.model.fields,field_description:product_analytic.field_product_product_expense_analytic_account_id
 #: model:ir.model.fields,field_description:product_analytic.field_product_template_expense_analytic_account_id
 msgid "Expense Analytic Account"
-msgstr "Aufwands-Kostenstelle"
+msgstr ""
 
 #. module: product_analytic
 #: model:ir.model.fields,field_description:product_analytic.field_product_category_income_analytic_account_id
 #: model:ir.model.fields,field_description:product_analytic.field_product_product_income_analytic_account_id
 #: model:ir.model.fields,field_description:product_analytic.field_product_template_income_analytic_account_id
 msgid "Income Analytic Account"
-msgstr "Erlös-Kostenstelle"
+msgstr ""
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Rechnungszeile"
+msgstr "خط الفاتورة"
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
 msgid "Product Category"
-msgstr "Produktkategorie"
+msgstr ""
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_template
 msgid "Product Template"
-msgstr "Produktvorlage"
+msgstr ""
