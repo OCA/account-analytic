@@ -14,6 +14,7 @@
     'website': 'https://www.tecnativa.com',
     'depends': [
         'procurement',
+        'analytic',
     ],
     'data': [
         'views/procurement_analytic.xml',
