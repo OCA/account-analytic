@@ -5,8 +5,9 @@
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from openerp import api, fields, models, _
-from openerp.exceptions import ValidationError
+
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class AccountAnalyticAccount(models.Model):
@@ -38,13 +39,14 @@ class AccountAnalyticAccount(models.Model):
             account.credit = credit
             account.balance = balance
 
+    @api.multi
     @api.constrains('parent_id')
-    @api.one
     def check_recursion(self):
-        if not super(AccountAnalyticAccount, self)._check_recursion():
-            raise ValidationError(
-                _('You can not create recursive analytic accounts.'),
-            )
+        for account in self:
+            if not super(AccountAnalyticAccount, account)._check_recursion():
+                raise UserError(
+                    _('You can not create recursive analytic accounts.'),
+                )
 
     @api.multi
     @api.onchange('parent_id')

@@ -4,10 +4,11 @@
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
+# Copyright 2017 Tecnativa
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase
-from openerp.exceptions import ValidationError
+from odoo.tests.common import TransactionCase
+from odoo.exceptions import ValidationError
 
 
 class TestAccountAnalyticRecursion(TransactionCase):
@@ -71,12 +72,3 @@ class TestAccountAnalyticRecursion(TransactionCase):
                          'Analytic account in the debit side')
         self.assertEqual(self.analytic_parent2.credit, 50, 'Wrong amount')
         self.assertEqual(self.analytic_parent2.balance, 50, 'Wrong amount')
-
-    def test_wizard(self):
-        self.wizard = self.env['account.analytic.chart'].create({
-            'from_date': '2017-01-01',
-            'to_date': '2017-12-31',
-        })
-        result = self.wizard.analytic_account_chart_open_window()
-        self.assertTrue('2017-01-01' in result['context'])
-        self.assertTrue('2017-12-31' in result['context'])

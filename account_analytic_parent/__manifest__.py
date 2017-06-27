@@ -4,22 +4,24 @@
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
+# Coypyright 2017 Tecnativa
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
     'name': 'Account Analytic Parent',
     'summary': """
         This module reintroduces the hierarchy to the analytic accounts.""",
-    'version': '9.0.1.0.0',
+    'version': '10.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Matmoz d.o.o., '
               'Luxim d.o.o., '
               'Deneroteam, '
               'Eficent, '
+              'Tecnativa, '
               'Odoo Community Association (OCA)',
     'website': 'https://www.github.com/OCA/account-analytic.git',
     'depends': [
-        'account',
+        'account_accountant',
         'analytic',
     ],
     'data': [
