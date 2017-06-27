@@ -26,6 +26,7 @@
     ],
     'data': [
         'views/account_analytic_account_view.xml',
+        'wizard/account_analytic_chart_view.xml',
     ],
     'demo': [
         'data/analytic_account_demo.xml',
