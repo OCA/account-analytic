@@ -10,7 +10,7 @@
     <field name="inherit_id" ref="procurement.procurement_form_view"/>
     <field name="arch" type="xml">
         <field name="group_id" position="after">
-            <field name="account_analytic_id" groups="purchase.group_analytic_accounting"/>
+            <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
         </field>
     </field>
 </record>

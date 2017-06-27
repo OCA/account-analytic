@@ -11,7 +11,10 @@
     'author': "Tecnativa, "
               "Odoo Community Association (OCA)",
     'website': 'http://www.tecnativa.com',
-    'depends': ['procurement'],
+    'depends': [
+        'procurement',
+        'analytic',
+    ],
     'data': [
         'views/procurement_analytic.xml',
     ],
