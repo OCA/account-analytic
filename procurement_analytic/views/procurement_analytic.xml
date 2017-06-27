@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015 Carlos Dauden <carlos.dauden@tecnativa.com>
+     Copyright 2017 Vicent Cubells <vicent.cubells@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="procurement_form_view_analiytic" model="ir.ui.view">
+        <field name="name">procurement_purchase_analytic.procurement.order.form</field>
+        <field name="model">procurement.order</field>
+        <field name="inherit_id" ref="procurement.procurement_form_view"/>
+        <field name="arch" type="xml">
+            <field name="group_id" position="after">
+                <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
