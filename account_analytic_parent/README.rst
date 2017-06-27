@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-========================
-Analytic Analytic Parent
-========================
+=======================
+Account Analytic Parent
+=======================
 
 This module reintroduces the hierarchy to the analytic accounts as
 it was in previous versions of Odoo. This module is a base module for
@@ -17,7 +17,7 @@ Activate the analytic accounting in Accounting > Configuration > Settings
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/9.0
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
 
 
 Bug Tracker
@@ -44,7 +44,9 @@ Contributors
 * Matmoz d.o.o. <http://www.matmoz.si>
 * Deneroteam. <dhaval@deneroteam.com>
 * SerpentCS <http://www.serpentcs.com/>
-
+* Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Vicent Cubells <vicent.cubells@tecnativa.com>
+* David Vidal <david.vidal@tecnativa.com>
 
 Maintainer
 ----------
