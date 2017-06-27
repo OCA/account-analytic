@@ -4,10 +4,11 @@
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
+# Copyright 2017 Tecnativa
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase
-from openerp.exceptions import ValidationError
+from odoo.tests.common import TransactionCase
+from odoo.exceptions import ValidationError
 
 
 class TestAccountAnalyticRecursion(TransactionCase):
@@ -52,11 +53,11 @@ class TestAccountAnalyticRecursion(TransactionCase):
                 {'parent_id': self.analytic_son.id})
 
     def test_onchange(self):
-        self.analytic_son.on_change_parent()
+        self.analytic_son._onchange_parent_id()
         self.assertEqual(self.analytic_son.partner_id.id, self.partner1.id,
                          'Partner should not change')
         self.analytic_son.write({'parent_id': self.analytic_parent2.id})
-        self.analytic_son.on_change_parent()
+        self.analytic_son._onchange_parent_id()
         self.assertEqual(self.analytic_son.partner_id.id, self.partner2.id,
                          'Partner should change')
 
