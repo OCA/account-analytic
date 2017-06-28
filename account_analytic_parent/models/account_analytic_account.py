@@ -58,17 +58,11 @@ class AccountAnalyticAccount(models.Model):
     @api.depends('name')
     def name_get(self):
         res = []
-        for account_item in self:
-            data = []
-            proj = account_item
-
-            while proj:
-                if proj and proj.name:
-                    data.insert(0, proj.name)
-                else:
-                    data.insert(0, '')
-
-                proj = proj.parent_id
-            data = ' / '.join(data)
-            res.append((account_item.id, data))
+        for account in self:
+            current = account
+            name = current.name
+            while current.parent_id:
+                name = '%s / %s' % (current.parent_id.name, name)
+                current = current.parent_id
+            res.append((account.id, name))
         return res
