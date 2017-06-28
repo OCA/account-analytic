@@ -24,18 +24,18 @@ You need to:
 Assigned Journal Items created from Stock Move with Analytic Account
 --------------------------------------------------------------------
 
-If stock move automatically create journal entry, the journal entry will contain
-journal items with following rule:
+If stock move automatically create journal entry, the journal entry will
+contain journal items with following rule:
 
-#. Journal item with account equal to product's valuation account will not be assigned
-   any analytic account
-#. Journal item with account not equal to product's valuation account will be assigned
-   analytic account according to stock move's analytic account
-
+#. Journal item with account equal to product's valuation account will not be
+   assigned to any analytic account
+#. Journal item with account different to product's valuation account will be
+   assigned to an analytic account according to the stock move's analytic
+   account
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/9.0
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
 
 Bug Tracker
 ===========
@@ -58,7 +58,7 @@ Contributors
 * Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
 * Andhitia Rama <andhitia.r@gmail.com>
 * Michael Viriyananda <viriyananda.michael@gmail.com>
-* Eficent <contact@eficent.com>
+* Aaron Henriquez <ahenriquez@eficent.com>
 
 Maintainer
 ----------
