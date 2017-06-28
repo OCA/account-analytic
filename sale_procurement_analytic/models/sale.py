@@ -13,5 +13,7 @@ class SaleOrderLine(models.Model):
         self.ensure_one()
         res = super(SaleOrderLine, self)._prepare_order_line_procurement(
             group_id=group_id)
-        res['account_analytic_id'] = self.order_id.related_project_id.id
+        # project_id field contains actually the analytic account, not the
+        # project
+        res['account_analytic_id'] = self.order_id.project_id.id
         return res
