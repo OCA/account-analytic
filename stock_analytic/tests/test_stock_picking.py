@@ -2,9 +2,10 @@
 # Copyright 2013 Julius Network Solutions
 # Copyright 2015 Clear Corp
 # Copyright 2016 OpenSynergy Indonesia
+# Copyright 2017 Eficent Business and IT Consulting Services S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase
 from datetime import datetime
 
 
@@ -14,11 +15,13 @@ class TestStockPicking(TransactionCase):
         super(TestStockPicking, self).setUp()
 
         self.product = self.env.ref('product.product_product_4')
-        self.product.update({'valuation': 'real_time'})
         self.product_categ = self.env.ref('product.product_category_5')
         self.valuation_account = self.env.ref(
-            'account.data_account_type_expenses')
-        self.stock_account = self.env.ref('account.data_account_type_revenue')
+            'l10n_generic_coa.1_conf_cas')
+        self.stock_input_account = self.env.ref(
+            'l10n_generic_coa.1_current_liabilities')
+        self.stock_output_account = self.env.ref(
+            'l10n_generic_coa.1_conf_a_expense')
         self.analytic_account = self.env.ref(
             'analytic.analytic_agrolait')
         self.warehouse = self.env.ref('stock.warehouse0')
@@ -28,9 +31,15 @@ class TestStockPicking(TransactionCase):
         self.incoming_picking_type = self.env.ref('stock.picking_type_in')
 
         self.product_categ.update({
+            'property_valuation': 'real_time',
             'property_stock_valuation_account_id': self.valuation_account.id,
-            'property_stock_account_input_categ_id': self.stock_account.id,
-            'property_stock_account_output_categ_id': self.stock_account.id,
+            'property_stock_account_input_categ_id':
+                self.stock_input_account.id,
+            'property_stock_account_output_categ_id':
+                self.stock_output_account.id,
+        })
+        self.product.update({
+            'categ_id': self.product_categ.id,
         })
 
     def _create_picking(
