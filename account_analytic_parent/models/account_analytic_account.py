@@ -28,16 +28,9 @@ class AccountAnalyticAccount(models.Model):
         """
         super(AccountAnalyticAccount, self)._compute_debit_credit_balance()
         for account in self:
-            debit = account.debit
-            credit = account.credit
-            balance = account.balance
-            for child in account.child_ids:
-                debit += child.debit
-                credit += child.credit
-                balance += child.balance
-            account.debit = debit
-            account.credit = credit
-            account.balance = balance
+            account.debit += sum(account.mapped('child_ids.debit'))
+            account.credit += sum(account.mapped('child_ids.credit'))
+            account.balance += sum(account.mapped('child_ids.balance'))
 
     @api.multi
     @api.constrains('parent_id')
@@ -50,9 +43,9 @@ class AccountAnalyticAccount(models.Model):
 
     @api.multi
     @api.onchange('parent_id')
-    def on_change_parent(self):
+    def _onchange_parent_id(self):
         for account in self:
-            account.partner_id = account.parent_id.partner_id or False
+            account.partner_id = account.parent_id.partner_id
 
     @api.multi
     @api.depends('name')

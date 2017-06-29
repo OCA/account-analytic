@@ -53,11 +53,11 @@ class TestAccountAnalyticRecursion(TransactionCase):
                 {'parent_id': self.analytic_son.id})
 
     def test_onchange(self):
-        self.analytic_son.on_change_parent()
+        self.analytic_son._onchange_parent_id()
         self.assertEqual(self.analytic_son.partner_id.id, self.partner1.id,
                          'Partner should not change')
         self.analytic_son.write({'parent_id': self.analytic_parent2.id})
-        self.analytic_son.on_change_parent()
+        self.analytic_son._onchange_parent_id()
         self.assertEqual(self.analytic_son.partner_id.id, self.partner2.id,
                          'Partner should change')
 
