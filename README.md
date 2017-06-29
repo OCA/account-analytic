@@ -26,6 +26,7 @@ addon | version | summary
 [analytic_department](analytic_department/) | 9.0.1.0.0 | Analytic Department Categorization
 [purchase_analytic_distribution](purchase_analytic_distribution/) | 9.0.1.0.0 | Purchase Analytic Plans
 [sale_analytic_distribution](sale_analytic_distribution/) | 9.0.1.0.0 | Sales Analytic Distribution
+[stock_analytic](stock_analytic/) | 9.0.1.0.0 | Adds an analytic account in stock move
 
 
 Unported addons
