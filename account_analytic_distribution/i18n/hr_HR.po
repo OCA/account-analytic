@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-09 02:38+0000\n"
-"PO-Revision-Date: 2017-06-09 02:38+0000\n"
+"POT-Creation-Date: 2017-06-30 02:40+0000\n"
+"PO-Revision-Date: 2017-06-30 02:40+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,14 +21,14 @@ msgstr ""
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_account_id
 msgid "Analytic account"
-msgstr ""
+msgstr "Analitički konto"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:81
 #, python-format
 msgid "Analytic account must be unique per distribution!"
-msgstr ""
+msgstr "Analitički konto mora biti jednistven unutar distribucije!"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution
@@ -37,12 +37,12 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_search
 msgid "Analytic distribution"
-msgstr ""
+msgstr "Analitička distribucija"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution_rule
 msgid "Analytic distribution rule"
-msgstr ""
+msgstr "Pravilo analitičke distribucije"
 
 #. module: account_analytic_distribution
 #: model:ir.actions.act_window,name:account_analytic_distribution.account_analytic_distribution_action
@@ -50,17 +50,17 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_search
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_tree
 msgid "Analytic distributions"
-msgstr ""
+msgstr "Analitičke distribucije"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Poduzeća"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_company_id
 msgid "Company"
-msgstr ""
+msgstr "Poduzeće"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_create_uid
@@ -83,7 +83,7 @@ msgstr "Naziv"
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_distribution_id
 msgid "Distribution"
-msgstr ""
+msgstr "Dstribucija"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution:0
@@ -96,12 +96,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_ids
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 msgid "Distribution rules"
-msgstr ""
+msgstr "Pravila distribucija"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_res_company_force_percent
 msgid "Force percent"
-msgstr ""
+msgstr "Forsiraj postotak"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_id
@@ -157,7 +157,7 @@ msgstr "Naziv"
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_percent
 msgid "Percentage"
-msgstr ""
+msgstr "Postotak"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
@@ -171,12 +171,12 @@ msgstr ""
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:79
 #, python-format
 msgid "Percentage must less or equal 100%!"
-msgstr ""
+msgstr "Postotak mora biti manji ili jednak 100%!"
 
 #. module: account_analytic_distribution
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 msgid "Rules"
-msgstr ""
+msgstr "Pravila"
 
 #. module: account_analytic_distribution
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:49
