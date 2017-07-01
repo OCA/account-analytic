@@ -12,10 +12,10 @@ class AccountAnalyticAccount(models.Model):
     @api.multi
     def _compute_gl_debit_credit_balance(self):
         aml_obj = self.env['account.move.line']
-        domain = [('analytic_account_id', 'in', self.mapped('id'))]
-        if self._context.get('from_date', False):
+        domain = [('analytic_account_id', 'in', self.ids)]
+        if self._context.get('from_date'):
             domain.append(('date', '>=', self._context['from_date']))
-        if self._context.get('to_date', False):
+        if self._context.get('to_date'):
             domain.append(('date', '<=', self._context['to_date']))
 
         amounts = aml_obj.read_group(
