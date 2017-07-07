@@ -3,13 +3,14 @@
 # * account_analytic_parent
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2017-06-30 02:40+0000\n"
+"POT-Creation-Date: 2017-06-30 22:07+0000\n"
+"PO-Revision-Date: 2017-06-30 22:07+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +22,12 @@ msgstr ""
 #. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
 msgid "(Keep empty to open the current situation)"
-msgstr ""
+msgstr "(ostavite prazno za otvaranje trenutne situacije)"
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_chart
 msgid "Account Analytic Chart"
-msgstr ""
+msgstr "Analitički kontni plan"
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
@@ -36,34 +37,34 @@ msgstr "Analitički konto"
 #. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
 msgid "Analytic Account Charts"
-msgstr ""
+msgstr "Analitički kontni planovi"
 
 #. module: account_analytic_parent
 #: model:ir.actions.act_window,name:account_analytic_parent.action_analytic_account_report
 #: model:ir.ui.menu,name:account_analytic_parent.menu_action_analytic_account_report
 #: model:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_report
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitička konta"
 
 #. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
 msgid "Cancel"
-msgstr ""
+msgstr "Odustani"
 
 #. module: account_analytic_parent
 #: model:ir.actions.act_window,name:account_analytic_parent.action_account_analytic_chart
 msgid "Chart of Analytic Accounts"
-msgstr ""
+msgstr "Plan analitičkih konta"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account_child_ids
 msgid "Child Accounts"
-msgstr ""
+msgstr "Podređena konta"
 
 #. module: account_analytic_parent
 #: model:ir.actions.act_window,help:account_analytic_parent.action_analytic_account_report
 msgid "Click to add an analytic account."
-msgstr ""
+msgstr "Kliknite za dodavanje analitičkog konta"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_chart_create_uid
@@ -83,7 +84,7 @@ msgstr "Naziv"
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_chart_from_date
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_chart_id
@@ -108,26 +109,26 @@ msgstr "Zadnje ažuriranje"
 #. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
 msgid "Open Charts"
-msgstr ""
+msgstr "Otvori planove"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account_parent_id
 #: model:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
 msgid "Parent Analytic Account"
-msgstr ""
+msgstr "Nadređeni analitički konto"
 
 #. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
 msgid "Select the Period for Analysis"
-msgstr ""
+msgstr "Odaberite period za analizu"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_chart_to_date
 msgid "To"
-msgstr ""
+msgstr "Za"
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:41
 #, python-format
 msgid "You can not create recursive analytic accounts."
-msgstr ""
+msgstr "Nije moguće kreiranje rekurzivnih analitičkih konta."

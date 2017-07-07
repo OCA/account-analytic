@@ -3,13 +3,14 @@
 # * account_analytic_distribution
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2017-06-30 02:40+0000\n"
+"POT-Creation-Date: 2017-06-30 22:07+0000\n"
+"PO-Revision-Date: 2017-06-30 22:07+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +91,7 @@ msgstr "Dstribucija"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:38
 #, python-format
 msgid "Distribution name must be unique per Company!"
-msgstr ""
+msgstr "Naziv distribucije mora biti jedinstven unutar poduzeća."
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_ids
@@ -115,6 +116,8 @@ msgid ""
 "If checked, the sum of all percents of the analytic accounts in a "
 "distribution of this company must be 100%."
 msgstr ""
+"Ako je uključeno, suma svih postotaka analitičkih konta u distribuciji ovog "
+"poduzeća mora biti 100%."
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_invoice
@@ -164,7 +167,7 @@ msgstr "Postotak"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:77
 #, python-format
 msgid "Percentage must be positive!"
-msgstr ""
+msgstr "Postotak mora biti pozitivan!"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
@@ -182,9 +185,9 @@ msgstr "Pravila"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:49
 #, python-format
 msgid "Rules percent doesn't sum 100%"
-msgstr ""
+msgstr "Suma postotaka nije 100%!"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Sekvenca"
