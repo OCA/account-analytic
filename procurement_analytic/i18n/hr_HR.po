@@ -3,13 +3,14 @@
 # * procurement_analytic
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2017-06-30 02:40+0000\n"
+"POT-Creation-Date: 2017-06-30 22:07+0000\n"
+"PO-Revision-Date: 2017-06-30 22:07+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -26,4 +27,4 @@ msgstr "Analitički konto"
 #. module: procurement_analytic
 #: model:ir.model,name:procurement_analytic.model_procurement_order
 msgid "Procurement"
-msgstr ""
+msgstr "Nabava"
