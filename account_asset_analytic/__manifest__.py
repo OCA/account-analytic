@@ -6,7 +6,7 @@
 {
     "name": "Account asset analytic",
     "summary": "Adds analytic account per asset",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "category": "Analytic Accounting",
     "website": "https://www.tecnativa.com",
     "author": "Tecnativa, "
