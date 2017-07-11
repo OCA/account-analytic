@@ -9,8 +9,9 @@ class AccountAssetDepreciationLine(models.Model):
     _inherit = 'account.asset.depreciation.line'
 
     @api.multi
-    def create_move(self):
-        move_ids = super(AccountAssetDepreciationLine, self).create_move()
+    def create_move(self, post_move=True):
+        move_ids = super(AccountAssetDepreciationLine, self).create_move(
+            post_move=post_move)
         for line in self:
             asset = line.asset_id
             analytic = asset.analytic_account_id
