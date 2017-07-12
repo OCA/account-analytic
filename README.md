@@ -23,7 +23,7 @@ addon | version | summary
 [account_analytic_no_lines](account_analytic_no_lines/) | 10.0.1.0.0 | Hide analytics lines and disable their generation from a move line.
 [account_analytic_parent](account_analytic_parent/) | 10.0.1.0.0 | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 10.0.1.0.0 | Account Analytic Required
-[account_asset_analytic](account_asset_analytic/) | 10.0.1.0.0 | Adds analytic account per asset
+[account_asset_analytic](account_asset_analytic/) | 10.0.1.0.1 | Adds analytic account per asset
 [analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
 [analytic_partner](analytic_partner/) | 10.0.1.0.0 | Search and group analytic entries by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
