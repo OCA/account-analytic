@@ -3,13 +3,14 @@
 # * account_analytic_no_lines
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 09:51+0000\n"
-"PO-Revision-Date: 2017-06-13 09:51+0000\n"
+"POT-Creation-Date: 2017-11-19 22:13+0000\n"
+"PO-Revision-Date: 2017-11-19 22:13+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,14 +20,34 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: account_analytic_no_lines
+#: model:ir.model,name:account_analytic_no_lines.model_account_analytic_account
 #: model:ir.ui.view,arch_db:account_analytic_no_lines.view_account_move_line_filter
 msgid "Analytic Account"
 msgstr "Conta analítica"
 
 #. module: account_analytic_no_lines
-#: model:res.groups,name:account_analytic_no_lines.hide_analytic_entries
-msgid "Hide Analytic Entries"
-msgstr "Ocultar entradas analíticas"
+#: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account_gl_balance
+#: model:ir.model.fields,field_description:account_analytic_no_lines.field_project_project_gl_balance
+msgid "Analytic Balance (GL)"
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account_gl_credit
+#: model:ir.model.fields,field_description:account_analytic_no_lines.field_project_project_gl_credit
+msgid "Credit (GL)"
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:ir.model.fields,help:account_analytic_no_lines.field_account_analytic_account_gl_balance
+#: model:ir.model.fields,help:account_analytic_no_lines.field_project_project_gl_balance
+msgid "Credit - Debit"
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account_gl_debit
+#: model:ir.model.fields,field_description:account_analytic_no_lines.field_project_project_gl_debit
+msgid "Debit (GL)"
+msgstr ""
 
 #. module: account_analytic_no_lines
 #: model:ir.model,name:account_analytic_no_lines.model_account_invoice
@@ -37,3 +58,19 @@ msgstr "Fatura"
 #: model:ir.model,name:account_analytic_no_lines.model_account_move_line
 msgid "Journal Item"
 msgstr "Item diário"
+
+#. module: account_analytic_no_lines
+#: model:ir.actions.act_window,name:account_analytic_no_lines.account_analytic_line_action_gl
+#: model:ir.ui.view,arch_db:account_analytic_no_lines.account_analytic_account_form_view
+msgid "Journal Items"
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:ir.actions.act_window,help:account_analytic_no_lines.account_analytic_line_action_gl
+msgid "No activity yet on this account."
+msgstr ""
+
+#. module: account_analytic_no_lines
+#: model:res.groups,name:account_analytic_no_lines.hide_analytic_entries
+msgid "View Analytic Entries"
+msgstr ""
