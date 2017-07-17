@@ -16,5 +16,6 @@
     'website': 'http://www.akretion.com',
     'depends': ['account'],
     'data': ['views/product_view.xml'],
+    'demo': ['demo/product_demo.xml'],
     'installable': True,
 }
