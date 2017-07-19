@@ -3,7 +3,7 @@
 # Copyright 2017 Vicent Cubells <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests import common
+from openerp.tests import common
 
 
 class TestSaleProcurementAnalytic(common.SavepointCase):
@@ -29,6 +29,7 @@ class TestSaleProcurementAnalytic(common.SavepointCase):
                 'product_uom_qty': 1,
                 'price_unit': cls.product.list_price,
                 'name': cls.product.name,
+                'picking_policy': 'direct'
             })],
         })
 

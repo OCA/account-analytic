@@ -6,7 +6,7 @@
 {
     'name': 'Sale Procurement Analytic',
     'summary': 'This module sets analytic account procurement from sale order',
-    'version': '10.0.1.0.0',
+    'version': '9.0.1.0.0',
     'category': 'Analytic',
     'license': 'AGPL-3',
     'author': "Tecnativa, "
