@@ -6,7 +6,7 @@
 {
     'name': 'Procurement Analytic',
     'summary': 'This module adds analytic account to procurements',
-    'version': '10.0.1.0.0',
+    'version': '9.0.1.0.0',
     'category': 'Analytic',
     'license': 'AGPL-3',
     'author': "Tecnativa, "
@@ -18,6 +18,7 @@
     ],
     'data': [
         'views/procurement_analytic.xml',
+        'views/analytic_account.xml',
     ],
     'installable': True,
 }
