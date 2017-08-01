@@ -42,6 +42,6 @@ models_renames = [
 
 @openupgrade.migrate(use_env=True)
 def migrate(env, version):
-    openupgrade.copy_columns(env.cr, column_renames)
+    openupgrade.rename_columns(env.cr, column_renames)
     openupgrade.rename_models(env.cr, models_renames)
     openupgrade.rename_tables(env.cr, table_renames)
