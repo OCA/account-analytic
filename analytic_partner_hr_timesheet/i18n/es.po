@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-26 17:38+0000\n"
-"PO-Revision-Date: 2015-08-26 17:38+0000\n"
+"POT-Creation-Date: 2017-08-16 15:02+0000\n"
+"PO-Revision-Date: 2017-08-16 15:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,32 +16,38 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: analytic_partner_hr_timesheet
-#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
+#: model:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
 msgid "Account Partner"
 msgstr "Empresa de la cuenta"
 
 #. module: analytic_partner_hr_timesheet
-#: view:res.partner:analytic_partner_hr_timesheet.view_partner_form_timesheet
+#: model:ir.ui.view,arch_db:analytic_partner_hr_timesheet.view_partner_form_timesheet
 msgid "Activities"
 msgstr "Actividades"
 
 #. module: analytic_partner_hr_timesheet
-#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
-msgid "Analytic account"
-msgstr "Cuenta analítica"
+#: model:ir.model,name:analytic_partner_hr_timesheet.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
 
 #. module: analytic_partner_hr_timesheet
-#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
-#: field:hr.analytic.timesheet,other_partner_id:0
+#: model:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
 msgid "Other Partner"
 msgstr "Otra empresa"
 
 #. module: analytic_partner_hr_timesheet
-#: field:res.partner,timesheet_count:0
-msgid "Timesheet Activities Number"
-msgstr "Nº de actividades del parte de horas"
+#: model:ir.model,name:analytic_partner_hr_timesheet.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
 
 #. module: analytic_partner_hr_timesheet
-#: field:res.partner,timesheets:0
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner_timesheet_count
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_users_timesheet_count
+msgid "Timesheet Activities Number"
+msgstr "Número de partes de horas"
+
+#. module: analytic_partner_hr_timesheet
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner_timesheet_ids
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_users_timesheet_ids
 msgid "Timesheet activities"
-msgstr "Actividades del parte de horas"
+msgstr "Partes de horas"

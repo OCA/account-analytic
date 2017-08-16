@@ -1,0 +1,65 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * analytic_partner_hr_timesheet
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-23 23:05+0000\n"
+"PO-Revision-Date: 2016-12-23 23:05+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"Language-Team: Norwegian Bokmål (https://www.transifex.com/oca/teams/23907/nb/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: analytic_partner_hr_timesheet
+#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
+msgid "Account Partner"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: view:res.partner:analytic_partner_hr_timesheet.view_partner_form_timesheet
+msgid "Activities"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
+msgid "Analytic account"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
+msgid "Other Partner"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: model:ir.model,name:analytic_partner_hr_timesheet.model_res_partner
+msgid "Partner"
+msgstr "Partner"
+
+#. module: analytic_partner_hr_timesheet
+#: field:res.partner,timesheet_count:0
+msgid "Timesheet Activities Number"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: model:ir.model,name:analytic_partner_hr_timesheet.model_hr_analytic_timesheet
+msgid "Timesheet Line"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: field:res.partner,timesheets:0
+msgid "Timesheet activities"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_form_partner
+#: view:hr.analytic.timesheet:analytic_partner_hr_timesheet.hr_timesheet_line_tree_partner
+msgid "on_change_account_id(account_id, user_id)"
+msgstr ""

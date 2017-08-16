@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-# (c) 2015 Antiun Ingeniería S.L. - Pedro M. Baeza
+# Copyright 2015 Tecnativa - Pedro M. Baeza
+# Copyright 2017 Tecnativa - Luis M. Ontalba
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
     'name': 'Partner in HR timesheets',
-    'version': '8.0.1.0.0',
+    'version': '10.0.1.0.0',
     'summary': 'Classify HR activities by partner',
     'category': 'Human Resources',
-    'author': 'Antiun Ingeniería S.L., '
-              'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+    'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
-    'website': 'http://www.antiun.com',
+    'license': 'AGPL-3',
+    'website': 'https://www.tecnativa.com',
     'depends': [
         'analytic_partner',
         'hr_timesheet',
@@ -19,6 +20,6 @@
         'views/hr_analytic_timesheet_views.xml',
         'views/res_partner_views.xml',
     ],
-    'installable': False,
+    'installable': True,
     "auto_install": True,
 }
