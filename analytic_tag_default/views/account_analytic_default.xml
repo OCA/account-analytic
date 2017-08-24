@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_analytic_default_tree" model="ir.ui.view">
+        <field name="name">account.analytic.default.tree.inherit</field>
+        <field name="model">account.analytic.default</field>
+        <field name="inherit_id" ref="account_analytic_default.view_account_analytic_default_tree" />
+        <field name="arch" type="xml">
+            <field name="analytic_id" position="after">
+                <field name="tag_ids" groups="analytic.group_analytic_accounting" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_default_form" model="ir.ui.view">
+        <field name="name">account.analytic.default.form</field>
+        <field name="model">account.analytic.default</field>
+        <field name="inherit_id" ref="account_analytic_default.view_account_analytic_default_form" />
+        <field name="arch" type="xml">
+            <field name="analytic_id" position="attributes">
+                <attribute name="required">0</attribute>
+            </field>
+            <field name="analytic_id" position="after">
+                <field name="tag_ids" widget="many2many_tags" groups="analytic.group_analytic_accounting" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
