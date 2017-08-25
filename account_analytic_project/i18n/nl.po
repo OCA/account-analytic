@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Cas Vissers <casvissers@brahoo.nl>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-28 12:37+0000\n"
 "PO-Revision-Date: 2017-07-28 12:37+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Last-Translator: Cas Vissers <casvissers@brahoo.nl>, 2017\n"
 "Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 #. module: account_analytic_project
 #: model:ir.model,name:account_analytic_project.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "Kostenplaats"
 
 #. module: account_analytic_project
 #: model:ir.ui.view,arch_db:account_analytic_project.account_analytic_account_form
@@ -44,7 +45,7 @@ msgstr "Projecten"
 #: code:addons/account_analytic_project/model/account_analytic_account.py:27
 #, python-format
 msgid "This method is only valid for an analytic account having projects."
-msgstr ""
+msgstr "De methode is alleen geldig voor een kostenplaats met projecten."
 
 #. module: account_analytic_project
 #: model:ir.ui.view,arch_db:account_analytic_project.account_analytic_account_form

@@ -26,27 +26,28 @@ msgstr "Analitički konto"
 #. module: account_analytic_project
 #: model:ir.ui.view,arch_db:account_analytic_project.account_analytic_account_form
 msgid "Create project"
-msgstr ""
+msgstr "Kreiraj projekt"
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:33
 #, python-format
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:40
 #, python-format
 msgid "Projects"
-msgstr ""
+msgstr "Projekti"
 
 #. module: account_analytic_project
 #: code:addons/account_analytic_project/model/account_analytic_account.py:27
 #, python-format
 msgid "This method is only valid for an analytic account having projects."
 msgstr ""
+"Ova metoda je valjana samo za analitička konta koja predstvljaju projekte."
 
 #. module: account_analytic_project
 #: model:ir.ui.view,arch_db:account_analytic_project.account_analytic_account_form
 msgid "View projects"
-msgstr ""
+msgstr "Pregled projekata"
