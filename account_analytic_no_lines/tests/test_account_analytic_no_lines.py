@@ -14,6 +14,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
         # ENVIRONMENTS
 
         cls.account_account = cls.env['account.account']
+        cls.account_analytic_account = cls.env['account.analytic.account']
         cls.account_analytic_line = cls.env['account.analytic.line']
         cls.account_journal = cls.env['account.journal']
         cls.account_move_line = cls.env['account.move.line']
@@ -45,6 +46,12 @@ class TestAccountAnalyticNoLines(SavepointCase):
                 cls.env.ref('account.data_account_type_expenses').id,
             'reconcile': False})
 
+        # Analytic accounts
+        cls.aa_1 = cls.account_analytic_account.create({
+            'name': 'AA 1'})
+        cls.aa_2 = cls.account_analytic_account.create({
+            'name': 'AA 2'})
+
         # Journal
         cls.journal = cls.account_journal.create({
             'name': 'Bank Journal Test',
@@ -58,22 +65,26 @@ class TestAccountAnalyticNoLines(SavepointCase):
             'name': 'Test invoice line 1',
             'price_unit': 50,
             'quantity': 2,
-            'account_id': cls.account_600000.id})
+            'account_id': cls.account_600000.id,
+            'account_analytic_id': cls.aa_1.id})
         cls.invoice_line_2 = cls.account_invoice_line.create({
             'name': 'Test invoice line 2',
             'price_unit': 25,
             'quantity': 2,
-            'account_id': cls.account_600000.id})
+            'account_id': cls.account_600000.id,
+            'account_analytic_id': cls.aa_1.id})
         cls.invoice_line_3 = cls.account_invoice_line.create({
             'name': 'Test invoice line 3',
-            'price_unit': 100,
+            'price_unit': -100,
             'quantity': 1,
-            'account_id': cls.account_600000.id})
+            'account_id': cls.account_600000.id,
+            'account_analytic_id': cls.aa_2.id})
         cls.invoice_line_4 = cls.account_invoice_line.create({
             'name': 'Test invoice line 4',
             'price_unit': 1,
             'quantity': 0,
-            'account_id': cls.account_600000.id})
+            'account_id': cls.account_600000.id,
+            'account_analytic_id': cls.aa_2.id})
 
         # Invoice
         cls.invoice = cls.account_invoice.create({
@@ -135,3 +146,12 @@ class TestAccountAnalyticNoLines(SavepointCase):
         analytic_lines = self.account_analytic_line.search(
             [('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
+
+    def test_gl_amounts(self):
+        self.invoice.action_move_create()
+        self.assertEqual(self.aa_1.gl_debit, 150)
+        self.assertEqual(self.aa_1.gl_credit, 0)
+        self.assertEqual(self.aa_1.gl_balance, -150)
+        self.assertEqual(self.aa_2.gl_debit, 0)
+        self.assertEqual(self.aa_2.gl_credit, 100)
+        self.assertEqual(self.aa_2.gl_balance, 100)
