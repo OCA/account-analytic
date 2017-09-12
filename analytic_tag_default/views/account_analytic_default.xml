@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account_analytic_default.view_account_analytic_default_tree" />
         <field name="arch" type="xml">
             <field name="analytic_id" position="after">
-                <field name="tag_ids" groups="analytic.group_analytic_accounting" />
+                <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting" />
             </field>
         </field>
     </record>
@@ -20,7 +20,7 @@
                 <attribute name="required">0</attribute>
             </field>
             <field name="analytic_id" position="after">
-                <field name="tag_ids" widget="many2many_tags" groups="analytic.group_analytic_accounting" />
+                <field name="analytic_tag_ids" widget="many2many_tags" groups="analytic.group_analytic_accounting" />
             </field>
         </field>
     </record>
