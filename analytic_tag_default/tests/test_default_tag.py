@@ -30,9 +30,10 @@ class TestAnalyticTagDefault(TransactionCase):
             'name': 'Tag 2'
         })
 
-        self.analytic_account_absences = self.env.ref('analytic.analytic_absences')
-        self.analytic_account_internal = self.env.ref('analytic.analytic_internal')
-
+        self.analytic_account_absences = self.env.ref(
+            'analytic.analytic_absences')
+        self.analytic_account_internal = self.env.ref(
+            'analytic.analytic_internal')
 
         default_model = self.env['account.analytic.default']
 
@@ -62,7 +63,7 @@ class TestAnalyticTagDefault(TransactionCase):
         partner_demo = self.env.ref('base.partner_demo')
 
         invoice_account = invoice_object.create({
-            'partner_id' : partner_demo.id,
+            'partner_id': partner_demo.id,
             'invoice_line_ids': [(0, 0, {
                 'product_id': self.service_delivery.id,
                 'price_unit': 1,
