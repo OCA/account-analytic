@@ -18,6 +18,6 @@ class PurchaseOrderLine(models.Model):
         if rec:
             if rec.analytic_id:
                 self.account_analytic_id = rec.analytic_id.id
-            if rec.tag_ids:
-                self.analytic_tag_ids = rec.tag_ids.ids
+            if rec.analytic_tag_ids:
+                self.analytic_tag_ids = rec.analytic_tag_ids.ids
         return

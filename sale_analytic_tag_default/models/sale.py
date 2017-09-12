@@ -15,8 +15,8 @@ class SaleOrderLine(models.Model):
         rec = self.env['account.analytic.default'].account_get(
             self.product_id.id, self.order_id.partner_id.id, self.env.uid,
             fields.Date.today(), company_id=self.order_id.company_id.id)
-        if rec and rec.tag_ids:
-            self.analytic_tag_ids = rec.tag_ids.ids
+        if rec and rec.analytic_tag_ids:
+            self.analytic_tag_ids = rec.analytic_tag_ids.ids
         return
 
     @api.multi
