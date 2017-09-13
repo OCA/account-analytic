@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests.common import TransactionCase
+from odoo.exceptions import ValidationError
 
 
 class TestAnalyticTagDefault(TransactionCase):
@@ -104,3 +105,13 @@ class TestAnalyticTagDefault(TransactionCase):
             invoice_multiple.invoice_line_ids.analytic_tag_ids), 2)
         self.assertEqual(invoice_multiple.invoice_line_ids.analytic_tag_ids,
                          self.tag_1 + self.tag_2)
+
+        with self.assertRaises(ValidationError):
+            self.only_account_default.write({
+                'analytic_id': None
+            })
+
+        with self.assertRaises(ValidationError):
+            self.env['account.analytic.default'].create({
+                'product_id': self.service_delivery.id
+            })

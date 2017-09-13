@@ -24,6 +24,14 @@ class AccountAnalyticDefault(models.Model):
                     'At least one Analytic Account or Analytic Tag has to be '
                     'defined.'))
 
+    @api.model
+    def create(self, vals):
+        if 'analytic_id' not in vals and 'analytic_tag_ids' not in vals:
+            raise ValidationError(_(
+                'At least one Analytic Account or Analytic Tag has to be '
+                'defined.'))
+        return super(AccountAnalyticDefault, self).create(vals)
+
 
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
