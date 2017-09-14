@@ -14,13 +14,13 @@ Configuration
 
 To configure this module, you need to:
 
-#. Go to *Settings > Configuration > Accounting > Analytic Accounting*.
-#. Enable *Analytic Accounting for Purchases*.
+#. Go to your user settings.
+#. Enable *Analytic Accounting for Purchases* in *Technical Settings*.
 
 Usage
 =====
 
-#. Go to *Warehouse > Schedulers > Procurements* and create new.
+#. Go to *Inventory > Reports > Procurement Exceptions* and create a new one.
 #. Set *Analytic Account* in *Extra Information* tab.
 #. *Run Procurement*
 #. The generated purchase order line will have this analytic account.
@@ -28,7 +28,7 @@ Usage
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/8.0
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
 
 Known issues / Roadmap
 ======================
@@ -52,13 +52,14 @@ Contributors
 ------------
 * Carlos Dauden <carlos.dauden@tecnativa.com>
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Vicent Cubells <vicent.cubells@tecnativa.com>
 
 Maintainer
 ----------
 
-.. image:: http://odoo-community.org/logo.png
+.. image:: https://odoo-community.org/logo.png
    :alt: Odoo Community Association
-   :target: http://odoo-community.org
+   :target: https://odoo-community.org
 
 This module is maintained by the OCA.
 
@@ -66,4 +67,4 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-To contribute to this module, please visit http://odoo-community.org.
+To contribute to this module, please visit https://odoo-community.org.
