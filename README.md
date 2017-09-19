@@ -31,6 +31,8 @@ addon | version | summary
 [analytic_tag_dimension](analytic_tag_dimension/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
 [procurement_analytic](procurement_analytic/) | 10.0.1.0.0 | This module adds analytic account to procurements
 [product_analytic](product_analytic/) | 10.0.1.0.0 | Add analytic account on products and product categories
+[purchase_procurement_analytic](purchase_procurement_analytic/) | 10.0.1.0.0 | This module sets analytic account in purchase order line from procurement analytic account
+[sale_procurement_analytic](sale_procurement_analytic/) | 10.0.1.0.0 | This module sets analytic account procurement from sale order
 
 
 Unported addons
