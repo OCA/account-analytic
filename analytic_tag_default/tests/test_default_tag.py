@@ -58,7 +58,42 @@ class TestAnalyticTagDefault(TransactionCase):
             'product_id': self.service_cost.id
         })
 
-    def test_defaults(self):
+    def test_default_get_product(self):
+
+        res = self.env['account.analytic.default'].account_get(
+            product_id=self.service_delivery.id)
+        self.assertEqual(res, self.only_account_default)
+
+        res = self.env['account.analytic.default'].account_get(
+            product_id=self.service_order.id)
+        self.assertEqual(res, self.only_tag_default)
+
+        res = self.env['account.analytic.default'].account_get(
+            product_id=self.service_cost.id)
+        self.assertEqual(res, self.multiple_default)
+
+    def test_default_get_partner(self):
+        default_model = self.env['account.analytic.default']
+        demo_partner = self.env.ref('base.partner_demo')
+
+        self.partner_default = default_model.create({
+            'partner_id': demo_partner.id,
+            'analytic_tag_ids': [(6, 0, [self.tag_a.id])],
+        })
+        res = default_model.account_get(partner_id=demo_partner.id)
+        self.assertEqual(self.partner_default, res)
+
+    def test_default_get_user(self):
+        default_model = self.env['account.analytic.default']
+
+        self.user_default = default_model.create({
+            'user_id': self.env.user.id,
+            'analytic_tag_ids': [(6, 0, [self.tag_a.id])],
+        })
+        res = default_model.account_get(user_id=self.env.user.id)
+        self.assertEqual(self.user_default, res)
+
+    def test_default_account(self):
 
         invoice_object = self.env['account.invoice']
         partner_demo = self.env.ref('base.partner_demo')
@@ -76,6 +111,11 @@ class TestAnalyticTagDefault(TransactionCase):
         self.assertEqual(invoice_account.invoice_line_ids.account_analytic_id,
                          self.analytic_account_absences)
 
+    def test_default_tags(self):
+
+        invoice_object = self.env['account.invoice']
+        partner_demo = self.env.ref('base.partner_demo')
+
         invoice_one_tag = invoice_object.create({
             'partner_id': partner_demo.id,
             'invoice_line_ids': [(0, 0, {
@@ -88,6 +128,11 @@ class TestAnalyticTagDefault(TransactionCase):
         invoice_one_tag.invoice_line_ids._onchange_product_id()
         self.assertEqual(invoice_one_tag.invoice_line_ids.analytic_tag_ids,
                          self.tag_a)
+
+    def test_default_tag_and_account(self):
+
+        invoice_object = self.env['account.invoice']
+        partner_demo = self.env.ref('base.partner_demo')
 
         invoice_multiple = invoice_object.create({
             'partner_id': partner_demo.id,
@@ -105,6 +150,8 @@ class TestAnalyticTagDefault(TransactionCase):
             invoice_multiple.invoice_line_ids.analytic_tag_ids), 2)
         self.assertEqual(invoice_multiple.invoice_line_ids.analytic_tag_ids,
                          self.tag_1 + self.tag_2)
+
+    def test_errors(self):
 
         with self.assertRaises(ValidationError):
             self.only_account_default.write({
