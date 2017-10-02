@@ -25,8 +25,11 @@ env:
   matrix:
   - LINT_CHECK="1"
   - TRANSIFEX="1"
-  - TESTS="1" ODOO_REPO="OCA/OCB"
-  - TESTS="1" ODOO_REPO="odoo/odoo"
+  - TESTS="1" ODOO_REPO="OCA/OCB" EXCLUDE=analytic_tag_default
+  - TESTS="1" ODOO_REPO="odoo/odoo" EXCLUDE=analytic_tag_default
+  - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE=analytic_tag_default
+  - TESTS="1" ODOO_REPO="odoo/odoo" INCLUDE=analytic_tag_default
+
   
 virtualenv:
   system_site_packages: true

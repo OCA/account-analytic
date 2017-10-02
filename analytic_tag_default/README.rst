@@ -12,7 +12,9 @@ analytic tags and to allow you to set different tags as default value.
 Installation
 ============
 
-Just install it.
+Make sure you don't have module *product_analytic* installed, because this
+module uses *account_analytic_default* and both update the analytic account
+on invoice line.
 
 Configuration
 =============
