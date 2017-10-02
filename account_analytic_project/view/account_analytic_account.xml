@@ -13,21 +13,7 @@
                     class="oe_stat_button"
                     icon="fa-plus"
                     string="Create project"
-                    attrs="{'invisible': [
-                        '|', ('project_ids', '!=', []),
-                        ('type', '=', 'view'),
-                    ]}"
-                />
-                <button
-                    name="view_projects_for_account"
-                    type="object"
-                    class="oe_stat_button"
-                    icon="fa-tasks"
-                    string="View projects"
-                    attrs="{'invisible': [
-                        '|', ('project_ids', '=', []),
-                        ('type', '=', 'view'),
-                    ]}"
+                    attrs="{'invisible': [('project_ids', '!=', [])]}"
                 />
             </div>
         </field>

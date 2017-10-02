@@ -11,7 +11,7 @@ class TestAccountAnalyticProject(TransactionCase):
             ('project_ids', '=', False),
         ], limit=1)
         account.create_project_for_account()
-        action = account.view_projects_for_account()
+        action = account.projects_action()
         self.assertEqual(
             self.env['project.project'].browse([action['res_id']]),
             account.project_ids)

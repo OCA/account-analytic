@@ -8,7 +8,7 @@
     'license': 'AGPL-3',
     'category': 'Generic Modules/Accounting',
     'website': 'https://therp.nl',
-    'email': 'info@therp.nl',
+    'email': 'https://github.com/OCA/account-analytic',
     'depends': [
         'account',
         'project',

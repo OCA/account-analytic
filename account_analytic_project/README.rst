@@ -6,8 +6,7 @@
 Project and analytic account integration
 ========================================
 
-This module provides a usability improvement to create projects from analytic accounts,
-as well as providing the inverse relationship project_ids field on analytic accounts.
+This module provides a usability improvement to create projects from analytic accounts.
 
 Gives the option to create projects directly from the analytic accounts they
 should be linked to.
@@ -39,6 +38,7 @@ Contributors
 
 * Ronald Portier <rportier@therp.nl>
 * Holger Brunn <hbrunn@therp.nl>
+* Adrien Peiffer <adrien.peiffer@acsone.eu>
 
 Maintainer
 ----------
