@@ -21,10 +21,6 @@ Configuration
 
 Nothing to do if you already configured analytic_tag_dimension
 
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
-
 Usage
 =====
 

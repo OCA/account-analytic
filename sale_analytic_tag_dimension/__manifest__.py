@@ -12,7 +12,6 @@
         'analytic_tag_dimension',
         'sale'
     ],
-    "data": [],
     "installable": True,
     "auto_install": True,
 }
