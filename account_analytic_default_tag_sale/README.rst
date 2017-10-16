@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-=========================
-Sale Analytic Tag Default
-=========================
+=================================
+Account Analytic Default Tag Sale
+=================================
 
 This module extends the functionality of analytic_tag_default to support
 sale orders and automatically set tags on sale order line according to
@@ -15,16 +15,8 @@ Installation
 
 Just install it.
 
-Configuration
-=============
-
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
-
 Usage
 =====
-
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot

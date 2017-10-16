@@ -2,7 +2,7 @@
 # Copyright 2017 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.addons.analytic_tag_default.tests.test_default_tag \
+from odoo.addons.account_analytic_default_tag.tests.test_default_tag \
     import TestAnalyticTagDefault
 
 

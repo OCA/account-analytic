@@ -10,7 +10,7 @@
     "author": "Camptocamp SA, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "depends": [
-        "analytic_tag_default",
+        "account_analytic_default_tag",
         "sale"
     ],
     "data": [

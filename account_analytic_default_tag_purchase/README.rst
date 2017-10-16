@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-=============================
-Purchase Analytic Tag Default
-=============================
+=====================================
+Account Analytic Default Tag Purchase
+=====================================
 
 This module extends the functionality of account_analytic_default and
 analytic_tag_default to support purchase orders and automatically set
@@ -16,16 +16,8 @@ Installation
 
 Just install it.
 
-Configuration
-=============
-
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
-
 Usage
 =====
-
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot

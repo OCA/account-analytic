@@ -5,7 +5,7 @@
 from datetime import datetime
 
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
-from odoo.addons.analytic_tag_default.tests.test_default_tag \
+from odoo.addons.account_analytic_default_tag.tests.test_default_tag \
     import TestAnalyticTagDefault
 
 
