@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-====================
-Analytic Tag Default
-====================
+============================
+Account Analytic Default Tag
+============================
 
 This module extends the functionality of account_analytic_default to support
 analytic tags and to allow you to set different tags as default value.
@@ -22,13 +22,8 @@ Configuration
 Just add analytic tags on account.analytic.default as you would with analytic
 accounts.
 
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
-
 Usage
 =====
-
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
