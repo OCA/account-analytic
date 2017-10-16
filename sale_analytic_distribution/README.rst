@@ -25,7 +25,7 @@ invoice or the entries are confirmed.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/9.0
+   :target: https://runbot.odoo-community.org/runbot/87/10.0
 
 Bug Tracker
 ===========
@@ -42,7 +42,7 @@ Contributors
 ------------
 
 * Odoo S.A.
-* Vicent Cubells <antonio.espinosa@tecnativa.com>
+* Vicent Cubells <vicent.cubells@tecnativa.com>
 
 Maintainer
 ----------
