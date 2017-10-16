@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-===========================
-Sale Analytic Tag Dimension
-===========================
+===================================
+Analytic Tag Dimension Sale Warning
+===================================
 
 This module extends the functionality of analytic_tag_dimension to have the
 warning appear while saving sale orders, if two tags from the same
@@ -13,8 +13,8 @@ dimension are used.
 Installation
 ============
 
-This module will auto install should analytic_tag_dimension and sale modules
-be installed.
+This module will auto install if both analytic_tag_dimension and sale modules
+are installed.
 
 Configuration
 =============
