@@ -3,25 +3,25 @@
 # * account_analytic_project
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-20 22:26+0000\n"
 "PO-Revision-Date: 2017-10-20 22:26+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: account_analytic_project
 #: model:ir.model,name:account_analytic_project.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Cuenta analítica"
+msgstr ""
 
 #. module: account_analytic_project
 #: view:account.analytic.account:account_analytic_project.account_analytic_account_form
@@ -32,7 +32,7 @@ msgstr ""
 #: code:addons/account_analytic_project/model/account_analytic_account.py:33
 #, python-format
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Projeto"
 
 #. module: account_analytic_project
 #: field:account.analytic.account,project_ids:0
