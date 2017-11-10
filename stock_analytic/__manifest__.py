@@ -7,7 +7,7 @@
 {
     "name": "Stock Analytic",
     "summary": "Adds an analytic account in stock move",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "author": "Julius Network Solutions,"
               "ClearCorp, OpenSynergy Indonesia,"
               "Odoo Community Association (OCA)",
@@ -16,6 +16,7 @@
     "license": "AGPL-3",
     "depends": [
         "stock_account",
+        "procurement_analytic",
         "analytic",
     ],
     "data": [
