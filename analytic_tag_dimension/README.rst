@@ -30,10 +30,10 @@ To configure this module, you need to:
 Known issues / Roadmap
 ======================
 
-* Analytic Entries with Tags created before installation this module are not updated with its Dimensions.
+* Analytic Entries with Tags created before installing this module are not updated with its Dimensions.
 * Set color on Analytic Dimensions, and get it on Analytic Tags.
 * Change implementation to create stored computed fields, instead of rewrite create and write functions.
-* On function that create fields, get all models that inherit from AbstractModel
+* On the function that create fields, get all the models that inherit from AbstractModel
 * Set dimension on invoice report
 * Improve fields_view_get to create filters on search view
 
