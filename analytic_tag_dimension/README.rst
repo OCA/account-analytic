@@ -9,10 +9,11 @@ Analytic Tag Dimension
 This module allows to group Analytic Tags on Dimensions.
 
 Dimensions are created as custom field, then you can group by Dimensions on:
+
 * Account/Adviser/Journal Items
 * Account/Reports/Business Intelligence/Analytic Entries
 
-When you set Tags on Analytic Entries each custom fields for dimensions are updated with its Tag.
+When you set Tags on Analytic Entries, each custom field for dimensions is updated with its Tag.
 
 One Tag is only allowed on one Dimension, and you can not set more than one Tag from same Dimensions on Analytic Entry.
 
@@ -21,6 +22,7 @@ Configuration
 =============
 
 To configure this module, you need to:
+
 * go to /Accounting/Configuration/Analytic Accounting/Analytic Accounts Dimensions to create new Analytic Dimensions.
 * You can create new Analytic Tags on this form, or go to /Accounting/Configuration/Analytic Accounting/Analytic Accounts Tags and set Dimension for each Tag.
 
@@ -28,11 +30,11 @@ To configure this module, you need to:
 Known issues / Roadmap
 ======================
 
-* Analytic Entries with Tags created before install this module are not updated with its Dimensions.
+* Analytic Entries with Tags created before installing this module are not updated with its Dimensions.
 * Set color on Analytic Dimensions, and get it on Analytic Tags.
 * Change implementation to create stored computed fields, instead of rewrite create and write functions.
-* On function that create fields, get al models that inherit from AbstractModel
-* Set dimansion on invoice report
+* On the function that create fields, get all the models that inherit from AbstractModel
+* Set dimension on invoice report
 * Improve fields_view_get to create filters on search view
 
 Usage
@@ -46,7 +48,7 @@ Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/account_analytic/issues>`_. In case of trouble, please
+<https://github.com/OCA/account-analytic/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed feedback.
 
