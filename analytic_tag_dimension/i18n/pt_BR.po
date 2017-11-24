@@ -3,16 +3,16 @@
 # * analytic_tag_dimension
 # 
 # Translators:
-# falexandresilva <falexandresilva@gmail.com>, 2017
 # OCA Transbot <transbot@odoo-community.org>, 2017
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017
+# falexandresilva <falexandresilva@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 09:51+0000\n"
-"PO-Revision-Date: 2017-06-13 09:51+0000\n"
-"Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017\n"
+"POT-Creation-Date: 2017-11-19 22:13+0000\n"
+"PO-Revision-Date: 2017-11-19 22:13+0000\n"
+"Last-Translator: falexandresilva <falexandresilva@gmail.com>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,7 +36,7 @@ msgstr "Dimensão Analítica"
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Linha analítica"
+msgstr "Linhas Analíticas"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_tag

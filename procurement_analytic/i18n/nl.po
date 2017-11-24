@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * stock_analytic
+# * procurement_analytic
 # 
 # Translators:
 # Cas Vissers <casvissers@brahoo.nl>, 2017
@@ -18,13 +18,12 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: stock_analytic
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_analytic_account_id
-#: model:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
+#. module: procurement_analytic
+#: model:ir.model.fields,field_description:procurement_analytic.field_procurement_order_account_analytic_id
 msgid "Analytic Account"
 msgstr "Kostenplaats"
 
-#. module: stock_analytic
-#: model:ir.model,name:stock_analytic.model_stock_move
-msgid "Stock Move"
+#. module: procurement_analytic
+#: model:ir.model,name:procurement_analytic.model_procurement_order
+msgid "Procurement"
 msgstr ""

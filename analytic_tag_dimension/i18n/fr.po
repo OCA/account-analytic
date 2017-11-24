@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-12 00:38+0000\n"
-"PO-Revision-Date: 2017-07-12 00:38+0000\n"
+"POT-Creation-Date: 2017-11-19 22:13+0000\n"
+"PO-Revision-Date: 2017-11-19 22:13+0000\n"
 "Last-Translator: leemannd <denis.leemann@camptocamp.com>, 2017\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr ""
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Ligne de facture"
+msgstr "Lignes de facture"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_move_line
