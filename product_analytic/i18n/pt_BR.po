@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-28 22:12+0000\n"
-"PO-Revision-Date: 2017-07-28 22:12+0000\n"
+"POT-Creation-Date: 2017-11-10 23:08+0000\n"
+"PO-Revision-Date: 2017-11-10 23:08+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "LInha da fatura"
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
 msgid "Product Category"
-msgstr ""
+msgstr "Categoria do produto"
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_template
