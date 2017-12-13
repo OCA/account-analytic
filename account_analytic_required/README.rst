@@ -22,7 +22,7 @@ Usage
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/10.0
+   :target: https://runbot.odoo-community.org/runbot/87/11.0
 
 Bug Tracker
 ===========
@@ -39,7 +39,7 @@ Contributors
 ------------
 * Alexis de Lattre <alexis.delattre@akretion.com>
 * Stéphane Bidoul
-* Sefan Rijnhart
+* Stefan Rijnhart
 * Laetitia Gangloff
 * Luc De Meyer, Noviat <info@noviat.com>
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
