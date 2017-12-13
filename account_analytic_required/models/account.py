@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-# © 2011-2016 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
-# © 2016 Camptocamp SA
+# Copyright 2011-2016 Akretion - Alexis de Lattre
+# Copyright 2016 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, exceptions, fields, models
@@ -59,6 +58,8 @@ class AccountMoveLine(models.Model):
                               move_line.account_id.name,
                               move_line.name,
                               move_line.analytic_account_id.name_get()[0][1])
+            else:
+                return None
 
     @api.constrains('analytic_account_id', 'account_id', 'debit', 'credit')
     def _check_analytic_required(self):

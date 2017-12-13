@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# © 2014 Acsone
+# Copyright 2014 Acsone
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from datetime import datetime
 
@@ -7,43 +6,48 @@ from odoo.tests import common
 from odoo import exceptions
 
 
-class TestAccountAnalyticRequired(common.TransactionCase):
+class TestAccountAnalyticRequired(common.SavepointCase):
 
-    def setUp(self):
-        super(TestAccountAnalyticRequired, self).setUp()
-        self.account_obj = self.env['account.account']
-        self.account_type_obj = self.env['account.account.type']
-        self.move_obj = self.env['account.move']
-        self.move_line_obj = self.env['account.move.line']
-        self.analytic_account_obj = self.env['account.analytic.account']
-        self.analytic_account = self.analytic_account_obj.create(
+    @classmethod
+    def setUpClass(cls):
+        super(TestAccountAnalyticRequired, cls).setUpClass()
+        cls.account_obj = cls.env['account.account']
+        cls.account_type_obj = cls.env['account.account.type']
+        cls.move_obj = cls.env['account.move']
+        cls.move_line_obj = cls.env['account.move.line']
+        cls.analytic_account_obj = cls.env['account.analytic.account']
+        cls.analytic_account = cls.analytic_account_obj.create(
             {'name': 'test aa'})
-        self.account_sales = self.env['account.account'].create({
+        cls.account_sales = cls.env['account.account'].create({
             'code': "X1020",
             'name': "Product Sales - (test)",
-            'user_type_id': self.ref('account.data_account_type_revenue')
+            'user_type_id': cls.env.ref(
+                'account.data_account_type_revenue').id
         })
-        self.account_recv = self.env['account.account'].create({
+        cls.account_recv = cls.env['account.account'].create({
             'code': "X11002",
             'name': "Debtors - (test)",
             'reconcile': True,
-            'user_type_id': self.ref('account.data_account_type_receivable')
+            'user_type_id': cls.env.ref(
+                'account.data_account_type_receivable').id
         })
-        self.account_exp = self.env['account.account'].create({
+        cls.account_exp = cls.env['account.account'].create({
             'code': "X2110",
             'name': "Expenses - (test)",
-            'user_type_id': self.ref('account.data_account_type_expenses')
+            'user_type_id': cls.env.ref(
+                'account.data_account_type_expenses').id
         })
-        self.sales_journal = self.env['account.journal'].create({
+        cls.sales_journal = cls.env['account.journal'].create({
             'name': "Sales Journal - (test)",
             'code': "TSAJ",
             'type': "sale",
             'refund_sequence': True,
-            'default_debit_account_id': self.account_sales.id,
-            'default_credit_account_id': self.account_sales.id,
+            'default_debit_account_id': cls.account_sales.id,
+            'default_credit_account_id': cls.account_sales.id,
         })
 
-    def _create_move(self, with_analytic, amount=100):
+    def _create_move(self, amount=100, **kwargs):
+        with_analytic = kwargs.get('with_analytic')
         date = datetime.now()
         ml_obj = self.move_line_obj.with_context(check_move_validity=False)
         move_vals = {
