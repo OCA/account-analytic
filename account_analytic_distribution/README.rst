@@ -26,8 +26,10 @@ Configuration
 
 To configure your analytic distributions go to:
 
+#. *Settings > Users* and activate **Show Full Accounting Features** on "Technical Settings" for the 
+   logged user. 
 #. *Invoicing > Configuration > Settings* and activate checkbox **Analytic
-   accounting** in *Accounting & Finance*.
+   accounting** in *Analytics*.
 #. Now you see the menu *Invoicing > Configuration > Analytic Accounting >
    Analytic Distributions*
 #. Create a new analytic distribution and enter its name

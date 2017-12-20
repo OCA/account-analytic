@@ -7,14 +7,14 @@
     "name": "Account Analytic Distribution",
     "summary": "Distribute incoming/outcoming account moves to several "
                "analytic accounts",
-    "version": "10.0.1.0.0",
+    "version": "11.0.1.0.0",
     "category": "Accounting & Finance",
     "website": "https://www.tecnativa.com",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "depends": [
-        "account",
+        "account_invoicing",
     ],
     "data": [
         "security/ir.model.access.csv",

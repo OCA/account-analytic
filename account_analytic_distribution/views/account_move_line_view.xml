@@ -15,17 +15,6 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_move_line_form2">
-        <field name="name">Add Analytic distribution in form2</field>
-        <field name="model">account.move.line</field>
-        <field name="priority">2</field>
-        <field name="inherit_id" ref="account.view_move_line_form2"/>
-        <field name="arch" type="xml">
-            <field name="analytic_account_id" position="before">
-                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting"/>
-            </field>
-        </field>
-    </record>
 
     <record model="ir.ui.view" id="view_move_line_tree">
         <field name="name">Add Analytic distribution column</field>
@@ -33,9 +22,9 @@
         <field name="inherit_id" ref="account.view_move_line_tree"/>
         <field name="arch" type="xml">
             <field name="analytic_account_id" position="before">
-                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting" einvisible="not context.get('analytic_journal_id', False)"/>
+                <field name="analytic_distribution_id" groups="analytic.group_analytic_accounting" />
             </field>
         </field>
-    </record>
+    </record> 
 
 </odoo>
