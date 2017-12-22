@@ -13,6 +13,7 @@ class AccountAccountType(models.Model):
     analytic_policy = fields.Selection(
         selection=[('optional', 'Optional'),
                    ('always', 'Always'),
+                   ('posted', 'Posted moves'),
                    ('never', 'Never')],
         string='Policy for analytic account',
         required=True,
@@ -21,9 +22,21 @@ class AccountAccountType(models.Model):
              "'Optional', the accountant is free to put an analytic account "
              "on an account move line with this type of account ; if you "
              "select 'Always', the accountant will get an error message if "
-             "there is no analytic account ; if you select 'Never', the "
-             "accountant will get an error message if an analytic account "
+             "there is no analytic account ; if you select 'Posted moves', "
+             "the accountant will get an error message if no analytic account "
+             "is defined when the move is posted ; if you select 'Never', "
+             "the accountant will get an error message if an analytic account "
              "is present.")
+
+
+class AccountMove(models.Model):
+    _inherit = "account.move"
+
+    @api.multi
+    def post(self):
+        res = super(AccountMove, self).post()
+        self.mapped('line_ids')._check_analytic_required()
+        return res
 
 
 class AccountMoveLine(models.Model):
@@ -59,6 +72,15 @@ class AccountMoveLine(models.Model):
                               move_line.account_id.name,
                               move_line.name,
                               move_line.analytic_account_id.name_get()[0][1])
+            elif (analytic_policy == 'posted' and
+                  not move_line.analytic_account_id and
+                  move_line.move_id.state == 'posted'):
+                return _("Analytic policy is set to 'Posted moves' with "
+                         "account %s '%s' but the analytic account is missing "
+                         "in the account move line with label '%s'."
+                         ) % (move_line.account_id.code,
+                              move_line.account_id.name,
+                              move_line.name)
 
     @api.constrains('analytic_account_id', 'account_id', 'debit', 'credit')
     def _check_analytic_required(self):
