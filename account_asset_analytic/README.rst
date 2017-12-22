@@ -7,8 +7,8 @@ Account asset analytic
 ======================
 
 This module allows you to define an analytic account per asset and creates
-expenses moves with that analytic account instead of the analytic account
-per category, as the standard does.
+expenses or depreciations moves (according to category type) with that analytic
+account instead of the analytic account per category, as the standard does.
 
 It also propagates analytic account from invoice line to analytic account line.
 
@@ -44,6 +44,7 @@ Contributors
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
 * Antonio Espinosa <antonio.espinosa@tecnativa.com>
 * Luis M. Ontalba <luis.martinez@tecnativa.com>
+* Akim Juillerat <akim.juillerat@camptocamp.com>
 
 Maintainer
 ----------
