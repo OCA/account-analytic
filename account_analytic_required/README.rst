@@ -7,7 +7,8 @@ Account Analytic Required
 =========================
 
 This module adds an option *analytic policy* on account types.
-You have the choice between 3 policies : *always*, *never* and *optional*.
+You have the choice between 4 policies : *always*, *never*, *posted moves* and
+*optional*.
 
 Configuration
 =============
@@ -43,6 +44,7 @@ Contributors
 * Laetitia Gangloff
 * Luc De Meyer, Noviat <info@noviat.com>
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
+* Akim Juillerat <akim.juillerat@camptocamp.com>
 
 Maintainer
 ----------
