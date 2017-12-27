@@ -1,62 +1,65 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 PESOL (http://pesol.es)
 #                Angel Moya (angel.moya@pesol.es)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import SavepointCase
 from odoo.exceptions import ValidationError
 
 
-class TestAnalyticDimensionCase(TransactionCase):
+class TestAnalyticDimensionCase(SavepointCase):
 
-    def setUp(self, *args, **kwargs):
-        super(TestAnalyticDimensionCase, self).setUp(*args, **kwargs)
+    @classmethod
+    def setUpClass(cls, *args, **kwargs):
+        super(TestAnalyticDimensionCase, cls).setUpClass(*args, **kwargs)
 
-        self.dimension_obj = self.env['account.analytic.dimension']
-        self.tag_obj = self.env['account.analytic.tag']
-        self.analytic_line_obj = self.env['account.analytic.line']
-        self.account_obj = self.env['account.account']
+        cls.dimension_obj = cls.env['account.analytic.dimension']
+        cls.tag_obj = cls.env['account.analytic.tag']
+        cls.analytic_line_obj = cls.env['account.analytic.line']
+        cls.account_obj = cls.env['account.account']
 
-        self.analytic_dimension_type = self.env.ref(
+        cls.analytic_dimension_type = cls.env.ref(
             'analytic_tag_dimension.analytic_dimension_type')
-        self.analytic_dimension_concept = self.env.ref(
+        cls.analytic_dimension_concept = cls.env.ref(
             'analytic_tag_dimension.analytic_dimension_concept')
-        self.analytic_tag_type_a = self.env.ref(
+        cls.analytic_tag_type_a = cls.env.ref(
             'analytic_tag_dimension.analytic_tag_type_a')
-        self.analytic_tag_type_b = self.env.ref(
+        cls.analytic_tag_type_b = cls.env.ref(
             'analytic_tag_dimension.analytic_tag_type_b')
-        self.analytic_tag_concept_a = self.env.ref(
+        cls.analytic_tag_concept_a = cls.env.ref(
             'analytic_tag_dimension.analytic_tag_concept_a')
-        self.analytic_tag_concept_b = self.env.ref(
+        cls.analytic_tag_concept_b = cls.env.ref(
             'analytic_tag_dimension.analytic_tag_concept_b')
 
-        self.analytic_account_id = self.env.ref(
+        cls.analytic_account_id = cls.env.ref(
             'analytic.analytic_absences').id
 
-        self.account_user_type = self.env.ref(
+        cls.account_user_type = cls.env.ref(
             'account.data_account_type_receivable')
-        self.journal = self.env['account.journal'].search([], limit=1)
+        cls.journal = cls.env['account.journal'].search([], limit=1)
 
-        self.company_id = self.env['res.users'].browse(
-            self.env.uid).company_id.id
+        cls.company_id = cls.env['res.users'].browse(
+            cls.env.uid).company_id.id
 
     def test_analytic_entry_dimension(self):
-        """Test dimension creation on analytic entry creation
-        """
+        """ Test dimension creation on analytic entry creation """
         analytic_dimension_test = self.dimension_obj.create({
             'name': 'Test_creation',
-            'code': 'test'
+            'code': 'test',
         })
         analytic_tag_test_a = self.tag_obj.create({
             'name': 'Test A',
-            'analytic_dimension_id': analytic_dimension_test.id
+            'analytic_dimension_id': analytic_dimension_test.id,
         })
         values = {
             'account_id': self.analytic_account_id,
             'name': 'test',
-            'tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                self.analytic_tag_concept_a.id,
-                                analytic_tag_test_a.id])]
+            'tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_concept_a.id,
+                    analytic_tag_test_a.id,
+                ]),
+            ],
         }
         line = self.analytic_line_obj.create(values)
         self.assertTrue(
@@ -64,15 +67,18 @@ class TestAnalyticDimensionCase(TransactionCase):
         self.assertTrue(
             line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
         values_update = {
-            'tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                self.analytic_tag_type_b.id])]
+            'tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_type_b.id,
+                ]),
+            ],
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
 
     def test_account_entry_dimension(self):
-        """Test dimension creation on account move line creation
-        """
+        """ Test dimension creation on account move line creation """
 
         account = self.account_obj.create({
             'code': 'test_dimension_acc_01',
@@ -80,7 +86,7 @@ class TestAnalyticDimensionCase(TransactionCase):
             'user_type_id': self.account_user_type.id,
             'reconcile': True,
         })
-        self.move = self.env['account.move'].create({
+        move = self.env['account.move'].create({
             'name': '/',
             'ref': '2011010',
             'journal_id': self.journal.id,
@@ -90,10 +96,14 @@ class TestAnalyticDimensionCase(TransactionCase):
         values = {
             'name': 'test',
             'account_id': account.id,
-            'move_id': self.move.id,
+            'move_id': move.id,
             'analytic_account_id': self.analytic_account_id,
-            'analytic_tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                         self.analytic_tag_concept_a.id])]
+            'analytic_tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_concept_a.id,
+                ]),
+            ],
         }
         move_line_obj = self.env['account.move.line']
         line = move_line_obj.create(values)
@@ -102,8 +112,12 @@ class TestAnalyticDimensionCase(TransactionCase):
         self.assertTrue(
             line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
         values_update = {
-            'analytic_tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                         self.analytic_tag_type_b.id])]
+            'analytic_tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_type_b.id,
+                ]),
+            ],
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
@@ -118,19 +132,23 @@ class TestAnalyticDimensionCase(TransactionCase):
             'user_type_id': self.account_user_type.id,
             'reconcile': True,
         })
-        self.invoice = self.env['account.invoice'].create({
+        invoice = self.env['account.invoice'].create({
             'journal_id': self.journal.id,
             'company_id': self.company_id,
-            'partner_id': partner.id
+            'partner_id': partner.id,
         })
         values = {
             'name': 'test',
             'price_unit': 1,
             'account_id': account.id,
-            'invoice_id': self.invoice.id,
+            'invoice_id': invoice.id,
             'analytic_account_id': self.analytic_account_id,
-            'analytic_tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                         self.analytic_tag_concept_a.id])]
+            'analytic_tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_concept_a.id,
+                ]),
+            ],
         }
         invoice_line_obj = self.env['account.invoice.line']
         line = invoice_line_obj.create(values)
@@ -139,12 +157,16 @@ class TestAnalyticDimensionCase(TransactionCase):
         self.assertTrue(
             line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
         values_update = {
-            'analytic_tag_ids': [(6, 0, [self.analytic_tag_type_a.id])]
+            'analytic_tag_ids': [(6, 0, [self.analytic_tag_type_a.id])],
         }
         line.write(values_update)
         values_update = {
-            'analytic_tag_ids': [(6, 0, [self.analytic_tag_type_a.id,
-                                         self.analytic_tag_type_b.id])]
+            'analytic_tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_type_b.id,
+                ]),
+            ],
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
