@@ -1,15 +1,14 @@
-# -*- coding: utf-8 -*-
-# © 2011-2016 Camptocamp SA
-# © 2013 Daniel Reis
+# Copyright 2011-2016 Camptocamp SA
+# Copyright 2013 Daniel Reis
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Base Analytic Department Categorization",
-    "version": "10.0.1.0.0",
-    "author": "Camptocamp, Daniel Reis,Odoo Community Association (OCA)",
+    "version": "11.0.1.0.0",
+    "author": "Camptocamp, Daniel Reis, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
-    "website": "http://camptocamp.com",
+    "website": "https://github.com/OCA/account-analytic",
     "depends": ["analytic", "hr"],
     "data": ["views/analytic.xml"],
-    'installable': True,
+    "installable": True,
 }
