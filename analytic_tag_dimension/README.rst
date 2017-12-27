@@ -30,7 +30,7 @@ To configure this module, you need to:
 Known issues / Roadmap
 ======================
 
-* Analytic Entries with Tags created before installing this module are not updated with its Dimensions.
+* Analytic Entries with Tags created before installing this module are not updated with theirs Dimensions.
 * Set color on Analytic Dimensions, and get it on Analytic Tags.
 * Change implementation to create stored computed fields, instead of rewrite create and write functions.
 * On the function that create fields, get all the models that inherit from AbstractModel
@@ -42,7 +42,7 @@ Usage
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/10.0
+   :target: https://runbot.odoo-community.org/runbot/87/11.0
 
 Bug Tracker
 ===========
@@ -64,6 +64,7 @@ Contributors
 ------------
 
 * Angel Moya <angel.moya@pesol.es>
+* Artem Kostyuk <a.kostyuk@mobilunity.com>
 
 Maintainer
 ----------
