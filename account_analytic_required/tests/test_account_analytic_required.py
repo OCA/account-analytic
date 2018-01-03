@@ -126,3 +126,13 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         line.write({
             'account_id': self.account_exp.id,
             'analytic_account_id': self.analytic_account.id})
+
+    def test_posted(self):
+        self._set_analytic_policy('posted')
+        line = self._create_move(with_analytic=False)
+        move = line.move_id
+        with self.assertRaises(exceptions.ValidationError):
+            move.post()
+        line.write({'analytic_account_id': self.analytic_account.id})
+        move.post()
+        self.assertEqual(move.state, 'posted')
