@@ -81,7 +81,8 @@ Contributors
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
 * Rafael Blasco <rafael.blasco@tecnativa.com>
 * Antonio Espinosa <antonio.espinosa@tecnativa.com>
-* Vicent Cubells <antonio.espinosa@tecnativa.com>
+* Vicent Cubells <vicent.cubells@tecnativa.com>
+* Carlos Dauden <carlos.dauden@tecnativa.com>
 
 Maintainer
 ----------

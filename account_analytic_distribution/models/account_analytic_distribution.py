@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 Antonio Espinosa - <antonio.espinosa@tecnativa.com>
 # Copyright 2017 Vicent Cubells - <vicent.cubells@tecnativa.com>
+# Copyright 2018 Carlos Dauden - <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
@@ -71,12 +72,31 @@ class AccountAnalyticDistributionRule(models.Model):
         string="Analytic account",
         comodel_name='account.analytic.account',
     )
+    analytic_tag_ids = fields.Many2many(
+        comodel_name='account.analytic.tag',
+        string='Analytic Tags',
+        copy=True,
+    )
 
     _sql_constraints = [
         ('percent_positive', 'CHECK(percent > 0)',
          _('Percentage must be positive!')),
         ('percent_limit', 'CHECK(percent <= 100)',
          _('Percentage must less or equal 100%!')),
-        ('analytic_uniq', 'unique(distribution_id, analytic_account_id)',
-         _('Analytic account must be unique per distribution!')),
     ]
+
+    @api.constrains(
+        'distribution_id',
+        'analytic_account_id',
+        'analytic_tag_ids',
+    )
+    def _check_uniq_rule(self):
+        for rule in self.distribution_id.rule_ids:
+            if (
+                self.analytic_account_id == rule.analytic_account_id and
+                self.analytic_tag_ids == rule.analytic_tag_ids and
+                self.id != rule.id
+            ):
+                raise ValidationError(_(
+                    'Analytic account and tags combination must be unique for '
+                    'distribution!'))

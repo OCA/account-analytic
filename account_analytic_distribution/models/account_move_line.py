@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 Antonio Espinosa - <antonio.espinosa@tecnativa.com>
 # Copyright 2017 Vicent Cubells - <vicent.cubells@tecnativa.com>
+# Copyright 2018 Carlos Dauden - <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
@@ -19,7 +20,13 @@ class AccountMoveLine(models.Model):
         for line_dict in res:
             amount = (line_dict.get('amount') * rule.percent) / 100.0
             line_dict['amount'] = amount
-            line_dict['account_id'] = rule.analytic_account_id.id
+            if rule.analytic_account_id:
+                line_dict['account_id'] = rule.analytic_account_id.id
+            tag_ids = line_dict['tag_ids'] and line_dict['tag_ids'][0][2] or []
+            tag_ids.extend(rule.analytic_tag_ids.ids)
+            line_dict['tag_ids'] = [
+                (6, 0, list(set(rule.analytic_tag_ids.ids))),
+            ]
         return res and res[0] or False
 
     @api.multi
