@@ -28,7 +28,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
 
         # Instance: accounts
         cls.account_440000 = cls.account_account.create({
-            'name': 'Entreprises liées',
+            'name': u'Entreprises liées',
             'code': '440000_demo',
             'user_type_id':
                 cls.env.ref('account.data_account_type_payable').id,
@@ -40,7 +40,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
                 cls.env.ref('account.data_account_type_liquidity').id,
             'reconcile': False})
         cls.account_600000 = cls.account_account.create({
-            'name': 'Achats de matières premières',
+            'name': u'Achats de matières premières',
             'code': '600000_demo',
             'user_type_id':
                 cls.env.ref('account.data_account_type_expenses').id,
