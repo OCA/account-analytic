@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-13 09:51+0000\n"
-"PO-Revision-Date: 2017-06-13 09:51+0000\n"
+"POT-Creation-Date: 2018-01-04 01:41+0000\n"
+"PO-Revision-Date: 2018-01-04 01:41+0000\n"
 "Last-Translator: Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Account Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -29,12 +34,22 @@ msgid "Always"
 msgstr "Sempre"
 
 #. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always (analytic account or distribution)"
+msgstr ""
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always (analytic distribution)"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr "Política Analítica"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:47
+#: code:addons/account_analytic_required/models/account.py:60
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -44,7 +59,7 @@ msgstr ""
 " analítica está faltando na linha de mudança de conta com o rótulo '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:55
+#: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -52,6 +67,14 @@ msgid ""
 msgstr ""
 "A política analítica é definida como \"Nunca\" com conta%s '%s' mas a linha "
 "de movimento da conta com o rótulo '%s' tem uma conta analítica '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:78
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+"analytic account is missing in the account move line with label '%s'."
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
@@ -79,17 +102,18 @@ msgid "Policy for analytic account"
 msgstr "Política para conta analítica"
 
 #. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Posted moves"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
 msgid ""
 "Set the policy for analytic accounts : if you select 'Optional', the "
 "accountant is free to put an analytic account on an account move line with "
 "this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Never', the "
-"accountant will get an error message if an analytic account is present."
+"error message if there is no analytic account ; if you select 'Posted "
+"moves', the accountant will get an error message if no analytic account is "
+"defined when the move is posted ; if you select 'Never', the accountant will"
+" get an error message if an analytic account is present."
 msgstr ""
-"Defina a política para contas analíticas: se você selecionar \"Opcional\", o"
-" contador é livre para colocar uma conta analítica em uma linha de mudança "
-"de conta com esse tipo de conta; Se você selecionar 'Sempre', o contador "
-"receberá uma mensagem de erro se não houver uma conta analítica; Se você "
-"selecionar 'Nunca', o contador receberá uma mensagem de erro se uma conta "
-"analítica estiver presente."

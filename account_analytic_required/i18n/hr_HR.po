@@ -3,14 +3,13 @@
 # * account_analytic_required
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2017-06-30 02:40+0000\n"
+"POT-Creation-Date: 2018-01-04 01:41+0000\n"
+"PO-Revision-Date: 2018-01-04 01:41+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Language: hr_HR\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Account Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -45,7 +49,7 @@ msgid "Analytic Policy"
 msgstr "Analitička pravila"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:47
+#: code:addons/account_analytic_required/models/account.py:60
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -55,7 +59,7 @@ msgstr ""
 "analitički konto nedostaje u stavci temeljnice sa naslovom '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:55
+#: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -63,6 +67,14 @@ msgid ""
 msgstr ""
 "Analitičko pravilo je postavljeno na 'Nikada' za konto %s '%s' ali na stavci"
 " temeljnice sa oznakom '%s' postoji analitički konto '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:78
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+"analytic account is missing in the account move line with label '%s'."
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
@@ -90,16 +102,18 @@ msgid "Policy for analytic account"
 msgstr "Pravila za analitička konta"
 
 #. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Posted moves"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
 msgid ""
 "Set the policy for analytic accounts : if you select 'Optional', the "
 "accountant is free to put an analytic account on an account move line with "
 "this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Never', the "
-"accountant will get an error message if an analytic account is present."
+"error message if there is no analytic account ; if you select 'Posted "
+"moves', the accountant will get an error message if no analytic account is "
+"defined when the move is posted ; if you select 'Never', the accountant will"
+" get an error message if an analytic account is present."
 msgstr ""
-"Postavite pravila za analitička konta: ako odaberete 'Opcionalno', "
-"knjigovođa može slobodno birati hoće li postaviti analitički konto na stavke"
-" temeljnice ovog tipa konta, ako odaberete 'Uvijek', knjigovođa će dobiti "
-"upozorenje o grešci ako ga nema, i ako odaberete 'Nikad' knjigovođa će "
-"dobiti upozorenje o greški ako postoji analitički konto."
