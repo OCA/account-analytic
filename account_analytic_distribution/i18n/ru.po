@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Alex Zander <kravch-aa@yandex.ru>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-09 02:38+0000\n"
-"PO-Revision-Date: 2017-06-09 02:38+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2018-01-15 12:59+0000\n"
+"PO-Revision-Date: 2018-01-15 12:59+0000\n"
+"Last-Translator: Alex Zander <kravch-aa@yandex.ru>, 2018\n"
 "Language-Team: Russian (https://www.transifex.com/oca/teams/23907/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,24 +56,24 @@ msgstr ""
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Список компаний"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_company_id
 msgid "Company"
-msgstr ""
+msgstr "Компания"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_create_uid
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Автор:"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_create_date
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Платформа:"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_display_name
@@ -107,7 +108,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,help:account_analytic_distribution.field_res_company_force_percent
@@ -119,7 +120,7 @@ msgstr ""
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_invoice
 msgid "Invoice"
-msgstr ""
+msgstr "Счет"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_invoice_line
@@ -157,21 +158,21 @@ msgstr ""
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_percent
 msgid "Percentage"
-msgstr ""
+msgstr "Проценты"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:77
 #, python-format
 msgid "Percentage must be positive!"
-msgstr ""
+msgstr "Значения процентов должны быть положительны!"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:79
 #, python-format
 msgid "Percentage must less or equal 100%!"
-msgstr ""
+msgstr "Значения процентов не превышают 100%!"
 
 #. module: account_analytic_distribution
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
