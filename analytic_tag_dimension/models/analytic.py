@@ -37,7 +37,7 @@ class AccountAnalyticDimension(models.Model):
                 'relation': 'account.analytic.tag',
             })],
         })
-        return super(AccountAnalyticDimension, self).create(values)
+        return super().create(values)
 
 
 class AccountAnalyticTag(models.Model):
