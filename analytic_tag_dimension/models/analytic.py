@@ -5,7 +5,6 @@
 
 from odoo import models, api, fields, _
 from odoo.exceptions import ValidationError
-# from lxml import etree
 
 
 class AccountAnalyticDimension(models.Model):
@@ -33,8 +32,6 @@ class AccountAnalyticDimension(models.Model):
                 'model_id': model.id,
                 'ttype': 'many2one',
                 'relation': 'account.analytic.tag',
-                # 'store': True,
-                # 'compute': '_compute_analytic_dimensions'
             })
         return super(AccountAnalyticDimension, self).create(values)
 
