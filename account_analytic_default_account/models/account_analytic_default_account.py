@@ -11,78 +11,96 @@ class AccountAnalyticDefaultAccount(models.Model):
     account_id = fields.Many2one(
         'account.account', string='Account',
         ondelete='cascade',
-        help="Select an account which will use analytic account specified in "
-             "analytic default (e.g. create new customer invoice or "
-             "Sales order if we select this product, "
-             "it will automatically take this as an analytic account)"
+        help="Select the account corresponding to an analytic account "
+             "which will be used on the lines of invoices or account moves"
     )
 
-    @api.model
-    def account_get(self, product_id=None, partner_id=None, user_id=None,
-                    date=None, company_id=None, account_id=None):
+    account_get_domain_keys = [
+        'product_id', 'partner_id', 'user_id',
+        'date', 'company_id', 'account_id',
+    ]
+
+    def _account_get_domain(self, **kw):
+        """Build account.analytic.default domain.
+
+        :param kw: filter keys.
+            Available filter keys are defined into `account_get_domain_keys`.
+        :return: a search domain with all required keys' leaves.
+            Each key will be searched for both False and specified value.
+            For instance: [
+                ('product_id'), '=', False), '|', [('product_id'), '=', 100)
+            ]
+        """
         domain = []
-        if product_id:
-            domain += ['|', ('product_id', '=', product_id)]
-        domain += [('product_id', '=', False)]
-        if partner_id:
-            domain += ['|', ('partner_id', '=', partner_id)]
-        domain += [('partner_id', '=', False)]
-        if company_id:
-            domain += ['|', ('company_id', '=', company_id)]
-        domain += [('company_id', '=', False)]
-        if user_id:
-            domain += ['|', ('user_id', '=', user_id)]
-        domain += [('user_id', '=', False)]
-        if account_id:
-            domain += ['|', ('account_id', '=', account_id)]
-        domain += [('account_id', '=', False)]
-        if date:
-            domain += ['|', ('date_start', '<=', date),
+        account_get_domain_keys = self.account_get_domain_keys[:]
+        # date will be handled differently
+        account_get_domain_keys.remove('date')
+
+        for key in account_get_domain_keys:
+            if kw.get(key):
+                domain += ['|', (key, '=', kw.get(key))]
+            domain += [(key, '=', False)]
+
+        date_val = kw.get('date')
+        if date_val:
+            domain += ['|', ('date_start', '<=', date_val),
                        ('date_start', '=', False)]
-            domain += ['|', ('date_stop', '>=', date),
+            domain += ['|', ('date_stop', '>=', date_val),
                        ('date_stop', '=', False)]
+        return domain
+
+    def _account_get(self, **kw):
+        """Search the records matching the built domain,
+        compute an index score based on the actual record values then
+        return the record with the highest index score"""
+        domain = self._account_get_domain(**kw)
+        keys = kw.keys()
+        if 'date' in keys:
+            keys.remove('date')
+            keys += ['date_start', 'date_stop']
         best_index = -1
         res = self.env['account.analytic.default']
         for rec in self.search(domain):
             index = 0
-            if rec.product_id:
-                index += 1
-            if rec.partner_id:
-                index += 1
-            if rec.company_id:
-                index += 1
-            if rec.user_id:
-                index += 1
-            if rec.account_id:
-                index += 1
-            if rec.date_start:
-                index += 1
-            if rec.date_stop:
-                index += 1
+            for k in keys:
+                if rec[k]:
+                    index += 1
             if index > best_index:
                 res = rec
                 best_index = index
         return res
 
+    @api.model
+    def account_get(self, product_id=None, partner_id=None, user_id=None,
+                    date=None, company_id=None, account_id=None):
+        """Wrapper method to convert positional args to kwargs"""
+        return self._account_get(
+            product_id=product_id, partner_id=partner_id, user_id=user_id,
+            date=date, company_id=company_id, account_id=account_id
+        )
+
 
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
 
-    @api.onchange('product_id')
+    @api.onchange('product_id', 'account_id')
     def _onchange_product_id(self):
         res = super(AccountInvoiceLine, self)._onchange_product_id()
         rec = self.env['account.analytic.default'].account_get(
-            self.product_id.id, self.invoice_id.partner_id.id, self.env.uid,
-            fields.Date.today(), company_id=self.company_id.id,
-            account_id=self.account_id.id)
+            product_id=self.product_id.id,
+            partner_id=self.invoice_id.partner_id.id,
+            user_id=self.env.uid, date=fields.Date.today(),
+            company_id=self.company_id.id, account_id=self.account_id.id
+        )
         self.account_analytic_id = rec.analytic_id.id
         return res
 
     def _set_additional_fields(self, invoice):
         if not self.account_analytic_id:
             rec = self.env['account.analytic.default'].account_get(
-                self.product_id.id, self.invoice_id.partner_id.id,
-                self.env.uid, fields.Date.today(),
+                product_id=self.product_id.id,
+                partner_id=self.invoice_id.partner_id.id,
+                user_id=self.env.uid, date=fields.Date.today(),
                 company_id=self.company_id.id, account_id=self.account_id.id
             )
             if rec:

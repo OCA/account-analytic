@@ -12,8 +12,7 @@ accounts.
 Configuration
 =============
 
-For example, if you want to have an analytic account whenever you use
-a given account, then go to *Accounting -> Configuration -> Analytic Defaults*
+Go to *Accounting -> Configuration -> Analytic Defaults*
 and set the corresponding settings.
 
 Usage

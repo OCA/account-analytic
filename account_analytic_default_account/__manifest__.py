@@ -8,7 +8,13 @@
     'license': 'AGPL-3',
     'author': "Odoo Community Association (OCA)",
     'website': 'https://github.com/OCA/account-analytic',
-    'depends': ['account_analytic_default'],
-    'data': ['views/account_analytic_default_account_view.xml'],
+    'depends': [
+        'account',
+        'analytic',
+        'account_analytic_default'
+    ],
+    'data': [
+        'views/account_analytic_default_account_view.xml'
+    ],
     'installable': True,
 }
