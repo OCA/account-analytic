@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017 PESOL (http://pesol.es)
 #                Angel Moya (angel.moya@pesol.es)
+# Copyright 2018 Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, api, fields, _
@@ -27,7 +28,7 @@ class AccountAnalyticDimension(models.Model):
         for model_xml_id in model_xml_ids:
             model = self.env.ref(model_xml_id)
             self.env['ir.model.fields'].create({
-                'name': 'x_dimension_%s' % (values.get('code')),
+                'name': 'x_dimension_%s' % (values.get('code', '').lower()),
                 'field_description': values.get('name'),
                 'model_id': model.id,
                 'ttype': 'many2one',

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2018 Camptocamp SA
+# Copyright 2018 Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models
@@ -21,5 +22,5 @@ class AccountInvoiceReport(models.Model):
     def _sub_select(self):
         res = super(AccountInvoiceReport, self)._sub_select()
         add_fields = self._get_dimension_fields()
-        add_fields = [", ail.{0} as {0}".format(x) for x in add_fields]
+        add_fields = [', ail."{0}" as {0}'.format(x) for x in add_fields]
         return res + "".join(add_fields)

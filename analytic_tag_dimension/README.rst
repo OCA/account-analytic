@@ -64,6 +64,7 @@ Contributors
 ------------
 
 * Angel Moya <angel.moya@pesol.es>
+* Carlos Dauden <carlos.dauden@tecnativa.com>
 
 Maintainer
 ----------
