@@ -15,11 +15,6 @@ class AccountAnalyticDefaultAccount(models.Model):
              "which will be used on the lines of invoices or account moves"
     )
 
-    account_get_domain_keys = [
-        'product_id', 'partner_id', 'user_id',
-        'date', 'company_id', 'account_id',
-    ]
-
     def _account_get_domain(self, **kw):
         """Build account.analytic.default domain.
 
@@ -32,16 +27,14 @@ class AccountAnalyticDefaultAccount(models.Model):
             ]
         """
         domain = []
-        account_get_domain_keys = self.account_get_domain_keys[:]
         # date will be handled differently
-        account_get_domain_keys.remove('date')
+        date_val = kw.pop('date')
 
-        for key in account_get_domain_keys:
-            if kw.get(key):
+        for key, value in kw.iteritems():
+            if value:
                 domain += ['|', (key, '=', kw.get(key))]
             domain += [(key, '=', False)]
 
-        date_val = kw.get('date')
         if date_val:
             domain += ['|', ('date_start', '<=', date_val),
                        ('date_start', '=', False)]
@@ -49,12 +42,22 @@ class AccountAnalyticDefaultAccount(models.Model):
                        ('date_stop', '=', False)]
         return domain
 
-    def _account_get(self, **kw):
+    @api.model
+    def account_get(self, product_id=None, partner_id=None, user_id=None,
+                    date=None, company_id=None, account_id=None):
         """Search the records matching the built domain,
         compute an index score based on the actual record values then
         return the record with the highest index score"""
-        domain = self._account_get_domain(**kw)
-        keys = kw.keys()
+        filters = {
+            'product_id': product_id,
+            'partner_id': partner_id,
+            'user_id': user_id,
+            'date': date,
+            'company_id': company_id,
+            'account_id': account_id,
+        }
+        domain = self._account_get_domain(**filters)
+        keys = filters.keys()
         if 'date' in keys:
             keys.remove('date')
             keys += ['date_start', 'date_stop']
@@ -69,15 +72,6 @@ class AccountAnalyticDefaultAccount(models.Model):
                 res = rec
                 best_index = index
         return res
-
-    @api.model
-    def account_get(self, product_id=None, partner_id=None, user_id=None,
-                    date=None, company_id=None, account_id=None):
-        """Wrapper method to convert positional args to kwargs"""
-        return self._account_get(
-            product_id=product_id, partner_id=partner_id, user_id=user_id,
-            date=date, company_id=company_id, account_id=account_id
-        )
 
 
 class AccountInvoiceLine(models.Model):
