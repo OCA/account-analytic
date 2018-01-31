@@ -1,0 +1,76 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_required
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-25 08:50+0000\n"
+"PO-Revision-Date: 2017-04-25 08:50+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Type de compte"
+
+#. module: account_analytic_required
+#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+msgid "Analytic Policy"
+msgstr ""
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:52
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:60
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account '%s'."
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+msgid "Group By"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+msgid "Policy for analytic account"
+msgstr "Politique pour les comptes analytiques"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Never', the "
+"accountant will get an error message if an analytic account is present."
+msgstr ""
+"Configurez la politique pour les comptes analytiques : si vous sélectionnez "
+"'Optionnel', le comptable est libre de saisir ou non un compte analytique "
+"sur une ligne comptable avec ce type de compte de comptabilité générale ; si"
+" vous sélectionnez 'Toujours', le comptable aura un message d'erreur si il "
+"n'y a pas de compte analytique ; si vous sélectionnez 'Jamais', le comptable"
+" aura un message d'erreur si un compte analytique est présent."
