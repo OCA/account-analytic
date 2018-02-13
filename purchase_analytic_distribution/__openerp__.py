@@ -5,7 +5,7 @@
 
 {
     "name": "Purchase Analytic Plans",
-    "version": "9.0.1.0.0",
+    "version": "8.0.1.0.0",
     "category": "Purchase Management",
     "author": "OpenERP SA, "
               "Tecnativa, "
@@ -17,7 +17,8 @@
         "account_analytic_distribution",
     ],
     "data": [
-        "views/purchase_view.xml",
+        "views/purchase_order.xml",
+        "views/purchase_order_line.xml",
     ],
     "installable": True,
     "auto_install": False,

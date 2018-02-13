@@ -14,7 +14,7 @@ a line on a supplier purchase order into several analytic accounts.
 Usage
 =====
 
-After creating an analytic distribution, create a sale order and you can add
+After creating an analytic distribution, create a purchase order and you can add
 an analytic distribution to every sale order line, to distribute amount line
 to several analytic accounts.
 
@@ -43,6 +43,7 @@ Contributors
 
 * Odoo S.A.
 * Vicent Cubells <vicent.cubells@tecnativa.com>
+* Pieter Paulussen <pieter.paulussen@dynapps.be>
 
 Maintainer
 ----------
