@@ -24,8 +24,10 @@ class TestPurchaseDistribution(common.SavepointCase):
         cls.account2 = cls.env['account.analytic.account'].create({
             'name': 'Test account #2',
         })
-        cls.order = cls.env['purchase.order'].create({
+        order_vals = {
             'partner_id': cls.partner.id,
+            'location_id': cls.env.ref('stock.stock_location_stock').id,
+            'pricelist_id': cls.env.ref('product.list0').id,
             'order_line': [(0, 0, {
                 'name': 'Product Test',
                 'product_id': cls.product.id,
@@ -35,7 +37,8 @@ class TestPurchaseDistribution(common.SavepointCase):
                 'date_planned': datetime.today().strftime(
                     DEFAULT_SERVER_DATETIME_FORMAT),
             })],
-        })
+        }
+        cls.order = cls.env['purchase.order'].create(order_vals)
         cls.invoice_model = cls.env['account.invoice']
         cls.distribution = cls.env['account.analytic.distribution'].create({
             'name': 'Test distribution',
@@ -56,18 +59,20 @@ class TestPurchaseDistribution(common.SavepointCase):
     def test_purchase_distribution(self):
         self.order.order_line[0].analytic_distribution_id = \
             self.distribution.id
-        self.order.button_confirm()
+        self.order.action_picking_create()
+        self.order.signal_workflow('confirm')
         self.picking = self.order.picking_ids[0]
         self.picking.force_assign()
-        self.picking.pack_operation_product_ids.write({'qty_done': 1.0})
-        self.picking.do_new_transfer()
+        self.picking.pack_operation_ids.write({'qty_done': 1.0})
+        self.picking.do_transfer()
+
         # Create invoice
-        inv = self.invoice_model.create({
-            'partner_id': self.partner.id,
-            'purchase_id': self.order.id,
-            'account_id': self.partner.property_account_payable_id.id,
-        })
-        inv.purchase_order_change()
+        self.order.order_line.action_confirm()
+        self.order.write({'invoice_method': 'manual'})
+        self.order.view_invoice()
+
         # Check if analytic distribution are propagated to invoice
-        self.assertEqual(inv.invoice_line_ids[0].analytic_distribution_id,
+        invoice = self.order.invoice_ids
+        self.assertTrue(invoice)
+        self.assertEqual(invoice.invoice_line[0].analytic_distribution_id,
                          self.distribution)
