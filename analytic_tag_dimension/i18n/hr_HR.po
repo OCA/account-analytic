@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-31 01:41+0000\n"
-"PO-Revision-Date: 2018-01-31 01:41+0000\n"
+"POT-Creation-Date: 2018-02-13 01:41+0000\n"
+"PO-Revision-Date: 2018-02-13 01:41+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgid "Tags"
 msgstr "Oznake"
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:60
+#: code:addons/analytic_tag_dimension/models/analytic.py:61
 #, python-format
 msgid "You can not set two tags from same dimension."
 msgstr "Nije moguće postaviti dvije oznake iz iste dimenzije."
