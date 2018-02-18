@@ -1,0 +1,193 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_distribution
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-13 13:28+0000\n"
+"PO-Revision-Date: 2018-02-13 13:28+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017<>\n"
+"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution.rule,analytic_account_id:0
+msgid "Analytic account"
+msgstr "Cuenta analítica"
+
+#. module: account_analytic_distribution
+#: sql_constraint:account.analytic.distribution.rule:0
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution_rule.py:39
+#, python-format
+msgid "Analytic account must be unique per distribution!"
+msgstr "La cuenta analítica debe ser única por distribución!"
+
+#. module: account_analytic_distribution
+#: view:account.analytic.distribution:account_analytic_distribution.account_analytic_distribution_form
+#: view:account.analytic.distribution:account_analytic_distribution.account_analytic_distribution_search
+#: field:account.invoice.line,analytic_distribution_id:0
+#: field:account.move.line,analytic_distribution_id:0
+#: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution
+msgid "Analytic distribution"
+msgstr "Distribución analítica"
+
+#. module: account_analytic_distribution
+#: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution_rule
+msgid "Analytic distribution rule"
+msgstr "Regla de distribución analítica"
+
+#. module: account_analytic_distribution
+#: view:account.analytic.distribution:account_analytic_distribution.account_analytic_distribution_search
+#: view:account.analytic.distribution:account_analytic_distribution.account_analytic_distribution_tree
+#: model:ir.actions.act_window,name:account_analytic_distribution.account_analytic_distribution_action
+#: model:ir.ui.menu,name:account_analytic_distribution.menu_account_analytic_distribution
+msgid "Analytic Distributions"
+msgstr "Distribuciones Analíticas"
+
+#. module: account_analytic_distribution
+#: model:ir.model,name:account_analytic_distribution.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,company_id:0
+msgid "Company"
+msgstr "Compañía"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,create_uid:0
+#: field:account.analytic.distribution.rule,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,create_date:0
+#: field:account.analytic.distribution.rule,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,display_name:0
+#: field:account.analytic.distribution.rule,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution.rule,distribution_id:0
+msgid "Distribution"
+msgstr "Distribución"
+
+#. module: account_analytic_distribution
+#: sql_constraint:account.analytic.distribution:0
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:39
+#, python-format
+msgid "Distribution name must be unique per Company!"
+msgstr "El nombre de la distribución ha de ser único por compañía!"
+
+#. module: account_analytic_distribution
+#: view:account.analytic.distribution:account_analytic_distribution.account_analytic_distribution_form
+#: field:account.analytic.distribution,rule_ids:0
+msgid "Distribution rules"
+msgstr "Reglas de distribución"
+
+#. module: account_analytic_distribution
+#: view:account.config.settings:account_analytic_distribution.view_account_config_settings
+msgid "Force Percent"
+msgstr "Forzar el porcentaje"
+
+#. module: account_analytic_distribution
+#: field:account.config.settings,force_percent:0
+#: field:res.company,force_percent:0
+msgid "Force percent"
+msgstr "Forzar el porcentaje"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,id:0
+#: field:account.analytic.distribution.rule,id:0
+msgid "ID"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: help:account.config.settings,force_percent:0
+#: help:res.company,force_percent:0
+msgid "If checked, the sum of all percents of the analytic accounts in a distribution of this company must be 100%."
+msgstr "Si está marcado, la suma del porcentaje de todas las cuentas analíticas de una distribución de esta compañía debe ser 100%."
+
+#. module: account_analytic_distribution
+#: model:ir.model,name:account_analytic_distribution.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: account_analytic_distribution
+#: model:ir.model,name:account_analytic_distribution.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Linea de factura"
+
+#. module: account_analytic_distribution
+#: model:ir.model,name:account_analytic_distribution.model_account_move_line
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,__last_update:0
+#: field:account.analytic.distribution.rule,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,write_uid:0
+#: field:account.analytic.distribution.rule,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,write_date:0
+#: field:account.analytic.distribution.rule,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution.rule,percent:0
+msgid "Percentage"
+msgstr "Porcentaje"
+
+#. module: account_analytic_distribution
+#: sql_constraint:account.analytic.distribution.rule:0
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution_rule.py:35
+#, python-format
+msgid "Percentage must be positive!"
+msgstr "El porcentaje ha de ser positivo!"
+
+#. module: account_analytic_distribution
+#: sql_constraint:account.analytic.distribution.rule:0
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution_rule.py:37
+#, python-format
+msgid "Percentage must less or equal 100%!"
+msgstr "El porcentaje ha de ser menor o iguak a 100%!"
+
+#. module: account_analytic_distribution
+#: view:account.analytic.distribution:account_analytic_distribution.account_analytic_distribution_form
+msgid "Rules"
+msgstr "Reglas"
+
+#. module: account_analytic_distribution
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:50
+#, python-format
+msgid "Rules percent doesn't sum 100%"
+msgstr "El porcentaje de las reglas no suman 100%"
+
+#. module: account_analytic_distribution
+#: field:account.analytic.distribution.rule,sequence:0
+msgid "Sequence"
+msgstr "Secuencia"
