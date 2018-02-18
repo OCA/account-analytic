@@ -23,11 +23,15 @@ class AccountMoveLine(models.Model):
 
     @api.multi
     def create_analytic_lines(self):
-        super(AccountMoveLine, self).create_analytic_lines()
+        super().create_analytic_lines()
         for line in self:
             if line.analytic_distribution_id:
-                line.analytic_line_ids.unlink()
-                for rule in line.analytic_distribution_id.rule_ids:
-                    values = line._analytic_line_distributed_prepare(rule)
-                    self.env['account.analytic.line'].create(values)
+                ml_to_do = line.filtered('line.analytic_distribution_id')
+                al_to_delete = ml_to_do.mapped('analytic_line_ids')
+                # here we do a single DELETE in database for related analytic lines
+                al_to_delete.unlink()
+                for line in ml_to_do:
+                    for rule in line.analytic_distribution_id.rule_ids:
+                        values = line._analytic_line_distributed_prepare(rule)
+                        self.env['account.analytic.line'].create(values)
         return True

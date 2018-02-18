@@ -9,7 +9,7 @@ class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
     def inv_line_characteristic_hashcode(self, invoice_line):
-        code = super(AccountInvoice, self).inv_line_characteristic_hashcode(
+        code = super().inv_line_characteristic_hashcode(
             invoice_line)
         hashcode = '%s-%s' % (
             code, invoice_line.get('analytic_distribution_id', 'False'))
