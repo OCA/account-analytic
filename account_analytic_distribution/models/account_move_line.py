@@ -14,8 +14,9 @@ class AccountMoveLine(models.Model):
         string='Analytic distribution',
     )
 
-    def _analytic_line_distributed_prepare(self, line, rule):
-        res = self._prepare_analytic_line(line)
+    @api.multi
+    def _analytic_line_distributed_prepare(self, rule):
+        res = self._prepare_analytic_line(self)
         amount = (res.get('amount') * rule.percent) / 100.0
         res['amount'] = amount
         res['account_id'] = rule.analytic_account_id.id
@@ -28,6 +29,6 @@ class AccountMoveLine(models.Model):
             if line.analytic_distribution_id:
                 line.analytic_lines.unlink()
                 for rule in line.analytic_distribution_id.rule_ids:
-                    values = line._analytic_line_distributed_prepare(line, rule)
+                    values = line._analytic_line_distributed_prepare(rule)
                     self.env['account.analytic.line'].create(values)
         return True
