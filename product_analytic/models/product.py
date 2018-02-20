@@ -4,7 +4,7 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ProductTemplate(models.Model):
@@ -16,6 +16,16 @@ class ProductTemplate(models.Model):
     expense_analytic_account_id = fields.Many2one(
         'account.analytic.account', string='Expense Analytic Account',
         company_dependent=True)
+
+    @api.multi
+    def _get_product_analytic_accounts(self):
+        self.ensure_one()
+        return {
+            'income': self.income_analytic_account_id or
+            self.categ_id.income_analytic_account_id,
+            'expense': self.expense_analytic_account_id or
+            self.categ_id.expense_analytic_account_id
+        }
 
 
 class ProductCategory(models.Model):
