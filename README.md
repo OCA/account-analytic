@@ -33,6 +33,8 @@ addon | version | summary
 [analytic_tag_dimension_sale_warning](analytic_tag_dimension_sale_warning/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
 [procurement_analytic](procurement_analytic/) | 10.0.1.0.0 | This module adds analytic account to procurements
 [product_analytic](product_analytic/) | 10.0.1.0.0 | Add analytic account on products and product categories
+[product_analytic_pos](product_analytic_pos/) | 10.0.1.0.0 | Glue module between product_analytic and point_of_sale
+[product_analytic_purchase](product_analytic_purchase/) | 10.0.1.0.0 | Glue module between purchase and product_analytic
 [purchase_procurement_analytic](purchase_procurement_analytic/) | 10.0.1.0.0 | This module sets analytic account in purchase order line from procurement analytic account
 [sale_analytic_distribution](sale_analytic_distribution/) | 10.0.1.0.0 | Sales Analytic Distribution
 [sale_procurement_analytic](sale_procurement_analytic/) | 10.0.1.0.0 | This module sets analytic account procurement from sale order
