@@ -3,52 +3,50 @@
 # * account_analytic_required
 # 
 # Translators:
-# Pedro M. Baeza <pedro.baeza@gmail.com>, 2017
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# enjolras <yo@miguelrevilla.com>, 2018
+# Lukáš Spurný <lukasspurny8@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-21 03:54+0000\n"
 "PO-Revision-Date: 2018-02-21 03:54+0000\n"
-"Last-Translator: enjolras <yo@miguelrevilla.com>, 2018\n"
-"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Last-Translator: Lukáš Spurný <lukasspurny8@gmail.com>, 2018\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/oca/teams/23907/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Account Entry"
-msgstr "Entrada contable"
+msgstr "Položka účtu"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
-msgstr "Tipo de cuenta"
+msgstr "Typ účtu"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always"
-msgstr "Siempre"
+msgstr "Vždy"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always (analytic account or distribution)"
-msgstr "Siempre (cuenta analítica o distribución)"
+msgstr "Vždy (analytický účet nebo distribuce)"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always (analytic distribution)"
-msgstr "Siempre (distribución analítica)"
+msgstr "Vždy (analytická distribuce)"
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
-msgstr "Política analítica"
+msgstr "Analytická politika"
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:60
@@ -57,8 +55,8 @@ msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"La política analítica está establecida a 'Siempre' para la cuenta %s '%s' "
-"pero falta la cuenta analítica en el apunte contable con etiqueta '%s'."
+"Analytická politika je nastavena na \"Vždy\" s účtem '%s '%s' ale v řádku "
+"přesunu účtu s popisem '%s'. chybí analytický účet."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:68
@@ -67,8 +65,8 @@ msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
-"La política analítica está establecida a 'Nunca' para la cuenta %s '%s' pero"
-" el apunte contable con la etiqueta '%s' tiene la cuenta analítica '%s'."
+"Analytická politika je nastavena na hodnotu 'Nikdy' s účtem '%s '%s' ale "
+"řádek přesunu účtu s označením '%s' má analytický účet '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:78
@@ -77,39 +75,38 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
 "analytic account is missing in the account move line with label '%s'."
 msgstr ""
-"La política analítica está establecida a 'Movimientos publicados' para la "
-"cuenta %s '%s' pero falta la cuenta analítica en el apunte contable con "
-"etiqueta '%s'."
+"Analytická politika je nastavena na 'Publikované pohyby' s účtem %s '%s' ale"
+" analytický účet chybí v řádku přesunu účtu se štítkem '%s'."
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
-msgstr "Agrupar por"
+msgstr "Skupina vytvořená"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr "Apunte contable"
+msgstr "Položka žurnálu"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Never"
-msgstr "Nunca"
+msgstr "Nikdy"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Optional"
-msgstr "Opcional"
+msgstr "Volitelný"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
 msgid "Policy for analytic account"
-msgstr "Política para las cuentas analíticas"
+msgstr "Politika pro analytický účet"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Posted moves"
-msgstr "Movimientos publicados"
+msgstr "Publikované pohyby"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
@@ -122,11 +119,10 @@ msgid ""
 "defined when the move is posted ; if you select 'Never', the accountant will"
 " get an error message if an analytic account is present."
 msgstr ""
-"Establecer la política para cuentas analíticas: si selecciona 'Opcional', el"
-" contable tendrá la libertad de poner una cuenta analítica en un apunte "
-"contable de este tipo de cuenta; si selecciona 'Siempre', el contable "
-"recibirá un mensaje de error si no hay cuenta analítica; si selecciona "
-"'Movimientos publicados', el contable recibirá un mensaje error si no se ha "
-"definido una cuenta analítica al publicarse el movimiento; si selecciona "
-"'Nunca', el contable recibirá un mensaje de error si existe una cuenta "
-"analítica."
+"Nastavte zásady pro analytické účty: pokud vyberete volbu \"Volitelné\", "
+"může účetní svobodně umístit analytický účet na řádek přesunu účtu s tímto "
+"typem účtu; pokud vyberete možnost Vždy, účetní dostane chybovou zprávu, "
+"pokud neexistuje analytický účet. pokud vyberete položku Publikované pohyby,"
+" účetní obdrží chybovou zprávu, pokud není při poslání analytického účtu "
+"definován žádný analytický účet. pokud vyberete možnost \"Nikdy\", účetní "
+"dostane chybovou zprávu, pokud je přítomen analytický účet."

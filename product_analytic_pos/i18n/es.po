@@ -1,9 +1,8 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * stock_analytic
+# * product_analytic_pos
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 # enjolras <yo@miguelrevilla.com>, 2018
 msgid ""
 msgstr ""
@@ -19,13 +18,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: stock_analytic
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_analytic_account_id
-#: model:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
-msgid "Analytic Account"
-msgstr "Cuenta analítica"
-
-#. module: stock_analytic
-#: model:ir.model,name:stock_analytic.model_stock_move
-msgid "Stock Move"
-msgstr "Movimiento de existencias"
+#. module: product_analytic_pos
+#: model:ir.model,name:product_analytic_pos.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Pedidos del TPV"

@@ -1,9 +1,8 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * procurement_analytic
+# * analytic_tag_dimension_purchase_warning
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 # Bole <bole@dajmi5.com>, 2018
 msgid ""
 msgstr ""
@@ -19,12 +18,7 @@ msgstr ""
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. module: procurement_analytic
-#: model:ir.model.fields,field_description:procurement_analytic.field_procurement_order_account_analytic_id
-msgid "Analytic Account"
-msgstr "Analitički konto"
-
-#. module: procurement_analytic
-#: model:ir.model,name:procurement_analytic.model_procurement_order
-msgid "Procurement"
-msgstr "Nabava"
+#. module: analytic_tag_dimension_purchase_warning
+#: model:ir.model,name:analytic_tag_dimension_purchase_warning.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Stavka naloga za nabavu"
