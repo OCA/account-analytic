@@ -11,6 +11,5 @@ class PurchaseOrderLine(models.Model):
 
     analytic_distribution_id = fields.Many2one(
         comodel_name='account.analytic.distribution',
-        string='Analytic Distribution',
-        oldname='analytics_id',
+        string='Analytic Distribution'
     )
