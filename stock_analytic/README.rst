@@ -14,7 +14,7 @@ Usage
 =====
 
 To Assign an Analytic Account to a Stock Move
------------------------------------------
+---------------------------------------------
 
 You need to:
 
@@ -35,7 +35,8 @@ contain journal items with following rule:
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/10.0
+   :target: https://runbot.odoo-community.org/runbot/87/11.0
+
 
 Bug Tracker
 ===========
@@ -59,6 +60,7 @@ Contributors
 * Andhitia Rama <andhitia.r@gmail.com>
 * Michael Viriyananda <viriyananda.michael@gmail.com>
 * Aaron Henriquez <ahenriquez@eficent.com>
+* Jared Kipe <jared@hibou.io>
 
 Maintainer
 ----------
