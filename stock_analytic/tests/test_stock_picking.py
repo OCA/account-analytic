@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
 # Copyright 2013 Julius Network Solutions
 # Copyright 2015 Clear Corp
 # Copyright 2016 OpenSynergy Indonesia
 # Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2018 Hibou Corp.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.tests.common import TransactionCase
@@ -65,8 +65,18 @@ class TestStockPicking(TransactionCase):
             'procure_method': 'make_to_stock',
             'product_uom': self.product.uom_id.id,
             'product_uom_qty': 1.0,
-            'analytic_account_id': analytic_account_id and
-            analytic_account_id.id or False
+            'analytic_account_id': (analytic_account_id.id
+                                    if analytic_account_id else False),
+            'move_line_ids': [
+                (0, 0, {'product_id': self.product.id,
+                        'product_uom_qty': 0,  # bypass reservation here
+                        'product_uom_id': self.product.uom_id.id,
+                        'qty_done': 1.0,
+                        'package_id': False,
+                        'result_package_id': False,
+                        'location_id': location_id.id,
+                        'location_dest_id': location_dest_id.id,})
+            ],
         }
 
         self.env['stock.move'].create(move_data)
