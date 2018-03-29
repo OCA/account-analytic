@@ -91,7 +91,7 @@ class AccountAnalyticAccount(models.Model):
 
     @api.model
     def map_sequences(self, new_analytic_account):
-        """ copy and map tasks from old to new project """
+        """ copy and map tasks from old to new analytic account """
         map_sequence_id = {}
         account = self
         for sequence in account.sequence_ids:

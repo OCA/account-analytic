@@ -15,13 +15,12 @@
                 'Project Expert Team ,'
                 'Odoo Community Association (OCA)',
     'website': 'https://www.github.com/OCA/account-analytic',
-    'category': 'Project Management',
-    'depends': ['analytic', 'project', 'account_analytic_parent'],
+    'category': 'Analytic',
+    'depends': ['analytic', 'account_analytic_parent'],
     'data': [
         'views/analytic_account_sequence_view.xml',
         'data/analytic_account_sequence_data.xml',
         'views/account_analytic_account_view.xml',
-        'views/project_view.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,
