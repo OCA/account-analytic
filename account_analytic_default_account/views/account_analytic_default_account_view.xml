@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Camptocamp SA
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+        <record id="view_account_analytic_default_account_tree" model="ir.ui.view">
+            <field name="name">account.analytic.default.inherit.tree</field>
+            <field name="model">account.analytic.default</field>
+            <field name="inherit_id" ref="account_analytic_default.view_account_analytic_default_tree" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="account_id" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_account_analytic_default_account_form" model="ir.ui.view">
+            <field name="name">account.analytic.default.inherit.form</field>
+            <field name="model">account.analytic.default</field>
+            <field name="inherit_id" ref="account_analytic_default.view_account_analytic_default_form" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="account_id" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_account_analytic_default_account_search" model="ir.ui.view">
+            <field name="name">account.analytic.default.inherit.search</field>
+            <field name="model">account.analytic.default</field>
+            <field name="inherit_id" ref="account_analytic_default.view_account_analytic_default_form_search" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="account_id" />
+                </field>
+                <xpath expr="//group[1]" position="inside">
+                    <filter string="Account" context="{'group_by': 'account_id'}" help="Account" />
+                </xpath>
+            </field>
+        </record>
+</odoo>
