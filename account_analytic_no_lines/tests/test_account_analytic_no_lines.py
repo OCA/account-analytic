@@ -104,7 +104,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
 
     def test_create_analytic_lines(self):
         """
-        Test the expected result when the method ´create_analytic_lines` is
+        Test the expected result when the method 'create_analytic_lines' is
         called on an invoice.
         The expected result is that no analytic line has been created
         for this invoice.
@@ -114,14 +114,13 @@ class TestAccountAnalyticNoLines(SavepointCase):
         for line in move_lines:
             line.create_analytic_lines()
 
-        analytic_lines =\
-            self.account_analytic_line.search([
-                ('move_id', 'in', move_lines.ids)]).ids
+        analytic_lines = self.account_analytic_line.search([
+            ('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
 
     def test_finalize_invoice_move_lines_1(self):
         """
-        Test the expected result when the method ´finalize_invoice_move_lines`
+        Test the expected result when the method 'finalize_invoice_move_lines'
         is called on an invoice.
         The expected result is that no analytic line has been created
         for this invoice.
@@ -135,7 +134,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
 
     def test_finalize_invoice_move_lines_2(self):
         """
-        Test the expected result when the method ´finalize_invoice_move_lines`
+        Test the expected result when the method 'finalize_invoice_move_lines'
         is called on an invoice with only one line with quantity == 0.
         The expected result is that no analytic line has been created
         for this invoice.
