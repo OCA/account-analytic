@@ -18,11 +18,13 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[account_analytic_default_account](account_analytic_default_account/) | 10.0.1.0.0 | Account Analytic Default Account
 [account_analytic_distribution](account_analytic_distribution/) | 10.0.1.0.0 | Distribute incoming/outcoming account moves to several analytic accounts
 [account_analytic_distribution_required](account_analytic_distribution_required/) | 10.0.1.0.0 | Account Analytic Distribution Required
 [account_analytic_no_lines](account_analytic_no_lines/) | 10.0.1.0.0 | Hide analytics lines and disable their generation from a move line.
 [account_analytic_parent](account_analytic_parent/) | 10.0.1.0.0 | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 10.0.1.1.0 | Account Analytic Required
+[account_analytic_sequence](account_analytic_sequence/) | 10.0.1.0.0 | Restore the analytic account sequence
 [account_asset_analytic](account_asset_analytic/) | 10.0.1.0.1 | Adds analytic account per asset
 [analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
 [analytic_partner](analytic_partner/) | 10.0.1.0.0 | Search and group analytic entries by partner
