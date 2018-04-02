@@ -47,7 +47,8 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
         date = datetime.now()
         move_vals = {
             'journal_id':
-                self.env['account.journal'].search([('type', '=', 'sale')]).id,
+                self.env['account.journal'].search([
+                    ('type', '=', 'sale')])[0].id,
             'date': date,
         }
         move_id = self.move_obj.create(move_vals)
