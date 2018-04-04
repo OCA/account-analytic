@@ -1,4 +1,4 @@
-# Copyright 2011-2016 Camptocamp SA
+# Copyright 2011-2018 Camptocamp SA
 # Copyright 2013 Daniel Reis
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
@@ -8,7 +8,9 @@
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["analytic", "hr"],
+    "depends": ["account",
+                "analytic",
+                "hr"],
     "data": ["views/analytic.xml"],
     "installable": True,
 }
