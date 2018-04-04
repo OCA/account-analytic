@@ -35,7 +35,13 @@ class TestAnalyticDimensionCase(SavepointCase):
 
         cls.account_user_type = cls.env.ref(
             'account.data_account_type_receivable')
-        cls.journal = cls.env['account.journal'].search([], limit=1)
+
+        cls.journal = cls.env['account.journal'].create(
+            {'name': 'Test  Journal',
+             'code': 'TJ',
+             'type': 'general'
+             }
+        )
 
         cls.company_id = cls.env['res.users'].browse(
             cls.env.uid).company_id.id
