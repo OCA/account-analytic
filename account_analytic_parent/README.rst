@@ -17,7 +17,7 @@ Activate the analytic accounting in Accounting > Configuration > Settings
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/10.0
+   :target: https://runbot.odoo-community.org/runbot/87/11.0
 
 
 Bug Tracker
@@ -47,6 +47,7 @@ Contributors
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * David Vidal <david.vidal@tecnativa.com>
+* Jaume Planas <jaume.planas@minorisa.net>
 
 Maintainer
 ----------

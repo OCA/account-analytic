@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
@@ -11,14 +10,16 @@ from odoo.exceptions import UserError
 
 
 class AccountAnalyticAccount(models.Model):
-    _inherit = 'account.analytic.account'
+    _inherit = "account.analytic.account"
 
     parent_id = fields.Many2one(
-        'account.analytic.account',
-        string='Parent Analytic Account'
+        comodel_name="account.analytic.account",
+        string="Parent Analytic Account"
     )
-    child_ids = fields.One2many('account.analytic.account', 'parent_id',
-                                'Child Accounts', copy=True)
+    child_ids = fields.One2many(
+        comodel_name="account.analytic.account",
+        inverse_name="parent_id",
+        string="Child Accounts", copy=True)
 
     @api.multi
     def _compute_debit_credit_balance(self):
@@ -28,34 +29,34 @@ class AccountAnalyticAccount(models.Model):
         """
         super(AccountAnalyticAccount, self)._compute_debit_credit_balance()
         for account in self:
-            account.debit += sum(account.mapped('child_ids.debit'))
-            account.credit += sum(account.mapped('child_ids.credit'))
-            account.balance += sum(account.mapped('child_ids.balance'))
+            account.debit += sum(account.mapped("child_ids.debit"))
+            account.credit += sum(account.mapped("child_ids.credit"))
+            account.balance += sum(account.mapped("child_ids.balance"))
 
     @api.multi
-    @api.constrains('parent_id')
+    @api.constrains("parent_id")
     def check_recursion(self):
         for account in self:
             if not super(AccountAnalyticAccount, account)._check_recursion():
                 raise UserError(
-                    _('You can not create recursive analytic accounts.'),
+                    _("You can not create recursive analytic accounts."),
                 )
 
     @api.multi
-    @api.onchange('parent_id')
+    @api.onchange("parent_id")
     def _onchange_parent_id(self):
         for account in self:
             account.partner_id = account.parent_id.partner_id
 
     @api.multi
-    @api.depends('name')
+    @api.depends("name")
     def name_get(self):
         res = []
         for account in self:
             current = account
             name = current.name
             while current.parent_id:
-                name = '%s / %s' % (current.parent_id.name, name)
+                name = "%s / %s" % (current.parent_id.name, name)
                 current = current.parent_id
             res.append((account.id, name))
         return res
