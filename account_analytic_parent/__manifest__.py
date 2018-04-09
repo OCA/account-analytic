@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
@@ -11,7 +10,7 @@
     'name': 'Account Analytic Parent',
     'summary': """
         This module reintroduces the hierarchy to the analytic accounts.""",
-    'version': '10.0.1.0.0',
+    'version': '11.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Matmoz d.o.o., '
               'Luxim d.o.o., '
@@ -21,12 +20,11 @@
               'Odoo Community Association (OCA)',
     'website': 'https://www.github.com/OCA/account-analytic.git',
     'depends': [
-        'account_accountant',
+        'account',
         'analytic',
     ],
     'data': [
         'views/account_analytic_account_view.xml',
-        'wizard/account_analytic_chart_view.xml',
     ],
     'demo': [
         'data/analytic_account_demo.xml',
