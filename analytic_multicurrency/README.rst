@@ -61,6 +61,7 @@ Contributors
 * Vincent Renaville <charbel.jacquin@camptocamp.com>
 * Charbel Jacquin <charbel.jacquin@camptocamp.com>
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Daniel Campos <danielcampos@avanzosc.es>
 
 Maintainer
 ----------
