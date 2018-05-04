@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 23:08+0000\n"
-"PO-Revision-Date: 2018-03-16 23:08+0000\n"
+"POT-Creation-Date: 2018-04-27 22:14+0000\n"
+"PO-Revision-Date: 2018-04-27 22:14+0000\n"
 "Last-Translator: Ricardo Gross <rwgross@gmail.com>, 2018\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "Rechnungsstatistik"
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_move_line
 msgid "Journal Item"
-msgstr "Journaleintrag"
+msgstr "Tageseintrag"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension___last_update
