@@ -3,9 +3,11 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import at_install, post_install, TransactionCase
 
 
+@at_install(False)
+@post_install(True)
 class TestAccountInvoiceLine(TransactionCase):
 
     def setUp(self):
