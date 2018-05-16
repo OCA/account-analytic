@@ -3,19 +3,15 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import at_install, post_install, TransactionCase
 
 
+@at_install(False)
+@post_install(True)
 class TestAccountInvoiceLine(TransactionCase):
 
     def setUp(self):
         super(TestAccountInvoiceLine, self).setUp()
-        incompatible_modules = self.env["ir.module.module"].search([
-            ("name", "=", "account_analytic_required"),
-            "!", ("state", "like", "uninstall"),
-        ])
-        if incompatible_modules:
-            self.skipTest("Test incompatible with account_analytic_required")
         self.product1 = self.env['product.product'].create({
             'name': 'test product 01'})
         self.analytic_account1 = self.env['account.analytic.account'].create({
