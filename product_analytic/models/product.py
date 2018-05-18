@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2015 Akretion (http://www.akretion.com/) - Alexis de Lattre
 # Copyright 2016 Antiun Ingeniería S.L. - Javier Iniesta
 # Copyright 2017 Tecnativa - Luis Martínez
