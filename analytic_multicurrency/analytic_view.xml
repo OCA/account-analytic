@@ -44,5 +44,16 @@
       </field>
     </record>
 
+    <record id="view_account_analytic_account_tree" model="ir.ui.view">
+      <field name="name">account.analytic.account.tree</field>
+      <field name="model">account.analytic.account</field>
+      <field name="inherit_id" ref="account.view_account_analytic_account_tree"/>
+      <field name="arch" type="xml">
+        <field name="balance" position="after">
+          <field name="quantity"/>
+        </field>
+      </field>
+    </record>
+
   </data>
 </openerp>

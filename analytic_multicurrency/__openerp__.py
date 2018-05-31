@@ -20,7 +20,7 @@
 ##############################################################################
 {
     "name": "Multi-Currency in Analytic Accounting",
-    "version": "8.0.1.0.0",
+    "version": "8.0.1.0.1",
     "author": "Camptocamp,Odoo Community Association (OCA)",
     "license": 'AGPL-3',
     "category": "Generic Modules/Accounting",
