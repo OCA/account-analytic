@@ -22,7 +22,7 @@ addon | version | summary
 [account_analytic_project](account_analytic_project/) | 8.0.1.0.0 | Project and analytic account integration
 [account_analytic_required](account_analytic_required/) | 8.0.0.2.0 | Account Analytic Required
 [account_asset_analytic](account_asset_analytic/) | 8.0.1.0.0 | Adds analytic account per asset
-[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.0 | Multi-Currency in Analytic Accounting
+[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.1 | Multi-Currency in Analytic Accounting
 [analytic_partner](analytic_partner/) | 8.0.1.0.0 | Classify analytic entries by partner
 [analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 8.0.1.0.0 | Classify HR activities by partner
 [analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 8.0.1.0.0 | Invoice analytic lines for the specific partner in them
