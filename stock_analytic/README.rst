@@ -14,7 +14,7 @@ Usage
 =====
 
 To Assign an Analytic Account to a Stock Move
------------------------------------------
+---------------------------------------------
 
 You need to:
 

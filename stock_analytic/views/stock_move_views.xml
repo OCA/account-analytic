@@ -51,10 +51,10 @@
             <field name="inherit_id" ref="stock.view_move_search"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='partner_id']" position="after">
-                	<field name="analytic_account_id"/>
+                    <field name="analytic_account_id"/>
                 </xpath>
                 <xpath expr="//filter[@name='groupby_dest_location_id']" position="after">
-                	<filter string="Analytic Account" name="analytic"
+                    <filter string="Analytic Account" name="analytic"
                             context="{'group_by':'analytic_account_id'}"
                             groups="analytic.group_analytic_accounting"/>
                 </xpath>
