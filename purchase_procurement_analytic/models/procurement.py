@@ -15,9 +15,10 @@ class ProcurementOrder(models.Model):
         res['account_analytic_id'] = self.account_analytic_id.id
         return res
 
-    @api.multi
-    def make_po(self):
-        # This is a trick to avoid the grouping without this key.
-        obj = self.with_context(
-            limit_procurement_account_analytic_id=self.account_analytic_id.id)
-        return super(ProcurementOrder, obj).make_po()
+    def _make_po_get_domain(self, partner):
+        res = super(ProcurementOrder, self)._make_po_get_domain(
+            partner=partner)
+        if self.account_analytic_id:
+            res += (('order_line.account_analytic_id',
+                     '=', self.account_analytic_id.id),)
+        return res
