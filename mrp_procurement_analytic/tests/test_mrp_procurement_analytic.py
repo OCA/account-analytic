@@ -66,6 +66,14 @@ class TestMrpAnalytic(common.TransactionCase):
         }
         self.env['procurement.order'].create(vals)
 
+        production = self.env['mrp.production'].search([
+            ('analytic_account_id', '=', project_1.id)
+        ])
+        self.assertEquals(
+            1,
+            len(production)
+        )
+
         moves = self.move_obj.search([
             ('analytic_account_id', '=', project_1.id)
         ])

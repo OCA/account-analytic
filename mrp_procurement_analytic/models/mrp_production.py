@@ -14,10 +14,9 @@ class MrpProduction(models.Model):
         self.ensure_one()
         move = super(MrpProduction, self)._generate_raw_move(
             bom_line=bom_line, line_data=line_data)
-        procurement = self.procurement_ids and self.procurement_ids[0] or False
-        if procurement and procurement.account_analytic_id:
+        if self.analytic_account_id:
             move.write({
-                'analytic_account_id': procurement.account_analytic_id.id
+                'analytic_account_id': self.analytic_account_id.id
             })
         return move
 
@@ -25,9 +24,8 @@ class MrpProduction(models.Model):
     def _generate_finished_moves(self):
         self.ensure_one()
         move = super(MrpProduction, self)._generate_finished_moves()
-        procurement = self.procurement_ids and self.procurement_ids[0] or False
-        if procurement and procurement.account_analytic_id:
+        if self.analytic_account_id:
             move.write({
-                'analytic_account_id': procurement.account_analytic_id.id
+                'analytic_account_id': self.analytic_account_id.id
             })
         return move
