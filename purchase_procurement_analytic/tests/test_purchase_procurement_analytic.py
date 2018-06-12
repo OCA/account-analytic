@@ -97,3 +97,11 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
             self.procurement_1.purchase_id,
             self.procurement_2.purchase_id,
         )
+
+    def test_purchase_from_procurement(self):
+        purchase_line = self.procurement_2.purchase_line_id
+        purchase_line.order_id.button_confirm()
+        self.assertEquals(
+            self.analytic_account,
+            purchase_line.move_ids.analytic_account_id,
+        )

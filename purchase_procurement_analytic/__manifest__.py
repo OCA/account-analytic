@@ -7,7 +7,7 @@
     'name': 'Purchase Procurement Analytic',
     'summary': 'This module sets analytic account in purchase order line from '
                'procurement analytic account',
-    'version': '10.0.1.0.2',
+    'version': '10.0.2.0.0',
     'category': 'Analytic',
     'license': 'AGPL-3',
     'author': "Tecnativa, "
@@ -16,6 +16,7 @@
     'depends': [
         'purchase',
         'procurement_analytic',
+        'stock_analytic',
     ],
     'installable': True,
 }
