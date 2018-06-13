@@ -23,6 +23,7 @@ setuptools.setup(
         'odoo10-addon-analytic_tag_dimension',
         'odoo10-addon-analytic_tag_dimension_purchase_warning',
         'odoo10-addon-analytic_tag_dimension_sale_warning',
+        'odoo10-addon-mrp_analytic',
         'odoo10-addon-procurement_analytic',
         'odoo10-addon-product_analytic',
         'odoo10-addon-product_analytic_pos',
