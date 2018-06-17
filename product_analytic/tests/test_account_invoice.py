@@ -3,9 +3,11 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import at_install, post_install, TransactionCase
 
 
+@at_install(False)
+@post_install(True)
 class TestAccountInvoiceLine(TransactionCase):
 
     def setUp(self):
@@ -16,7 +18,9 @@ class TestAccountInvoiceLine(TransactionCase):
             'name': 'test analytic_account1'})
         self.analytic_account2 = self.env['account.analytic.account'].create({
             'name': 'test analytic_account2'})
-        self.product2 = self.env['product.product'].create({
+        self.product2 = self.env['product.product'].with_context(
+            force_company=self.env.user.company_id.id,
+        ).create({
             'name': 'test product 02',
             'income_analytic_account_id': self.analytic_account1.id,
             'expense_analytic_account_id': self.analytic_account2.id})
@@ -48,14 +52,18 @@ class TestAccountInvoiceLine(TransactionCase):
                 })
             ]
         })
-        self.invoice_line = self.invoice.invoice_line_ids[0]
+        self.invoice_line = self.invoice.invoice_line_ids[0].with_context(
+            force_company=self.env.user.company_id.id,
+        )
 
     def test_onchange_product_id(self):
         self.invoice_line.product_id = self.product2.id
-        self.invoice_line._onchange_product_id()
+        self.invoice_line.with_context(
+            test_product_analytic=True,
+        )._onchange_product_id()
         self.assertEqual(
             self.invoice_line.account_analytic_id.id,
-            self.product2.income_analytic_account_id.id
+            self.analytic_account1.id,
         )
 
     def test_create_in(self):

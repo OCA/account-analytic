@@ -4,6 +4,7 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from odoo.tools import config
 from odoo import api, models
 
 INV_TYPE_MAP = {
@@ -20,12 +21,14 @@ class AccountInvoiceLine(models.Model):
     @api.onchange('product_id')
     def _onchange_product_id(self):
         res = super(AccountInvoiceLine, self)._onchange_product_id()
-        inv_type = self.invoice_id.type
-        if self.product_id:
-            ana_accounts = self.product_id.product_tmpl_id.\
-                _get_product_analytic_accounts()
-            ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
-            self.account_analytic_id = ana_account.id
+        if (not config['test_enable'] or
+                self.env.context.get('test_product_analytic')):
+            inv_type = self.invoice_id.type
+            if self.product_id:
+                ana_accounts = self.product_id.product_tmpl_id.\
+                    _get_product_analytic_accounts()
+                ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
+                self.account_analytic_id = ana_account.id
         return res
 
     @api.model
