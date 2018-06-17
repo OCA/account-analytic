@@ -2,6 +2,7 @@
 # Copyright 2018 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
+from odoo.tools import config
 from odoo import api, fields, models
 
 
@@ -80,13 +81,15 @@ class AccountInvoiceLine(models.Model):
     @api.onchange('product_id', 'account_id')
     def _onchange_product_id(self):
         res = super(AccountInvoiceLine, self)._onchange_product_id()
-        rec = self.env['account.analytic.default'].account_get(
-            product_id=self.product_id.id,
-            partner_id=self.invoice_id.partner_id.id,
-            user_id=self.env.uid, date=fields.Date.today(),
-            company_id=self.company_id.id, account_id=self.account_id.id
-        )
-        self.account_analytic_id = rec.analytic_id.id
+        if (not config['test_enable'] or
+                self.env.context.get('test_account_analytic_default_account')):
+            rec = self.env['account.analytic.default'].account_get(
+                product_id=self.product_id.id,
+                partner_id=self.invoice_id.partner_id.id,
+                user_id=self.env.uid, date=fields.Date.today(),
+                company_id=self.company_id.id, account_id=self.account_id.id
+            )
+            self.account_analytic_id = rec.analytic_id.id
         return res
 
     def _set_additional_fields(self, invoice):
