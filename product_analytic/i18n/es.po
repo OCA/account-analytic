@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* product_analytic
+# 	* product_analytic
 #
 msgid ""
 msgstr ""
@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2016-01-26 10:01+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -41,4 +42,3 @@ msgstr "Categoría de producto"
 #: model:ir.model,name:product_analytic.model_product_template
 msgid "Product Template"
 msgstr "Plantilla de producto"
-
