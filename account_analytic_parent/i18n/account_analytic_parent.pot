@@ -1,23 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * account_analytic_parent
+#	* account_analytic_parent
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-29 02:58+0000\n"
-"PO-Revision-Date: 2017-06-29 02:58+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Romanian (https://www.transifex.com/oca/teams/23907/ro/)\n"
-"Language: ro\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Plural-Forms: \n"
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_chart
@@ -27,7 +21,7 @@ msgstr ""
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Cont analitic"
+msgstr ""
 
 #. module: account_analytic_parent
 #: model:ir.actions.act_window,name:account_analytic_parent.action_analytic_account_report
@@ -56,3 +50,4 @@ msgstr ""
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr ""
+
