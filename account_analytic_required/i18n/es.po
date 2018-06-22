@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * account_analytic_required
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: 2016-07-30 09:13+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: account_analytic_required
@@ -76,9 +76,9 @@ msgid ""
 "error message if there is no analytic account ; if you select 'Never', the "
 "accountant will get an error message if an analytic account is present."
 msgstr ""
-"Configura la política para las cuentas analíticas: Si selecciona 'Opcional',"
-" el contable es libre de poner una cuenta analítica en un apunte contable de"
-" este tipo de cuenta; si selecciona 'Siempre', el contable recibirá un "
+"Configura la política para las cuentas analíticas: Si selecciona 'Opcional', "
+"el contable es libre de poner una cuenta analítica en un apunte contable de "
+"este tipo de cuenta; si selecciona 'Siempre', el contable recibirá un "
 "mensaje de error si el apunte no tiene cuenta analítica; si selecciona "
 "'Nunca', el contable recibirá un mensaje de error si el apunte tiene una "
 "cuenta analítica."

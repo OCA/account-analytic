@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * account_analytic_required
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 # Zwygart <zwygart@gmail.com>, 2016
@@ -13,10 +13,10 @@ msgstr ""
 "PO-Revision-Date: 2016-09-30 22:27+0000\n"
 "Last-Translator: Zwygart <zwygart@gmail.com>, 2016\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: account_analytic_required
@@ -48,8 +48,8 @@ msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
 "line with label '%s' has an analytic account %s '%s'."
 msgstr ""
-"Une politique de compte analytique est configuré à \"Jamais\" avec le compte"
-" %s '%s', mais l'écriture comptable avec le libellé '%s' possède un compte "
+"Une politique de compte analytique est configuré à \"Jamais\" avec le compte "
+"%s '%s', mais l'écriture comptable avec le libellé '%s' possède un compte "
 "analytique %s '%s'."
 
 #. module: account_analytic_required
@@ -85,7 +85,7 @@ msgid ""
 msgstr ""
 "Configurez la politique pour les comptes analytiques : si vous sélectionnez "
 "'Optionnel', le comptable est libre de saisir ou non un compte analytique "
-"sur une ligne comptable avec ce type de compte de comptabilité générale ; si"
-" vous sélectionnez 'Toujours', le comptable aura un message d'erreur si il "
-"n'y a pas de compte analytique ; si vous sélectionnez 'Jamais', le comptable"
-" aura un message d'erreur si un compte analytique est présent."
+"sur une ligne comptable avec ce type de compte de comptabilité générale ; si "
+"vous sélectionnez 'Toujours', le comptable aura un message d'erreur si il "
+"n'y a pas de compte analytique ; si vous sélectionnez 'Jamais', le comptable "
+"aura un message d'erreur si un compte analytique est présent."
