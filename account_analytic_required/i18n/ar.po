@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-01 03:39+0000\n"
-"PO-Revision-Date: 2018-02-01 03:39+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2018\n"
+"PO-Revision-Date: 2018-06-29 05:00+0000\n"
+"Last-Translator: Osoul <baruni@osoul.ly>\n"
 "Language-Team: Arabic (https://www.transifex.com/oca/teams/23907/ar/)\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
@@ -32,12 +33,12 @@ msgstr "نوع الحساب"
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always"
-msgstr ""
+msgstr "دائماً"
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
-msgstr ""
+msgstr "سياسة الحسابات التحليلية"
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:59
@@ -46,6 +47,8 @@ msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
+"سياسة الحسابات التحليلية هي ’دائماً‘ للحساب %s ’%s‘ ولكن الحساب التحليلي "
+"فارغ في عنصر اليومية باسم ’%s‘."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:67
@@ -54,6 +57,8 @@ msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
+"سياسة الحسابات التحليلية هي ’ممنوع‘ للحساب %s ’%s‘ ولكن في عنصر اليومية باسم "
+"’%s‘ تم تحديد حساب التحليلي ’%s‘ ."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:77
@@ -62,26 +67,28 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
 "analytic account is missing in the account move line with label '%s'."
 msgstr ""
+"سياسة الحسابات التحليلية هي ’القيود المرحّلة‘ للحساب %s ’%s‘ ولكن الحساب "
+"التحليلي فارغ في عنصر اليومية باسم ’%s‘."
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
-msgstr ""
+msgstr "تجميع حسب"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "عنصر اليومية"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Never"
-msgstr ""
+msgstr "ممنوع"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Optional"
-msgstr ""
+msgstr "إختياري"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
@@ -91,7 +98,7 @@ msgstr "سياسة  للحسابات التحليلية"
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Posted moves"
-msgstr ""
+msgstr "القيود المرحّلة"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
