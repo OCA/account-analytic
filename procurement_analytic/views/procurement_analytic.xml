@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2015 Carlos Dauden <carlos.dauden@tecnativa.com>
+     Copyright 2017 Vicent Cubells <vicent.cubells@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+        <record id="procurement_tree_view" model="ir.ui.view">
+            <field name="name">procurement.order.tree</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="product_uom"]' position="after">
+                    <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="procurement_form_view" model="ir.ui.view">
+            <field name="name">procurement.order.form</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.procurement_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='scheduling']" position="before">
+                    <group>
+                        <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_procurement_filter" model="ir.ui.view">
+            <field name="name">procurement.order.select</field>
+            <field name="model">procurement.order</field>
+            <field name="inherit_id" ref="procurement.view_procurement_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="origin"]' position="after">
+                    <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
+                </xpath>
+            </field>
+        </record>
+
+</odoo>
