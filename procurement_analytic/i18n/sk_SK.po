@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * procurement_analytic
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
@@ -11,14 +11,16 @@ msgstr ""
 "POT-Creation-Date: 2017-06-30 02:40+0000\n"
 "PO-Revision-Date: 2017-06-30 02:40+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Slovak (Slovakia) (https://www.transifex.com/oca/teams/23907/sk_SK/)\n"
+"Language-Team: Slovak (Slovakia) (https://www.transifex.com/oca/teams/23907/"
+"sk_SK/)\n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sk_SK\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #. module: procurement_analytic
+#: model:ir.model,name:procurement_analytic.model_account_analytic_account
 #: model:ir.model.fields,field_description:procurement_analytic.field_procurement_order_account_analytic_id
 msgid "Analytic Account"
 msgstr "Analytický účet"
@@ -26,4 +28,12 @@ msgstr "Analytický účet"
 #. module: procurement_analytic
 #: model:ir.model,name:procurement_analytic.model_procurement_order
 msgid "Procurement"
+msgstr ""
+
+#. module: procurement_analytic
+#: model:ir.actions.act_window,name:procurement_analytic.act_analytic_account_2_procurement_order
+#: model:ir.model.fields,field_description:procurement_analytic.field_account_analytic_account_procurement_ids
+#: model:ir.model.fields,field_description:procurement_analytic.field_project_project_procurement_ids
+#: model:ir.ui.view,arch_db:procurement_analytic.view_account_analytic_account_form_procurement_analytic
+msgid "Procurement Orders"
 msgstr ""
