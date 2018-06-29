@@ -1,27 +1,22 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * account_asset_analytic
+#	* account_asset_analytic
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-09 02:38+0000\n"
-"PO-Revision-Date: 2017-06-09 02:38+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Hungarian (https://www.transifex.com/oca/teams/23907/hu/)\n"
-"Language: hu\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: account_asset_analytic
 #: model:ir.model.fields,field_description:account_asset_analytic.field_account_asset_asset_analytic_account_id
 msgid "Analytic account"
-msgstr "Gyűjtőkód"
+msgstr ""
 
 #. module: account_asset_analytic
 #: model:ir.model,name:account_asset_analytic.model_account_asset_depreciation_line
@@ -36,4 +31,5 @@ msgstr ""
 #. module: account_asset_analytic
 #: model:ir.model,name:account_asset_analytic.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Számlasor"
+msgstr ""
+
