@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * account_analytic_required
-# 
+#
 # Translators:
 # Bole <bole@dajmi5.com>, 2018
 msgid ""
@@ -12,11 +12,12 @@ msgstr ""
 "PO-Revision-Date: 2018-02-21 03:54+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2018\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: hr\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
@@ -55,8 +56,8 @@ msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"Pravilo analitike je postavljeno na 'Uvijek' za konto %s '%s'ali analitičkom"
-" kontu  nedostaje stavka temeljnice sa nazivom '%s'. "
+"Pravilo analitike je postavljeno na 'Uvijek' za konto %s '%s'ali analitičkom "
+"kontu  nedostaje stavka temeljnice sa nazivom '%s'. "
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:68
@@ -116,8 +117,8 @@ msgid ""
 "this type of account ; if you select 'Always', the accountant will get an "
 "error message if there is no analytic account ; if you select 'Posted "
 "moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will"
-" get an error message if an analytic account is present."
+"defined when the move is posted ; if you select 'Never', the accountant will "
+"get an error message if an analytic account is present."
 msgstr ""
 "Postavite pravila za analitička konta: ako odaberete 'Opcionalno', "
 "knjigovođa slobodno stavi analitički konto na stavku temeljnice sa ovim "
