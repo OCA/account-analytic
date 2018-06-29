@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="act_analytic_account_2_procurement_order">
+            <field name="name">Procurement Orders</field>
+            <field name="res_model">procurement.order</field>
+            <field name="src_model">account.analytic.account</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="procurement.procurement_tree_view"/>
+            <field name="context">{'default_product_id': active_id, 'search_default_product_id': active_id}</field>
+
+        </record>
+
+        <record id="view_account_analytic_account_form_procurement_analytic" model="ir.ui.view">
+            <field name="name">account.analytic.account.form.procurement</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@name="button_box"]' position='inside'>
+                    <button string="Procurement Orders"
+                            name="%(act_analytic_account_2_procurement_order)d"
+                            class="oe_stat_button"
+                            type="action"
+                            icon="fa-truck"
+                            context="{'default_analytic_account_id': active_id,'search_default_analytic_account_id': [active_id]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
