@@ -21,7 +21,7 @@ Usage
 =====
 
 #. Go to *Inventory > Reports > Procurement Exceptions* and create a new one.
-#. Set *Analytic Account* in *Extra Information* tab.
+#. Set *Analytic Account*.
 #. *Run Procurement*
 #. The generated purchase order line will have this analytic account.
    They won't be grouped if analytic account is different.
