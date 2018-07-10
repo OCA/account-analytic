@@ -18,7 +18,6 @@ class ProcurementOrder(models.Model):
     def _make_po_get_domain(self, partner):
         res = super(ProcurementOrder, self)._make_po_get_domain(
             partner=partner)
-        if self.account_analytic_id:
-            res += (('order_line.account_analytic_id',
-                     '=', self.account_analytic_id.id),)
+        res += (('order_line.account_analytic_id',
+                 '=', self.account_analytic_id.id),)
         return res
