@@ -21,7 +21,7 @@ Usage
 
 #. Go to *Sales > Sales > Sales Orders* and create new SO witch contains
    product/s that are not services.
-#. Set *Analytic Account* field in *Other Information* tab.
+#. Set *Analytic Account*.
 #. If you *Confirm Sale*, analytic account is propagated to procurement order.
 #. In order to see procurement orders, you must install *Inventory Management*
    module.

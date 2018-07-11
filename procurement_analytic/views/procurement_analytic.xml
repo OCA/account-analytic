@@ -4,17 +4,6 @@
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
 
-    <record id="procurement_form_view_analiytic" model="ir.ui.view">
-        <field name="name">procurement_purchase_analytic.procurement.order.form</field>
-        <field name="model">procurement.order</field>
-        <field name="inherit_id" ref="procurement.procurement_form_view"/>
-        <field name="arch" type="xml">
-            <field name="group_id" position="after">
-                <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
-            </field>
-        </field>
-    </record>
-
     <record id="procurement_form_view" model="ir.ui.view">
          <field name="name">procurement.order.form</field>
          <field name="model">procurement.order</field>
@@ -22,7 +11,7 @@
          <field name="arch" type="xml">
              <xpath expr="//group[@name='scheduling']" position="before">
                  <group>
-                     <field name="account_analytic_id"/>
+                     <field name="account_analytic_id" groups="analytic.group_analytic_accounting"/>
                  </group>
              </xpath>
          </field>
@@ -38,5 +27,5 @@
              </xpath>
          </field>
      </record>
-    
+
 </odoo>
