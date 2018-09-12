@@ -45,7 +45,7 @@ class TestAnalyticDimensionCase(TransactionCase):
         """
         analytic_dimension_test = self.dimension_obj.create({
             'name': 'Test_creation',
-            'code': 'test'
+            'code': 'test_analytic_tag_dimension',
         })
         analytic_tag_test_a = self.tag_obj.create({
             'name': 'Test A',
