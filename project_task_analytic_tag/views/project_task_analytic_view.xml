@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_project_task_analytic_tag_hr" model="ir.ui.view">
+        <field name="name">project.task.analytic.tag.hr.form</field>
+        <field name="model">project.task</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='timesheet_ids']/tree/field[@name='name']" position="after">
+                <field name="tag_ids" string="Analytic Tag" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']" position="attributes">
+                <attribute name="context">{'default_project_id': project_id,'default_tag_ids': analytic_tag_ids}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_task_analytic_tag" model="ir.ui.view">
+        <field name="name">project.task.analytic.tag.form</field>
+        <field name="model">project.task</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_last_stage_update']" position="after">
+                <field name="analytic_tag_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
