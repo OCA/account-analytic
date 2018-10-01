@@ -53,7 +53,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
         cls.aa_2 = cls.account_analytic_account.create({
             'name': 'AA 2'})
 
-        cls.product_01 = cls.env.ref('product.product_product_17')
+        cls.product_01 = cls.env.ref('product.product_product_16')
 
         # Journal
         cls.journal = cls.account_journal.create({

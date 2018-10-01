@@ -6,10 +6,10 @@
     'summary': """
         Hide analytics lines and disable
         their generation from a move line.""",
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'ACSONE SA/NV,Odoo Community Association (OCA)',
-    'website': 'https://github.com/OCA/account-analytic/tree/11.0/'
+    'website': 'https://github.com/OCA/account-analytic/tree/12.0/'
                'account_analytic_no_lines',
     'depends': [
         'account',
