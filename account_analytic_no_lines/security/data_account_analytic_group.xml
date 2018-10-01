@@ -4,8 +4,7 @@
 
 <odoo>
 
-    <!-- TODO change the id to show_analytic_entries when migrating to 11 -->
-    <record id="hide_analytic_entries" model="res.groups">
+    <record id="show_analytic_entries" model="res.groups">
         <field name="name">View Analytic Entries</field>
         <field name="category_id" ref="base.module_category_hidden"/>
     </record>

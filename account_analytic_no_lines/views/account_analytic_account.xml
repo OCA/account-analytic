@@ -25,7 +25,7 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']/button[@name=%(analytic.account_analytic_line_action)d]" position="attributes">
-                <attribute name="groups">account_analytic_no_lines.hide_analytic_entries</attribute>
+                <attribute name="groups">account_analytic_no_lines.show_analytic_entries</attribute>
             </xpath>
             <xpath expr="//div[@name='button_box']" position="inside">
                 <button class="oe_stat_button" type="action" name="%(account_analytic_line_action_gl)d"
