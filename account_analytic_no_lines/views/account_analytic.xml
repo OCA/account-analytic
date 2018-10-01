@@ -8,8 +8,4 @@
         <field name="groups_id" eval="[(6,0,[ref('account_analytic_no_lines.show_analytic_entries')])]"/>
     </record>
 
-    <record model="ir.ui.menu" id="account.menu_action_analytic_lines_reporting">
-        <field name="groups_id" eval="[(6, 0, [ref('account_analytic_no_lines.show_analytic_entries')])]"/>
-    </record>
-
 </odoo>
