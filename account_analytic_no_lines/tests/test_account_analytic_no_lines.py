@@ -1,6 +1,8 @@
 # Copyright 2016 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from datetime import date, timedelta
+
 from odoo.tests.common import SavepointCase
 
 
@@ -51,6 +53,8 @@ class TestAccountAnalyticNoLines(SavepointCase):
         cls.aa_2 = cls.account_analytic_account.create({
             'name': 'AA 2'})
 
+        cls.product_01 = cls.env.ref('product.product_product_17')
+
         # Journal
         cls.journal = cls.account_journal.create({
             'name': 'Bank Journal Test',
@@ -74,6 +78,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
             'account_analytic_id': cls.aa_1.id})
         cls.invoice_line_3 = cls.account_invoice_line.create({
             'name': 'Test invoice line 3',
+            'product_id': cls.product_01.id,
             'price_unit': -100,
             'quantity': 1,
             'account_id': cls.account_600000.id,
@@ -145,7 +150,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
             [('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
 
-    def test_gl_amounts(self):
+    def test_gl_amounts_01(self):
         self.invoice.action_move_create()
         self.assertEqual(self.aa_1.gl_debit, 150)
         self.assertEqual(self.aa_1.gl_credit, 0)
@@ -153,3 +158,10 @@ class TestAccountAnalyticNoLines(SavepointCase):
         self.assertEqual(self.aa_2.gl_debit, 0)
         self.assertEqual(self.aa_2.gl_credit, 100)
         self.assertEqual(self.aa_2.gl_balance, 100)
+
+    def test_gl_amounts_02(self):
+        self.invoice.action_move_create()
+        self.assertEqual(self.aa_1.with_context(
+            to_date=date.today() - timedelta(days=1)).gl_debit, 0)
+        self.assertEqual(self.aa_1.with_context(
+            from_date=date.today() + timedelta(days=1)).gl_debit, 0)
