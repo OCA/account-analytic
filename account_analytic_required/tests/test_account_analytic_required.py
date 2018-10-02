@@ -12,26 +12,25 @@ class TestAccountAnalyticRequired(common.SavepointCase):
     def setUpClass(cls):
         super(TestAccountAnalyticRequired, cls).setUpClass()
         cls.account_obj = cls.env['account.account']
-        cls.account_type_obj = cls.env['account.account.type']
         cls.move_obj = cls.env['account.move']
         cls.move_line_obj = cls.env['account.move.line']
         cls.analytic_account_obj = cls.env['account.analytic.account']
         cls.analytic_account = cls.analytic_account_obj.create(
             {'name': 'test aa'})
-        cls.account_sales = cls.env['account.account'].create({
+        cls.account_sales = cls.account_obj.create({
             'code': "X1020",
             'name': "Product Sales - (test)",
             'user_type_id': cls.env.ref(
                 'account.data_account_type_revenue').id
         })
-        cls.account_recv = cls.env['account.account'].create({
+        cls.account_recv = cls.account_obj.create({
             'code': "X11002",
             'name': "Debtors - (test)",
             'reconcile': True,
             'user_type_id': cls.env.ref(
                 'account.data_account_type_receivable').id
         })
-        cls.account_exp = cls.env['account.account'].create({
+        cls.account_exp = cls.account_obj.create({
             'code': "X2110",
             'name': "Expenses - (test)",
             'user_type_id': cls.env.ref(
