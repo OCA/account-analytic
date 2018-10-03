@@ -34,6 +34,7 @@ addon | version | summary
 [analytic_tag_dimension_purchase_warning](analytic_tag_dimension_purchase_warning/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
 [analytic_tag_dimension_sale_warning](analytic_tag_dimension_sale_warning/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
 [mrp_analytic](mrp_analytic/) | 10.0.1.0.0 | Adds the analytic account to the production order
+[mrp_procurement_analytic](mrp_procurement_analytic/) | 10.0.1.0.0 | Makes the link between procurement analytic account and moves created trhough MRP
 [procurement_analytic](procurement_analytic/) | 10.0.1.2.0 | This module adds analytic account to procurements
 [product_analytic](product_analytic/) | 10.0.1.0.1 | Add analytic account on products and product categories
 [product_analytic_pos](product_analytic_pos/) | 10.0.1.0.0 | Glue module between product_analytic and point_of_sale
