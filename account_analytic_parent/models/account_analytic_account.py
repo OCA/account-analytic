@@ -75,3 +75,20 @@ class AccountAnalyticAccount(models.Model):
                 current = current.parent_id
             res.append((account.id, name))
         return res
+
+    @api.multi
+    @api.constrains('active')
+    def check_parent_active(self):
+        for account in self:
+            if (account.active and account.parent_id and
+                    account.parent_id not in self and
+                    not account.parent_id.active):
+                raise UserError(
+                    _('Please activate first parent account %s')
+                    % account.parent_id.display_name)
+
+    @api.multi
+    def write(self, vals):
+        if self and 'active' in vals and not vals['active']:
+            self.mapped('child_ids').write({'active': False})
+        return super(AccountAnalyticAccount, self).write(vals)
