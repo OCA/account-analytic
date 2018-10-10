@@ -81,3 +81,12 @@ class TestAccountAnalyticRecursion(TransactionCase):
         result = self.wizard.analytic_account_chart_open_window()
         self.assertTrue('2017-01-01' in result['context'])
         self.assertTrue('2017-12-31' in result['context'])
+
+    def test_archive(self):
+        self.analytic_parent1.toggle_active()
+        self.assertEqual(self.analytic_son.active, False)
+        self.analytic_parent1.toggle_active()
+        self.assertEqual(self.analytic_son.active, False)
+        self.analytic_parent1.toggle_active()
+        with self.assertRaises(ValidationError):
+            self.analytic_son.toggle_active()
