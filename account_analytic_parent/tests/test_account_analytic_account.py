@@ -71,3 +71,12 @@ class TestAccountAnalyticRecursion(TransactionCase):
                          "Analytic account in the debit side")
         self.assertEqual(self.analytic_parent2.credit, 50, "Wrong amount")
         self.assertEqual(self.analytic_parent2.balance, 50, "Wrong amount")
+
+    def test_archive(self):
+        self.analytic_parent1.toggle_active()
+        self.assertEqual(self.analytic_son.active, False)
+        self.analytic_parent1.toggle_active()
+        self.assertEqual(self.analytic_son.active, False)
+        self.analytic_parent1.toggle_active()
+        with self.assertRaises(ValidationError):
+            self.analytic_son.toggle_active()
