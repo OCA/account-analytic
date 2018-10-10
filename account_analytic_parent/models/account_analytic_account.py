@@ -59,3 +59,14 @@ class AccountAnalyticAccount(models.Model):
                 current = current.parent_id
             res.append((account.id, name))
         return res
+
+    @api.multi
+    def archive_account(self):
+        for account in self:
+            account.active = False
+
+    @api.multi
+    def write(self, vals):
+        if 'active' in vals and not vals['active']:
+            self.mapped('child_ids').archive_account()
+        return super(AccountAnalyticAccount, self).write(vals)
