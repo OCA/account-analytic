@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2018-10-12 19:36+0000\n"
+"PO-Revision-Date: 2018-10-13 20:16+0000\n"
 "Last-Translator: Harald Panten <harald.panten@qubiq.es>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.1.1\n"
+"X-Generator: Weblate 3.2.1\n"
 
 #. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
@@ -133,4 +133,4 @@ msgstr "a"
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:41
 #, python-format
 msgid "You can not create recursive analytic accounts."
-msgstr "No pot crear comptes analítics recursius"
+msgstr "No pot crear comptes analítics recursius."
