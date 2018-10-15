@@ -1,13 +1,13 @@
-# -*- coding: utf-8 -*-
 # Copyright 2015 Tecnativa - Pedro M. Baeza
 # Copyright 2017 Tecnativa - Luis Martínez
+# Copyright 2018 Tecnativa - Cristina Martin R.
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
     'name': 'Link analytic items and partner',
     'summary': 'Search and group analytic entries by partner',
-    'version': '10.0.1.0.0',
-    'category': 'Analytic Accounting',
+    'version': '11.0.1.0.0',
+    'category': 'Accounting',
     'website': 'https://www.tecnativa.com',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
