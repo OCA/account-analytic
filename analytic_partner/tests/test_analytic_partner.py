@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2015 Tecnativa - Pedro M. Baeza
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
