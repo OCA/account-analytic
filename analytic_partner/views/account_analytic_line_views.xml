@@ -36,6 +36,9 @@
                 <filter name="group_other_partner" string="Other Partner"
                         context="{'group_by': 'other_partner_id'}"/>
             </filter>
+            <search>
+                <field name="other_partner_id"/>
+            </search>
         </field>
     </record>
 
