@@ -61,6 +61,16 @@ class AccountAnalyticAccount(models.Model):
         return res
 
     @api.multi
+    @api.constrains('active')
+    def check_parent_active(self):
+        for account in self:
+            if (account.active and account.parent_id and not
+                    account.parent_id.active):
+                raise UserError(
+                    _('Please activate first parent account')
+                    % self.parent_id.display_name)
+
+    @api.multi
     def archive_account(self):
         for account in self:
             account.active = False

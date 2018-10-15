@@ -87,3 +87,6 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.assertEqual(self.analytic_son.active, False)
         self.analytic_parent1.toggle_active()
         self.assertEqual(self.analytic_son.active, False)
+        self.analytic_parent1.toggle_active()
+        with self.assertRaises(ValidationError):
+            self.analytic_son.toggle_active()
