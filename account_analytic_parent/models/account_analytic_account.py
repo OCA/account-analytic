@@ -67,8 +67,8 @@ class AccountAnalyticAccount(models.Model):
             if (account.active and account.parent_id and not
                     account.parent_id.active):
                 raise UserError(
-                    _('Please activate first parent account')
-                    % self.parent_id.display_name)
+                    _('Please activate first parent account %s')
+                    % account.parent_id.display_name)
 
     @api.multi
     def archive_account(self):
