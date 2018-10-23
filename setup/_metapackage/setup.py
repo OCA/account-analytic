@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo11-addon-account_analytic_required',
         'odoo11-addon-account_analytic_sequence',
         'odoo11-addon-analytic_base_department',
+        'odoo11-addon-analytic_partner',
         'odoo11-addon-analytic_product_category',
         'odoo11-addon-analytic_tag_dimension',
         'odoo11-addon-analytic_tag_dimension_purchase_warning',
