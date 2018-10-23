@@ -11,7 +11,7 @@ class PurchaseOrderLine(models.Model):
     @api.onchange('product_id')
     def onchange_product_id(self):
         res = super(PurchaseOrderLine, self).onchange_product_id()
-        if self.product_id:
+        if self.product_id.product_tmpl_id:
             ana_accounts = self.product_id.product_tmpl_id.\
                 _get_product_analytic_accounts()
             ana_account = ana_accounts['expense']

@@ -41,6 +41,7 @@ Contributors
 ------------
 
 * Alexis de Lattre <alexis.delattre@akretion.com>
+* Isaac Gallart <igallart@puntsistemes.es>
 
 Maintainer
 ----------
