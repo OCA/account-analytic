@@ -4,7 +4,7 @@
 
 <odoo noupdate="1">
 
-    <record model="ir.sequence" id="analytic_account_code_seq">
+    <record id="analytic_account_code_seq" model="ir.sequence">
         <field name="name">Analytic account code</field>
         <field name="code">account.analytic.account.code</field>
         <field name="prefix">AA</field>
