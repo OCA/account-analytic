@@ -1,0 +1,26 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* stock_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_analytic_account_id
+#: model:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
+msgid "Analytic Account"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_move
+msgid "Stock Move"
+msgstr ""
+

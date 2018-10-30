@@ -19,7 +19,7 @@ To Assign an Analytic Account to a Stock Move
 You need to:
 
 #. Create manually or open draft picking
-#. Add or edit stock move. Fill **analytic account** field
+#. Add move lines and fill **analytic account** field
 
 Assigned Journal Items created from Stock Move with Analytic Account
 --------------------------------------------------------------------
