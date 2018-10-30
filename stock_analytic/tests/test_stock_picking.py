@@ -75,7 +75,8 @@ class TestStockPicking(TransactionCase):
                         'package_id': False,
                         'result_package_id': False,
                         'location_id': location_id.id,
-                        'location_dest_id': location_dest_id.id,})
+                        'location_dest_id': location_dest_id.id,
+                        })
             ],
         }
 
