@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2013 Julius Network Solutions
 # Copyright 2015 Clear Corp
 # Copyright 2016 OpenSynergy Indonesia
