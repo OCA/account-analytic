@@ -12,7 +12,6 @@ class AccountInvoiceLine(models.Model):
     @api.onchange('product_id')
     def product_analytic_change(self):
         if self.product_id:
-            account_analytic = False
             if self.invoice_id.type in ('out_invoice', 'out_refund'):
                 account_analytic =\
                     self.product_id.income_analytic_account_id or\
@@ -26,12 +25,12 @@ class AccountInvoiceLine(models.Model):
 
     @api.model
     def create(self, vals):
-        type = self.env.context.get('inv_type', 'out_invoice')
-        if vals.get('product_id') and type and \
+        invoice_type = self.env.context.get('inv_type', 'out_invoice')
+        if vals.get('product_id') and invoice_type and \
                 not vals.get('account_analytic_id'):
             product = self.env['product.product'].browse(
                 vals.get('product_id'))
-            if type in ('out_invoice', 'out_refund'):
+            if invoice_type in ('out_invoice', 'out_refund'):
                 analytic_id = product.income_analytic_account_id.id or\
                     product.categ_id.income_analytic_account_id.id
             else:
