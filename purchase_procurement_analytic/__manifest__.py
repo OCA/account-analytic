@@ -11,6 +11,7 @@
               "Odoo Community Association (OCA)",
     'website': 'https://ventor.tech/',
     'depends': [
+        'sale',
         'purchase',
     ],
     'installable': True,
