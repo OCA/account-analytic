@@ -25,7 +25,7 @@ addon | version | summary
 [account_analytic_parent](account_analytic_parent/) | 10.0.1.0.0 | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 10.0.1.1.0 | Account Analytic Required
 [account_analytic_sequence](account_analytic_sequence/) | 10.0.1.0.0 | Restore the analytic account sequence
-[account_asset_analytic](account_asset_analytic/) | 10.0.1.0.1 | Adds analytic account per asset
+[account_asset_analytic](account_asset_analytic/) | 10.0.1.0.2 | Adds analytic account per asset
 [analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
 [analytic_partner](analytic_partner/) | 10.0.1.0.0 | Search and group analytic entries by partner
 [analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 10.0.1.0.0 | Classify HR activities by partner
