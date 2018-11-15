@@ -12,6 +12,7 @@
     'website': 'https://ventor.tech/',
     'depends': [
         'sale',
+        'sale_stock',
         'purchase',
     ],
     'installable': True,
