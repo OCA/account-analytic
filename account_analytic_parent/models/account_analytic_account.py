@@ -28,10 +28,25 @@ class AccountAnalyticAccount(models.Model):
         of analytic account changes
         """
         super(AccountAnalyticAccount, self)._compute_debit_credit_balance()
-        for account in self:
-            account.debit += sum(account.mapped("child_ids.debit"))
-            account.credit += sum(account.mapped("child_ids.credit"))
-            account.balance += sum(account.mapped("child_ids.balance"))
+        analytic_line_obj = self.env['account.analytic.line']
+        # compute only analytic line
+        for account in self.filtered(lambda x: x.child_ids):
+            domain = [('account_id', 'child_of', account.ids)]
+            credit_groups = analytic_line_obj.read_group(
+                domain=domain + [('amount', '>', 0.0)],
+                fields=['account_id', 'amount'],
+                groupby=['account_id']
+            )
+            data_credit = sum(l['amount'] for l in credit_groups)
+            debit_groups = analytic_line_obj.read_group(
+                domain=domain + [('amount', '<', 0.0)],
+                fields=['account_id', 'amount'],
+                groupby=['account_id']
+            )
+            data_debit = sum(l['amount'] for l in debit_groups)
+            account.debit = data_debit
+            account.credit = data_credit
+            account.balance = account.credit - account.debit
 
     @api.multi
     @api.constrains("parent_id")
