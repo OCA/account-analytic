@@ -32,7 +32,7 @@ class AccountAnalyticAccount(models.Model):
         for account in self.filtered(lambda x: x.child_ids):
             domain = [('account_id', 'child_of', account.ids)]
             credit_groups = analytic_line_obj.read_group(
-                domain=domain + [('amount', '>=', 0.0)],
+                domain=domain + [('amount', '>', 0.0)],
                 fields=['account_id', 'amount'],
                 groupby=['account_id']
             )
