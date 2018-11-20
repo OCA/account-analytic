@@ -69,19 +69,6 @@ Authors
 * Tecnativa
 * VentorTech
 
-Contributors
-~~~~~~~~~~~~
-
-* `Tecnativa <https://www.tecnativa.com>`__:
-
-  * Carlos Dauden
-  * Pedro M. Baeza
-  * Vicent Cubells
-
-* Ventor-Tech:
-
-  * Sergej Lozikov
-
 Maintainers
 ~~~~~~~~~~~
 
