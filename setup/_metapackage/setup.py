@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo11-addon-analytic_tag_dimension_purchase_warning',
         'odoo11-addon-analytic_tag_dimension_sale_warning',
         'odoo11-addon-mrp_analytic',
+        'odoo11-addon-procurement_mto_analytic',
         'odoo11-addon-product_analytic',
         'odoo11-addon-stock_analytic',
     ],
