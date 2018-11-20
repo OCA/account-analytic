@@ -9,25 +9,27 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-03 13:07+0000\n"
-"PO-Revision-Date: 2018-04-03 13:07+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2018\n"
+"PO-Revision-Date: 2018-11-21 18:09+0000\n"
+"Last-Translator: Marco Calcagni <mcalcagni@dinamicheaziendali.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.2.2\n"
 
 #. module: account_analytic_default_account
 #: model:ir.model.fields,field_description:account_analytic_default_account.field_account_analytic_default_account_id
 #: model:ir.ui.view,arch_db:account_analytic_default_account.view_account_analytic_default_account_search
 msgid "Account"
-msgstr ""
+msgstr "Conto"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_move
+#, fuzzy
 msgid "Account Entry"
-msgstr ""
+msgstr "Registrazione Contabile"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_analytic_default
@@ -41,8 +43,9 @@ msgstr "Riga fattura"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_move_line
+#, fuzzy
 msgid "Journal Item"
-msgstr ""
+msgstr "Riga di Sezionale"
 
 #. module: account_analytic_default_account
 #: model:ir.model.fields,help:account_analytic_default_account.field_account_analytic_default_account_id
