@@ -120,6 +120,12 @@ msgid "Parent Analytic Account"
 msgstr "Cuenta Padre"
 
 #. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:86
+#, python-format
+msgid "Please activate first parent account %s"
+msgstr ""
+
+#. module: account_analytic_parent
 #: model:ir.ui.view,arch_db:account_analytic_parent.account_analytic_chart_view
 msgid "Select the Period for Analysis"
 msgstr "Seleccionar el periodo para Análisis"
@@ -130,7 +136,7 @@ msgid "To"
 msgstr "Hasta"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:41
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:56
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "No puedes crear cuentas recursivas"
