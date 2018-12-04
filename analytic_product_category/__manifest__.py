@@ -5,7 +5,7 @@
     "name": "Base Analytic Product Category Categorization",
     "summary": "Filter and Group Analytic Entries by Product Category",
     "category": "Generic Modules/Accounting",
-    "version": "11.0.1.0.0",
+    "version": "12.0.1.0.0",
     "author": "PESOL, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/account-analytic",

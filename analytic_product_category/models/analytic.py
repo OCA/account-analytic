@@ -5,6 +5,8 @@ from odoo import fields, models
 
 
 class AnalyticLine(models.Model):
+    """Added Product Category in Analytic Account Line."""
+
     _inherit = "account.analytic.line"
 
     product_category_id = fields.Many2one(

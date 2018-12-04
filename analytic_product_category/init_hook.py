@@ -19,7 +19,7 @@ def pre_init_hook(cr):
 
 
 def store_field_stored_product_category_id(cr):
-
+    """Store product category in the analytic account line."""
     cr.execute("""SELECT column_name
     FROM information_schema.columns
     WHERE table_name='account_analytic_line' AND

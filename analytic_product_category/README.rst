@@ -17,7 +17,7 @@ on list and reporting view.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/11.0
+   :target: https://runbot.odoo-community.org/runbot/87/12.0
 
 
 Bug Tracker
@@ -40,6 +40,7 @@ Contributors
 ------------
 
 * Angel Moya <angel.moya@pesol.es>
+* Anand Kansagra <kansagraanand@hotmail.com>
 
 Do not contact contributors directly about support or help with technical issues.
 
