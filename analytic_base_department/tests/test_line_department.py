@@ -6,6 +6,7 @@ from odoo.tests.common import TransactionCase
 class LineDepartmentCase(TransactionCase):
 
     def setUp(self):
+        """Assign user and department."""
         super(LineDepartmentCase, self).setUp()
         # base.user_demo --> hr.employee_qdp --> hr.dep_rd
         self.user = self.env.ref('base.user_demo')
