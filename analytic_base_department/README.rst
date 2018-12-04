@@ -18,8 +18,8 @@ No required dependency on Accounting modules.
 
 You might want to install as well other modules to set department:
 
-- Project Department Categorization (`project_department <https://github.com/OCA/project/tree/11.0/project_department>`_)
-- Project Task specific Department (`project_task_departement <https://github.com/OCA/project/tree/11.0/project_task_departement>`)
+- Project Department Categorization (`project_department <https://github.com/OCA/project/tree/12.0/project_department>`_)
+- Project Task specific Department (`project_task_departement <https://github.com/OCA/project/tree/12.0/project_task_departement>`)
 
 
 Usage
@@ -29,10 +29,10 @@ The current user must be linked to a department
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/11.0
+   :target: https://runbot.odoo-community.org/runbot/87/12.0
 
 .. repo_id is available in https://github.com/OCA/account-analytic
-.. branch is "11.0"
+.. branch is "12.0"
 
 
 Bug Tracker
@@ -62,6 +62,7 @@ Contributors
 * Angel Moya <angel.moya@domatix.com>
 * Dave Burkholder <dave@thinkwelldesigns.com>
 * Artem Kostyuk <a.kostyuk@mobilunity.com>
+* Anand Kansagra <kansagraanand@hotmail.com>
 
 Do not contact contributors directly about support or help with technical issues.
 
