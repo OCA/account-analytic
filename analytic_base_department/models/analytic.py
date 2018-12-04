@@ -5,6 +5,8 @@ from odoo import api, fields, models
 
 
 class AnalyticAccount(models.Model):
+    """Add Department in analytic account."""
+
     _inherit = "account.analytic.account"
 
     department_id = fields.Many2one(
@@ -13,6 +15,8 @@ class AnalyticAccount(models.Model):
 
 
 class AnalyticLine(models.Model):
+    """Add Department and Account Department in analytic line."""
+
     _inherit = "account.analytic.line"
 
     @api.model
