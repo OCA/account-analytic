@@ -32,13 +32,11 @@ msgstr "Orden de fabricación"
 
 #. module: mrp_analytic
 #: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account_num_productions
-#: model:ir.model.fields,field_description:mrp_analytic.field_project_project_num_productions
-msgid "Num productions"
+#, fuzzy
+msgid "Num Productions"
 msgstr "Número de producciones"
 
 #. module: mrp_analytic
-#: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account_productions
-#: model:ir.model.fields,field_description:mrp_analytic.field_project_project_productions
 #: model:ir.ui.view,arch_db:mrp_analytic.view_account_analytic_account_form_mrp_production
 msgid "Productions"
 msgstr "Producciones"
