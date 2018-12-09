@@ -36,7 +36,13 @@ msgid "Parent Analytic Account"
 msgstr "Übergeordnete Kostenstelle"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:42
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:87
+#, python-format
+msgid "Please activate first parent account %s"
+msgstr ""
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:57
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "Sie dürfen Kostenstellen nicht rekursiv anlegen."
