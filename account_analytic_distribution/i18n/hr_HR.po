@@ -28,7 +28,7 @@ msgstr "Analitički konto"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:81
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:80
 #, python-format
 msgid "Analytic account must be unique per distribution!"
 msgstr "Analitički konto mora biti jednistven unutar distribucije!"
@@ -90,7 +90,7 @@ msgstr "Dstribucija"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:38
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:37
 #, python-format
 msgid "Distribution name must be unique per Company!"
 msgstr "Naziv distribucije mora biti jedinstven unutar poduzeća."
@@ -103,7 +103,8 @@ msgstr "Pravila distribucija"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_res_company_force_percent
-msgid "Force percent"
+#, fuzzy
+msgid "Force Percent"
 msgstr "Forsiraj postotak"
 
 #. module: account_analytic_distribution
@@ -166,14 +167,14 @@ msgstr "Postotak"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:77
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:76
 #, python-format
 msgid "Percentage must be positive!"
 msgstr "Postotak mora biti pozitivan!"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:79
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:78
 #, python-format
 msgid "Percentage must less or equal 100%!"
 msgstr "Postotak mora biti manji ili jednak 100%!"
@@ -184,7 +185,7 @@ msgid "Rules"
 msgstr "Pravila"
 
 #. module: account_analytic_distribution
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:49
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:48
 #, python-format
 msgid "Rules percent doesn't sum 100%"
 msgstr "Suma postotaka nije 100%!"

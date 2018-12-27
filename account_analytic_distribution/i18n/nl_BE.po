@@ -26,7 +26,7 @@ msgstr "Analytische rekening"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:81
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:80
 #, python-format
 msgid "Analytic account must be unique per distribution!"
 msgstr ""
@@ -88,7 +88,7 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:38
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:37
 #, python-format
 msgid "Distribution name must be unique per Company!"
 msgstr ""
@@ -101,7 +101,7 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_res_company_force_percent
-msgid "Force percent"
+msgid "Force Percent"
 msgstr ""
 
 #. module: account_analytic_distribution
@@ -162,14 +162,14 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:77
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:76
 #, python-format
 msgid "Percentage must be positive!"
 msgstr ""
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:79
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:78
 #, python-format
 msgid "Percentage must less or equal 100%!"
 msgstr ""
@@ -180,7 +180,7 @@ msgid "Rules"
 msgstr ""
 
 #. module: account_analytic_distribution
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:49
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:48
 #, python-format
 msgid "Rules percent doesn't sum 100%"
 msgstr ""
