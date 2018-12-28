@@ -9,49 +9,50 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-06 22:08+0000\n"
-"PO-Revision-Date: 2018-04-06 22:08+0000\n"
-"Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>, 2018\n"
+"PO-Revision-Date: 2018-12-28 12:40+0000\n"
+"Last-Translator: alvarorib <alvaro.ribeiro@exo.pt>\n"
 "Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 3.3\n"
 
 #. module: account_analytic_no_lines
 #: model:ir.model,name:account_analytic_no_lines.model_account_analytic_account
 #: model:ir.ui.view,arch_db:account_analytic_no_lines.view_account_move_line_filter
 msgid "Analytic Account"
-msgstr ""
+msgstr "Conta Analítica"
 
 #. module: account_analytic_no_lines
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account_gl_balance
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_project_project_gl_balance
 msgid "Analytic Balance (GL)"
-msgstr ""
+msgstr "Saldo Analítico"
 
 #. module: account_analytic_no_lines
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account_gl_credit
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_project_project_gl_credit
 msgid "Credit (GL)"
-msgstr ""
+msgstr "Crédito"
 
 #. module: account_analytic_no_lines
 #: model:ir.model.fields,help:account_analytic_no_lines.field_account_analytic_account_gl_balance
 #: model:ir.model.fields,help:account_analytic_no_lines.field_project_project_gl_balance
 msgid "Credit - Debit"
-msgstr ""
+msgstr "Crédito - Débito"
 
 #. module: account_analytic_no_lines
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account_gl_debit
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_project_project_gl_debit
 msgid "Debit (GL)"
-msgstr ""
+msgstr "Débito"
 
 #. module: account_analytic_no_lines
 #: model:ir.model,name:account_analytic_no_lines.model_account_invoice
 msgid "Invoice"
-msgstr ""
+msgstr "Fatura"
 
 #. module: account_analytic_no_lines
 #: model:ir.model,name:account_analytic_no_lines.model_account_move_line
@@ -62,14 +63,14 @@ msgstr "Item do Diário"
 #: model:ir.actions.act_window,name:account_analytic_no_lines.account_analytic_line_action_gl
 #: model:ir.ui.view,arch_db:account_analytic_no_lines.account_analytic_account_form_view
 msgid "Journal Items"
-msgstr ""
+msgstr "Items de Diário"
 
 #. module: account_analytic_no_lines
 #: model:ir.actions.act_window,help:account_analytic_no_lines.account_analytic_line_action_gl
 msgid "No activity yet on this account."
-msgstr ""
+msgstr "Ainda nenhuma atividade nesta conta."
 
 #. module: account_analytic_no_lines
 #: model:res.groups,name:account_analytic_no_lines.hide_analytic_entries
 msgid "View Analytic Entries"
-msgstr ""
+msgstr "Ver lançamentos analíticos"
