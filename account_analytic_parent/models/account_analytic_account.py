@@ -11,10 +11,25 @@ from odoo.exceptions import UserError
 
 class AccountAnalyticAccount(models.Model):
     _inherit = "account.analytic.account"
+    _parent_name = "parent_id"
+    _parent_store = True
+    _parent_order = 'name'
+    _rec_name = 'display_name'
+    _order = 'parent_left'
 
+    parent_left = fields.Integer(
+        string='Left Parent',
+        index=True,
+    )
+    parent_right = fields.Integer(
+        string='Right Parent',
+        index=True,
+    )
     parent_id = fields.Many2one(
         comodel_name="account.analytic.account",
-        string="Parent Analytic Account"
+        string="Parent Analytic Account",
+        index=True,
+        ondelete='cascade',
     )
     child_ids = fields.One2many(
         comodel_name="account.analytic.account",
@@ -44,7 +59,7 @@ class AccountAnalyticAccount(models.Model):
                 groupby=['account_id']
             )
             data_debit = sum(l['amount'] for l in debit_groups)
-            account.debit = data_debit
+            account.debit = abs(data_debit)
             account.credit = data_credit
             account.balance = account.credit - account.debit
 
