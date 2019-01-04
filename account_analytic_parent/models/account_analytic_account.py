@@ -44,7 +44,7 @@ class AccountAnalyticAccount(models.Model):
                 groupby=['account_id']
             )
             data_debit = sum(l['amount'] for l in debit_groups)
-            account.debit = data_debit
+            account.debit = abs(data_debit)
             account.credit = data_credit
             account.balance = account.credit - account.debit
 
