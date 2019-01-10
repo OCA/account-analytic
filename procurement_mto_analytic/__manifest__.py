@@ -13,6 +13,7 @@
     'website': 'https://github.com/OCA/account-analytic',
     'depends': [
         'sale_stock',
+        'stock_analytic',
         'purchase',
     ],
     'installable': True,
