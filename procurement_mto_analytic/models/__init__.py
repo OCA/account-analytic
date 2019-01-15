@@ -3,3 +3,4 @@
 from . import procurement
 from . import stock
 from . import sale_order
+from . import purchase_order_line
