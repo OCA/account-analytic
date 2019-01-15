@@ -21,11 +21,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Account Entry"
-msgstr "Ecriture comptable"
-
-#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "Type de compte"
@@ -36,7 +31,7 @@ msgid "Always"
 msgstr "Toujours"
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr "Stratégie analytique"
 
@@ -72,9 +67,16 @@ msgstr ""
 "'%s'."
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
 msgstr "Grouper par"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+#, fuzzy
+#| msgid "Journal Item"
+msgid "Journal Entries"
+msgstr "Écriture du journal"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
@@ -92,7 +94,7 @@ msgid "Optional"
 msgstr "Facultatif"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Policy for analytic account"
 msgstr "Politique pour les comptes analytiques"
 
@@ -102,7 +104,7 @@ msgid "Posted moves"
 msgstr "Ecritures comptabilisées"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
 msgid ""
 "Set the policy for analytic accounts : if you select 'Optional', the "
 "accountant is free to put an analytic account on an account move line with "
@@ -120,3 +122,6 @@ msgstr ""
 "recevra un message d'erreur si aucun compte analytique n'est défini lors de "
 "la comptabilisation de l'écriture; si vous sélectionnez \"Jamais\", le "
 "comptable recevra un message d'erreur si un compte analytique est présent."
+
+#~ msgid "Account Entry"
+#~ msgstr "Ecriture comptable"

@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -12,11 +12,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Account Entry"
-msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -29,7 +24,7 @@ msgid "Always"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr ""
 
@@ -52,8 +47,13 @@ msgid "Analytic policy is set to 'Posted moves' with account %s '%s' but the ana
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Journal Entries"
 msgstr ""
 
 #. module: account_analytic_required
@@ -72,7 +72,7 @@ msgid "Optional"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Policy for analytic account"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgid "Posted moves"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Set the policy for analytic accounts : if you select 'Optional', the accountant is free to put an analytic account on an account move line with this type of account ; if you select 'Always', the accountant will get an error message if there is no analytic account ; if you select 'Posted moves', the accountant will get an error message if no analytic account is defined when the move is posted ; if you select 'Never', the accountant will get an error message if an analytic account is present."
 msgstr ""
 
