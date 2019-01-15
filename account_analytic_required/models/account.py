@@ -32,8 +32,8 @@ class AccountMove(models.Model):
     _inherit = "account.move"
 
     @api.multi
-    def post(self):
-        res = super(AccountMove, self).post()
+    def post(self, *args, **kwargs):
+        res = super(AccountMove, self).post(*args, **kwargs)
         self.mapped('line_ids')._check_analytic_required()
         return res
 
