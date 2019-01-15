@@ -11,19 +11,14 @@ msgstr ""
 "POT-Creation-Date: 2018-02-01 03:39+0000\n"
 "PO-Revision-Date: 2018-06-28 14:00+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 3.0.1\n"
-
-#. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Account Entry"
-msgstr "Entrada de conta"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -36,7 +31,7 @@ msgid "Always"
 msgstr "Sempre"
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr "Política Analítica"
 
@@ -67,14 +62,21 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
 "analytic account is missing in the account move line with label '%s'."
 msgstr ""
-"A política analítica está definida como 'Movimentos Publicados' com a conta %"
-"s '%s', mas a conta analítica está ausente na linha de movimentação da conta "
-"com o rótulo '%s'."
+"A política analítica está definida como 'Movimentos Publicados' com a conta "
+"%s '%s', mas a conta analítica está ausente na linha de movimentação da "
+"conta com o rótulo '%s'."
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
 msgstr "Agrupar por"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+#, fuzzy
+#| msgid "Journal Item"
+msgid "Journal Entries"
+msgstr "Item diário"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
@@ -92,7 +94,7 @@ msgid "Optional"
 msgstr "Opcional"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Policy for analytic account"
 msgstr "Política para conta analítica"
 
@@ -102,7 +104,7 @@ msgid "Posted moves"
 msgstr "Movimentos publicados"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
 msgid ""
 "Set the policy for analytic accounts : if you select 'Optional', the "
 "accountant is free to put an analytic account on an account move line with "
@@ -120,3 +122,6 @@ msgstr ""
 "erro se nenhuma conta analítica for definida quando a movimentação for "
 "lançada; se você selecionar \"Nunca\", o contador receberá uma mensagem de "
 "erro se uma conta analítica estiver presente."
+
+#~ msgid "Account Entry"
+#~ msgstr "Entrada de conta"
