@@ -25,7 +25,7 @@ msgid "Analytic Line"
 msgstr ""
 
 #. module: analytic_partner
-#: model:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
 msgid "Cost/Revenue"
 msgstr ""
 
@@ -41,8 +41,8 @@ msgid "Journal Item"
 msgstr "عناصر دفتر اليومية"
 
 #. module: analytic_partner
-#: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line_other_partner_id
-#: model:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
+#: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__other_partner_id
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
 msgid "Other Partner"
 msgstr ""
 
