@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo12-addon-account_analytic_parent',
+        'odoo12-addon-analytic_partner',
     ],
     classifiers=[
         'Programming Language :: Python',
