@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="view_partner_form_timesheet">
+        <field name="name">Partner Form with timesheet activities</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//div[@name="button_box"]' position='inside'>
+                <button name="%(hr_timesheet.act_hr_timesheet_line)d"
+                        type="action"
+                        class="oe_inline oe_stat_button"
+                        context="{'search_default_other_partner_id': active_id, 'default_other_partner_id': active_id}"
+                        icon="fa-check-square-o">
+                    <field name="timesheet_count"
+                           string="Activities"
+                           widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
