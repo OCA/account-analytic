@@ -21,12 +21,12 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #. module: analytic_partner_hr_timesheet
-#: model:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
+#: model_terms:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
 msgid "Account Partner"
 msgstr ""
 
 #. module: analytic_partner_hr_timesheet
-#: model:ir.ui.view,arch_db:analytic_partner_hr_timesheet.view_partner_form_timesheet
+#: model_terms:ir.ui.view,arch_db:analytic_partner_hr_timesheet.view_partner_form_timesheet
 msgid "Activities"
 msgstr ""
 
@@ -36,23 +36,26 @@ msgid "Analytic Line"
 msgstr ""
 
 #. module: analytic_partner_hr_timesheet
-#: model:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
+#: model:ir.model,name:analytic_partner_hr_timesheet.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: analytic_partner_hr_timesheet
+#: model_terms:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
 msgid "Other Partner"
 msgstr ""
 
 #. module: analytic_partner_hr_timesheet
-#: model:ir.model,name:analytic_partner_hr_timesheet.model_res_partner
-msgid "Partner"
-msgstr "Контрагент"
-
-#. module: analytic_partner_hr_timesheet
-#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner_timesheet_count
-#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_users_timesheet_count
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner__timesheet_count
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_users__timesheet_count
 msgid "Timesheet Activities Number"
 msgstr ""
 
 #. module: analytic_partner_hr_timesheet
-#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner_timesheet_ids
-#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_users_timesheet_ids
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner__timesheet_ids
+#: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_users__timesheet_ids
 msgid "Timesheet activities"
 msgstr ""
+
+#~ msgid "Partner"
+#~ msgstr "Контрагент"
