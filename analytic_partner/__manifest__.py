@@ -24,7 +24,11 @@
 {
     'name': 'Link analytic items and partner',
     'summary': 'Search and group analytic entries by partner',
+<<<<<<< HEAD
     'version': '10.0.1.0.0',
+=======
+    'version': '12.0.1.0.0',
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
     'category': 'Analytic Accounting',
     'website': 'https://www.tecnativa.com',
     'author': 'Tecnativa,'

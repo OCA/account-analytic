@@ -54,7 +54,11 @@ msgstr "Cost/Ingressos"
 msgstr ""
 
 #. module: analytic_partner
+<<<<<<< HEAD
 #: view:res.partner:analytic_partner.view_partner_form_analytic
+=======
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 msgid "Cost/Revenue"
 msgstr ""
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)

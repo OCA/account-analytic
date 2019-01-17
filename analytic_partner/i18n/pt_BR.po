@@ -58,6 +58,7 @@ msgstr "Linhas Analíticas"
 #. module: analytic_partner
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
 msgid "Cost/Revenue"
 msgstr "Custo/Receita"
@@ -66,6 +67,9 @@ msgstr "Custo/Receita"
 =======
 #: model:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
 >>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
+=======
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 msgid "Cost/Revenue"
 msgstr ""
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
@@ -94,6 +98,7 @@ msgstr "Item diário"
 
 #. module: analytic_partner
 <<<<<<< HEAD
+<<<<<<< HEAD
 #: view:account.analytic.line:analytic_partner.view_account_analytic_line_filter_partner
 #: field:account.analytic.line,other_partner_id:0
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
@@ -101,5 +106,9 @@ msgstr "Item diário"
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line_other_partner_id
 #: model:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
 >>>>>>> 25264553 (OCA Transbot updated translations from Transifex)
+=======
+#: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__other_partner_id
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 msgid "Other Partner"
 msgstr "Outro parceiro"

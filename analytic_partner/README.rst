@@ -30,6 +30,7 @@ have another dimension for data analysis.
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
+<<<<<<< HEAD
     :target: https://github.com/OCA/account-analytic/tree/17.0/analytic_partner
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
@@ -38,6 +39,16 @@ have another dimension for data analysis.
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
     :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=17.0
     :alt: Try me on Runboat
+=======
+    :target: https://github.com/OCA/account-analytic/tree/12.0/analytic_partner
+    :alt: OCA/account-analytic
+.. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
+    :target: https://translation.odoo-community.org/projects/account-analytic-12-0/account-analytic-12-0-analytic_partner
+    :alt: Translate me on Weblate
+.. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
+    :target: https://runbot.odoo-community.org/runbot/87/12.0
+    :alt: Try me on Runbot
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
@@ -93,6 +104,7 @@ You can also:
 #. Click on the smart-button *Cost/Revenue* placed on the upper-right part.
 #. Navigate to the analytic items associated to this partner.
 
+<<<<<<< HEAD
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/87/10.0
@@ -144,6 +156,13 @@ First version.
 This module hasn't been tested with *account_analytic_distribution* module
 installed, so maybe it's incompatible with it.
 >>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
+=======
+Known issues / Roadmap
+======================
+
+This module hasn't been tested with *account_analytic_distribution* module
+installed, so maybe it's incompatible with it.
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 
 Bug Tracker
 ===========
@@ -151,8 +170,13 @@ Bug Tracker
 <<<<<<< HEAD
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
+<<<<<<< HEAD
 If you spotted it first, help us to smash it by providing a detailed and welcomed
 `feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+=======
+If you spotted it first, help us smashing it by providing a detailed and welcomed
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 
 Do not contact contributors directly about support or help with technical issues.
 =======
@@ -187,6 +211,7 @@ Contributors
 * Luis M. Ontalba <luis.martinez@tecnativa.com>
 >>>>>>> 4040b305 ([MIG] analytic_account: Migrated to 10.0)
 
+<<<<<<< HEAD
    -  Pedro M. Baeza
    -  Luis M. Ontalba
    -  Cristina Martin R.
@@ -201,6 +226,12 @@ Contributors
 -  `APSL-Nagarro <https://apsl.tech>`__:
 
    -  Bernat Obrador <bobrador@apsl.net>
+=======
+  * Pedro M. Baeza
+  * Luis M. Ontalba
+  * Cristina Martin R.
+  * Sergio Teruel
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 
 Maintainers
 -----------
@@ -215,6 +246,10 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
+<<<<<<< HEAD
 This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/17.0/analytic_partner>`_ project on GitHub.
+=======
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/12.0/analytic_partner>`_ project on GitHub.
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

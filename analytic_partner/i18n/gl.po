@@ -54,7 +54,11 @@ msgstr "Custo/Beneficio"
 msgstr ""
 
 #. module: analytic_partner
+<<<<<<< HEAD
 #: view:res.partner:analytic_partner.view_partner_form_analytic
+=======
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 msgid "Cost/Revenue"
 msgstr ""
 >>>>>>> fa536074 (OCA Transbot updated translations from Transifex)
@@ -79,6 +83,7 @@ msgstr "Outro asociado"
 msgstr ""
 
 #. module: analytic_partner
+<<<<<<< HEAD
 #: model:ir.model,name:analytic_partner.model_account_invoice
 msgid "Invoice"
 msgstr "Factura"
@@ -86,6 +91,11 @@ msgstr "Factura"
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_move_line
 msgid "Journal Items"
+=======
+#: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__other_partner_id
+#: model_terms:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
+msgid "Other Partner"
+>>>>>>> 7a883016 ([MIG] analytic_partner: Migration to 12.0)
 msgstr ""
 
 #. module: analytic_partner
