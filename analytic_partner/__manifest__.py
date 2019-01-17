@@ -6,8 +6,8 @@
 {
     'name': 'Link analytic items and partner',
     'summary': 'Search and group analytic entries by partner',
-    'version': '11.0.1.0.0',
-    'category': 'Accounting',
+    'version': '12.0.1.0.0',
+    'category': 'Analytic Accounting',
     'website': 'https://www.tecnativa.com',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
