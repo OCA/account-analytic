@@ -23,3 +23,8 @@ msgstr ""
 #: model:ir.model,name:account_analytic_sequence.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Conta analítica"
+
+#. module: account_analytic_sequence
+#: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__code
+msgid "Reference"
+msgstr ""
