@@ -22,6 +22,7 @@ setuptools.setup(
         'odoo11-addon-procurement_mto_analytic',
         'odoo11-addon-product_analytic',
         'odoo11-addon-stock_analytic',
+        'odoo11-addon-stock_inventory_analytic',
     ],
     classifiers=[
         'Programming Language :: Python',
