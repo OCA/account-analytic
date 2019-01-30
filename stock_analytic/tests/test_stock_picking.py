@@ -16,12 +16,33 @@ class TestStockPicking(TransactionCase):
 
         self.product = self.env.ref('product.product_product_4')
         self.product_categ = self.env.ref('product.product_category_5')
-        self.valuation_account = self.env.ref(
-            'l10n_generic_coa.1_conf_cas')
-        self.stock_input_account = self.env.ref(
-            'l10n_generic_coa.1_current_liabilities')
-        self.stock_output_account = self.env.ref(
-            'l10n_generic_coa.1_conf_a_expense')
+        self.valuation_account = self.env['account.account'].create({
+            'name': 'Test stock valuation',
+            'code': 'tv',
+            'user_type_id':
+                self.env['account.account.type'].search(
+                    [], limit=1).id,
+            'reconcile': True,
+            'company_id': self.env.ref('base.main_company').id,
+        })
+        self.stock_input_account = self.env['account.account'].create({
+            'name': 'Test stock input',
+            'code': 'tsti',
+            'user_type_id':
+                self.env['account.account.type'].search(
+                    [], limit=1).id,
+            'reconcile': True,
+            'company_id': self.env.ref('base.main_company').id,
+        })
+        self.stock_output_account = self.env['account.account'].create({
+            'name': 'Test stock output',
+            'code': 'tout',
+            'user_type_id':
+                self.env['account.account.type'].search(
+                    [], limit=1).id,
+            'reconcile': True,
+            'company_id': self.env.ref('base.main_company').id,
+        })
         self.analytic_account = self.env.ref(
             'analytic.analytic_agrolait')
         self.warehouse = self.env.ref('stock.warehouse0')
@@ -89,8 +110,9 @@ class TestStockPicking(TransactionCase):
         self.assertEqual(picking.state, 'confirmed')
 
     def _force_assign_no_error(self, picking):
-        picking.force_assign()
-        self.assertEqual(picking.state, 'assigned')
+        self.picking.move_line_ids.write({'qty_done': 5.0})
+        picking.button_validate()
+        self.assertEqual(picking.state, 'confirmed')
 
     def _picking_done_no_error(self, picking):
         picking.action_done()
