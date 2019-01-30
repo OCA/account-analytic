@@ -33,3 +33,10 @@ class StockMove(models.Model):
                     'analytic_account_id': self.analytic_account_id.id,
                 })
         return res
+
+
+class StockMoveLine(models.Model):
+    _inherit = "stock.move.line"
+
+    analytic_account_id = fields.Many2one(
+        related='move_id.analytic_account_id')
