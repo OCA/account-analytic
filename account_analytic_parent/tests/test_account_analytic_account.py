@@ -31,14 +31,25 @@ class TestAccountAnalyticRecursion(TransactionCase):
             {"name": "parent2 aa",
              "code": "01",
              "partner_id": self.partner2.id})
+        self.analytic_parent3 = self.analytic_account_obj.create(
+            {"name": "parent3 aa",
+             "code": "01",
+             "partner_id": self.partner2.id})
+        self.analytic_son2 = self.analytic_account_obj.create(
+            {"name": "son aa",
+             "code": "02",
+             "parent_id": self.analytic_parent3.id})
         self.create_analytic_line(
             "Analytic line son", self.analytic_son, 50)
         self.create_analytic_line(
             "Analytic line parent1", self.analytic_parent1, 100)
         self.create_analytic_line(
             "Analytic line parent2", self.analytic_parent2, 50)
+        self.create_analytic_line(
+            "Analytic line son2", self.analytic_son2, -50)
         self.assertEqual(self.analytic_parent1.debit, 0,
                          "Analytic account in the debit side")
+        self.assertEqual(self.analytic_parent3.debit, 50)
 
     def create_analytic_line(self, name, analytic, amount):
         return self.analytic_line_obj.create({
@@ -71,6 +82,9 @@ class TestAccountAnalyticRecursion(TransactionCase):
                          "Analytic account in the debit side")
         self.assertEqual(self.analytic_parent2.credit, 50, "Wrong amount")
         self.assertEqual(self.analytic_parent2.balance, 50, "Wrong amount")
+        self.assertEqual(self.analytic_parent3.debit, 50)
+        self.assertEqual(self.analytic_parent3.credit, 0)
+        self.assertEqual(self.analytic_parent3.balance, -50)
 
     def test_archive(self):
         self.analytic_parent1.toggle_active()
@@ -80,3 +94,13 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.analytic_parent1.toggle_active()
         with self.assertRaises(ValidationError):
             self.analytic_son.toggle_active()
+
+    def test_name(self):
+        self.assertEqual(
+            self.analytic_son.complete_name,
+            'parent aa / son aa'
+        )
+        self.assertEqual(
+            self.analytic_son.display_name,
+            '[02] parent aa / son aa',
+        )
