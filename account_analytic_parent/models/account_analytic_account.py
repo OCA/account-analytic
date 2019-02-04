@@ -6,8 +6,6 @@
 # Copyright 2018 Brainbean Apps
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from collections import defaultdict
-
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
@@ -62,17 +60,15 @@ class AccountAnalyticAccount(models.Model):
                 groupby=['currency_id'],
                 lazy=False,
             )
-            data_credit = defaultdict(float)
-            for l in credit_groups:
-                account_currency_id = ResCurrency.browse(l['currency_id'][0])
-                data_credit[l['currency_id'][0]] += (
-                    account_currency_id._convert(
-                        l['amount'],
-                        user_currency_id,
-                        self.env.user.company_id,
-                        fields.Date.today()
-                    )
-                )
+            credit = sum(map(
+                lambda x: ResCurrency.browse(x['currency_id'][0])._convert(
+                    x['amount'],
+                    user_currency_id,
+                    self.env.user.company_id,
+                    fields.Date.today()
+                ),
+                credit_groups
+            ))
 
             debit_groups = AccountAnalyticLine.read_group(
                 domain=domain + [('amount', '<', 0.0)],
@@ -80,20 +76,18 @@ class AccountAnalyticAccount(models.Model):
                 groupby=['currency_id'],
                 lazy=False,
             )
-            data_debit = defaultdict(float)
-            for l in debit_groups:
-                account_currency_id = ResCurrency.browse(l['currency_id'][0])
-                data_debit[l['currency_id'][0]] += (
-                    account_currency_id._convert(
-                        l['amount'],
-                        user_currency_id,
-                        self.env.user.company_id,
-                        fields.Date.today()
-                    )
-                )
+            debit = sum(map(
+                lambda x: ResCurrency.browse(x['currency_id'][0])._convert(
+                    x['amount'],
+                    user_currency_id,
+                    self.env.user.company_id,
+                    fields.Date.today()
+                ),
+                debit_groups
+            ))
 
-            account.debit = abs(sum(data_debit.values()))
-            account.credit = sum(data_credit.values())
+            account.debit = abs(debit)
+            account.credit = credit
             account.balance = account.credit - account.debit
 
     @api.multi
