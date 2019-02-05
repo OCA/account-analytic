@@ -58,14 +58,14 @@ class AccountAnalyticAccount(models.Model):
 
             credit_groups = AccountAnalyticLine.read_group(
                 domain=domain + [('amount', '>=', 0.0)],
-                fields=['account_id', 'currency_id', 'amount'],
-                groupby=['account_id', 'currency_id'],
+                fields=['currency_id', 'amount'],
+                groupby=['currency_id'],
                 lazy=False,
             )
             data_credit = defaultdict(float)
             for l in credit_groups:
                 account_currency_id = ResCurrency.browse(l['currency_id'][0])
-                data_credit[l['account_id'][0]] += (
+                data_credit[l['currency_id'][0]] += (
                     account_currency_id._convert(
                         l['amount'],
                         user_currency_id,
@@ -76,14 +76,14 @@ class AccountAnalyticAccount(models.Model):
 
             debit_groups = AccountAnalyticLine.read_group(
                 domain=domain + [('amount', '<', 0.0)],
-                fields=['account_id', 'currency_id', 'amount'],
-                groupby=['account_id', 'currency_id'],
+                fields=['currency_id', 'amount'],
+                groupby=['currency_id'],
                 lazy=False,
             )
             data_debit = defaultdict(float)
             for l in debit_groups:
                 account_currency_id = ResCurrency.browse(l['currency_id'][0])
-                data_debit[l['account_id'][0]] += (
+                data_debit[l['currency_id'][0]] += (
                     account_currency_id._convert(
                         l['amount'],
                         user_currency_id,
