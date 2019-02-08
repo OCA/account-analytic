@@ -13,7 +13,7 @@ class PurchaseOrderLine(models.Model):
 
         res = super(PurchaseOrderLine, self)._merge_in_existing_line
 
-        if len(self.account_analytic_id) == 0:
+        if not self.account_analytic_id:
             po_line_analytic_account = False
         else:
             po_line_analytic_account = self.account_analytic_id.id

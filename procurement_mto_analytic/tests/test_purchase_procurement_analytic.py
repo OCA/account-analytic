@@ -9,6 +9,10 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
         super(TestPurchaseProcurementAnalytic, cls).setUpClass()
+
+        cls.AnalyticAccount = cls.env['account.analytic.account']
+        cls.SaleOrderLine = cls.env['sale.order.line']
+
         cls.vendor = cls.env['res.partner'].create({
             'name': 'Partner #2',
         })
@@ -26,13 +30,13 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         cls.partner = cls.env['res.partner'].create({
             'name': 'Partner #1',
         })
-        cls.analytic_account = cls.env['account.analytic.account'].create({
+        cls.analytic_account = cls.AnalyticAccount.create({
             'name': 'Test Analytic Account',
         })
-        cls.analytic_account_2 = cls.env['account.analytic.account'].create({
+        cls.analytic_account_2 = cls.AnalyticAccount.create({
             'name': 'Test Analytic Account2',
         })
-        cls.analytic_account_3 = cls.env['account.analytic.account'].create({
+        cls.analytic_account_3 = cls.AnalyticAccount.create({
             'name': 'Test Analytic Account2',
         })
         cls.sale_order = cls.env['sale.order'].create({
@@ -78,7 +82,7 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         # into the existing purchase order line, as the analytic accounts
         # match. As a result, just one purchase order line should still be
         # found.
-        self.env['sale.order.line'].create({
+        self.SaleOrderLine.create({
             'product_id': self.product.id,
             'product_uom_qty': 1,
             'price_unit': self.product.list_price,
@@ -92,7 +96,7 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         # order line, as the analytic accounts no longer match.
         purcahse_order.order_id.order_line[0].account_analytic_id =\
             self.analytic_account_2.id
-        self.env['sale.order.line'].create({
+        self.SaleOrderLine.create({
             'product_id': self.product.id,
             'product_uom_qty': 1,
             'price_unit': self.product.list_price,
@@ -108,7 +112,7 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         purcahse_order = self.env['purchase.order.line'].search(
             [('account_analytic_id', '=', self.analytic_account_3.id)])
         purcahse_order.order_id.order_line[0].account_analytic_id = []
-        self.env['sale.order.line'].create({
+        self.SaleOrderLine.create({
             'product_id': self.product.id,
             'product_uom_qty': 1,
             'price_unit': self.product.list_price,
