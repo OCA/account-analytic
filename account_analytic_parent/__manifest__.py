@@ -31,4 +31,5 @@
     'demo': [
         'data/analytic_account_demo.xml',
     ],
+    'post_init_hook': 'post_init_hook',
 }
