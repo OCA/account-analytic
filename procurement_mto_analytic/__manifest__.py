@@ -4,7 +4,7 @@
     'name': 'Purchase Analytic (MTO)',
     'summary': 'This module sets analytic account in purchase order line from '
                'sale order analytic account',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'category': 'Analytic',
     'license': 'AGPL-3',
     'author': "Tecnativa,"
@@ -13,7 +13,8 @@
     'website': 'https://github.com/OCA/account-analytic',
     'depends': [
         'sale_stock',
-        'purchase',
+        'stock',
+        'purchase_stock',
     ],
     'installable': True,
 }
