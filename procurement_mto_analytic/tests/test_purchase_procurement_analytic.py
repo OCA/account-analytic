@@ -16,7 +16,7 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
             'name': cls.vendor.id,
         })
         cls.mto = cls.env.ref('stock.route_warehouse0_mto')
-        cls.buy = cls.env.ref('purchase.route_warehouse0_buy')
+        cls.buy = cls.env.ref('purchase_stock.route_warehouse0_buy')
         cls.product = cls.env['product.product'].create({
             'name': 'Product Test',
             'seller_ids': [(6, 0, [cls.supplierinfo.id])],
