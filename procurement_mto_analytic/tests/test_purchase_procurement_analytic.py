@@ -9,41 +9,74 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
         super(TestPurchaseProcurementAnalytic, cls).setUpClass()
-        cls.vendor = cls.env['res.partner'].create({
+        vendor = cls.env['res.partner'].create({
             'name': 'Partner #2',
         })
-        cls.supplierinfo = cls.env['product.supplierinfo'].create({
-            'name': cls.vendor.id,
+        supplierinfo = cls.env['product.supplierinfo'].create({
+            'name': vendor.id,
         })
-        cls.mto = cls.env.ref('stock.route_warehouse0_mto')
-        cls.buy = cls.env.ref('purchase_stock.route_warehouse0_buy')
+        mto = cls.env.ref('stock.route_warehouse0_mto')
+        buy = cls.env.ref('purchase_stock.route_warehouse0_buy')
         cls.product = cls.env['product.product'].create({
             'name': 'Product Test',
-            'seller_ids': [(6, 0, [cls.supplierinfo.id])],
-            'route_ids': [(6, 0, [cls.buy.id,
-                                  cls.mto.id])],
+            'seller_ids': [(6, 0, [supplierinfo.id])],
+            'route_ids': [(6, 0, [buy.id, mto.id])],
+        })
+        supplierinfo_service = cls.env['product.supplierinfo'].create({
+            'name': vendor.id,
+        })
+        cls.service_product = cls.env['product.product'].create({
+            'name': 'Product Service Test',
+            'seller_ids': [(6, 0, [supplierinfo_service.id])],
+            'type': 'service',
+            'service_to_purchase': True,
         })
         cls.partner = cls.env['res.partner'].create({
             'name': 'Partner #1',
         })
-        cls.analytic_account = cls.env['account.analytic.account'].create({
-            'name': 'Test Analytic Account',
-        })
-        cls.sale_order = cls.env['sale.order'].create({
-            'partner_id': cls.partner.id,
-            'analytic_account_id': cls.analytic_account.id,
-            'order_line': [(0, 0, {
-                'product_id': cls.product.id,
-                'product_uom_qty': 1,
-                'price_unit': cls.product.list_price,
-                'name': cls.product.name,
-            })],
-            'picking_policy': 'direct',
-        })
 
     def test_sale_to_procurement(self):
-        self.sale_order.with_context(test_enabled=True).action_confirm()
+        analytic_account = self.env['account.analytic.account'].create({
+            'name': 'Test Analytic Account',
+        })
+        sale_order = self.env['sale.order'].create({
+            'partner_id': self.partner.id,
+            'analytic_account_id': analytic_account.id,
+            'order_line': [
+                (0, 0, {
+                    'product_id': self.product.id,
+                    'product_uom_qty': 1,
+                    'price_unit': self.product.list_price,
+                    'name': self.product.name,
+                })
+            ],
+            'picking_policy': 'direct',
+        })
+        sale_order.with_context(test_enabled=True).action_confirm()
 
-        purcahse_order = self.env['purchase.order.line'].search(
-            [('account_analytic_id', '=', self.analytic_account.id)])
-        self.assertTrue(purcahse_order)
+        purchase_order = self.env['purchase.order.line'].search(
+            [('account_analytic_id', '=', analytic_account.id)])
+        self.assertTrue(purchase_order)
+
+    def test_sale_service_product(self):
+        analytic_account = self.env['account.analytic.account'].create({
+            'name': 'Test Service Analytic Account',
+        })
+        sale_order = self.env['sale.order'].create({
+            'partner_id': self.partner.id,
+            'analytic_account_id': analytic_account.id,
+            'order_line': [
+                (0, 0, {
+                    'product_id': self.service_product.id,
+                    'product_uom_qty': 1,
+                    'price_unit': self.product.list_price,
+                    'name': self.product.name,
+                })
+            ],
+            'picking_policy': 'direct',
+        })
+        sale_order.with_context(test_enabled=True).action_confirm()
+
+        purchase_order = self.env['purchase.order.line'].search(
+            [('account_analytic_id', '=', analytic_account.id)])
+        self.assertTrue(purchase_order)

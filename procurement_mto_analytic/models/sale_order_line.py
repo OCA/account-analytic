@@ -15,3 +15,15 @@ class SaleOrderLine(models.Model):
                 self.order_id.analytic_account_id.id,
         })
         return res
+
+    @api.multi
+    def _purchase_service_prepare_line_values(self, purchase_order,
+                                              quantity=False):
+        res = super(SaleOrderLine, self).\
+            _purchase_service_prepare_line_values(
+                purchase_order=purchase_order, quantity=quantity)
+        res.update({
+            'account_analytic_id':
+                self.order_id.analytic_account_id.id,
+        })
+        return res
