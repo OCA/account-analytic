@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo12-addon-account_analytic_sequence',
         'odoo12-addon-analytic_partner',
         'odoo12-addon-analytic_partner_hr_timesheet',
+        'odoo12-addon-mrp_analytic',
     ],
     classifiers=[
         'Programming Language :: Python',
