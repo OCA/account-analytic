@@ -9,10 +9,8 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
         super(TestPurchaseProcurementAnalytic, cls).setUpClass()
-
         cls.AnalyticAccount = cls.env['account.analytic.account']
         cls.SaleOrderLine = cls.env['sale.order.line']
-
         cls.vendor = cls.env['res.partner'].create({
             'name': 'Partner #2',
         })
@@ -50,7 +48,6 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
             })],
             'picking_policy': 'direct',
         })
-
         cls.sale_order2 = cls.env['sale.order'].create({
             'partner_id': cls.partner.id,
             'analytic_account_id': cls.analytic_account_3.id,
@@ -64,20 +61,17 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         })
 
     def test_sale_to_procurement(self):
-
         # No purchase order lines should initially be found with newly
         # created analytic account.
         purcahse_order = self.env['purchase.order.line'].search(
             [('account_analytic_id', '=', self.analytic_account.id)])
         self.assertFalse(purcahse_order)
-
         # One purchase order line should be found with newly created
         # analytic account after confirming sale order.
         self.sale_order.with_context(test_enabled=True).action_confirm()
         purcahse_order = self.env['purchase.order.line'].search(
             [('account_analytic_id', '=', self.analytic_account.id)])
         self.assertEquals(len(purcahse_order.order_id.order_line), 1)
-
         # Adding a new sale order line should merge a new purchase order line
         # into the existing purchase order line, as the analytic accounts
         # match. As a result, just one purchase order line should still be
@@ -90,7 +84,6 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
             'order_id': self.sale_order.id
         })
         self.assertEquals(len(purcahse_order.order_id.order_line), 1)
-
         # Changing the analytic account on the purchase order line and then
         # adding a new line to the sale order should create a new purchase
         # order line, as the analytic accounts no longer match.
@@ -104,7 +97,6 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
             'order_id': self.sale_order.id
         })
         self.assertEquals(len(purcahse_order.order_id.order_line), 2)
-
         # If no analytic accounts are set, purchase order lines should
         # get merged.
         po_linecount = len(self.env['purchase.order.line'].search([]))
