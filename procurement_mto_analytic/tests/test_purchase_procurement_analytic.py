@@ -38,6 +38,12 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
         analytic_account = self.env["account.analytic.account"].create(
             {"name": "Test Analytic Account"}
         )
+        analytic_account_2 = self.env["account.analytic.account"].create(
+            {"name": "Test Analytic Account 2"}
+        )
+        analytic_account_3 = self.env["account.analytic.account"].create(
+            {"name": "Test Analytic Account 3"}
+        )
         sale_order = self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
@@ -57,12 +63,89 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
                 "picking_policy": "direct",
             }
         )
+        sale_order2 = self.env["sale.order"].create(
+            {
+                "partner_id": self.partner.id,
+                "analytic_account_id": analytic_account_3.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product.id,
+                            "product_uom_qty": 1,
+                            "price_unit": self.product.list_price,
+                            "name": self.product.name,
+                        },
+                    )
+                ],
+                "picking_policy": "direct",
+            }
+        )
+        # No purchase order lines should initially be found with newly
+        # created analytic account.
+        purchase_order = self.env["purchase.order.line"].search(
+            [("account_analytic_id", "=", analytic_account.id)]
+        )
+        self.assertFalse(purchase_order)
+        # One purchase order line should be found with newly created
+        # analytic account after confirming sale order.
         sale_order.with_context(test_enabled=True).action_confirm()
 
         purchase_order = self.env["purchase.order.line"].search(
             [("account_analytic_id", "=", analytic_account.id)]
         )
-        self.assertTrue(purchase_order)
+        self.assertEqual(len(purchase_order.order_id.order_line), 1)
+        # Adding a new sale order line should merge a new purchase order line
+        # into the existing purchase order line, as the analytic accounts
+        # match. As a result, just one purchase order line should still be
+        # found.
+        self.env["sale.order.line"].create(
+            {
+                "product_id": self.product.id,
+                "product_uom_qty": 1,
+                "price_unit": self.product.list_price,
+                "name": self.product.name,
+                "order_id": sale_order.id,
+            }
+        )
+        self.assertEqual(len(purchase_order.order_id.order_line), 1)
+        # Changing the analytic account on the purchase order line and then
+        # adding a new line to the sale order should create a new purchase
+        # order line, as the analytic accounts no longer match.
+        purchase_order.order_id.order_line[
+            0
+        ].account_analytic_id = analytic_account_2.id
+        self.env["sale.order.line"].create(
+            {
+                "product_id": self.product.id,
+                "product_uom_qty": 1,
+                "price_unit": self.product.list_price,
+                "name": self.product.name,
+                "order_id": sale_order.id,
+            }
+        )
+        self.assertEqual(len(purchase_order.order_id.order_line), 2)
+        # If no analytic accounts are set, purchase order lines should
+        # get merged.
+        po_linecount = len(self.env["purchase.order.line"].search([]))
+        sale_order2.with_context(test_enabled=True).action_confirm()
+        purchase_order = self.env["purchase.order.line"].search(
+            [("account_analytic_id", "=", analytic_account_3.id)]
+        )
+        purchase_order.order_id.order_line[0].account_analytic_id = []
+        self.env["sale.order.line"].create(
+            {
+                "product_id": self.product.id,
+                "product_uom_qty": 1,
+                "price_unit": self.product.list_price,
+                "name": self.product.name,
+                "order_id": sale_order.id,
+            }
+        )
+        self.assertEqual(
+            len(self.env["purchase.order.line"].search([])), po_linecount + 1
+        )
 
     def test_sale_service_product(self):
         analytic_account = self.env["account.analytic.account"].create(

@@ -109,6 +109,10 @@ Contributors
 
   * Alan Ramos <alan.ramos@jarsa.com>
 
+* `Avoin.Systems <https://avoin.systems/>`__:
+
+  * Oskars Zālītis <oskars.zalitis@avoin.systems>
+
 Maintainers
 ~~~~~~~~~~~
 
