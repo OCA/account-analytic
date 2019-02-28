@@ -69,11 +69,6 @@ Authors
 * Tecnativa
 * VentorTech
 
-Contributors
-~~~~~~~~~~~~
-
-* Oskars Zālītis <oskars.zalitis@avoin.systems> (https://avoin.systems)
-
 Maintainers
 ~~~~~~~~~~~
 
