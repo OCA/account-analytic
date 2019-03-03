@@ -21,24 +21,26 @@ msgstr ""
 
 #. module: mrp_analytic
 #: model:ir.model,name:mrp_analytic.model_account_analytic_account
-#: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production_analytic_account_id
+#: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production__analytic_account_id
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
 
 #. module: mrp_analytic
-#: model:ir.model,name:mrp_analytic.model_mrp_production
-msgid "Manufacturing Order"
-msgstr "Orden de fabricación"
-
-#. module: mrp_analytic
-#: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account_num_productions
-#: model:ir.model.fields,field_description:mrp_analytic.field_project_project_num_productions
-msgid "Num productions"
+#: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account__num_productions
+#, fuzzy
+msgid "Num Productions"
 msgstr "Número de producciones"
 
 #. module: mrp_analytic
-#: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account_productions
-#: model:ir.model.fields,field_description:mrp_analytic.field_project_project_productions
-#: model:ir.ui.view,arch_db:mrp_analytic.view_account_analytic_account_form_mrp_production
+#: model:ir.model,name:mrp_analytic.model_mrp_production
+#, fuzzy
+msgid "Production Order"
+msgstr "Producciones"
+
+#. module: mrp_analytic
+#: model_terms:ir.ui.view,arch_db:mrp_analytic.view_account_analytic_account_form_mrp_production
 msgid "Productions"
 msgstr "Producciones"
+
+#~ msgid "Manufacturing Order"
+#~ msgstr "Orden de fabricación"
