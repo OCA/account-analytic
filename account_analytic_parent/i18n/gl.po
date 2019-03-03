@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_parent
+# 	* account_analytic_parent
 #
 msgid ""
 msgstr ""
@@ -17,6 +17,18 @@ msgstr ""
 "X-Generator: Weblate 3.4\n"
 
 #. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:149
+#, python-format
+msgid "%(name)s - %(partner)s"
+msgstr ""
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:112
+#, python-format
+msgid "%(parent)s / %(own)s"
+msgstr ""
+
+#. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Conta analítica"
@@ -27,19 +39,40 @@ msgid "Child Accounts"
 msgstr "Contas fillas"
 
 #. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
+msgid "Complete Name"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
+msgid "Name"
+msgstr ""
+
+#. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
 msgid "Parent Analytic Account"
 msgstr "Conta analítica nai"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:87
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_path
+msgid "Parent Path"
+msgstr ""
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:127
 #, python-format
 msgid "Please activate first parent account %s"
 msgstr "Por favor, primeiro activa a aconta pai %s"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:57
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:99
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "Non podes crear contas analíticas recursivas."
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:144
+#, python-format
+msgid "[%(code)s] %(name)s"
+msgstr ""
