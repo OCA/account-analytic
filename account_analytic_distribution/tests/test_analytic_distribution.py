@@ -1,47 +1,56 @@
 # -*- coding: utf-8 -*-
 # Copyright 2017 - Tecnativa - Vicent Cubells
+# Copyright 201p - Tecnativa - Carlos Dauden
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests import common
+from odoo.tests.common import TransactionCase
 from odoo.exceptions import ValidationError
 
 
-class TestAnalyticDistribution(common.SavepointCase):
-    @classmethod
-    def setUpClass(cls):
-        super(TestAnalyticDistribution, cls).setUpClass()
-        cls.account1 = cls.env['account.analytic.account'].create({
+class TestAnalyticDistribution(TransactionCase):
+
+    def setUp(self):
+        super(TestAnalyticDistribution, self).setUp()
+        self.account1 = self.env['account.analytic.account'].create({
             'name': 'Test account #1',
         })
-        cls.account2 = cls.env['account.analytic.account'].create({
+        self.account2 = self.env['account.analytic.account'].create({
             'name': 'Test account #2',
         })
-        cls.invoice_model = cls.env['account.invoice']
-        cls.distribution = cls.env['account.analytic.distribution'].create({
+        self.tag1 = self.env['account.analytic.tag'].create({
+            'name': 'Test analytic tag #1',
+        })
+        self.tag2 = self.env['account.analytic.tag'].create({
+            'name': 'Test analytic tag #2',
+        })
+        self.invoice_model = self.env['account.invoice']
+        self.distribution = self.env['account.analytic.distribution'].create({
             'name': 'Test distribution initial',
             'rule_ids': [
                 (0, 0, {
                     'sequence': 10,
                     'percent': 75.00,
-                    'analytic_account_id': cls.account1.id,
+                    'analytic_account_id': self.account1.id,
+                    'analytic_tag_ids': [(6, 0, [self.tag1.id, self.tag2.id])]
                 }),
                 (0, 0, {
                     'sequence': 20,
                     'percent': 25.00,
-                    'analytic_account_id': cls.account2.id,
+                    'analytic_account_id': self.account2.id,
+                    'analytic_tag_ids': [(6, 0, self.tag2.ids)]
                 }),
             ]
         })
-        cls.user_type = cls.env.ref('account.data_account_type_revenue')
-        cls.invoice = cls.invoice_model.create({
-            'partner_id': cls.env.ref('base.res_partner_12').id,
+        self.user_type = self.env.ref('account.data_account_type_revenue')
+        self.invoice = self.invoice_model.create({
+            'partner_id': self.env.ref('base.res_partner_12').id,
             'invoice_line_ids': [(0, 0, {
                 'name': 'Product Test',
                 'quantity': 1.0,
-                'uom_id': cls.env.ref('product.product_uom_unit').id,
+                'uom_id': self.env.ref('product.product_uom_unit').id,
                 'price_unit': 100.0,
-                'account_id': cls.env['account.account'].search([
-                    ('user_type_id', '=', cls.user_type.id)], limit=1).id,
+                'account_id': self.env['account.account'].search([
+                    ('user_type_id', '=', self.user_type.id)], limit=1).id,
             })]
         })
 
@@ -63,6 +72,9 @@ class TestAnalyticDistribution(common.SavepointCase):
             self.account1.balance, amount1 + 75.0)
         self.assertAlmostEqual(
             self.account2.balance, amount2 + 25.0)
+        # Check tags
+        self.assertEqual(len(self.account1.line_ids.mapped('tag_ids'), 2))
+        self.assertEqual(len(self.account2.line_ids.mapped('tag_ids'), 1))
 
     def test_sum_percent_rules(self):
         # Check incorrect sum of rules
@@ -92,3 +104,7 @@ class TestAnalyticDistribution(common.SavepointCase):
                     }),
                 ]
             })
+
+    def test_check_uniq_rule(self):
+        with self.assertRaises(ValidationError):
+            self.distribution.rule_ids[0].copy()
