@@ -7,7 +7,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import ValidationError
 
 
 class AccountAnalyticAccount(models.Model):
@@ -52,7 +52,7 @@ class AccountAnalyticAccount(models.Model):
     def check_recursion(self):
         for account in self:
             if not super(AccountAnalyticAccount, account)._check_recursion():
-                raise UserError(
+                raise ValidationError(
                     _('You can not create recursive analytic accounts.'),
                 )
 
@@ -82,7 +82,7 @@ class AccountAnalyticAccount(models.Model):
             if (account.active and account.parent_id and
                     account.parent_id not in self and
                     not account.parent_id.active):
-                raise UserError(
+                raise ValidationError(
                     _('Please activate first parent account %s')
                     % account.parent_id.display_name)
 
