@@ -14,15 +14,19 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: account_analytic_distribution
+#: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_tag_ids
+msgid "Analytic Tags"
+msgstr ""
+
+#. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_account_id
 msgid "Analytic account"
 msgstr ""
 
 #. module: account_analytic_distribution
-#: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:81
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:100
 #, python-format
-msgid "Analytic account must be unique per distribution!"
+msgid "Analytic account and tags combination must be unique for distribution!"
 msgstr ""
 
 #. module: account_analytic_distribution
@@ -82,7 +86,7 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:38
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:39
 #, python-format
 msgid "Distribution name must be unique per Company!"
 msgstr ""
@@ -154,14 +158,14 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:77
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:83
 #, python-format
 msgid "Percentage must be positive!"
 msgstr ""
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:79
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:85
 #, python-format
 msgid "Percentage must less or equal 100%!"
 msgstr ""
@@ -172,7 +176,7 @@ msgid "Rules"
 msgstr ""
 
 #. module: account_analytic_distribution
-#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:49
+#: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:50
 #, python-format
 msgid "Rules percent doesn't sum 100%"
 msgstr ""
