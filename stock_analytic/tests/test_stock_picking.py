@@ -106,11 +106,11 @@ class TestStockPicking(TransactionCase):
         return picking
 
     def _confirm_picking_no_error(self, picking):
-        picking.action_assign()
+        picking.action_confirm()
         self.assertEqual(picking.state, 'confirmed')
 
     def _force_assign_no_error(self, picking):
-        picking.action_confirm()
+        picking.button_validate()
         self.assertEqual(picking.state, 'confirmed')
 
     def _picking_done_no_error(self, picking):
