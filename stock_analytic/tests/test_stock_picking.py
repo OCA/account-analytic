@@ -110,6 +110,7 @@ class TestStockPicking(TransactionCase):
         self.assertEqual(picking.state, 'confirmed')
 
     def _force_assign_no_error(self, picking):
+        self.picking.move_line_ids.write({'qty_done': 5.0})
         picking.button_validate()
         self.assertEqual(picking.state, 'confirmed')
 
