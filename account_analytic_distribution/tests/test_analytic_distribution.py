@@ -73,8 +73,8 @@ class TestAnalyticDistribution(TransactionCase):
         self.assertAlmostEqual(
             self.account2.balance, amount2 + 25.0)
         # Check tags
-        self.assertEqual(len(self.account1.line_ids.mapped('tag_ids'), 2))
-        self.assertEqual(len(self.account2.line_ids.mapped('tag_ids'), 1))
+        self.assertEqual(len(self.account1.line_ids.mapped('tag_ids')), 2)
+        self.assertEqual(len(self.account2.line_ids.mapped('tag_ids')), 1)
 
     def test_sum_percent_rules(self):
         # Check incorrect sum of rules
