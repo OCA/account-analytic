@@ -25,6 +25,11 @@ msgid "Procurement"
 msgstr "Aquisições"
 
 #. module: purchase_procurement_analytic
+#: model:ir.model,name:purchase_procurement_analytic.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr ""
+
+#. module: purchase_procurement_analytic
 #: model:ir.model,name:purchase_procurement_analytic.model_stock_move
 msgid "Stock Move"
 msgstr ""

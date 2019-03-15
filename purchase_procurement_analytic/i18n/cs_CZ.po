@@ -25,9 +25,11 @@ msgid "Procurement"
 msgstr "Zprostředkování "
 
 #. module: purchase_procurement_analytic
+#: model:ir.model,name:purchase_procurement_analytic.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Řádek objednávky"
+
+#. module: purchase_procurement_analytic
 #: model:ir.model,name:purchase_procurement_analytic.model_stock_move
 msgid "Stock Move"
 msgstr "Posunout sklad"
-
-#~ msgid "Purchase Order Line"
-#~ msgstr "Řádek objednávky"
