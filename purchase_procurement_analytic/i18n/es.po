@@ -25,9 +25,11 @@ msgid "Procurement"
 msgstr "Abastecimiento"
 
 #. module: purchase_procurement_analytic
+#: model:ir.model,name:purchase_procurement_analytic.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
+
+#. module: purchase_procurement_analytic
 #: model:ir.model,name:purchase_procurement_analytic.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de existencias"
-
-#~ msgid "Purchase Order Line"
-#~ msgstr "Línea de pedido de compra"
