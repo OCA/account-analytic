@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# Copyright 2018 Camptocamp SA
+# Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.tests import common
@@ -10,7 +9,8 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestAnalyticDefaultAccount, cls).setUpClass()
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
 
         cls.account_analytic_default_model = \
             cls.env['account.analytic.default']
@@ -22,11 +22,15 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
 
         cls.partner_agrolait = cls.env.ref("base.res_partner_2")
         cls.product = cls.env.ref("product.product_product_4")
-        cls.account_receivable = cls.env['account.account'].search(
-            [('user_type_id', '=',
-              cls.env.ref('account.data_account_type_receivable').id)],
-            limit=1
-        )
+        cls.account_receivable = cls.env['account.account'].create({
+            'code': "X1035",
+            'name': "Income",
+            'user_type_id':
+                cls.env.ref('account.data_account_type_receivable').id,
+            'reconcile': True,
+        })
+        cls.partner_agrolait.property_account_receivable_id =\
+            cls.account_receivable.id
         cls.account_sales = cls.env['account.account'].create({
             'code': "X1020",
             'name': "Product Sales - (test)",

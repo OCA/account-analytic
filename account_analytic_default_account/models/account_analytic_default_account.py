@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-# Copyright 2018 Camptocamp SA
+# Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.tools import config
@@ -31,7 +30,7 @@ class AccountAnalyticDefaultAccount(models.Model):
         # date will be handled differently
         date_val = kw.pop('date')
 
-        for key, value in kw.iteritems():
+        for key, value in kw.items():
             if value:
                 domain += ['|', (key, '=', kw.get(key))]
             domain += [(key, '=', False)]
@@ -58,7 +57,7 @@ class AccountAnalyticDefaultAccount(models.Model):
             'account_id': account_id,
         }
         domain = self._account_get_domain(**filters)
-        keys = filters.keys()
+        keys = list(filters)
         if 'date' in keys:
             keys.remove('date')
             keys += ['date_start', 'date_stop']
@@ -80,7 +79,7 @@ class AccountInvoiceLine(models.Model):
 
     @api.onchange('product_id', 'account_id')
     def _onchange_product_id(self):
-        res = super(AccountInvoiceLine, self)._onchange_product_id()
+        res = super()._onchange_product_id()
         if (not config['test_enable'] or
                 self.env.context.get('test_account_analytic_default_account')):
             rec = self.env['account.analytic.default'].account_get(
@@ -102,7 +101,7 @@ class AccountInvoiceLine(models.Model):
             )
             if rec:
                 self.account_analytic_id = rec.analytic_id.id
-        super(AccountInvoiceLine, self)._set_additional_fields(invoice)
+        super()._set_additional_fields(invoice)
 
 
 class AccountMoveLine(models.Model):
@@ -133,7 +132,7 @@ class AccountMoveLine(models.Model):
                 account_id=vals.get('account_id'))
             if rec:
                 vals['analytic_account_id'] = rec.analytic_id.id
-        return super(AccountMoveLine, self).create(vals)
+        return super().create(vals)
 
 
 class AccountMove(models.Model):
@@ -142,4 +141,4 @@ class AccountMove(models.Model):
     @api.multi
     def post(self):
         self.mapped('line_ids')._set_default_analytic_account()
-        return super(AccountMove, self).post()
+        return super().post()
