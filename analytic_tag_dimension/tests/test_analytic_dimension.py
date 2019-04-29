@@ -46,6 +46,15 @@ class TestAnalyticDimensionCase(SavepointCase):
         cls.company_id = cls.env['res.users'].browse(
             cls.env.uid).company_id.id
 
+    def test_analytic_dimension_spaces_error(self):
+        """ Test dimension creation with spaces in code """
+        dimension_error = {
+            'name': 'Test Spaces Error',
+            'code': 'test spaces error',
+        }
+        with self.assertRaises(ValidationError):
+            self.dimension_obj.create(dimension_error)
+
     def test_analytic_entry_dimension(self):
         """ Test dimension creation on analytic entry creation """
         analytic_dimension_test = self.dimension_obj.create({
