@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 
 class AccountAnalyticDimension(models.Model):
     _name = 'account.analytic.dimension'
+    _description = 'Account Analytic Dimension'
 
     name = fields.Char(required=True)
     code = fields.Char(required=True)
@@ -67,6 +68,7 @@ class AccountAnalyticTag(models.Model):
 
 class AnalyticDimensionLine(models.AbstractModel):
     _name = 'analytic.dimension.line'
+    _description = 'Analytic Dimension Line'
     _analytic_tag_field_name = 'analytic_tag_ids'
 
     @api.multi
