@@ -10,14 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2017-11-19 22:13+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2019-05-02 17:02+0000\n"
+"Last-Translator: Katerina Katapodi <katerinakatapodi@gmail.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_account_id
@@ -27,9 +28,9 @@ msgstr "Compte Analytique"
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:80
-#, python-format
+#, fuzzy, python-format
 msgid "Analytic account must be unique per distribution!"
-msgstr ""
+msgstr "Le compte analytique doit etre unique par distribution"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution
@@ -38,12 +39,12 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_search
 msgid "Analytic distribution"
-msgstr ""
+msgstr "Distribution analytique"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution_rule
 msgid "Analytic distribution rule"
-msgstr ""
+msgstr "Regle de distribution analytique"
 
 #. module: account_analytic_distribution
 #: model:ir.actions.act_window,name:account_analytic_distribution.account_analytic_distribution_action
@@ -51,7 +52,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_search
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_tree
 msgid "Analytic distributions"
-msgstr ""
+msgstr "Distributions analytiques"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_res_company
@@ -84,32 +85,31 @@ msgstr "Nom Affiché"
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_distribution_id
 msgid "Distribution"
-msgstr ""
+msgstr "Distribution"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:37
 #, python-format
 msgid "Distribution name must be unique per Company!"
-msgstr ""
+msgstr "Le nom de  distribution doit etre different  pour chaque  Societe!"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_ids
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 msgid "Distribution rules"
-msgstr ""
+msgstr "Regles de distribution"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_res_company_force_percent
-#, fuzzy
 msgid "Force Percent"
-msgstr "Pourcentatge"
+msgstr "Niveau de Pourcentage"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,help:account_analytic_distribution.field_res_company_force_percent
@@ -117,6 +117,8 @@ msgid ""
 "If checked, the sum of all percents of the analytic accounts in a "
 "distribution of this company must be 100%."
 msgstr ""
+"Lors teste, la somme de tous les pourcentages des comptes analytiques d'une "
+"distribution de cette societe doit etre 100%."
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_invoice
@@ -131,7 +133,7 @@ msgstr "Lignes de facture"
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Objet Mis a Jour"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution___last_update
@@ -184,7 +186,7 @@ msgstr "Règles"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:48
 #, python-format
 msgid "Rules percent doesn't sum 100%"
-msgstr ""
+msgstr "Le pourcentage n'est pas 100% selon les regles"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_sequence
