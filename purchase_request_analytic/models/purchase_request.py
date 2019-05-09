@@ -2,8 +2,7 @@
 # Copyright 2019 Eficent Business and IT Consulting Services S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo import api, fields, models
 
 
 class PurchaseRequest(models.Model):
@@ -11,7 +10,6 @@ class PurchaseRequest(models.Model):
 
     analytic_account_id2 = fields.Many2one(
         comodel_name='account.analytic.account',
-        string='Contract / Analytic',
         help='Use to store the value of analytic_account if there is no lines')
     analytic_account_id = fields.Many2one(
         compute='_compute_analytic_account_id',
@@ -69,18 +67,3 @@ class PurchaseRequest(models.Model):
                 return
         self.analytic_account_id2 = self.analytic_account_id
         self.line_ids = res
-
-    @api.constrains('picking_type_id')
-    def check_picking_type(self):
-        """ If the analytic_account_id has a value, then all purchase request
-            lines have the same analytic_account_id. Otherwise, the lines are
-            empty or have different values. If it's empty, the value by default
-            will be Receptions.
-        """
-
-        if not self.analytic_account_id and \
-                self.line_ids.mapped('analytic_account_id'):
-            raise ValidationError(_(
-                'All purchase request lines must have the same analytic '
-                'account'
-            ))
