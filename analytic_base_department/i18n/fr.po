@@ -20,13 +20,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line_account_department_id
-#: model:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
+#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line__account_department_id
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
 msgid "Account Department"
 msgstr "Compte du département"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line_account_department_id
+#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line__account_department_id
 msgid "Account's related department"
 msgstr "Département associé au compte"
 
@@ -41,13 +41,13 @@ msgid "Analytic Line"
 msgstr "Ligne analytique"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_account_department_id
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line_department_id
-#: model:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
+#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_account__department_id
+#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line__department_id
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
 msgid "Department"
 msgstr "Département"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line_department_id
+#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line__department_id
 msgid "User's related department"
 msgstr "Département associé à l'utilisateur"
