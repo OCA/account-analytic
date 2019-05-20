@@ -21,13 +21,13 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line_account_department_id
-#: model:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
+#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line__account_department_id
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
 msgid "Account Department"
 msgstr "Konto odjela"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line_account_department_id
+#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line__account_department_id
 msgid "Account's related department"
 msgstr "Odjel povezan sa kontom"
 
@@ -42,13 +42,13 @@ msgid "Analytic Line"
 msgstr "Stavke analitike"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_account_department_id
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line_department_id
-#: model:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
+#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_account__department_id
+#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line__department_id
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
 msgid "Department"
 msgstr "Odjel"
 
 #. module: analytic_base_department
-#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line_department_id
+#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line__department_id
 msgid "User's related department"
 msgstr "Odjel povezan sa korisnikom"
