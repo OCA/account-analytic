@@ -73,15 +73,15 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
             'analytic_id': cls.analytic_account_4.id
         })
 
-    def create_invoice(self, amount=100, type='out_invoice'):
+    def create_invoice(self, amount=100, inv_type='out_invoice'):
         """ Returns an open invoice """
         invoice = self.invoice_model.create({
             'partner_id': self.partner_agrolait.id,
             'reference_type': 'none',
-            'name': (type == 'out_invoice' and 'invoice to client' or
+            'name': (inv_type == 'out_invoice' and 'invoice to client' or
                      'invoice to supplier'),
             'account_id': self.account_receivable.id,
-            'type': type,
+            'type': inv_type,
             'date_invoice': time.strftime('%Y') + '-06-26',
         })
         self.invoice_line_model.create({
