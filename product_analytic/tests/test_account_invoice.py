@@ -8,7 +8,7 @@ from odoo.tests.common import TransactionCase
 class TestAccountInvoiceLine(TransactionCase):
 
     def setUp(self):
-        super(TestAccountInvoiceLine, self).setUp()
+        super().setUp()
         self.product1 = self.env['product.product'].create({
             'name': 'test product 01'})
         self.analytic_account1 = self.env['account.analytic.account'].create({
