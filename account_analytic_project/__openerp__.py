@@ -42,6 +42,7 @@ difficult to rectify.
     'update_xml': [
         'view/account_analytic_account.xml',
     ],
+    'license': 'AGPL-3',
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
