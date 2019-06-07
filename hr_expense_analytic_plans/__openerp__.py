@@ -41,4 +41,5 @@ Using this module, you will be able to link analytic distributions to expenses.
         'view/hr_expense_analytic_plans_view.xml'
     ],
     'installable': True,
+    'license': 'AGPL-3',
 }
