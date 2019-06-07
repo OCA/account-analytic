@@ -69,5 +69,6 @@
         "wizard/analytic_activity_chart_view.xml"
     ],
     "active": False,
-    "installable": True
+    "installable": True,
+    'license': 'GPL-2 or any later version',
 }
