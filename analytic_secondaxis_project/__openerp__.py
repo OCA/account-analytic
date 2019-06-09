@@ -60,5 +60,5 @@
     ],
     "active": False,
     "installable": True,
-    'license': 'GPL-2 or any later license',
+    'license': 'GPL-2 or any later version',
 }
