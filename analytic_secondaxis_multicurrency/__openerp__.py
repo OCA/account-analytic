@@ -60,5 +60,6 @@
     "update_xml" : [
     ],
     "active": False,
-    "installable": True
+    "installable": True,
+    'license': 'GPL-2 or any later license',
 }
