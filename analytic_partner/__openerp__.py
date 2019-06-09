@@ -20,4 +20,5 @@
         'views/res_partner_views.xml',
     ],
     "installable": True,
+    'license': 'AGPL-3',
 }
