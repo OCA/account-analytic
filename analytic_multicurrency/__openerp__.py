@@ -67,5 +67,6 @@ currency. This setup becomes True, Enjoy !
           "analytic_view.xml",
      ],
      "active": False,
-     "installable": True
+     "installable": True,
+     'license': 'GPL-2 or any later version',
 }
