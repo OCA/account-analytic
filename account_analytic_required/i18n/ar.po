@@ -1,0 +1,119 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_required
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-01 03:39+0000\n"
+"PO-Revision-Date: 2018-09-20 17:01+0000\n"
+"Last-Translator: yaseentai <eltahiryaseen@outlook.com>\n"
+"Language-Team: Arabic (https://www.transifex.com/oca/teams/23907/ar/)\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.1.1\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Account Entry"
+msgstr "قيد الحساب"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "نوع الحساب"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "دائماً"
+
+#. module: account_analytic_required
+#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+msgid "Analytic Policy"
+msgstr "سياسة الحسابات التحليلية"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:59
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+"سياسة الحسابات التحليلية هي ’دائماً‘ للحساب %s ’%s‘ ولكن الحساب التحليلي "
+"فارغ في عنصر اليومية باسم ’%s‘."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:67
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account '%s'."
+msgstr ""
+"سياسة الحسابات التحليلية هي ’ممنوع‘ للحساب %s ’%s‘ ولكن في عنصر اليومية باسم "
+"’%s‘ تم تحديد حساب التحليلي ’%s‘ ."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:77
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+"analytic account is missing in the account move line with label '%s'."
+msgstr ""
+"سياسة الحسابات التحليلية هي ’القيود المرحّلة‘ للحساب %s ’%s‘ ولكن الحساب "
+"التحليلي فارغ في عنصر اليومية باسم ’%s‘."
+
+#. module: account_analytic_required
+#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr "عنصر اليومية"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "ممنوع"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "إختياري"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+msgid "Policy for analytic account"
+msgstr "سياسة  للحسابات التحليلية"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Posted moves"
+msgstr "القيود المرحّلة"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Posted "
+"moves', the accountant will get an error message if no analytic account is "
+"defined when the move is posted ; if you select 'Never', the accountant will "
+"get an error message if an analytic account is present."
+msgstr ""
+"قم بإختيار السياسات للحسابات التحليلية: اذا قم بإختيار \"إختياري\"، للمحاسب "
+"الحرية في اختيار حساب التحليلي ام لا في حركة القيد المحسابي مع هذا النوع من "
+"الحساب; و إن قمت بإختيار \"دائما\"، ستظهر للمحاسب رسالة خطأ ان كان لا يوجد "
+"حساب تحليلي; و ان قمت بإختيار \"قيويد مرحلة\" ستظهر للمحاسب رسالة خطأ اذا لم "
+"يحدد حساب تحليلي في ترحيل القيود; و إن اخترت \"ابداً\\نهائي\"، ستظهر للمحاسب "
+"رسالة خطأ اذا تم تحديد حساب تحليلي."

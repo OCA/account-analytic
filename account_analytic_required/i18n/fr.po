@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_required
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2018
+# Quentin THEURET <odoo@kerpeo.com>, 2018
+# Nicolas JEUDY <njeudy@panda-chi.io>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-02 23:18+0000\n"
+"PO-Revision-Date: 2018-02-02 23:18+0000\n"
+"Last-Translator: Nicolas JEUDY <njeudy@panda-chi.io>, 2018\n"
+"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Account Entry"
+msgstr "Ecriture comptable"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Type de compte"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr "Toujours"
+
+#. module: account_analytic_required
+#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+msgid "Analytic Policy"
+msgstr "Stratégie analytique"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:59
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+"La règle analytique est définie sur 'Toujours' pour le compte%s'%s'mais le "
+"compte analytique est absent de l'écriture ayant libellé '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:67
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account '%s'."
+msgstr ""
+"La règle analytique est définie sur 'Jamais' pour le compte %s '%s' mais "
+"l'écriture avec le libellé '%s' a un compte analytique de définit '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:77
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+"analytic account is missing in the account move line with label '%s'."
+msgstr ""
+"La règle analytique est définie à 'Ecritures comptabilisées' pour le compte "
+"%s '%s' mais le compte analytique est absent de l'écriture ayant le libellé "
+"'%s'."
+
+#. module: account_analytic_required
+#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+msgid "Group By"
+msgstr "Grouper par"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture du journal"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr "Jamais"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr "Facultatif"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+msgid "Policy for analytic account"
+msgstr "Politique pour les comptes analytiques"
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Posted moves"
+msgstr "Ecritures comptabilisées"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Posted "
+"moves', the accountant will get an error message if no analytic account is "
+"defined when the move is posted ; if you select 'Never', the accountant will "
+"get an error message if an analytic account is present."
+msgstr ""
+"Définissez la règle pour les comptes analytiques: si vous sélectionnez "
+"'Facultatif', le comptable est libre de mettre un compte analytique sur une "
+"écriture comptable avec ce type de compte; si vous sélectionnez 'Toujours', "
+"le comptable recevra un message d'erreur s'il n' y a pas de compte "
+"analytique; Si vous sélectionnez \"Ecritures comptabilisées\", le comptable "
+"recevra un message d'erreur si aucun compte analytique n'est défini lors de "
+"la comptabilisation de l'écriture; si vous sélectionnez \"Jamais\", le "
+"comptable recevra un message d'erreur si un compte analytique est présent."
