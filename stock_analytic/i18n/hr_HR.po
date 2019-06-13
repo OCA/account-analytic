@@ -21,10 +21,16 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: stock_analytic
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_analytic_account_id
-#: model:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_account_id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_account_id
+#: model_terms:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
 msgid "Analytic Account"
 msgstr "Analitički konto"
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr ""
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move

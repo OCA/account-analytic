@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -14,9 +14,15 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_analytic
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_analytic_account_id
-#: model:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_account_id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_account_id
+#: model_terms:ir.ui.view,arch_db:stock_analytic.view_move_search_analytic
 msgid "Analytic Account"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
 msgstr ""
 
 #. module: stock_analytic
