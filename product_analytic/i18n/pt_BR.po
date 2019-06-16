@@ -21,16 +21,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: product_analytic
-#: model:ir.model.fields,field_description:product_analytic.field_product_category_expense_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_product_expense_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_template_expense_analytic_account_id
+#: model:ir.model.fields,field_description:product_analytic.field_product_category__expense_analytic_account_id
+#: model:ir.model.fields,field_description:product_analytic.field_product_product__expense_analytic_account_id
+#: model:ir.model.fields,field_description:product_analytic.field_product_template__expense_analytic_account_id
 msgid "Expense Analytic Account"
 msgstr ""
 
 #. module: product_analytic
-#: model:ir.model.fields,field_description:product_analytic.field_product_category_income_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_product_income_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_template_income_analytic_account_id
+#: model:ir.model.fields,field_description:product_analytic.field_product_category__income_analytic_account_id
+#: model:ir.model.fields,field_description:product_analytic.field_product_product__income_analytic_account_id
+#: model:ir.model.fields,field_description:product_analytic.field_product_template__income_analytic_account_id
 msgid "Income Analytic Account"
 msgstr ""
 
