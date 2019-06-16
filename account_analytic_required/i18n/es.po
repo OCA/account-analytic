@@ -20,11 +20,6 @@ msgstr ""
 "X-Generator: Weblate 3.1.1\n"
 
 #. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Account Entry"
-msgstr ""
-
-#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "Tipo de cuenta"
@@ -35,7 +30,7 @@ msgid "Always"
 msgstr "Siempre"
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr ""
 
@@ -64,9 +59,16 @@ msgid ""
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
+#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
 msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+#, fuzzy
+#| msgid "Journal Item"
+msgid "Journal Entries"
+msgstr "Apunte contable"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
@@ -84,7 +86,7 @@ msgid "Optional"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Policy for analytic account"
 msgstr "Política para las cuentas analíticas"
 
@@ -94,7 +96,7 @@ msgid "Posted moves"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
 msgid ""
 "Set the policy for analytic accounts : if you select 'Optional', the "
 "accountant is free to put an analytic account on an account move line with "
