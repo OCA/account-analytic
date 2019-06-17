@@ -7,10 +7,12 @@
     'author': 'Eficent, Odoo Community Association (OCA)',
     'website': "https://github.com/OCA/analytic-account",
     'category': 'Warehouse Management',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'depends': [
+        'analytic',
         'stock_analytic',
+        'stock_account',
     ],
     'data': [
         'views/stock_inventory_line_view.xml',
