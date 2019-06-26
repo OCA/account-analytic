@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="analytic_dimension_type" model="account.analytic.dimension">
+      <field name="name">Dim Type</field>
+      <field name="code">type</field>
+  </record>
+
+  <record id="analytic_dimension_concept" model="account.analytic.dimension">
+      <field name="name">Concept</field>
+      <field name="code">concept</field>
+  </record>
+
+  <record id="analytic_tag_type_a" model="account.analytic.tag">
+      <field name="name">Dim Type A</field>
+      <field name="analytic_dimension_id" ref="analytic_tag_dimension.analytic_dimension_type"/>
+  </record>
+  <record id="analytic_tag_type_b" model="account.analytic.tag">
+      <field name="name">Dim Type B</field>
+      <field name="analytic_dimension_id" ref="analytic_tag_dimension.analytic_dimension_type"/>
+  </record>
+
+  <record id="analytic_tag_concept_a" model="account.analytic.tag">
+      <field name="name">Concept A</field>
+      <field name="analytic_dimension_id" ref="analytic_tag_dimension.analytic_dimension_concept"/>
+  </record>
+  <record id="analytic_tag_concept_b" model="account.analytic.tag">
+      <field name="name">Concept B</field>
+      <field name="analytic_dimension_id" ref="analytic_tag_dimension.analytic_dimension_concept"/>
+  </record>
+
+</odoo>

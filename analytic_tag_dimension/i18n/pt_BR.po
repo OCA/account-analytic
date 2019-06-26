@@ -1,0 +1,145 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * analytic_tag_dimension
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-01 03:39+0000\n"
+"PO-Revision-Date: 2018-06-28 13:58+0000\n"
+"Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
+"23907/pt_BR/)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
+
+#. module: analytic_tag_dimension
+#: model:ir.actions.act_window,name:analytic_tag_dimension.AccountAnalyticDimension_action
+#: model:ir.ui.menu,name:analytic_tag_dimension.AccountAnalyticDimension_menu
+msgid "Analytic Accounts Dimensions"
+msgstr "Dimensões das contas analíticas"
+
+#. module: analytic_tag_dimension
+#: model:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_form
+#: model:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_search
+#: model:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_tree
+msgid "Analytic Dimension"
+msgstr "Dimensão Analítica"
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Linhas Analíticas"
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_account_analytic_tag
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_analytic_tag_ids
+msgid "Analytic Tags"
+msgstr "Etiquetas Analíticas"
+
+#. module: analytic_tag_dimension
+#: model:ir.actions.act_window,help:analytic_tag_dimension.AccountAnalyticDimension_action
+msgid "Click to create a new Analytic Dimension."
+msgstr "Clique para criar uma nova dimensão analítica."
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_code
+msgid "Code"
+msgstr "Código"
+
+#. module: analytic_tag_dimension
+#: code:addons/analytic_tag_dimension/models/analytic.py:22
+#, python-format
+msgid "Code can't contain spaces!"
+msgstr "Código não pode conter espaços!"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_tag_analytic_dimension_id
+msgid "Dimension"
+msgstr "Dimensão"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_display_name
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line_display_name
+msgid "Display Name"
+msgstr "Exibir Nome"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_id
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line_id
+msgid "ID"
+msgstr "Identificação"
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "LInha da fatura"
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr "Estatísticas de faturas"
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_account_move_line
+msgid "Journal Item"
+msgstr "Item diário"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension___last_update
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line___last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_write_uid
+msgid "Last Updated by"
+msgstr "Última Atualização por"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_write_date
+msgid "Last Updated on"
+msgstr "Última Atualização em"
+
+#. module: analytic_tag_dimension
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension_name
+msgid "Name"
+msgstr "Nome"
+
+#. module: analytic_tag_dimension
+#: model:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_form
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: analytic_tag_dimension
+#: code:addons/analytic_tag_dimension/models/analytic.py:65
+#, python-format
+msgid "You can not set two tags from same dimension."
+msgstr "Você não pode definir duas etiquetas da mesma dimensão."
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_account_analytic_dimension
+msgid "account.analytic.dimension"
+msgstr "account.analytic.dimension"
+
+#. module: analytic_tag_dimension
+#: model:ir.model,name:analytic_tag_dimension.model_analytic_dimension_line
+msgid "analytic.dimension.line"
+msgstr "analytic.dimension.line"
