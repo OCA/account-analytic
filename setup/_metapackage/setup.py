@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo12-addon-mrp_analytic',
         'odoo12-addon-procurement_mto_analytic',
         'odoo12-addon-product_analytic',
+        'odoo12-addon-stock_analytic',
     ],
     classifiers=[
         'Programming Language :: Python',
