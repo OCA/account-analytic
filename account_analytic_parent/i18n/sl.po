@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-03 15:27+0000\n"
-"PO-Revision-Date: 2017-06-30 02:40+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2019-07-24 18:43+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
@@ -27,32 +28,32 @@ msgstr "Analitični konto"
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account_child_ids
 msgid "Child Accounts"
-msgstr ""
+msgstr "Podrejeni konti"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account_parent_left
 msgid "Left Parent"
-msgstr ""
+msgstr "Levo nadrejeni"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account_parent_id
 #: model:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
 msgid "Parent Analytic Account"
-msgstr ""
+msgstr "Nadrejeni analitični konto"
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:102
 #, python-format
 msgid "Please activate first parent account %s"
-msgstr ""
+msgstr "Najprej aktivirajte nadrejeni konto %s"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account_parent_right
 msgid "Right Parent"
-msgstr ""
+msgstr "Desno nadrejeni"
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:72
 #, python-format
 msgid "You can not create recursive analytic accounts."
-msgstr ""
+msgstr "Rekurzivnih analitičnih kontov ni mogoče ustvarjati."
