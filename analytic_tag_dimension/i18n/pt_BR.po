@@ -9,23 +9,21 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-01 03:39+0000\n"
-"PO-Revision-Date: 2018-06-28 13:58+0000\n"
-"Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
-"teams/23907/pt_BR/)\n"
+"PO-Revision-Date: 2019-08-02 09:43+0000\n"
+"Last-Translator: Marcel Savegnago <marcel.savegnago@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
+"23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_dimension
-#, fuzzy
-#| msgid "Analytic Dimension"
 msgid "Account Analytic Dimension"
-msgstr "Dimensão Analítica"
+msgstr "Dimensão de Conta Analítica"
 
 #. module: analytic_tag_dimension
 #: model:ir.actions.act_window,name:analytic_tag_dimension.AccountAnalyticDimension_action
@@ -42,10 +40,8 @@ msgstr "Dimensão Analítica"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_analytic_dimension_line
-#, fuzzy
-#| msgid "Analytic Dimension"
 msgid "Analytic Dimension Line"
-msgstr "Dimensão Analítica"
+msgstr "Linha de Dimensão Analítica"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_line
