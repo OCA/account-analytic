@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_AccountAnalyticDimension_form" model="ir.ui.view">
+        <field name="name">view.AccountAnalyticDimension.form</field>
+        <field name="model">account.analytic.dimension</field>
+        <field name='inherit_id' ref='analytic_tag_dimension.view_AccountAnalyticDimension_form'/>
+        <field name="arch" type="xml">
+            <field name="code" position="after">
+                <separator colspan="2"/>
+                <field name="required"/>
+                <label for="by_sequence"/>
+                <div>
+                    <field name="by_sequence" class="oe_inline"/>
+                    <field name="sequence" style="width: 3% !important" attrs="{'invisible': [('by_sequence', '=', False)]}"/>
+                </div>
+                <separator colspan="2"/>
+                <label for="ref_model_id"/>
+                <div>
+                    <field name="ref_model_id" style="width: 30% !important" class="oe_inline"
+                        options="{'no_open': True, 'no_create_edit': True}"/>
+                    <button name="create_analytic_tags" string="=> Create Tags"
+                        type="object" class="oe_link" attrs="{'invisible': [('ref_model_id', '=', False)]}"/>
+                </div>
+                <field name="filtered_field_ids" widget="many2many_tags"
+                    attrs="{'invisible': ['|', ('ref_model_id', '=', False), ('by_sequence', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_analytic_tag_dimension_form_view" model="ir.ui.view">
+        <field name="name">account.analytic.tag.dimension.form.view</field>
+        <field name="model">account.analytic.tag</field>
+        <field name='inherit_id' ref='analytic_tag_dimension.account_analytic_tag_dimension_form_view'/>
+        <field name="arch" type="xml">
+            <field name="analytic_dimension_id" position="after">
+                <field name="resource_ref"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_AccountAnalyticDimension_tree" model="ir.ui.view">
+        <field name="name">view.AccountAnalyticDimension.tree</field>
+        <field name="model">account.analytic.dimension</field>
+        <field name='inherit_id' ref='analytic_tag_dimension.view_AccountAnalyticDimension_tree'/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="required"/>
+                <field name="by_sequence"/>
+                <field name="sequence"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
