@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- account.analytic.account views -->
+
+    <record id="view_account_analytic_account_form_inherit" model="ir.ui.view">
+        <field name="name">analytic.analytic.account.form.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="user_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_list_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.account.list</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="user_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_search_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.account.search.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_search" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="user_id" />
+            </field>
+        </field>
+    </record>
+
+    <!-- account.analytic.line views -->
+
+    <record id="view_account_analytic_line_tree_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="account_user_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_form_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.form.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="account_user_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_filter_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.select.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="account_user_id" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_graph_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.graph.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_graph" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="account_user_id" type="row"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_pivot_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.pivot.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_pivot" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="account_user_id" type="row"/>
+            </field>
+        </field>
+    </record>
+</odoo>
