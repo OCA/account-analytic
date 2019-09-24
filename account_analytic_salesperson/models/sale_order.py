@@ -10,8 +10,9 @@ class SaleOrder(models.Model):
     @api.multi
     def _create_analytic_account(self, prefix=None):
         """Propagate sale order salesperson through context key"""
-        self = self.with_context(analytic_user_id=self.user_id.id)
-        return super()._create_analytic_account(prefix=prefix)
+        for order in self:
+            order = order.with_context(analytic_user_id=order.user_id.id)
+            super(SaleOrder, order)._create_analytic_account(prefix=prefix)
 
     @api.multi
     def action_confirm(self):
