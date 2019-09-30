@@ -40,11 +40,6 @@ msgstr "Analyyttinen rivi"
 
 #. module: analytic_base_department
 #: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_account_department_id
-#: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line_department_id
+#: model:ir.model.fields,field_description:analytic_base_department.field_project_project_department_id
 msgid "Department"
-msgstr ""
-
-#. module: analytic_base_department
-#: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line_department_id
-msgid "User's related department"
 msgstr ""
