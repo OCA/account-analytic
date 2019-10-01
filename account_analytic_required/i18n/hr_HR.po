@@ -26,7 +26,7 @@ msgid "Account Type"
 msgstr "Tip konta"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__always
 msgid "Always"
 msgstr "Uvijek"
 
@@ -36,7 +36,7 @@ msgid "Analytic Policy"
 msgstr "Analitička pravila"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:59
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -46,7 +46,7 @@ msgstr ""
 "analitički konto nedostaje u stavci temeljnice sa naslovom '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:67
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -56,7 +56,7 @@ msgstr ""
 "temeljnice sa oznakom '%s' postoji analitički konto '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:77
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
@@ -81,12 +81,12 @@ msgid "Journal Item"
 msgstr "Stavka dnevnika"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__never
 msgid "Never"
 msgstr "Nikad"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__optional
 msgid "Optional"
 msgstr "Opcionalno"
 
@@ -96,7 +96,7 @@ msgid "Policy for analytic account"
 msgstr "Pravila za analitička konta"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__posted
 msgid "Posted moves"
 msgstr ""
 
