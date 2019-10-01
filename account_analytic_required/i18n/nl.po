@@ -24,7 +24,7 @@ msgid "Account Type"
 msgstr ""
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__always
 msgid "Always"
 msgstr ""
 
@@ -34,7 +34,7 @@ msgid "Analytic Policy"
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:59
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -44,7 +44,7 @@ msgstr ""
 "'%s', maar deze ontbreekt in de boekingsregel met de omschrijving '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:67
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:77
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
@@ -75,12 +75,12 @@ msgid "Journal Item"
 msgstr ""
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__never
 msgid "Never"
 msgstr ""
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__optional
 msgid "Optional"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgid "Policy for analytic account"
 msgstr "Kostenplaatsenbeleid"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__posted
 msgid "Posted moves"
 msgstr ""
 
