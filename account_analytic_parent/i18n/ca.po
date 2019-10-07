@@ -9,25 +9,25 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2019-05-27 13:19+0000\n"
-"Last-Translator: Jaume Planas <jplanas@itberga.com>\n"
+"PO-Revision-Date: 2019-10-07 11:10+0000\n"
+"Last-Translator: Jaume Planas <jaume.planas@minorisa.net>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.6.1\n"
+"X-Generator: Weblate 3.8\n"
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:149
-#, fuzzy, python-format
+#, python-format
 msgid "%(name)s - %(partner)s"
 msgstr "%(name)s - %(partner)s"
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:112
-#, fuzzy, python-format
+#, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
@@ -72,10 +72,10 @@ msgstr "Primer activeu el compte pare %s"
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:99
 #, python-format
 msgid "You can not create recursive analytic accounts."
-msgstr "No pot crear comptes analítics recursius."
+msgstr "No podeu crear comptes analítics recursius."
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:144
-#, fuzzy, python-format
+#, python-format
 msgid "[%(code)s] %(name)s"
 msgstr "[%(code)s] %(name)s"
