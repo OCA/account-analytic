@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="create_uid" position="after">
-                        <field name="project_id" groups="purchase.group_analytic_accounting"/>
+                        <field name="project_id" groups="analytic.group_analytic_accounting"/>
                     </field>
                 </data>
             </field>
@@ -21,7 +21,7 @@
             <field name="arch" type="xml">
                 <data>
                     <field name="origin" position="before">
-                        <field name="project_id" groups="purchase.group_analytic_accounting"/>
+                        <field name="project_id" groups="analytic.group_analytic_accounting"/>
                     </field>
                 </data>
             </field>
@@ -35,7 +35,7 @@
                 <data>
                     <field name="partner_ref" position="after">
                         <field name="project_id2" invisible="1" />
-                        <field name="project_id" groups="purchase.group_analytic_accounting"
+                        <field name="project_id" groups="analytic.group_analytic_accounting"
                                options="{'no_create': True}" />
                     </field>
                     <field name="order_line" position="attributes">
