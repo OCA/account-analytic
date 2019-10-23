@@ -1,18 +1,16 @@
-# -*- coding: utf-8 -*-
 # © 2016  Laetitia Gangloff, Acsone SA/NV (http://www.acsone.eu)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import odoo.tests.common as common
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+from odoo.tests.common import TransactionCase
 from datetime import datetime
 
 
-class TestPurchaseAnalytic(common.TransactionCase):
+class TestPurchaseAnalytic(TransactionCase):
 
     def setUp(self):
         super(TestPurchaseAnalytic, self).setUp()
         self.project = self.env['account.analytic.account'].create({
-            'name': 'Account Analytic for Tests'
+            'name': 'Account Analytic for Tests',
         })
 
     def test_analytic_account(self):
@@ -29,10 +27,9 @@ class TestPurchaseAnalytic(common.TransactionCase):
                      'product_id': product_id.id,
                      'product_qty': 1.0,
                      'product_uom': self.env.ref(
-                         'product.product_uom_unit').id,
+                         'uom.product_uom_unit').id,
                      'price_unit': 121.0,
-                     'date_planned': datetime.today().strftime(
-                         DEFAULT_SERVER_DATETIME_FORMAT),
+                     'date_planned': datetime.today(),
                  })],
              })
 
