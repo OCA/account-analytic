@@ -19,8 +19,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
         cls.move_obj = cls.env['account.move']
         cls.move_line_obj = cls.env['account.move.line']
         cls.analytic_account_obj = cls.env['account.analytic.account']
-        cls.analytic_distribution_obj = \
-            cls.env['account.analytic.distribution']
+        cls.analytic_tag_obj = cls.env['account.analytic.tag']
         cls.user_type = cls.env.ref('account.data_account_type_revenue')
         cls.analytic_account_id = cls.analytic_account_obj.create({
             'name': 'test aa',
@@ -28,19 +27,20 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
         cls.account_type = cls.account_type_obj.create({
             'name': 'Test account_type'
         })
-        cls.account_id = cls.env['account.account'].create({
+        cls.account_id = cls.account_obj.create({
             'name': 'Test account',
             'code': '440000_demo',
             'user_type_id': cls.account_type.id,
             'reconcile': True})
-        cls.account_expense_id = cls.env['account.account'].create({
+        cls.account_expense_id = cls.account_obj.create({
             'name': 'Other accoynt',
             'code': '600000_demo',
             'user_type_id':
                 cls.env.ref('account.data_account_type_expenses').id,
             'reconcile': False})
-        cls.analytic_distribution_id = cls.analytic_distribution_obj.create({
+        cls.analytic_distribution_id = cls.analytic_tag_obj.create({
             'name': 'test ad',
+            'active_analytic_distribution': True,
         })
 
     def _create_move(self, with_analytic, with_analytic_plan, amount=100):
@@ -51,6 +51,9 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
                     ('type', '=', 'sale')])[0].id,
             'date': date,
         }
+        tags = False
+        if with_analytic_plan:
+            tags = [(6, 0, self.analytic_distribution_id.ids)]
         move_id = self.move_obj.create(move_vals)
         move_line_id = self.move_line_obj.with_context(
             check_move_validity=False
@@ -62,8 +65,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
             'account_id': self.account_id.id,
             'analytic_account_id':
             self.analytic_account_id.id if with_analytic else False,
-            'analytic_distribution_id':
-            self.analytic_distribution_id.id if with_analytic_plan else False,
+            'analytic_tag_ids': tags,
         })
         self.move_line_obj.create({
             'move_id': move_id.id,
@@ -188,7 +190,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
         line_id = self._create_move(with_analytic=False,
                                     with_analytic_plan=True)
         with self.assertRaises(ValidationError):
-            line_id.write({'analytic_distribution_id': False})
+            line_id.write({'analytic_tag_ids': [(6, 0, [])]})
 
     def test_change_account(self):
         self.account_type.write({
@@ -205,5 +207,5 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
         # with analytic distribution -> ok
         self.move_line_obj.write({
             'account_id': self.account_expense_id.id,
-            'analytic_distribution_id': self.analytic_distribution_id.id,
+            'analytic_tag_ids': self.analytic_distribution_id.id,
         })
