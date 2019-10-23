@@ -25,19 +25,26 @@ msgid "Account Type"
 msgstr "Tipo de Conta"
 
 #. module: account_analytic_distribution_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,analytic_policy:0
 #: code:addons/account_analytic_distribution_required/models/account.py:16
 #, python-format
 msgid "Always (analytic account or distribution)"
 msgstr "Sempre (conta analítica ou distribuição)"
 
 #. module: account_analytic_distribution_required
+#: selection:account.account.type,analytic_policy:0
 #: code:addons/account_analytic_distribution_required/models/account.py:14
 #, python-format
 msgid "Always (analytic distribution)"
 msgstr "Sempre (conta analítica)"
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:29
+#: code:addons/account_analytic_distribution_required/models/account.py:30
 #, python-format
 msgid "Analytic account and analytic distribution are mutually exclusive"
 msgstr "A conta analítica e a distribuição analítica são mutuamente exclusivas"
@@ -67,7 +74,7 @@ msgstr ""
 "movimento da conta com o rótulo '%s'."
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:58
+#: code:addons/account_analytic_distribution_required/models/account.py:57
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -81,3 +88,35 @@ msgstr ""
 #: model:ir.model,name:account_analytic_distribution_required.model_account_move_line
 msgid "Journal Item"
 msgstr "Item do Diário"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Never"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Optional"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__analytic_policy
+msgid "Policy for analytic account"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Posted moves"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__analytic_policy
+msgid ""
+"Set the policy for analytic accounts : if you select 'Optional', the "
+"accountant is free to put an analytic account on an account move line with "
+"this type of account ; if you select 'Always', the accountant will get an "
+"error message if there is no analytic account ; if you select 'Posted "
+"moves', the accountant will get an error message if no analytic account is "
+"defined when the move is posted ; if you select 'Never', the accountant will "
+"get an error message if an analytic account is present."
+msgstr ""
