@@ -24,15 +24,15 @@ class AccountMoveLine(models.Model):
     @api.multi
     def _check_analytic_distribution_required_msg(self):
         for move_line in self:
-            if move_line.analytic_account_id \
-                    and move_line.analytic_distribution_id:
+            analytic_distribution = move_line.analytic_tag_ids.filtered(
+                "active_analytic_distribution")
+            if move_line.analytic_account_id and analytic_distribution:
                 return _('Analytic account and analytic distribution '
                          'are mutually exclusive')
             if move_line.debit == 0 and move_line.credit == 0:
                 continue
             analytic_policy = self._get_analytic_policy(move_line.account_id)
-            if analytic_policy == 'always_plan' \
-                    and not move_line.analytic_distribution_id:
+            if analytic_policy == 'always_plan' and not analytic_distribution:
                 return _("Analytic policy is set to "
                          "'Always (analytic distribution)' with account "
                          "%s '%s' but the analytic distribution is "
@@ -43,7 +43,7 @@ class AccountMoveLine(models.Model):
                          move_line.name)
             if analytic_policy == 'always_plan_or_account' \
                     and not move_line.analytic_account_id \
-                    and not move_line.analytic_distribution_id:
+                    and not analytic_distribution:
                 return _("Analytic policy is set to "
                          "'Always (analytic account or distribution)' "
                          "with account %s '%s' but the analytic "
@@ -53,8 +53,7 @@ class AccountMoveLine(models.Model):
                         (move_line.account_id.code,
                          move_line.account_id.name,
                          move_line.name)
-            elif analytic_policy == 'never' \
-                    and move_line.analytic_distribution_id:
+            elif analytic_policy == 'never' and analytic_distribution:
                 return _("Analytic policy is set to 'Never' with account "
                          "%s '%s' but the account move line with label "
                          "'%s' has an analytic distribution %s '%s'.") % \
@@ -64,7 +63,7 @@ class AccountMoveLine(models.Model):
                          move_line.analytic_account_id.code,
                          move_line.analytic_account_id.name)
 
-    @api.constrains('analytic_account_id', 'analytic_distribution_id',
+    @api.constrains('analytic_account_id', 'analytic_tag_ids',
                     'account_id', 'debit', 'credit')
     def _check_analytic_required(self):
         for rec in self:
