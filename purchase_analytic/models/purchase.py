@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # © 2016  Laetitia Gangloff, Acsone SA/NV (http://www.acsone.eu)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -10,7 +9,6 @@ class PurchaseOrder(models.Model):
 
     project_id2 = fields.Many2one(
         comodel_name='account.analytic.account',
-        string='Contract / Analytic',
         help='Use to store the value of project_id if there is no lines')
     project_id = fields.Many2one(
         compute='_compute_project_id',
@@ -29,7 +27,7 @@ class PurchaseOrder(models.Model):
         for po in self:
             al = po.project_id2
             if po.order_line:
-                al = (po.order_line[0].account_analytic_id) or False
+                al = po.order_line[0].account_analytic_id or False
                 for ol in po.order_line:
                     if ol.account_analytic_id != al:
                         al = False
