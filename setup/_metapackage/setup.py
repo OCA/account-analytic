@@ -31,6 +31,7 @@ setuptools.setup(
         'odoo10-addon-product_analytic_purchase',
         'odoo10-addon-purchase_analytic',
         'odoo10-addon-purchase_procurement_analytic',
+        'odoo10-addon-purchase_request_analytic',
         'odoo10-addon-sale_analytic_distribution',
         'odoo10-addon-sale_procurement_analytic',
         'odoo10-addon-stock_analytic',
