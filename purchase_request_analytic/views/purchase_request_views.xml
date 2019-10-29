@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="purchase_request.view_purchase_request_tree"/>
         <field name="arch" type="xml">
             <field name="date_start" position="after">
-                <field name="analytic_account_id" groups="purchase.group_analytic_accounting"/>
+                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
             </field>
         </field>
     </record>
@@ -19,11 +19,11 @@
             <data>
                 <field name="date_start" position="after">
                     <field name="analytic_account_id2" invisible="1" />
-                    <field name="analytic_account_id" groups="purchase.group_analytic_accounting"
+                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"
                            options="{'no_create': True}" />
                 </field>
                 <field name="line_ids" position="attributes">
-                    <attribute name="context">{'default_account_analytic_id': analytic_account_id}</attribute>
+                    <attribute name="context">{'default_analytic_account_id': analytic_account_id}</attribute>
                 </field>
             </data>
         </field>
@@ -35,7 +35,8 @@
         <field name="inherit_id" ref="purchase_request.view_purchase_request_search"/>
         <field name="arch" type="xml">
             <xpath expr="//group" position="inside">
-                <filter string="Contract/Analytic" domain="[]" context="{'group_by':'analytic_account_id'}"/>
+                <filter name="analytic_account" string="Analytic Account"
+                        domain="[]" context="{'group_by':'analytic_account_id'}"/>
             </xpath>
             <field name="state" position="after">
                 <field name="analytic_account_id"/>
