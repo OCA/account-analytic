@@ -41,6 +41,7 @@ addon | version | summary
 [product_analytic_purchase](product_analytic_purchase/) | 10.0.1.0.0 | Glue module between purchase and product_analytic
 [purchase_analytic](purchase_analytic/) | 10.0.1.0.0 | Purchase Analytic
 [purchase_procurement_analytic](purchase_procurement_analytic/) | 10.0.2.0.0 | This module sets analytic account in purchase order line from procurement analytic account
+[purchase_request_analytic](purchase_request_analytic/) | 10.0.1.0.0 | Purchase Request Analytic
 [sale_analytic_distribution](sale_analytic_distribution/) | 10.0.1.0.0 | Sales Analytic Distribution
 [sale_procurement_analytic](sale_procurement_analytic/) | 10.0.1.0.0 | This module sets analytic account procurement from sale order
 [stock_analytic](stock_analytic/) | 10.0.1.0.1 | Adds an analytic account in stock move
