@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Eficent Business and IT Consulting Services S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-import odoo.tests.common as common
+from odoo.tests.common import TransactionCase
 
 
-class TestPurchaseRequestAnalytic(common.TransactionCase):
+class TestPurchaseRequestAnalytic(TransactionCase):
 
     def setUp(self):
         super(TestPurchaseRequestAnalytic, self).setUp()
@@ -27,7 +26,7 @@ class TestPurchaseRequestAnalytic(common.TransactionCase):
                      'product_id': product_id.id,
                      'product_qty': 1.0,
                      'product_uom': self.env.ref(
-                         'product.product_uom_unit').id,
+                         'uom.product_uom_unit').id,
                  })],
              })
 
