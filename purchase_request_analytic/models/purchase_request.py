@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Eficent Business and IT Consulting Services S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -15,7 +14,7 @@ class PurchaseRequest(models.Model):
         compute='_compute_analytic_account_id',
         inverse='_inverse_analytic_account_id',
         comodel_name='account.analytic.account',
-        string='Contract / Analytic', readonly=True,
+        string='Analytic Account', readonly=True,
         states={'draft': [('readonly', False)]},
         store=True,
         help="The analytic account related to a sales order.")
