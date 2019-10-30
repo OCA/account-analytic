@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo11-addon-account_analytic_parent',
         'odoo11-addon-account_analytic_required',
         'odoo11-addon-account_analytic_sequence',
+        'odoo11-addon-account_move_analytic_recreate',
         'odoo11-addon-analytic_base_department',
         'odoo11-addon-analytic_partner',
         'odoo11-addon-analytic_product_category',
