@@ -11,5 +11,6 @@ class AccountMoveLine(models.Model):
     def write(self, vals):
         res = super(AccountMoveLine, self).write(vals)
         if 'analytic_account_id' in vals or 'analytic_tag_ids' in vals:
+            self.mapped('analytic_line_ids').unlink()
             self.create_analytic_lines()
         return res
