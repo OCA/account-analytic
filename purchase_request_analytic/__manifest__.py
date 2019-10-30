@@ -4,7 +4,7 @@
 
 {
     "name": "Purchase Request Analytic",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     'author': "Eficent, Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "https://github.com/OCA/account-analytic",
