@@ -23,7 +23,7 @@
                            options="{'no_create': True}" />
                 </field>
                 <field name="line_ids" position="attributes">
-                    <attribute name="context">{'default_account_analytic_id': analytic_account_id}</attribute>
+                    <attribute name="context">{'default_analytic_account_id': analytic_account_id}</attribute>
                 </field>
             </data>
         </field>
