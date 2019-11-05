@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo12-addon-procurement_mto_analytic',
         'odoo12-addon-product_analytic',
         'odoo12-addon-purchase_analytic',
+        'odoo12-addon-purchase_request_analytic',
         'odoo12-addon-stock_analytic',
         'odoo12-addon-stock_inventory_analytic',
     ],
