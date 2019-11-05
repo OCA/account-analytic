@@ -14,18 +14,14 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: purchase_request_analytic
-#: model:ir.model.fields,field_description:purchase_request_analytic.field_purchase_request_analytic_account_id2
-msgid "Analytic account id2"
+#: model:ir.model.fields,field_description:purchase_request_analytic.field_purchase_request__analytic_account_id
+#: model_terms:ir.ui.view,arch_db:purchase_request_analytic.view_purchase_request_search
+msgid "Analytic Account"
 msgstr ""
 
 #. module: purchase_request_analytic
-#: model:ir.model.fields,field_description:purchase_request_analytic.field_purchase_request_analytic_account_id
-msgid "Contract / Analytic"
-msgstr ""
-
-#. module: purchase_request_analytic
-#: model:ir.ui.view,arch_db:purchase_request_analytic.view_purchase_request_search
-msgid "Contract/Analytic"
+#: model:ir.model.fields,field_description:purchase_request_analytic.field_purchase_request__analytic_account_id2
+msgid "Analytic Account Id2"
 msgstr ""
 
 #. module: purchase_request_analytic
@@ -34,12 +30,12 @@ msgid "Purchase Request"
 msgstr ""
 
 #. module: purchase_request_analytic
-#: model:ir.model.fields,help:purchase_request_analytic.field_purchase_request_analytic_account_id
+#: model:ir.model.fields,help:purchase_request_analytic.field_purchase_request__analytic_account_id
 msgid "The analytic account related to a sales order."
 msgstr ""
 
 #. module: purchase_request_analytic
-#: model:ir.model.fields,help:purchase_request_analytic.field_purchase_request_analytic_account_id2
+#: model:ir.model.fields,help:purchase_request_analytic.field_purchase_request__analytic_account_id2
 msgid "Use to store the value of analytic_account if there is no lines"
 msgstr ""
 
