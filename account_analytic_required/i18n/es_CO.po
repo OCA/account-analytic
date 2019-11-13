@@ -31,6 +31,16 @@ msgid "Always"
 msgstr "Siempre"
 
 #. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always (analytic account or distribution)"
+msgstr ""
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always (analytic distribution)"
+msgstr ""
+
+#. module: account_analytic_required
 #: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr ""

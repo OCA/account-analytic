@@ -30,6 +30,16 @@ msgid "Always"
 msgstr "Siempre"
 
 #. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always (analytic account or distribution)"
+msgstr ""
+
+#. module: account_analytic_required
+#: selection:account.account.type,analytic_policy:0
+msgid "Always (analytic distribution)"
+msgstr ""
+
+#. module: account_analytic_required
 #: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
 msgstr "Política Analítica"
@@ -41,9 +51,9 @@ msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"La política analítica está configurada como \"Siempre\" para la cuenta %s '%"
-"s' pero falta la cuenta análitica en la línea de movimiento de la cuenta con "
-"la etiqueta '%s'."
+"La política analítica está configurada como \"Siempre\" para la cuenta %s "
+"'%s' pero falta la cuenta análitica en la línea de movimiento de la cuenta "
+"con la etiqueta '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:67
