@@ -11,7 +11,6 @@ from odoo.tests.common import TransactionCase
 
 
 class TestAccountAnalyticRecursion(TransactionCase):
-
     def setUp(self):
         super(TestAccountAnalyticRecursion, self).setUp()
 
@@ -20,66 +19,62 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.partner1 = self.env.ref("base.res_partner_1")
         self.partner2 = self.env.ref("base.res_partner_2")
         self.analytic_parent1 = self.analytic_account_obj.create(
-            {"name": "parent aa",
-             "code": "01",
-             "partner_id": self.partner1.id})
+            {"name": "parent aa", "code": "01", "partner_id": self.partner1.id}
+        )
         self.analytic_son = self.analytic_account_obj.create(
-            {"name": "son aa",
-             "code": "02",
-             "parent_id": self.analytic_parent1.id})
+            {"name": "son aa", "code": "02", "parent_id": self.analytic_parent1.id}
+        )
         self.analytic_parent2 = self.analytic_account_obj.create(
-            {"name": "parent2 aa",
-             "code": "01",
-             "partner_id": self.partner2.id})
+            {"name": "parent2 aa", "code": "01", "partner_id": self.partner2.id}
+        )
         self.analytic_parent3 = self.analytic_account_obj.create(
-            {"name": "parent3 aa",
-             "code": "01",
-             "partner_id": self.partner2.id})
+            {"name": "parent3 aa", "code": "01", "partner_id": self.partner2.id}
+        )
         self.analytic_son2 = self.analytic_account_obj.create(
-            {"name": "son aa",
-             "code": "02",
-             "parent_id": self.analytic_parent3.id})
-        self.create_analytic_line(
-            "Analytic line son", self.analytic_son, 50)
-        self.create_analytic_line(
-            "Analytic line parent1", self.analytic_parent1, 100)
-        self.create_analytic_line(
-            "Analytic line parent2", self.analytic_parent2, 50)
-        self.create_analytic_line(
-            "Analytic line son2", self.analytic_son2, -50)
-        self.assertEqual(self.analytic_parent1.debit, 0,
-                         "Analytic account in the debit side")
+            {"name": "son aa", "code": "02", "parent_id": self.analytic_parent3.id}
+        )
+        self.create_analytic_line("Analytic line son", self.analytic_son, 50)
+        self.create_analytic_line("Analytic line parent1", self.analytic_parent1, 100)
+        self.create_analytic_line("Analytic line parent2", self.analytic_parent2, 50)
+        self.create_analytic_line("Analytic line son2", self.analytic_son2, -50)
+        self.assertEqual(
+            self.analytic_parent1.debit, 0, "Analytic account in the debit side"
+        )
         self.assertEqual(self.analytic_parent3.debit, 50)
 
     def create_analytic_line(self, name, analytic, amount):
-        return self.analytic_line_obj.create({
-            "name": name,
-            "amount": amount,
-            "account_id": analytic.id})
+        return self.analytic_line_obj.create(
+            {"name": name, "amount": amount, "account_id": analytic.id}
+        )
 
     def test_recursion(self):
         with self.assertRaises(ValidationError):
-            self.analytic_parent1.write(
-                {"parent_id": self.analytic_son.id})
+            self.analytic_parent1.write({"parent_id": self.analytic_son.id})
 
     def test_onchange(self):
         self.analytic_son._onchange_parent_id()
-        self.assertEqual(self.analytic_son.partner_id.id, self.partner1.id,
-                         "Partner should not change")
+        self.assertEqual(
+            self.analytic_son.partner_id.id,
+            self.partner1.id,
+            "Partner should not change",
+        )
         self.analytic_son.write({"parent_id": self.analytic_parent2.id})
         self.analytic_son._onchange_parent_id()
-        self.assertEqual(self.analytic_son.partner_id.id, self.partner2.id,
-                         "Partner should change")
+        self.assertEqual(
+            self.analytic_son.partner_id.id, self.partner2.id, "Partner should change"
+        )
 
     def test_debit_credit_balance(self):
         self.assertEqual(self.analytic_parent1.credit, 150, "Wrong amount")
         self.assertEqual(self.analytic_parent1.balance, 150, "Wrong amount")
-        self.assertEqual(self.analytic_son.debit, 0,
-                         "Analytic account in the debit side")
+        self.assertEqual(
+            self.analytic_son.debit, 0, "Analytic account in the debit side"
+        )
         self.assertEqual(self.analytic_son.credit, 50, "Wrong amount")
         self.assertEqual(self.analytic_son.balance, 50, "Wrong amount")
-        self.assertEqual(self.analytic_parent2.debit, 0,
-                         "Analytic account in the debit side")
+        self.assertEqual(
+            self.analytic_parent2.debit, 0, "Analytic account in the debit side"
+        )
         self.assertEqual(self.analytic_parent2.credit, 50, "Wrong amount")
         self.assertEqual(self.analytic_parent2.balance, 50, "Wrong amount")
         self.assertEqual(self.analytic_parent3.debit, 50)
@@ -96,11 +91,5 @@ class TestAccountAnalyticRecursion(TransactionCase):
             self.analytic_son.toggle_active()
 
     def test_name(self):
-        self.assertEqual(
-            self.analytic_son.complete_name,
-            'parent aa / son aa'
-        )
-        self.assertEqual(
-            self.analytic_son.display_name,
-            '[02] parent aa / son aa',
-        )
+        self.assertEqual(self.analytic_son.complete_name, "parent aa / son aa")
+        self.assertEqual(self.analytic_son.display_name, "[02] parent aa / son aa")
