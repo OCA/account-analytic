@@ -6,7 +6,7 @@
 # Copyright 2017 Tecnativa
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
 
 
@@ -48,7 +48,7 @@ class TestAccountAnalyticRecursion(TransactionCase):
         )
 
     def test_recursion(self):
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(UserError):
             self.analytic_parent1.write({"parent_id": self.analytic_son.id})
 
     def test_onchange(self):
@@ -87,7 +87,7 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.analytic_parent1.toggle_active()
         self.assertEqual(self.analytic_son.active, False)
         self.analytic_parent1.toggle_active()
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(UserError):
             self.analytic_son.toggle_active()
 
     def test_name(self):
