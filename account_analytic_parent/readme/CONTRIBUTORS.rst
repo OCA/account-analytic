@@ -8,3 +8,4 @@
 * David Vidal <david.vidal@tecnativa.com>
 * Jaume Planas <jaume.planas@minorisa.net>
 * Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* Pedro Gonzalez <pedro.gonzalez@pesol.es>
