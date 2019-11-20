@@ -8,28 +8,21 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Account Analytic Parent',
-    'summary': """
+    "name": "Account Analytic Parent",
+    "summary": """
         This module reintroduces the hierarchy to the analytic accounts.""",
-    'version': '12.0.2.0.0',
-    'license': 'AGPL-3',
-    'author': 'Matmoz d.o.o., '
-              'Luxim d.o.o., '
-              'Deneroteam, '
-              'Eficent, '
-              'Tecnativa, '
-              'Brainbean Apps, '
-              'Odoo Community Association (OCA)',
-    'website': 'https://www.github.com/OCA/account-analytic.git',
-    'depends': [
-        'account',
-        'analytic',
-    ],
-    'data': [
-        'views/account_analytic_account_view.xml',
-    ],
-    'demo': [
-        'data/analytic_account_demo.xml',
-    ],
-    'post_init_hook': 'post_init_hook',
+    "version": "12.0.2.0.0",
+    "license": "AGPL-3",
+    "author": "Matmoz d.o.o., "
+    "Luxim d.o.o., "
+    "Deneroteam, "
+    "Eficent, "
+    "Tecnativa, "
+    "Brainbean Apps, "
+    "Odoo Community Association (OCA)",
+    "website": "https://www.github.com/OCA/account-analytic.git",
+    "depends": ["account", "analytic"],
+    "data": ["views/account_analytic_account_view.xml"],
+    "demo": ["data/analytic_account_demo.xml"],
+    "post_init_hook": "post_init_hook",
 }
