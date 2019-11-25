@@ -7,7 +7,7 @@
 {
     "name": "Stock Analytic",
     "summary": "Adds an analytic account in stock move",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.1.0",
     "author": "Julius Network Solutions, "
               "ClearCorp, OpenSynergy Indonesia, "
               "Hibou Corp., "
