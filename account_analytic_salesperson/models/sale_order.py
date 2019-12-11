@@ -15,9 +15,9 @@ class SaleOrder(models.Model):
             super(SaleOrder, order)._create_analytic_account(prefix=prefix)
 
     @api.multi
-    def action_confirm(self):
+    def _action_confirm(self):
         """Ensure analytic account is created after sale order confirmation"""
-        res = super().action_confirm()
+        res = super()._action_confirm()
         for order in self:
             if not order.analytic_account_id:
                 order._create_analytic_account()
