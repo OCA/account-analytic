@@ -12,8 +12,11 @@ class TestAnalyticPartner(common.SavepointCase):
     def setUpClass(cls):
         super(TestAnalyticPartner, cls).setUpClass()
         cls.partner = cls.env["res.partner"].create({"name": "Test partner"})
+        cls.journal = cls.env["account.journal"].create(
+            {"name": "Test journal", "code": "TEST", "type": "sale"}
+        )
         cls.account_type = cls.env["account.account.type"].create(
-            {"name": "Test account type", "type": "other"}
+            {"name": "Test account type", "type": "other", "internal_group": "equity"}
         )
         cls.account = cls.env["account.account"].create(
             {
@@ -25,9 +28,11 @@ class TestAnalyticPartner(common.SavepointCase):
         cls.analytic_account = cls.env["account.analytic.account"].create(
             {"name": "Test Analytic Account"}
         )
-        cls.invoice = cls.env["account.invoice"].create(
+        cls.account_move = cls.env["account.move"].create(
             {
+                "type": "out_invoice",
                 "partner_id": cls.partner.id,
+                "journal_id": cls.journal.id,
                 "invoice_line_ids": [
                     (
                         0,
@@ -35,7 +40,7 @@ class TestAnalyticPartner(common.SavepointCase):
                         {
                             "name": "Test line",
                             "account_id": cls.account.id,
-                            "account_analytic_id": cls.analytic_account.id,
+                            "analytic_account_id": cls.analytic_account.id,
                             "quantity": 10.0,
                             "price_unit": 50.0,
                         },
@@ -45,14 +50,12 @@ class TestAnalyticPartner(common.SavepointCase):
         )
 
     def test_flow(self):
-        self.invoice.action_invoice_open()
-        if self.invoice.move_id.state == "draft":
-            self.invoice.move_id.post()
-        analytic_lines = self.invoice.move_id.mapped("line_ids.analytic_line_ids")
+        self.account_move.action_post()
+        analytic_lines = self.account_move.mapped("line_ids.analytic_line_ids")
         for analytic_line in analytic_lines:
             self.assertEqual(
                 analytic_line.other_partner_id,
-                self.invoice.partner_id.commercial_partner_id,
+                self.account_move.partner_id.commercial_partner_id,
                 """Invoice partner has not been propagated
                    to the analytic line""",
             )
