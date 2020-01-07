@@ -4,3 +4,7 @@
   * Rafael Blasco <rafael.blasco@tecnativa.com>
   * Luis M. Ontalba <luis.martinez@tecnativa.com>
   * Carlos Dauden
+
+* `Ecosoft <https://ecosoft.co.th>`_:
+
+  * Pimolnat Suntian <pimolnats@ecosoft.co.th>
