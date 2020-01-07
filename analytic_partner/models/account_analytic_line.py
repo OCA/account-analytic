@@ -5,8 +5,10 @@ from odoo import fields, models
 
 
 class AccountAnalyticLine(models.Model):
-    _inherit = 'account.analytic.line'
+    _inherit = "account.analytic.line"
 
     other_partner_id = fields.Many2one(
-        comodel_name='res.partner', string="Other Partner",
-        domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]")
+        comodel_name="res.partner",
+        string="Other Partner",
+        domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]",
+    )
