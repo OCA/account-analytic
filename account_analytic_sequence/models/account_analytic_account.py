@@ -6,12 +6,10 @@ from odoo import api, fields, models
 
 class AccountAnalyticAccount(models.Model):
 
-    _inherit = 'account.analytic.account'
+    _inherit = "account.analytic.account"
 
-    code = fields.Char(
-        default=lambda self: self._get_default_code())
+    code = fields.Char(default=lambda self: self._get_default_code())
 
     @api.model
     def _get_default_code(self):
-        return self.env['ir.sequence'].next_by_code(
-            'account.analytic.account.code')
+        return self.env["ir.sequence"].next_by_code("account.analytic.account.code")
