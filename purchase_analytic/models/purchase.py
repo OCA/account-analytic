@@ -5,22 +5,25 @@ from odoo import api, fields, models
 
 
 class PurchaseOrder(models.Model):
-    _inherit = 'purchase.order'
+    _inherit = "purchase.order"
 
     project_id2 = fields.Many2one(
-        comodel_name='account.analytic.account',
-        help='Use to store the value of project_id if there is no lines')
+        comodel_name="account.analytic.account",
+        help="Use to store the value of project_id if there is no lines",
+    )
     project_id = fields.Many2one(
-        compute='_compute_project_id',
-        inverse='_inverse_project_id',
-        comodel_name='account.analytic.account',
-        string='Contract / Analytic', readonly=True,
-        states={'draft': [('readonly', False)]},
+        compute="_compute_project_id",
+        inverse="_inverse_project_id",
+        comodel_name="account.analytic.account",
+        string="Contract / Analytic",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
         store=True,
-        help="The analytic account related to a sales order.")
+        help="The analytic account related to a sales order.",
+    )
 
     @api.multi
-    @api.depends('order_line.account_analytic_id')
+    @api.depends("order_line.account_analytic_id")
     def _compute_project_id(self):
         """ If all order line have same analytic account set project_id
         """
@@ -40,10 +43,10 @@ class PurchaseOrder(models.Model):
         """
         for po in self:
             if po.project_id:
-                po.order_line.write({'account_analytic_id': po.project_id.id})
+                po.order_line.write({"account_analytic_id": po.project_id.id})
             po.project_id2 = po.project_id
 
-    @api.onchange('project_id')
+    @api.onchange("project_id")
     def _onchange_project_id(self):
         """ When change project_id set analytic account on all order lines
             Do it in one operation to avoid to recompute the project_id field
@@ -53,8 +56,7 @@ class PurchaseOrder(models.Model):
         r = []
         for ol in self.order_line:
             if isinstance(ol.id, int):
-                r.append((1, ol.id,
-                          {'account_analytic_id': self.project_id.id}))
+                r.append((1, ol.id, {"account_analytic_id": self.project_id.id}))
             else:
                 # this is new record, do nothing !
                 return
