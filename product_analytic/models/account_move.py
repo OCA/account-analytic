@@ -13,19 +13,19 @@ INV_TYPE_MAP = {
 }
 
 
-class AccountInvoiceLine(models.Model):
-    _inherit = "account.invoice.line"
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
 
     @api.onchange("product_id")
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
-        inv_type = self.invoice_id.type
-        if self.product_id:
+        inv_type = self.move_id.type
+        if self.product_id and inv_type:
             ana_accounts = (
                 self.product_id.product_tmpl_id._get_product_analytic_accounts()
             )
             ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
-            self.account_analytic_id = ana_account.id
+            self.analytic_account_id = ana_account.id
         return res
 
     @api.model_create_multi
@@ -35,10 +35,10 @@ class AccountInvoiceLine(models.Model):
             if (
                 vals.get("product_id")
                 and inv_type
-                and not vals.get("account_analytic_id")
+                and not vals.get("analytic_account_id")
             ):
                 product = self.env["product.product"].browse(vals.get("product_id"))
                 ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
                 ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
-                vals["account_analytic_id"] = ana_account.id
+                vals["analytic_account_id"] = ana_account.id
         return super().create(vals_list)
