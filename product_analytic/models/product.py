@@ -10,29 +10,37 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     income_analytic_account_id = fields.Many2one(
-        'account.analytic.account', string='Income Analytic Account',
-        company_dependent=True)
+        "account.analytic.account",
+        string="Income Analytic Account",
+        company_dependent=True,
+    )
     expense_analytic_account_id = fields.Many2one(
-        'account.analytic.account', string='Expense Analytic Account',
-        company_dependent=True)
+        "account.analytic.account",
+        string="Expense Analytic Account",
+        company_dependent=True,
+    )
 
     @api.multi
     def _get_product_analytic_accounts(self):
         self.ensure_one()
         return {
-            'income': self.income_analytic_account_id or
-            self.categ_id.income_analytic_account_id,
-            'expense': self.expense_analytic_account_id or
-            self.categ_id.expense_analytic_account_id
+            "income": self.income_analytic_account_id
+            or self.categ_id.income_analytic_account_id,
+            "expense": self.expense_analytic_account_id
+            or self.categ_id.expense_analytic_account_id,
         }
 
 
 class ProductCategory(models.Model):
-    _inherit = 'product.category'
+    _inherit = "product.category"
 
     income_analytic_account_id = fields.Many2one(
-        'account.analytic.account', string='Income Analytic Account',
-        company_dependent=True)
+        "account.analytic.account",
+        string="Income Analytic Account",
+        company_dependent=True,
+    )
     expense_analytic_account_id = fields.Many2one(
-        'account.analytic.account', string='Expense Analytic Account',
-        company_dependent=True)
+        "account.analytic.account",
+        string="Expense Analytic Account",
+        company_dependent=True,
+    )
