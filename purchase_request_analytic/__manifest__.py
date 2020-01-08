@@ -3,14 +3,12 @@
 
 {
     "name": "Purchase Request Analytic",
-    "version": "12.0.1.0.0",
-    'author': "Eficent, Odoo Community Association (OCA)",
+    "version": "13.0.1.0.0",
+    "author": "Eficent, Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": [
-        "purchase_request",
-    ],
+    "depends": ["purchase_request"],
     "data": ["views/purchase_request_views.xml"],
     "license": "AGPL-3",
-    "installable": True
+    "installable": True,
 }
