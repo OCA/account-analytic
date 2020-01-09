@@ -178,3 +178,27 @@ class TestStockPicking(TransactionCase):
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_analytic_account_no_error(picking)
+
+    def test_onchange_analytic_account_id(self):
+        picking = self.env['stock.picking'].create({
+            'picking_type_id': self.incoming_picking_type.id,
+            'location_id': self.location.id,
+            'location_dest_id': self.dest_location.id,
+        })
+        move = self.env['stock.move'].create({
+            'picking_id': picking.id,
+            'product_id': self.product.id,
+            'location_id': self.location.id,
+            'location_dest_id': self.dest_location.id,
+            'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'date_expected': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            'name': self.product.name,
+            'product_uom': self.product.uom_id.id,
+            'product_uom_qty': 1.0,
+        })
+        # Before
+        self.assertEqual(move.analytic_account_id.name, False)
+        # After
+        picking.analytic_account_id = self.analytic_account
+        picking._onchange_analytic_account_id()
+        self.assertEqual(move.analytic_account_id.name, self.analytic_account.name)
