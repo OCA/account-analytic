@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-16 23:08+0000\n"
-"PO-Revision-Date: 2020-01-29 11:13+0000\n"
+"PO-Revision-Date: 2020-01-29 14:13+0000\n"
 "Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -90,7 +90,7 @@ msgstr "Journal-Buchungen"
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr "Tageseintrag"
+msgstr "Journal-Buchung"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
@@ -100,17 +100,17 @@ msgstr "Nie"
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Optional"
-msgstr "Wahlweise"
+msgstr "Optional"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Policy for analytic account"
-msgstr "Richtlinie für analytisches Konto"
+msgstr "Richtlinie für Kostenstelle"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Posted moves"
-msgstr "Buchungen"
+msgstr "Gebuchte Zeilen"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
@@ -123,14 +123,16 @@ msgid ""
 "defined when the move is posted ; if you select 'Never', the accountant will "
 "get an error message if an analytic account is present."
 msgstr ""
-"Legen Sie die Richtlinie für analytische Konten fest: \n"
-"Wenn Sie \"Optional\" auswählen, kann der Buchhalter ein analytisches Konto "
-"in einer Kontobewegungslinie mit diesem Kontotyp anlegen. Wenn Sie \"Immer\" "
-"auswählen, erhält der Buchhalter eine Fehlermeldung, wenn kein analytisches "
-"Konto vorhanden ist. Wenn Sie \"Posted moves\" auswählen, erhält der "
-"Buchhalter eine Fehlermeldung, wenn bei der Buchung kein analytisches Konto "
-"definiert wurde. Wenn Sie \"Nie\" auswählen, erhält der Buchhalter eine "
-"Fehlermeldung, wenn ein analytisches Konto vorhanden ist."
+"Richtlinie für Kostenstellen festlegen:\n"
+"Wenn 'Optional' gewählt wird, kann der Buchhalter von Fall zu Fall "
+"entscheiden, ob eine Kostenstelle bei einer Buchungszeile gesetzt wird oder "
+"nicht. \n"
+"Wenn 'Immer' gewählt wird, erscheint eine Fehlermeldung, wenn keine "
+"Kostenstelle gesetzt ist.\n"
+"Wenn 'Gebuchte Zeilen' gewählt wird, erscheint eine Fehlermeldung, wenn beim "
+"Buchen der Rechnungszeile keine Kostenstelle gesetzt ist.\n"
+"Wenn 'Nie' gewählt wird, erscheint eine Fehlermeldung, wenn eine "
+"Kostenstelle gesetzt ist."
 
 #~ msgid "Account Entry"
 #~ msgstr "Kontoeintrag"
