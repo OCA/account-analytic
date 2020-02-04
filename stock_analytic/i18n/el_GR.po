@@ -28,6 +28,11 @@ msgid "Analytic Account"
 msgstr "Αναλυτικός Λογαριασμός"
 
 #. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_product_product
+msgid "Product"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr ""
