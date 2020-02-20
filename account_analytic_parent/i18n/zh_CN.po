@@ -21,13 +21,13 @@ msgstr ""
 "X-Generator: Weblate 3.8\n"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:149
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:150
 #, python-format
 msgid "%(name)s - %(partner)s"
 msgstr "%(name)s - %(partner)s"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:112
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:113
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
@@ -64,7 +64,7 @@ msgid "Parent Path"
 msgstr "父路径"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:127
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:128
 #, python-format
 msgid "Please activate first parent account %s"
 msgstr "请激活第一个父帐户 %s"
@@ -76,7 +76,7 @@ msgid "You can not create recursive analytic accounts."
 msgstr "不能创建递归分析帐户。"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:144
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:145
 #, python-format
 msgid "[%(code)s] %(name)s"
 msgstr "[%(code)s] %(name)s"

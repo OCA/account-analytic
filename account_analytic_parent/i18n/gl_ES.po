@@ -15,13 +15,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:149
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:150
 #, python-format
 msgid "%(name)s - %(partner)s"
 msgstr ""
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:112
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:113
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr ""
@@ -58,7 +58,7 @@ msgid "Parent Path"
 msgstr ""
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:127
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:128
 #, python-format
 msgid "Please activate first parent account %s"
 msgstr ""
@@ -70,7 +70,7 @@ msgid "You can not create recursive analytic accounts."
 msgstr ""
 
 #. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:144
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:145
 #, python-format
 msgid "[%(code)s] %(name)s"
 msgstr ""
