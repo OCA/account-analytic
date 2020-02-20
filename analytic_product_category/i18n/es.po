@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* analytic_product_category
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2018-10-12 20:15+0000\n"
+"Last-Translator: Harald Panten <harald.panten@qubiq.es>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.1.1\n"
+
+#. module: analytic_product_category
+#: model:ir.model,name:analytic_product_category.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: analytic_product_category
+#: model:ir.model.fields,field_description:analytic_product_category.field_account_analytic_line_product_category_id
+#: model:ir.ui.view,arch_db:analytic_product_category.view_account_analytic_line_product_category_filter
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: analytic_product_category
+#: model:ir.model.fields,help:analytic_product_category.field_account_analytic_line_product_category_id
+msgid "Select category for the current product"
+msgstr "Seleccione categoría para el producto actual"

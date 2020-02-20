@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_analytic_line_product_category_form" model="ir.ui.view">
+        <field name="name">account.analytic.line.product.category.form</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="account.view_account_analytic_line_form_inherit_account"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="product_category_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_product_category_filter" model="ir.ui.view">
+        <field name="name">account.analytic.line.product.category.select</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id"
+               ref="account.view_account_analytic_line_filter_inherit_account"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="product_category_id"/>
+            </field>
+            <xpath expr="//filter[2]" position="after">
+                <filter name="product_category"
+                        string="Product Category"
+                        context="{'group_by':'product_category_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
