@@ -103,7 +103,8 @@ class AccountAnalyticAccount(models.Model):
     @api.onchange('parent_id')
     def _onchange_parent_id(self):
         for account in self:
-            account.partner_id = account.parent_id.partner_id
+            if account.parent_id:
+                account.partner_id = account.parent_id.partner_id
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
