@@ -24,7 +24,7 @@ msgid "Account Type"
 msgstr "Konto Typ"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__always
 msgid "Always"
 msgstr "Immer"
 
@@ -34,7 +34,7 @@ msgid "Analytic Policy"
 msgstr "Analytische Richtlinie"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:59
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -45,7 +45,7 @@ msgstr ""
 "Bezeichnung ' %s '."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:67
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -55,7 +55,7 @@ msgstr ""
 "die Buchungslinie mit Marke ' %s ' hat ein anlaytisches Konto  ' %s '.  "
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:77
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
@@ -84,12 +84,12 @@ msgid "Journal Item"
 msgstr "Tageseintrag"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__never
 msgid "Never"
 msgstr "Nie"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__optional
 msgid "Optional"
 msgstr "Wahlweise"
 
@@ -99,7 +99,7 @@ msgid "Policy for analytic account"
 msgstr "Richtlinie für analytisches Konto"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__posted
 msgid "Posted moves"
 msgstr "Buchungen"
 
