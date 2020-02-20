@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* analytic_product_category
+# 	* analytic_product_category
 #
 msgid ""
 msgstr ""
@@ -22,12 +22,12 @@ msgid "Analytic Line"
 msgstr "Línea analítica"
 
 #. module: analytic_product_category
-#: model:ir.model.fields,field_description:analytic_product_category.field_account_analytic_line_product_category_id
-#: model:ir.ui.view,arch_db:analytic_product_category.view_account_analytic_line_product_category_filter
+#: model:ir.model.fields,field_description:analytic_product_category.field_account_analytic_line__product_category_id
+#: model_terms:ir.ui.view,arch_db:analytic_product_category.view_account_analytic_line_product_category_filter
 msgid "Product Category"
 msgstr "Categoría de producto"
 
 #. module: analytic_product_category
-#: model:ir.model.fields,help:analytic_product_category.field_account_analytic_line_product_category_id
+#: model:ir.model.fields,help:analytic_product_category.field_account_analytic_line__product_category_id
 msgid "Select category for the current product"
 msgstr "Seleccione categoría para el producto actual"
