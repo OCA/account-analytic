@@ -20,7 +20,7 @@ class AccountInvoiceLine(models.Model):
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
         inv_type = self.invoice_id.type
-        if self.product_id:
+        if self.product_id and inv_type:
             ana_accounts = self.product_id.product_tmpl_id.\
                 _get_product_analytic_accounts()
             ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
