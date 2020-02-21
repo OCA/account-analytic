@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+    Copyright 2020 Brainbean Apps (https://brainbeanapps.com)
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record id="view_account_analytic_account_list" model="ir.ui.view">
+        <field name="name">account.analytic.account.list</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <field name="currency_id" invisible="1"/>
+                <field name="user_currency_id" invisible="1"/>
+            </tree>
+            <field name="balance" position="after">
+                <field name="original_debit" string="Debit" groups="base.group_multi_currency"/>
+                <field name="original_credit" string="Credit" groups="base.group_multi_currency"/>
+                <field name="original_balance" string="Balance" groups="base.group_multi_currency"/>
+            </field>
+            <field name="debit" position="attributes">
+                <attribute name="options">{'display_currency': 'user_currency_id'}</attribute>
+            </field>
+            <field name="credit" position="attributes">
+                <attribute name="options">{'display_currency': 'user_currency_id'}</attribute>
+            </field>
+            <field name="balance" position="attributes">
+                <attribute name="options">{'display_currency': 'user_currency_id'}</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_kanban" model="ir.ui.view">
+        <field name="name">account.analytic.account.kanban</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_kanban"/>
+        <field name="arch" type="xml">
+            <templates position="before">
+                <field name="user_currency_id"/>
+                <field name="original_balance"/>
+            </templates>
+            <xpath expr="//templates//field[@name='balance']" position="attributes">
+                <attribute name="options">{'display_currency': 'user_currency_id'}</attribute>
+            </xpath>
+            <xpath expr="//templates//field[@name='balance']" position="after">
+                <t t-if="record.user_currency_id.raw_value != record.currency_id.raw_value" groups="base.group_multi_currency">
+                    &#32;(<field name="original_balance" widget="monetary"/>)
+                </t>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
