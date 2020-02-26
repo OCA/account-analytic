@@ -6,36 +6,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-02-26 21:13+0000\n"
+"Last-Translator: alvarorib <alvaro.ribeiro@exo.pt>\n"
 "Language-Team: none\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: purchase_request_analytic
 #: model:ir.model.fields,field_description:purchase_request_analytic.field_purchase_request__analytic_account_id
 #: model_terms:ir.ui.view,arch_db:purchase_request_analytic.view_purchase_request_search
 msgid "Analytic Account"
-msgstr ""
+msgstr "Conta Analítica"
 
 #. module: purchase_request_analytic
 #: model:ir.model.fields,field_description:purchase_request_analytic.field_purchase_request__analytic_account_id2
 msgid "Analytic Account Id2"
-msgstr ""
+msgstr "Id2 da Conta Analítica"
 
 #. module: purchase_request_analytic
 #: model:ir.model,name:purchase_request_analytic.model_purchase_request
 msgid "Purchase Request"
-msgstr ""
+msgstr "Requisição de Compra"
 
 #. module: purchase_request_analytic
 #: model:ir.model.fields,help:purchase_request_analytic.field_purchase_request__analytic_account_id
 msgid "The analytic account related to a sales order."
-msgstr ""
+msgstr "A conta analítica relacionada com a encomenda de venda."
 
 #. module: purchase_request_analytic
 #: model:ir.model.fields,help:purchase_request_analytic.field_purchase_request__analytic_account_id2
 msgid "Use to store the value of analytic_account if there is no lines"
-msgstr ""
+msgstr "Usar para guardar o valor da analytic_account se não houver linhas"
