@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-02-24 12:13+0000\n"
+"PO-Revision-Date: 2020-02-26 21:13+0000\n"
 "Last-Translator: alvarorib <alvaro.ribeiro@exo.pt>\n"
 "Language-Team: none\n"
 "Language: pt\n"
@@ -18,13 +18,13 @@ msgstr ""
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:150
-#, fuzzy, python-format
+#, python-format
 msgid "%(name)s - %(partner)s"
 msgstr "%(name)s - %(partner)s"
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:113
-#, fuzzy, python-format
+#, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
@@ -73,6 +73,6 @@ msgstr "Não pode criar contas analíticas recursivas."
 
 #. module: account_analytic_parent
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:145
-#, fuzzy, python-format
+#, python-format
 msgid "[%(code)s] %(name)s"
 msgstr "[%(code)s] %(name)s"
