@@ -80,7 +80,7 @@ class TestAccountAnalyticRequired(common.SavepointCase):
     def _set_analytic_policy(self, policy, account=None):
         if account is None:
             account = self.account_sales
-        account.user_type_id.analytic_policy = policy
+        account.user_type_id.property_analytic_policy = policy
 
     def test_optional(self):
         self._set_analytic_policy("optional")
