@@ -10,7 +10,7 @@
         <field name="inherit_id" ref="account.view_account_type_form" />
         <field name="arch" type="xml">
             <xpath expr="//group/group" position="inside">
-                <field name="analytic_policy" />
+                <field name="property_analytic_policy" />
             </xpath>
         </field>
     </record>
@@ -20,23 +20,7 @@
         <field name="inherit_id" ref="account.view_account_type_tree" />
         <field name="arch" type="xml">
             <field name="type" position="after">
-                <field name="analytic_policy" />
-            </field>
-        </field>
-    </record>
-    <record id="view_account_type_search" model="ir.ui.view">
-        <field name="name">account_analytic_required.account_type_search</field>
-        <field name="model">account.account.type</field>
-        <field name="inherit_id" ref="account.view_account_type_search" />
-        <field name="arch" type="xml">
-            <field name="name" position="after">
-                <group string="Group By" name="groupby">
-                    <filter
-                        name="analytic_policy_groupby"
-                        string="Analytic Policy"
-                        context="{'group_by': 'analytic_policy'}"
-                    />
-                </group>
+                <field name="property_analytic_policy" />
             </field>
         </field>
     </record>
