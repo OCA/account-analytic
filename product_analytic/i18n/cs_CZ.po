@@ -34,9 +34,9 @@ msgid "Income Analytic Account"
 msgstr "Analytický účet příjmů"
 
 #. module: product_analytic
-#: model:ir.model,name:product_analytic.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Linka faktur"
+#: model:ir.model,name:product_analytic.model_account_move_line
+msgid "Journal Item"
+msgstr ""
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
@@ -47,3 +47,6 @@ msgstr "Kategorie produktů"
 #: model:ir.model,name:product_analytic.model_product_template
 msgid "Product Template"
 msgstr "Šablona produktu"
+
+#~ msgid "Invoice Line"
+#~ msgstr "Linka faktur"
