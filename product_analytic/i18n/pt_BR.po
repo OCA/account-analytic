@@ -12,8 +12,8 @@ msgstr ""
 "POT-Creation-Date: 2017-06-21 02:40+0000\n"
 "PO-Revision-Date: 2019-08-02 09:43+0000\n"
 "Last-Translator: Marcel Savegnago <marcel.savegnago@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,9 +36,9 @@ msgid "Income Analytic Account"
 msgstr "Conta Analítica de Receita"
 
 #. module: product_analytic
-#: model:ir.model,name:product_analytic.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "LInha da fatura"
+#: model:ir.model,name:product_analytic.model_account_move_line
+msgid "Journal Item"
+msgstr ""
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
@@ -49,3 +49,6 @@ msgstr "Categoria do produto"
 #: model:ir.model,name:product_analytic.model_product_template
 msgid "Product Template"
 msgstr "Modelo de Produto"
+
+#~ msgid "Invoice Line"
+#~ msgstr "LInha da fatura"
