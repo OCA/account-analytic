@@ -35,9 +35,9 @@ msgid "Income Analytic Account"
 msgstr ""
 
 #. module: product_analytic
-#: model:ir.model,name:product_analytic.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Riga fattura"
+#: model:ir.model,name:product_analytic.model_account_move_line
+msgid "Journal Item"
+msgstr ""
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
@@ -48,3 +48,6 @@ msgstr "Categoria Prodotto"
 #: model:ir.model,name:product_analytic.model_product_template
 msgid "Product Template"
 msgstr "Template Prodotto"
+
+#~ msgid "Invoice Line"
+#~ msgstr "Riga fattura"
