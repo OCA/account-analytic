@@ -1,72 +1,71 @@
-# -*- coding: utf-8 -*-
-# © 2015 ACSONE SA/NV (<http://acsone.eu>)
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-
+# Copyright 2015 ACSONE SA/NV
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo.tests import common
 
 
-class TestPosAnalyticConfig(common.TransactionCase):
+class TestPosAnalyticConfig(common.SavepointCase):
 
-    def setUp(self):
-        super(TestPosAnalyticConfig, self).setUp()
-        self.pos_order_obj = self.env['pos.order']
-        self.pos_conig_obj = self.env['pos.config']
-        self.pos_session_obj = self.env['pos.session']
-        self.aml_obj = self.env['account.move.line']
-        self.inv_line_obj = self.env['account.invoice.line']
-        self.main_config = self.env.ref('point_of_sale.pos_config_main')
-        self.aa_01 = self.env.ref('analytic.analytic_administratif')
-        self.customer_01 = self.env.ref('base.res_partner_2')
-        self.product_01 =\
-            self.env.ref('point_of_sale.boni_orange')
-        self.aml_analytic_domain =\
-            [('product_id', '=', self.product_01.id),
-             ('analytic_account_id', '=', self.aa_01.id)]
-        self.inv_analytic_domain =\
-            [('product_id', '=', self.product_01.id),
-             ('account_analytic_id', '=', self.aa_01.id)]
-
-    def common_test(self):
-        self.main_config.account_analytic_id = self.aa_01
-        # I create and open a new session
-        self.session_01 = self.pos_session_obj.create(
-            {'config_id': self.main_config.id})
-        self.session_01.action_pos_session_open()
-        # I create a new order
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.aml_obj = cls.env['account.move.line']
+        cls.inv_line_obj = cls.env['account.invoice.line']
+        cls.main_config = cls.env.ref('point_of_sale.pos_config_main')
+        cls.aa_01 = cls.env['account.analytic.account'].create({
+            'name': 'Test Analytic Account',
+        })
+        cls.customer_01 = cls.env['res.partner'].create({
+            'name': 'Mr. Odoo',
+        })
+        cls.product_01 = cls.env['product.product'].create({
+            'name': 'Test product',
+        })
+        cls.aml_analytic_domain = [
+            ('product_id', '=', cls.product_01.id),
+            ('analytic_account_id', '=', cls.aa_01.id),
+        ]
+        cls.inv_analytic_domain = [
+            ('product_id', '=', cls.product_01.id),
+            ('account_analytic_id', '=', cls.aa_01.id),
+        ]
+        cls.main_config.account_analytic_id = cls.aa_01
+        cls.session_01 = cls.env['pos.session'].create(
+            {'config_id': cls.main_config.id})
+        cls.session_01.action_pos_session_open()
         order_vals = {
-            'session_id': self.session_01.id,
-            'partner_id': self.customer_01.id,
-            'lines': [(0, 0, {'product_id': self.product_01.id,
-                              'price_unit': 10.0,
-                              })]
+            'session_id': cls.session_01.id,
+            'partner_id': cls.customer_01.id,
+            'lines': [(0, 0, {
+                'product_id': cls.product_01.id,
+                'price_unit': 10.0,
+            })],
         }
-        self.order_01 = self.pos_order_obj.create(order_vals)
-        # I pay the created order
-        payment_data = {'amount': 10,
-                        'journal': self.main_config.journal_ids[0].id,
-                        'partner_id': self.order_01.partner_id.id}
-        self.order_01.add_payment(payment_data)
-        if self.order_01.test_paid():
-            self.order_01.action_pos_order_paid()
+        cls.order_01 = cls.env['pos.order'].create(order_vals)
+        payment_data = {
+            'amount': 10,
+            'journal': cls.main_config.journal_ids[0].id,
+            'partner_id': cls.order_01.partner_id.id,
+        }
+        cls.order_01.add_payment(payment_data)
+        cls.order_01.action_pos_order_paid()
 
     def test_order_simple_receipt(self):
-        self.common_test()
+        """Simple ticket"""
         aml = self.aml_obj.search(self.aml_analytic_domain)
-        # I check that there isn't lines with the analytic account in this test
+        # There aren't lines with the analytic account yet
         self.assertEqual(len(aml.ids), 0)
         self.session_01.action_pos_session_closing_control()
-        # self.session_01.action_pos_session_close()
-        # I check that there is a journal item with the config analytic account
+        self.session_01.action_pos_session_close()
+        # There they are
         aml = self.aml_obj.search(self.aml_analytic_domain)
         self.assertEqual(len(aml.ids), 1)
 
     def test_order_invoice(self):
-        self.common_test()
+        """Ticket with invoice"""
         lines = self.inv_line_obj.search(self.inv_analytic_domain)
         self.order_01.action_pos_order_invoice()
-        # I check that there isn't lines with the analytic account in this test
+        # There aren't lines with the analytic account yet
         self.assertEqual(len(lines.ids), 0)
         lines = self.inv_line_obj.search(self.inv_analytic_domain)
-        # I check that there is an invoice line
-        # with the config analytic account
+        # There they are
         self.assertEqual(len(lines.ids), 1)
