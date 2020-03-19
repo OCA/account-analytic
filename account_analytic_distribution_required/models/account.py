@@ -19,7 +19,6 @@ class AccountAccountType(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
-    @api.multi
     def _check_analytic_distribution_required_msg(self):
         for move_line in self:
             analytic_distribution = move_line.analytic_tag_ids.filtered(
@@ -62,7 +61,9 @@ class AccountMoveLine(models.Model):
                     move_line.account_id.name,
                     move_line.name,
                 )
-            elif analytic_policy == "never" and analytic_distribution:
+            elif analytic_policy == "never" and (
+                analytic_distribution or move_line.analytic_account_id
+            ):
                 return _(
                     "Analytic policy is set to 'Never' with account "
                     "%s '%s' but the account move line with label "
@@ -83,5 +84,4 @@ class AccountMoveLine(models.Model):
             message = rec._check_analytic_distribution_required_msg()
             if message:
                 raise exceptions.ValidationError(message)
-            else:
-                super(AccountMoveLine, self)._check_analytic_required()
+            super()._check_analytic_required()

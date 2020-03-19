@@ -11,7 +11,7 @@ from odoo.tests.common import SavepointCase
 class TestAccountAnalyticPlanRequired(SavepointCase):
     @classmethod
     def setUpClass(cls):
-        super(TestAccountAnalyticPlanRequired, cls).setUpClass()
+        super().setUpClass()
         cls.account_obj = cls.env["account.account"]
         cls.account_type_obj = cls.env["account.account.type"]
         cls.move_obj = cls.env["account.move"]
@@ -20,7 +20,9 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
         cls.analytic_tag_obj = cls.env["account.analytic.tag"]
         cls.user_type = cls.env.ref("account.data_account_type_revenue")
         cls.analytic_account_id = cls.analytic_account_obj.create({"name": "test aa"})
-        cls.account_type = cls.account_type_obj.create({"name": "Test account_type"})
+        cls.account_type = cls.account_type_obj.create(
+            {"name": "Test account_type", "internal_group": "expense"}
+        )
         cls.account_id = cls.account_obj.create(
             {
                 "name": "Test account",
