@@ -14,13 +14,13 @@ Account Analytic Sequence
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/12.0/account_analytic_sequence
+    :target: https://github.com/OCA/account-analytic/tree/13.0/account_analytic_sequence
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-12-0/account-analytic-12-0-account_analytic_sequence
+    :target: https://translation.odoo-community.org/projects/account-analytic-13-0/account-analytic-13-0-account_analytic_sequence
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/87/12.0
+    :target: https://runbot.odoo-community.org/runbot/87/13.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
@@ -32,13 +32,46 @@ This module restores the sequence for an analytic account.
 .. contents::
    :local:
 
+Configuration
+=============
+
+You can change the default sequence (AA001) by the one of your choice
+going to *Settings > Technical > Sequences & Identifiers > Sequences*, and
+editing the record `Analytic account code`.
+
+You will only have access to that section if your section has `Technical features`
+permission check marked.
+
+Changelog
+=========
+
+13.0.1.0.0 (2020-01-07)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Migrated to Odoo 13.
+
+12.0.1.0.0 (2018-10-29)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Migrated to Odoo 12.
+
+11.0.1.0.0 (2018-09-04)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Migrated to Odoo 11.
+
+10.0.1.0.0 (2017-07-27)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+First version.
+
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_analytic_sequence%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_analytic_sequence%0Aversion:%2013.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -54,6 +87,7 @@ Contributors
 ~~~~~~~~~~~~
 
 * Benjamin Willig <benjamin.willig@acsone.eu>
+* Pimolnat Suntian <pimolnats@ecosoft.co.th>
 
 Maintainers
 ~~~~~~~~~~~
@@ -68,6 +102,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/12.0/account_analytic_sequence>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/13.0/account_analytic_sequence>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
