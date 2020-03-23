@@ -23,3 +23,8 @@ msgstr ""
 msgid "Reference"
 msgstr ""
 
+#. module: account_analytic_sequence
+#: sql_constraint:account.analytic.account:0
+msgid "Reference must be unique per Company!"
+msgstr ""
+

@@ -27,3 +27,8 @@ msgstr "Compte analytique"
 #: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__code
 msgid "Reference"
 msgstr ""
+
+#. module: account_analytic_sequence
+#: sql_constraint:account.analytic.account:0
+msgid "Reference must be unique per Company!"
+msgstr ""
