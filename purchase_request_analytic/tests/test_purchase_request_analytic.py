@@ -19,7 +19,7 @@ class TestPurchaseRequestAnalytic(TransactionCase):
         product_id = self.env.ref("product.product_product_9")
         pr = self.env["purchase.request"].create(
             {
-                "partner_id": self.env.ref("base.res_partner_12").id,
+                "requested_by": self.env.user.id,
                 "line_ids": [
                     (
                         0,
@@ -28,7 +28,7 @@ class TestPurchaseRequestAnalytic(TransactionCase):
                             "name": product_id.name,
                             "product_id": product_id.id,
                             "product_qty": 1.0,
-                            "product_uom": self.env.ref("uom.product_uom_unit").id,
+                            "product_uom_id": self.env.ref("uom.product_uom_unit").id,
                         },
                     )
                 ],
@@ -45,10 +45,7 @@ class TestPurchaseRequestAnalytic(TransactionCase):
             Check analytic account is on purchase
         """
         pr = self.env["purchase.request"].new(
-            {
-                "partner_id": self.env.ref("base.res_partner_12").id,
-                "analytic_account_id": self.anal_id.id,
-            }
+            {"requested_by": self.env.user.id, "analytic_account_id": self.anal_id.id}
         )
         pr._onchange_analytic_account_id()
         self.assertEqual(pr.analytic_account_id.id, self.anal_id.id)
