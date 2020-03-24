@@ -22,7 +22,6 @@ class PurchaseRequest(models.Model):
         help="The analytic account related to a sales order.",
     )
 
-    @api.multi
     @api.depends("line_ids.analytic_account_id")
     def _compute_analytic_account_id(self):
         """ If all purchase request lines have same analytic account set
@@ -38,7 +37,6 @@ class PurchaseRequest(models.Model):
                         break
             pr.analytic_account_id = al
 
-    @api.multi
     def _inverse_analytic_account_id(self):
         """ If analytic_account is set on PR, propagate it to all purchase
             request lines
