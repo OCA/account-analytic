@@ -7,7 +7,7 @@
 {
     "name": "Stock Analytic",
     "summary": "Adds an analytic account in stock move",
-    "version": "12.0.1.1.1",
+    "version": "13.0.1.0.0",
     "author": "Julius Network Solutions, "
     "ClearCorp, OpenSynergy Indonesia, "
     "Hibou Corp., "
@@ -15,7 +15,7 @@
     "website": "https://github.com/OCA/account-analytic",
     "category": "Warehouse Management",
     "license": "AGPL-3",
-    "depends": ["stock_account", "analytic",],
-    "data": ["views/stock_move_views.xml", "views/stock_scrap.xml",],
+    "depends": ["stock_account", "analytic"],
+    "data": ["views/stock_move_views.xml", "views/stock_scrap.xml"],
     "installable": True,
 }
