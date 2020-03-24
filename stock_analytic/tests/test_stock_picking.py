@@ -58,9 +58,7 @@ class TestStockPicking(TransactionCase):
                 "property_stock_account_output_categ_id": self.stock_output_account.id,
             }
         )
-        self.product.update(
-            {"categ_id": self.product_categ.id,}
-        )
+        self.product.update({"categ_id": self.product_categ.id})
 
     def _create_picking(
         self, location_id, location_dest_id, picking_type_id, analytic_account_id=False
@@ -96,7 +94,11 @@ class TestStockPicking(TransactionCase):
 
     def __update_qty_on_hand_product(self, product, new_qty):
         qty_wizard = self.env["stock.change.product.qty"].create(
-            {"product_id": product.id, "new_quantity": new_qty}
+            {
+                "product_id": product.id,
+                "product_tmpl_id": product.product_tmpl_id.id,
+                "new_quantity": new_qty,
+            }
         )
         qty_wizard.change_product_qty()
 
@@ -116,7 +118,9 @@ class TestStockPicking(TransactionCase):
         self.assertEqual(picking.state, "done")
 
     def _check_account_move_no_error(self, picking):
-        criteria1 = [["ref", "=", picking.name]]
+        criteria1 = [
+            ["ref", "=", "{} - {}".format(picking.name, picking.product_id.name)]
+        ]
         acc_moves = self.env["account.move"].search(criteria1)
         self.assertGreater(len(acc_moves), 0)
 
