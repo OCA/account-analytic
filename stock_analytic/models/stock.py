@@ -34,6 +34,12 @@ class StockMove(models.Model):
                 })
         return res
 
+    @api.model
+    def _prepare_merge_moves_distinct_fields(self):
+        fields = super()._prepare_merge_moves_distinct_fields()
+        fields.append('analytic_account_id')
+        return fields
+
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
