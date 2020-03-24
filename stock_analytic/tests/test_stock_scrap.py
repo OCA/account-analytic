@@ -14,7 +14,11 @@ class TestStockScrap(TransactionCase):
 
     def __update_qty_on_hand_product(self, product, new_qty):
         qty_wizard = self.env["stock.change.product.qty"].create(
-            {"product_id": product.id, "new_quantity": new_qty}
+            {
+                "product_id": product.id,
+                "product_tmpl_id": product.product_tmpl_id.id,
+                "new_quantity": new_qty,
+            }
         )
         qty_wizard.change_product_qty()
 
