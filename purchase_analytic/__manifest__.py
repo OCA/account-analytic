@@ -4,7 +4,7 @@
 {
     "name": "Purchase Analytic",
     "version": "13.0.1.0.0",
-    "author": "Acsone SA/NV,Odoo Community Association (OCA)",
+    "author": "Acsone SA/NV, Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["purchase"],
