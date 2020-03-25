@@ -22,7 +22,6 @@ class PurchaseOrder(models.Model):
         help="The analytic account related to a sales order.",
     )
 
-    @api.multi
     @api.depends("order_line.account_analytic_id")
     def _compute_project_id(self):
         """ If all order line have same analytic account set project_id
@@ -37,7 +36,6 @@ class PurchaseOrder(models.Model):
                         break
             po.project_id = al
 
-    @api.multi
     def _inverse_project_id(self):
         """ When set project_id set analytic account on all order lines
         """
