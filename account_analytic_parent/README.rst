@@ -17,7 +17,7 @@ Account Analytic Parent
     :target: https://github.com/OCA/account-analytic/tree/13.0/account_analytic_parent
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-13.0/account-analytic-13.0-account_analytic_parent
+    :target: https://translation.odoo-community.org/projects/account-analytic-13-0/account-analytic-13-0-account_analytic_parent
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
     :target: https://runbot.odoo-community.org/runbot/87/13.0
@@ -75,6 +75,7 @@ Contributors
 * David Vidal <david.vidal@tecnativa.com>
 * Jaume Planas <jaume.planas@minorisa.net>
 * Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* Pedro Gonzalez <pedro.gonzalez@pesol.es>
 
 Maintainers
 ~~~~~~~~~~~
