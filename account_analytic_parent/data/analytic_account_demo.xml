@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!--
+        License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+    -->
+    <record id="analytic_project_1" model="account.analytic.account">
+        <field name="name">Project 1</field>
+    </record>
+    <record id="analytic_project_2" model="account.analytic.account">
+        <field name="name">Project 2</field>
+    </record>
+    <record id="analytic_journal_trainings" model="account.analytic.account">
+        <field name="name">Training</field>
+        <field name="parent_id" ref="analytic.analytic_internal" />
+    </record>
+    <record id="analytic_in_house" model="account.analytic.account">
+        <field name="name">In House</field>
+        <field name="parent_id" ref="analytic_journal_trainings" />
+    </record>
+    <record id="analytic_online" model="account.analytic.account">
+        <field name="name">Online</field>
+        <field name="parent_id" ref="analytic_journal_trainings" />
+    </record>
+    <record id="analytic_support" model="account.analytic.account">
+        <field name="name">Support</field>
+        <field name="parent_id" ref="analytic.analytic_our_super_product" />
+    </record>
+    <record id="analytic_partners" model="account.analytic.account">
+        <field name="name">Partners</field>
+        <field name="parent_id" ref="analytic_support" />
+    </record>
+    <record id="analytic_customers" model="account.analytic.account">
+        <field name="name">Customers</field>
+        <field name="parent_id" ref="analytic_support" />
+    </record>
+    <record id="analytic_support_internal" model="account.analytic.account">
+        <field name="name">Internal</field>
+        <field name="parent_id" ref="analytic_support" />
+    </record>
+    <record id="analytic_integration" model="account.analytic.account">
+        <field name="name">Integration</field>
+        <field name="parent_id" ref="analytic.analytic_our_super_product" />
+    </record>
+    <record id="analytic_consultancy" model="account.analytic.account">
+        <field name="name">Consultancy</field>
+        <field name="parent_id" ref="analytic.analytic_our_super_product" />
+    </record>
+    <record id="analytic_super_product_trainings" model="account.analytic.account">
+        <field name="name">Training</field>
+        <field name="parent_id" ref="analytic.analytic_our_super_product" />
+    </record>
+    <record id="analytic_seagate_p1" model="account.analytic.account">
+        <field name="name">Seagate P1</field>
+        <field name="parent_id" ref="analytic_integration" />
+    </record>
+    <record id="analytic_seagate_p2" model="account.analytic.account">
+        <field name="name">Seagate P2</field>
+        <field name="parent_id" ref="analytic_integration" />
+        <field name="partner_id" ref="base.res_partner_4" />
+    </record>
+    <record
+        id="analytic.analytic_millennium_industries"
+        model="account.analytic.account"
+    >
+        <field name="name">Millennium Industries</field>
+        <field name="parent_id" ref="analytic_integration" />
+        <field name="partner_id" ref="base.res_partner_2" />
+    </record>
+    <record id="analytic.analytic_integration_c2c" model="account.analytic.account">
+        <field name="name">CampToCamp</field>
+        <field name="parent_id" ref="analytic_integration" />
+        <field name="partner_id" ref="base.res_partner_1" />
+    </record>
+    <record id="analytic.analytic_agrolait" model="account.analytic.account">
+        <field name="name">Agrolait</field>
+        <field name="parent_id" ref="analytic_customers" />
+        <field name="partner_id" ref="base.res_partner_2" />
+    </record>
+    <record id="analytic.analytic_asustek" model="account.analytic.account">
+        <field name="name">Asustek</field>
+        <field name="parent_id" ref="analytic_customers" />
+        <field name="partner_id" ref="base.res_partner_1" />
+    </record>
+    <record id="analytic.analytic_deltapc" model="account.analytic.account">
+        <field name="name">Delta PC</field>
+        <field name="parent_id" ref="analytic_customers" />
+        <field name="partner_id" ref="base.res_partner_4" />
+    </record>
+    <record id="analytic.analytic_spark" model="account.analytic.account">
+        <field name="name">Spark Systems</field>
+        <field name="parent_id" ref="analytic_partners" />
+        <field name="partner_id" ref="base.res_partner_1" />
+    </record>
+    <record id="analytic.analytic_nebula" model="account.analytic.account">
+        <field name="name">Nebula</field>
+        <field name="parent_id" ref="analytic_partners" />
+        <field name="partner_id" ref="base.res_partner_2" />
+    </record>
+    <record
+        id="analytic.analytic_luminous_technologies"
+        model="account.analytic.account"
+    >
+        <field name="name">Luminous Technologies</field>
+        <field name="parent_id" ref="analytic_partners" />
+        <field name="partner_id" ref="base.res_partner_1" />
+    </record>
+    <record id="analytic.analytic_think_big_systems" model="account.analytic.account">
+        <field name="name">Think Big Systems</field>
+        <field name="parent_id" ref="analytic_partners" />
+        <field name="partner_id" ref="base.res_partner_2" />
+    </record>
+    <record
+        id="analytic.analytic_partners_camp_to_camp"
+        model="account.analytic.account"
+    >
+        <field name="name">Camp to Camp</field>
+        <field name="parent_id" ref="analytic_partners" />
+        <field name="partner_id" ref="base.res_partner_3" />
+    </record>
+    <record id="analytic_project_2_support" model="account.analytic.account">
+        <field name="name">Support</field>
+        <field name="parent_id" ref="analytic_project_2" />
+    </record>
+    <record id="analytic_project_2_development" model="account.analytic.account">
+        <field name="name">Development</field>
+        <field name="parent_id" ref="analytic_project_2" />
+    </record>
+    <record id="analytic_project_1_trainings" model="account.analytic.account">
+        <field name="name">Training</field>
+        <field name="parent_id" ref="analytic_project_1" />
+    </record>
+    <record id="analytic_project_1_development" model="account.analytic.account">
+        <field name="name">Development</field>
+        <field name="parent_id" ref="analytic_project_1" />
+    </record>
+    <record id="analytic_administratif" model="account.analytic.account">
+        <field name="name">Administrative</field>
+        <field name="parent_id" ref="analytic.analytic_internal" />
+    </record>
+    <record id="analytic_commercial_marketing" model="account.analytic.account">
+        <field name="name">Commercial &amp; Marketing</field>
+        <field name="parent_id" ref="analytic.analytic_internal" />
+    </record>
+    <record
+        id="analytic_our_super_product_development"
+        model="account.analytic.account"
+    >
+        <field name="name">Our Super Product Development</field>
+        <field name="parent_id" ref="analytic.analytic_internal" />
+    </record>
+    <record id="analytic_stable" model="account.analytic.account">
+        <field name="name">Stable</field>
+        <field name="parent_id" ref="analytic_our_super_product_development" />
+    </record>
+    <record id="analytic_trunk" model="account.analytic.account">
+        <field name="name">Trunk</field>
+        <field name="parent_id" ref="analytic_our_super_product_development" />
+    </record>
+    <record id="analytic_paid" model="account.analytic.account">
+        <field name="name">Paid</field>
+        <field name="parent_id" ref="analytic.analytic_absences" />
+    </record>
+    <record id="analytic_unpaid" model="account.analytic.account">
+        <field name="name">Unpaid</field>
+        <field name="parent_id" ref="analytic.analytic_absences" />
+    </record>
+</odoo>
