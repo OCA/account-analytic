@@ -29,15 +29,15 @@ class TestAccountAnalyticRecursion(TransactionCase):
              "parent_id": self.analytic_parent1.id})
         self.analytic_parent2 = self.analytic_account_obj.create(
             {"name": "parent2 aa",
-             "code": "01",
+             "code": "03",
              "partner_id": self.partner2.id})
         self.analytic_parent3 = self.analytic_account_obj.create(
             {"name": "parent3 aa",
-             "code": "01",
+             "code": "04",
              "partner_id": self.partner2.id})
         self.analytic_son2 = self.analytic_account_obj.create(
             {"name": "son aa",
-             "code": "02",
+             "code": "05",
              "parent_id": self.analytic_parent3.id})
         self.create_analytic_line(
             "Analytic line son", self.analytic_son, 50)
