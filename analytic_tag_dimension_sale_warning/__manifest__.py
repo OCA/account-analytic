@@ -4,7 +4,7 @@
     "name": "Analytic Tag Dimension Sale Warning",
     "summary": "Group Analytic Entries by Dimensions",
     "category": "Generic Modules/Accounting",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "author": "Camptocamp SA,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
