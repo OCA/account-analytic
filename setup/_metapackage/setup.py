@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo13-addon-account_analytic_required',
         'odoo13-addon-procurement_mto_analytic',
         'odoo13-addon-product_analytic',
+        'odoo13-addon-purchase_analytic',
     ],
     classifiers=[
         'Programming Language :: Python',
