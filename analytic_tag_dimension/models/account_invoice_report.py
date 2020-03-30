@@ -13,11 +13,5 @@ class AccountInvoiceReport(models.Model):
     def _select(self):
         res = super()._select()
         add_fields = self._get_dimension_fields()
-        add_fields = [", sub.{0} as {0}".format(x) for x in add_fields]
-        return res + "".join(add_fields)
-
-    def _sub_select(self):
-        res = super()._sub_select()
-        add_fields = self._get_dimension_fields()
-        add_fields = [", ail.{0} as {0}".format(x) for x in add_fields]
+        add_fields = [", line.{0} as {0}".format(x) for x in add_fields]
         return res + "".join(add_fields)

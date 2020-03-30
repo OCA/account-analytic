@@ -47,10 +47,7 @@ class TestAnalyticDimensionCase(SavepointCase):
 
     def test_analytic_dimension_spaces_error(self):
         """ Test dimension creation with spaces in code """
-        dimension_error = {
-            "name": "Test Spaces Error",
-            "code": "test spaces error",
-        }
+        dimension_error = {"name": "Test Spaces Error", "code": "test spaces error"}
         with self.assertRaises(ValidationError):
             self.dimension_obj.create(dimension_error)
 
@@ -62,28 +59,30 @@ class TestAnalyticDimensionCase(SavepointCase):
         analytic_tag_test_a = self.tag_obj.create(
             {"name": "Test A", "analytic_dimension_id": analytic_dimension_test.id}
         )
-        values = {
-            "account_id": self.analytic_account_id,
-            "name": "test",
-            "tag_ids": [
-                (
-                    6,
-                    0,
-                    [
-                        self.analytic_tag_type_a.id,
-                        self.analytic_tag_concept_a.id,
-                        analytic_tag_test_a.id,
-                    ],
-                ),
-            ],
-        }
+        values = [
+            {
+                "account_id": self.analytic_account_id,
+                "name": "test",
+                "tag_ids": [
+                    (
+                        6,
+                        0,
+                        [
+                            self.analytic_tag_type_a.id,
+                            self.analytic_tag_concept_a.id,
+                            analytic_tag_test_a.id,
+                        ],
+                    )
+                ],
+            }
+        ]
         line = self.analytic_line_obj.create(values)
         self.assertTrue(line.x_dimension_type.id == self.analytic_tag_type_a.id)
         self.assertTrue(line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
         values_update = {
             "tag_ids": [
-                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_type_b.id]),
-            ],
+                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_type_b.id])
+            ]
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
@@ -108,23 +107,29 @@ class TestAnalyticDimensionCase(SavepointCase):
                 "company_id": self.company_id,
             }
         )
-        values = {
-            "name": "test",
-            "account_id": account.id,
-            "move_id": move.id,
-            "analytic_account_id": self.analytic_account_id,
-            "analytic_tag_ids": [
-                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_concept_a.id]),
-            ],
-        }
+        values = [
+            {
+                "name": "test",
+                "account_id": account.id,
+                "move_id": move.id,
+                "analytic_account_id": self.analytic_account_id,
+                "analytic_tag_ids": [
+                    (
+                        6,
+                        0,
+                        [self.analytic_tag_type_a.id, self.analytic_tag_concept_a.id],
+                    )
+                ],
+            }
+        ]
         move_line_obj = self.env["account.move.line"]
         line = move_line_obj.create(values)
         self.assertTrue(line.x_dimension_type.id == self.analytic_tag_type_a.id)
         self.assertTrue(line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
         values_update = {
             "analytic_tag_ids": [
-                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_type_b.id]),
-            ],
+                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_type_b.id])
+            ]
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
@@ -141,35 +146,39 @@ class TestAnalyticDimensionCase(SavepointCase):
                 "reconcile": True,
             }
         )
-        invoice = self.env["account.invoice"].create(
+        invoice = self.env["account.move"].create(
             {
                 "journal_id": self.journal.id,
                 "company_id": self.company_id,
                 "partner_id": partner.id,
             }
         )
-        values = {
-            "name": "test",
-            "price_unit": 1,
-            "account_id": account.id,
-            "invoice_id": invoice.id,
-            "analytic_account_id": self.analytic_account_id,
-            "analytic_tag_ids": [
-                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_concept_a.id]),
-            ],
-        }
-        invoice_line_obj = self.env["account.invoice.line"]
+        values = [
+            {
+                "name": "test",
+                "price_unit": 1,
+                "account_id": account.id,
+                "move_id": invoice.id,
+                "analytic_account_id": self.analytic_account_id,
+                "analytic_tag_ids": [
+                    (
+                        6,
+                        0,
+                        [self.analytic_tag_type_a.id, self.analytic_tag_concept_a.id],
+                    )
+                ],
+            }
+        ]
+        invoice_line_obj = self.env["account.move.line"]
         line = invoice_line_obj.create(values)
         self.assertTrue(line.x_dimension_type.id == self.analytic_tag_type_a.id)
         self.assertTrue(line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
-        values_update = {
-            "analytic_tag_ids": [(6, 0, [self.analytic_tag_type_a.id])],
-        }
+        values_update = {"analytic_tag_ids": [(6, 0, [self.analytic_tag_type_a.id])]}
         line.write(values_update)
         values_update = {
             "analytic_tag_ids": [
-                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_type_b.id]),
-            ],
+                (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_type_b.id])
+            ]
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
