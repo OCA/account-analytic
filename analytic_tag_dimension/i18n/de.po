@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-27 22:14+0000\n"
-"PO-Revision-Date: 2020-01-29 11:13+0000\n"
+"PO-Revision-Date: 2020-05-06 14:19+0000\n"
 "Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
@@ -22,10 +22,8 @@ msgstr ""
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_dimension
-#, fuzzy
-#| msgid "Analytic Dimension"
 msgid "Account Analytic Dimension"
-msgstr "Analytische Dimension"
+msgstr "Kostenstellen-Dimension"
 
 #. module: analytic_tag_dimension
 #: model:ir.actions.act_window,name:analytic_tag_dimension.AccountAnalyticDimension_action
@@ -42,10 +40,8 @@ msgstr "Analytische Dimension"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_analytic_dimension_line
-#, fuzzy
-#| msgid "Analytic Dimension"
 msgid "Analytic Dimension Line"
-msgstr "Analytische Dimension"
+msgstr "Dimensionszeile"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_line
