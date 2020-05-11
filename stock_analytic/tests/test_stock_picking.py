@@ -43,6 +43,9 @@ class TestStockPicking(TransactionCase):
                 "company_id": self.env.ref("base.main_company").id,
             }
         )
+        self.stock_journal = self.env["account.journal"].create(
+            {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
+        )
         self.analytic_account = self.env.ref("analytic.analytic_agrolait")
         self.warehouse = self.env.ref("stock.warehouse0")
         self.location = self.warehouse.lot_stock_id
@@ -56,6 +59,7 @@ class TestStockPicking(TransactionCase):
                 "property_stock_valuation_account_id": self.valuation_account.id,
                 "property_stock_account_input_categ_id": self.stock_input_account.id,
                 "property_stock_account_output_categ_id": self.stock_output_account.id,
+                "property_stock_journal": self.stock_journal.id,
             }
         )
         self.product.update({"categ_id": self.product_categ.id})
