@@ -64,7 +64,7 @@ msgid "Code"
 msgstr ""
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:23
+#: code:addons/analytic_tag_dimension/models/analytic.py:25
 #, python-format
 msgid "Code can't contain spaces!"
 msgstr ""
@@ -138,7 +138,15 @@ msgid "Tags"
 msgstr ""
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:66
+#: code:addons/analytic_tag_dimension/models/analytic.py:94
 #, python-format
 msgid "You can not set two tags from same dimension."
+msgstr ""
+
+#. module: analytic_tag_dimension
+#: code:addons/analytic_tag_dimension/models/analytic.py:120
+#, python-format
+msgid ""
+"You can not set two tags from same dimension.\n"
+" Records {} in the model {} have {}"
 msgstr ""
