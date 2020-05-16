@@ -69,7 +69,7 @@ msgid "Code"
 msgstr "الكود"
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:23
+#: code:addons/analytic_tag_dimension/models/analytic.py:25
 #, python-format
 msgid "Code can't contain spaces!"
 msgstr "لا يمكن ان يحتوي على فراقات!"
@@ -143,9 +143,18 @@ msgid "Tags"
 msgstr "الاوسام"
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:66
+#: code:addons/analytic_tag_dimension/models/analytic.py:94
 #, python-format
 msgid "You can not set two tags from same dimension."
+msgstr "لا يمكن تحديد وسمين من نفس البعد."
+
+#. module: analytic_tag_dimension
+#: code:addons/analytic_tag_dimension/models/analytic.py:120
+#, fuzzy, python-format
+#| msgid "You can not set two tags from same dimension."
+msgid ""
+"You can not set two tags from same dimension.\n"
+" Records {} in the model {} have {}"
 msgstr "لا يمكن تحديد وسمين من نفس البعد."
 
 #~ msgid "account.analytic.dimension"
