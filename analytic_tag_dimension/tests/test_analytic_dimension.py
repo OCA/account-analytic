@@ -1,5 +1,6 @@
 # Copyright 2017 PESOL (http://pesol.es)
 #                Angel Moya (angel.moya@pesol.es)
+# Copyright 2020 Tecnativa - Carlos Dauden
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests.common import SavepointCase
@@ -157,7 +158,7 @@ class TestAnalyticDimensionCase(SavepointCase):
             'price_unit': 1,
             'account_id': account.id,
             'invoice_id': invoice.id,
-            'analytic_account_id': self.analytic_account_id,
+            'account_analytic_id': self.analytic_account_id,
             'analytic_tag_ids': [
                 (6, 0, [
                     self.analytic_tag_type_a.id,
@@ -185,3 +186,39 @@ class TestAnalyticDimensionCase(SavepointCase):
         }
         with self.assertRaises(ValidationError):
             line.write(values_update)
+
+    def test_dimension_changes(self):
+        """ Test change tag dimension and test dimension rename """
+        analytic_dimension_test = self.dimension_obj.create({
+            'name': 'Test_creation',
+            'code': 'test',
+        })
+        analytic_tag_test_a = self.tag_obj.create({
+            'name': 'Test A',
+            'analytic_dimension_id': analytic_dimension_test.id,
+        })
+        values = {
+            'account_id': self.analytic_account_id,
+            'name': 'test',
+            'tag_ids': [
+                (6, 0, [
+                    self.analytic_tag_type_a.id,
+                    self.analytic_tag_concept_a.id,
+                    analytic_tag_test_a.id,
+                ]),
+            ],
+        }
+        line = self.analytic_line_obj.create(values)
+        with self.assertRaises(ValidationError):
+            self.analytic_tag_concept_a.analytic_dimension_id = (
+                analytic_dimension_test)
+        line[analytic_dimension_test.get_field_name()] = False
+        self.analytic_tag_concept_a.analytic_dimension_id = (
+            analytic_dimension_test)
+        self.assertEqual(line[analytic_dimension_test.get_field_name()],
+                         self.analytic_tag_concept_a)
+        analytic_dimension_test.write({
+            'code': 'test_renamed',
+            'name': 'new test description',
+        })
+        self.assertTrue(hasattr(line, 'x_dimension_test_renamed'))
