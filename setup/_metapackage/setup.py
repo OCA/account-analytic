@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo13-addon-account_analytic_parent',
         'odoo13-addon-account_analytic_required',
+        'odoo13-addon-mrp_analytic',
         'odoo13-addon-procurement_mto_analytic',
         'odoo13-addon-product_analytic',
         'odoo13-addon-purchase_analytic',
