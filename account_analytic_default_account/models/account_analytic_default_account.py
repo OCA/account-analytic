@@ -77,9 +77,23 @@ class AccountAnalyticDefaultAccount(models.Model):
 class AccountInvoiceLine(models.Model):
     _inherit = "account.invoice.line"
 
-    @api.onchange('product_id', 'account_id')
+    @api.onchange('product_id')
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
+        if (not config['test_enable'] or
+                self.env.context.get('test_account_analytic_default_account')):
+            rec = self.env['account.analytic.default'].account_get(
+                product_id=self.product_id.id,
+                partner_id=self.invoice_id.partner_id.id,
+                user_id=self.env.uid, date=fields.Date.today(),
+                company_id=self.company_id.id, account_id=self.account_id.id
+            )
+            self.account_analytic_id = rec.analytic_id.id
+        return res
+
+    @api.onchange('account_id')
+    def _onchange_account_id(self):
+        res = super()._onchange_account_id()
         if (not config['test_enable'] or
                 self.env.context.get('test_account_analytic_default_account')):
             rec = self.env['account.analytic.default'].account_get(

@@ -129,12 +129,28 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
         )
         self.assertFalse(rec.id)
 
+    def test_change_account(self, invoice=False):
+        if not invoice:
+            invoice = self.create_invoice()
+        invoice.invoice_line_ids[0].account_id = self.account_sales
+        invoice.invoice_line_ids[0].with_context(
+            test_account_analytic_default_account=True)._onchange_account_id()
+
+    def test_change_product(self, invoice=False):
+        if not invoice:
+            invoice = self.create_invoice()
+        invoice.invoice_line_ids[0].product_id = self.product
+        invoice.invoice_line_ids[0].with_context(
+            test_account_analytic_default_account=True)._onchange_product_id()
+
     def test_account_analytic_default_invoice(self):
         invoice = self.create_invoice()
         self.assertFalse(invoice.invoice_line_ids[0].account_analytic_id.id)
         invoice.invoice_line_ids[0]._set_additional_fields(invoice)
         self.assertEqual(invoice.invoice_line_ids[0].account_analytic_id,
                          self.analytic_account_3)
+        self.test_change_account(invoice=invoice)
+        self.test_change_product(invoice=invoice)
 
     def test_account_analytic_default_account_move(self):
         move, move_line_1, move_line_2 = self.create_move()
