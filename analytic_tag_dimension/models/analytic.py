@@ -34,7 +34,7 @@ class AccountAnalyticDimension(models.Model):
         ]
 
     def get_field_name(self, code=False):
-        return 'x_dimension_{}'.format(code or self.code)
+        return 'x_dimension_{}'.format(code or self.code).lower()
 
     @api.model
     def create(self, values):
