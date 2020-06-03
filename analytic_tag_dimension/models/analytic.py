@@ -30,7 +30,6 @@ class AccountAnalyticDimension(models.Model):
         return [
             "account.move.line",
             "account.analytic.line",
-            "account.invoice.line",
             "account.invoice.report",
         ]
 
@@ -40,7 +39,9 @@ class AccountAnalyticDimension(models.Model):
     @api.model
     def create(self, values):
         res = super().create(values)
-        _models = self.env["ir.model"].search([("model", "in", self.get_model_names())])
+        _models = self.env["ir.model"].search(
+            [("model", "in", self.get_model_names())], order="id"
+        )
         _models.write(
             {
                 "field_id": [
@@ -71,7 +72,8 @@ class AccountAnalyticDimension(models.Model):
                     [
                         ("model", "in", self.get_model_names()),
                         ("name", "=", dimension.get_field_name()),
-                    ]
+                    ],
+                    order="id",
                 )
                 # To avoid 'Can only rename one field at a time!'
                 for field_to_update in fields_to_update:
@@ -86,7 +88,6 @@ class AccountAnalyticTag(models.Model):
         comodel_name="account.analytic.dimension", string="Dimension"
     )
 
-    @api.multi
     def get_dimension_values(self):
         values = {}
         for tag in self.filtered("analytic_dimension_id"):
@@ -140,7 +141,6 @@ class AnalyticDimensionLine(models.AbstractModel):
     _description = "Analytic Dimension Line"
     _analytic_tag_field_name = "analytic_tag_ids"
 
-    @api.multi
     def _handle_analytic_dimension(self):
         for adl in self:
             tag_ids = adl[self._analytic_tag_field_name]
@@ -148,16 +148,18 @@ class AnalyticDimensionLine(models.AbstractModel):
             dimension_values = tag_ids.get_dimension_values()
             super(AnalyticDimensionLine, adl).write(dimension_values)
 
-    @api.model
+    @api.model_create_multi
     def create(self, values):
-        result = super(AnalyticDimensionLine, self).create(values)
-        if values.get(result._analytic_tag_field_name):
+        result = super().create(values)
+        analytic_tag_field_name = list(
+            filter(lambda l: l.get(result._analytic_tag_field_name), values)
+        )
+        if analytic_tag_field_name:
             result._handle_analytic_dimension()
         return result
 
-    @api.multi
     def write(self, values):
-        result = super(AnalyticDimensionLine, self).write(values)
+        result = super().write(values)
         if values.get(self._analytic_tag_field_name):
             self._handle_analytic_dimension()
         return result
@@ -172,10 +174,4 @@ class AccountAnalyticLine(models.Model):
 class AccountMoveLine(models.Model):
     _name = "account.move.line"
     _inherit = ["analytic.dimension.line", "account.move.line"]
-    _analytic_tag_field_name = "analytic_tag_ids"
-
-
-class AccountInvoiceLine(models.Model):
-    _name = "account.invoice.line"
-    _inherit = ["analytic.dimension.line", "account.invoice.line"]
     _analytic_tag_field_name = "analytic_tag_ids"
