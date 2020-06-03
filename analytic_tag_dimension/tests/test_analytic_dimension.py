@@ -142,7 +142,7 @@ class TestAnalyticDimensionCase(SavepointCase):
                 "reconcile": True,
             }
         )
-        invoice = self.env["account.invoice"].create(
+        invoice = self.env["account.move"].create(
             {
                 "journal_id": self.journal.id,
                 "company_id": self.company_id,
@@ -153,13 +153,13 @@ class TestAnalyticDimensionCase(SavepointCase):
             "name": "test",
             "price_unit": 1,
             "account_id": account.id,
-            "invoice_id": invoice.id,
-            "account_analytic_id": self.analytic_account_id,
+            "move_id": invoice.id,
+            "analytic_account_id": self.analytic_account_id,
             "analytic_tag_ids": [
                 (6, 0, [self.analytic_tag_type_a.id, self.analytic_tag_concept_a.id]),
             ],
         }
-        invoice_line_obj = self.env["account.invoice.line"]
+        invoice_line_obj = self.env["account.move.line"]
         line = invoice_line_obj.create(values)
         self.assertTrue(line.x_dimension_type.id == self.analytic_tag_type_a.id)
         self.assertTrue(line.x_dimension_concept.id == self.analytic_tag_concept_a.id)
@@ -206,6 +206,7 @@ class TestAnalyticDimensionCase(SavepointCase):
         self.assertEqual(
             line[analytic_dimension_test.get_field_name()], self.analytic_tag_concept_a
         )
+        analytic_dimension_test.flush()
         analytic_dimension_test.write(
             {"code": "test_renamed", "name": "new test description"}
         )
