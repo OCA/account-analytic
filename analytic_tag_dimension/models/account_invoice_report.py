@@ -8,8 +8,7 @@ class AccountInvoiceReport(models.Model):
     _inherit = "account.invoice.report"
 
     def _get_dimension_fields(self):
-        return [x for x in self.fields_get().keys()
-                if x.startswith("x_dimension_")]
+        return [x for x in self.fields_get().keys() if x.startswith("x_dimension_")]
 
     def _select(self):
         res = super()._select()
