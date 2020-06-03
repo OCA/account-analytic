@@ -9,15 +9,7 @@
     "license": "AGPL-3",
     "author": "PESOL, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": [
-        'analytic',
-        'account',
-    ],
-    "data": [
-        'views/analytic_view.xml',
-        'security/ir.model.access.csv',
-    ],
-    "demo": [
-        'demo/analytic_demo.xml',
-    ],
+    "depends": ["analytic", "account"],
+    "data": ["views/analytic_view.xml", "security/ir.model.access.csv"],
+    "demo": ["demo/analytic_demo.xml"],
 }
