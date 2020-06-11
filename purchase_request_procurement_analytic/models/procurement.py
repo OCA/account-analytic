@@ -9,7 +9,7 @@ class ProcurementOrder(models.Model):
     _inherit = 'procurement.order'
 
     @api.multi
-    def _prepare_purchase_request_line(self):
-        vals = super(ProcurementOrder, self)._prepare_purchase_request_line()
+    def _prepare_purchase_request_line(self, pr):
+        vals = super(ProcurementOrder, self)._prepare_purchase_request_line(pr)
         vals['analytic_account_id'] = self.account_analytic_id.id or False
         return vals
