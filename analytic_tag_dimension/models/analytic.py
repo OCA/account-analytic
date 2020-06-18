@@ -58,6 +58,8 @@ class AccountAnalyticDimension(models.Model):
                 ],
             }
         )
+        # Launch this manually for taking the new dimension field
+        self.env["account.invoice.report"].init()
         return res
 
     def write(self, vals):
