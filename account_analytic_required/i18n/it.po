@@ -6,93 +6,110 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-06-19 07:19+0000\n"
+"Last-Translator: Lorenzo Battistini <lb@takobi.online>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
-msgstr ""
+msgstr "Tipo conto"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always"
-msgstr ""
+msgstr "Sempre"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always (analytic account or distribution)"
-msgstr ""
+msgstr "Sempre (conto analitico o distribuzione)"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always (analytic distribution)"
-msgstr ""
+msgstr "Sempre (distribuzione analitica)"
 
 #. module: account_analytic_required
 #: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Analytic Policy"
-msgstr ""
+msgstr "Politica analitica"
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:59
 #, python-format
 msgid "Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'."
 msgstr ""
+"La politica analitica è impostata a 'Sempre' per il conto %s '%s' ma il "
+"conto analitico non è presente nel movimento contabile con etichetta '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:67
 #, python-format
 msgid "Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account '%s'."
 msgstr ""
+"La politica analitica è impostata a 'Mai' per il conto %s '%s' ma il "
+"movimento contabile con etichetta '%s' ha un conto analitico '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:77
 #, python-format
 msgid "Analytic policy is set to 'Posted moves' with account %s '%s' but the analytic account is missing in the account move line with label '%s'."
 msgstr ""
+"La politica analitica è impostata a 'Registrazioni confermate' per il conto %"
+"s '%s' ma il conto analitico non è presente nel movimento contabile con "
+"etichetta '%s'."
 
 #. module: account_analytic_required
 #: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
 msgid "Group By"
-msgstr ""
+msgstr "Raggruppa per"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Journal Entries"
-msgstr ""
+msgstr "Registrazioni contabili"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Movimento contabile"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Never"
-msgstr ""
+msgstr "Mai"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Optional"
-msgstr ""
+msgstr "Opzionale"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Policy for analytic account"
-msgstr ""
+msgstr "Politica per il conto analitico"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Posted moves"
-msgstr ""
+msgstr "Registrazioni confermate"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
 msgid "Set the policy for analytic accounts : if you select 'Optional', the accountant is free to put an analytic account on an account move line with this type of account ; if you select 'Always', the accountant will get an error message if there is no analytic account ; if you select 'Posted moves', the accountant will get an error message if no analytic account is defined when the move is posted ; if you select 'Never', the accountant will get an error message if an analytic account is present."
 msgstr ""
+"Impostare la politica per i conti analitici: se selezioni 'Opzionale', il "
+"contabile è libero di mettere un conto analitico su un movimento contabile "
+"di questo tipo; se selezioni 'Sempre', il contabile otterrà un messaggio di "
+"errore se non c'è un conto analitico; se selezioni 'Registrazioni "
+"confermate', il contabile otterrà un messaggio di errore se nessun conto "
+"analitico è definito quando il movimento viene confermato; se elezioni "
+"'Mai', il contabile otterrà un messaggio di errore se un conto analitico è "
+"presente."
