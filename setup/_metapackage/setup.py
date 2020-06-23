@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo12-addon-analytic_partner_hr_timesheet',
         'odoo12-addon-analytic_product_category',
         'odoo12-addon-analytic_tag_dimension',
+        'odoo12-addon-analytic_tag_dimension_enhanced',
         'odoo12-addon-mrp_analytic',
         'odoo12-addon-procurement_mto_analytic',
         'odoo12-addon-product_analytic',
