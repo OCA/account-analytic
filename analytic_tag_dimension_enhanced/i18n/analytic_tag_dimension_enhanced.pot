@@ -1,0 +1,119 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* analytic_tag_dimension_enhanced
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: analytic_tag_dimension_enhanced
+#: model_terms:ir.ui.view,arch_db:analytic_tag_dimension_enhanced.view_AccountAnalyticDimension_form
+msgid "=> Create Tags"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model,name:analytic_tag_dimension_enhanced.model_account_analytic_dimension
+msgid "Account Analytic Dimension"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model,name:analytic_tag_dimension_enhanced.model_analytic_dimension_line
+msgid "Analytic Dimension Line"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model,name:analytic_tag_dimension_enhanced.model_account_analytic_tag
+msgid "Analytic Tags"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_dimension__by_sequence
+msgid "By Sequence"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_line__domain_tag_ids
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_invoice_line__domain_tag_ids
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_move_line__domain_tag_ids
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_analytic_dimension_line__domain_tag_ids
+msgid "Domain Tag"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: code:addons/analytic_tag_dimension_enhanced/models/analytic.py:47
+#, python-format
+msgid "Duplicated dimension sequences"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_dimension__filtered_field_ids
+msgid "Filtered by fields"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_dimension__filtered_field_ids
+msgid "Filtered listing tags by fields of this model, based on value of selected analytic tags in working document"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: code:addons/analytic_tag_dimension_enhanced/models/analytic.py:155
+#, python-format
+msgid "Following dimension(s) not selected: %s"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_line__domain_tag_ids
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_invoice_line__domain_tag_ids
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_move_line__domain_tag_ids
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_analytic_dimension_line__domain_tag_ids
+msgid "Helper field, the filtered tags_ids when record is saved"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_dimension__by_sequence
+msgid "If checked, this dimemsion's tags will be available only when previous dimension's tags is selected"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_dimension__required
+msgid "If required, this dimension needed to be selected in working document"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_tag__resource_ref
+msgid "Record"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_dimension__ref_model_id
+msgid "Ref Model"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_dimension__required
+msgid "Required"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_dimension__ref_model_id
+msgid "Select model if you want to use it to create analytic tags, each tag will have reference to the data record in that model.\n"
+"For example, if you select Department (hr.department) then click Create Tags button, tags will be created from each department  and also has resource_ref to the department record"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,field_description:analytic_tag_dimension_enhanced.field_account_analytic_dimension__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: analytic_tag_dimension_enhanced
+#: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_dimension__sequence
+msgid "This field works with By Sequence"
+msgstr ""
+
