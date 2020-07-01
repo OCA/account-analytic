@@ -43,6 +43,9 @@ set the policy to *always* for the account type *expense*
 If you try to save an account move line with an account of type *expense*
 without analytic account, you will get an error message.
 
+The analytic policy is company dependent. If you have a multi-company
+environment, you should set its value for all companies.
+
 Bug Tracker
 ===========
 
@@ -72,6 +75,7 @@ Contributors
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
 * Akim Juillerat <akim.juillerat@camptocamp.com>
 * Raf Ven <raf.ven@dynapps.be>
+* Iván Todorovich <ivan.todorovich@druidoo.io>
 
 Maintainers
 ~~~~~~~~~~~
