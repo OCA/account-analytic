@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-03 13:07+0000\n"
-"PO-Revision-Date: 2019-05-01 20:02+0000\n"
-"Last-Translator: Katerina Katapodi <katerinakatapodi@gmail.com>\n"
+"PO-Revision-Date: 2020-07-13 14:19+0000\n"
+"Last-Translator: Sandie FAVRE <sandie.favre@grap.coop>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: account_analytic_default_account
 #: model:ir.model.fields,field_description:account_analytic_default_account.field_account_analytic_default_account_id
@@ -38,7 +38,7 @@ msgstr "Distribution Analytique"
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_invoice_line
 msgid "Invoice Line"
-msgstr "Lignes de facture"
+msgstr "Ligne de facture"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_move_line
