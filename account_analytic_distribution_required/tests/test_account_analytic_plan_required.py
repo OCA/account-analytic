@@ -87,7 +87,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
 
     def test_always_no_analytic(self):
         self.account_type.write({
-            'analytic_policy': 'always',
+            'property_analytic_policy': 'always',
         })
         with self.assertRaises(ValidationError):
             self._create_move(with_analytic=False, with_analytic_plan=False)
@@ -97,20 +97,20 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
     def test_always_no_analytic_0(self):
         # accept missing analytic account when debit=credit=0
         self.account_type.write({
-            'analytic_policy': 'always',
+            'property_analytic_policy': 'always',
         })
         self._create_move(with_analytic=False, with_analytic_plan=False,
                           amount=0)
 
     def test_always_with_analytic(self):
         self.account_type.write({
-            'analytic_policy': 'always',
+            'property_analytic_policy': 'always',
         })
         self._create_move(with_analytic=True, with_analytic_plan=False)
 
     def test_always_plan_no_analytic_plan(self):
         self.account_type.write({
-            'analytic_policy': 'always_plan',
+            'property_analytic_policy': 'always_plan',
         })
         with self.assertRaises(ValidationError):
             self._create_move(with_analytic=False, with_analytic_plan=False)
@@ -120,20 +120,20 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
     def test_always_plan_no_analytic_plan_0(self):
         # accept missing analytic distribution when debit=credit=0
         self.account_type.write({
-            'analytic_policy': 'always_plan',
+            'property_analytic_policy': 'always_plan',
         })
         self._create_move(with_analytic=False, with_analytic_plan=False,
                           amount=0)
 
     def test_always_plan_with_analytic_plan(self):
         self.account_type.write({
-            'analytic_policy': 'always_plan',
+            'property_analytic_policy': 'always_plan',
         })
         self._create_move(with_analytic=False, with_analytic_plan=True)
 
     def test_always_plan_or_account_nothing(self):
         self.account_type.write({
-            'analytic_policy': 'always_plan_or_account',
+            'property_analytic_policy': 'always_plan_or_account',
         })
         with self.assertRaises(ValidationError):
             self._create_move(with_analytic=False, with_analytic_plan=False)
@@ -141,7 +141,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
     def test_always_plan_or_account_no_analytic_plan_0(self):
         # accept missing analytic distribution when debit=credit=0
         self.account_type.write({
-            'analytic_policy': 'always_plan_or_account',
+            'property_analytic_policy': 'always_plan_or_account',
         })
         self._create_move(with_analytic=False, with_analytic_plan=False,
                           amount=0)
@@ -152,20 +152,20 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
 
     def test_always_plan_or_account_with(self):
         self.account_id.user_type_id.write({
-            'analytic_policy': 'always_plan_or_account',
+            'property_analytic_policy': 'always_plan_or_account',
         })
         self._create_move(with_analytic=False, with_analytic_plan=True)
         self._create_move(with_analytic=True, with_analytic_plan=False)
 
     def test_never_no_analytic(self):
         self.account_type.write({
-            'analytic_policy': 'never',
+            'property_analytic_policy': 'never',
         })
         self._create_move(with_analytic=False, with_analytic_plan=False)
 
     def test_never_with_analytic(self):
         self.account_type.write({
-            'analytic_policy': 'never',
+            'property_analytic_policy': 'never',
         })
         with self.assertRaises(ValidationError):
             self._create_move(with_analytic=True, with_analytic_plan=False)
@@ -175,7 +175,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
     def test_never_with_analytic_0(self):
         # accept analytic when debit=credit=0
         self.account_type.write({
-            'analytic_policy': 'never',
+            'property_analytic_policy': 'never',
         })
         self._create_move(with_analytic=True, with_analytic_plan=False,
                           amount=0)
@@ -185,7 +185,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
     def test_always_remove_analytic_plan(self):
         # remove analytic plan account when policy is always
         self.account_type.write({
-            'analytic_policy': 'always_plan',
+            'property_analytic_policy': 'always_plan',
         })
         line_id = self._create_move(with_analytic=False,
                                     with_analytic_plan=True)
@@ -194,7 +194,7 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
 
     def test_change_account(self):
         self.account_type.write({
-            'analytic_policy': 'always_plan',
+            'property_analytic_policy': 'always_plan',
         })
         # change account to a_expense with policy always_plan but missing
         # analytic distribution
