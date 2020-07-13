@@ -11,9 +11,9 @@ class AccountAccountType(models.Model):
 
     property_analytic_policy = fields.Selection(
         selection_add=[
-            ('always_plan', _('Always (analytic distribution)')),
+            ('always_plan', 'Always (analytic distribution)'),
             ('always_plan_or_account',
-             _('Always (analytic account or distribution)'))
+             'Always (analytic account or distribution)')
         ],
     )
 
