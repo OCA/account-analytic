@@ -25,21 +25,17 @@ msgid "Account Type"
 msgstr "Tip konta"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:16
-#, python-format
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic account or distribution)"
 msgstr "Uvijek (analitički konto ili distribucija)"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:14
-#, python-format
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic distribution)"
 msgstr "Uvijek (analitička distribucija)"
 
@@ -89,33 +85,38 @@ msgid "Journal Item"
 msgstr "Stavka dnevnika"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Never"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Optional"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Posted moves"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid ""
-"Set the policy for analytic accounts : if you select 'Optional', the "
-"accountant is free to put an analytic account on an account move line with "
-"this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Posted "
-"moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will "
-"get an error message if an analytic account is present."
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
