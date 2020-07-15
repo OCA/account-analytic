@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-06-21 02:39+0000\n"
 "PO-Revision-Date: 2020-06-23 18:19+0000\n"
 "Last-Translator: Fernando Colus <fcolus1@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,21 +26,17 @@ msgid "Account Type"
 msgstr "Tipo de Conta"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always"
 msgstr "Sempre"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:16
-#, python-format
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic account or distribution)"
 msgstr "Sempre (conta analítica ou distribuição)"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:14
-#, python-format
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic distribution)"
 msgstr "Sempre (distribuição analítica)"
 
@@ -91,35 +87,49 @@ msgid "Journal Item"
 msgstr "Item diário"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Never"
 msgstr "Nunca"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Optional"
 msgstr "Opcional"
 
 #. module: account_analytic_distribution_required
-#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr "Política para conta analítica"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Posted moves"
 msgstr "Movimentos publicados"
 
 #. module: account_analytic_distribution_required
-#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
+#, fuzzy
+#| msgid ""
+#| "Set the policy for analytic accounts : if you select 'Optional', the "
+#| "accountant is free to put an analytic account on an account move line "
+#| "with this type of account ; if you select 'Always', the accountant will "
+#| "get an error message if there is no analytic account ; if you select "
+#| "'Posted moves', the accountant will get an error message if no analytic "
+#| "account is defined when the move is posted ; if you select 'Never', the "
+#| "accountant will get an error message if an analytic account is present."
 msgid ""
-"Set the policy for analytic accounts : if you select 'Optional', the "
-"accountant is free to put an analytic account on an account move line with "
-"this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Posted "
-"moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will "
-"get an error message if an analytic account is present."
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
 "Defina a política para contas analíticas: se você selecionar 'Opcional', o "
 "contador estará livre para colocar uma conta analítica em uma linha de "

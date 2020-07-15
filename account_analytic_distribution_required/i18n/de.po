@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_distribution_required
+# 	* account_analytic_distribution_required
 #
 msgid ""
 msgstr ""
@@ -22,21 +22,17 @@ msgid "Account Type"
 msgstr "Kontotyp"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always"
 msgstr "Immer"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:16
-#, python-format
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic account or distribution)"
 msgstr "Immer (Kostenstelle oder -aufteilung)"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:14
-#, python-format
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic distribution)"
 msgstr "Immer (Kostenaufteilung)"
 
@@ -51,16 +47,22 @@ msgstr ""
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:47
 #, python-format
-msgid "Analytic policy is set to 'Always (analytic account or distribution)' with account %s '%s' but the analytic distribution and the analytic account are missing in the account move line with label '%s'."
+msgid ""
+"Analytic policy is set to 'Always (analytic account or distribution)' with "
+"account %s '%s' but the analytic distribution and the analytic account are "
+"missing in the account move line with label '%s'."
 msgstr ""
-"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer ("
-"Kostenstelle oder -aufteilung)\" gesetzt, aber die Kostenaufteilung und die "
+"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
+"(Kostenstelle oder -aufteilung)\" gesetzt, aber die Kostenaufteilung und die "
 "Kostenstelle fehlen in der Buchungszeile mit der Bezeichnung '%s'."
 
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:36
 #, python-format
-msgid "Analytic policy is set to 'Always (analytic distribution)' with account %s '%s' but the analytic distribution is missing in the account move line with label '%s'."
+msgid ""
+"Analytic policy is set to 'Always (analytic distribution)' with account %s "
+"'%s' but the analytic distribution is missing in the account move line with "
+"label '%s'."
 msgstr ""
 "Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
 "(Kostenaufteilung)\" gesetzt, aber die Kostenaufteilung fehlt in der "
@@ -69,7 +71,9 @@ msgstr ""
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:57
 #, python-format
-msgid "Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic distribution %s '%s'."
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic distribution %s '%s'."
 msgstr ""
 "Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Nie\" gesetzt, "
 "aber in der Buchungszeile mit der Bezeichnung '%s' ist eine Kostenaufteilung "
@@ -81,28 +85,49 @@ msgid "Journal Item"
 msgstr "Journal-Buchung"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Never"
 msgstr "Nie"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Optional"
 msgstr "Optional"
 
 #. module: account_analytic_distribution_required
-#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr "Richtlinie für Kostenstelle"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Posted moves"
 msgstr "Gebuchte Zeilen"
 
 #. module: account_analytic_distribution_required
-#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__analytic_policy
-msgid "Set the policy for analytic accounts : if you select 'Optional', the accountant is free to put an analytic account on an account move line with this type of account ; if you select 'Always', the accountant will get an error message if there is no analytic account ; if you select 'Posted moves', the accountant will get an error message if no analytic account is defined when the move is posted ; if you select 'Never', the accountant will get an error message if an analytic account is present."
+#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
+#, fuzzy
+#| msgid ""
+#| "Set the policy for analytic accounts : if you select 'Optional', the "
+#| "accountant is free to put an analytic account on an account move line "
+#| "with this type of account ; if you select 'Always', the accountant will "
+#| "get an error message if there is no analytic account ; if you select "
+#| "'Posted moves', the accountant will get an error message if no analytic "
+#| "account is defined when the move is posted ; if you select 'Never', the "
+#| "accountant will get an error message if an analytic account is present."
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
 "Richtlinie für Kostenstellen festlegen:\n"
 "Wenn 'Optional' gewählt wird, kann der Buchhalter von Fall zu Fall "
