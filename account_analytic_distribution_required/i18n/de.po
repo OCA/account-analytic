@@ -28,15 +28,11 @@ msgstr "Immer"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:16
-#, python-format
 msgid "Always (analytic account or distribution)"
 msgstr "Immer (Kostenstelle oder -aufteilung)"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:14
-#, python-format
 msgid "Always (analytic distribution)"
 msgstr "Immer (Kostenaufteilung)"
 

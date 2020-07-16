@@ -31,15 +31,11 @@ msgstr ""
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:16
-#, python-format
 msgid "Always (analytic account or distribution)"
 msgstr "Toujours (compte analytique ou distribution)"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
-#: code:addons/account_analytic_distribution_required/models/account.py:14
-#, python-format
 msgid "Always (analytic distribution)"
 msgstr "Toujours (distribution analytique)"
 
