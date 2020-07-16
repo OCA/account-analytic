@@ -26,27 +26,23 @@ msgid "Account Type"
 msgstr "نوع الحساب"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always"
 msgstr "دائماً"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic account or distribution)"
 msgstr ""
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic distribution)"
 msgstr ""
 
 #. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Analytic Policy"
-msgstr "سياسة الحسابات التحليلية"
-
-#. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:59
+#: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -57,6 +53,7 @@ msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:67
+#: code:addons/account_analytic_required/models/account.py:76
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -67,6 +64,7 @@ msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:77
+#: code:addons/account_analytic_required/models/account.py:86
 #, python-format
 msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
@@ -74,11 +72,6 @@ msgid ""
 msgstr ""
 "سياسة الحسابات التحليلية هي ’القيود المرحّلة‘ للحساب %s ’%s‘ ولكن الحساب "
 "التحليلي فارغ في عنصر اليومية باسم ’%s‘."
-
-#. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Group By"
-msgstr "تجميع حسب"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
@@ -93,35 +86,49 @@ msgid "Journal Item"
 msgstr "عنصر اليومية"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Never"
 msgstr "ممنوع"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Optional"
 msgstr "إختياري"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr "سياسة  للحسابات التحليلية"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Posted moves"
 msgstr "القيود المرحّلة"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
+#, fuzzy
+#| msgid ""
+#| "Set the policy for analytic accounts : if you select 'Optional', the "
+#| "accountant is free to put an analytic account on an account move line "
+#| "with this type of account ; if you select 'Always', the accountant will "
+#| "get an error message if there is no analytic account ; if you select "
+#| "'Posted moves', the accountant will get an error message if no analytic "
+#| "account is defined when the move is posted ; if you select 'Never', the "
+#| "accountant will get an error message if an analytic account is present."
 msgid ""
-"Set the policy for analytic accounts : if you select 'Optional', the "
-"accountant is free to put an analytic account on an account move line with "
-"this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Posted "
-"moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will "
-"get an error message if an analytic account is present."
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
 "قم بإختيار السياسات للحسابات التحليلية: اذا قم بإختيار \"إختياري\"، للمحاسب "
 "الحرية في اختيار حساب التحليلي ام لا في حركة القيد المحسابي مع هذا النوع من "
@@ -129,6 +136,12 @@ msgstr ""
 "حساب تحليلي; و ان قمت بإختيار \"قيويد مرحلة\" ستظهر للمحاسب رسالة خطأ اذا لم "
 "يحدد حساب تحليلي في ترحيل القيود; و إن اخترت \"ابداً\\نهائي\"، ستظهر للمحاسب "
 "رسالة خطأ اذا تم تحديد حساب تحليلي."
+
+#~ msgid "Analytic Policy"
+#~ msgstr "سياسة الحسابات التحليلية"
+
+#~ msgid "Group By"
+#~ msgstr "تجميع حسب"
 
 #~ msgid "Account Entry"
 #~ msgstr "قيد الحساب"

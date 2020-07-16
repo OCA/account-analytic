@@ -22,27 +22,23 @@ msgid "Account Type"
 msgstr "账户类型"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always"
 msgstr "总是"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic account or distribution)"
 msgstr ""
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic distribution)"
 msgstr ""
 
 #. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Analytic Policy"
-msgstr "分析策略"
-
-#. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:59
+#: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -52,6 +48,7 @@ msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:67
+#: code:addons/account_analytic_required/models/account.py:76
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -62,6 +59,7 @@ msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:77
+#: code:addons/account_analytic_required/models/account.py:86
 #, python-format
 msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
@@ -69,11 +67,6 @@ msgid ""
 msgstr ""
 "分析策略设置为“已发布移动”，帐户为%s'%s'，但在标签为'％s'的帐户移动行中缺少分"
 "析帐户。"
-
-#. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Group By"
-msgstr "分组"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
@@ -86,37 +79,57 @@ msgid "Journal Item"
 msgstr "日记帐项目"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Never"
 msgstr "从未"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Optional"
 msgstr "可选"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr "分析帐户策略"
 
 #. module: account_analytic_required
-#: selection:account.account.type,analytic_policy:0
+#: selection:account.account.type,property_analytic_policy:0
 msgid "Posted moves"
 msgstr "已发布的移动"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
+#, fuzzy
+#| msgid ""
+#| "Set the policy for analytic accounts : if you select 'Optional', the "
+#| "accountant is free to put an analytic account on an account move line "
+#| "with this type of account ; if you select 'Always', the accountant will "
+#| "get an error message if there is no analytic account ; if you select "
+#| "'Posted moves', the accountant will get an error message if no analytic "
+#| "account is defined when the move is posted ; if you select 'Never', the "
+#| "accountant will get an error message if an analytic account is present."
 msgid ""
-"Set the policy for analytic accounts : if you select 'Optional', the "
-"accountant is free to put an analytic account on an account move line with "
-"this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Posted "
-"moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will "
-"get an error message if an analytic account is present."
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
 "为分析帐户设置策略：如果选择“可选”，会计可以使用此类帐户在帐户移动行上自由放"
 "置分析帐户; 如果您选择“始终”，如果没有分析帐户，会计将收到错误消息; 如果您选"
 "择“已发布的移动”，则如果在发布移动时未定义分析帐户，则会计将收到错误消息; 如"
 "果您选择“从不”，如果存在分析帐户，会计将收到错误消息。"
+
+#~ msgid "Analytic Policy"
+#~ msgstr "分析策略"
+
+#~ msgid "Group By"
+#~ msgstr "分组"
