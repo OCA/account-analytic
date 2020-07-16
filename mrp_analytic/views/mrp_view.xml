@@ -46,6 +46,15 @@
                     groups="analytic.group_analytic_accounting"
                 />
             </xpath>
+            <xpath expr="//filter[@name='product']" position="after">
+                <filter
+                    string="Analytic Account"
+                    name="analytic_account"
+                    domain="[]"
+                    context="{'group_by': 'analytic_account_id'}"
+                    groups="analytic.group_analytic_accounting"
+                />
+            </xpath>
         </field>
     </record>
 </odoo>
