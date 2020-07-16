@@ -37,7 +37,6 @@ msgid "Always (analytic distribution)"
 msgstr "Sempre (distribuição analítica)"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:59
 #: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid ""
@@ -48,7 +47,6 @@ msgstr ""
 "conta analítica está em falta na linha de movimento com rótulo '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:67
 #: code:addons/account_analytic_required/models/account.py:76
 #, python-format
 msgid ""
@@ -59,7 +57,6 @@ msgstr ""
 "linha de movimento com rótulo '%s' tem uma conta analítica '%s'."
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:77
 #: code:addons/account_analytic_required/models/account.py:86
 #, python-format
 msgid ""

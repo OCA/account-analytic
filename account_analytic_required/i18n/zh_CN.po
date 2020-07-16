@@ -37,7 +37,6 @@ msgid "Always (analytic distribution)"
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:59
 #: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid ""
@@ -47,7 +46,6 @@ msgstr ""
 "分析策略设置为“始终”，帐户为%s'%s',但标签为'%s'的帐户移动行中缺少分析帐户。"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:67
 #: code:addons/account_analytic_required/models/account.py:76
 #, python-format
 msgid ""
@@ -58,7 +56,6 @@ msgstr ""
 "户'％s'。"
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:77
 #: code:addons/account_analytic_required/models/account.py:86
 #, python-format
 msgid ""
