@@ -34,21 +34,18 @@ msgid "Always (analytic distribution)"
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:59
 #: code:addons/account_analytic_required/models/account.py:68
 #, python-format
 msgid "Analytic policy is set to 'Always' with account %s '%s' but the analytic account is missing in the account move line with label '%s'."
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:67
 #: code:addons/account_analytic_required/models/account.py:76
 #, python-format
 msgid "Analytic policy is set to 'Never' with account %s '%s' but the account move line with label '%s' has an analytic account '%s'."
 msgstr ""
 
 #. module: account_analytic_required
-#: code:addons/account_analytic_required/models/account.py:77
 #: code:addons/account_analytic_required/models/account.py:86
 #, python-format
 msgid "Analytic policy is set to 'Posted moves' with account %s '%s' but the analytic account is missing in the account move line with label '%s'."
