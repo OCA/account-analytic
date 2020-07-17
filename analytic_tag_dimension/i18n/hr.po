@@ -65,7 +65,7 @@ msgid "Code"
 msgstr "Šifra"
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:25
+#: code:addons/analytic_tag_dimension/models/analytic.py:0
 #, python-format
 msgid "Code can't contain spaces!"
 msgstr "Šifra ne može sadržavati razmake!"
@@ -96,11 +96,6 @@ msgstr "Naziv"
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__id
 msgid "ID"
 msgstr "ID"
-
-#. module: analytic_tag_dimension
-#: model:ir.model,name:analytic_tag_dimension.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Stavka računa"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_invoice_report
@@ -139,16 +134,19 @@ msgid "Tags"
 msgstr "Oznake"
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:94
+#: code:addons/analytic_tag_dimension/models/analytic.py:0
 #, python-format
 msgid "You can not set two tags from same dimension."
 msgstr "Nije moguće poostaviti dvije oznake iz iste dimenzije."
 
 #. module: analytic_tag_dimension
-#: code:addons/analytic_tag_dimension/models/analytic.py:120
+#: code:addons/analytic_tag_dimension/models/analytic.py:0
 #, fuzzy, python-format
 #| msgid "You can not set two tags from same dimension."
 msgid ""
 "You can not set two tags from same dimension.\n"
 " Records {} in the model {} have {}"
 msgstr "Nije moguće poostaviti dvije oznake iz iste dimenzije."
+
+#~ msgid "Invoice Line"
+#~ msgstr "Stavka računa"
