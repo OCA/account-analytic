@@ -26,14 +26,9 @@ msgid "Account Type"
 msgstr "Tipo de Cuenta"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__always
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__always
 msgid "Always"
 msgstr "Siempre"
-
-#. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Analytic Policy"
-msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
@@ -60,11 +55,6 @@ msgid ""
 msgstr ""
 
 #. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Group By"
-msgstr ""
-
-#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 #, fuzzy
 #| msgid "Journal Item"
@@ -77,33 +67,38 @@ msgid "Journal Item"
 msgstr "Elemento del Libro"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__never
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
 msgid "Never"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__optional
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__optional
 msgid "Optional"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__posted
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__posted
 msgid "Posted moves"
 msgstr ""
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
 msgid ""
-"Set the policy for analytic accounts : if you select 'Optional', the "
-"accountant is free to put an analytic account on an account move line with "
-"this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Posted "
-"moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will "
-"get an error message if an analytic account is present."
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
