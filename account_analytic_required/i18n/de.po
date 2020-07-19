@@ -25,14 +25,9 @@ msgid "Account Type"
 msgstr "Konto Typ"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__always
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__always
 msgid "Always"
 msgstr "Immer"
-
-#. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Analytic Policy"
-msgstr "Analytische Richtlinie"
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
@@ -68,11 +63,6 @@ msgstr ""
 "Label ' %s'."
 
 #. module: account_analytic_required
-#: model_terms:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
-msgid "Group By"
-msgstr "gruppieren nach"
-
-#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Journal Entries"
 msgstr "Journaleintrag"
@@ -83,35 +73,49 @@ msgid "Journal Item"
 msgstr "Journaleintrag"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__never
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
 msgid "Never"
 msgstr "Nie"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__optional
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__optional
 msgid "Optional"
 msgstr "Wahlweise"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr "Richtlinie für analytisches Konto"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__analytic_policy__posted
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__posted
 msgid "Posted moves"
 msgstr "Buchungen"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
+#, fuzzy
+#| msgid ""
+#| "Set the policy for analytic accounts : if you select 'Optional', the "
+#| "accountant is free to put an analytic account on an account move line "
+#| "with this type of account ; if you select 'Always', the accountant will "
+#| "get an error message if there is no analytic account ; if you select "
+#| "'Posted moves', the accountant will get an error message if no analytic "
+#| "account is defined when the move is posted ; if you select 'Never', the "
+#| "accountant will get an error message if an analytic account is present."
 msgid ""
-"Set the policy for analytic accounts : if you select 'Optional', the "
-"accountant is free to put an analytic account on an account move line with "
-"this type of account ; if you select 'Always', the accountant will get an "
-"error message if there is no analytic account ; if you select 'Posted "
-"moves', the accountant will get an error message if no analytic account is "
-"defined when the move is posted ; if you select 'Never', the accountant will "
-"get an error message if an analytic account is present."
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
 msgstr ""
 "Legen Sie die Richtlinie für analytische Konten fest: \n"
 "Wenn Sie \"Optional\" auswählen, kann der Buchhalter ein analytisches Konto "
@@ -121,6 +125,12 @@ msgstr ""
 "Buchhalter eine Fehlermeldung, wenn bei der Buchung kein analytisches Konto "
 "definiert wurde. Wenn Sie \"Nie\" auswählen, erhält der Buchhalter eine "
 "Fehlermeldung, wenn ein analytisches Konto vorhanden ist."
+
+#~ msgid "Analytic Policy"
+#~ msgstr "Analytische Richtlinie"
+
+#~ msgid "Group By"
+#~ msgstr "gruppieren nach"
 
 #~ msgid "Account Entry"
 #~ msgstr "Kontoeintrag"
