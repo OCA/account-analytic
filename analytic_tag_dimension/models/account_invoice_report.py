@@ -8,6 +8,8 @@ class AccountInvoiceReport(models.Model):
     _inherit = "account.invoice.report"
 
     def _get_dimension_fields(self):
+        if self.env.context.get("update_custom_fields"):
+            return []  # Avoid to report these columns when not yet created
         return [x for x in self.fields_get().keys()
                 if x.startswith("x_dimension_")]
 

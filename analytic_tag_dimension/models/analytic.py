@@ -50,6 +50,8 @@ class AccountAnalyticDimension(models.Model):
                 'relation': 'account.analytic.tag',
             })],
         })
+        # Launch this manually for taking the new dimension field
+        self.env["account.invoice.report"].init()
         return res
 
     def write(self, vals):
