@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2020-07-13 14:19+0000\n"
-"Last-Translator: Sandie FAVRE <sandie.favre@grap.coop>\n"
+"PO-Revision-Date: 2020-07-22 12:19+0000\n"
+"Last-Translator: c2cdidier <didier.donze@camptocamp.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -22,9 +22,8 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_tag_ids
-#, fuzzy
 msgid "Analytic Tags"
-msgstr "Compte Analytique"
+msgstr "Etiquettes analytiques"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_account_id
