@@ -27,6 +27,12 @@ class TestAnalyticPartnerHrTimesheet(common.SavepointCase):
             'account_id': cls.analytic_account.id,
             'name': 'Test Line',
             'partner_id': cls.partner_line.id,
+            'project_id': cls.project.id,
+        })
+        cls.line2 = cls.env['account.analytic.line'].create({
+            'account_id': cls.analytic_account.id,
+            'name': 'Test Line without project',
+            'partner_id': cls.partner_line.id,
         })
 
     def test_onchange_project_id(self):
