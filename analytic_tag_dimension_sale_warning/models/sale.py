@@ -5,6 +5,6 @@ from odoo import models
 
 
 class SaleOrderLine(models.Model):
-    _name = 'sale.order.line'
-    _inherit = ['analytic.dimension.line', 'sale.order.line']
-    _analytic_tag_field_name = 'analytic_tag_ids'
+    _name = "sale.order.line"
+    _inherit = ["analytic.dimension.line", "sale.order.line"]
+    _analytic_tag_field_name = "analytic_tag_ids"

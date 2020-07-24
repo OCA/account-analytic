@@ -8,9 +8,6 @@
     "license": "AGPL-3",
     "author": "Camptocamp SA,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": [
-        'analytic_tag_dimension',
-        'sale',
-    ],
+    "depends": ["analytic_tag_dimension", "sale"],
     "auto_install": True,
 }
