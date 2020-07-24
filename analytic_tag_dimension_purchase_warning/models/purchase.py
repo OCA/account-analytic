@@ -6,6 +6,6 @@ from odoo import models
 
 class PurchaseOrderLine(models.Model):
 
-    _name = 'purchase.order.line'
-    _inherit = ['analytic.dimension.line', 'purchase.order.line']
-    _analytic_tag_field_name = 'analytic_tag_ids'
+    _name = "purchase.order.line"
+    _inherit = ["analytic.dimension.line", "purchase.order.line"]
+    _analytic_tag_field_name = "analytic_tag_ids"
