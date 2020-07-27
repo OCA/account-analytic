@@ -9,21 +9,21 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-04 01:41+0000\n"
-"PO-Revision-Date: 2018-01-04 01:41+0000\n"
-"Last-Translator: Rodrigo de Almeida Sottomaior Macedo "
-"<rmsolucoeseminformatic4@gmail.com>, 2017\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
-"teams/23907/pt_BR/)\n"
+"PO-Revision-Date: 2020-07-27 18:19+0000\n"
+"Last-Translator: Fernando Colus <fcolus1@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
+"23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Account Entry"
-msgstr ""
+msgstr "Entrada de Conta"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -38,12 +38,12 @@ msgstr "Sempre"
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always (analytic account or distribution)"
-msgstr ""
+msgstr "Sempre (distribuição ou conta analítica)"
 
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Always (analytic distribution)"
-msgstr ""
+msgstr "Sempre (Distribuição Analítica)"
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
@@ -77,6 +77,9 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
 "analytic account is missing in the account move line with label '%s'."
 msgstr ""
+"A política analítica está definida como 'Movimentações Publicadas' com a "
+"conta %s '%s', mas a conta analítica está ausente na linha de movimentação "
+"da conta com o rótulo '%s'."
 
 #. module: account_analytic_required
 #: model:ir.ui.view,arch_db:account_analytic_required.view_account_type_search
@@ -106,7 +109,7 @@ msgstr "Política para conta analítica"
 #. module: account_analytic_required
 #: selection:account.account.type,analytic_policy:0
 msgid "Posted moves"
-msgstr ""
+msgstr "Movimentações Publicadas"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account_type_analytic_policy
@@ -119,3 +122,11 @@ msgid ""
 "defined when the move is posted ; if you select 'Never', the accountant will "
 "get an error message if an analytic account is present."
 msgstr ""
+"Defina a política para contas analíticas: se você selecionar 'Opcional', o "
+"contador estará livre para colocar uma conta analítica em uma linha de "
+"movimentação de conta com esse tipo de conta; se você selecionar 'Sempre', o "
+"contador receberá uma mensagem de erro se não houver uma conta analítica; se "
+"você selecionar 'Movimentações Publicadas', o contador receberá uma mensagem "
+"de erro se nenhuma conta analítica for definida quando o movimento for "
+"lançado; se você selecionar 'Nunca', o contador receberá uma mensagem de "
+"erro se houver uma conta analítica."
