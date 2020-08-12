@@ -57,7 +57,6 @@ msgstr ""
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 #, fuzzy
-#| msgid "Journal Item"
 msgid "Journal Entries"
 msgstr "Elemento del Libro"
 
