@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * pos_analytic_by_config
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
@@ -20,11 +20,35 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: pos_analytic_by_config
-#: field:pos.config,account_analytic_id:0
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config_account_analytic_id
+#: model:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
 
 #. module: pos_analytic_by_config
+#: model:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
+msgid "Analytic Account for this config."
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
+msgid "Analytic Account that these orders link to"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_account_invoice_line
+msgid "Invoice Line"
+msgstr ""
+
+#. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
-msgid "Point of Sale"
-msgstr "Punto de venta"
+msgid "Point of Sale Orders"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_config
+msgid "pos.config"
+msgstr ""
+
+#~ msgid "Point of Sale"
+#~ msgstr "Punto de venta"
