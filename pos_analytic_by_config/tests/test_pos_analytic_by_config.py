@@ -37,8 +37,15 @@ class TestPosAnalyticConfig(common.SavepointCase):
             'partner_id': cls.customer_01.id,
             'lines': [(0, 0, {
                 'product_id': cls.product_01.id,
+                'qty': 1,
                 'price_unit': 10.0,
+                'price_subtotal': 10,
+                'price_subtotal_incl': 10,
             })],
+            'amount_total': 10.0,
+            'amount_tax': 0.0,
+            'amount_paid': 10.0,
+            'amount_return': 0.0,
         }
         cls.order_01 = cls.env['pos.order'].create(order_vals)
         payment_data = {
