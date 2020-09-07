@@ -31,7 +31,7 @@
     </record>
 
     <record id="analytic.account_analytic_line_action" model="ir.actions.act_window">
-        <field name="domain">[('account_id', 'child_of', active_ids)]</field>
+        <field name="domain">[('account_id', 'child_of', [active_id])]</field>
     </record>
 
 </odoo>
