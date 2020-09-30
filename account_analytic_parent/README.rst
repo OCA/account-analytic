@@ -23,7 +23,7 @@ Account Analytic Parent
     :target: https://runbot.odoo-community.org/runbot/87/13.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module reintroduces the hierarchy to the analytic accounts as
 it was in previous versions of Odoo. This module is a base module for
@@ -58,14 +58,14 @@ Authors
 * Matmoz d.o.o.
 * Luxim d.o.o.
 * Deneroteam
-* Eficent
+* ForgeFlow
 * Tecnativa
 * Brainbean Apps
 
 Contributors
 ~~~~~~~~~~~~
 
-* Eficent <http://www.eficent.com>
+* ForgeFlow <http://www.forgeflow.com>
 * Luxim d.o.o. <http://www.luxim.si>
 * Matmoz d.o.o. <http://www.matmoz.si>
 * Deneroteam. <dhaval@deneroteam.com>

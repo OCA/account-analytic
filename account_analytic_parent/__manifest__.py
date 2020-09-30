@@ -1,4 +1,4 @@
-# Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2017 ForgeFlow S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
@@ -16,7 +16,7 @@
     "author": "Matmoz d.o.o., "
     "Luxim d.o.o., "
     "Deneroteam, "
-    "Eficent, "
+    "ForgeFlow, "
     "Tecnativa, "
     "Brainbean Apps, "
     "Odoo Community Association (OCA)",
