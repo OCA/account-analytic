@@ -23,7 +23,7 @@ Analytic for manufacturing
     :target: https://runbot.odoo-community.org/runbot/87/13.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module links the manufacturing area with analytic management.
 
@@ -87,7 +87,7 @@ Credits
 Authors
 ~~~~~~~
 
-* Eficent
+* ForgeFlow
 * Antiun Ingeniería
 * Serv. Tecnol. Avanzados - Pedro M. Baeza
 * José L. Sandoval A.
@@ -95,7 +95,7 @@ Authors
 Contributors
 ~~~~~~~~~~~~
 
-* Jordi Ballester <jordi.ballester@eficent.com>
+* Jordi Ballester <jordi.ballester@forgeflow.com>
 * Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
 * José L. Sandoval A. <alagunasalahaddin@live.com>
 * Pimolnat Suntian <pimolnats@ecosoft.co.th>
