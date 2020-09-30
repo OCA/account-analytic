@@ -59,7 +59,7 @@ Contributors
 * Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
 * Andhitia Rama <andhitia.r@gmail.com>
 * Michael Viriyananda <viriyananda.michael@gmail.com>
-* Aaron Henriquez <ahenriquez@eficent.com>
+* Aaron Henriquez <ahenriquez@forgeflow.com>
 * Jared Kipe <jared@hibou.io>
 
 Maintainer
