@@ -13,4 +13,31 @@
         </field>
     </record>
 
+    <record id="view_account_analytic_account_list_inherit" model="ir.ui.view">
+        <field name="name">view.account.analytic.account.list.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="type">tree</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+        <field name="arch" type="xml">
+            <field name="display_name" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="display_name" position="after">
+                <field name="complete_name" string="Name"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_search_inherit" model="ir.ui.view">
+        <field name="name">view.account.analytic.account.search.inherit</field>
+        <field name="model">account.analytic.account</field>
+        <field name="type">search</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">['|', '|', ('name','ilike',self), ('code','ilike',self), ('complete_name','ilike',self)]</attribute>
+            </field>
+        </field>
+    </record>
+
 </odoo>
