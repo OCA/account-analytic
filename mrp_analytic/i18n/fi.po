@@ -38,3 +38,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mrp_analytic.view_account_analytic_account_form_mrp_production
 msgid "Productions"
 msgstr ""
+
+#. module: mrp_analytic
+#: model:ir.model,name:mrp_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""

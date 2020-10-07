@@ -41,5 +41,10 @@ msgstr "Yapımlar"
 msgid "Productions"
 msgstr "Yapımlar"
 
+#. module: mrp_analytic
+#: model:ir.model,name:mrp_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
 #~ msgid "Manufacturing Order"
 #~ msgstr "Üretim emri"
