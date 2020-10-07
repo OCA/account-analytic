@@ -34,3 +34,8 @@ msgstr ""
 msgid "Productions"
 msgstr ""
 
+#. module: mrp_analytic
+#: model:ir.model,name:mrp_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
