@@ -21,9 +21,9 @@ class ProductTemplate(models.Model):
         self.ensure_one()
         return {
             'income': self.income_analytic_account_id or
-            self.categ_id.income_analytic_account_id,
+            self.categ_id.get_income_analytic_account(),
             'expense': self.expense_analytic_account_id or
-            self.categ_id.expense_analytic_account_id
+            self.categ_id.get_expense_analytic_account()
         }
 
 
@@ -36,3 +36,15 @@ class ProductCategory(models.Model):
     expense_analytic_account_id = fields.Many2one(
         'account.analytic.account', string='Expense Analytic Account',
         company_dependent=True)
+
+    def get_income_analytic_account(self):
+        self.ensure_one()
+        if not self.income_analytic_account_id and self.parent_id:
+            return self.parent_id.get_income_analytic_account()
+        return self.income_analytic_account_id
+
+    def get_expense_analytic_account(self):
+        self.ensure_one()
+        if not self.expense_analytic_account_id and self.parent_id:
+            return self.parent_id.get_expense_analytic_account()
+        return self.expense_analytic_account_id

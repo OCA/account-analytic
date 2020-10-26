@@ -82,3 +82,121 @@ class TestAccountInvoiceLine(TransactionCase):
             {'inv_type': 'out_invoice'}).create(create_data)
         self.assertEqual(invoice_line3.account_analytic_id.id,
                          self.product2.income_analytic_account_id.id)
+
+    def test_create_out_with_categ(self):
+        self.product2.income_analytic_account_id = False
+        create_data = {
+            "name": "Test Line 1",
+            "quantity": 1,
+            "price_unit": 1,
+            "account_id": self.account.id,
+            "product_id": self.product2.id,
+        }
+        invoice_line1 = (
+            self.env["account.invoice.line"]
+            .with_context({"inv_type": "out_invoice"})
+            .create(create_data)
+        )
+        self.assertFalse(invoice_line1.account_analytic_id)
+        self.product2.categ_id = self.env["product.category"].create(
+            {
+                "name": "test category",
+                "income_analytic_account_id": self.analytic_account1.id,
+            }
+        )
+        create_data = {
+            "name": "Test Line 2",
+            "quantity": 1,
+            "price_unit": 1,
+            "account_id": self.account.id,
+            "product_id": self.product2.id,
+        }
+        invoice_line2 = (
+            self.env["account.invoice.line"]
+            .with_context({"inv_type": "out_invoice"})
+            .create(create_data)
+        )
+        self.assertEqual(
+            invoice_line2.account_analytic_id, self.analytic_account1
+        )
+        self.product2.categ_id.income_analytic_account_id = False
+        self.product2.categ_id.parent_id = self.env["product.category"].create(
+            {
+                "name": "test category",
+                "income_analytic_account_id": self.analytic_account2.id,
+            }
+        )
+        create_data = {
+            "name": "Test Line 3",
+            "quantity": 1,
+            "price_unit": 1,
+            "account_id": self.account.id,
+            "product_id": self.product2.id,
+        }
+        invoice_line3 = (
+            self.env["account.invoice.line"]
+            .with_context({"inv_type": "out_invoice"})
+            .create(create_data)
+        )
+        self.assertEqual(
+            invoice_line3.account_analytic_id, self.analytic_account2
+        )
+
+    def test_create_in_with_categ(self):
+        self.product2.expense_analytic_account_id = False
+        create_data = {
+            "name": "Test Line 1",
+            "quantity": 1,
+            "price_unit": 1,
+            "account_id": self.account.id,
+            "product_id": self.product2.id,
+        }
+        invoice_line1 = (
+            self.env["account.invoice.line"]
+            .with_context({"inv_type": "in_invoice"})
+            .create(create_data)
+        )
+        self.assertFalse(invoice_line1.account_analytic_id)
+        self.product2.categ_id = self.env["product.category"].create(
+            {
+                "name": "test category",
+                "expense_analytic_account_id": self.analytic_account1.id,
+            }
+        )
+        create_data = {
+            "name": "Test Line 2",
+            "quantity": 1,
+            "price_unit": 1,
+            "account_id": self.account.id,
+            "product_id": self.product2.id,
+        }
+        invoice_line2 = (
+            self.env["account.invoice.line"]
+            .with_context({"inv_type": "in_invoice"})
+            .create(create_data)
+        )
+        self.assertEqual(
+            invoice_line2.account_analytic_id, self.analytic_account1
+        )
+        self.product2.categ_id.expense_analytic_account_id = False
+        self.product2.categ_id.parent_id = self.env["product.category"].create(
+            {
+                "name": "test category",
+                "expense_analytic_account_id": self.analytic_account2.id,
+            }
+        )
+        create_data = {
+            "name": "Test Line 3",
+            "quantity": 1,
+            "price_unit": 1,
+            "account_id": self.account.id,
+            "product_id": self.product2.id,
+        }
+        invoice_line3 = (
+            self.env["account.invoice.line"]
+            .with_context({"inv_type": "in_invoice"})
+            .create(create_data)
+        )
+        self.assertEqual(
+            invoice_line3.account_analytic_id, self.analytic_account2
+        )

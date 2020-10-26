@@ -3,3 +3,4 @@
 * Luis M. Ontalba <luis.martinez@tecnativa.com>
 * David Vidal <david.vidal@tecnativa.com>
 * Thore Baden
+* Souheil Bejaoui <souheil.bejaoui@acsone.eu>
