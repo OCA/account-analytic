@@ -140,6 +140,36 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         # It should be allowed now
         line[self.dimension_1.get_field_name()] = False  # HACK
         self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
+        # Try command 0 for tags
+        line.write(
+            {
+                "analytic_tag_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": "Test tag 2B",
+                            "analytic_dimension_id": self.dimension_2.id,
+                        },
+                    )
+                ]
+            }
+        )
+        self.assertTrue(line.x_dimension_test_dim_2)
+        # Try command 1 for tags
+        line.write(
+            {
+                "analytic_tag_ids": [
+                    (
+                        1,
+                        line.analytic_tag_ids[0].id,
+                        {"analytic_dimension_id": self.dimension_1.id},
+                    )
+                ]
+            }
+        )
+        self.assertTrue(line.x_dimension_test_dim_1)
+        self.assertFalse(line.x_dimension_test_dim_2)
 
     def test_zz_dimension_rename(self):
         # It should executed the last one for avoiding side effects
