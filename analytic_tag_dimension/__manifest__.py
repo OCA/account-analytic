@@ -1,6 +1,6 @@
-# Copyright 2017 PESOL (http://pesol.es)
-#                Angel Moya (angel.moya@pesol.es)
+# Copyright 2017 PESOL (http://pesol.es) - Angel Moya (angel.moya@pesol.es)
 # Copyright 2020 Tecnativa - Carlos Dauden
+# Copyright 2020 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Analytic Accounts Dimensions",
