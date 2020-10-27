@@ -25,6 +25,9 @@ class AccountInvoiceLine(models.Model):
                 _get_product_analytic_accounts()
             ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
             self.account_analytic_id = ana_account.id
+            ana_tags = self.product_id.product_tmpl_id. \
+                _get_product_analytic_tag()[INV_TYPE_MAP[inv_type]]
+            self.analytic_tag_ids |= ana_tags
         return res
 
     @api.model_create_multi
@@ -39,4 +42,10 @@ class AccountInvoiceLine(models.Model):
                     _get_product_analytic_accounts()
                 ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
                 vals['account_analytic_id'] = ana_account.id
+                ana_tags = product.product_tmpl_id. \
+                    _get_product_analytic_tag()[INV_TYPE_MAP[inv_type]]
+                if ana_tags:
+                    if not vals.get('analytic_tag_ids'):
+                        vals['analytic_tag_ids'] = []
+                    vals['analytic_tag_ids'].append((4, ana_tags.id))
         return super().create(vals_list)
