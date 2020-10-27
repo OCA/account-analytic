@@ -15,6 +15,7 @@ class AnalyticDimensionLine(models.AbstractModel):
         field = self._analytic_tag_field_name
         tags = self[field]
         vals = vals.copy()
+        prev_dim_vals = tags.get_dimension_values()
         if vals.get(field):
             new_commands = []
             for command in vals.get(field):
@@ -43,7 +44,12 @@ class AnalyticDimensionLine(models.AbstractModel):
         else:
             tags = Tag
         tags._check_analytic_dimension()
-        vals.update(tags.get_dimension_values())
+        current_dim_vals = tags.get_dimension_values()
+        # Add explicit False assignation to removed tags
+        for key in prev_dim_vals:
+            if key not in current_dim_vals:
+                current_dim_vals[key] = False
+        vals.update(current_dim_vals)
         return vals
 
     @api.model_create_multi
