@@ -80,8 +80,11 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         # Not allowed to change dimension of a tag if used
         with self.assertRaises(ValidationError):
             self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
+        # Empty tags - Using command 5
+        line.write({"tag_ids": [(5, )]})
+        self.assertFalse(line.x_dimension_test_dim_1)
+        self.assertFalse(line.x_dimension_test_dim_2)
         # It should be allowed now
-        line[self.dimension_1.get_field_name()] = False  # HACK
         self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
 
     def test_account_entry_dimension(self):
@@ -108,8 +111,11 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         # Not allowed to change dimension of a tag if used
         with self.assertRaises(ValidationError):
             self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
+        # Empty tags - Using command 6
+        line.write({"analytic_tag_ids": [(6, 0, [])]})
+        self.assertFalse(line.x_dimension_test_dim_1)
+        self.assertFalse(line.x_dimension_test_dim_2)
         # It should be allowed now
-        line[self.dimension_1.get_field_name()] = False  # HACK
         self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
 
     def test_invoice_line_dimension(self):
@@ -135,8 +141,12 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         # Not allowed to change dimension of a tag if used
         with self.assertRaises(ValidationError):
             self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
+        # Empty tags - Using commands 3 and 2
+        line.write({"analytic_tag_ids": [(3, self.analytic_tag_1a.id)]})
+        self.assertFalse(line.x_dimension_test_dim_1)
+        line.write({"analytic_tag_ids": [(2, self.analytic_tag_2a.id)]})
+        self.assertFalse(line.x_dimension_test_dim_2)
         # It should be allowed now
-        line[self.dimension_1.get_field_name()] = False  # HACK
         self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
         # Try command 0 for tags
         line.write({"analytic_tag_ids": [(0, 0, {
