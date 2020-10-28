@@ -80,3 +80,13 @@ class AccountAnalyticDimension(models.Model):
                 for field_to_update in fields_to_update:
                     field_to_update.write(field_vals)
         return super().write(vals)
+
+    def unlink(self):
+        """Clean created fields before unlinking."""
+        models = self.env["ir.model"].search([("model", "in", self.get_model_names())])
+        for record in self:
+            field_name = self.get_field_name(record.code)
+            self.env["ir.model.fields"].search(
+                [("model_id", "in", models.ids), ("name", "=", field_name)]
+            ).unlink()
+        return super().unlink()
