@@ -76,6 +76,7 @@ Authors
 ~~~~~~~
 
 * PESOL
+* Tecnativa
 
 Contributors
 ~~~~~~~~~~~~
