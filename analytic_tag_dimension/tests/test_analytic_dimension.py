@@ -6,6 +6,8 @@
 from odoo.exceptions import ValidationError
 from odoo.tests.common import SavepointCase
 
+from ..hooks import uninstall_hook
+
 
 class TestAnalyticDimensionBase(SavepointCase):
     @classmethod
@@ -76,7 +78,7 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         with self.assertRaises(ValidationError):
             self.analytic_tag_1a.analytic_dimension_id = self.dimension_2.id
         # Empty tags - Using command 5
-        line.write({"tag_ids": [(5, )]})
+        line.write({"tag_ids": [(5,)]})
         self.assertFalse(line.x_dimension_test_dim_1)
         self.assertFalse(line.x_dimension_test_dim_2)
         # It should be allowed now
@@ -180,6 +182,12 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         )
         self.assertTrue(line.x_dimension_test_dim_1)
         self.assertFalse(line.x_dimension_test_dim_2)
+
+    def test_remove_dimension(self):
+        self.dimension_1.unlink()
+        self.assertNotIn("x_dimension_test_dim_1", self.analytic_line_obj._fields)
+        uninstall_hook(self.env.cr, False)
+        self.assertNotIn("x_dimension_test_dim_2", self.analytic_line_obj._fields)
 
     def test_zz_dimension_rename(self):
         # It should executed the last one for avoiding side effects
