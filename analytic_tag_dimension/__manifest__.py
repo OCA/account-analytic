@@ -7,7 +7,7 @@
     "summary": "Group Analytic Entries by Dimensions",
     "version": "13.0.1.0.1",
     "license": "AGPL-3",
-    "author": "PESOL, Odoo Community Association (OCA)",
+    "author": "PESOL, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["analytic", "account"],
     "data": ["security/ir.model.access.csv", "views/analytic_view.xml"],
