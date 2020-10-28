@@ -12,4 +12,5 @@
     "depends": ["analytic", "account"],
     "data": ["security/ir.model.access.csv", "views/analytic_view.xml"],
     "demo": ["demo/analytic_demo.xml"],
+    "uninstall_hook": "uninstall_hook",
 }
