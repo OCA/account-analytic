@@ -20,4 +20,5 @@
     "demo": [
         'demo/analytic_demo.xml',
     ],
+    "uninstall_hook": "uninstall_hook",
 }
