@@ -3,7 +3,7 @@
 
 {
     'name': 'Analytic Accounts Dimensions Enhanced',
-    'version': '12.0.1.0.0',
+    'version': '12.0.2.0.0',
     'license': 'AGPL-3',
     'author': 'Ecosoft, Odoo Community Association (OCA)',
     'website': 'https://github.com/OCA/account-analytic',
