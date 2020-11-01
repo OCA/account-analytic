@@ -70,7 +70,6 @@ msgstr "Code"
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_dimension.py:24
-#: code:addons/analytic_tag_dimension/models/analytic.py:25
 #, python-format
 msgid "Code can't contain spaces!"
 msgstr "De code mag niet bestaan uit spaties!"
@@ -145,14 +144,12 @@ msgstr "Labels"
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:30
-#: code:addons/analytic_tag_dimension/models/analytic.py:96
 #, python-format
 msgid "You can not set two tags from same dimension."
 msgstr "U kunt niet twee labels koppelen aan dezelfde dimensie."
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:56
-#: code:addons/analytic_tag_dimension/models/analytic.py:122
 #, fuzzy, python-format
 #| msgid "You can not set two tags from same dimension."
 msgid ""
