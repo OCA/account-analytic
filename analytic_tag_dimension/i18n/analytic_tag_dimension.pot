@@ -59,7 +59,6 @@ msgstr ""
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_dimension.py:24
-#: code:addons/analytic_tag_dimension/models/analytic.py:25
 #, python-format
 msgid "Code can't contain spaces!"
 msgstr ""
@@ -134,14 +133,12 @@ msgstr ""
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:30
-#: code:addons/analytic_tag_dimension/models/analytic.py:96
 #, python-format
 msgid "You can not set two tags from same dimension."
 msgstr ""
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:56
-#: code:addons/analytic_tag_dimension/models/analytic.py:122
 #, python-format
 msgid "You can not set two tags from same dimension.\n"
 " Records {} in the model {} have {}"
