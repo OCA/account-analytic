@@ -12,105 +12,112 @@ class TestInventoryAnalytic(TransactionCase):
         # MODELS
         self.product_product_model = self.env["product.product"]
         self.product_category_model = self.env["product.category"]
-        self.wizard_model = self.env["stock.change.product.qty"]
+        self.account_move_line_model = self.env["account.move.line"]
+        self.account_analytic_tag = self.env["account.analytic.tag"]
 
         # INSTANCES
+        self.analytic_tag_1 = self.account_analytic_tag.create(
+            {"name": "Analytic Tag 1 (test)"}
+        )
+        self.analytic_tag_2 = self.account_analytic_tag.create(
+            {"name": "Analytic Tag 1 (test)"}
+        )
+        self.stock_journal = self.env["account.journal"].create(
+            {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
+        )
+        self.valuation_account = self.env["account.account"].create(
+            {
+                "name": "Test stock valuation",
+                "code": "tv",
+                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "reconcile": True,
+                "company_id": self.env.ref("base.main_company").id,
+            }
+        )
+        self.stock_input_account = self.env["account.account"].create(
+            {
+                "name": "Test stock input",
+                "code": "tsti",
+                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "reconcile": True,
+                "company_id": self.env.ref("base.main_company").id,
+            }
+        )
+        self.stock_output_account = self.env["account.account"].create(
+            {
+                "name": "Test stock output",
+                "code": "tout",
+                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "reconcile": True,
+                "company_id": self.env.ref("base.main_company").id,
+            }
+        )
         self.category = self.product_category_model.create(
             {
                 "name": "Physical (test)",
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
+                "property_stock_valuation_account_id": self.valuation_account.id,
+                "property_stock_account_input_categ_id": self.stock_input_account.id,
+                "property_stock_account_output_categ_id": self.stock_output_account.id,
+                "property_stock_journal": self.stock_journal.id,
             }
         )
-        self.analytic_account = self.env.ref("analytic.analytic_agrolait")
-
-        # Accounts for the product & product's category.
-        account_group = self.env["account.group"].create(
-            {"name": "Account Group (test)", "code_prefix": "AGTest-",}
-        )
-        user_type = self.env.ref("account.data_account_type_liquidity")
-        self.account_account_70000 = self.env["account.account"].create(
+        self.product = self.product_product_model.create(
             {
-                "code": "70000",
-                "name": "70000 (test)",
-                "group_id": account_group.id,
-                "user_type_id": user_type.id,
-            }
-        )
-        self.account_account_70001 = self.env["account.account"].create(
-            {
-                "code": "70001",
-                "name": "70001 (test)",
-                "group_id": account_group.id,
-                "user_type_id": user_type.id,
-            }
-        )
-
-    def _create_product(self, name):
-        self.category.property_stock_valuation_account_id = (
-            self.account_account_70000.id
-        )
-        return self.product_product_model.create(
-            {
-                "name": name,
-                "categ_id": self.category.id,
+                "name": "Product (test)",
                 "type": "product",
-                "standard_price": 100,
-                "property_stock_account_input": self.account_account_70000.id,
-                "property_stock_account_output": self.account_account_70001.id,
+                "categ_id": self.category.id,
+                "price": 500,
+                "standard_price": 1000,
+            }
+        )
+        self.stock_location = self.env.ref("stock.stock_location_stock")
+        self.analytic_account = self.env.ref("analytic.analytic_agrolait")
+        self.company = self.env.user.company_id
+
+        # CONFIG
+        self.company.write(
+            {
+                "analytic_account_id": self.analytic_account.id,
+                "analytic_tag_ids": [
+                    (6, 0, [self.analytic_tag_1.id, self.analytic_tag_2.id])
+                ],
             }
         )
 
-    def _product_change_qty(self, product, new_qty, analytic_account_id=None):
-        values = {
-            "product_id": product.id,
-            "new_quantity": new_qty,
-        }
-        if analytic_account_id:
-            values.update({"analytic_account_id": analytic_account_id.id})
-        wizard = self.wizard_model.create(values)
-        wizard.change_product_qty()
+    def test_inventory_adjustment_analytic(self):
+        inventory = self.env["stock.inventory"].create(
+            {
+                "name": "add product",
+                "location_ids": [(4, self.stock_location.id)],
+                "product_ids": [(4, self.product.id)],
+            }
+        )
+        inventory.action_start()
+        self.assertEqual(len(inventory.line_ids), 0)
 
-    def test_product_change_qty_analytic(self):
-        product = self._create_product("product_product")
+        self.env["stock.inventory.line"].create(
+            {
+                "inventory_id": inventory.id,
+                "product_id": self.product.id,
+                "product_qty": 5,
+                "location_id": self.stock_location.id,
+            }
+        )
+        self.assertEqual(len(inventory.line_ids), 1)
+        self.assertEqual(inventory.line_ids.theoretical_qty, 0)
+        inventory.action_validate()
 
-        inventory_lines_before = self.env["stock.inventory.line"].search(
+        # Checks that there exists one analytic line created with that account
+        account_move_lines = self.account_move_line_model.search(
             [
-                ("product_id", "=", product.id),
+                ("product_id", "=", self.product.id),
                 ("analytic_account_id", "=", self.analytic_account.id),
             ]
         )
-        analytic_lines_before = self.env["account.analytic.line"].search(
-            [
-                ("product_id", "=", product.id),
-                ("account_id", "=", self.analytic_account.id),
-            ]
+        self.assertIs(len(account_move_lines), 1)
+        self.assertListEqual(
+            account_move_lines.analytic_tag_ids.ids,
+            [self.analytic_tag_1.id, self.analytic_tag_2.id],
         )
-
-        self._product_change_qty(product, 10, self.analytic_account)
-
-        # Checks that there exists an inventory line created with that account,
-        # and which belongs to an inventory adjustment that has been validated.
-        inventory_lines_after = self.env["stock.inventory.line"].search(
-            [
-                ("product_id", "=", product.id),
-                ("analytic_account_id", "=", self.analytic_account.id),
-            ]
-        )
-        self.assertNotEqual(inventory_lines_before, inventory_lines_after)
-        inventory_line_created = inventory_lines_after - inventory_lines_before
-        self.assertEqual(inventory_line_created.inventory_id.state, "done")
-
-        # Checks that there exists two analytic lines created with that account
-        analytic_lines_after = self.env["account.analytic.line"].search(
-            [
-                ("product_id", "=", product.id),
-                ("account_id", "=", self.analytic_account.id),
-            ]
-        )
-        self.assertNotEqual(analytic_lines_before, analytic_lines_after)
-        analytic_lines_created = analytic_lines_after - analytic_lines_before
-        self.assertEqual(
-            sorted(analytic_lines_created.mapped("amount")), [-1000.0, +1000.0]
-        )
-        self.assertEqual(analytic_lines_created.mapped("unit_amount"), [10.0, 10.0])
