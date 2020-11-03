@@ -20,14 +20,14 @@ class AccountAnalyticDimension(models.Model):
     filtered_field_ids = fields.Many2many(
         comodel_name="ir.model.fields",
         string="Filtered by fields",
-        domain="[('model_id', '=', ref_model_id)," "('ttype', '=', 'many2one')]",
+        domain="[('model_id', '=', ref_model_id), ('ttype', '=', 'many2one')]",
         help="Filtered listing tags by fields of this model, based on value "
         "of selected analytic tags in working document",
     )
     required = fields.Boolean(
         string="Required",
         default=False,
-        help="If required, this dimension needed to be " "selected in working document",
+        help="If required, this dimension needed to be selected in working document",
     )
     by_sequence = fields.Boolean(
         default=False,
@@ -56,14 +56,15 @@ class AccountAnalyticDimension(models.Model):
         ).unlink()
         tag_res_ids = [x.resource_ref.id for x in self.analytic_tag_ids]
         recs = TagModel.search([("id", "not in", tag_res_ids)])
-        for rec in recs:
-            Tag.create(
-                {
-                    "name": rec.display_name,
-                    "analytic_dimension_id": self.id,
-                    "resource_ref": "{},{}".format(model, rec.id),
-                }
-            )
+        vals_dict = [
+            {
+                "name": rec.display_name,
+                "analytic_dimension_id": self.id,
+                "resource_ref": "{},{}".format(model, rec.id),
+            }
+            for rec in recs
+        ]
+        Tag.create(vals_dict)
 
 
 class AnalyticDimensionLine(models.AbstractModel):
@@ -168,6 +169,6 @@ class AccountAnalyticTag(models.Model):
         missing = req_dimensions - dimensions
         if missing:
             raise ValidationError(
-                _("Following dimension(s) not selected: " "%s")
+                _("Following dimension(s) not selected: %s")
                 % ", ".join(missing.mapped("name"))
             )
