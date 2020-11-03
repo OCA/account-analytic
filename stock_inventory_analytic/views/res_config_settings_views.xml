@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field
+                name="name"
+            >res.config.settings.view.form.inherit.stock.account</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <div id="production_lot_info" position="after">
+                    <h2>Analytic</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div
+                            class="col-12 o_setting_box"
+                            id="analytic_setting"
+                            groups="base.group_no_one"
+                        >
+                            <div class="o_setting_right_pane">
+                                <span
+                                    class="o_form_label"
+                                >Default Analytic Values during Inventory Adjustment</span>
+                                <div class="text-muted">
+                                    Default value for Analytic Account and Analytic Tags on an Inventory Adjustment Line
+                                </div>
+                                <div class="row mt16">
+                                    <label
+                                        for="analytic_account_id"
+                                        string="Analytic Account"
+                                        class="col-lg-4 o_light_label"
+                                    />
+                                    <field
+                                        name="analytic_account_id"
+                                        class="oe_inline"
+                                    />
+                                </div>
+                                <div class="row mt16">
+                                    <label
+                                        for="analytic_tag_ids"
+                                        string="Analytic Tags"
+                                        class="col-lg-4 o_light_label"
+                                    />
+                                    <field
+                                        name="analytic_tag_ids"
+                                        widget="many2many_tags"
+                                        class="oe_inline"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
