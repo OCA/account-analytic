@@ -3,11 +3,11 @@
 
 {
     "name": "Analytic Accounts Dimensions Enhanced",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "license": "AGPL-3",
     "author": "Ecosoft, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["analytic_tag_dimension"],
-    "data": ["views/analytic_view.xml", "views/account_invoice_view.xml"],
+    "data": ["views/analytic_view.xml", "views/account_move_view.xml"],
     "installable": True,
 }
