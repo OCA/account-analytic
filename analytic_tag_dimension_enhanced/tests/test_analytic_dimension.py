@@ -15,7 +15,7 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         cls.account_obj = cls.env["account.account"]
         cls.model_obj = cls.env["ir.model"]
         cls.field_obj = cls.env["ir.model.fields"]
-        cls.invoice = cls.env["account.invoice"].create(
+        cls.invoice = cls.env["account.move"].create(
             {"journal_id": cls.journal.id, "partner_id": cls.partner.id}
         )
         # Mock data for testing model dimension, by_sequence with fitered
@@ -39,11 +39,11 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
             "name": "test",
             "price_unit": 1,
             "account_id": self.account.id,
-            "invoice_id": self.invoice.id,
-            "account_analytic_id": self.analytic_account.id,
+            "move_id": self.invoice.id,
+            "analytic_account_id": self.analytic_account.id,
             "analytic_tag_ids": [(6, 0, [self.analytic_tag_1a.id])],
         }
-        invoice_line_obj = self.env["account.invoice.line"]
+        invoice_line_obj = self.env["account.move.line"]
         # Error if missing required dimension
         with self.assertRaises(ValidationError):
             invoice_line_obj.create(values)
@@ -61,14 +61,14 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         - No duplicated sequence
         - Selection allowed by sequence, i.e., Concept then Type
         """
-        invoice_line_obj = self.env["account.invoice.line"]
+        invoice_line_obj = self.env["account.move.line"]
         # Test no dimension with any sequence
         values = {
             "name": "test no sequence",
             "price_unit": 1,
             "account_id": self.account.id,
-            "invoice_id": self.invoice.id,
-            "account_analytic_id": self.analytic_account.id,
+            "move_id": self.invoice.id,
+            "analytic_account_id": self.analytic_account.id,
         }
         line = invoice_line_obj.create(values)
         res = line._compute_analytic_tags_domain()
@@ -85,8 +85,8 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
             "name": "test sequence",
             "price_unit": 1,
             "account_id": self.account.id,
-            "invoice_id": self.invoice.id,
-            "account_analytic_id": self.analytic_account.id,
+            "move_id": self.invoice.id,
+            "analytic_account_id": self.analytic_account.id,
         }
         line = invoice_line_obj.create(values)
         # First selection, dimension 1 tag shouldn't be in the domain
@@ -149,10 +149,10 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
             "name": "test",
             "price_unit": 1,
             "account_id": self.account.id,
-            "invoice_id": self.invoice.id,
-            "account_analytic_id": self.analytic_account.id,
+            "move_id": self.invoice.id,
+            "analytic_account_id": self.analytic_account.id,
         }
-        invoice_line_obj = self.env["account.invoice.line"]
+        invoice_line_obj = self.env["account.move.line"]
         line = invoice_line_obj.create(values)
         tag = self.tag_obj.search([("name", "=", "A")])
         line.analytic_tag_ids += tag
