@@ -7,4 +7,6 @@
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * David Vidal <david.vidal@tecnativa.com>
 * Jaume Planas <jaume.planas@minorisa.net>
-* Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* `CorporateHub <https://corporatehub.eu/>`__
+
+  * Alexey Pelykh <alexey.pelykh@corphub.eu>
