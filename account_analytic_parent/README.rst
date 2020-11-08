@@ -60,7 +60,7 @@ Authors
 * Deneroteam
 * ForgeFlow
 * Tecnativa
-* Brainbean Apps
+* CorporateHub
 
 Contributors
 ~~~~~~~~~~~~
@@ -74,7 +74,10 @@ Contributors
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * David Vidal <david.vidal@tecnativa.com>
 * Jaume Planas <jaume.planas@minorisa.net>
-* Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* `CorporateHub <https://corporatehub.eu/>`__
+
+  * Alexey Pelykh <alexey.pelykh@corphub.eu>
+
 * Pedro Gonzalez <pedro.gonzalez@pesol.es>
 
 Maintainers
