@@ -5,6 +5,7 @@
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # Copyright 2017 Tecnativa
 # Copyright 2018-2020 Brainbean Apps
+# Copyright 2020 CorporateHub (https://corporatehub.eu)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
@@ -18,7 +19,7 @@
               'Deneroteam, '
               'Eficent, '
               'Tecnativa, '
-              'Brainbean Apps, '
+              'CorporateHub, '
               'Odoo Community Association (OCA)',
     'website': 'https://www.github.com/OCA/account-analytic.git',
     'depends': [
