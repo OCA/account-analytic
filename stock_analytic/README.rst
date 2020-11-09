@@ -6,36 +6,36 @@
 Stock Analytic
 ==============
 
-Adds an analytic account in stock move to be able to get analytic information
-when generating the journal items.
+Adds an analytic account and analytic tags in stock move to be able to get
+analytic information when generating the journal items.
 
 
 Usage
 =====
 
-To Assign an Analytic Account to a Stock Move
----------------------------------------------
+To Assign an Analytic Account and Analytic Tags to a Stock Move
+---------------------------------------------------------------
 
 You need to:
 
 #. Create manually or open draft picking
-#. Add move lines and fill **analytic account** field
+#. Add move lines and fill **analytic account** and **analytic tags** fields
 
-Assigned Journal Items created from Stock Move with Analytic Account
---------------------------------------------------------------------
+Assigned Journal Items created from Stock Move with Analytic Account and Analytic Tags
+--------------------------------------------------------------------------------------
 
 If stock move automatically create journal entry, the journal entry will
 contain journal items with following rule:
 
 #. Journal item with account equal to product's valuation account will not be
-   assigned to any analytic account
+   assigned to any analytic account, neither analytic tags
 #. Journal item with account different to product's valuation account will be
    assigned to an analytic account according to the stock move's analytic
-   account
+   account. The same logic applies to analytic tags.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/87/12.0
+   :target: https://runbot.odoo-community.org/runbot/87/13.0
 
 
 Bug Tracker

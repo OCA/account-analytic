@@ -28,6 +28,12 @@ msgid "Analytic Account"
 msgstr "विश्लेषणात्मक खाता"
 
 #. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_tag_ids
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_tag_ids
+msgid "Analytic Tags"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_product_product
 msgid "Product"
 msgstr ""

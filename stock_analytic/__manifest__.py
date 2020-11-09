@@ -6,7 +6,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Stock Analytic",
-    "summary": "Adds an analytic account in stock move",
+    "summary": "Adds an analytic account and analytic tags in stock move",
     "version": "13.0.1.0.0",
     "author": "Julius Network Solutions, "
     "ClearCorp, OpenSynergy Indonesia, "
