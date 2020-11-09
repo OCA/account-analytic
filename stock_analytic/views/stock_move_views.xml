@@ -62,6 +62,7 @@
                     position="after"
                 >
                     <field name="analytic_account_id" />
+                    <field name="analytic_tag_ids" widget="many2many_tags" />
                 </xpath>
             </field>
         </record>
