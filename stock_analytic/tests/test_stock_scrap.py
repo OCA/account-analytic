@@ -11,6 +11,12 @@ class TestStockScrap(TransactionCase):
         self.warehouse = self.env.ref("stock.warehouse0")
         self.location = self.warehouse.lot_stock_id
         self.analytic_account = self.env.ref("analytic.analytic_agrolait")
+        self.analytic_tag_1 = self.env["account.analytic.tag"].create(
+            {"name": "analytic tag test 1"}
+        )
+        self.analytic_tag_2 = self.env["account.analytic.tag"].create(
+            {"name": "analytic tag test 2"}
+        )
 
     def __update_qty_on_hand_product(self, product, new_qty):
         qty_wizard = self.env["stock.change.product.qty"].create(
@@ -22,7 +28,7 @@ class TestStockScrap(TransactionCase):
         )
         qty_wizard.change_product_qty()
 
-    def _create_scrap(self, analytic_account_id=False):
+    def _create_scrap(self, analytic_account_id=False, analytic_tag_ids=False):
         scrap_data = {
             "product_id": self.product.id,
             "scrap_qty": 1.00,
@@ -31,6 +37,7 @@ class TestStockScrap(TransactionCase):
             "analytic_account_id": analytic_account_id
             and analytic_account_id.id
             or False,
+            "analytic_tag_ids": [(6, 0, analytic_tag_ids if analytic_tag_ids else [])],
         }
         return self.env["stock.scrap"].create(scrap_data)
 
@@ -49,6 +56,9 @@ class TestStockScrap(TransactionCase):
                 self.assertEqual(
                     acc_line.analytic_account_id.id, scrap.analytic_account_id.id
                 )
+                self.assertEqual(
+                    acc_line.analytic_tag_ids.ids, scrap.analytic_tag_ids.ids
+                )
 
     def test_scrap_without_analytic(self):
         self.__update_qty_on_hand_product(self.product, 1)
@@ -57,6 +67,8 @@ class TestStockScrap(TransactionCase):
 
     def test_scrap_with_analytic(self):
         self.__update_qty_on_hand_product(self.product, 1)
-        scrap = self._create_scrap(self.analytic_account)
+        scrap = self._create_scrap(
+            self.analytic_account, [self.analytic_tag_1.id | self.analytic_tag_2.id]
+        )
         self._validate_scrap_no_error(scrap)
         self._check_analytic_account_no_error(scrap)
