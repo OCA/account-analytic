@@ -23,7 +23,6 @@ msgstr ""
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_dimension
 #, fuzzy
-#| msgid "Analytic Dimension"
 msgid "Account Analytic Dimension"
 msgstr "Dimensión Analítica"
 
@@ -43,7 +42,6 @@ msgstr "Dimensión Analítica"
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_analytic_dimension_line
 #, fuzzy
-#| msgid "Analytic Dimension"
 msgid "Analytic Dimension Line"
 msgstr "Dimensión Analítica"
 
@@ -151,7 +149,6 @@ msgstr "No puedes poner dos etiquetas desde la misma dimensión."
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:56
 #, fuzzy, python-format
-#| msgid "You can not set two tags from same dimension."
 msgid ""
 "You can not set two tags from same dimension.\n"
 " Records {} in the model {} have {}"

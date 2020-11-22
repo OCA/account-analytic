@@ -40,7 +40,6 @@ msgstr ""
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_analytic_dimension_line
 #, fuzzy
-#| msgid "Analytic Line"
 msgid "Analytic Dimension Line"
 msgstr "Línea analítica"
 

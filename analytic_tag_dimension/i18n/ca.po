@@ -146,7 +146,6 @@ msgstr "No podeu assignar dues etiquetes a la mateixa dimensió."
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:56
 #, fuzzy, python-format
-#| msgid "You can not set two tags from same dimension."
 msgid ""
 "You can not set two tags from same dimension.\n"
 " Records {} in the model {} have {}"
