@@ -37,6 +37,10 @@ env:
     - VERSION="13.0" TESTS="0" LINT_CHECK="0" MAKEPOT="0"
 
 install:
+  #  FIXME:
+  - git clone --branch bai-13-account-analytic-stock_analytic-with-tags
+    https://github.com/acsone/account-analytic.git PR332
+  - rm -rf stock_analytic && cp -ar PR332/stock_analytic .
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git
     ${HOME}/maintainer-quality-tools
   - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
