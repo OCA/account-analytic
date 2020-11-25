@@ -46,6 +46,12 @@ class TestStockPicking(TransactionCase):
         self.stock_journal = self.env["account.journal"].create(
             {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
         )
+        self.analytic_tag_1 = self.env["account.analytic.tag"].create(
+            {"name": "analytic tag test 1"}
+        )
+        self.analytic_tag_2 = self.env["account.analytic.tag"].create(
+            {"name": "analytic tag test 2"}
+        )
         self.analytic_account = self.env.ref("analytic.analytic_agrolait")
         self.warehouse = self.env.ref("stock.warehouse0")
         self.location = self.warehouse.lot_stock_id
@@ -65,7 +71,12 @@ class TestStockPicking(TransactionCase):
         self.product.update({"categ_id": self.product_categ.id})
 
     def _create_picking(
-        self, location_id, location_dest_id, picking_type_id, analytic_account_id=False
+        self,
+        location_id,
+        location_dest_id,
+        picking_type_id,
+        analytic_account_id=False,
+        analytic_tag_ids=False,
     ):
         picking_data = {
             "picking_type_id": picking_type_id.id,
@@ -90,6 +101,7 @@ class TestStockPicking(TransactionCase):
             "analytic_account_id": (
                 analytic_account_id.id if analytic_account_id else False
             ),
+            "analytic_tag_ids": [(6, 0, analytic_tag_ids if analytic_tag_ids else [])],
         }
 
         self.env["stock.move"].create(move_data)
@@ -140,13 +152,22 @@ class TestStockPicking(TransactionCase):
                 self.assertEqual(
                     acc_line.analytic_account_id.id, move.analytic_account_id.id
                 )
+                self.assertEqual(
+                    acc_line.analytic_tag_ids.ids, move.analytic_tag_ids.ids
+                )
 
     def _check_no_analytic_account(self, picking):
         criteria2 = [
             ("move_id.ref", "=", picking.name),
             ("analytic_account_id", "!=", False),
         ]
+        criteria3 = [
+            ("move_id.ref", "=", picking.name),
+            ("analytic_tag_ids", "!=", []),
+        ]
         line_count = self.env["account.move.line"].search_count(criteria2)
+        self.assertEqual(line_count, 0)
+        line_count = self.env["account.move.line"].search_count(criteria3)
         self.assertEqual(line_count, 0)
 
     def test_outgoing_picking_with_analytic(self):
@@ -155,6 +176,7 @@ class TestStockPicking(TransactionCase):
             self.dest_location,
             self.outgoing_picking_type,
             self.analytic_account,
+            [self.analytic_tag_1.id | self.analytic_tag_2.id],
         )
         self.__update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
@@ -180,6 +202,7 @@ class TestStockPicking(TransactionCase):
             self.dest_location,
             self.incoming_picking_type,
             self.analytic_account,
+            [self.analytic_tag_1.id | self.analytic_tag_2.id],
         )
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
