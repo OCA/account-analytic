@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-21 02:39+0000\n"
-"PO-Revision-Date: 2019-10-03 12:24+0000\n"
-"Last-Translator: Alexandre Fayolle <alexandre.fayolle@camptocamp.com>\n"
+"PO-Revision-Date: 2020-11-26 19:36+0000\n"
+"Last-Translator: Pierrick Brun <brun.pierrick@protonmail.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model,name:account_analytic_distribution_required.model_account_account_type
@@ -27,7 +27,7 @@ msgstr "Type de compte"
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
 msgid "Always"
-msgstr ""
+msgstr "Toujours"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
@@ -86,27 +86,27 @@ msgstr ""
 #. module: account_analytic_distribution_required
 #: model:ir.model,name:account_analytic_distribution_required.model_account_move_line
 msgid "Journal Item"
-msgstr "Écriture comptable"
+msgstr "Écriture du journal"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
 msgid "Never"
-msgstr ""
+msgstr "Jamais"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
 msgid "Optional"
-msgstr ""
+msgstr "Facultatif"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
-msgstr ""
+msgstr "Politique pour les comptes analytiques"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
 msgid "Posted moves"
-msgstr ""
+msgstr "Ecritures comptabilisées"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
@@ -124,3 +124,14 @@ msgid ""
 "\n"
 "This field is company dependent."
 msgstr ""
+"Définissez la règle pour les comptes analytiques.\n"
+"Si vous sélectionnez :\n"
+" - Facultatif : le comptable est libre de mettre un compte analytique sur "
+"une écriture comptable avec ce type de compte.\n"
+" - Toujours : le comptable recevra un message d'erreur s'il n' y a pas de "
+"compte analytique.\n"
+" - Écritures comptabilisées : le comptable recevra un message d'erreur si "
+"aucun compte analytique n'est défini lors de la comptabilisation de "
+"l'écriture.\n"
+" - Jamais : le comptable recevra un message d'erreur si un compte analytique "
+"est présent."
