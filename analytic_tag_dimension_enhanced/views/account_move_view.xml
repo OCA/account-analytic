@@ -18,7 +18,7 @@
             >
                 <attribute
                     name="domain"
-                >[('id', 'in', domain_tag_ids or [])]</attribute>
+                >['|', ('id', 'in', domain_tag_ids or []), ('analytic_dimension_id.by_sequence', '=', False)]</attribute>
             </xpath>
         </field>
     </record>
