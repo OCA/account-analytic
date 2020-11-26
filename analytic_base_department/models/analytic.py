@@ -9,7 +9,7 @@ class AnalyticAccount(models.Model):
 
     _inherit = "account.analytic.account"
 
-    department_id = fields.Many2one("hr.department", "Department")
+    department_id = fields.Many2one(comodel_name="hr.department")
 
 
 class AnalyticLine(models.Model):
@@ -26,8 +26,7 @@ class AnalyticLine(models.Model):
         return department_id
 
     department_id = fields.Many2one(
-        "hr.department",
-        "Department",
+        comodel_name="hr.department",
         default=lambda self: self._default_department(),
         help="User's related department",
     )
