@@ -159,9 +159,11 @@ class AccountAnalyticTag(models.Model):
         string="Record",
     )
 
-    def _check_analytic_dimension(self):
-        super()._check_analytic_dimension()
-        # Test all required dimension is selected
+    def _check_required_dimension(self, record):
+        """ Test all required dimension is selected (exclude non-invoice) """
+        record.ensure_one()
+        if "exclude_from_invoice_tab" in record and record.exclude_from_invoice_tab:
+            return
         Dimension = self.env["account.analytic.dimension"]
         req_dimensions = Dimension.search([("required", "=", True)])
         tags_dimension = self.filtered("analytic_dimension_id.required")
