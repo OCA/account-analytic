@@ -11,7 +11,7 @@
                     <field name="domain_tag_ids" invisible="1"/>
                 </xpath>
                 <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_tag_ids']" position="attributes">
-                    <attribute name="domain">[('id', 'in', domain_tag_ids or [])]</attribute>
+                    <attribute name="domain">['|', ('id', 'in', domain_tag_ids or []), ('analytic_dimension_id.by_sequence', '=', False)]</attribute>
                 </xpath>
             </data>
         </field>
