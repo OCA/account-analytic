@@ -5,7 +5,7 @@
 {
     "name": "Analytic for manufacturing",
     "summary": "Adds the analytic account to the production order",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Manufacturing",
     "author": "ForgeFlow, "
     "Antiun Ingeniería, "
