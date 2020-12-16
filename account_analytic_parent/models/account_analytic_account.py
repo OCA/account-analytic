@@ -110,7 +110,7 @@ class AccountAnalyticAccount(models.Model):
     def _compute_complete_name(self):
         for account in self:
             if account.parent_id:
-                account.complete_name = _('%(parent)s / %(own)s') % {
+                account.complete_name = ('%(parent)s / %(own)s') % {
                     'parent': account.parent_id.complete_name,
                     'own': account.name,
                 }
@@ -142,12 +142,12 @@ class AccountAnalyticAccount(models.Model):
         for analytic in self:
             name = analytic.complete_name
             if analytic.code:
-                name = _('[%(code)s] %(name)s') % {
+                name = ('[%(code)s] %(name)s') % {
                     'code': analytic.code,
                     'name': name,
                 }
             if analytic.partner_id:
-                name = _('%(name)s - %(partner)s') % {
+                name = ('%(name)s - %(partner)s') % {
                     'name': name,
                     'partner': analytic.partner_id.commercial_partner_id.name,
                 }
