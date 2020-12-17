@@ -15,7 +15,11 @@ TODO: add repo description.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[mrp_analytic](mrp_analytic/) | 14.0.1.0.0 | Adds the analytic account to the production order
 
 [//]: # (end addons)
 
