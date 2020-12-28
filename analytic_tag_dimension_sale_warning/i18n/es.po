@@ -19,6 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: analytic_tag_dimension_sale_warning
+#: model:ir.model,name:analytic_tag_dimension_sale_warning.model_account_analytic_dimension
+msgid "Account Analytic Dimension"
+msgstr ""
+
+#. module: analytic_tag_dimension_sale_warning
 #: model:ir.model,name:analytic_tag_dimension_sale_warning.model_sale_order_line
 msgid "Sales Order Line"
 msgstr "Línea de pedido de venta"
