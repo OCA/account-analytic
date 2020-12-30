@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-06 22:08+0000\n"
-"PO-Revision-Date: 2020-02-24 12:13+0000\n"
-"Last-Translator: alvarorib <alvaro.ribeiro@exo.pt>\n"
+"PO-Revision-Date: 2020-12-30 12:43+0000\n"
+"Last-Translator: Pedro Castro Silva <pedrocs@exo.pt>\n"
 "Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model,name:account_analytic_distribution_required.model_account_account_type
@@ -32,7 +32,7 @@ msgstr "Sempre"
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
 msgid "Always (analytic account or distribution)"
-msgstr "Sempre (conta analítica ou distribuição)"
+msgstr "Sempre (conta ou distribuição analítica)"
 
 #. module: account_analytic_distribution_required
 #: selection:account.account.type,property_analytic_policy:0
@@ -107,7 +107,6 @@ msgstr "Movimentos publicados"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
-#, fuzzy
 msgid ""
 "Sets the policy for analytic accounts.\n"
 "If you select:\n"
@@ -122,10 +121,13 @@ msgid ""
 "\n"
 "This field is company dependent."
 msgstr ""
-"Definir a política para contas analíticas : se selecionar 'Opcional', "
-"podemos colocar uma conta analítica numa linha de lançamento contabilístico "
-"que contenha este tipo de conta; se selecionar 'Sempre', a inexistência de "
-"conta analítica origina uma mensagem de erro; se selecionar 'Movimentos "
-"publicados', e nenhuma conta analítica estiver definida quando o movimento é "
-"publicado origina uma mensagem de erro; se selecionar 'Nunca', a existência "
-"de conta analítica origina uma mensagem de erro."
+"Definir a política para contas analíticas:\n"
+"Se selecionar:\n"
+"- Opcional: podemos colocar uma conta analítica numa linha de lançamento "
+"contabilístico que contenha este tipo de conta.\n"
+"- Sempre: a inexistência de conta analítica origina uma mensagem de erro.\n"
+"- Movimentos publicados: se nenhuma conta analítica estiver definida quando "
+"o movimento é publicado, é gerada uma mensagem de erro.\n"
+"- Nunca: a existência de uma conta analítica origina uma mensagem de erro.\n"
+"\n"
+"Este campo é relativo a cada empresa."
