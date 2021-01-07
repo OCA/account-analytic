@@ -45,22 +45,30 @@ class AccountAnalyticLine(models.Model):
             "name": "{} / {}".format(self.name, rule.name),
             "activity_cost_rule_id": rule.id,
             "product_id": cost_product.id,
-            "account_id": self.account_id.id,
             "unit_amount": self.unit_amount * rule.factor,
-            "date": self.date,
         }
+
+    def _generate_activity_cost_lines(self):
+        """
+        Find applicable Activity Cost Rules
+        and create Analytic Lines for each of them.
+
+        This is done copying the original Analytic Item
+        to ensure all other fields are preserved on the new Item.
+        """
+        for line in self:
+            domain = line._match_activity_cost_rules_domain()
+            cost_rules = self.env["activity.cost.rule"].search(domain)
+            for rule in cost_rules:
+                cost_vals = line._prepare_activity_cost_data(rule=rule)
+                cost_vals["parent_id"] = line.id
+                analytic_line = line.copy(cost_vals)
+                analytic_line.on_change_unit_amount()
 
     @api.model
     def create(self, vals):
         res = super(AccountAnalyticLine, self).create(vals)
-        if res.product_id:
-            domain = res._match_activity_cost_rules_domain()
-            cost_rules = self.env["activity.cost.rule"].search(domain)
-            for rule in cost_rules:
-                cost_vals = res._prepare_activity_cost_data(rule=rule)
-                cost_vals["parent_id"] = self.id
-                analytic_line = self.create(cost_vals)
-                analytic_line.on_change_unit_amount()
+        res._generate_activity_cost_lines()
         return res
 
     def write(self, vals):
