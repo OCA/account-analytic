@@ -19,6 +19,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[analytic_activity_based_cost](analytic_activity_based_cost/) | 14.0.1.0.0 | Assign overhead costs to activities, using Analytic Items
 [mrp_analytic](mrp_analytic/) | 14.0.1.0.0 | Adds the analytic account to the production order
 
 [//]: # (end addons)
