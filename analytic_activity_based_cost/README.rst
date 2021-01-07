@@ -75,8 +75,10 @@ Authors
 Contributors
 ~~~~~~~~~~~~
 
-* Daniel Reis <dreis@opensourceintegrators.com>
-* Chandresh Thakkar <cthakkar@opensourceintegrators.com>
+* `Open Source Integrators <https://opensourceintegrators.com>`:
+
+  * Daniel Reis <dreis@opensourceintegrators.com>
+  * Chandresh Thakkar <cthakkar@opensourceintegrators.com>
 
 Maintainers
 ~~~~~~~~~~~
@@ -90,6 +92,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-dreispt| image:: https://github.com/dreispt.png?size=40px
+    :target: https://github.com/dreispt
+    :alt: dreispt
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-dreispt| 
 
 This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/14.0/analytic_activity_based_cost>`_ project on GitHub.
 
