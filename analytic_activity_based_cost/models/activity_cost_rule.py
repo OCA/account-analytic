@@ -11,11 +11,14 @@ class ActivityCostRule(models.Model):
     name = fields.Char("Name", required=True)
     date_start = fields.Date("Start Date")
     date_end = fields.Date("End Date")
-    factor = fields.Float("Factor", default=1)
+    active = fields.Boolean(default=True)
+
     activity_product_id = fields.Many2one("product.product", "Activity Product")
-    project_id = fields.Many2one("project.project", "Project")
+    has_project = fields.Boolean(name="Is related to a Project")
+
     cost_type_product_id = fields.Many2one(
         "product.product",
         string="Cost Type Product",
         domain=[("type", "in", ["consu", "service"])],
     )
+    factor = fields.Float("Factor", default=1)
