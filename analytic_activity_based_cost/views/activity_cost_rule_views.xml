@@ -1,0 +1,56 @@
+<odoo>
+    <record id="view_form_activity_cost_rule" model="ir.ui.view">
+        <field name="name">view.form.activity.cost.rule</field>
+        <field name="model">activity.cost.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name" />
+                    <group>
+                        <group string="Conditions">
+                            <field name="activity_product_id" />
+                            <field name="has_project" />
+                            <field name="date_start" />
+                            <field name="date_end" />
+                            <field name="active" />
+                        </group>
+                        <group string="Cost Generated">
+                            <field name="cost_type_product_id" />
+                            <field name="factor" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_activity_cost_rule" model="ir.ui.view">
+        <field name="name">view.tree.activity.cost.rule</field>
+        <field name="model">activity.cost.rule</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="activity_product_id" />
+                <field name="has_project" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="cost_type_product_id" />
+                <field name="factor" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_activity_cost_rule" model="ir.actions.act_window">
+        <field name="name">Activity Based Cost Rules</field>
+        <field name="res_model">activity.cost.rule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        action="action_activity_cost_rule"
+        id="menu_activity_cost_rule"
+        name="Activity Based Cost Rules"
+        parent="account.menu_finance_configuration"
+        sequence="55"
+    />
+</odoo>
