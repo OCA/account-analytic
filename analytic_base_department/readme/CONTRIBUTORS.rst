@@ -8,3 +8,4 @@
 * Artem Kostyuk <a.kostyuk@mobilunity.com>
 * Anand Kansagra <kansagraanand@hotmail.com>
 * Pimolnat Suntian <pimolnats@ecosoft.co.th>
+* Saran Lim. <saranl@ecosoft.co.th>
