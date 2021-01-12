@@ -10,7 +10,19 @@ class TestPosAnalyticConfig(common.SavepointCase):
         super().setUpClass()
         cls.aml_obj = cls.env['account.move.line']
         cls.inv_line_obj = cls.env['account.invoice.line']
+        cls.pricelist = cls.env['product.pricelist'].create({
+            'name': 'Test pricelist',
+            'item_ids': [(0, 0, {
+                'applied_on': '3_global',
+                'compute_price': 'formula',
+                'base': 'list_price',
+            })]
+        })
         cls.main_config = cls.env.ref('point_of_sale.pos_config_main')
+        cls.main_config.write({
+            'available_pricelist_ids': [(6, 0, cls.pricelist.ids)],
+            'pricelist_id': cls.pricelist.id,
+        })
         cls.aa_01 = cls.env['account.analytic.account'].create({
             'name': 'Test Analytic Account',
         })
