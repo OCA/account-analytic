@@ -3,3 +3,4 @@
 
 from . import activity_cost_rule
 from . import analytic_account
+from . import product_template
