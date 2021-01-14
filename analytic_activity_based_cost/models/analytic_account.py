@@ -14,38 +14,30 @@ class AccountAnalyticLine(models.Model):
     child_ids = fields.One2many(
         "account.analytic.line", "parent_id", string="Related Analytic Items"
     )
-    activity_cost_rule_id = fields.Many2one(
+    activity_cost_id = fields.Many2one(
         "activity.cost.rule", "Cost Rule Applied", ondelete="restrict"
     )
 
-    def _match_activity_cost_rules_domain(self):
-        """
-        Return domain to find Activity Cost Rules
-        matching an Analytic Item record.
+    @api.onchange("product_id", "product_uom_id", "unit_amount", "currency_id")
+    def on_change_unit_amount(self):
+        """ Do not set Amount on cost parent Analytic Items """
+        super().on_change_unit_amount()
+        if self.child_ids:
+            self.amount = 0
 
-        There is a match if:
-        - The product used matches
-        - The Analytic item has a related Project,
-          and the rule has the "Has project" flag
-        """
-        self.ensure_one()
-        domain = [("activity_product_id", "=", self.product_id.id)]
-        if self.project_id:
-            domain = ["|", ("has_project", "=", True)] + domain
-        return domain
-
-    def _prepare_activity_cost_data(self, rule):
+    def _prepare_activity_cost_data(self, cost_type):
         """
         Return a dict with the values to create
-        a new Analytic item for a Cost Type
+        a new Analytic item for a Cost Type.
         """
         self.ensure_one()
-        cost_product = rule.cost_type_product_id
         return {
-            "name": "{} / {}".format(self.name, rule.name),
-            "activity_cost_rule_id": rule.id,
-            "product_id": cost_product.id,
-            "unit_amount": self.unit_amount * rule.factor,
+            "name": "{} / {}".format(
+                self.name, cost_type.product_id.display_name or cost_type.name
+            ),
+            "activity_cost_id": cost_type.id,
+            "product_id": cost_type.product_id.id,
+            "unit_amount": self.unit_amount * cost_type.factor,
         }
 
     def _generate_activity_cost_lines(self):
@@ -56,14 +48,23 @@ class AccountAnalyticLine(models.Model):
         This is done copying the original Analytic Item
         to ensure all other fields are preserved on the new Item.
         """
-        for line in self:
-            domain = line._match_activity_cost_rules_domain()
-            cost_rules = self.env["activity.cost.rule"].search(domain)
-            for rule in cost_rules:
-                cost_vals = line._prepare_activity_cost_data(rule=rule)
-                cost_vals["parent_id"] = line.id
-                analytic_line = line.copy(cost_vals)
-                analytic_line.on_change_unit_amount()
+        # ROADMAP:
+        # this doesn't work for Product-less timesheet lines.
+        # solution might be to force a default Product "Timesheet"
+        # or bring back Service Products on Employees
+        for analytic_parent in self:
+            cost_ids = analytic_parent.product_id.activity_cost_ids
+            if cost_ids:
+                # Parent Cost Type amount must be zero
+                # to avoid duplication with child cost type amounts
+                analytic_parent.amount = 0
+            for cost_product in cost_ids:
+                cost_vals = analytic_parent._prepare_activity_cost_data(
+                    cost_type=cost_product
+                )
+                cost_vals["parent_id"] = analytic_parent.id
+                analytic_child = analytic_parent.copy(cost_vals)
+                analytic_child.on_change_unit_amount()
 
     @api.model
     def create(self, vals):
@@ -77,10 +78,10 @@ class AccountAnalyticLine(models.Model):
         """
         res = super(AccountAnalyticLine, self).write(vals)
         if vals.get("unit_amount"):
-            for cost in self.mapped("child_ids"):
-                cost_vals = self._prepare_activity_cost_data(
-                    rule=cost.activity_cost_rule_id
+            for analytic_child in self.mapped("child_ids"):
+                cost_vals = analytic_child._prepare_activity_cost_data(
+                    cost_type=analytic_child.activity_cost_id
                 )
-                cost.write(cost_vals)
-                cost.on_change_unit_amount()
+                analytic_child.write(cost_vals)
+                analytic_child.on_change_unit_amount()
         return res
