@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo14-addon-analytic_activity_based_cost',
+        'odoo14-addon-analytic_base_department',
         'odoo14-addon-mrp_analytic',
     ],
     classifiers=[
