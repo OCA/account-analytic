@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_AccountAnalyticDimension_form" model="ir.ui.view">
+        <field name="name">view.AccountAnalyticDimension.form</field>
+        <field name="model">account.analytic.dimension</field>
+        <field name="arch" type="xml">
+            <form string="Analytic Dimension">
+                <sheet>
+                    <group name="main">
+                        <field name="name" />
+                        <field name="code" />
+                    </group>
+                    <group string="Tags">
+                        <field name="analytic_tag_ids" nolabel="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_AccountAnalyticDimension_tree" model="ir.ui.view">
+        <field name="name">view.AccountAnalyticDimension.tree</field>
+        <field name="model">account.analytic.dimension</field>
+        <field name="arch" type="xml">
+            <tree string="Analytic Dimension">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_AccountAnalyticDimension_search" model="ir.ui.view">
+        <field name="name">view.AccountAnalyticDimension.search</field>
+        <field name="model">account.analytic.dimension</field>
+        <field name="arch" type="xml">
+            <search string="Analytic Dimension">
+                <field name="name" />
+                <field name="code" />
+            </search>
+        </field>
+    </record>
+    <record id="AccountAnalyticDimension_action" model="ir.actions.act_window">
+        <field name="name">Analytic Accounts Dimensions</field>
+        <field name="res_model">account.analytic.dimension</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new Analytic Dimension.
+            </p>
+        </field>
+    </record>
+    <menuitem
+        id="AccountAnalyticDimension_menu"
+        parent="account.menu_analytic_accounting"
+        action="AccountAnalyticDimension_action"
+        sequence="30"
+    />
+    <record id="account_analytic_tag_dimension_form_view" model="ir.ui.view">
+        <field name="name">account.analytic.tag.dimension.form</field>
+        <field name="model">account.analytic.tag</field>
+        <field name='inherit_id' ref='analytic.account_analytic_tag_form_view' />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="analytic_dimension_id" />
+            </field>
+        </field>
+    </record>
+</odoo>
