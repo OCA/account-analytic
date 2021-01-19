@@ -50,5 +50,41 @@
             </field>
         </record>
 
+        <record id="product_search_form_view" model="ir.ui.view">
+            <field name="name">product.product.search.cost.type</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view" />
+            <field name="arch" type="xml">
+                <search position="inside">
+                    <filter
+                        string="Is Cost Type"
+                        name="filter_is_cost_type"
+                        domain="[('is_cost_type','=',True)]"
+                        context="{'default_is_cost_type': True, 'default_sale_ok': False, 'default_purchase_ok': False, 'default_type': 'service', 'default_taxes_id': False}"
+                    />
+                </search>
+            </field>
+        </record>
+
+        <record id="product_product_action_cost_type" model="ir.actions.act_window">
+            <field name="name">Cost Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="context">{'search_default_filter_is_cost_type': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                  Create a new cost type product
+                </p>
+            </field>
+        </record>
+
+        <menuitem
+            id="product_product_menu_cost_type"
+            name="Cost Types"
+            action="product_product_action_cost_type"
+            parent="account.menu_analytic_accounting"
+        />
+
     </data>
 </odoo>

@@ -26,14 +26,14 @@ class Product(models.Model):
         for product in self:
             if not product.is_cost_type and product.activity_cost_ids:
                 raise exceptions.ValidationError(
-                    _("Can't have Activity Costs set on no Cost Type Products.")
+                    _("Can't have Activity Costs set if it is not a Cost Type.")
                 )
 
-    @api.depends_context("company")
-    @api.depends("product_variant_ids", "product_variant_ids.standard_price")
-    def _compute_standard_price(self):
+    @api.onchange(
+        "standard_price", "activity_cost_ids", "activity_cost_ids.standard_price"
+    )
+    def onchange_for_standard_price(self):
         "Rollup Activity Costs to parent Cost Type"
-        super()._compute_standard_price()
         for product in self.filtered("is_cost_type").filtered("activity_cost_ids"):
             product.standard_price = sum(
                 product.mapped("activity_cost_ids.standard_price")
