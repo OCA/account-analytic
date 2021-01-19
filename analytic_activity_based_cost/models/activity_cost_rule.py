@@ -16,7 +16,7 @@ class ActivityCostRule(models.Model):
         string="Cost Type Product",
         domain=[("is_cost_type", "=", True)],
     )
-    factor = fields.Float("Factor", default=1)
+    factor = fields.Float("Qty. Factor", default=1)
     standard_price = fields.Float(
         related="product_id.standard_price",
         readonly=False,
