@@ -53,6 +53,3 @@ msgstr ""
 #: model:ir.model,name:stock_analytic.model_stock_move
 msgid "Stock Move"
 msgstr "Mișcare stoc"
-
-#~ msgid "Quants"
-#~ msgstr "Poziții de stoc"
