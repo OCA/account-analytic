@@ -187,7 +187,9 @@ class TestStockPicking(TransactionCase):
 
     def test_outgoing_picking_without_analytic(self):
         picking = self._create_picking(
-            self.location, self.dest_location, self.outgoing_picking_type,
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
         )
         self.__update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
