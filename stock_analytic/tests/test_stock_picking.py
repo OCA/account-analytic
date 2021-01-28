@@ -93,7 +93,7 @@ class TestStockPicking(TransactionCase):
             "location_id": location_id.id,
             "location_dest_id": location_dest_id.id,
             "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "date_expected": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "date_deadline": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "name": self.product.name,
             "procure_method": "make_to_stock",
             "product_uom": self.product.uom_id.id,
@@ -163,7 +163,7 @@ class TestStockPicking(TransactionCase):
         ]
         criteria3 = [
             ("move_id.ref", "=", picking.name),
-            ("analytic_tag_ids", "!=", []),
+            ("analytic_tag_ids", "not in", []),
         ]
         line_count = self.env["account.move.line"].search_count(criteria2)
         self.assertEqual(line_count, 0)
