@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/OCA/account-analytic.svg?branch=12.0)](https://travis-ci.org/OCA/account-analytic)
-[![Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png?branch=12.0)](https://coveralls.io/r/OCA/account-analytic?branch=12.0)
+[[Build Status](https://travis-ci.org/OCA/account-analytic.svg?branch=12.0)](https://travis-ci.org/OCA/account-analytic)
+[[Coverage Status](https://coveralls.io/repos/OCA/account-analytic/badge.png?branch=12.0)](https://coveralls.io/r/OCA/account-analytic?branch=12.0)
 
 OCA analytic accounting modules for Odoo
 ========================================
