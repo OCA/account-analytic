@@ -18,7 +18,6 @@ class AccountMoveLine(models.Model):
             return False
         return True
 
-    @api.multi
     def create_analytic_lines(self):
-        self = self.filtered(self._must_create_analytic_line)
-        return super(AccountMoveLine, self).create_analytic_lines()
+        filtered_self = self.filtered(self._must_create_analytic_line)
+        return super(AccountMoveLine, filtered_self).create_analytic_lines()

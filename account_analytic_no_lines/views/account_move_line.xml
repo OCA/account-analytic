@@ -24,7 +24,7 @@
             <field name="account_id" position="after">
                 <field name="analytic_account_id" />
             </field>
-            <filter context="{'group_by':'account_id'}" position="after">
+            <filter name="group_by_account" position="after">
                 <filter
                     name="analytic_account_groupby"
                     string="Analytic Account"

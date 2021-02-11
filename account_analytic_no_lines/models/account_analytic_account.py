@@ -1,14 +1,13 @@
 # Copyright 2017 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class AccountAnalyticAccount(models.Model):
 
     _inherit = "account.analytic.account"
 
-    @api.multi
     def _compute_gl_debit_credit_balance(self):
         aml_obj = self.env["account.move.line"]
         domain = [("analytic_account_id", "in", self.ids)]
