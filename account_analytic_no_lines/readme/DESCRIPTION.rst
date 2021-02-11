@@ -4,4 +4,3 @@ In many situations (i.e. when there are no analytic distribution, and when peopl
 the generation of analytic entries for each account move is redundant, creates overhead and poses a risk of desynchronization between analytic data and GL entries.
 In such situations users are happy to do their analytics reporting on account move lines and don't need analytic entries.
 This module disables the generation of analytic entries and related menus.
-
