@@ -134,7 +134,7 @@ class AccountAnalyticAccount(models.Model):
         for analytic in self:
             name = analytic.complete_name
             if analytic.code:
-                name = _("[%(code)s] %(name)s") % {"code": analytic.code, "name": name}
+                name = ("[%(code)s] %(name)s") % {"code": analytic.code, "name": name}
             if analytic.partner_id:
                 name = _("%(name)s - %(partner)s") % {
                     "name": name,
