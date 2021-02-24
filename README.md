@@ -19,6 +19,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[account_analytic_parent](account_analytic_parent/) | 14.0.1.0.0 | This module reintroduces the hierarchy to the analytic accounts.
 [analytic_activity_based_cost](analytic_activity_based_cost/) | 14.0.1.1.0 | Assign overhead costs to activities, using Analytic Items
 [analytic_base_department](analytic_base_department/) | 14.0.1.0.0 | Add relationshet between Analytic and Department
 [analytic_tag_dimension](analytic_tag_dimension/) | 14.0.1.0.0 | Group Analytic Entries by Dimensions
