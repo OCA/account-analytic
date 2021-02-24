@@ -1,0 +1,78 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_parent
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2021-02-11 14:44+0000\n"
+"Last-Translator: karl García Gestido <karl@atendapc.net>\n"
+"Language-Team: none\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "%(name)s - %(partner)s"
+msgstr "%(name)s - %(partner)s"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "%(parent)s / %(own)s"
+msgstr "%(parent)s / %(own)s"
+
+#. module: account_analytic_parent
+#: model:ir.model,name:account_analytic_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Conta Analítica"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__child_ids
+msgid "Child Accounts"
+msgstr "Contas Fillas"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
+msgid "Complete Name"
+msgstr "Nome Completo"
+
+#. module: account_analytic_parent
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
+msgid "Name"
+msgstr "Nome"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
+msgid "Parent Analytic Account"
+msgstr "Conta analítica nai"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_path
+msgid "Parent Path"
+msgstr "Ruta Pai"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "Please activate first parent account %s"
+msgstr "Por favor, primeiro activa a aconta pai %s"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "You can not create recursive analytic accounts."
+msgstr "Non podes crear contas analíticas recursivas."
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "[%(code)s] %(name)s"
+msgstr "[%(code)s] %(name)s"
