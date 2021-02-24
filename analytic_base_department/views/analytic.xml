@@ -28,6 +28,11 @@
         <field name="arch" type="xml">
             <xpath expr="//search/group" position="inside">
                 <filter
+                    name="my_department"
+                    string="My Department"
+                    domain="[('department_id.member_ids.user_id', '=', uid)]"
+                />
+                <filter
                     name="department"
                     string="Department"
                     context="{'group_by': 'department_id'}"
@@ -64,10 +69,15 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
-                <field name="department_id" widget="selection" />
-                <field name="account_department_id" widget="selection" />
+                <field name="department_id" />
+                <field name="account_department_id" />
             </field>
             <xpath expr="//filter[@name='group_date']" position="after">
+                <filter
+                    name="my_department"
+                    string="My Department"
+                    domain="[('department_id.member_ids.user_id', '=', uid)]"
+                />
                 <filter
                     name="department"
                     string="Department"
