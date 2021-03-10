@@ -16,6 +16,11 @@ class StockMove(models.Model):
         comodel_name='account.analytic.account',
     )
 
+    analytic_tag_ids = fields.Many2many(
+        string='Analytic Tags',
+        comodel_name='account.analytic.tag',
+    )
+
     @api.multi
     def _prepare_account_move_line(self, qty, cost,
                                    credit_account_id, debit_account_id):
@@ -46,3 +51,7 @@ class StockMoveLine(models.Model):
 
     analytic_account_id = fields.Many2one(
         related='move_id.analytic_account_id')
+
+    analytic_tag_ids = fields.Many2many(
+        related='move_id.analytic_tag_ids'
+    )
