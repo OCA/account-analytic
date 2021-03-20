@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_scrap_analytic_form" model="ir.ui.view">
+        <field name="name">stock.scrap.analytic.form</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[1]" position="inside">
+                <field name="analytic_account_id" />
+                <field name="analytic_tag_ids" widget="many2many_tags" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
