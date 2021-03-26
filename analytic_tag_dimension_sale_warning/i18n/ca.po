@@ -6,20 +6,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2018-10-12 20:30+0000\n"
-"Last-Translator: Harald Panten <harald.panten@qubiq.es>\n"
+"PO-Revision-Date: 2021-03-26 18:46+0000\n"
+"Last-Translator: eduardgm <eduard.garcia@qubiq.es>\n"
 "Language-Team: none\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.1.1\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: analytic_tag_dimension_sale_warning
 #: model:ir.model,name:analytic_tag_dimension_sale_warning.model_account_analytic_dimension
 msgid "Account Analytic Dimension"
-msgstr ""
+msgstr "Dimensió Compte Analític"
 
 #. module: analytic_tag_dimension_sale_warning
 #: model:ir.model,name:analytic_tag_dimension_sale_warning.model_sale_order_line
