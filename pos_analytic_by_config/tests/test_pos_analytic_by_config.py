@@ -1,5 +1,6 @@
 # Copyright 2015 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+from odoo import fields
 from odoo.tests import common
 
 
@@ -8,7 +9,6 @@ class TestPosAnalyticConfig(common.SavepointCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.aml_obj = cls.env["account.move.line"]
-        cls.inv_line_obj = cls.env["account.invoice.line"]
         cls.pricelist = cls.env["product.pricelist"].create(
             {
                 "name": "Test pricelist",
@@ -37,66 +37,93 @@ class TestPosAnalyticConfig(common.SavepointCase):
         )
         cls.customer_01 = cls.env["res.partner"].create({"name": "Mr. Odoo"})
         cls.product_01 = cls.env["product.product"].create({"name": "Test product"})
-        cls.aml_analytic_domain = [
-            ("product_id", "=", cls.product_01.id),
-            ("analytic_account_id", "=", cls.aa_01.id),
-        ]
-        cls.inv_analytic_domain = [
-            ("product_id", "=", cls.product_01.id),
-            ("account_analytic_id", "=", cls.aa_01.id),
-        ]
         cls.main_config.account_analytic_id = cls.aa_01
+        cls.main_config.invoice_journal_id = cls.main_config.journal_id
         cls.session_01 = cls.env["pos.session"].create(
             {"config_id": cls.main_config.id}
         )
         cls.session_01.action_pos_session_open()
+        payment_methods = cls.session_01.payment_method_ids
+        account_receivable_id = (
+            cls.env.user.partner_id.property_account_receivable_id.id
+        )
         order_vals = {
-            "session_id": cls.session_01.id,
-            "partner_id": cls.customer_01.id,
-            "lines": [
-                (
-                    0,
-                    0,
-                    {
-                        "product_id": cls.product_01.id,
-                        "qty": 1,
-                        "price_unit": 10.0,
-                        "price_subtotal": 10,
-                        "price_subtotal_incl": 10,
-                    },
-                )
-            ],
-            "amount_total": 10.0,
-            "amount_tax": 0.0,
-            "amount_paid": 10.0,
-            "amount_return": 0.0,
+            "id": "test-id-pos_analytic_by_config",
+            "data": {
+                "creation_date": "2021-04-05 12:00:00",
+                "sequence_number": 1,
+                "user_id": 1,
+                "name": "Order test-id-pos_analytic_by_config",
+                "uid": "test-id-pos_analytic_by_config",
+                "partner_id": cls.customer_01.id,
+                "pricelist_id": cls.pricelist.id,
+                "fiscal_position_id": False,
+                "pos_session_id": cls.session_01.id,
+                "lines": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": cls.product_01.id,
+                            "qty": 1,
+                            "price_unit": 10.0,
+                            "price_subtotal": 10,
+                            "price_subtotal_incl": 10,
+                        },
+                    )
+                ],
+                "amount_total": 10.0,
+                "amount_tax": 0.0,
+                "amount_paid": 10.0,
+                "amount_return": 0.0,
+                "statement_ids": [
+                    [
+                        0,
+                        0,
+                        {
+                            "journal_id": cls.main_config.journal_id.id,
+                            "amount": 10,
+                            "name": fields.Datetime.now(),
+                            "account_id": account_receivable_id,
+                            "statement_id": cls.session_01.statement_ids[0].id,
+                            "payment_method_id": payment_methods.filtered(
+                                lambda pm: pm.is_cash_count
+                                and not pm.split_transactions
+                            )[0].id,
+                        },
+                    ]
+                ],
+            },
         }
-        cls.order_01 = cls.env["pos.order"].create(order_vals)
-        payment_data = {
-            "amount": 10,
-            "journal": cls.main_config.journal_ids[0].id,
-            "partner_id": cls.order_01.partner_id.id,
-        }
-        cls.order_01.add_payment(payment_data)
-        cls.order_01.action_pos_order_paid()
+        order = cls.env["pos.order"].create_from_ui([order_vals])
+        cls.pos_order = cls.env["pos.order"].browse(order[0]["id"])
+        cls.income_account = cls.session_01._prepare_line(cls.pos_order.lines)[
+            "income_account_id"
+        ]
 
     def test_order_simple_receipt(self):
-        """Simple ticket"""
-        aml = self.aml_obj.search(self.aml_analytic_domain)
+        """Simple tickets are grouped by account in single move lines"""
+        aml_domain = [
+            ("account_id", "=", self.income_account),
+            ("analytic_account_id", "=", self.aa_01.id),
+        ]
         # There aren't lines with the analytic account yet
-        self.assertEqual(len(aml.ids), 0)
+        self.assertFalse(self.aml_obj.search(aml_domain))
         self.session_01.action_pos_session_closing_control()
-        self.session_01.action_pos_session_close()
         # There they are
-        aml = self.aml_obj.search(self.aml_analytic_domain)
-        self.assertEqual(len(aml.ids), 1)
+        self.assertEqual(len(self.aml_obj.search(aml_domain)), 1)
 
     def test_order_invoice(self):
-        """Ticket with invoice"""
-        lines = self.inv_line_obj.search(self.inv_analytic_domain)
-        self.order_01.action_pos_order_invoice()
+        """Tickets with invoice are posted prior to session reconcilation"""
+        aml_domain = [
+            ("account_id", "=", self.income_account),
+            ("product_id", "=", self.product_01.id),
+            ("analytic_account_id", "=", self.aa_01.id),
+        ]
+        lines = self.aml_obj.search(aml_domain)
         # There aren't lines with the analytic account yet
         self.assertEqual(len(lines.ids), 0)
-        lines = self.inv_line_obj.search(self.inv_analytic_domain)
+        self.pos_order.action_pos_order_invoice()
+        lines = self.aml_obj.search(aml_domain)
         # There they are
         self.assertEqual(len(lines.ids), 1)
