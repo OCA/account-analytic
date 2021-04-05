@@ -50,6 +50,3 @@ msgstr ""
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
 msgstr ""
-
-#~ msgid "Point of Sale"
-#~ msgstr "POS"
