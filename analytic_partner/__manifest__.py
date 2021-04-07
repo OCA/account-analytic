@@ -20,4 +20,5 @@
         'views/account_analytic_line_views.xml',
         'views/res_partner_views.xml',
     ],
+    'post_init_hook': 'post_init_hook',
 }
