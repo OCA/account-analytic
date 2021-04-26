@@ -142,7 +142,7 @@ class TestAccountAnalyticRequired(common.SavepointCase):
         self._set_analytic_policy("posted")
         line = self._create_move(with_analytic=False)
         move = line.move_id
-        with self.assertRaises(exceptions.ValidationError):
+        with self.assertRaises(exceptions.ValidationError), self.cr.savepoint():
             move.post()
         line.write({"analytic_account_id": self.analytic_account.id})
         move.post()
