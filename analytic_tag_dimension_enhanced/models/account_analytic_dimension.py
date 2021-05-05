@@ -34,7 +34,9 @@ class AccountAnalyticDimension(models.Model):
         help="If checked, this dimemsion's tags will be available "
         "only when previous dimension's tags is selected",
     )
-    sequence = fields.Integer(help="This field works with By Sequence",)
+    sequence = fields.Integer(
+        help="This field works with By Sequence",
+    )
 
     @api.constrains("by_sequence", "sequence")
     def _check_sequence(self):
