@@ -160,5 +160,5 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         # Test whether this will list only 2 tags of payment term line 1001, 1002
         tag_ids = res["domain"]["analytic_tag_ids"][0][2]
         tags = self.tag_obj.search([("id", "in", tag_ids)])
-        sequences = tags.mapped("resource_ref").mapped("sequence")
-        self.assertEquals({1001, 1002}, set(sequences))
+        sequences = [x.sequence for x in tags.mapped("resource_ref")]
+        self.assertEqual({1001, 1002}, set(sequences))

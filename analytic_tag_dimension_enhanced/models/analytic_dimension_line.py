@@ -70,7 +70,7 @@ class AnalyticDimensionLine(models.AbstractModel):
                     lambda l: l.resource_ref and l.resource_ref._name == field.relation
                 )
                 tag_resources = matched_tags.mapped("resource_ref")
-                res_ids = tag_resources and tag_resources.ids or []
+                res_ids = tag_resources and [x.id for x in tag_resources] or []
                 tag_ids = next_dimension.analytic_tag_ids.filtered(
                     lambda l: l.resource_ref[field.name].id in res_ids
                 ).ids
