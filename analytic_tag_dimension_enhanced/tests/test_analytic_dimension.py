@@ -110,7 +110,7 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         Note:
             We use payment term and payment term line for testing purposes,
             although it does not make sense in real life
-        # """
+        #"""
         # It should be executed the last one for avoiding side effects
         # as not everything is undone in this removal
         # Clear all dimension
