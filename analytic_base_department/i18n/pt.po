@@ -60,6 +60,12 @@ msgid "HR Department"
 msgstr ""
 
 #. module: analytic_base_department
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_account_search
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
+msgid "My Department"
+msgstr ""
+
+#. module: analytic_base_department
 #: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line__department_id
 msgid "User's related department"
 msgstr "Departamento relacionado com o utilizador"
