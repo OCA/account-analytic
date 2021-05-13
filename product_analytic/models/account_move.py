@@ -19,7 +19,7 @@ class AccountMoveLine(models.Model):
     @api.onchange("product_id")
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
-        inv_type = self.move_id.type
+        inv_type = self.move_id.move_type
         if self.product_id and inv_type:
             ana_accounts = (
                 self.product_id.product_tmpl_id._get_product_analytic_accounts()
@@ -31,10 +31,10 @@ class AccountMoveLine(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            inv_type = self.env.context.get("inv_type", "out_invoice")
+            inv_type = self.env["account.move"].browse([vals.get("move_id")]).move_type
             if (
                 vals.get("product_id")
-                and inv_type
+                and inv_type != "entry"
                 and not vals.get("analytic_account_id")
             ):
                 product = self.env["product.product"].browse(vals.get("product_id"))
