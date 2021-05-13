@@ -46,7 +46,7 @@ class TestAccountInvoiceLine(TransactionCase):
             {
                 "partner_id": self.partner.id,
                 "journal_id": self.journal_purchase.id,
-                "type": "in_invoice",
+                "move_type": "in_invoice",
                 "invoice_line_ids": [
                     (
                         0,
@@ -74,7 +74,7 @@ class TestAccountInvoiceLine(TransactionCase):
             {
                 "partner_id": self.partner.id,
                 "journal_id": self.journal_sale.id,
-                "type": "out_invoice",
+                "move_type": "out_invoice",
                 "invoice_line_ids": [
                     (
                         0,
