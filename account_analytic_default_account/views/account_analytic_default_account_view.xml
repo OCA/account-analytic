@@ -5,10 +5,7 @@
         <record id="view_account_analytic_default_tree" model="ir.ui.view">
             <field name="name">account.analytic.default.inherit.tree</field>
             <field name="model">account.analytic.default</field>
-            <field
-            name="inherit_id"
-            ref="account_analytic_default.view_account_analytic_default_tree"
-        />
+            <field name="inherit_id" ref="account.view_account_analytic_default_tree" />
             <field name="arch" type="xml">
                 <field name="user_id" position="after">
                     <field name="account_id" />
@@ -19,10 +16,7 @@
         <record id="view_account_analytic_default_form" model="ir.ui.view">
             <field name="name">account.analytic.default.inherit.form</field>
             <field name="model">account.analytic.default</field>
-            <field
-            name="inherit_id"
-            ref="account_analytic_default.view_account_analytic_default_form"
-        />
+            <field name="inherit_id" ref="account.view_account_analytic_default_form" />
             <field name="arch" type="xml">
                 <field name="user_id" position="after">
                     <field name="account_id" />
@@ -35,7 +29,7 @@
             <field name="model">account.analytic.default</field>
             <field
             name="inherit_id"
-            ref="account_analytic_default.view_account_analytic_default_form_search"
+            ref="account.view_account_analytic_default_form_search"
         />
             <field name="arch" type="xml">
                 <field name="user_id" position="after">
@@ -44,6 +38,7 @@
                 <xpath expr="//group[1]" position="inside">
                     <filter
                     string="Account"
+                    name="account"
                     context="{'group_by': 'account_id'}"
                     help="Account"
                 />

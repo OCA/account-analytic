@@ -14,8 +14,6 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
 
         cls.account_analytic_default_model = cls.env["account.analytic.default"]
         cls.analytic_account_model = cls.env["account.analytic.account"]
-        cls.invoice_model = cls.env["account.invoice"]
-        cls.invoice_line_model = cls.env["account.invoice.line"]
         cls.move_obj = cls.env["account.move"]
         cls.move_line_obj = cls.env["account.move.line"]
 
@@ -44,8 +42,8 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
                 "code": "TSAJ",
                 "type": "sale",
                 "refund_sequence": True,
-                "default_debit_account_id": cls.account_sales.id,
-                "default_credit_account_id": cls.account_sales.id,
+                "payment_debit_account_id": cls.account_sales.id,
+                "payment_credit_account_id": cls.account_sales.id,
             }
         )
 
@@ -77,35 +75,6 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
             }
         )
 
-    def create_invoice(self, amount=100, inv_type="out_invoice"):
-        """ Returns an open invoice """
-        invoice = self.invoice_model.create(
-            {
-                "partner_id": self.partner_agrolait.id,
-                "reference_type": "none",
-                "name": (
-                    inv_type == "out_invoice"
-                    and "invoice to client"
-                    or "invoice to supplier"
-                ),
-                "account_id": self.account_receivable.id,
-                "type": inv_type,
-                "date_invoice": time.strftime("%Y") + "-06-26",
-            }
-        )
-        self.invoice_line_model.create(
-            {
-                "product_id": self.product.id,
-                "quantity": 1,
-                "price_unit": amount,
-                "invoice_id": invoice.id,
-                "name": "something",
-                "account_id": self.account_sales.id,
-            }
-        )
-        invoice.action_invoice_open()
-        return invoice
-
     def create_move(self, amount=100):
         ml_obj = self.move_line_obj.with_context(check_move_validity=False)
         move_vals = {
@@ -121,6 +90,7 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
                 "debit": 0,
                 "credit": amount,
                 "account_id": self.account_sales.id,
+                "product_id": self.product.id,
             }
         )
         move_line_2 = ml_obj.create(
@@ -144,14 +114,6 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
             account_id=self.account_receivable.id
         )
         self.assertFalse(rec.id)
-
-    def test_account_analytic_default_invoice(self):
-        invoice = self.create_invoice()
-        self.assertFalse(invoice.invoice_line_ids[0].account_analytic_id.id)
-        invoice.invoice_line_ids[0]._set_additional_fields(invoice)
-        self.assertEqual(
-            invoice.invoice_line_ids[0].account_analytic_id, self.analytic_account_3
-        )
 
     def test_account_analytic_default_account_move(self):
         move, move_line_1, move_line_2 = self.create_move()
