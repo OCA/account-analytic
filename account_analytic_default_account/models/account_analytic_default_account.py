@@ -80,41 +80,6 @@ class AccountAnalyticDefaultAccount(models.Model):
         return res
 
 
-class AccountInvoiceLine(models.Model):
-    _inherit = "account.invoice.line"
-
-    @api.onchange("product_id", "account_id")
-    def _onchange_product_id(self):
-        res = super()._onchange_product_id()
-        if not config["test_enable"] or self.env.context.get(
-            "test_account_analytic_default_account"
-        ):
-            rec = self.env["account.analytic.default"].account_get(
-                product_id=self.product_id.id,
-                partner_id=self.invoice_id.partner_id.id,
-                user_id=self.env.uid,
-                date=fields.Date.today(),
-                company_id=self.company_id.id,
-                account_id=self.account_id.id,
-            )
-            self.account_analytic_id = rec.analytic_id.id
-        return res
-
-    def _set_additional_fields(self, invoice):
-        if not self.account_analytic_id:
-            rec = self.env["account.analytic.default"].account_get(
-                product_id=self.product_id.id,
-                partner_id=self.invoice_id.partner_id.id,
-                user_id=self.env.uid,
-                date=fields.Date.today(),
-                company_id=self.company_id.id,
-                account_id=self.account_id.id,
-            )
-            if rec:
-                self.account_analytic_id = rec.analytic_id.id
-        super()._set_additional_fields(invoice)
-
-
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
@@ -128,7 +93,6 @@ class AccountMoveLine(models.Model):
                 if rec:
                     line.analytic_account_id = rec.analytic_id.id
 
-    @api.multi
     def _set_default_analytic_account(self):
         for line in self:
             if not line.analytic_account_id:
@@ -138,21 +102,38 @@ class AccountMoveLine(models.Model):
                 if rec:
                     line.analytic_account_id = rec.analytic_id.id
 
-    @api.model
-    def create(self, vals):
-        if "analytic_account_id" not in vals:
+    @api.onchange("product_id", "account_id")
+    def _onchange_product_id(self):
+        res = super()._onchange_product_id()
+        if not config["test_enable"] or self.env.context.get(
+            "test_account_analytic_default_account"
+        ):
             rec = self.env["account.analytic.default"].account_get(
-                account_id=vals.get("account_id")
+                product_id=self.product_id.id,
+                partner_id=self.move_id.partner_id.id,
+                user_id=self.env.uid,
+                date=fields.Date.today(),
+                company_id=self.company_id.id,
+                account_id=self.account_id.id,
             )
-            if rec:
-                vals["analytic_account_id"] = rec.analytic_id.id
-        return super().create(vals)
+            self.analytic_account_id = rec.analytic_id.id
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if "analytic_account_id" not in vals:
+                rec = self.env["account.analytic.default"].account_get(
+                    account_id=vals.get("account_id")
+                )
+                if rec:
+                    vals["analytic_account_id"] = rec.analytic_id.id
+        return super().create(vals_list)
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
-    @api.multi
     def post(self):
         self.mapped("line_ids")._set_default_analytic_account()
         return super().post()
