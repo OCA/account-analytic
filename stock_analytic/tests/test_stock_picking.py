@@ -3,19 +3,16 @@
 # Copyright 2016 OpenSynergy Indonesia
 # Copyright 2017 ForgeFlow S.L.
 # Copyright 2018 Hibou Corp.
+# Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-
-from odoo.tests.common import TransactionCase
+from odoo.tests import Form, common
 
 
-class TestStockPicking(TransactionCase):
+class TestStockPicking(common.TransactionCase):
     def setUp(self):
-        super(TestStockPicking, self).setUp()
+        super().setUp()
 
-        self.product = self.env.ref("product.product_product_4")
-        self.product_categ = self.env.ref("product.product_category_5")
         self.valuation_account = self.env["account.account"].create(
             {
                 "name": "Test stock valuation",
@@ -59,8 +56,9 @@ class TestStockPicking(TransactionCase):
         self.outgoing_picking_type = self.env.ref("stock.picking_type_out")
         self.incoming_picking_type = self.env.ref("stock.picking_type_in")
 
-        self.product_categ.update(
+        self.product_categ = self.env["product.category"].create(
             {
+                "name": "Test category",
                 "property_valuation": "real_time",
                 "property_stock_valuation_account_id": self.valuation_account.id,
                 "property_stock_account_input_categ_id": self.stock_input_account.id,
@@ -68,7 +66,21 @@ class TestStockPicking(TransactionCase):
                 "property_stock_journal": self.stock_journal.id,
             }
         )
-        self.product.update({"categ_id": self.product_categ.id})
+        self.product = self.env["product.product"].create(
+            {
+                "name": "Test product",
+                "type": "product",
+                "categ_id": self.product_categ.id,
+            }
+        )
+        std_price_wiz = Form(
+            self.env["stock.change.standard.price"].with_context(
+                active_id=self.product.id, active_model="product.product"
+            )
+        )
+        std_price_wiz.new_price = 100
+        wiz = std_price_wiz.save()
+        wiz.change_price()
 
     def _create_picking(
         self,
@@ -78,34 +90,21 @@ class TestStockPicking(TransactionCase):
         analytic_account_id=False,
         analytic_tag_ids=False,
     ):
-        picking_data = {
-            "picking_type_id": picking_type_id.id,
-            "move_type": "direct",
-            "location_id": location_id.id,
-            "location_dest_id": location_dest_id.id,
-        }
-
-        picking = self.env["stock.picking"].create(picking_data)
-
-        move_data = {
-            "picking_id": picking.id,
-            "product_id": self.product.id,
-            "location_id": location_id.id,
-            "location_dest_id": location_dest_id.id,
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "date_expected": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "name": self.product.name,
-            "procure_method": "make_to_stock",
-            "product_uom": self.product.uom_id.id,
-            "product_uom_qty": 1.0,
-            "analytic_account_id": (
-                analytic_account_id.id if analytic_account_id else False
-            ),
-            "analytic_tag_ids": [(6, 0, analytic_tag_ids if analytic_tag_ids else [])],
-        }
-
-        self.env["stock.move"].create(move_data)
-
+        picking_form = Form(self.env["stock.picking"])
+        picking_form.picking_type_id = picking_type_id
+        picking_form.location_id = location_id
+        picking_form.location_dest_id = location_dest_id
+        with picking_form.move_ids_without_package.new() as move:
+            move.product_id = self.product
+            move.product_uom_qty = 1.0
+            if analytic_account_id:
+                move.analytic_account_id = analytic_account_id
+            if analytic_tag_ids:
+                for analytic_tag_id in analytic_tag_ids:
+                    move.analytic_tag_ids.add(analytic_tag_id)
+        picking = picking_form.save()
+        picking.move_lines.quantity_done = 1.0
+        picking.action_confirm()
         return picking
 
     def __update_qty_on_hand_product(self, product, new_qty):
@@ -163,7 +162,7 @@ class TestStockPicking(TransactionCase):
         ]
         criteria3 = [
             ("move_id.ref", "=", picking.name),
-            ("analytic_tag_ids", "!=", []),
+            ("analytic_tag_ids", "not in", []),
         ]
         line_count = self.env["account.move.line"].search_count(criteria2)
         self.assertEqual(line_count, 0)
@@ -176,7 +175,7 @@ class TestStockPicking(TransactionCase):
             self.dest_location,
             self.outgoing_picking_type,
             self.analytic_account,
-            [self.analytic_tag_1.id | self.analytic_tag_2.id],
+            [self.analytic_tag_1, self.analytic_tag_2],
         )
         self.__update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
@@ -202,7 +201,7 @@ class TestStockPicking(TransactionCase):
             self.dest_location,
             self.incoming_picking_type,
             self.analytic_account,
-            [self.analytic_tag_1.id | self.analytic_tag_2.id],
+            [self.analytic_tag_1, self.analytic_tag_2],
         )
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
