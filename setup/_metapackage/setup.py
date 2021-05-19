@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo14-addon-analytic_base_department',
         'odoo14-addon-analytic_tag_dimension',
         'odoo14-addon-mrp_analytic',
+        'odoo14-addon-mrp_analytic_sale_project',
     ],
     classifiers=[
         'Programming Language :: Python',
