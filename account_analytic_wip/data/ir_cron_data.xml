@@ -1,0 +1,18 @@
+<odoo>
+    <record id="ir_cron_post_wip" model="ir.cron">
+        <field
+            name="name"
+        >Account Analytic: post WIP and Variances journal entries</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field
+            name="nextcall"
+            eval="(DateTime.now().replace(hour=1, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"
+        />
+        <field name="doall" eval="False" />
+        <field name="model_id" ref="model_account_analytic_tracking_item" />
+        <field name="code">model._cron_process_wip_and_variance()</field>
+        <field name="state">code</field>
+    </record>
+</odoo>
