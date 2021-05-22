@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_analytic_tracking_item_user,Analytic Tracking Item: User,model_account_analytic_tracking_item,base.group_user,1,1,1,1
+access_account_analytic_tracking_item_mngr,Analytic Tracking Item: Manager,model_account_analytic_tracking_item,account.group_account_manager,1,1,1,1
