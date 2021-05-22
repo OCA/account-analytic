@@ -58,7 +58,12 @@
                 decoration-bf="pending_amount"
             >
                 <header>
-                    <button string="Post" name="process_wip_and_variance" />
+                    <button
+                        string="Post"
+                        name="process_wip_and_variance"
+                        type="object"
+                        groups="account.group_account_user,mrp.group_mrp_manager"
+                    />
                 </header>
                 <field name="to_calculate" invisible="1" />
                 <field name="name" />
