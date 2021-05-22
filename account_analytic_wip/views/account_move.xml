@@ -1,0 +1,17 @@
+<odoo>
+    <record id="view_account_move_form" model="ir.ui.view">
+        <field name="name">Account Move Form: add Tracking Item</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+
+            <xpath
+                expr="//group[@id='other_tab_entry_group']/group[2]"
+                position="inside"
+            >
+                <field name="analytic_tracking_item_id" groups="base.group_no_one" />
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
