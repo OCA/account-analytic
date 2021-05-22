@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo13-addon-account_analytic_tag_default',
         'odoo13-addon-analytic_base_department',
         'odoo13-addon-analytic_tag_dimension',
+        'odoo13-addon-analytic_tag_dimension_enhanced',
         'odoo13-addon-analytic_tag_dimension_sale_warning',
         'odoo13-addon-mrp_analytic',
         'odoo13-addon-pos_analytic_by_config',
