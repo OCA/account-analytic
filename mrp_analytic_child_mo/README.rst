@@ -29,7 +29,6 @@ When confirming a Manufacturing Order, the components with MTO routes will gener
 
 This feature will set on those MOs the same Analytic Account as in parent MO.
 
-
 **Table of contents**
 
 .. contents::
