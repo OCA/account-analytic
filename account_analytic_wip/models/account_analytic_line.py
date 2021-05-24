@@ -6,6 +6,11 @@ from odoo import fields, models
 
 
 class AnalyticLine(models.Model):
+    """
+    Analytic Lines should keep a link to the corresponding Tracking Item,
+    so that it can report the corresponding WIP amounts.
+    """
+
     _inherit = "account.analytic.line"
 
     analytic_tracking_item_id = fields.Many2one(
