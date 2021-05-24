@@ -7,13 +7,14 @@
             <group name="account_property" position="after">
                 <group
                     name="product_costing"
-                    string="WIP and Variances"
+                    string="WIP and Variance"
                     colspan="4"
                     col="4"
                 >
+                    <field name="property_wip_journal_id" />
                     <field
-                        name="property_wip_journal_id"
-                        attrs="{'required':[('property_variance_account_id','!=',False)]}"
+                        name="property_wip_account_id"
+                        attrs="{'required':[('property_wip_journal_id','!=',False)]}"
                     />
                     <field
                         name="property_variance_account_id"
