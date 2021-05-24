@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
 class AnalyticTrackingItem(models.Model):
@@ -27,12 +27,22 @@ class AnalyticTrackingItem(models.Model):
     product_id = fields.Many2one(
         "product.product", string="Cost Product", ondelete="restrict"
     )
+
+    # Related calculated data
+    company_id = fields.Many2one(
+        "res.company", related="analytic_id.company_id", store=True
+    )
+    product_categ_id = fields.Many2one(
+        "product.category", related="product_id.categ_id", store=True
+    )
+    # Analytic Items, to compute WIP actuals from
     analytic_line_ids = fields.One2many(
         "account.analytic.line",
         "analytic_tracking_item_id",
         string="Analytic Items",
         help="Related analytic items with the project actuals.",
     )
+    # Journal Entries, to compute Posted actuals from
     account_move_ids = fields.One2many(
         "account.move",
         "analytic_tracking_item_id",
@@ -41,16 +51,17 @@ class AnalyticTrackingItem(models.Model):
     )
     state = fields.Selection(
         [
-            ("open", "Open"),
-            ("close", "Closed"),
+            ("open", "Open"),  # In progress
+            ("done", "Done"),  # Completed but not Posted
+            ("close", "Locked"),  # Completed and Posted
             ("cancel", "Cancelled"),
         ],
         default="open",
         help="Open operations are in progress, no negative variances are computed. "
         "Done operations are completed, negative variances are computed. "
-        "Closed operations are done and posting, no more actions to do.",
+        "Locked operations are done and posted, no more actions to do.",
     )
-    to_calculate = fields.Boolean(compute="_compute_to_calculate", store=True)
+    to_calculate = fields.Boolean(compute="_compute_to_calculate")
 
     parent_id = fields.Many2one(
         "account.analytic.tracking.item", "Parent Tracking Item", ondelete="cascade"
@@ -65,24 +76,29 @@ class AnalyticTrackingItem(models.Model):
     # Actual Amounts
     actual_amount = fields.Float(
         compute="_compute_actual_amounts",
+        store=True,
         help="Total cost amount of the related Analytic Items. "
         "These Analytic Items are generated when a cost is incurred, "
         "and will later generated WIP and Variance Journal Entries.",
     )
     wip_actual_amount = fields.Float(
         compute="_compute_actual_amounts",
+        store=True,
         help="Actual amount incurred below the planned amount limit.",
     )
     variance_actual_amount = fields.Float(
         compute="_compute_actual_amounts",
+        store=True,
         help="Actual amount incurred above the planned amount limit.",
     )
     remaining_actual_amount = fields.Float(
         compute="_compute_actual_amounts",
+        store=True,
         help="Actual amount planned and not yet consumed.",
     )
     pending_amount = fields.Float(
         compute="_compute_actual_amounts",
+        store=True,
         help="Amount not yet posted to journal entries.",
     )
 
@@ -104,15 +120,15 @@ class AnalyticTrackingItem(models.Model):
         for item in self:
             item.name = item.product_id.display_name
 
-    @api.depends("state", "parent_id", "child_ids")
+    @api.depends("state", "child_ids")
     def _compute_to_calculate(self):
-        for tracking in self:
-            tracking.to_calculate = tracking.state != "cancel" and (
-                tracking.parent_id or not tracking.child_ids
-            )
+        for item in self:
+            item.to_calculate = item.state != "cancel" and not item.child_ids
 
     @api.depends(
         "analytic_line_ids.amount",
+        "analytic_line_ids.unit_amount",
+        "parent_id.analytic_line_ids.amount",
         "planned_amount",
         "accounted_amount",
         "state",
@@ -120,17 +136,14 @@ class AnalyticTrackingItem(models.Model):
     )
     def _compute_actual_amounts(self):
         for item in self:
-            # Actuals
-            if not item.to_calculate:
+            if not item.to_calculate or item.child_ids:
                 item.actual_amount = 0
             else:
-                if item.parent_id:
-                    actuals = item.parent_id.analytic_line_ids.filtered(
-                        lambda x: x.product_id == item.product_id
-                    )
-                else:
-                    actuals = item.analytic_line_ids
-                item.actual_amount = -sum(actuals.mapped("amount")) or 0.0
+                all_actuals = item.analytic_line_ids or item.parent_id.analytic_line_ids
+                product_actuals = all_actuals.filtered(
+                    lambda x: x.product_id == item.product_id
+                )
+                item.actual_amount = -sum(product_actuals.mapped("amount")) or 0.0
 
             item.pending_amount = item.actual_amount - item.accounted_amount
             item.wip_actual_amount = min(item.actual_amount, item.planned_amount)
@@ -152,7 +165,7 @@ class AnalyticTrackingItem(models.Model):
                 item.remaining_actual_amount = 0
                 item.variance_actual_amount = item.actual_amount - item.planned_amount
 
-    def _prepare_account_move(self, journal):
+    def _prepare_account_move_head(self, journal):
         return {
             "journal_id": journal.id,
             "date": self.env.context.get(
@@ -163,101 +176,107 @@ class AnalyticTrackingItem(models.Model):
             "analytic_tracking_item_id": self.id,
         }
 
-    def _prepare_account_move_line(self, account, debit_amount=0, credit_amount=0):
-        self.ensure_one()
-        vals = {}
-        if account and (debit_amount or credit_amount):
-            debit = (debit_amount if debit_amount > 0 else 0) + (
-                -credit_amount if credit_amount < 0 else 0
-            )
-            credit = (credit_amount if credit_amount > 0 else 0) + (
-                -debit_amount if debit_amount < 0 else 0
-            )
-            vals = {
-                "name": self.display_name,
-                "product_id": self.product_id.id,
-                "product_uom_id": self.product_id.uom_id.id,
-                "analytic_account_id": self.analytic_id.id,
-                "ref": self.display_name,
-                "account_id": account.id,
-                "debit": debit,
-                "credit": credit,
-            }
-        return vals
+    def _prepare_account_move_line(self, account, amount):
+        return {
+            "name": self.display_name,
+            "product_id": self.product_id.id,
+            "product_uom_id": self.product_id.uom_id.id,
+            "analytic_account_id": self.analytic_id.id,
+            "ref": self.display_name,
+            "account_id": account.id,
+            "debit": amount if amount > 0.0 else 0.0,
+            "credit": -amount if amount < 0.0 else 0.0,
+        }
 
-    def _create_jornal_entry(self, wip_amount, var_amount):
-        self.ensure_one()
-        if wip_amount or var_amount:
-            accounts = self.product_id.product_tmpl_id.get_product_accounts()
+    def _get_accounting_data_for_valuation(self):
+        """
+        Extension hook to set the accounts to use
+        """
+        accounts = self.product_id.product_tmpl_id.get_product_accounts()
+        categ = self.with_company(self.company_id).product_id.categ_id
+        accounts.update(
+            {
+                "wip_journal": categ.property_wip_journal_id,
+                "stock_wip": categ.property_wip_account_id,
+                "stock_variance": categ.property_variance_account_id,
+            }
+        )
+        return accounts
+
+    def _get_journal_entries_wip(self, wip_amount=0.0, variance_amount=0.0):
+        """
+        Extension hook to set the journal items for WIP records
+        """
+        return {
+            "stock_valuation": -(wip_amount + variance_amount),
+            "stock_wip": wip_amount,
+            "stock_variance": variance_amount,
+        }
+
+    def _get_journal_entries_done(self, wip_amount=0.0, variance_amount=0.0):
+        """
+        Extension hook to set the journal items for WIP records
+        once the WIP Order is done
+        """
+        return {"stock_wip": -wip_amount, "stock_output": wip_amount}
+
+    def _create_journal_entry_from_map(self, je_map):
+        """
+        Given a journal entry map, create the Journal Entry record
+        """
+        accounts = self._get_accounting_data_for_valuation()
+        wip_journal = accounts["wip_journal"]
+        posted = False
+        if wip_journal:
             move_lines = [
-                self._prepare_account_move_line(
-                    accounts["stock_input"], debit_amount=wip_amount
-                ),
-                self._prepare_account_move_line(
-                    accounts["stock_variance"], debit_amount=var_amount
-                ),
+                self._prepare_account_move_line(accounts[account], amount=amount)
+                for account, amount in je_map.items()
+                if amount
             ]
-            if var_amount < 0:
-                move_lines.extend(
-                    [
-                        self._prepare_account_move_line(
-                            accounts["stock_valuation"], credit_amount=wip_amount
-                        ),
-                        self._prepare_account_move_line(
-                            accounts["stock_valuation"], credit_amount=var_amount
-                        ),
-                    ]
-                )
-            else:
-                move_lines.append(
-                    self._prepare_account_move_line(
-                        accounts["stock_valuation"],
-                        credit_amount=wip_amount + var_amount,
-                    )
-                )
-            wip_journal = accounts["wip_journal"]
-            if wip_journal:
-                je_vals = self._prepare_account_move(wip_journal)
+            if move_lines:
+                je_vals = self._prepare_account_move_head(wip_journal)
                 je_vals["line_ids"] = [(0, 0, x) for x in move_lines if x]
                 je_new = self.env["account.move"].sudo().create(je_vals)
                 je_new._post()
-                # Update Analytic lines with the Consumption journal item
-                consume_move = je_new.line_ids.filtered(
-                    lambda x: x.account_id == accounts["stock_valuation"]
-                )
-                self.analytic_line_ids.write({"move_id": consume_move[:1].id})
-            return bool(wip_journal)
+                posted = True
+        return posted
 
-    def process_wip_and_variance(self):
+    def process_wip_and_variance(self, close=False):
         """
         For each Analytic Tracking Item with a Pending Amount different from zero,
         generate Journal Entries for WIP and excess Variances
         """
         all_tracking = self | self.child_ids
-        for item in all_tracking.filtered("pending_amount"):
-            # TODO: use float_compare()
-            wip_pending = round(item.wip_actual_amount - item.wip_accounted_amount, 6)
-            var_pending = round(
-                item.variance_actual_amount - item.variance_accounted_amount, 6
-            )
-            is_posted = item._create_jornal_entry(wip_pending, var_pending)
+        if close:
+            # Set to done, to have negative variances computed
+            all_tracking.write({"state": "done"})
+            # Before closing, ensure all WIP is posted
+            self.process_wip_and_variance(close=False)
+        for item in all_tracking:
+            if close:
+                wip_pending = item.wip_actual_amount
+                var_pending = item.variance_actual_amount
+                je_map = item._get_journal_entries_done(wip_pending, var_pending)
+            else:
+                wip_pending = round(
+                    item.wip_actual_amount - item.wip_accounted_amount, 6
+                )
+                var_pending = round(
+                    item.variance_actual_amount - item.variance_accounted_amount, 6
+                )
+                je_map = item._get_journal_entries_wip(wip_pending, var_pending)
+            is_posted = item._create_journal_entry_from_map(je_map)
             if is_posted:
                 # Update accounted amount to equal actual amounts
                 item.accounted_amount = item.actual_amount
                 item.wip_accounted_amount = item.wip_actual_amount
                 item.variance_accounted_amount = item.variance_actual_amount
+        if close:
+            all_tracking.write({"state": "close"})
 
     def _cron_process_wip_and_variance(self):
         items = self.search([("state", "not in", ["close", "cancel"])])
         items.process_wip_and_variance()
-
-    def reverse_wip_moves(self):
-        all_tracking = self | self.child_ids
-        all_tracking.write({"state": "close"})
-        wip_moves = all_tracking.mapped("account_move_ids")
-        default_values = [{"ref": _("Reversal of: %s") % x.ref} for x in wip_moves]
-        reverse_moves = wip_moves._reverse_moves(default_values)
-        reverse_moves._post()
 
     def action_cancel(self):
         # TODO: what to do if there are JEs done?
