@@ -6,6 +6,11 @@ from odoo import fields, models
 
 
 class AccountMove(models.Model):
+    """
+    Journal Entries are linked to Tracking Items
+    to allow computing the actual amounts
+    """
+
     _inherit = "account.move"
 
     analytic_tracking_item_id = fields.Many2one(

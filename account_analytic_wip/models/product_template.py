@@ -14,7 +14,6 @@ class ProductTemplate(models.Model):
         The "Consumed" account (credited) is the stock_input,
         and the "WIP" account (debited) is the sock_valuation account.
         """
-        self.ensure_one()
         accounts = super()._get_product_accounts()
         accounts.update(
             {
@@ -27,7 +26,6 @@ class ProductTemplate(models.Model):
         """
         Add the journal to use for WIP journal entries, 'wip_journal'
         """
-        self.ensure_one()
         accounts = super().get_product_accounts(fiscal_pos=fiscal_pos)
         accounts.update({"wip_journal": self.categ_id.property_wip_journal_id or False})
         return accounts
