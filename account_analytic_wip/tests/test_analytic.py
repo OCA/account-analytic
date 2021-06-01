@@ -29,10 +29,9 @@ class TestAnalytic(common.TransactionCase):
                 "name": "Costing",
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
-                "property_cost_wip_journal_id": self.wip_journal.id,
-                "property_cost_consume_account_id": self.consume_account.id,
-                "property_cost_wip_account_id": self.wip_account.id,
-                "property_cost_variance_account_id": self.variance_account.id,
+                "property_wip_journal_id": self.wip_journal.id,
+                "property_wip_account_id": self.wip_account.id,
+                "property_variance_account_id": self.variance_account.id,
             }
         )
         self.cost_product_template = self.env["product.template"].create(
@@ -53,6 +52,7 @@ class TestAnalytic(common.TransactionCase):
                     "name": "Costing",
                     "property_cost_method": "standard",
                     "property_valuation": "real_time",
-                    "property_cost_wip_account_id": self.wip_account.id,
+                    "property_wip_account_id": self.wip_account.id,
                 }
             )
+            # TODO
