@@ -31,7 +31,7 @@ class AccountAnalyticLine(models.Model):
         a new Analytic item for a Cost Type.
         """
         self.ensure_one()
-        return {
+        values = {
             "name": "{} / {}".format(
                 self.name, cost_type.product_id.display_name or cost_type.name
             ),
@@ -39,6 +39,13 @@ class AccountAnalyticLine(models.Model):
             "product_id": cost_type.product_id.id,
             "unit_amount": self.unit_amount * cost_type.factor,
         }
+        # Remove the link the the Project Task,
+        # otherwise the cost lines would wrongly show as Timesheet
+        if hasattr(self, "project_id"):
+            values["project_id"] = None
+        if hasattr(self, "task_id"):
+            values["task_id"] = None
+        return values
 
     def _generate_activity_cost_lines(self):
         """
@@ -48,10 +55,6 @@ class AccountAnalyticLine(models.Model):
         This is done copying the original Analytic Item
         to ensure all other fields are preserved on the new Item.
         """
-        # ROADMAP:
-        # this doesn't work for Product-less timesheet lines.
-        # solution might be to force a default Product "Timesheet"
-        # or bring back Service Products on Employees
         for analytic_parent in self:
             cost_ids = analytic_parent.product_id.activity_cost_ids
             if cost_ids:
