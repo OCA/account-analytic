@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo14-addon-analytic_activity_based_cost',
         'odoo14-addon-analytic_base_department',
         'odoo14-addon-analytic_tag_dimension',
+        'odoo14-addon-analytic_tag_dimension_enhanced',
         'odoo14-addon-mrp_analytic',
         'odoo14-addon-mrp_analytic_child_mo',
         'odoo14-addon-mrp_analytic_sale_project',
