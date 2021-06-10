@@ -56,7 +56,12 @@ class AccountAnalyticDimension(models.Model):
         self.analytic_tag_ids.filtered(
             lambda l: not l.resource_ref or l.resource_ref._name != model
         ).unlink()
-        tag_res_ids = [x.resource_ref.id for x in self.analytic_tag_ids]
+        tag_res_ids = []
+        for tag in self.analytic_tag_ids:
+            tag_res_ids.append(tag.resource_ref.id)
+            # Update name analytic tag from Ref model.
+            if tag.name != tag.resource_ref.name:
+                tag.name = tag.resource_ref.name
         recs = TagModel.search([("id", "not in", tag_res_ids)])
         vals_dict = [
             {
