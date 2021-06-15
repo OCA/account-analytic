@@ -15,8 +15,15 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         cls.account_obj = cls.env["account.account"]
         cls.model_obj = cls.env["ir.model"]
         cls.field_obj = cls.env["ir.model.fields"]
+        cls.journal_purchase = cls.env["account.journal"].create(
+            {"name": "Test Purchase Journal", "code": "TPJ", "type": "purchase"}
+        )
         cls.invoice = cls.env["account.move"].create(
-            {"journal_id": cls.journal.id, "partner_id": cls.partner.id}
+            {
+                "move_type": "in_invoice",
+                "journal_id": cls.journal_purchase.id,
+                "partner_id": cls.partner.id,
+            }
         )
         # Mock data for testing model dimension, by_sequence with fitered
         vals = {
