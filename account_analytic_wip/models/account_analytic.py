@@ -26,3 +26,4 @@ class AccountAnalytic(models.Model):
         """
         new = super().create(vals)
         self.env["account.analytic.tracking.item"].create({"analytic_id": new.id})
+        return new

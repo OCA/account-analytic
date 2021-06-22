@@ -13,7 +13,9 @@
     "data": [
         "security/ir.model.access.csv",
         "data/ir_cron_data.xml",
+        "views/activity_cost_rule_views.xml",
         "views/product_category.xml",
+        "views/product_template.xml",
         "views/account_move.xml",
         "views/account_analytic_line.xml",
         "views/account_analytic_tracking.xml",
