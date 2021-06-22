@@ -36,7 +36,7 @@ class ProductCategory(models.Model):
 
     @api.constrains(
         "property_wip_journal_id",
-        "property_cost_wip_account_id",
+        "property_wip_account_id",
         "property_variance_account_id",
     )
     def _constrains_wip_config(self):
@@ -49,8 +49,8 @@ class ProductCategory(models.Model):
             if any(configs) and not all(configs):
                 raise exceptions.ValidationError(
                     _(
-                        "When WIP Journal is set, WIP and Variance accounts"
-                        " must also be set."
+                        "Category %s has WIP Journal is set"
+                        ", so the WIP and Variance accounts must also be set."
                     )
                     % categ.display_name
                 )
