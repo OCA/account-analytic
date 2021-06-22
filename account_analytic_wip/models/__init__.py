@@ -8,3 +8,4 @@ from . import account_analytic
 from . import account_analytic_line
 from . import account_analytic_tracking
 from . import account_analytic_tracked
+from . import activity_cost_rule
