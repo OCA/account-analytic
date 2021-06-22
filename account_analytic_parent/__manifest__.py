@@ -23,7 +23,10 @@
     "Odoo Community Association (OCA)",
     "website": "https://www.github.com/OCA/account-analytic.git",
     "depends": ["account", "analytic"],
-    "data": ["views/account_analytic_account_view.xml"],
+    "data": [
+        "views/account_analytic_account_view.xml",
+        "views/account_analytic_line.xml",
+    ],
     "demo": ["data/analytic_account_demo.xml"],
     "post_init_hook": "post_init_hook",
 }
