@@ -18,6 +18,9 @@ class TestAnalytic(common.TransactionCase):
                 "user_type_id": self.env.ref("account.data_account_type_expenses").id,
             }
         )
+        self.wip_account = self.consume_account.copy(
+            {"code": "600011", "name": "Costing WIP"}
+        )
         self.variance_account = self.consume_account.copy(
             {"code": "600012", "name": "Costing Variance"}
         )
@@ -27,6 +30,7 @@ class TestAnalytic(common.TransactionCase):
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
                 "property_wip_journal_id": self.wip_journal.id,
+                "property_wip_account_id": self.wip_account.id,
                 "property_variance_account_id": self.variance_account.id,
             }
         )
@@ -48,6 +52,7 @@ class TestAnalytic(common.TransactionCase):
                     "name": "Engineer to Order",
                     "property_cost_method": "standard",
                     "property_valuation": "real_time",
+                    "property_wip_account_id": self.wip_account.id,
                     "property_variance_account_id": self.variance_account.id,
                 }
             )

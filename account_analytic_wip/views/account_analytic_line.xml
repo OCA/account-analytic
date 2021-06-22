@@ -12,6 +12,31 @@
                 <field name="analytic_tracking_item_id" groups="base.group_no_one" />
             </field>
 
+            <group name="amount" position="after">
+                <group
+                    name="activity_cost"
+                    string="Activity Costs"
+                    groups="base.group_no_one"
+                >
+                    <field
+                        name="parent_id"
+                        readonly="True"
+                        attrs="{'invisible': ('parent_id', '=', False)}"
+                    />
+                    <field
+                        name="child_ids"
+                        readonly="True"
+                        attrs="{'invisible': ('child_ids', '=', False)}"
+                    >
+                        <tree name="child_ids_tree">
+                            <field name="name" />
+                            <field name="unit_amount" />
+                            <field name="amount" />
+                        </tree>
+                    </field>
+                </group>
+            </group>
+
         </field>
     </record>
 </odoo>
