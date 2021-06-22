@@ -10,12 +10,7 @@
     "license": "AGPL-3",
     "depends": ["account"],
     "category": "Accounting/Accounting",
-    "data": [
-        "security/ir.model.access.csv",
-        "views/activity_cost_rule_views.xml",
-        "views/analytic_account_line.xml",
-        "views/product_template.xml",
-    ],
+    "data": [],
     "development_status": "Alpha",
     "maintainers": ["dreispt"],
     "installable": True,
