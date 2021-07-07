@@ -27,9 +27,8 @@ Analytic for manufacturing
 
 This module links the manufacturing area with analytic management.
 
-For now, it adds analytic account configuration for manufacturing orders,
-and their corresponding shortcuts. Other modules can take advantage of
-this link for other usages.
+The Manufacturing Order analytic account is carried to the
+journal items created when the MO is marked as Done.
 
 **Table of contents**
 
@@ -91,6 +90,7 @@ Authors
 * Antiun Ingeniería
 * Serv. Tecnol. Avanzados - Pedro M. Baeza
 * José L. Sandoval A.
+* Open Source Integrators
 
 Contributors
 ~~~~~~~~~~~~
