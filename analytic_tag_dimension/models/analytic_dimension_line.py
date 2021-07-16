@@ -1,5 +1,6 @@
 # Copyright 2017 PESOL (http://pesol.es) - Angel Moya (angel.moya@pesol.es)
 # Copyright 2020 Tecnativa - Carlos Dauden
+# Copyright 2021 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
@@ -9,6 +10,32 @@ class AnalyticDimensionLine(models.AbstractModel):
     _name = "analytic.dimension.line"
     _description = "Analytic Dimension Line"
     _analytic_tag_field_name = "analytic_tag_ids"
+
+    def _reflect(self):
+        """If the model is populated after the dimension is created, the dimension
+        fields won't be present, so we need to inject them here.
+        """
+        super()._reflect()
+        context = self.env.context
+        if self._inherit == self._name or context.get("overpass_dim_creation"):
+            return
+        field_obj = self.env["ir.model.fields"]
+        models = self._inherit
+        if isinstance(self._inherit, str):
+            models = [self._inherit]
+        dimensions = self.env["account.analytic.dimension"].search([])
+        field_names = [x.get_field_name(x.code) for x in dimensions]
+        fields_inherit = field_obj.search(
+            [("model_id.model", "in", models), ("name", "in", field_names)]
+        )
+        model = self.env["ir.model"].search([("model", "=", self._name)])
+        for field in fields_inherit:
+            if not field_obj.search(
+                [("model_id", "=", model.id), ("name", "=", field.name)]
+            ):
+                field.with_context(overpass_dim_creation=True).copy(
+                    {"model_id": model.id}
+                )
 
     def _handle_analytic_dimension(self, vals):
         Tag = self.env["account.analytic.tag"]
