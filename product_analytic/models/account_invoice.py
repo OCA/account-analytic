@@ -30,7 +30,9 @@ class AccountInvoiceLine(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            inv_type = self.env.context.get('inv_type', 'out_invoice')
+            inv_type = self.env.context.get('inv_type', False)
+            if not inv_type:
+                inv_type = self.env.context.get('type', 'out_invoice')
             if vals.get('product_id') and inv_type and \
                     not vals.get('account_analytic_id'):
                 product = self.env['product.product'].browse(
