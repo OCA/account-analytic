@@ -2,15 +2,14 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-import odoo.tests.common as common
+from odoo.tests import common, tagged
 
 
-@common.at_install(False)
-@common.post_install(True)
+@tagged("post_install", "-at_install")
 class TestAnalyticPartner(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
-        super(TestAnalyticPartner, cls).setUpClass()
+        super().setUpClass()
         cls.partner = cls.env["res.partner"].create({"name": "Test partner"})
         cls.journal = cls.env["account.journal"].create(
             {"name": "Test journal", "code": "TEST", "type": "sale"}
@@ -30,7 +29,7 @@ class TestAnalyticPartner(common.SavepointCase):
         )
         cls.account_move = cls.env["account.move"].create(
             {
-                "type": "out_invoice",
+                "move_type": "out_invoice",
                 "partner_id": cls.partner.id,
                 "journal_id": cls.journal.id,
                 "invoice_line_ids": [
