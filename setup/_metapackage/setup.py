@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo13-addon-account_analytic_required',
         'odoo13-addon-account_analytic_tag_default',
         'odoo13-addon-analytic_base_department',
+        'odoo13-addon-analytic_partner',
         'odoo13-addon-analytic_tag_dimension',
         'odoo13-addon-analytic_tag_dimension_enhanced',
         'odoo13-addon-analytic_tag_dimension_sale_warning',
