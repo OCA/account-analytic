@@ -1,13 +1,25 @@
-# Copyright (C) 2020 Open Source Integrators
+# Copyright (C) 2021 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
+import logging
+
 from odoo import api, fields, models
 
+_logger = logging.getLogger(__name__)
 
-class AccountAnalyticLine(models.Model):
+
+class AnalyticLine(models.Model):
+    """
+    Analytic Lines should keep a link to the corresponding Tracking Item,
+    so that it can report the corresponding WIP amounts.
+    """
+
     _inherit = "account.analytic.line"
 
+    analytic_tracking_item_id = fields.Many2one(
+        "account.analytic.tracking.item", string="Tracking Item"
+    )
     parent_id = fields.Many2one(
         "account.analytic.line", "Parent Analytic Item", ondelete="cascade"
     )
@@ -31,7 +43,7 @@ class AccountAnalyticLine(models.Model):
         a new Analytic item for a Cost Type.
         """
         self.ensure_one()
-        return {
+        values = {
             "name": "{} / {}".format(
                 self.name, cost_type.product_id.display_name or cost_type.name
             ),
@@ -39,8 +51,32 @@ class AccountAnalyticLine(models.Model):
             "product_id": cost_type.product_id.id,
             "unit_amount": self.unit_amount * cost_type.factor,
         }
+        # Remove the link the the Project Task,
+        # otherwise the cost lines would wrongly show as Timesheet
+        if hasattr(self, "project_id"):
+            values["project_id"] = None
+        if hasattr(self, "task_id"):
+            values["task_id"] = None
+        return values
 
-    def _generate_activity_cost_lines(self):
+    def _set_tracking_item(self):
+        """
+        When creating a child Analytic Item,
+        find the correct matching child Tracking Item
+        """
+        for analytic_item in self.filtered("parent_id.analytic_tracking_item_id"):
+            tracking_items = analytic_item.parent_id.analytic_tracking_item_id.child_ids
+            tracking_item = tracking_items.filtered(
+                lambda x: x.product_id == analytic_item.product_id
+            )
+            analytic_item.analytic_tracking_item_id = tracking_item
+            if not tracking_item:
+                _logger.error(
+                    "Analytic Item %s: could not find related Tracked Item",
+                    analytic_item.display_name,
+                )
+
+    def _create_child_lines(self):
         """
         Find applicable Activity Cost Rules
         and create Analytic Lines for each of them.
@@ -48,11 +84,7 @@ class AccountAnalyticLine(models.Model):
         This is done copying the original Analytic Item
         to ensure all other fields are preserved on the new Item.
         """
-        # ROADMAP:
-        # this doesn't work for Product-less timesheet lines.
-        # solution might be to force a default Product "Timesheet"
-        # or bring back Service Products on Employees
-        for analytic_parent in self:
+        for analytic_parent in self.filtered("product_id.activity_cost_ids"):
             cost_ids = analytic_parent.product_id.activity_cost_ids
             if cost_ids:
                 # Parent Cost Type amount must be zero
@@ -68,15 +100,16 @@ class AccountAnalyticLine(models.Model):
 
     @api.model
     def create(self, vals):
-        res = super(AccountAnalyticLine, self).create(vals)
-        res._generate_activity_cost_lines()
+        res = super().create(vals)
+        res._set_tracking_item()
+        res._create_child_lines()
         return res
 
     def write(self, vals):
         """
         If Units are updated, also update the related cost Analytic Items
         """
-        res = super(AccountAnalyticLine, self).write(vals)
+        res = super().write(vals)
         if vals.get("unit_amount"):
             for analytic_child in self.mapped("child_ids"):
                 cost_vals = analytic_child._prepare_activity_cost_data(

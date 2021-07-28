@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Open Source Integrators
+# Copyright (C) 2021 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
@@ -9,6 +9,26 @@ class ProductTemplate(models.Model):
     _inherit = "product.template"
 
     is_cost_type = fields.Boolean()
+
+    def _get_product_accounts(self):
+        """
+        Add the Variance account, used to post WIP amount exceeding the expected.
+        The "Consumed" account (credited) is the stock_input,
+        and the "WIP" account (debited) is the sock_valuation account.
+        """
+        accounts = super()._get_product_accounts()
+        accounts.update(
+            {"stock_variance": self.categ_id.property_variance_account_id or False}
+        )
+        return accounts
+
+    def get_product_accounts(self, fiscal_pos=None):
+        """
+        Add the journal to use for WIP journal entries, 'wip_journal'
+        """
+        accounts = super().get_product_accounts(fiscal_pos=fiscal_pos)
+        accounts.update({"wip_journal": self.categ_id.property_wip_journal_id or False})
+        return accounts
 
 
 class Product(models.Model):
@@ -29,9 +49,7 @@ class Product(models.Model):
                     _("Can't have Activity Costs set if it is not a Cost Type.")
                 )
 
-    @api.onchange(
-        "standard_price", "activity_cost_ids", "activity_cost_ids.standard_price"
-    )
+    @api.onchange("activity_cost_ids")
     def onchange_for_standard_price(self):
         "Rollup Activity Costs to parent Cost Type"
         for product in self.filtered("is_cost_type").filtered("activity_cost_ids"):

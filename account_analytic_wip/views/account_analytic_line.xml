@@ -1,9 +1,16 @@
 <odoo>
-    <record id="view_account_analytic_line_form_ext" model="ir.ui.view">
-        <field name="name">Analytic Item: add activity cost fields</field>
+    <record id="view_analytic_line_form" model="ir.ui.view">
+        <field name="name">Analytic Line Form: add Tracking Item</field>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field
+            name="inherit_id"
+            ref="account.view_account_analytic_line_form_inherit_account"
+        />
         <field name="arch" type="xml">
+
+            <field name="move_id" position="after">
+                <field name="analytic_tracking_item_id" groups="base.group_no_one" />
+            </field>
 
             <group name="amount" position="after">
                 <group
@@ -32,5 +39,4 @@
 
         </field>
     </record>
-
 </odoo>
