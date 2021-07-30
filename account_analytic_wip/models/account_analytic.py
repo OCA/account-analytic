@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class AccountAnalytic(models.Model):
@@ -15,15 +15,7 @@ class AccountAnalytic(models.Model):
     _inherit = "account.analytic.account"
 
     analytic_tracking_item_ids = fields.One2many(
-        "account.analytic.tracking.item", "analytic_id", string="Tracking Items"
+        "account.analytic.tracking.item",
+        "analytic_id",
+        string="Tracking Items",
     )
-
-    @api.model
-    def create(self, vals):
-        """
-        A default Tracking Item is automatically created.
-        It will collect Atual Amounts not linked to a specific Tracking Item.
-        """
-        new = super().create(vals)
-        self.env["account.analytic.tracking.item"].create({"analytic_id": new.id})
-        return new

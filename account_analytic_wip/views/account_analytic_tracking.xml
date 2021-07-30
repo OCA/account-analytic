@@ -12,20 +12,23 @@
                     />
                 </header>
                 <sheet>
-                    <group col="4" colspan="4">
-                        <field name="name" />
-                        <field name="date" />
+                    <field name="name" />
+                    <group>
+                    <group>
                         <field name="analytic_id" />
-                        <field name="parent_id" />
                         <field name="product_id" />
+                        <field name="planned_qty" />
                     </group>
                     <group>
+                        <field name="date" />
+                        <field name="parent_id" />
+                        <field name="planned_amount" />
+                    </group>
                     <group string="Actuals" name="actuals">
                         <field name="actual_amount" />
                         <field name="wip_actual_amount" />
                         <field name="remaining_actual_amount" />
                         <field name="variance_actual_amount" />
-                        <field name="planned_amount" />
                     </group>
                     <group string="Accounted" name="accounted">
                         <field name="accounted_amount" />
@@ -35,7 +38,7 @@
                         <button
                                 name="process_wip_and_variance"
                                 type="object"
-                                string="Process"
+                                string="Post WIP and Variances"
                                 groups="base.group_no_one"
                             />
                     </group>
@@ -62,7 +65,7 @@
                         string="Post"
                         name="process_wip_and_variance"
                         type="object"
-                        groups="account.group_account_user,mrp.group_mrp_manager"
+                        groups="account.group_account_user"
                     />
                 </header>
                 <field name="to_calculate" invisible="1" />
