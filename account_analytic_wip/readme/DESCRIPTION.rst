@@ -18,6 +18,6 @@ to generate the corresponding accounting moves.
 Products can be seen as cost drivers, driving consumption of other items.
 For example a machine work time can drive consumptions of Labor and Overhead.
 
-This feature models cost driver usage as Analytic Items.
-When an Analytic Item is created, it may then generate additional Analytic Items for the corresponding indirect costs.
-For example, each timesheet hour logged could generate a quantity and amount of overhead assigned to that activity.
+When an Analytic Item is created for a cost driver,
+additional Analytic Items are generated for the corresponding indirect costs.
+For example, each timesheet hour logged could generate a overhead amount related to that activity.
