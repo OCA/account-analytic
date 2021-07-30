@@ -16,5 +16,12 @@ class AccountMove(models.Model):
     analytic_tracking_item_id = fields.Many2one(
         "account.analytic.tracking.item",
         string="Tracking Item",
+        ondelete="set null",
         help="Tracking item generating this journal entry",
     )
+
+
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
+
+    is_wip_line = fields.Boolean()
