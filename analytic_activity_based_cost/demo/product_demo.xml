@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Activate Analytic features by default for easier demoing. -->
+        <record id="base.group_user" model="res.groups">
+            <field
+                name="implied_ids"
+                eval="[(4, ref('product.group_product_variant'))]"
+            />
+        </record>
+
+        <record id="product_category_driven_costs" model="product.category">
+            <field name="parent_id" ref="product.product_category_all" />
+            <field name="name">Driven Costs</field>
+        </record>
+
+        <record id="labor_cost" model="product.product">
+            <field name="name">Labor Cost</field>
+            <field name="type">service</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">False</field>
+            <field name="standard_price">80.0</field>
+            <field name="categ_id" ref="product_category_driven_costs" />
+        </record>
+        <record id="overhead_cost" model="product.product">
+            <field name="name">Overhead Cost</field>
+            <field name="type">service</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">False</field>
+            <field name="standard_price">40.0</field>
+            <field name="categ_id" ref="product_category_driven_costs" />
+        </record>
+        <record id="machine_cost_driver" model="product.product">
+            <field name="name">Machine Operation</field>
+            <field name="type">service</field>
+            <field name="sale_ok">False</field>
+            <field name="purchase_ok">False</field>
+            <field name="is_cost_type">True</field>
+            <field name="categ_id" ref="product.product_category_all" />
+        </record>
+
+        <record id="machine_cost_driver_labor_cost" model="activity.cost.rule">
+            <field name="parent_id" ref="machine_cost_driver" />
+            <field name="product_id" ref="labor_cost" />
+        </record>
+        <record id="machine_cost_driver_overhead_cost" model="activity.cost.rule">
+            <field name="parent_id" ref="machine_cost_driver" />
+            <field name="product_id" ref="overhead_cost" />
+            <field name="factor">0.50</field>
+        </record>
+
+    </data>
+</odoo>
