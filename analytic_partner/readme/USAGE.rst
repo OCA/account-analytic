@@ -1,4 +1,4 @@
-#. Go to **Invoicing > Accounting > Analytic Items**.
+#. Go to **Invoicing > Configuration > Management > Analytic Items**.
 #. Set the **other partner** in the form view of an the analytic entry.
 #. Go back to list view where you can search and group by this new field.
 
