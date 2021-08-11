@@ -23,6 +23,7 @@ addon | version | summary
 [account_analytic_wip](account_analytic_wip/) | 14.0.2.0.0 | Track and report WIP and Variances based on Analytic Items
 [analytic_activity_based_cost](analytic_activity_based_cost/) | 14.0.2.0.0 | Assign overhead costs to activities, using Analytic Items
 [analytic_base_department](analytic_base_department/) | 14.0.1.0.0 | Add relationshet between Analytic and Department
+[analytic_partner](analytic_partner/) | 14.0.1.0.0 | Search and group analytic entries by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 14.0.1.0.0 | Group Analytic Entries by Dimensions
 [analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 14.0.1.0.0 | Analytic Accounts Dimensions Enhanced
 [mrp_analytic](mrp_analytic/) | 14.0.1.1.0 | Adds the analytic account to the production order
