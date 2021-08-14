@@ -16,33 +16,33 @@ You'll find modules that:
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[account_analytic_plan_required](account_analytic_plan_required/) | 8.0.0.1.0 | Account Analytic Plan Required
-[account_analytic_project](account_analytic_project/) | 8.0.1.0.0 | Project and analytic account integration
-[account_analytic_required](account_analytic_required/) | 8.0.0.2.0 | Account Analytic Required
-[account_asset_analytic](account_asset_analytic/) | 8.0.1.0.0 | Adds analytic account per asset
-[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.1 | Multi-Currency in Analytic Accounting
-[analytic_partner](analytic_partner/) | 8.0.1.0.0 | Classify analytic entries by partner
-[analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 8.0.1.0.0 | Classify HR activities by partner
-[analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 8.0.1.0.0 | Invoice analytic lines for the specific partner in them
-[mrp_analytic](mrp_analytic/) | 8.0.1.0.0 | Adds the analytic account to the production order
-[pos_analytic_by_config](pos_analytic_by_config/) | 8.0.1.0.0 | Use analytic account defined on POS configuration for POS orders
-[procurement_analytic](procurement_analytic/) | 8.0.1.0.0 | This module adds analytic account to procurements
-[product_analytic](product_analytic/) | 8.0.1.0.0 | Add analytic account on products and product categories
-[purchase_procurement_analytic](purchase_procurement_analytic/) | 8.0.1.0.0 | This module sets analytic account in purchase order line from procurement analytic account
-[stock_analytic](stock_analytic/) | 8.0.1.0.0 | Adds an analytic account in stock move
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_analytic_plan_required](account_analytic_plan_required/) | 8.0.0.1.0 |  | Account Analytic Plan Required
+[account_analytic_project](account_analytic_project/) | 8.0.1.0.0 |  | Project and analytic account integration
+[account_analytic_required](account_analytic_required/) | 8.0.0.2.0 |  | Account Analytic Required
+[account_asset_analytic](account_asset_analytic/) | 8.0.1.0.0 |  | Adds analytic account per asset
+[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.1 |  | Multi-Currency in Analytic Accounting
+[analytic_partner](analytic_partner/) | 8.0.1.0.0 |  | Classify analytic entries by partner
+[analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 8.0.1.0.0 |  | Classify HR activities by partner
+[analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 8.0.1.0.0 |  | Invoice analytic lines for the specific partner in them
+[mrp_analytic](mrp_analytic/) | 8.0.1.0.0 |  | Adds the analytic account to the production order
+[pos_analytic_by_config](pos_analytic_by_config/) | 8.0.1.0.0 |  | Use analytic account defined on POS configuration for POS orders
+[procurement_analytic](procurement_analytic/) | 8.0.1.0.0 |  | This module adds analytic account to procurements
+[product_analytic](product_analytic/) | 8.0.1.0.0 |  | Add analytic account on products and product categories
+[purchase_procurement_analytic](purchase_procurement_analytic/) | 8.0.1.0.0 |  | This module sets analytic account in purchase order line from procurement analytic account
+[stock_analytic](stock_analytic/) | 8.0.1.0.0 |  | Adds an analytic account in stock move
 
 
 Unported addons
 ---------------
-addon | version | summary
---- | --- | ---
-[account_analytic_line_list](account_analytic_line_list/) | 1.1 (unported) | Account Analytic Line List
-[analytic_secondaxis](analytic_secondaxis/) | 1.1 (unported) | Account Analytic Second Axis
-[analytic_secondaxis_multicurrency](analytic_secondaxis_multicurrency/) | 1.0 (unported) | Multi-Currency Analytic Second Axis
-[analytic_secondaxis_project](analytic_secondaxis_project/) | 1.0 (unported) | Project Analytic Second Axis
-[analytic_secondaxis_timesheet](analytic_secondaxis_timesheet/) | 1.0 (unported) | Timesheet Analytic Second Axis
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_analytic_line_list](account_analytic_line_list/) | 1.1 (unported) |  | Account Analytic Line List
+[analytic_secondaxis](analytic_secondaxis/) | 1.1 (unported) |  | Account Analytic Second Axis
+[analytic_secondaxis_multicurrency](analytic_secondaxis_multicurrency/) | 1.0 (unported) |  | Multi-Currency Analytic Second Axis
+[analytic_secondaxis_project](analytic_secondaxis_project/) | 1.0 (unported) |  | Project Analytic Second Axis
+[analytic_secondaxis_timesheet](analytic_secondaxis_timesheet/) | 1.0 (unported) |  | Timesheet Analytic Second Axis
 
 [//]: # (end addons)
 
