@@ -16,48 +16,48 @@ You'll find modules that:
 
 Available addons
 ----------------
-addon | version | summary
---- | --- | ---
-[account_analytic_default_account](account_analytic_default_account/) | 10.0.1.0.0 | Account Analytic Default Account
-[account_analytic_distribution](account_analytic_distribution/) | 10.0.2.0.0 | Distribute incoming/outcoming account moves to several analytic accounts
-[account_analytic_distribution_required](account_analytic_distribution_required/) | 10.0.1.0.0 | Account Analytic Distribution Required
-[account_analytic_no_lines](account_analytic_no_lines/) | 10.0.1.0.0 | Hide analytics lines and disable their generation from a move line.
-[account_analytic_parent](account_analytic_parent/) | 10.0.1.0.0 | This module reintroduces the hierarchy to the analytic accounts.
-[account_analytic_required](account_analytic_required/) | 10.0.1.1.0 | Account Analytic Required
-[account_analytic_sequence](account_analytic_sequence/) | 10.0.1.0.0 | Restore the analytic account sequence
-[account_asset_analytic](account_asset_analytic/) | 10.0.1.0.2 | Adds analytic account per asset
-[analytic_base_department](analytic_base_department/) | 10.0.1.0.0 | Base Analytic Department Categorization
-[analytic_partner](analytic_partner/) | 10.0.1.0.0 | Search and group analytic entries by partner
-[analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 10.0.1.0.0 | Classify HR activities by partner
-[analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 10.0.1.0.0 | Invoice analytic lines for the other partner
-[analytic_tag_dimension](analytic_tag_dimension/) | 10.0.1.1.0 | Group Analytic Entries by Dimensions
-[analytic_tag_dimension_purchase_warning](analytic_tag_dimension_purchase_warning/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
-[analytic_tag_dimension_sale_warning](analytic_tag_dimension_sale_warning/) | 10.0.1.0.0 | Group Analytic Entries by Dimensions
-[mrp_analytic](mrp_analytic/) | 10.0.1.0.0 | Adds the analytic account to the production order
-[mrp_procurement_analytic](mrp_procurement_analytic/) | 10.0.1.0.0 | Makes the link between procurement analytic account and moves created trhough MRP
-[procurement_analytic](procurement_analytic/) | 10.0.1.2.0 | This module adds analytic account to procurements
-[product_analytic](product_analytic/) | 10.0.1.0.1 | Add analytic account on products and product categories
-[product_analytic_pos](product_analytic_pos/) | 10.0.1.0.0 | Glue module between product_analytic and point_of_sale
-[product_analytic_purchase](product_analytic_purchase/) | 10.0.1.0.0 | Glue module between purchase and product_analytic
-[purchase_analytic](purchase_analytic/) | 10.0.1.0.0 | Purchase Analytic
-[purchase_procurement_analytic](purchase_procurement_analytic/) | 10.0.2.0.0 | This module sets analytic account in purchase order line from procurement analytic account
-[purchase_request_analytic](purchase_request_analytic/) | 10.0.1.1.0 | Purchase Request Analytic
-[sale_analytic_distribution](sale_analytic_distribution/) | 10.0.1.0.0 | Sales Analytic Distribution
-[sale_procurement_analytic](sale_procurement_analytic/) | 10.0.1.0.0 | This module sets analytic account procurement from sale order
-[stock_analytic](stock_analytic/) | 10.0.1.0.1 | Adds an analytic account in stock move
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_analytic_default_account](account_analytic_default_account/) | 10.0.1.0.0 |  | Account Analytic Default Account
+[account_analytic_distribution](account_analytic_distribution/) | 10.0.2.0.0 |  | Distribute incoming/outcoming account moves to several analytic accounts
+[account_analytic_distribution_required](account_analytic_distribution_required/) | 10.0.1.0.0 |  | Account Analytic Distribution Required
+[account_analytic_no_lines](account_analytic_no_lines/) | 10.0.1.0.0 |  | Hide analytics lines and disable their generation from a move line.
+[account_analytic_parent](account_analytic_parent/) | 10.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
+[account_analytic_required](account_analytic_required/) | 10.0.1.1.0 |  | Account Analytic Required
+[account_analytic_sequence](account_analytic_sequence/) | 10.0.1.0.0 |  | Restore the analytic account sequence
+[account_asset_analytic](account_asset_analytic/) | 10.0.1.0.2 |  | Adds analytic account per asset
+[analytic_base_department](analytic_base_department/) | 10.0.1.0.0 |  | Base Analytic Department Categorization
+[analytic_partner](analytic_partner/) | 10.0.1.0.0 |  | Search and group analytic entries by partner
+[analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 10.0.1.0.0 |  | Classify HR activities by partner
+[analytic_partner_hr_timesheet_invoice](analytic_partner_hr_timesheet_invoice/) | 10.0.1.0.0 |  | Invoice analytic lines for the other partner
+[analytic_tag_dimension](analytic_tag_dimension/) | 10.0.1.1.0 |  | Group Analytic Entries by Dimensions
+[analytic_tag_dimension_purchase_warning](analytic_tag_dimension_purchase_warning/) | 10.0.1.0.0 |  | Group Analytic Entries by Dimensions
+[analytic_tag_dimension_sale_warning](analytic_tag_dimension_sale_warning/) | 10.0.1.0.0 |  | Group Analytic Entries by Dimensions
+[mrp_analytic](mrp_analytic/) | 10.0.1.0.0 |  | Adds the analytic account to the production order
+[mrp_procurement_analytic](mrp_procurement_analytic/) | 10.0.1.0.0 |  | Makes the link between procurement analytic account and moves created trhough MRP
+[procurement_analytic](procurement_analytic/) | 10.0.1.2.0 |  | This module adds analytic account to procurements
+[product_analytic](product_analytic/) | 10.0.1.0.1 |  | Add analytic account on products and product categories
+[product_analytic_pos](product_analytic_pos/) | 10.0.1.0.0 |  | Glue module between product_analytic and point_of_sale
+[product_analytic_purchase](product_analytic_purchase/) | 10.0.1.0.0 |  | Glue module between purchase and product_analytic
+[purchase_analytic](purchase_analytic/) | 10.0.1.0.0 |  | Purchase Analytic
+[purchase_procurement_analytic](purchase_procurement_analytic/) | 10.0.2.0.0 |  | This module sets analytic account in purchase order line from procurement analytic account
+[purchase_request_analytic](purchase_request_analytic/) | 10.0.1.1.0 |  | Purchase Request Analytic
+[sale_analytic_distribution](sale_analytic_distribution/) | 10.0.1.0.0 |  | Sales Analytic Distribution
+[sale_procurement_analytic](sale_procurement_analytic/) | 10.0.1.0.0 |  | This module sets analytic account procurement from sale order
+[stock_analytic](stock_analytic/) | 10.0.1.0.1 |  | Adds an analytic account in stock move
 
 
 Unported addons
 ---------------
-addon | version | summary
---- | --- | ---
-[account_analytic_line_list](account_analytic_line_list/) | 1.1 (unported) | Account Analytic Line List
-[analytic_department](analytic_department/) | 9.0.1.0.0 (unported) | Analytic Department Categorization
-[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.0 (unported) | Multi-Currency in Analytic Accounting
-[analytic_secondaxis](analytic_secondaxis/) | 1.1 (unported) | Account Analytic Second Axis
-[analytic_secondaxis_multicurrency](analytic_secondaxis_multicurrency/) | 1.0 (unported) | Multi-Currency Analytic Second Axis
-[analytic_secondaxis_project](analytic_secondaxis_project/) | 1.0 (unported) | Project Analytic Second Axis
-[analytic_secondaxis_timesheet](analytic_secondaxis_timesheet/) | 1.0 (unported) | Timesheet Analytic Second Axis
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_analytic_line_list](account_analytic_line_list/) | 1.1 (unported) |  | Account Analytic Line List
+[analytic_department](analytic_department/) | 9.0.1.0.0 (unported) |  | Analytic Department Categorization
+[analytic_multicurrency](analytic_multicurrency/) | 8.0.1.0.0 (unported) |  | Multi-Currency in Analytic Accounting
+[analytic_secondaxis](analytic_secondaxis/) | 1.1 (unported) |  | Account Analytic Second Axis
+[analytic_secondaxis_multicurrency](analytic_secondaxis_multicurrency/) | 1.0 (unported) |  | Multi-Currency Analytic Second Axis
+[analytic_secondaxis_project](analytic_secondaxis_project/) | 1.0 (unported) |  | Project Analytic Second Axis
+[analytic_secondaxis_timesheet](analytic_secondaxis_timesheet/) | 1.0 (unported) |  | Timesheet Analytic Second Axis
 
 [//]: # (end addons)
 
