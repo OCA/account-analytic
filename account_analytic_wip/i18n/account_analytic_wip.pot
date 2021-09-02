@@ -282,6 +282,10 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_product__is_cost_type
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_template__is_cost_type
+msgid "Is Cost Driver"
+msgstr ""
+
+#. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.product_search_form_view
 msgid "Is Cost Type"
 msgstr ""
