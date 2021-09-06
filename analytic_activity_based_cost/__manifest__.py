@@ -14,7 +14,7 @@
         "security/ir.model.access.csv",
         "views/activity_cost_rule_views.xml",
         "views/account_analytic_line.xml",
-        "views/product_template.xml",
+        "views/product.xml",
     ],
     "demo": [
         "demo/product_demo.xml",
