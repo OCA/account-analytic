@@ -5,14 +5,10 @@
 from odoo import _, api, exceptions, fields, models
 
 
-class ProductTemplate(models.Model):
-    _inherit = "product.template"
-
-    is_cost_type = fields.Boolean(string="Is Cost Driver")
-
-
 class Product(models.Model):
     _inherit = "product.product"
+
+    is_cost_type = fields.Boolean(string="Is Cost Driver")
 
     activity_cost_ids = fields.One2many(
         "activity.cost.rule",
