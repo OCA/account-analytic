@@ -147,10 +147,15 @@ class AccountAnalyticAccount(models.Model):
                     'name': name,
                 }
             if analytic.partner_id:
-                name = _('%(name)s - %(partner)s') % {
-                    'name': name,
-                    'partner': analytic.partner_id.commercial_partner_id.name,
-                }
+                if analytic.partner_id == analytic.partner_id.commercial_partner_id:
+                    name = _('%(name)s') % {
+                        'name': name,
+                    }
+                else:
+                    name = _('%(name)s - %(partner)s') % {
+                        'name': name,
+                        'partner': analytic.partner_id.commercial_partner_id.name,               
+                    }
             res.append((analytic.id, name))
         return res
 
