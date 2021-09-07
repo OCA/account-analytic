@@ -29,6 +29,7 @@ addon | version | maintainers | summary
 [mrp_analytic](mrp_analytic/) | 14.0.1.1.0 |  | Adds the analytic account to the production order
 [mrp_analytic_child_mo](mrp_analytic_child_mo/) | 14.0.1.0.0 |  | Carry the Manufacturing Order Analytic Account to the generated Manufacturing Orders
 [mrp_analytic_sale_project](mrp_analytic_sale_project/) | 14.0.1.0.0 |  | Carry the Sales Order Analytic Account to the generated Manufacturing Orders
+[stock_analytic](stock_analytic/) | 14.0.1.0.0 |  | Adds an analytic account and analytic tags in stock move
 
 [//]: # (end addons)
 
