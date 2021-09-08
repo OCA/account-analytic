@@ -26,6 +26,7 @@ msgstr ""
 
 #. module: analytic_activity_based_cost
 #: model:ir.model,name:analytic_activity_based_cost.model_activity_cost_rule
+#: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__activity_cost_id
 msgid "Activity Cost Rule"
 msgstr ""
 
@@ -93,13 +94,8 @@ msgid "Cost Generated"
 msgstr ""
 
 #. module: analytic_activity_based_cost
-#: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__activity_cost_id
-msgid "Cost Rule Applied"
-msgstr ""
-
-#. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__product_id
-msgid "Cost Type Product"
+msgid "Cost Product"
 msgstr ""
 
 #. module: analytic_activity_based_cost
