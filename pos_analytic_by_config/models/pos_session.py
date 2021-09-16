@@ -36,4 +36,4 @@ class PosSession(models.Model):
                 PosSession,
                 self.with_context(account_analytic_id=account_analytic_id.id),
             )._get_sale_vals(key, amount, amount_converted)
-        return self._get_sale_vals(key, amount, amount_converted)
+        return super()._get_sale_vals(key, amount, amount_converted)
