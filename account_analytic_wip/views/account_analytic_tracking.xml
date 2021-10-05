@@ -32,8 +32,6 @@
                     </group>
                     <group string="Accounted" name="accounted">
                         <field name="accounted_amount" />
-                        <field name="wip_accounted_amount" />
-                        <field name="variance_accounted_amount" />
                         <field name="pending_amount" />
                         <button
                                 name="process_wip_and_variance"

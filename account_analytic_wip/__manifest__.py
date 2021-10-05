@@ -12,11 +12,13 @@
     "category": "Accounting/Accounting",
     "data": [
         "security/ir.model.access.csv",
+        "data/ir_config_parameter_data.xml",
         "data/ir_cron_data.xml",
-        "views/product_category.xml",
         "views/account_move.xml",
         "views/account_analytic_line.xml",
         "views/account_analytic_tracking.xml",
+        "views/product_category_view.xml",
+        "views/stock_location.xml",
     ],
     "demo": [
         "demo/product_demo.xml",

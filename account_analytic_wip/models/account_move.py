@@ -24,4 +24,8 @@ class AccountMove(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
-    is_wip_line = fields.Boolean()
+    clear_wip_account_id = fields.Many2one(
+        "account.account",
+        string="Clear WIP Account",
+        help="Counterpart account used when this WIP item is cleared",
+    )
