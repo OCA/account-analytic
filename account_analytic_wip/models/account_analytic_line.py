@@ -9,7 +9,7 @@ class AnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
     analytic_tracking_item_id = fields.Many2one(
-        "account.analytic.tracking.item", string="Tracking Item"
+        "account.analytic.tracking.item", string="Tracking Item", copy=False
     )
 
     def _prepare_tracking_item_values(self):
@@ -52,6 +52,9 @@ class AnalyticLine(models.Model):
         """
         When creating an Analytic Item,
         link it to a Tracking Item, the may have to be created if it doesn't exist.
+
+        Use this (and used dependency methods) as a template for other models
+        implementing related tracking items.
         """
         for item in self.filtered(lambda x: not x.analytic_tracking_item_id):
             item._get_set_tracking_item()
