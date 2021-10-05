@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+    <record id="wip_default_product_category" model="ir.config_parameter">
+        <!-- Used for Work Center with no Cost Driver product -->
+        <field name="key">wip_default_product_category</field>
+        <field name="value">product.product_category_all</field>
+    </record>
+</odoo>

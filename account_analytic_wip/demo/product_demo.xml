@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="wip_journal" model="account.journal">
-        <field name="name">WIP Journal</field>
+        <field name="name">Labor and Overhead WIP Journal</field>
         <field name="type">general</field>
         <field name="code">WIP</field>
     </record>
@@ -29,9 +29,9 @@
     >
         <field name="property_cost_method">standard</field>
         <field name="property_valuation">real_time</field>
-        <field name="property_wip_journal_id" ref="wip_journal" />
-        <field name="property_wip_account_id" ref="wip_account" />
-        <field name="property_variance_account_id" ref="variance_account" />
+        <field name="property_stock_journal_id" ref="wip_journal" />
+        <field name="property_stock_account_input_categ_id" ref="wip_account" />
+        <field name="property_stock_account_output_categ_id" ref="variance_account" />
     </record>
 
 </odoo>

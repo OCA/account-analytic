@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_product_category_form" model="ir.ui.view">
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view" />
+        <field name="arch" type="xml">
+
+            <field name="property_stock_account_output_categ_id" position="after">
+                <field name="property_variance_account_id" />
+            </field>
+
+            <group name="account_stock_property" position="inside">
+                <div colspan="2" class="alert alert-info mt16" role="status">
+                    <p><b>Manufacturing WIP</b></p>
+                    <p>
+                    Set accounts for time spent on manufacturing work orders, such as Labor and Overhead:
+                    <ul>
+                        <li><b
+                                >Stock Valuation Account</b> is used for the Applied Cost account, during operations.</li>
+                        <li><b
+                                >Stock Input Account</b> is used for the WIP account, during operations.</li>
+                        <li><b
+                                >Stock Output Account</b> is used for the Variances account, on MO closing.</li>
+                        <li><b
+                                >Price Difference Account</b> is used for the Variances account, on MO closing (temporary: this will change a future release).</li>
+                    </ul>
+                    </p>
+                </div>
+            </group>
+
+        </field>
+    </record>
+</odoo>
