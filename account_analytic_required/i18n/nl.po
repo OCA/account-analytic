@@ -1,0 +1,102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_required
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-01 03:39+0000\n"
+"PO-Revision-Date: 2018-02-01 03:39+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2018\n"
+"Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__always
+msgid "Always"
+msgstr ""
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+"Het is verplicht een kostenplaats op te geven bij boekingen op rekening %s "
+"'%s', maar deze ontbreekt in de boekingsregel met de omschrijving '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account '%s'."
+msgstr ""
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+"analytic account is missing in the account move line with label '%s'."
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Journal Entries"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
+msgid "Never"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__optional
+msgid "Optional"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
+msgid "Policy for analytic account"
+msgstr "Kostenplaatsenbeleid"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__posted
+msgid "Posted moves"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
+msgstr ""
