@@ -18,7 +18,6 @@
         "views/account_analytic_line.xml",
         "views/account_analytic_tracking.xml",
         "views/product_category_view.xml",
-        "views/stock_location.xml",
     ],
     "demo": [
         "demo/product_demo.xml",
