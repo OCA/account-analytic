@@ -157,13 +157,13 @@ class AnalyticTrackingItem(models.Model):
             item.variance_actual_amount = var
             item.remaining_actual_amount = remain
 
-    def _prepare_account_move_head(self, journal, move_lines=None):
+    def _prepare_account_move_head(self, journal, move_lines=None, ref=None):
         return {
             "journal_id": journal.id,
             "date": self.env.context.get(
                 "force_period_date", fields.Date.context_today(self)
             ),
-            "ref": self.display_name,
+            "ref": ref or self.display_name,
             "move_type": "entry",
             "analytic_tracking_item_id": self.id,
             "line_ids": [(0, 0, x) for x in move_lines or [] if x],
@@ -224,10 +224,12 @@ class AnalyticTrackingItem(models.Model):
             acc_wip = accounts["stock_input"]
             acc_clear = accounts["stock_output"]
             move_lines = [
-                self._prepare_account_move_line(acc_wip, amount, acc_clear),
                 self._prepare_account_move_line(acc_applied, -amount),
+                self._prepare_account_move_line(acc_wip, amount, acc_clear),
             ]
-            je_vals = self._prepare_account_move_head(wip_journal, move_lines)
+            je_vals = self._prepare_account_move_head(
+                wip_journal, move_lines, "WIP %s" % (self.display_name)
+            )
             je_new = self.env["account.move"].sudo().create(je_vals)
             je_new._post()
             return je_new
@@ -249,7 +251,7 @@ class AnalyticTrackingItem(models.Model):
         journal = accounts["stock_journal"]
         acc_wip = accounts["stock_input"]
         acc_clear = accounts["stock_output"]
-        acc_var = accounts.get("stock_variance") or accounts["stock_output"]
+        acc_var = accounts.get("stock_variance") or acc_wip
         move_lines = [
             self._prepare_account_move_line(acc_wip, -total_amount),
             self._prepare_account_move_line(acc_clear, wip_amount),
@@ -266,7 +268,9 @@ class AnalyticTrackingItem(models.Model):
         for tracked in self:
             move_lines, wip_journal = tracked._prepare_clear_wip_journal_entries()
             if move_lines:
-                je_vals = tracked._prepare_account_move_head(wip_journal, move_lines)
+                je_vals = tracked._prepare_account_move_head(
+                    wip_journal, move_lines, "Clear WIP %s" % (tracked.display_name)
+                )
                 je_new = AccountMove.create(je_vals)
                 je_new._post()
 
