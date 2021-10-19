@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <record id="wip_journal" model="account.journal">
-        <field name="name">Labor and Overhead WIP Journal</field>
-        <field name="type">general</field>
-        <field name="code">WIP</field>
-    </record>
-
     <record id="consume_account" model="account.account">
         <field name="name">Costing Consumed</field>
         <field name="code">600010</field>
@@ -29,7 +23,6 @@
     >
         <field name="property_cost_method">standard</field>
         <field name="property_valuation">real_time</field>
-        <field name="property_stock_journal_id" ref="wip_journal" />
         <field name="property_stock_account_input_categ_id" ref="wip_account" />
         <field name="property_stock_account_output_categ_id" ref="variance_account" />
     </record>
