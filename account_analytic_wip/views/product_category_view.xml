@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
 
             <field name="property_stock_account_output_categ_id" position="after">
+                <field name="property_wip_account_id" />
                 <field name="property_variance_account_id" />
             </field>
 
@@ -21,6 +22,7 @@
                                 >Stock Input Account</b> is used for the WIP account, during operations.</li>
                         <li><b
                                 >Stock Output Account</b> not used, can be set with the production clearing account, used on MO closing.</li>
+                        <li><b>WIP Account</b> is used for the WIP account.</li>
                         <li><b
                                 >Variance Account</b> is used for the Variances account, on MO closing.</li>
                     </ul>
