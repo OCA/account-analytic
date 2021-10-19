@@ -9,10 +9,6 @@ class TestAnalytic(common.TransactionCase):
         self.analytic_x = self.env["account.analytic.account"].create(
             {"name": "Analytic X"}
         )
-        # WIP Journal
-        self.wip_journal = self.env["account.journal"].create(
-            {"name": "WIP Journal", "type": "general", "code": "WIPX"}
-        )
         # Accounts: Consume, WIP, Variance
         Account = self.env["account.account"]
         account_vals = {
@@ -33,7 +29,6 @@ class TestAnalytic(common.TransactionCase):
                 "name": "Driven Costs",
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
-                "property_wip_journal_id": self.wip_journal.id,
                 "property_wip_account_id": self.wip_account.id,
                 "property_variance_account_id": self.variance_account.id,
             }
