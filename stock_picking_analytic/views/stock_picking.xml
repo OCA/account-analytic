@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="stock_picking_form_view">
+        <field name="name">stock.picking.form (in stock_picking_analytic)</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <field name="picking_type_id" position="after">
+                <field
+                    name="analytic_account_id"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'no_create': True}"
+                />
+            </field>
+            <field name="move_ids_without_package" position="attributes">
+                <attribute name="context">
+                    {'default_analytic_account_id': analytic_account_id}
+                </attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="stock_picking_search_view">
+        <field name="name">stock.picking.search (in stock_picking_analytic)</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="analytic_account_id" />
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="stock_picking_tree_view">
+        <field name="name">stock.picking.tree (in stock_picking_analytic)</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="analytic_account_id" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
