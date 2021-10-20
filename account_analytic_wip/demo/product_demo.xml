@@ -16,6 +16,11 @@
         <field name="code">600012</field>
         <field name="user_type_id" ref="account.data_account_type_expenses" />
     </record>
+    <record id="clear_account" model="account.account">
+        <field name="name">Costing WIP Clear</field>
+        <field name="code">600020</field>
+        <field name="user_type_id" ref="account.data_account_type_expenses" />
+    </record>
 
     <record
         id="analytic_activity_based_cost.product_category_driven_costs"
@@ -23,8 +28,9 @@
     >
         <field name="property_cost_method">standard</field>
         <field name="property_valuation">real_time</field>
-        <field name="property_stock_account_input_categ_id" ref="wip_account" />
-        <field name="property_stock_account_output_categ_id" ref="variance_account" />
+        <field name="property_stock_account_output_categ_id" ref="clear_account" />
+        <field name="property_stock_wip_account_id" ref="wip_account" />
+        <field name="property_stock_variance_account_id" ref="variance_account" />
     </record>
 
 </odoo>
