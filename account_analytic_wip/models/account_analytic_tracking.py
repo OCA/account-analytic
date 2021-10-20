@@ -3,7 +3,7 @@
 
 import logging
 
-from odoo import _, api, fields, models
+from odoo import _, api, exceptions, fields, models
 
 _logger = logging.getLogger(__name__)
 
@@ -141,6 +141,8 @@ class AnalyticTrackingItem(models.Model):
             if item.state != "cancel" and not item.child_ids:
                 doing = item.state in ("draft")
                 planned = item.planned_amount
+                # If planned is zero, wip is zero and variance = -actual
+                # Otherwise there can be problems with unplanned additional work items
                 actual = -sum(
                     x.amount_abcost if x.parent_id else x.amount
                     for x in item.analytic_line_ids
@@ -180,7 +182,7 @@ class AnalyticTrackingItem(models.Model):
             "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
-            "clear_wip_account_id": clear_account.id if clear_account else None,
+            # DROP: "clear_wip_account_id": clear_account.id if clear_account else None,
         }
 
     def _get_accounting_data_for_valuation(self):
@@ -188,15 +190,16 @@ class AnalyticTrackingItem(models.Model):
         Extension hook to set the accounts to use
         Returns a dict including the keys:
         - "stock_valuation": for applied work account
-        - "stock_input": for WIP account
-        - "stock_output": for WIP clearing account
+        - "stock_input": for the WIP account
+        - "stock_output": not used, set the WIP account
         - "stock_journal": the journal to use
+        - "stock_wip": WIP account
+        - "stock_variance": variances account
         """
+
         if self.product_id:
+            categ = self.product_id.categ_id
             accounts = self.product_id.product_tmpl_id.get_product_accounts()
-            accounts[
-                "stock_variance"
-            ] = self.product_id.categ_id.property_variance_account_id
         else:
             # If no product, get account from a configured default category
             get_param = self.env["ir.config_parameter"].sudo().get_param
@@ -206,9 +209,13 @@ class AnalyticTrackingItem(models.Model):
                 "stock_input": categ.property_stock_account_input_categ_id,
                 "stock_output": categ.property_stock_account_output_categ_id,
                 "stock_valuation": categ.property_stock_valuation_account_id,
-                "stock_journal": categ.property_stock_journal,
+            }
+        accounts.update(
+            {
+                "stock_wip": accounts["stock_input"],  # categ.property_wip_account_id,
                 "stock_variance": categ.property_variance_account_id,
             }
+        )
         return accounts
 
     def _create_wip_journal_entry(self):
@@ -221,11 +228,16 @@ class AnalyticTrackingItem(models.Model):
         amount = self.pending_amount
         if amount and wip_journal:
             acc_applied = accounts["stock_valuation"]
-            acc_wip = accounts["stock_input"]
-            acc_clear = accounts["stock_output"]
+            acc_wip = accounts["stock_wip"]
+            # DROP: acc_clear = accounts["stock_output"]
+            if not acc_wip:
+                raise exceptions.ValidationError(
+                    _("Missing WIP Account for Product Category: %s")
+                    % (self.product_id.categ_id.display_name)
+                )
             move_lines = [
                 self._prepare_account_move_line(acc_applied, -amount),
-                self._prepare_account_move_line(acc_wip, amount, acc_clear),
+                self._prepare_account_move_line(acc_wip, amount),  # , acc_clear),
             ]
             je_vals = self._prepare_account_move_head(
                 wip_journal, move_lines, "WIP %s" % (self.display_name)
@@ -241,22 +253,29 @@ class AnalyticTrackingItem(models.Model):
         linked to the Tracking Item and with a Clear Account set.
         """
         self and self.ensure_one()
-        total_amount = self.accounted_amount
-        var_amount = self.variance_actual_amount
-        wip_amount = total_amount - var_amount
-        if not (total_amount or var_amount or wip_amount):
-            return [], None
+        var_amount = self.planned_amount - self.actual_amount
+        # total_amount = self.accounted_amount
+        # wip_amount = total_amount - var_amount
+        # if not (total_amount or var_amount or wip_amount):
+        #     return [], None
 
         accounts = self._get_accounting_data_for_valuation()
         journal = accounts["stock_journal"]
-        acc_wip = accounts["stock_input"]
-        acc_clear = accounts["stock_output"]
+        acc_wip = accounts["stock_wip"]
+        # DROP: acc_clear = accounts["stock_output"]
         acc_var = accounts.get("stock_variance") or acc_wip
-        move_lines = [
-            self._prepare_account_move_line(acc_wip, -total_amount),
-            self._prepare_account_move_line(acc_clear, wip_amount),
-            self._prepare_account_move_line(acc_var, var_amount),
-        ]
+        move_lines = (
+            var_amount
+            and [
+                # DROP:
+                # self._prepare_account_move_line(acc_wip, -total_amount),
+                # self._prepare_account_move_line(acc_clear, wip_amount),
+                # self._prepare_account_move_line(acc_var, var_amount),
+                self._prepare_account_move_line(acc_wip, -var_amount),
+                self._prepare_account_move_line(acc_var, +var_amount),
+            ]
+            or []
+        )
         return move_lines, journal
 
     def clear_wip_journal_entries(self):

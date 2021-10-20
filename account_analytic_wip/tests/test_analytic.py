@@ -1,4 +1,3 @@
-from odoo import exceptions
 from odoo.tests import common
 
 
@@ -9,7 +8,7 @@ class TestAnalytic(common.TransactionCase):
         self.analytic_x = self.env["account.analytic.account"].create(
             {"name": "Analytic X"}
         )
-        # Accounts: Consume, WIP, Variance
+        # Accounts: Consume, WIP, Variance, Clear
         Account = self.env["account.account"]
         account_vals = {
             "code": "600010X",
@@ -23,12 +22,16 @@ class TestAnalytic(common.TransactionCase):
         self.variance_account = self.consume_account.copy(
             {"code": "600012X", "name": "Costing Variance"}
         )
+        self.clear_account = self.consume_account.copy(
+            {"code": "600020X", "name": "Costing Clear WIP"}
+        )
         # Product Category for the Driven Costs
         self.costing_categ = self.env["product.category"].create(
             {
                 "name": "Driven Costs",
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
+                "property_stock_account_output_categ_id": self.clear_account.id,
                 "property_wip_account_id": self.wip_account.id,
                 "property_variance_account_id": self.variance_account.id,
             }
@@ -77,18 +80,6 @@ class TestAnalytic(common.TransactionCase):
             }
         )
 
-    def test_100_categ_config_complete(self):
-        with self.assertRaises(exceptions.ValidationError):
-            self.env["product.category"].create(
-                {
-                    "name": "Engineer to Order",
-                    "property_cost_method": "standard",
-                    "property_valuation": "real_time",
-                    "property_wip_account_id": self.wip_account.id,
-                    "property_variance_account_id": self.variance_account.id,
-                }
-            )
-
     def test_110_product_cost_driver_compute_cost(self):
         """Cost Driver unit cost is the sum of the driver costs"""
         # TODO: this should really be a analytic_activity_based_cost test...
@@ -119,7 +110,7 @@ class TestAnalytic(common.TransactionCase):
         actual_amount = sum(tracking_items.mapped("actual_amount"))
         self.assertEqual(
             actual_amount,
-            375.0,
+            375.0,  # = ($10 + $15) * 15
             "Tracking total actual amount computation.",
         )
 
@@ -129,15 +120,20 @@ class TestAnalytic(common.TransactionCase):
         )
         self.assertEqual(
             tracking_labor.actual_amount,
-            225.0,
+            225.0,  # = $15 * 15
             "Tracking Labor actual amount computation.",
         )
 
         # No planned qty, means actual qty is WIP qty
         self.assertEqual(
             tracking_labor.wip_actual_amount,
+            0.0,
+            "With no planned amount, WIP is zero.",
+        )
+        self.assertEqual(
+            tracking_labor.variance_actual_amount,
             225.0,
-            "Tracking Labor WIP amount computation when no Planned Qty.",
+            "With no planned amount, Variance is the actual amount.",
         )
 
         # Set Planned Qty, means WIP and Variance are recomputed
