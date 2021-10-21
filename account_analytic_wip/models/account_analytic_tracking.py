@@ -105,8 +105,6 @@ class AnalyticTrackingItem(models.Model):
         store=True,
         help="Amount not yet posted to journal entries.",
     )
-
-    # Accounted Amounts
     accounted_amount = fields.Float(
         help="Amount accounted in Journal Entries. "
         "Directly set by the routine creating the Journal Entries, "
@@ -171,7 +169,7 @@ class AnalyticTrackingItem(models.Model):
             "line_ids": [(0, 0, x) for x in move_lines or [] if x],
         }
 
-    def _prepare_account_move_line(self, account, amount, clear_account=None):
+    def _prepare_account_move_line(self, account, amount):
         # Note: do not set analytic_account_id,
         # as that triggers a (repeated) Analytic Item
         return {
@@ -182,7 +180,7 @@ class AnalyticTrackingItem(models.Model):
             "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
-            # DROP: "clear_wip_account_id": clear_account.id if clear_account else None,
+            # TODO: DROP "clear_wip_account_id": clear_account.id if clear_account else None,
         }
 
     def _get_accounting_data_for_valuation(self):
@@ -212,7 +210,7 @@ class AnalyticTrackingItem(models.Model):
             }
         accounts.update(
             {
-                "stock_wip": accounts["stock_input"],  # categ.property_wip_account_id,
+                "stock_wip": categ.property_wip_account_id,
                 "stock_variance": categ.property_variance_account_id,
             }
         )
@@ -227,8 +225,7 @@ class AnalyticTrackingItem(models.Model):
             )
         amount = self.pending_amount
         if amount and wip_journal:
-            acc_applied = accounts["stock_valuation"]
-            acc_wip = accounts["stock_wip"]
+            acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
             # DROP: acc_clear = accounts["stock_output"]
             if not acc_wip:
                 raise exceptions.ValidationError(
