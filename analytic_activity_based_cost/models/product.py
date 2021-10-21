@@ -3,6 +3,7 @@
 
 
 from odoo import _, api, exceptions, fields, models
+from odoo.tools.float_utils import float_round
 
 
 class Product(models.Model):
@@ -31,6 +32,9 @@ class Product(models.Model):
         for product in self.filtered("is_cost_type"):
             if product.type in ["consu", "service"]:
                 product.standard_price = sum(
-                    x.standard_price * x.factor
+                    float_round(
+                        x.standard_price * x.factor,
+                        precision_rounding=product.currency_id.rounding,
+                    )
                     for x in product.sudo().activity_cost_ids
                 )
