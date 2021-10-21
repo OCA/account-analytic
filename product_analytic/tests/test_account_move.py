@@ -2,42 +2,44 @@
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import SavepointCase
 
 
-class TestAccountInvoiceLine(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.analytic_account1 = self.env["account.analytic.account"].create(
+class TestAccountInvoiceLine(SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        cls.analytic_account1 = cls.env["account.analytic.account"].create(
             {"name": "test analytic_account1"}
         )
-        self.analytic_account2 = self.env["account.analytic.account"].create(
+        cls.analytic_account2 = cls.env["account.analytic.account"].create(
             {"name": "test analytic_account2"}
         )
-        self.product = self.env["product.product"].create(
+        cls.product = cls.env["product.product"].create(
             {
                 "name": "test product",
                 "lst_price": 50,
                 "standard_price": 50,
-                "income_analytic_account_id": self.analytic_account1.id,
-                "expense_analytic_account_id": self.analytic_account2.id,
+                "income_analytic_account_id": cls.analytic_account1.id,
+                "expense_analytic_account_id": cls.analytic_account2.id,
             }
         )
-        self.partner = self.env["res.partner"].create({"name": "Test partner"})
-        self.journal_sale = self.env["account.journal"].create(
+        cls.partner = cls.env["res.partner"].create({"name": "Test partner"})
+        cls.journal_sale = cls.env["account.journal"].create(
             {"name": "Test journal sale", "code": "SALE0", "type": "sale"}
         )
-        self.journal_purchase = self.env["account.journal"].create(
+        cls.journal_purchase = cls.env["account.journal"].create(
             {"name": "Test journal purchase", "code": "PURCHASE0", "type": "purchase"}
         )
-        self.account_type = self.env["account.account.type"].create(
+        cls.account_type = cls.env["account.account.type"].create(
             {"name": "Test account type", "type": "other", "internal_group": "equity"}
         )
-        self.account = self.env["account.account"].create(
+        cls.account = cls.env["account.account"].create(
             {
                 "name": "Test account",
                 "code": "TEST",
-                "user_type_id": self.account_type.id,
+                "user_type_id": cls.account_type.id,
             }
         )
 
