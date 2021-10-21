@@ -19,13 +19,14 @@ class AccountMoveLine(models.Model):
     @api.onchange("product_id")
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
-        inv_type = self.move_id.move_type
-        if self.product_id and inv_type:
-            ana_accounts = (
-                self.product_id.product_tmpl_id._get_product_analytic_accounts()
-            )
-            ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
-            self.analytic_account_id = ana_account.id
+        for line in self:
+            inv_type = line.move_id.move_type
+            if line.product_id and inv_type:
+                ana_accounts = (
+                    line.product_id.product_tmpl_id._get_product_analytic_accounts()
+                )
+                ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
+                line.analytic_account_id = ana_account.id
         return res
 
     @api.model_create_multi
