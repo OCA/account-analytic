@@ -18,12 +18,30 @@ stages:
 
 jobs:
   include:
+    # Test separately: account_analytic_parent
     - stage: test
       env:
-        - TESTS=1 ODOO_REPO="odoo/odoo" MAKEPOT="1"
+        - TESTS="1" ODOO_REPO="odoo/odoo" MAKEPOT="1" INCLUDE="account_analytic_parent"
+    - stage: test
+      env:
+        - TESTS="1" ODOO_REPO="OCA/OCB" INCLUDE="account_analytic_parent"
+    # Test separately: account_analytic_sequence
+    - stage: test
+      env:
+        - TESTS=1 ODOO_REPO="odoo/odoo" MAKEPOT=1 INCLUDE="account_analytic_sequence"
+    - stage: test
+      env:
+        - TESTS=1 ODOO_REPO="OCA/OCB" INCLUDE="account_analytic_sequence"
+    # Test all other addons together
+    - stage: test
+      env:
+        - TESTS=1 ODOO_REPO="odoo/odoo" MAKEPOT=1
+          EXCLUDE="account_analytic_parent,account_analytic_sequence"
     - stage: test
       env:
         - TESTS=1 ODOO_REPO="OCA/OCB"
+          EXCLUDE="account_analytic_parent,account_analytic_sequence"
+
 env:
   global:
     - VERSION="14.0" TESTS="0" LINT_CHECK="0" MAKEPOT="0"
