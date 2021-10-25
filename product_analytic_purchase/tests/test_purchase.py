@@ -9,8 +9,38 @@ from odoo.tests.common import TransactionCase
 class TestPurchaseOrderLine(TransactionCase):
     def setUp(self):
         super(TestPurchaseOrderLine, self).setUp()
-        self.product1 = self.env.ref("product.product_product_3")
-        self.product2 = self.env.ref("product.service_order_01")
+        self.analytic = self.env["account.analytic.account"].create(
+            {
+                "name": "Our Super Product Development",
+            }
+        )
+        self.product1 = self.env["product.product"].create(
+            {
+                "name": "Computer SC234",
+                "categ_id": self.env.ref("product.product_category_all").id,
+                "list_price": 450.0,
+                "standard_price": 300.0,
+                "type": "consu",
+                "uom_id": self.env.ref("uom.product_uom_unit").id,
+                "uom_po_id": self.env.ref("uom.product_uom_unit").id,
+                "description_sale": "17 LCD Monitor Processor AMD",
+            }
+        )
+        self.product2 = self.env["product.product"].create(
+            {
+                "name": "Prepaid Consulting",
+                "categ_id": self.env.ref("product.product_category_all").id,
+                "list_price": 90,
+                "standard_price": 40,
+                "type": "service",
+                "uom_id": self.env.ref("uom.product_uom_hour").id,
+                "uom_po_id": self.env.ref("uom.product_uom_hour").id,
+                "description": "Example of product to invoice on order.",
+                "default_code": "SERV_ORDER",
+                "expense_analytic_account_id": self.analytic.id,
+                "income_analytic_account_id": self.analytic.id,
+            }
+        )
         self.assertTrue(self.product2.expense_analytic_account_id)
         self.po = self.env["purchase.order"].create(
             {
