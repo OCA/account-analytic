@@ -1,4 +1,5 @@
 <odoo>
+
     <record id="account_analytic_tracking_form" model="ir.ui.view">
         <field name="name">account.analytic.tracking.form</field>
         <field name="model">account.analytic.tracking.item</field>
@@ -47,6 +48,7 @@
             </form>
         </field>
     </record>
+
     <record id="account_analytic_tracking_tree" model="ir.ui.view">
         <field name="name">account.analytic.tracking.tree</field>
         <field name="model">account.analytic.tracking.item</field>
@@ -73,24 +75,85 @@
                 <field name="analytic_id" optional="hide" />
                 <field name="date" optional="hide" />
                 <field name="product_id" optional="hide" />
-                <field name="planned_amount" string="Planned" />
-                <field name="actual_amount" string="Actual" />
-                <field name="wip_actual_amount" string="WIP" />
-                <field name="variance_actual_amount" string="Variance" />
-                <field name="remaining_actual_amount" string="Remaining" />
+                <field
+                    name="planned_amount"
+                    string="Planned"
+                    optional="show"
+                    sum="Planned"
+                />
+                <field name="actual_amount" string="Actual" sum="Actual" />
+                <field
+                    name="wip_actual_amount"
+                    string="WIP"
+                    optional="show"
+                    sum="WIP"
+                />
+                <field
+                    name="variance_actual_amount"
+                    string="Variance"
+                    optional="show"
+                    sum="Variance"
+                />
+                <field
+                    name="remaining_actual_amount"
+                    string="Remaining"
+                    optional="show"
+                    sum="Remaining"
+                />
+                <field
+                    name="difference_actual_amount"
+                    string="Difference"
+                    optional="show"
+                    sum="Difference"
+                />
                 <field name="state" />
-                <field name="accounted_amount" string="Posted" optional="hide" />
-                <field name="pending_amount" string="To Post" />
+                <field
+                    name="accounted_amount"
+                    string="Posted"
+                    optional="show"
+                    sum="Posted"
+                />
+                <field
+                    name="pending_amount"
+                    string="To Post"
+                    optional="show"
+                    sum="To Post"
+                />
             </tree>
         </field>
     </record>
 
+    <record id="account_analytic_tracking_search" model="ir.ui.view">
+        <field name="name">account.analytic.tracking.search</field>
+        <field name="model">account.analytic.tracking.item</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id" />
+                <filter
+                    string="Analytic Account"
+                    name="analytic_group"
+                    context="{'group_by': 'analytic_id'}"
+                />
+                <filter
+                    string="Product"
+                    name="product_group"
+                    context="{'group_by': 'product_id'}"
+                />
+                <filter
+                    string="Product Category"
+                    name="product_categ_group"
+                    context="{'group_by': 'product_categ_id'}"
+                />
+            </search>
+        </field>
+    </record>
 
     <record id="account_analytic_tracking_action" model="ir.actions.act_window">
         <field name="name">Analytic Tracking</field>
         <field name="res_model">account.analytic.tracking.item</field>
         <field name="view_mode">tree,form,pivot</field>
     </record>
+
     <menuitem
         action="account_analytic_tracking_action"
         id="account_analytic_tracking_menu"
@@ -98,4 +161,5 @@
         parent="account.account_reports_management_menu"
         sequence="20"
     />
+
 </odoo>
