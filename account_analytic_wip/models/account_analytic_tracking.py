@@ -90,6 +90,11 @@ class AnalyticTrackingItem(models.Model):
         store=True,
         help="Actual amount incurred below the planned amount limit.",
     )
+    difference_actual_amount = fields.Float(
+        compute="_compute_actual_amounts",
+        store=True,
+        help="Difference between actual and planned amounts.",
+    )
     variance_actual_amount = fields.Float(
         compute="_compute_actual_amounts",
         store=True,
@@ -154,6 +159,7 @@ class AnalyticTrackingItem(models.Model):
             item.actual_amount = actual
             item.pending_amount = to_post
             item.wip_actual_amount = wip
+            item.difference_actual_amount = dif
             item.variance_actual_amount = var
             item.remaining_actual_amount = remain
 
