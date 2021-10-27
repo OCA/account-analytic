@@ -34,6 +34,16 @@ class AccountMoveLine(models.Model):
 
     @api.depends("product_id.categ_id.property_wip_account_id")
     def _compute_is_wip_account(self):
+        """
+        Identify WIP journal items.
+        This is needed to compute total WIP balance
+        and create WIP clearing journal entries.
+
+        It is a WIP item if any of:
+        - Has a Destination Location with Input account(from related Stock Move)
+        - Has a Source Location with Output account (from related Stock Move)
+        - Has a Product Category with a WIP Account set
+        """
         for line in self:
             if line.product_id:
                 wip_acc = (

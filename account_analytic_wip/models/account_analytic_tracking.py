@@ -138,6 +138,7 @@ class AnalyticTrackingItem(models.Model):
         for item in self:
             actual = 0.0
             to_post = 0.0
+            dif = 0
             wip = 0.0
             var = 0.0
             remain = 0.0
@@ -179,10 +180,9 @@ class AnalyticTrackingItem(models.Model):
         # Note: do not set analytic_account_id,
         # as that triggers a (repeated) Analytic Item
         return {
-            "name": _("WIP %s") % (self.display_name),
+            "ref": _("%s - WIP") % (self.display_name),
             "product_id": self.product_id.id,
             "product_uom_id": self.product_id.uom_id.id,
-            "ref": self.display_name,
             "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
@@ -256,12 +256,7 @@ class AnalyticTrackingItem(models.Model):
         linked to the Tracking Item and with a Clear Account set.
         """
         self and self.ensure_one()
-        var_amount = self.planned_amount - self.actual_amount
-        # total_amount = self.accounted_amount
-        # wip_amount = total_amount - var_amount
-        # if not (total_amount or var_amount or wip_amount):
-        #     return [], None
-
+        var_amount = self.difference_actual_amount
         accounts = self._get_accounting_data_for_valuation()
         journal = accounts["stock_journal"]
         acc_wip = accounts["stock_wip"]
@@ -291,7 +286,7 @@ class AnalyticTrackingItem(models.Model):
             move_lines, wip_journal = tracked._prepare_clear_wip_journal_entries()
             if move_lines:
                 je_vals = tracked._prepare_account_move_head(
-                    wip_journal, move_lines, "Clear WIP %s" % (tracked.display_name)
+                    wip_journal, move_lines, "Variance for %s" % (tracked.display_name)
                 )
                 je_new = AccountMove.create(je_vals)
                 je_new._post()
