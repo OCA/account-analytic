@@ -13,6 +13,8 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         supplierinfo = cls.env["product.supplierinfo"].create({"name": vendor.id})
         mto = cls.env.ref("stock.route_warehouse0_mto")
         buy = cls.env.ref("purchase_stock.route_warehouse0_buy")
+        warehouse = cls.env.ref("stock.warehouse0")
+        warehouse.mto_pull_id.route_id.active = True
         cls.product = cls.env["product.product"].create(
             {
                 "name": "Product Test",
