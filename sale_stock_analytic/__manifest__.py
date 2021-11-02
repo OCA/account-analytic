@@ -10,5 +10,5 @@
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["sale", "stock_analytic"],
+    "depends": ["sale_stock", "stock_analytic"],
 }
