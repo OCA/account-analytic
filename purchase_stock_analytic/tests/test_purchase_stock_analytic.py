@@ -2,40 +2,42 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields
-from odoo.tests.common import TransactionCase
+from odoo.tests.common import SavepointCase
 
 
-class TestPurchaseStockAnalytic(TransactionCase):
-    def setUp(self):
-        super(TestPurchaseStockAnalytic, self).setUp()
-        self.purchase_order_model = self.env["purchase.order"]
-        self.purchase_order_line_model = self.env["purchase.order.line"]
-        self.analytic_tag_model = self.env["account.analytic.tag"]
-        self.product_model = self.env["product.product"]
-        self.res_partner_model = self.env["res.partner"]
+class TestPurchaseStockAnalytic(SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        cls.purchase_order_model = cls.env["purchase.order"]
+        cls.purchase_order_line_model = cls.env["purchase.order.line"]
+        cls.analytic_tag_model = cls.env["account.analytic.tag"]
+        cls.product_model = cls.env["product.product"]
+        cls.res_partner_model = cls.env["res.partner"]
 
-        self.analytic_tag_1 = self.analytic_tag_model.create({"name": "Tag test 1"})
-        self.analytic_tag_2 = self.analytic_tag_model.create({"name": "Tag test 2"})
-        self.partner = self.res_partner_model.create({"name": "Partner test"})
-        self.product = self.product_model.create({"name": "Product test"})
-        self.analytic_account = self.env.ref("analytic.analytic_agrolait")
+        cls.analytic_tag_1 = cls.analytic_tag_model.create({"name": "Tag test 1"})
+        cls.analytic_tag_2 = cls.analytic_tag_model.create({"name": "Tag test 2"})
+        cls.partner = cls.res_partner_model.create({"name": "Partner test"})
+        cls.product = cls.product_model.create({"name": "Product test"})
+        cls.analytic_account = cls.env.ref("analytic.analytic_agrolait")
 
-        self.purchase_order = self.purchase_order_model.create(
-            {"partner_id": self.partner.id}
+        cls.purchase_order = cls.purchase_order_model.create(
+            {"partner_id": cls.partner.id}
         )
-        self.purchase_order_line = self.purchase_order_line_model.create(
+        cls.purchase_order_line = cls.purchase_order_line_model.create(
             {
                 "name": "purchase order line test",
                 "product_qty": 3,
-                "order_id": self.purchase_order.id,
+                "order_id": cls.purchase_order.id,
                 "price_unit": 20,
-                "product_id": self.product.id,
-                "account_analytic_id": self.analytic_account.id,
+                "product_id": cls.product.id,
+                "account_analytic_id": cls.analytic_account.id,
                 "analytic_tag_ids": [
-                    (6, 0, [self.analytic_tag_1.id, self.analytic_tag_2.id])
+                    (6, 0, [cls.analytic_tag_1.id, cls.analytic_tag_2.id])
                 ],
                 "date_planned": fields.Datetime.today(),
-                "product_uom": self.product.uom_po_id.id,
+                "product_uom": cls.product.uom_po_id.id,
             }
         )
 
