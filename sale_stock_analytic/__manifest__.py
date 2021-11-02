@@ -6,7 +6,7 @@
     "summary": """
         Copies the analytic account of the sale order and the analytic tags
         of the sale order line to the stock move""",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
