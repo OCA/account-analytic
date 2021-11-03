@@ -24,12 +24,6 @@ class AccountMove(models.Model):
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
-    # TODO: DROP
-    # clear_wip_account_id = fields.Many2one(
-    #     "account.account",
-    #     string="Clear WIP Account",
-    #     help="Counterpart account used when this WIP item is cleared",
-    # )
     is_wip = fields.Boolean(compute="_compute_is_wip_account")
 
     @api.depends("product_id.categ_id.property_wip_account_id")
