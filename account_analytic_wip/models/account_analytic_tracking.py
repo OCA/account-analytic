@@ -186,7 +186,6 @@ class AnalyticTrackingItem(models.Model):
             "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
-            # TODO: DROP "clear_wip_account_id": clear_account.id if clear_account else None,
         }
 
     def _get_accounting_data_for_valuation(self):
