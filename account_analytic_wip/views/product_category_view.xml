@@ -10,27 +10,6 @@
                 <field name="property_variance_account_id" />
             </field>
 
-            <!-- TODO: DROP
-            <group name="account_stock_property" position="inside">
-                <div colspan="2" class="alert alert-info mt16" role="status">
-                    <p><b>Manufacturing Operations WIP</b></p>
-                    <p>Set accounts for time spent on <b
-                        >manufacturing work orders, such as Labor and Overhead</b>:
-                    <ul>
-                        <li><b
-                                >Stock Valuation Account</b> is used for the Applied Cost account, during operations.</li>
-                        <li><b
-                                >Stock Input Account</b> is used for the WIP account, during operations.</li>
-                        <li><b
-                                >Stock Output Account</b> not used, also set with the WIP account.</li>
-                        <li><b
-                                >Variance Account</b> is used for the Variances account, on MO closing.</li>
-                    </ul>
-                    </p>
-                </div>
-            </group>
-            -->
-
         </field>
     </record>
 </odoo>
