@@ -253,8 +253,12 @@ class AnalyticTrackingItem(models.Model):
     def _prepare_clear_wip_journal_entries(self):
         """
         Returns a list of move line values, and the journal to use.
-        Will clear the balance of the Journal Items
-        linked to the Tracking Item and with a Clear Account set.
+        Will recognize the Variances.
+
+        May need reevaluation:
+        Note that it will not clear the WIP balance,
+        mainly because we don't have a clear account.
+        mrp_Account_analytic_wip does clear WIP amount.
         """
         self and self.ensure_one()
         var_amount = self.difference_actual_amount
