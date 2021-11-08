@@ -234,7 +234,6 @@ class AnalyticTrackingItem(models.Model):
         amount = self.pending_amount
         if amount and wip_journal:
             acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
-            # DROP: acc_clear = accounts["stock_output"]
             if not acc_wip:
                 raise exceptions.ValidationError(
                     _("Missing WIP Account for Product Category: %s")
@@ -242,7 +241,7 @@ class AnalyticTrackingItem(models.Model):
                 )
             move_lines = [
                 self._prepare_account_move_line(acc_applied, -amount),
-                self._prepare_account_move_line(acc_wip, amount),  # , acc_clear),
+                self._prepare_account_move_line(acc_wip, amount),
             ]
             je_vals = self._prepare_account_move_head(
                 wip_journal, move_lines, "WIP %s" % (self.display_name)
@@ -262,15 +261,10 @@ class AnalyticTrackingItem(models.Model):
         accounts = self._get_accounting_data_for_valuation()
         journal = accounts["stock_journal"]
         acc_wip = accounts["stock_wip"]
-        # DROP: acc_clear = accounts["stock_output"]
         acc_var = accounts.get("stock_variance") or acc_wip
         move_lines = (
             var_amount
             and [
-                # DROP:
-                # self._prepare_account_move_line(acc_wip, -total_amount),
-                # self._prepare_account_move_line(acc_clear, wip_amount),
-                # self._prepare_account_move_line(acc_var, var_amount),
                 self._prepare_account_move_line(acc_wip, -var_amount),
                 self._prepare_account_move_line(acc_var, +var_amount),
             ]
