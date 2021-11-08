@@ -29,8 +29,8 @@
         <field name="property_cost_method">standard</field>
         <field name="property_valuation">real_time</field>
         <field name="property_stock_account_output_categ_id" ref="clear_account" />
-        <field name="property_stock_wip_account_id" ref="wip_account" />
-        <field name="property_stock_variance_account_id" ref="variance_account" />
+        <field name="property_wip_account_id" ref="wip_account" />
+        <field name="property_variance_account_id" ref="variance_account" />
     </record>
 
 </odoo>
