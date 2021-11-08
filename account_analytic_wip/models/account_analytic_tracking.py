@@ -135,6 +135,7 @@ class AnalyticTrackingItem(models.Model):
         "child_ids",
     )
     def _compute_actual_amounts(self):
+        currency = self.env.company.currency_id
         for item in self:
             actual = 0.0
             to_post = 0.0
@@ -144,14 +145,16 @@ class AnalyticTrackingItem(models.Model):
             remain = 0.0
             if item.state != "cancel" and not item.child_ids:
                 doing = item.state in ("draft")
-                planned = item.planned_amount
+                planned = currency.round(item.planned_amount)
                 # If planned is zero, wip is zero and variance = -actual
                 # Otherwise there can be problems with unplanned additional work items
-                actual = -sum(
-                    x.amount_abcost if x.parent_id else x.amount
-                    for x in item.analytic_line_ids
+                actual = currency.round(
+                    -sum(
+                        x.amount_abcost if x.parent_id else x.amount
+                        for x in item.analytic_line_ids
+                    )
                 )
-                to_post = actual - item.accounted_amount
+                to_post = actual - currency.round(item.accounted_amount)
                 wip = min(actual, planned)
                 dif = actual - planned
                 remain = -dif if doing and dif <= 0.0 else 0.0
