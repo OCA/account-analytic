@@ -211,7 +211,13 @@ class AnalyticTrackingItem(models.Model):
                 "stock_input": categ.property_stock_account_input_categ_id,
                 "stock_output": categ.property_stock_account_output_categ_id,
                 "stock_valuation": categ.property_stock_valuation_account_id,
+                "stock_journal": categ.property_stock_journal,
             }
+        if not accounts.get("stock_journal"):
+            exceptions.ValidationError(
+                _("Missing Stock Journal for Category %s when closing %s")
+                % (categ.display_name, self.display_name)
+            )
         accounts.update(
             {
                 "stock_wip": categ.property_wip_account_id,
