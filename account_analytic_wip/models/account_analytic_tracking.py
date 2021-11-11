@@ -1,11 +1,7 @@
 # Copyright (C) 2021 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import logging
-
 from odoo import _, api, exceptions, fields, models
-
-_logger = logging.getLogger(__name__)
 
 
 class AnalyticTrackingItem(models.Model):
@@ -226,18 +222,19 @@ class AnalyticTrackingItem(models.Model):
 
     def _create_wip_journal_entry(self):
         accounts = self._get_accounting_data_for_valuation()
-        wip_journal = accounts["stock_journal"]
+        wip_journal = accounts.get("stock_journal")
         if not wip_journal:
-            _logger.warn(
-                "WIP JE can't be created for %s (product %s)", self, self.product_id
+            exceptions.ValidationError(
+                _("Missing Stock Journal for Product %s in operation %s")
+                % (self.product_id.display_name, self.display_name)
             )
         amount = self.pending_amount
         if amount and wip_journal:
             acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
             if not acc_wip:
                 raise exceptions.ValidationError(
-                    _("Missing WIP Account for Product Category: %s")
-                    % (self.product_id.categ_id.display_name)
+                    _("Missing WIP Account for Product %s in operation %s")
+                    % (self.product_id.display_name, self.display_name)
                 )
             move_lines = [
                 self._prepare_account_move_line(acc_applied, -amount),
