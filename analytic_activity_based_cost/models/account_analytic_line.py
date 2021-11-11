@@ -73,6 +73,7 @@ class AnalyticLine(models.Model):
             "parent_id": self.id,
             "activity_cost_id": cost_rule.id,
             "product_id": cost_rule.product_id.id,
+            "product_uom_id": cost_rule.product_id.uom_id.id,
             "unit_amount": 0.0,
             "amount": 0.0,
         }
