@@ -39,6 +39,20 @@ class StockMove(models.Model):
                     )
         return res
 
+    def _prepare_procurement_values(self):
+        """
+        Allows to transmit analytic account from moves to new
+        moves through procurement.
+        """
+        res = super()._prepare_procurement_values()
+        if self.analytic_account_id:
+            res.update(
+                {
+                    "analytic_account_id": self.analytic_account_id.id,
+                }
+            )
+        return res
+
     @api.model
     def _prepare_merge_moves_distinct_fields(self):
         fields = super()._prepare_merge_moves_distinct_fields()
