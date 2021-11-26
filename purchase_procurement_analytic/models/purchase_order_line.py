@@ -39,6 +39,10 @@ class PurchaseOrderLine(models.Model):
             )
             if line_candidates:
                 return first(line_candidates)
+            else:
+                # We return a void line to create a new one as the analytic
+                # account was provided in procurement
+                return line.browse()
         return line
 
     def _prepare_purchase_order_line_from_procurement(
