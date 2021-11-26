@@ -6,14 +6,14 @@
     "name": "Purchase Procurement Analytic",
     "summary": "This module sets analytic account in purchase order line from "
     "procurement analytic account",
-    "version": "10.0.2.0.0",
+    "version": "14.0.1.0.0",
     "category": "Analytic",
     "license": "AGPL-3",
-    "author": "Tecnativa, " "Odoo Community Association (OCA)",
+    "maintainers": ["rousseldenis"],
+    "author": "ACSONE SA/NV, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": [
-        "purchase",
-        "procurement_analytic",
+        "purchase_stock",
         "stock_analytic",
     ],
     "installable": True,
