@@ -3,7 +3,7 @@
 from odoo.tests import common
 
 
-class TestPurchaseProcurementAnalytic(common.SavepointCase):
+class TestPurchaseProcurementAnalytic(common.TransactionCase):
     """Use case : Prepare some data for current test case"""
 
     @classmethod
@@ -12,6 +12,7 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         vendor = cls.env["res.partner"].create({"name": "Partner #2"})
         supplierinfo = cls.env["product.supplierinfo"].create({"name": vendor.id})
         mto = cls.env.ref("stock.route_warehouse0_mto")
+        mto.write({"active": True})
         buy = cls.env.ref("purchase_stock.route_warehouse0_buy")
         cls.product = cls.env["product.product"].create(
             {
