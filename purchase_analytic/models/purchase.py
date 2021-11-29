@@ -24,8 +24,7 @@ class PurchaseOrder(models.Model):
 
     @api.depends("order_line.account_analytic_id")
     def _compute_project_id(self):
-        """ If all order line have same analytic account set project_id
-        """
+        """If all order line have same analytic account set project_id"""
         for po in self:
             al = po.project_id2
             if po.order_line:
@@ -37,8 +36,7 @@ class PurchaseOrder(models.Model):
             po.project_id = al
 
     def _inverse_project_id(self):
-        """ When set project_id set analytic account on all order lines
-        """
+        """When set project_id set analytic account on all order lines"""
         for po in self:
             if po.project_id:
                 po.order_line.write({"account_analytic_id": po.project_id.id})
@@ -46,10 +44,10 @@ class PurchaseOrder(models.Model):
 
     @api.onchange("project_id")
     def _onchange_project_id(self):
-        """ When change project_id set analytic account on all order lines
-            Do it in one operation to avoid to recompute the project_id field
-            during the change.
-            In case of new record, nothing is recomputed to avoid ugly message
+        """When change project_id set analytic account on all order lines
+        Do it in one operation to avoid to recompute the project_id field
+        during the change.
+        In case of new record, nothing is recomputed to avoid ugly message
         """
         r = []
         for ol in self.order_line:
