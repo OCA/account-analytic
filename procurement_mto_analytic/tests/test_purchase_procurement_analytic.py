@@ -4,7 +4,7 @@ from odoo.tests import common
 
 
 class TestPurchaseProcurementAnalytic(common.SavepointCase):
-    """ Use case : Prepare some data for current test case """
+    """Use case : Prepare some data for current test case"""
 
     @classmethod
     def setUpClass(cls):
