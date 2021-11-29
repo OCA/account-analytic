@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-09 02:38+0000\n"
-"PO-Revision-Date: 2021-11-28 23:37+0000\n"
+"PO-Revision-Date: 2021-11-29 22:36+0000\n"
 "Last-Translator: Muhammad Fathy Elbermawy <mido.prameg@gmail.com>\n"
 "Language-Team: Arabic (https://www.transifex.com/oca/teams/23907/ar/)\n"
 "Language: ar\n"
@@ -22,9 +22,8 @@ msgstr ""
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_tag_ids
-#, fuzzy
 msgid "Analytic Tags"
-msgstr "حساب تحليلي"
+msgstr "العلامات التحليلية"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_account_id
@@ -35,7 +34,7 @@ msgstr "حساب تحليلي"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:100
 #, python-format
 msgid "Analytic account and tags combination must be unique for distribution!"
-msgstr ""
+msgstr "يجب أن تكون تركيبة الحساب والعلامات التحليلية فريدة من نوعها للتوزيع!"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution
@@ -85,36 +84,36 @@ msgstr "أنشئ في"
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_display_name
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "اسم العرض"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_distribution_id
 msgid "Distribution"
-msgstr ""
+msgstr "التوزيع"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:39
 #, python-format
 msgid "Distribution name must be unique per Company!"
-msgstr ""
+msgstr "يجب أن يكون اسم التوزيع فريدًا لكل شركة!"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_ids
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 msgid "Distribution rules"
-msgstr ""
+msgstr "قواعد التوزيع"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_res_company_force_percent
 msgid "Force percent"
-msgstr ""
+msgstr "نسبة القوة"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_id
 msgid "ID"
-msgstr ""
+msgstr "معرف"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,help:account_analytic_distribution.field_res_company_force_percent
@@ -122,6 +121,8 @@ msgid ""
 "If checked, the sum of all percents of the analytic accounts in a "
 "distribution of this company must be 100%."
 msgstr ""
+"في حالة التحديد ، يجب أن يكون مجموع النسب المئوية للحسابات التحليلية في "
+"توزيع هذه الشركة 100%."
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_invoice
@@ -136,30 +137,30 @@ msgstr "خط الفاتورة"
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "بند دفتر اليومية"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution___last_update
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "تاريخ آخر تعديل"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_write_uid
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "آخر تحديث بواسطة"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_write_date
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "آخر تحديث في"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_name
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_percent
@@ -183,15 +184,15 @@ msgstr "النسبة يجب ان تكون اقل من او تساوي 100%!"
 #. module: account_analytic_distribution
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
 msgid "Rules"
-msgstr ""
+msgstr "قواعد"
 
 #. module: account_analytic_distribution
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:50
 #, python-format
 msgid "Rules percent doesn't sum 100%"
-msgstr ""
+msgstr "نسبة القواعد مجموعها لا يساوي 100%"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_sequence
 msgid "Sequence"
-msgstr ""
+msgstr "تسلسل"
