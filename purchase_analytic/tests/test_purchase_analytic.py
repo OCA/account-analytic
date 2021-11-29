@@ -17,9 +17,9 @@ class TestPurchaseAnalytic(TransactionCase):
         )
 
     def test_analytic_account(self):
-        """ Create a purchase order (create)
-            Set analytic account on purchase
-            Check analytic account on line is set
+        """Create a purchase order (create)
+        Set analytic account on purchase
+        Check analytic account on line is set
         """
         po = self.env["purchase.order"].create(
             {
@@ -46,9 +46,9 @@ class TestPurchaseAnalytic(TransactionCase):
         self.assertEqual(po.order_line.account_analytic_id.id, self.project.id)
 
     def test_project_id(self):
-        """ Create a purchase order (new)
-            Set analytic account on purchase
-            Check analytic account is on purchase
+        """Create a purchase order (new)
+        Set analytic account on purchase
+        Check analytic account is on purchase
         """
         po = self.env["purchase.order"].new(
             {
