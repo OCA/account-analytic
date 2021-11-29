@@ -4,7 +4,7 @@
     "name": "Purchase Analytic (MTO)",
     "summary": "This module sets analytic account in purchase order line from "
     "sale order analytic account",
-    "version": "13.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Analytic",
     "license": "AGPL-3",
     "author": "Tecnativa, VentorTech, Odoo Community Association (OCA)",
