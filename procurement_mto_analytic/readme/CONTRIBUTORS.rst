@@ -15,3 +15,7 @@
 * `Ecosoft <https://ecosoft.co.th/>`__:
 
   * Pimolnat Suntian <pimolnats@ecosoft.co.th>
+
+* `Jarsa <https://www.jarsa.com/>`__:
+
+  * Alan Ramos <alan.ramos@jarsa.com>
