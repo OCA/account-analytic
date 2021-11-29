@@ -27,7 +27,7 @@ addon | version | maintainers | summary
 [analytic_base_department](analytic_base_department/) | 14.0.1.0.0 |  | Add relationshet between Analytic and Department
 [analytic_partner](analytic_partner/) | 14.0.1.0.0 |  | Search and group analytic entries by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 14.0.1.0.0 |  | Group Analytic Entries by Dimensions
-[analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 14.0.1.0.0 |  | Analytic Accounts Dimensions Enhanced
+[analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 14.0.1.1.0 |  | Analytic Accounts Dimensions Enhanced
 [mrp_analytic](mrp_analytic/) | 14.0.1.1.0 |  | Adds the analytic account to the production order
 [mrp_analytic_child_mo](mrp_analytic_child_mo/) | 14.0.1.0.0 |  | Carry the Manufacturing Order Analytic Account to the generated Manufacturing Orders
 [mrp_analytic_sale_project](mrp_analytic_sale_project/) | 14.0.1.0.0 |  | Carry the Sales Order Analytic Account to the generated Manufacturing Orders
