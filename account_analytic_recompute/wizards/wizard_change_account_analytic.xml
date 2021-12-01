@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="wizard_change_account_analytic_form" model="ir.ui.view">
+		<field name="name">wizard.change.account.analytic.form</field>
+		<field name="model">wizard.change.account.analytic</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+                            <field name="company_id" invisible="1"/>
+							<field name="analytic_account_id" required="1"/>
+						</group>
+					</group>
+				</sheet>
+				<footer>
+					<button string="Aceptar" class="oe_highlight" type="object" name="change_account_analytic"/>
+					<button string="Cancelar" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+</odoo>

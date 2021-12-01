@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_move_form_inherit" model="ir.ui.view">
+            <field name="name">account.move.form.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='analytic_account_id']" position="before">
+                    <button type="object" icon="fa-list" name="recompute_account_analytic">
+                        <span>Change Account Analytic</span>
+                     </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
