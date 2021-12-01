@@ -13,6 +13,6 @@ class AccountMoveLine(models.Model):
                 'res_model': 'wizard.change.account.analytic',
                 'views': [[False, 'form']],
                 'context': {'current_analytic_account': self.analytic_account_id.id,
-                            'invoice_id': self.id},
+                            'move_line_id': self.id},
                 'target': 'new'
                 }
