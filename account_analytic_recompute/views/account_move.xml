@@ -7,7 +7,8 @@
             <field name="inherit_id" ref="account.view_move_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree//field[@name='analytic_account_id']" position="before">
-                    <button type="object" icon="fa-list" name="recompute_account_analytic">
+                    <button type="object" icon="fa-list" name="recompute_account_analytic"
+                        attrs="{'column_invisible': [('parent.state', '!=', 'posted')]}">
                         <span>Change Account Analytic</span>
                      </button>
                 </xpath>
