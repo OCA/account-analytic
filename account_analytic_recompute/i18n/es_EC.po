@@ -1,0 +1,109 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_recompute
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-01 21:23+0000\n"
+"PO-Revision-Date: 2021-12-01 21:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_recompute
+#: model_terms:ir.ui.view,arch_db:account_analytic_recompute.account_move_form_inherit
+msgid "<span>Change Account Analytic</span>"
+msgstr "<span>Cambiar Cuenta Analítica</span>"
+
+#. module: account_analytic_recompute
+#: model_terms:ir.ui.view,arch_db:account_analytic_recompute.wizard_change_account_analytic_form
+msgid "Aceptar"
+msgstr ""
+
+#. module: account_analytic_recompute
+#: model:ir.model,name:account_analytic_recompute.model_wizard_change_account_analytic
+msgid ""
+"Allows you to change the \"Analytical account\" field of the invoice line in"
+" the published status."
+msgstr ""
+"Permite cambiar el campo \"Cuenta Analítica\" de las líneas de la facturas que están"
+" en estado publicado."
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,help:account_analytic_recompute.field_wizard_change_account_analytic__analytic_account_id
+#: model:ir.model.fields,help:account_analytic_recompute.field_wizard_change_account_analytic__last_analytic_account_id
+msgid ""
+"Allows you to change the analytical account and fill the table of analytical"
+" accounts"
+msgstr ""
+"Permite cambiar la cuenta analítica y llenar la tabla de cuentas"
+" analíticas"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__analytic_account_id
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__last_analytic_account_id
+msgid "Analytic Account"
+msgstr "Cuenta Analítica"
+
+#. module: account_analytic_recompute
+#: model_terms:ir.ui.view,arch_db:account_analytic_recompute.wizard_change_account_analytic_form
+msgid "Cancelar"
+msgstr ""
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__display_name
+msgid "Display Name"
+msgstr "Nombre a Mostrar"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_account_move_line__id
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__id
+msgid "ID"
+msgstr ""
+
+#. module: account_analytic_recompute
+#: model:ir.model,name:account_analytic_recompute.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic____last_update
+msgid "Last Modified on"
+msgstr "Fecha de modificación"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,field_description:account_analytic_recompute.field_wizard_change_account_analytic__write_date
+msgid "Last Updated on"
+msgstr "Actualizado el"
+
+#. module: account_analytic_recompute
+#: model:ir.model.fields,help:account_analytic_recompute.field_wizard_change_account_analytic__company_id
+msgid "Necessary we only have to show the analytical accounts per company"
+msgstr "Necesario para mostrar las cuentas analíticas solo de la compañia"
