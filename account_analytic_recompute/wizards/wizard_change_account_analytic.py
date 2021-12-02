@@ -16,6 +16,9 @@ class WizardChangeAccountAnalytic(models.TransientModel):
             raise UserError(u'The new analytical account must be different from the analytical account on the invoice '
                             u'line.')
         move_line_id = self.env['account.move.line'].browse(self._context.get('move_line_id'))
+        analytic_lines = self.env['account.analytic.line'].search([('move_id', '=', move_line_id.id)])
+        if analytic_lines:
+            analytic_lines.unlink()
         move_line_id.analytic_account_id = self.analytic_account_id
         move_line_id.create_analytic_lines()
 
