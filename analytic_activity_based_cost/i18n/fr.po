@@ -6,72 +6,76 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2021-12-08 16:39+0000\n"
+"Last-Translator: Yves Le Doeuff <yld@alliasys.fr>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__active
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #. module: analytic_activity_based_cost
 #: model:ir.actions.act_window,name:analytic_activity_based_cost.action_activity_cost_rule
 #: model:ir.ui.menu,name:analytic_activity_based_cost.menu_activity_cost_rule
 msgid "Activity Based Cost Rules"
-msgstr ""
+msgstr "Règle de coût par activité"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model,name:analytic_activity_based_cost.model_activity_cost_rule
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__activity_cost_id
 msgid "Activity Cost Rule"
-msgstr ""
+msgstr "Règle de coût de l'activité"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_product_product__activity_cost_ids
 #: model_terms:ir.ui.view,arch_db:analytic_activity_based_cost.view_analytic_line_form
 msgid "Activity Costs"
-msgstr ""
+msgstr "Coûts de l'activité"
 
 #. module: analytic_activity_based_cost
 #: model_terms:ir.ui.view,arch_db:analytic_activity_based_cost.view_product_template_form
 msgid "Activity Driven Costs"
-msgstr ""
+msgstr "Coûts liés à l'activité"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__parent_id
 msgid "Activity Product"
-msgstr ""
+msgstr "Article Activité"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,help:analytic_activity_based_cost.field_account_analytic_line__amount_abcost
 msgid "Amount on child Analytic Items, rolled up to the parent"
-msgstr ""
+msgstr "Montant sur les éléments analytiques enfants, remonté au parent"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model,name:analytic_activity_based_cost.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Ligne analytique"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__amount_abcost
 msgid "Breakdown Amount"
-msgstr ""
+msgstr "Répartition du montant"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__unit_abcost
 msgid "Breakdown Quantity"
-msgstr ""
+msgstr "Répartition de la quantité"
 
 #. module: analytic_activity_based_cost
 #: code:addons/analytic_activity_based_cost/models/product.py:0
 #, python-format
 msgid "Can't have Activity Costs set if it is not a Cost Driver."
 msgstr ""
+"On ne peut pas définir des coûts d'activité s'il ne s'agit pas d'un "
+"inducteur de coûts."
 
 #. module: analytic_activity_based_cost
 #: model_terms:ir.ui.view,arch_db:analytic_activity_based_cost.view_form_activity_cost_rule
@@ -81,38 +85,38 @@ msgstr ""
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__standard_price
 msgid "Cost"
-msgstr ""
+msgstr "Coût"
 
 #. module: analytic_activity_based_cost
 #: model:ir.actions.act_window,name:analytic_activity_based_cost.product_product_action_cost_type
 #: model:ir.ui.menu,name:analytic_activity_based_cost.product_product_menu_cost_type
 msgid "Cost Drivers"
-msgstr ""
+msgstr "Inducteurs de coût"
 
 #. module: analytic_activity_based_cost
 #: model_terms:ir.ui.view,arch_db:analytic_activity_based_cost.view_form_activity_cost_rule
 msgid "Cost Generated"
-msgstr ""
+msgstr "Coût généré"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__product_id
 msgid "Cost Product"
-msgstr ""
+msgstr "Article de coût"
 
 #. module: analytic_activity_based_cost
 #: model_terms:ir.actions.act_window,help:analytic_activity_based_cost.product_product_action_cost_type
 msgid "Create a new cost type product"
-msgstr ""
+msgstr "Créer un nouvel article de coût"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__name
@@ -141,18 +145,25 @@ msgid ""
 "        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
 "        Used to compute margins on sale orders."
 msgstr ""
+"En Prix Standard & AVCO : valeur du produit (calculée automatiquement en "
+"AVCO).\n"
+"        En FIFO : valeur de la dernière unité qui a quitté le stock ("
+"calculée automatiquement).\n"
+"        Utilisé pour évaluer le produit lorsque le coût d'achat n'est pas "
+"connu (par exemple, ajustement de l'inventaire).\n"
+"        Utilisé pour calculer les marges sur les commandes de vente."
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_product_product__is_cost_type
 #: model_terms:ir.ui.view,arch_db:analytic_activity_based_cost.product_search_form_view
 msgid "Is Cost Driver"
-msgstr ""
+msgstr "Est un inducteur de coût"
 
 #. module: analytic_activity_based_cost
 #: model:product.product,name:analytic_activity_based_cost.labor_cost
 #: model:product.template,name:analytic_activity_based_cost.labor_cost_product_template
 msgid "Labor Cost"
-msgstr ""
+msgstr "Coût de la main-d'oeuvre"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line____last_update
@@ -175,49 +186,52 @@ msgstr ""
 #: model:product.product,name:analytic_activity_based_cost.machine_cost_driver
 #: model:product.template,name:analytic_activity_based_cost.machine_cost_driver_product_template
 msgid "Machine Operation"
-msgstr ""
+msgstr "Opération mécanisée"
 
 #. module: analytic_activity_based_cost
 #: model_terms:ir.ui.view,arch_db:analytic_activity_based_cost.view_analytic_line_filter
 msgid "No Driven Costs"
-msgstr ""
+msgstr "Pas de coûts induits"
 
 #. module: analytic_activity_based_cost
 #: model:product.product,name:analytic_activity_based_cost.overhead_cost
 #: model:product.template,name:analytic_activity_based_cost.overhead_cost_product_template
 msgid "Overhead Cost"
-msgstr ""
+msgstr "Frais généraux"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__parent_id
 msgid "Parent Analytic Item"
-msgstr ""
+msgstr "Elément analytique parent"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model,name:analytic_activity_based_cost.model_product_product
 msgid "Product"
-msgstr ""
+msgstr "Produit"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_activity_cost_rule__factor
 msgid "Qty. Factor"
-msgstr ""
+msgstr "Facteur Qté"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,help:analytic_activity_based_cost.field_account_analytic_line__unit_abcost
 msgid "Quantity set on child Analytic Items, rolled up to the parent"
 msgstr ""
+"Quantité définie sur les éléments analytiques enfants, remontée vers le "
+"parent"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_account_analytic_line__child_ids
 msgid "Related Analytic Items"
-msgstr ""
+msgstr "Eléments analytiques connexes"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,help:analytic_activity_based_cost.field_product_product__activity_cost_ids
 msgid ""
 "This product will also generate analytic items for these Activity Costs"
 msgstr ""
+"Ce produit génère également des éléments d'analyse pour ces coûts d'activité"
 
 #. module: analytic_activity_based_cost
 #: model:product.product,uom_name:analytic_activity_based_cost.labor_cost
@@ -227,4 +241,4 @@ msgstr ""
 #: model:product.template,uom_name:analytic_activity_based_cost.machine_cost_driver_product_template
 #: model:product.template,uom_name:analytic_activity_based_cost.overhead_cost_product_template
 msgid "Units"
-msgstr ""
+msgstr "Unités"
