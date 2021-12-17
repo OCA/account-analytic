@@ -9,12 +9,12 @@ class StockInventoryLine(models.Model):
     analytic_account_id = fields.Many2one(
         "account.analytic.account",
         string="Analytic Account",
-        default=lambda self: self.env.user.company_id.analytic_account_id.id,
+        default=lambda self: self.env.company.analytic_account_id.id,
     )
     analytic_tag_ids = fields.Many2many(
         "account.analytic.tag",
         string="Analytic Tags",
-        default=lambda self: self.env.user.company_id.analytic_tag_ids.ids,
+        default=lambda self: self.env.company.analytic_tag_ids.ids,
     )
 
     def _get_move_values(self, qty, location_id, location_dest_id, out):
