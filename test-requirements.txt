@@ -1,0 +1,4 @@
+
+# DONT MERGE
+odoo14-addon-stock-inventory-analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/417/head#subdirectory=setup/stock_inventory_analytic
+odoo14-addon-stock-warehouse-analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/418/head#subdirectory=setup/stock_warehouse_analytic
