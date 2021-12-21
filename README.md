@@ -31,6 +31,7 @@ addon | version | maintainers | summary
 [mrp_analytic](mrp_analytic/) | 14.0.1.1.0 |  | Adds the analytic account to the production order
 [mrp_analytic_child_mo](mrp_analytic_child_mo/) | 14.0.1.0.0 |  | Carry the Manufacturing Order Analytic Account to the generated Manufacturing Orders
 [mrp_analytic_sale_project](mrp_analytic_sale_project/) | 14.0.1.0.0 |  | Carry the Sales Order Analytic Account to the generated Manufacturing Orders
+[pos_analytic_by_config](pos_analytic_by_config/) | 14.0.1.0.0 |  | Use analytic account defined on POS configuration for POS orders
 [product_analytic](product_analytic/) | 14.0.1.0.0 |  | Add analytic account on products and product categories
 [stock_analytic](stock_analytic/) | 14.0.1.0.0 |  | Adds an analytic account and analytic tags in stock move
 [stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.0 |  | Stock Inventory Analytic
