@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-# Copyright 2016 ACSONE SA/NV
+# Copyright 2016-2021 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
 
 
 class AccountMoveLine(models.Model):
-
     _inherit = 'account.move.line'
 
     @api.model
@@ -19,7 +17,6 @@ class AccountMoveLine(models.Model):
             return False
         return True
 
-    @api.multi
     def create_analytic_lines(self):
         self = self.filtered(self._must_create_analytic_line)
-        return super(AccountMoveLine, self).create_analytic_lines()
+        return super().create_analytic_lines()

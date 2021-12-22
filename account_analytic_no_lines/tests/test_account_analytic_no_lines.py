@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
-# Copyright 2016 ACSONE SA/NV
+# Copyright 2016-2021 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests.common import SavepointCase
+from datetime import date
 
 
 class TestAccountAnalyticNoLines(SavepointCase):
@@ -17,9 +17,9 @@ class TestAccountAnalyticNoLines(SavepointCase):
         cls.account_analytic_account = cls.env['account.analytic.account']
         cls.account_analytic_line = cls.env['account.analytic.line']
         cls.account_journal = cls.env['account.journal']
+        cls.account_move = cls.env['account.move']
         cls.account_move_line = cls.env['account.move.line']
-        cls.account_invoice = cls.env['account.invoice']
-        cls.account_invoice_line = cls.env['account.invoice.line']
+        cls.date = date.today()
 
         # INSTANCES
 
@@ -52,54 +52,42 @@ class TestAccountAnalyticNoLines(SavepointCase):
         cls.aa_2 = cls.account_analytic_account.create({
             'name': 'AA 2'})
 
-        # Journal
-        cls.journal = cls.account_journal.create({
-            'name': 'Bank Journal Test',
-            'type': 'bank',
-            'code': 'BKTEST',
-            'default_debit_account_id': cls.account_550001.id,
-            'default_credit_account_id': cls.account_550001.id})
-
-        # Invoice lines
-        cls.invoice_line_1 = cls.account_invoice_line.create({
-            'name': 'Test invoice line 1',
-            'price_unit': 50,
-            'quantity': 2,
-            'account_id': cls.account_600000.id,
-            'account_analytic_id': cls.aa_1.id})
-        cls.invoice_line_2 = cls.account_invoice_line.create({
-            'name': 'Test invoice line 2',
-            'price_unit': 25,
-            'quantity': 2,
-            'account_id': cls.account_600000.id,
-            'account_analytic_id': cls.aa_1.id})
-        cls.invoice_line_3 = cls.account_invoice_line.create({
-            'name': 'Test invoice line 3',
-            'price_unit': -100,
-            'quantity': 1,
-            'account_id': cls.account_600000.id,
-            'account_analytic_id': cls.aa_2.id})
-        cls.invoice_line_4 = cls.account_invoice_line.create({
-            'name': 'Test invoice line 4',
-            'price_unit': 1,
-            'quantity': 0,
-            'account_id': cls.account_600000.id,
-            'account_analytic_id': cls.aa_2.id})
-
         # Invoice
-        cls.invoice = cls.account_invoice.create({
+        cls.invoice = cls.account_move.create({
+            'invoice_date': cls.date,
             'partner_id': cls.user.id,
-            'account_id': cls.account_440000.id,
-            'type': 'in_invoice',
-            'invoice_line_ids': [(6, 0, [cls.invoice_line_1.id,
-                                         cls.invoice_line_2.id,
-                                         cls.invoice_line_3.id])]})
-        cls.invoice_1 = cls.account_invoice.create({
+            'move_type': 'in_invoice',
+            'invoice_line_ids': [(0, 0, {
+                'name': 'Test invoice line 1',
+                'price_unit': 50,
+                'quantity': 2,
+                'account_id': cls.account_600000.id,
+                'analytic_account_id': cls.aa_1.id}),
+                (0, 0, {
+                'name': 'Test invoice line 2',
+                'price_unit': 25,
+                'quantity': 2,
+                'account_id': cls.account_600000.id,
+                'analytic_account_id': cls.aa_1.id}),
+                (0, 0, {
+                'name': 'Test invoice line 3',
+                'price_unit': -100,
+                'quantity': 1,
+                'account_id': cls.account_600000.id,
+                'analytic_account_id': cls.aa_2.id},
+                )],
+            })
+        cls.invoice_1 = cls.account_move.create({
+            'invoice_date': cls.date,
             'partner_id': cls.user.id,
-            'account_id': cls.account_440000.id,
-            'type': 'in_invoice',
-            'invoice_line_ids': [(6, 0, [cls.invoice_line_4.id])],
-            'payment_term_id': cls.env.ref('account.account_payment_term').id,
+            'move_type': 'in_invoice',
+            'invoice_line_ids': [(0, 0, {
+                'name': 'Test invoice line 4',
+                'price_unit': 1,
+                'quantity': 0,
+                'account_id': cls.account_600000.id,
+                'analytic_account_id': cls.aa_2.id}
+                )],
         })
 
     def test_create_analytic_lines(self):
@@ -110,7 +98,7 @@ class TestAccountAnalyticNoLines(SavepointCase):
         for this invoice.
         """
         move_lines = self.account_move_line.search([
-            ('invoice_id', '=', self.invoice.id)])
+            ('move_id', '=', self.invoice.id)])
         for line in move_lines:
             line.create_analytic_lines()
 
@@ -125,9 +113,9 @@ class TestAccountAnalyticNoLines(SavepointCase):
         The expected result is that no analytic line has been created
         for this invoice.
         """
-        self.invoice.action_move_create()
+        self.invoice.action_post()
         move_lines = self.account_move_line.search([
-            ('invoice_id', '=', self.invoice.id)])
+            ('move_id', '=', self.invoice.id)])
         analytic_lines = self.account_analytic_line.search(
             [('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
@@ -139,15 +127,15 @@ class TestAccountAnalyticNoLines(SavepointCase):
         The expected result is that no analytic line has been created
         for this invoice.
         """
-        self.invoice_1.action_move_create()
+        self.invoice_1.action_post()
         move_lines = self.account_move_line.search(
-            [('invoice_id', '=', self.invoice.id)])
+            [('move_id', '=', self.invoice.id)])
         analytic_lines = self.account_analytic_line.search(
             [('move_id', 'in', move_lines.ids)]).ids
         self.assertFalse(analytic_lines)
 
     def test_gl_amounts(self):
-        self.invoice.action_move_create()
+        self.invoice.action_post()
         self.assertEqual(self.aa_1.gl_debit, 150)
         self.assertEqual(self.aa_1.gl_credit, 0)
         self.assertEqual(self.aa_1.gl_balance, -150)

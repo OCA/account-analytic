@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2016 Acsone SA/NV
+<!-- Copyright 2016-2021 Acsone SA/NV
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 
 <odoo>
 
-    <!-- TODO change the id to show_analytic_entries when migrating to 11 -->
-    <record id="hide_analytic_entries" model="res.groups">
+    <record id="show_analytic_entries" model="res.groups">
         <field name="name">View Analytic Entries</field>
         <field name="category_id" ref="base.module_category_hidden"/>
     </record>
