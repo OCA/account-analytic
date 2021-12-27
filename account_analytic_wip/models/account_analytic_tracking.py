@@ -140,7 +140,7 @@ class AnalyticTrackingItem(models.Model):
             var = 0.0
             remain = 0.0
             if item.state != "cancel" and not item.child_ids:
-                doing = item.state in ("draft")
+                doing = item.state == "draft"
                 planned = currency.round(item.planned_amount)
                 # If planned is zero, wip is zero and variance = -actual
                 # Otherwise there can be problems with unplanned additional work items
