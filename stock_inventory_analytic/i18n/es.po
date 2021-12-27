@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-12-26 13:43+0000\n"
-"Last-Translator: Mat-moran <amadeo.moran@gmail.com>\n"
+"PO-Revision-Date: 2021-12-27 14:39+0000\n"
+"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Cambiar cantidad de producto"
 #. module: stock_inventory_analytic
 #: model:ir.model,name:stock_inventory_analytic.model_stock_inventory_line
 msgid "Inventory Line"
-msgstr ""
+msgstr "Línea de inventario"
 
 #. module: stock_inventory_analytic
 #: model:ir.model,name:stock_inventory_analytic.model_stock_move
