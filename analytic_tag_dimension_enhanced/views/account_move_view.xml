@@ -20,6 +20,21 @@
                     name="domain"
                 >['|', ('id', 'in', domain_tag_ids or []), ('analytic_dimension_id.by_sequence', '=', False)]</attribute>
             </xpath>
+            <!-- journal items -->
+            <xpath
+                expr="//field[@name='line_ids']/tree/field[@name='analytic_tag_ids']"
+                position="before"
+            >
+                <field name="domain_tag_ids" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//field[@name='line_ids']/tree/field[@name='analytic_tag_ids']"
+                position="attributes"
+            >
+                <attribute
+                    name="domain"
+                >['|', ('id', 'in', domain_tag_ids or []), ('analytic_dimension_id.by_sequence', '=', False)]</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
