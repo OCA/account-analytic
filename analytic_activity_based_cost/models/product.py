@@ -29,12 +29,13 @@ class Product(models.Model):
     @api.onchange("activity_cost_ids")
     def onchange_for_standard_price(self):
         "Rollup Activity Costs to parent Cost Type"
+        precision = self.env["decimal.precision"].precision_get("Product Price")
         for product in self.filtered("is_cost_type"):
             if product.type in ["consu", "service"]:
                 product.standard_price = sum(
                     float_round(
                         x.standard_price * x.factor,
-                        precision_rounding=product.currency_id.rounding,
+                        precision_digits=precision,
                     )
                     for x in product.sudo().activity_cost_ids
                 )
