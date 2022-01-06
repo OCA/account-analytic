@@ -20,6 +20,7 @@ setuptools.setup(
         'odoo14-addon-mrp_analytic',
         'odoo14-addon-mrp_analytic_child_mo',
         'odoo14-addon-mrp_analytic_sale_project',
+        'odoo14-addon-pos_analytic_by_config',
         'odoo14-addon-product_analytic',
         'odoo14-addon-stock_analytic',
         'odoo14-addon-stock_inventory_analytic',
