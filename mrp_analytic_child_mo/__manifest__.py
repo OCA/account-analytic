@@ -5,7 +5,7 @@
     "name": "Carry Analytic Account to child Manufacturing Orders",
     "summary": "Carry the Manufacturing Order Analytic Account to the "
     "generated Manufacturing Orders",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Manufacturing",
     "website": "https://github.com/OCA/account-analytic",
