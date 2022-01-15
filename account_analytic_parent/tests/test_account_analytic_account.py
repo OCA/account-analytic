@@ -18,19 +18,19 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.analytic_line_obj = self.env["account.analytic.line"]
         self.partner1 = self.env.ref("base.res_partner_1")
         self.partner2 = self.env.ref("base.res_partner_2")
-        self.analytic_parent1 = self.analytic_account_obj.create(
+        self.analytic_parent1 = self.create_analytic_account(
             {"name": "parent aa", "code": "01", "partner_id": self.partner1.id}
         )
-        self.analytic_son = self.analytic_account_obj.create(
+        self.analytic_son = self.create_analytic_account(
             {"name": "son aa", "code": "02", "parent_id": self.analytic_parent1.id}
         )
-        self.analytic_parent2 = self.analytic_account_obj.create(
+        self.analytic_parent2 = self.create_analytic_account(
             {"name": "parent2 aa", "code": "01", "partner_id": self.partner2.id}
         )
-        self.analytic_parent3 = self.analytic_account_obj.create(
+        self.analytic_parent3 = self.create_analytic_account(
             {"name": "parent3 aa", "code": "01", "partner_id": self.partner2.id}
         )
-        self.analytic_son2 = self.analytic_account_obj.create(
+        self.analytic_son2 = self.create_analytic_account(
             {"name": "son aa", "code": "02", "parent_id": self.analytic_parent3.id}
         )
         self.create_analytic_line("Analytic line son", self.analytic_son, 50)
@@ -41,6 +41,11 @@ class TestAccountAnalyticRecursion(TransactionCase):
             self.analytic_parent1.debit, 0, "Analytic account in the debit side"
         )
         self.assertEqual(self.analytic_parent3.debit, 50)
+
+    def create_analytic_account(self, values):
+        if hasattr(self.analytic_account_obj, "_default_code"):
+            values.pop("code")
+        return self.analytic_account_obj.create(values)
 
     def create_analytic_line(self, name, analytic, amount):
         return self.analytic_line_obj.create(
@@ -91,5 +96,6 @@ class TestAccountAnalyticRecursion(TransactionCase):
             self.analytic_son.toggle_active()
 
     def test_name(self):
+        display_name = "[%s] parent aa / son aa" % self.analytic_son.code
         self.assertEqual(self.analytic_son.complete_name, "parent aa / son aa")
-        self.assertEqual(self.analytic_son.display_name, "[02] parent aa / son aa")
+        self.assertEqual(self.analytic_son.display_name, display_name)
