@@ -24,7 +24,9 @@ class TestAccountAnalyticPlanRequired(SavepointCase):
                 "name": "test aa",
             }
         )
-        cls.account_type = cls.account_type_obj.create({"name": "Test account_type"})
+        cls.account_type = cls.account_type_obj.create(
+            {"name": "Test account type", "type": "other", "internal_group": "equity"}
+        )
         cls.account_id = cls.account_obj.create(
             {
                 "name": "Test account",
