@@ -9,6 +9,7 @@ class AnalyticAccountLine(models.Model):
     _inherit = "account.analytic.line"
 
     @api.onchange("project_id")
-    def onchange_project_id(self):
+    def _onchange_project_id(self):
         if self.project_id:
             self.partner_id = self.project_id.partner_id.id
+        return super()._onchange_project_id()
