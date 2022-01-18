@@ -45,7 +45,7 @@ class TestAnalyticPartnerHrTimesheet(common.SavepointCase):
 
     def test_onchange_project_id(self):
         self.line.project_id = self.project.id
-        self.line.onchange_project_id()
+        self.line._onchange_project_id()
         self.assertEqual(self.line.partner_id, self.line.project_id.partner_id)
 
     def test_compute_timesheet_count(self):

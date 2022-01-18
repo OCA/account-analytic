@@ -1,6 +1,7 @@
 * `Tecnativa <https://www.tecnativa.com>`_:
 
-  * Pedro M. Baeza <pedro.baeza@tecnativa.com>
-  * Rafael Blasco <rafael.blasco@tecnativa.com>
-  * Luis M. Ontalba <luis.martinez@tecnativa.com>
+  * Pedro M. Baeza
+  * Rafael Blasco
+  * Luis M. Ontalba
   * Carlos Dauden
+  * Ernesto Tejeda

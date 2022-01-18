@@ -4,10 +4,10 @@
 
 {
     "name": "Partner in HR timesheets",
-    "version": "12.0.1.1.0",
+    "version": "14.0.1.0.0",
     "summary": "Classify HR activities by partner",
     "category": "Human Resources",
-    "author": "Tecnativa, " "Odoo Community Association (OCA)",
+    "author": "Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/account-analytic",
     "depends": [
