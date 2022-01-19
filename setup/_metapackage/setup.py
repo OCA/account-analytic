@@ -16,6 +16,7 @@ setuptools.setup(
         'odoo14-addon-analytic_activity_based_cost',
         'odoo14-addon-analytic_base_department',
         'odoo14-addon-analytic_partner',
+        'odoo14-addon-analytic_partner_hr_timesheet',
         'odoo14-addon-analytic_tag_dimension',
         'odoo14-addon-analytic_tag_dimension_enhanced',
         'odoo14-addon-mrp_analytic',
