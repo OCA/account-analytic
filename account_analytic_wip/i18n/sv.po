@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2022-01-26 18:52+0000\n"
+"Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: account_analytic_wip
 #: model:ir.actions.server,name:account_analytic_wip.ir_cron_post_wip_ir_actions_server
@@ -24,57 +26,58 @@ msgstr ""
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Accounted"
-msgstr ""
+msgstr "Redovisad"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__accounted_amount
 msgid "Accounted Amount"
-msgstr ""
+msgstr "Redovisat belopp"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__variance_accounted_amount
 msgid "Accounted amount incurred above the planned amount limit."
-msgstr ""
+msgstr "Redovisat belopp som överstiger den planerade beloppsgränsen."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__wip_accounted_amount
 msgid "Accounted amount incurred below the planned amount limit."
 msgstr ""
+"Redovisat belopp som understiger gränsen för den planerade beloppsgränsen."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__activity_cost_id
 msgid "Activity Cost Rule"
-msgstr ""
+msgstr "Aktivitetskostnadsregel"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Actual"
-msgstr ""
+msgstr "Faktisk"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__actual_amount
 msgid "Actual Amount"
-msgstr ""
+msgstr "Faktiskt belopp"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__variance_actual_amount
 msgid "Actual amount incurred above the planned amount limit."
-msgstr ""
+msgstr "Faktiskt belopp över den planerade beloppsgränsen."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__wip_actual_amount
 msgid "Actual amount incurred below the planned amount limit."
-msgstr ""
+msgstr "Faktiskt belopp under den planerade beloppsgränsen."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__remaining_actual_amount
 msgid "Actual amount planned and not yet consumed."
-msgstr ""
+msgstr "Faktiskt planerat belopp och ännu inte har förbrukats."
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Actuals"
-msgstr ""
+msgstr "Faktiska"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__accounted_amount
@@ -82,17 +85,19 @@ msgid ""
 "Amount accounted in Journal Entries. Directly set by the routine creating "
 "the Journal Entries, and not directly read from the jpunral items."
 msgstr ""
+"Belopp som redovisas i journalposter. Fastställs direkt av den rutin som "
+"skapar journalposterna och läses inte direkt från journalposterna."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__pending_amount
 msgid "Amount not yet posted to journal entries."
-msgstr ""
+msgstr "Belopp som ännu inte har bokförts."
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_account
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__analytic_id
 msgid "Analytic Account"
-msgstr ""
+msgstr "Objektkonto"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__analytic_line_ids
@@ -103,12 +108,12 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Objektrad"
 
 #. module: account_analytic_wip
 #: model:ir.actions.act_window,name:account_analytic_wip.account_analytic_tracking_action
 msgid "Analytic Tracking"
-msgstr ""
+msgstr "Objektspårning"
 
 #. module: account_analytic_wip
 #: model:ir.ui.menu,name:account_analytic_wip.account_analytic_tracking_menu
@@ -118,7 +123,7 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__cancel
 msgid "Cancelled"
-msgstr ""
+msgstr "Avbruten"
 
 #. module: account_analytic_wip
 #: code:addons/account_analytic_wip/models/product_category.py:0
@@ -136,12 +141,12 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__company_id
 msgid "Company"
-msgstr ""
+msgstr "Bolag"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__product_id
 msgid "Cost Product"
-msgstr ""
+msgstr "Kostnadsprodukt"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_tracking_item
@@ -151,17 +156,17 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Skapad av"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Skapad den"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__date
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_account__display_name
@@ -172,12 +177,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__display_name
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_template__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__done
 msgid "Done"
-msgstr ""
+msgstr "Klar"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_account__id
@@ -188,7 +193,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__id
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_template__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_move_line__is_wip_line
@@ -219,32 +224,32 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category____last_update
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_template____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Senast redigerad den"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Senast uppdaterad av"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Senast uppdaterad den"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__close
 msgid "Locked"
-msgstr ""
+msgstr "Låst"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__name
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__open
 msgid "Open"
-msgstr ""
+msgstr "Öppen"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__state
@@ -267,22 +272,22 @@ msgstr ""
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Planned"
-msgstr ""
+msgstr "Planerad"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__planned_amount
 msgid "Planned Amount"
-msgstr ""
+msgstr "Planerat belopp"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__planned_qty
 msgid "Planned Qty"
-msgstr ""
+msgstr "Planerad kvantitet"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Post"
-msgstr ""
+msgstr "Bokför"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
@@ -292,18 +297,18 @@ msgstr ""
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Posted"
-msgstr ""
+msgstr "Bokförd"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_product_category
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__product_categ_id
 msgid "Product Category"
-msgstr ""
+msgstr "Produktkategori"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_product_template
 msgid "Product Template"
-msgstr ""
+msgstr "Produktmall"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__analytic_line_ids
@@ -318,12 +323,12 @@ msgstr ""
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Remaining"
-msgstr ""
+msgstr "Återstående"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__remaining_actual_amount
 msgid "Remaining Actual Amount"
-msgstr ""
+msgstr "Återstående faktiskt belopp"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__product_categ_id
