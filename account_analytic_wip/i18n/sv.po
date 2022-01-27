@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-01-26 18:52+0000\n"
+"PO-Revision-Date: 2022-01-27 10:40+0000\n"
 "Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
@@ -103,7 +103,7 @@ msgstr "Objektkonto"
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__analytic_line_ids
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Analytic Items"
-msgstr ""
+msgstr "Objektartiklar"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_line
@@ -118,7 +118,7 @@ msgstr "Objektspårning"
 #. module: account_analytic_wip
 #: model:ir.ui.menu,name:account_analytic_wip.account_analytic_tracking_menu
 msgid "Analytic Tracking Items"
-msgstr ""
+msgstr "Objektspårningsartiklar"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__cancel
@@ -151,7 +151,7 @@ msgstr "Kostnadsprodukt"
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_tracking_item
 msgid "Cost Tracking Item"
-msgstr ""
+msgstr "Kostnadsspårningsartikel"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__create_uid
@@ -203,17 +203,17 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__account_move_ids
 msgid "Journal Entries"
-msgstr ""
+msgstr "Journalposter"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Journalpost"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Journalrad"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_account____last_update
@@ -267,7 +267,7 @@ msgstr ""
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__pending_amount
 msgid "Pending Amount"
-msgstr ""
+msgstr "Väntande belopp"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
