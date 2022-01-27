@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-01-27 10:40+0000\n"
+"PO-Revision-Date: 2022-01-27 11:40+0000\n"
 "Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: model:ir.cron,cron_name:account_analytic_wip.ir_cron_post_wip
 #: model:ir.cron,name:account_analytic_wip.ir_cron_post_wip
 msgid "Account Analytic: post WIP and Variances journal entries"
-msgstr ""
+msgstr "Objektkonto: bokför journalposter för PIA och avvikelser"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
@@ -103,7 +103,7 @@ msgstr "Objektkonto"
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__analytic_line_ids
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Analytic Items"
-msgstr "Objektartiklar"
+msgstr "Objektposter"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_line
@@ -118,7 +118,7 @@ msgstr "Objektspårning"
 #. module: account_analytic_wip
 #: model:ir.ui.menu,name:account_analytic_wip.account_analytic_tracking_menu
 msgid "Analytic Tracking Items"
-msgstr "Objektspårningsartiklar"
+msgstr "Objektspårningsposter"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__cancel
@@ -132,11 +132,13 @@ msgid ""
 "Category %s has WIP Journal is set, so the WIP and Variance accounts must "
 "also be set."
 msgstr ""
+"Kategori %s har ställt in PIA-journal så PIA- och avvikelsekonton måste "
+"också ställas in."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__child_ids
 msgid "Child Tracking Items"
-msgstr ""
+msgstr "Barn-spårningsposter"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__company_id
@@ -151,7 +153,7 @@ msgstr "Kostnadsprodukt"
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_account_analytic_tracking_item
 msgid "Cost Tracking Item"
-msgstr "Kostnadsspårningsartikel"
+msgstr "Kostnadsspårningspost"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__create_uid
@@ -198,7 +200,7 @@ msgstr "ID"
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_move_line__is_wip_line
 msgid "Is Wip Line"
-msgstr ""
+msgstr "Är PIA-rad"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__account_move_ids
@@ -258,11 +260,14 @@ msgid ""
 "operations are completed, negative variances are computed. Locked operations"
 " are done and posted, no more actions to do."
 msgstr ""
+"Öppna transaktioner pågår och inga negativa avvikelser beräknas. Slutförda "
+"transaktioner är avslutade, negativa avvikelser beräknas. Låsta operationer "
+"är utförda och bokförda, inga fler åtgärder behöver göras."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__parent_id
 msgid "Parent Tracking Item"
-msgstr ""
+msgstr "Förälder-spårningspost"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__pending_amount
@@ -292,7 +297,7 @@ msgstr "Bokför"
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Post WIP and Variances"
-msgstr ""
+msgstr "Bokför PIA och avvikelser"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
@@ -313,12 +318,12 @@ msgstr "Produktmall"
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__analytic_line_ids
 msgid "Related analytic items with the project actuals."
-msgstr ""
+msgstr "Relaterade objektposter med projektets faktiska kostnader."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__account_move_ids
 msgid "Related journal entries with the posted WIP."
-msgstr ""
+msgstr "Journalposter relaterade till den bokförda PIA."
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
@@ -333,7 +338,7 @@ msgstr "Återstående faktiskt belopp"
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__product_categ_id
 msgid "Select category for the current product"
-msgstr ""
+msgstr "Välj kategori för den aktuella produkten"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_product_category__property_wip_journal_id
@@ -341,21 +346,23 @@ msgid ""
 "Set to enable WIP accounting. When doing automated WIP valuation, this is "
 "the Accounting Journal in which entries will be posted."
 msgstr ""
+"Ställ in för att aktivera PIA-redovisning. När du gör automatiska PIA-"
+"värderingar är detta den bokföringsjournal som bokföringen kommer att ske i."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__state
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__to_calculate
 msgid "To Calculate"
-msgstr ""
+msgstr "Att beräkna"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "To Post"
-msgstr ""
+msgstr "Att bokföra"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__actual_amount
@@ -364,6 +371,9 @@ msgid ""
 "generated when a cost is incurred, and will later generated WIP and Variance"
 " Journal Entries."
 msgstr ""
+"Total kostnad för de relaterade objektposter. Dessa objektposter genereras "
+"när en kostnad uppstår och kommer senare att generera PIA- och "
+"avvikelsebokningar."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_line__analytic_tracking_item_id
@@ -371,72 +381,72 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_move__analytic_tracking_item_id
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_payment__analytic_tracking_item_id
 msgid "Tracking Item"
-msgstr ""
+msgstr "Spårningspost"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_account__analytic_tracking_item_ids
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Tracking Items"
-msgstr ""
+msgstr "Spårningsposter"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Tracking List"
-msgstr ""
+msgstr "Spårningslista"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_bank_statement_line__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_move__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_payment__analytic_tracking_item_id
 msgid "Tracking item generating this journal entry"
-msgstr ""
+msgstr "Spårningspost som genererar denna journalpost"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Variance"
-msgstr ""
+msgstr "Avvikelse"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__property_variance_account_id
 msgid "Variance Account"
-msgstr ""
+msgstr "Avvikelsekonto"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__variance_accounted_amount
 msgid "Variance Accounted Amount"
-msgstr ""
+msgstr "Redovisat belopp för avvikelse"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__variance_actual_amount
 msgid "Variance Actual Amount"
-msgstr ""
+msgstr "Avvikelse faktiskt belopp"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "WIP"
-msgstr ""
+msgstr "PIA"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__property_wip_account_id
 msgid "WIP Account"
-msgstr ""
+msgstr "PIA-konto"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__property_wip_journal_id
 msgid "WIP Journal"
-msgstr ""
+msgstr "PIA-journal"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.view_account_costing_product_category
 msgid "WIP and Variance"
-msgstr ""
+msgstr "PIA och avvikelse"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__wip_accounted_amount
 msgid "Wip Accounted Amount"
-msgstr ""
+msgstr "PIA redovisat belopp"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__wip_actual_amount
 msgid "Wip Actual Amount"
-msgstr ""
+msgstr "PIA faktiskt belopp"
