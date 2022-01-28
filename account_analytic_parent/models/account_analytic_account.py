@@ -31,7 +31,7 @@ class AccountAnalyticAccount(models.Model):
         copy=True,
     )
     complete_name = fields.Char(
-        string="Complete Name", compute="_compute_complete_name", store=True
+        compute="_compute_complete_name", recursive=True, store=True
     )
 
     @api.depends("child_ids.line_ids.amount")
@@ -40,7 +40,7 @@ class AccountAnalyticAccount(models.Model):
         Warning, this method overwrites the standard because the hierarchy
         of analytic account changes
         """
-        super()._compute_debit_credit_balance()
+        res = super()._compute_debit_credit_balance()
 
         ResCurrency = self.env["res.currency"]
         AccountAnalyticLine = self.env["account.analytic.line"]
@@ -89,12 +89,14 @@ class AccountAnalyticAccount(models.Model):
             account.debit = abs(debit)
             account.credit = credit
             account.balance = account.credit - account.debit
+        return res
 
     @api.constrains("parent_id")
     def check_recursion(self):
         for account in self:
             if not super(AccountAnalyticAccount, account)._check_recursion():
                 raise UserError(_("You can not create recursive analytic accounts."))
+        return True
 
     @api.onchange("parent_id")
     def _onchange_parent_id(self):
@@ -127,7 +129,7 @@ class AccountAnalyticAccount(models.Model):
 
     @api.depends("complete_name", "code", "partner_id.commercial_partner_id.name")
     def _compute_display_name(self):
-        super()._compute_display_name()
+        return super()._compute_display_name()
 
     def name_get(self):
         res = []

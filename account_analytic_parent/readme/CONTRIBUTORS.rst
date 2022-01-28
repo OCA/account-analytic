@@ -12,3 +12,5 @@
   * Alexey Pelykh <alexey.pelykh@corphub.eu>
 
 * Pedro Gonzalez <pedro.gonzalez@pesol.es>
+
+* Darius Žižys <darius@vialaurea.lt>
