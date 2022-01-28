@@ -6,3 +6,5 @@
 * Pimolnat Suntian <pimolnats@ecosoft.co.th>
 * Reyes4711
 * Denis Roussel <denis.roussel@acsone.eu>
+
+* Darius Žižys <darius@vialaurea.lt>
