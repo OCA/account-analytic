@@ -79,7 +79,7 @@ msgstr "Il est interdit de créer des comptes analytiques récursifs."
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "[%(code)s] %(name)s"
-msgstr "{%(code)s  %(nom)s"
+msgstr ""
 
 #~ msgid "Created by"
 #~ msgstr "Créé par"
