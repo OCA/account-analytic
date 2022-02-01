@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_distribution_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2021-07-05 16:48+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: account_analytic_distribution_required
+#: model:ir.model,name:account_analytic_distribution_required.model_account_account_type
+msgid "Account Type"
+msgstr "Kontotyp"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,property_analytic_policy:0
+msgid "Always"
+msgstr "Immer"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,property_analytic_policy:0
+msgid "Always (analytic account or distribution)"
+msgstr "Immer (Kostenstelle oder -aufteilung)"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,property_analytic_policy:0
+msgid "Always (analytic distribution)"
+msgstr "Immer (Kostenaufteilung)"
+
+#. module: account_analytic_distribution_required
+#: code:addons/account_analytic_distribution_required/models/account.py:30
+#, python-format
+msgid "Analytic account and analytic distribution are mutually exclusive"
+msgstr ""
+"Das Verwenden von einer Kostenstelle und einer Kostenaufteilung schließt "
+"sich gegenseitig aus."
+
+#. module: account_analytic_distribution_required
+#: code:addons/account_analytic_distribution_required/models/account.py:47
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always (analytic account or distribution)' with "
+"account %s '%s' but the analytic distribution and the analytic account are "
+"missing in the account move line with label '%s'."
+msgstr ""
+"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
+"(Kostenstelle oder -aufteilung)\" gesetzt, aber die Kostenaufteilung und die "
+"Kostenstelle fehlen in der Buchungszeile mit der Bezeichnung '%s'."
+
+#. module: account_analytic_distribution_required
+#: code:addons/account_analytic_distribution_required/models/account.py:36
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always (analytic distribution)' with account %s "
+"'%s' but the analytic distribution is missing in the account move line with "
+"label '%s'."
+msgstr ""
+"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
+"(Kostenaufteilung)\" gesetzt, aber die Kostenaufteilung fehlt in der "
+"Buchungszeile mit der Bezeichnung '%s'."
+
+#. module: account_analytic_distribution_required
+#: code:addons/account_analytic_distribution_required/models/account.py:57
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic distribution %s '%s'."
+msgstr ""
+"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Nie\" gesetzt, "
+"aber in der Buchungszeile mit der Bezeichnung '%s' ist eine Kostenaufteilung "
+"%s '%s' angegeben."
+
+#. module: account_analytic_distribution_required
+#: model:ir.model,name:account_analytic_distribution_required.model_account_move_line
+msgid "Journal Item"
+msgstr "Journal-Buchung"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,property_analytic_policy:0
+msgid "Never"
+msgstr "Nie"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,property_analytic_policy:0
+msgid "Optional"
+msgstr "Optional"
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
+msgid "Policy for analytic account"
+msgstr "Richtlinie für Kostenstelle"
+
+#. module: account_analytic_distribution_required
+#: selection:account.account.type,property_analytic_policy:0
+msgid "Posted moves"
+msgstr "Gebuchte Zeilen"
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
+msgstr ""
+"Richtlinie für Kostenstellen festlegen:\n"
+"Wenn 'Optional' gewählt wird, kann der Buchhalter von Fall zu Fall "
+"entscheiden, ob eine Kostenstelle bei einer Buchungszeile gesetzt wird oder "
+"nicht. \n"
+"Wenn 'Immer' gewählt wird, erscheint eine Fehlermeldung, wenn keine "
+"Kostenstelle gesetzt ist.\n"
+"Wenn 'Gebuchte Zeilen' gewählt wird, erscheint eine Fehlermeldung, wenn beim "
+"Buchen der Rechnungszeile keine Kostenstelle gesetzt ist.\n"
+"Wenn 'Nie' gewählt wird, erscheint eine Fehlermeldung, wenn eine "
+"Kostenstelle gesetzt ist."
