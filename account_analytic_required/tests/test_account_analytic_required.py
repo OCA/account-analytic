@@ -6,7 +6,7 @@ from odoo import exceptions
 from odoo.tests import common
 
 
-class TestAccountAnalyticRequired(common.SavepointCase):
+class TestAccountAnalyticRequired(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestAccountAnalyticRequired, cls).setUpClass()
