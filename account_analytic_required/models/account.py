@@ -67,22 +67,22 @@ class AccountMoveLine(models.Model):
         if analytic_policy == "always" and not self.analytic_account_id:
             return _(
                 "Analytic policy is set to 'Always' with account "
-                "'%s' but the analytic account is missing in "
-                "the account move line with label '%s'."
-            ) % (
-                self.account_id.display_name,
-                self.name or "",
-            )
+                "'%(account)s' but the analytic account is missing in "
+                "the account move line with label '%(move)s'."
+            ) % {
+                "account": self.account_id.display_name,
+                "move": self.name or "",
+            }
         elif analytic_policy == "never" and self.analytic_account_id:
             return _(
                 "Analytic policy is set to 'Never' with account "
-                "'%s' but the account move line with label '%s' "
-                "has an analytic account '%s'."
-            ) % (
-                self.account_id.display_name,
-                self.name or "",
-                self.analytic_account_id.display_name,
-            )
+                "'%(account)s' but the account move line with label '%(move)s' "
+                "has an analytic account '%(analytic_account)s'."
+            ) % {
+                "account": self.account_id.display_name,
+                "move": self.name or "",
+                "analytic_account": self.analytic_account_id.display_name,
+            }
         elif (
             analytic_policy == "posted"
             and not self.analytic_account_id
@@ -90,12 +90,12 @@ class AccountMoveLine(models.Model):
         ):
             return _(
                 "Analytic policy is set to 'Posted moves' with "
-                "account '%s' but the analytic account is missing "
-                "in the account move line with label '%s'."
-            ) % (
-                self.account_id.display_name,
-                self.name or "",
-            )
+                "account '%(account)s' but the analytic account is missing "
+                "in the account move line with label '%(move)s'."
+            ) % {
+                "account": self.account_id.display_name,
+                "move": self.name or "",
+            }
         return None
 
     @api.constrains("analytic_account_id", "account_id", "debit", "credit")
