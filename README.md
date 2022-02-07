@@ -15,7 +15,11 @@ TODO: add repo description.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 
 [//]: # (end addons)
 
