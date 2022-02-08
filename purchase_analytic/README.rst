@@ -39,6 +39,11 @@ If a analytic account is set on the purchase order, all lines of the purchase wi
 Changelog
 =========
 
+13.0.1.0.0 (2022-02-08)
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Migrated to odoo 14.
+
 13.0.1.0.0 (2020-01-08)
 ~~~~~~~~~~~~~~~~~~~~~~~
 
