@@ -19,6 +19,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_analytic_parent](account_analytic_parent/) | 15.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 
 [//]: # (end addons)
