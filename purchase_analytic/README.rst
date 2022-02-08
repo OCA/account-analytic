@@ -14,16 +14,16 @@ Purchase Analytic
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/13.0/purchase_analytic
+    :target: https://github.com/OCA/account-analytic/tree/14.0/purchase_analytic
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-13-0/account-analytic-13-0-purchase_analytic
+    :target: https://translation.odoo-community.org/projects/account-analytic-14-0/account-analytic-13-0-purchase_analytic
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/87/13.0
+    :target: https://runbot.odoo-community.org/runbot/87/14.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 The goal of this module is to ease analytic account management on purchase order.
 This module add analytic account on purchase order.
@@ -38,11 +38,6 @@ If a analytic account is set on the purchase order, all lines of the purchase wi
 
 Changelog
 =========
-
-14.0.1.0.0 (2022-02-01)
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Migrated to odoo 14.
 
 13.0.1.0.0 (2020-01-08)
 ~~~~~~~~~~~~~~~~~~~~~~~
