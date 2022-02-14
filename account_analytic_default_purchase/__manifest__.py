@@ -8,10 +8,7 @@
     "category": "Accounting",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "depends": [
-        "account_analytic_default",
-        "purchase"
-    ],
+    "depends": ["account_analytic_default", "purchase"],
     "installable": True,
     "auto_install": True,
 }
