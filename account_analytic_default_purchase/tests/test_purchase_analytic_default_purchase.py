@@ -2,9 +2,10 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields
-from odoo.tests import common
+from odoo.tests import common, tagged
 
 
+@tagged("-at_install", "post_install")
 class TestPurchaseAnalyticDefault(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
@@ -16,13 +17,13 @@ class TestPurchaseAnalyticDefault(common.SavepointCase):
         cls.aa_obj = cls.env["account.analytic.account"]
 
         # Create partner, analytic account, default and product.
-        cls.partner = cls.partner_obj.create({"name": "Test Vendor",})
-        cls.analytic_acc = cls.aa_obj.create({"name": "Some Vendors account",})
+        cls.partner = cls.partner_obj.create({"name": "Test Vendor"})
+        cls.analytic_acc = cls.aa_obj.create({"name": "Some Vendors account"})
         cls.env["account.analytic.default"].create(
-            {"analytic_id": cls.analytic_acc.id, "partner_id": cls.partner.id,}
+            {"analytic_id": cls.analytic_acc.id, "partner_id": cls.partner.id}
         )
         cls.product_1 = cls.product_obj.create(
-            {"name": "Purchased product AA01", "type": "product",}
+            {"name": "Purchased product AA01", "type": "product"}
         )
 
     def test_01_po_default_analytic_account(self):
