@@ -56,6 +56,14 @@ class AccountMoveLine(models.Model):
             force_company=account.company_id.id
         ).property_analytic_policy
 
+    def _has_analytic_distribution(self):
+        # If the move line has an analytic tag with distribution, the field
+        # analytic_account_id may be empty. So in this case, we do not check it.
+        tags_with_analytic_distribution = self.analytic_tag_ids.filtered(
+            "active_analytic_distribution"
+        )
+        return bool(tags_with_analytic_distribution.analytic_distribution_ids)
+
     def _check_analytic_required_msg(self):
         for move_line in self:
             prec = move_line.company_currency_id.rounding
@@ -64,7 +72,11 @@ class AccountMoveLine(models.Model):
             ) and float_is_zero(move_line.credit, precision_rounding=prec):
                 continue
             analytic_policy = self._get_analytic_policy(move_line.account_id)
-            if analytic_policy == "always" and not move_line.analytic_account_id:
+            if (
+                analytic_policy == "always"
+                and not move_line.analytic_account_id
+                and not move_line._has_analytic_distribution()
+            ):
                 return _(
                     "Analytic policy is set to 'Always' with account "
                     "%s '%s' but the analytic account is missing in "
@@ -74,7 +86,13 @@ class AccountMoveLine(models.Model):
                     move_line.account_id.name,
                     move_line.name,
                 )
-            elif analytic_policy == "never" and move_line.analytic_account_id:
+            elif analytic_policy == "never" and (
+                move_line.analytic_account_id or move_line._has_analytic_distribution()
+            ):
+                analytic_account = (
+                    move_line.analytic_account_id
+                    or move_line.analytic_tag_ids.analytic_distribution_ids[:1]
+                )
                 return _(
                     "Analytic policy is set to 'Never' with account %s "
                     "'%s' but the account move line with label '%s' "
@@ -83,12 +101,13 @@ class AccountMoveLine(models.Model):
                     move_line.account_id.code,
                     move_line.account_id.name,
                     move_line.name,
-                    move_line.analytic_account_id.name_get()[0][1],
+                    analytic_account.name_get()[0][1],
                 )
             elif (
                 analytic_policy == "posted"
                 and not move_line.analytic_account_id
                 and move_line.move_id.state == "posted"
+                and not move_line._has_analytic_distribution()
             ):
                 return _(
                     "Analytic policy is set to 'Posted moves' with "
