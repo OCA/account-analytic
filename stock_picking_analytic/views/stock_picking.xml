@@ -16,8 +16,12 @@
                 />
             </field>
             <field name="move_ids_without_package" position="attributes">
-                <attribute name="context">
-                    {'default_analytic_account_id': analytic_account_id}
+                <attribute
+                    name="context"
+                    operation="python_dict"
+                    key="default_analytic_account_id"
+                >
+                    analytic_account_id
                 </attribute>
             </field>
         </field>
