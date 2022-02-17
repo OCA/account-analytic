@@ -9,7 +9,10 @@
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["stock_analytic"],
+    "depends": [
+        "stock_analytic",
+        "base_view_inheritance_extension",
+    ],
     "data": [
         "views/stock_picking.xml",
     ],
