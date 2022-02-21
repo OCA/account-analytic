@@ -6,34 +6,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2022-02-21 13:16+0000\n"
+"Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model,name:account_analytic_distribution_required.model_account_account_type
 msgid "Account Type"
-msgstr ""
+msgstr "Kontotyp"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields.selection,name:account_analytic_distribution_required.selection__account_account_type__property_analytic_policy__always_plan_or_account
 msgid "Always (analytic account or distribution)"
-msgstr ""
+msgstr "Alltid (objektkonto eller etikett)"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields.selection,name:account_analytic_distribution_required.selection__account_account_type__property_analytic_policy__always_plan
 msgid "Always (analytic distribution)"
-msgstr ""
+msgstr "Alltid (objektetikett)"
 
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid "Analytic account and analytic distribution are mutually exclusive"
 msgstr ""
+"Objektkonto och objektetiketter är ömsesidigt uteslutande (endast en får "
+"användas)"
 
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:0
@@ -43,6 +47,9 @@ msgid ""
 "account '%s' but the analytic distribution and the analytic account are "
 "missing in the account move line with label '%s'."
 msgstr ""
+"Objektpolicy är inställd på \"Alltid (objektkonto eller objektetikett)\" på "
+"konto '%s' men objektetiketter och objektkonton saknas på journalraden med "
+"etiketten '%s'."
 
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:0
@@ -52,6 +59,8 @@ msgid ""
 " but the analytic distribution is missing in the account move line with "
 "label '%s'."
 msgstr ""
+"Objektpolicy är inställd på \"Alltid (objektetikett)\" på konto '%s' men "
+"objektetiketter saknas på journalraden med etiketten '%s'."
 
 #. module: account_analytic_distribution_required
 #: code:addons/account_analytic_distribution_required/models/account.py:0
@@ -60,34 +69,36 @@ msgid ""
 "Analytic policy is set to 'Never' with account '%s' but the account move "
 "line with label '%s' has an analytic distribution"
 msgstr ""
+"Objektpolicy är inställd på \"Aldrig\" på konto '%s' men journalraden med "
+"etiketten '%s' har en objektetikett"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__display_name
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__id
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model,name:account_analytic_distribution_required.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Journalrad"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type____last_update
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Senast ändrad den"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
-msgstr ""
+msgstr "Objektkontopolicy"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
@@ -101,3 +112,14 @@ msgid ""
 "\n"
 "This field is company dependent."
 msgstr ""
+"Anger policyn för objektkonton.\n"
+"Om du väljer:\n"
+"- Valfritt: Bokföraren kan välja att ange ett objektkonto på en rad med den "
+"här typen av konto.\n"
+"- Alltid: Bokföraren får ett felmeddelande om det inte finns något "
+"objektkonto.\n"
+"- Bokförda poster: Bokföraren får ett felmeddelande om det inte finns något "
+"objektkonto när posten bokförs.\n"
+"- Aldrig: Bokföraren får ett felmeddelande om det finns ett objektkonto.\n"
+"\n"
+"Detta fält är bolagsberoende."
