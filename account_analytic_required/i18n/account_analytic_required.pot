@@ -25,6 +25,7 @@ msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
@@ -33,6 +34,7 @@ msgstr ""
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
+#: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
@@ -40,6 +42,7 @@ msgid ""
 msgstr ""
 
 #. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
