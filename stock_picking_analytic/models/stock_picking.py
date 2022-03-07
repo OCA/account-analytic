@@ -28,7 +28,9 @@ class StockPicking(models.Model):
         store=True,
     )
 
-    @api.depends("move_ids_without_package.analytic_account_id")
+    @api.depends(
+        "move_ids_without_package.analytic_account_id", "original_analytic_account_id"
+    )
     def _compute_analytic_account_id(self):
         """
         Get analytic account from first move and put it on picking
@@ -48,7 +50,7 @@ class StockPicking(models.Model):
 
     def _inverse_analytic_account_id(self):
         """
-        If anaytic account is set on picking, write it on all moves
+        If analytic account is set on picking, write it on all moves
         """
         for picking in self:
             if picking.analytic_account_id:

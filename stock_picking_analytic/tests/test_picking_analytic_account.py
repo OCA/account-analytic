@@ -11,7 +11,7 @@ class TestStockAnalytic(SavepointCase):
         cls.product_id = cls.env.ref("product.product_product_9")
         cls.uom_id = cls.env.ref("uom.product_uom_unit")
         cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "analytic accountic test"}
+            {"name": "analytic account test"}
         )
         cls.stock_location = cls.env.ref("stock.stock_location_stock")
         cls.customer_location = cls.env.ref("stock.stock_location_customers")
@@ -68,4 +68,46 @@ class TestStockAnalytic(SavepointCase):
         self.assertEqual(
             picking.analytic_account_id,
             self.analytic_account,
+        )
+
+    def test_compute_no_move(self):
+        """
+        Set analytic account on void picking
+        """
+        picking = self.picking
+        picking.move_ids_without_package = False
+        self.picking.analytic_account_id = self.analytic_account
+        self.assertEqual(picking.analytic_account_id, self.analytic_account)
+        self.assertEqual(picking.original_analytic_account_id, self.analytic_account)
+
+    def test_compute_different_analytic_account_id(self):
+        """
+        Add a move with another analytic account
+        Check if no analytic account is set
+        """
+        picking = self.picking
+        picking.move_ids_without_package.write(
+            {
+                "analytic_account_id": self.analytic_account.id,
+            }
+        )
+        self.picking.write(
+            {
+                "move_ids_without_package": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": "move test 2",
+                            "product_id": self.product_id.id,
+                            "product_uom": self.uom_id.id,
+                            "location_id": self.stock_location.id,
+                            "location_dest_id": self.customer_location.id,
+                        },
+                    )
+                ]
+            }
+        )
+        self.assertFalse(
+            picking.analytic_account_id,
         )
