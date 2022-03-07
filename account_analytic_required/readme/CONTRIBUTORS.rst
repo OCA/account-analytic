@@ -7,3 +7,7 @@
 * Akim Juillerat <akim.juillerat@camptocamp.com>
 * Raf Ven <raf.ven@dynapps.be>
 * Iván Todorovich <ivan.todorovich@druidoo.io>
+
+* `Tecnativa <https://www.tecnativa.com>`__:
+
+  * Sergio Teruel

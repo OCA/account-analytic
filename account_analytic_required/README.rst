@@ -77,6 +77,10 @@ Contributors
 * Raf Ven <raf.ven@dynapps.be>
 * Iván Todorovich <ivan.todorovich@druidoo.io>
 
+* `Tecnativa <https://www.tecnativa.com>`__:
+
+  * Sergio Teruel
+
 Maintainers
 ~~~~~~~~~~~
 
