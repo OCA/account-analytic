@@ -140,18 +140,14 @@ msgstr ""
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,help:analytic_activity_based_cost.field_activity_cost_rule__standard_price
 msgid ""
-"In Standard Price & AVCO: value of the product (automatically computed in AVCO).\n"
-"        In FIFO: value of the last unit that left the stock (automatically computed).\n"
-"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
+"In Standard Price & AVCO: value of the product (automatically computed in "
+"AVCO).\n"
+"        In FIFO: value of the next unit that will leave the stock "
+"(automatically computed).\n"
+"        Used to value the product when the purchase cost is not known (e.g. "
+"inventory adjustment).\n"
 "        Used to compute margins on sale orders."
 msgstr ""
-"En Prix Standard & AVCO : valeur du produit (calculée automatiquement en "
-"AVCO).\n"
-"        En FIFO : valeur de la dernière unité qui a quitté le stock ("
-"calculée automatiquement).\n"
-"        Utilisé pour évaluer le produit lorsque le coût d'achat n'est pas "
-"connu (par exemple, ajustement de l'inventaire).\n"
-"        Utilisé pour calculer les marges sur les commandes de vente."
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,field_description:analytic_activity_based_cost.field_product_product__is_cost_type
@@ -228,8 +224,7 @@ msgstr "Eléments analytiques connexes"
 
 #. module: analytic_activity_based_cost
 #: model:ir.model.fields,help:analytic_activity_based_cost.field_product_product__activity_cost_ids
-msgid ""
-"This product will also generate analytic items for these Activity Costs"
+msgid "This product will also generate analytic items for these Activity Costs"
 msgstr ""
 "Ce produit génère également des éléments d'analyse pour ces coûts d'activité"
 
@@ -242,3 +237,20 @@ msgstr ""
 #: model:product.template,uom_name:analytic_activity_based_cost.overhead_cost_product_template
 msgid "Units"
 msgstr "Unités"
+
+#~ msgid ""
+#~ "In Standard Price & AVCO: value of the product (automatically computed in "
+#~ "AVCO).\n"
+#~ "        In FIFO: value of the last unit that left the stock "
+#~ "(automatically computed).\n"
+#~ "        Used to value the product when the purchase cost is not known (e."
+#~ "g. inventory adjustment).\n"
+#~ "        Used to compute margins on sale orders."
+#~ msgstr ""
+#~ "En Prix Standard & AVCO : valeur du produit (calculée automatiquement en "
+#~ "AVCO).\n"
+#~ "        En FIFO : valeur de la dernière unité qui a quitté le stock "
+#~ "(calculée automatiquement).\n"
+#~ "        Utilisé pour évaluer le produit lorsque le coût d'achat n'est pas "
+#~ "connu (par exemple, ajustement de l'inventaire).\n"
+#~ "        Utilisé pour calculer les marges sur les commandes de vente."
