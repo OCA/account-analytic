@@ -24,3 +24,15 @@ class StockPicking(models.Model):
                 }
             )
         return super().create(vals)
+
+    @api.onchange("picking_type_id")
+    def _onchange_picking_type_id_analytic(self):
+        for picking in self:
+            if (
+                picking.picking_type_id
+                and picking.picking_type_id.analytic_account_id
+                and not picking.analytic_account_id
+            ):
+                picking.analytic_account_id = (
+                    picking.picking_type_id.analytic_account_id
+                )
