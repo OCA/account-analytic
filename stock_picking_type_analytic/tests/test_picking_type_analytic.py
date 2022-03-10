@@ -19,6 +19,12 @@ class TestStockAnalytic(SavepointCase):
         cls.picking_type_out = cls.env.ref("stock.picking_type_out")
         cls.picking_type_out.analytic_account_id = cls.analytic_account
 
+        cls.analytic_account_in = cls.env["account.analytic.account"].create(
+            {"name": "analytic accountic test in"}
+        )
+        cls.picking_type_in = cls.env.ref("stock.picking_type_in")
+        cls.picking_type_in.analytic_account_id = cls.analytic_account_in
+
     @classmethod
     def _create_picking(cls):
         cls.picking = cls.env["stock.picking"].create(
@@ -37,4 +43,17 @@ class TestStockAnalytic(SavepointCase):
         self._create_picking()
         self.assertEqual(
             self.picking.analytic_account_id, self.picking_type_out.analytic_account_id
+        )
+
+    def test_picking_analytic(self):
+        """
+        Create a picking with a picking type that has an analytic account
+        defined on it.
+        """
+        picking = self.env["stock.picking"].new()
+        picking.picking_type_id = self.picking_type_in
+        picking._onchange_picking_type_id_analytic()
+
+        self.assertEqual(
+            picking.analytic_account_id, self.picking_type_in.analytic_account_id
         )
