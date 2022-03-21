@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2019-10-07 11:10+0000\n"
-"Last-Translator: Jaume Planas <jaume.planas@minorisa.net>\n"
+"PO-Revision-Date: 2022-03-21 13:17+0000\n"
+"Last-Translator: Noel estudillo <noelestudilloviera@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_account_id
@@ -31,22 +31,22 @@ msgstr "Compte analític"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_tag_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_tag_ids
 msgid "Analytic Tags"
-msgstr ""
+msgstr "Etiquetes analítiques"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_product_product
 msgid "Product"
-msgstr ""
+msgstr "Producte"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
-msgstr ""
+msgstr "Moviments de producte (línia de moviment d'existències)"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_scrap
 msgid "Scrap"
-msgstr ""
+msgstr "Ferralla"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move
