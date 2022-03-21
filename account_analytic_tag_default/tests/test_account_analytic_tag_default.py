@@ -37,9 +37,9 @@ class TestAccountAnalyticTagDefault(TransactionCase):
         )
 
     def test_01_create_entry_no_tags(self):
-        invoice = self.move_obj.with_context(default_type="out_invoice").create(
+        invoice = self.move_obj.with_context(default_move_type="out_invoice").create(
             {
-                "type": "out_invoice",
+                "move_type": "out_invoice",
                 "company_id": self.company.id,
                 "journal_id": self.journal.id,
                 "partner_id": self.partner1.id,
@@ -65,9 +65,9 @@ class TestAccountAnalyticTagDefault(TransactionCase):
         self.assertEqual(invoice.invoice_line_ids.analytic_tag_ids, self.tag_03)
 
     def test_02_create_entry_with_different_tags(self):
-        invoice = self.move_obj.with_context(default_type="out_invoice").create(
+        invoice = self.move_obj.with_context(default_move_type="out_invoice").create(
             {
-                "type": "out_invoice",
+                "move_type": "out_invoice",
                 "company_id": self.company.id,
                 "journal_id": self.journal.id,
                 "partner_id": self.partner1.id,
