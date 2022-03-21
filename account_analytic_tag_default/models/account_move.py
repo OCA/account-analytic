@@ -9,7 +9,9 @@ class AccountMoveLine(models.Model):
 
     # make standard field a stored, computed, editable field.
     analytic_tag_ids = fields.Many2many(
-        compute="_compute_analytic_tag_ids", store=True, readonly=False,
+        compute="_compute_analytic_tag_ids",
+        store=True,
+        readonly=False,
     )
 
     @api.depends("analytic_account_id")
