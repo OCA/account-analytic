@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo14-addon-account_analytic_parent',
         'odoo14-addon-account_analytic_required',
         'odoo14-addon-account_analytic_sequence',
+        'odoo14-addon-account_analytic_tag_default',
         'odoo14-addon-account_analytic_wip',
         'odoo14-addon-analytic_activity_based_cost',
         'odoo14-addon-analytic_base_department',
