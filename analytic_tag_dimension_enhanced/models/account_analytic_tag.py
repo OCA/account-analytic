@@ -16,7 +16,7 @@ class AccountAnalyticTag(models.Model):
     )
 
     def _check_required_dimension(self, record):
-        """ Test all required dimension is selected (exclude non-invoice) """
+        """Test all required dimension is selected (exclude non-invoice)"""
         record.ensure_one()
         if "exclude_from_invoice_tab" in record and record.exclude_from_invoice_tab:
             return
