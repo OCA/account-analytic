@@ -4,7 +4,7 @@ from odoo.tests import common
 
 
 class TestPurchaseProcurementAnalytic(common.SavepointCase):
-    """ Use case : Prepare some data for current test case """
+    """Use case : Prepare some data for current test case"""
 
     @classmethod
     def setUpClass(cls):
@@ -37,6 +37,7 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
         analytic_account = self.env["account.analytic.account"].create(
             {"name": "Test Analytic Account"}
         )
+        analytic_account_bis = analytic_account.copy()
         sale_order = self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
@@ -57,11 +58,38 @@ class TestPurchaseProcurementAnalytic(common.SavepointCase):
             }
         )
         sale_order.with_context(test_enabled=True).action_confirm()
-
-        purchase_order = self.env["purchase.order.line"].search(
+        sale_order_bis = self.env["sale.order"].create(
+            {
+                "partner_id": self.partner.id,
+                "analytic_account_id": analytic_account_bis.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product.id,
+                            "product_uom_qty": 1,
+                            "price_unit": self.product.list_price,
+                            "name": self.product.name,
+                        },
+                    )
+                ],
+                "picking_policy": "direct",
+            }
+        )
+        sale_order_bis.with_context(test_enabled=True).action_confirm()
+        purchase_order_line_1 = self.env["purchase.order.line"].search(
             [("account_analytic_id", "=", analytic_account.id)]
         )
-        self.assertTrue(purchase_order)
+        self.assertTrue(purchase_order_line_1)
+        purchase_order_line_2 = self.env["purchase.order.line"].search(
+            [("account_analytic_id", "=", analytic_account_bis.id)]
+        )
+        self.assertTrue(purchase_order_line_2)
+        self.assertNotEqual(purchase_order_line_1.id, purchase_order_line_2.id)
+        self.assertEqual(
+            purchase_order_line_1.order_id.id, purchase_order_line_2.order_id.id
+        )
 
     def test_sale_service_product(self):
         analytic_account = self.env["account.analytic.account"].create(

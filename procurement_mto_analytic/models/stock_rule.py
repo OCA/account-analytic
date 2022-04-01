@@ -14,14 +14,3 @@ class StockRule(models.Model):
         )
         res.update({"account_analytic_id": values.get("account_analytic_id", False)})
         return res
-
-    def _make_po_get_domain(self, company_id, values, partner):
-        res = super()._make_po_get_domain(company_id, values, partner)
-        res += (
-            (
-                "order_line.account_analytic_id",
-                "=",
-                values.get("account_analytic_id", False),
-            ),
-        )
-        return res
