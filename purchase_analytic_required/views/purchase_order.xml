@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="purchase_order_form_view">
+        <field name="name">purchase.order.form (in purchase_analytic_required)</field>
+        <field name="model">purchase.order</field>
+        <field
+            name="inherit_id"
+            ref="purchase_analytic.purchase_order_view_form_inherit_purchase_analytic"
+        />
+        <field name="arch" type="xml">
+            <field name="project_id" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
