@@ -54,4 +54,4 @@ class TestSaleAnalytic(common.TransactionCase):
         mo = self.env["mrp.production"].search(
             [("analytic_account_id", "=", so_analytic.id)]
         )
-        self.assertEquals(len(mo), 1, "Expected one MO with the SO's Analytic Account")
+        self.assertEqual(len(mo), 1, "Expected one MO with the SO's Analytic Account")
