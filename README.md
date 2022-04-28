@@ -42,7 +42,7 @@ addon | version | maintainers | summary
 [purchase_stock_analytic](purchase_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
 [sale_stock_analytic](sale_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the sale order and the analytic tags of the sale order line to the stock move
 [stock_analytic](stock_analytic/) | 14.0.1.0.0 |  | Adds an analytic account and analytic tags in stock move
-[stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.1 |  | Stock Inventory Analytic
+[stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.2 |  | Stock Inventory Analytic
 
 [//]: # (end addons)
 
