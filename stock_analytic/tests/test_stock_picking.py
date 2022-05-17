@@ -15,6 +15,7 @@ class TestStockPicking(TransactionCase):
         super(TestStockPicking, self).setUp()
 
         self.product = self.env.ref("product.product_product_4")
+        self.product_2 = self.env.ref("product.product_product_5")
         self.product_categ = self.env.ref("product.product_category_5")
         self.valuation_account = self.env["account.account"].create(
             {
@@ -210,3 +211,31 @@ class TestStockPicking(TransactionCase):
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_analytic_account_no_error(picking)
+
+    def test_picking_add_extra_move_line(self):
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_account,
+            [self.analytic_tag_1.id | self.analytic_tag_2.id],
+        )
+        move_before = picking.move_lines
+
+        self.env["stock.move.line"].create(
+            {
+                "product_id": self.product_2.id,
+                "location_id": self.location.id,
+                "location_dest_id": self.dest_location.id,
+                "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "product_uom_id": self.product_2.uom_id.id,
+                "product_uom_qty": 1.0,
+                "analytic_account_id": self.analytic_account.id,
+                "company_id": self.env.company.id,
+                "picking_id": picking.id,
+            }
+        )
+
+        move_after = picking.move_lines - move_before
+
+        self.assertEqual(self.analytic_account, move_after.analytic_account_id)
