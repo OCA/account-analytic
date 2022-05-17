@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record
+        id="purchase_order_view_search_inherit_purchase_analytic"
+        model="ir.ui.view"
+    >
+        <field name="name">purchase.order.search (purchase_analytic)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="project_id" groups="analytic.group_analytic_accounting" />
+            </field>
+        </field>
+    </record>
+    <record id="purchase_order_view_tree_inherit_purchase_analytic" model="ir.ui.view">
+        <field name="name">purchase.order.tree (purchase_analytic)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree" />
+        <field name="arch" type="xml">
+            <field name="origin" position="before">
+                <field name="project_id" groups="analytic.group_analytic_accounting" />
+            </field>
+        </field>
+    </record>
+    <record id="purchase_order_view_form_inherit_purchase_analytic" model="ir.ui.view">
+        <field name="name">purchase.order.form (purchase_analytic)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <field name="partner_ref" position="after">
+                <field name="project_id2" invisible="1" />
+                <field
+                    name="project_id"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'no_create': True}"
+                />
+            </field>
+            <field name="order_line" position="attributes">
+                <attribute
+                    name="context"
+                >{'default_account_analytic_id': project_id}</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
