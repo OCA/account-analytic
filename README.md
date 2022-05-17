@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [account_analytic_tag_default](account_analytic_tag_default/) | 15.0.1.0.0 |  | Set default tags on analytic accounts.
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 15.0.1.0.0 |  | Add analytic account on products and product categories
+[purchase_analytic](purchase_analytic/) | 15.0.1.0.0 |  | Purchase Analytic
 
 [//]: # (end addons)
 
