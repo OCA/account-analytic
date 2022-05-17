@@ -59,8 +59,31 @@ class StockMove(models.Model):
         fields.append("analytic_account_id")
         return fields
 
+    def _prepare_move_line_vals(self, quantity=None, reserved_quant=None):
+        """
+        We fill in the analytic account when creating the move line from
+        the move
+        """
+        res = super()._prepare_move_line_vals(
+            quantity=quantity, reserved_quant=reserved_quant
+        )
+        if self.analytic_account_id:
+            res.update({"analytic_account_id": self.analytic_account_id.id})
+        return res
+
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
-    analytic_account_id = fields.Many2one(related="move_id.analytic_account_id")
+    analytic_account_id = fields.Many2one(comodel_name="account.analytic.account")
+
+    @api.model
+    def _prepare_stock_move_vals(self):
+        """
+        In the case move lines are created manually, we should fill in the
+        new move created here with the analytic account if filled in.
+        """
+        res = super()._prepare_stock_move_vals()
+        if self.analytic_account_id:
+            res.update({"analytic_account_id": self.analytic_account_id.id})
+        return res
