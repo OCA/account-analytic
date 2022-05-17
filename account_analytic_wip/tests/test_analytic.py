@@ -1,4 +1,3 @@
-from odoo import exceptions
 from odoo.tests import common
 
 
@@ -9,11 +8,7 @@ class TestAnalytic(common.TransactionCase):
         self.analytic_x = self.env["account.analytic.account"].create(
             {"name": "Analytic X"}
         )
-        # WIP Journal
-        self.wip_journal = self.env["account.journal"].create(
-            {"name": "WIP Journal", "type": "general", "code": "WIPX"}
-        )
-        # Accounts: Consume, WIP, Variance
+        # Accounts: Consume, WIP, Variance, Clear
         Account = self.env["account.account"]
         account_vals = {
             "code": "600010X",
@@ -27,13 +22,16 @@ class TestAnalytic(common.TransactionCase):
         self.variance_account = self.consume_account.copy(
             {"code": "600012X", "name": "Costing Variance"}
         )
+        self.clear_account = self.consume_account.copy(
+            {"code": "600020X", "name": "Costing Clear WIP"}
+        )
         # Product Category for the Driven Costs
         self.costing_categ = self.env["product.category"].create(
             {
                 "name": "Driven Costs",
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
-                "property_wip_journal_id": self.wip_journal.id,
+                "property_stock_account_output_categ_id": self.clear_account.id,
                 "property_wip_account_id": self.wip_account.id,
                 "property_variance_account_id": self.variance_account.id,
             }
@@ -82,18 +80,6 @@ class TestAnalytic(common.TransactionCase):
             }
         )
 
-    def test_100_categ_config_complete(self):
-        with self.assertRaises(exceptions.ValidationError):
-            self.env["product.category"].create(
-                {
-                    "name": "Engineer to Order",
-                    "property_cost_method": "standard",
-                    "property_valuation": "real_time",
-                    "property_wip_account_id": self.wip_account.id,
-                    "property_variance_account_id": self.variance_account.id,
-                }
-            )
-
     def test_110_product_cost_driver_compute_cost(self):
         """Cost Driver unit cost is the sum of the driver costs"""
         # TODO: this should really be a analytic_activity_based_cost test...
@@ -124,7 +110,7 @@ class TestAnalytic(common.TransactionCase):
         actual_amount = sum(tracking_items.mapped("actual_amount"))
         self.assertEqual(
             actual_amount,
-            375.0,
+            375.0,  # = ($10 + $15) * 15
             "Tracking total actual amount computation.",
         )
 
@@ -134,15 +120,20 @@ class TestAnalytic(common.TransactionCase):
         )
         self.assertEqual(
             tracking_labor.actual_amount,
-            225.0,
+            225.0,  # = $15 * 15
             "Tracking Labor actual amount computation.",
         )
 
         # No planned qty, means actual qty is WIP qty
         self.assertEqual(
             tracking_labor.wip_actual_amount,
+            0.0,
+            "With no planned amount, WIP is zero.",
+        )
+        self.assertEqual(
+            tracking_labor.variance_actual_amount,
             225.0,
-            "Tracking Labor WIP amount computation when no Planned Qty.",
+            "With no planned amount, Variance is the actual amount.",
         )
 
         # Set Planned Qty, means WIP and Variance are recomputed
@@ -167,15 +158,25 @@ class TestAnalytic(common.TransactionCase):
             "Tracking child item Variance recomputed when Planned Qty is set.",
         )
 
-        # Post to accounting, generates missing Variance JEs,
-        # but in this case those were already generated
-        # Closing clear the WIP balance
-        tracking_items.process_wip_and_variance(close=True)
+        # Post WIP to Accounting
+        tracking_items.process_wip_and_variance()
         jis = tracking_items.mapped("account_move_ids.line_ids")
         jis_wip = jis.filtered(lambda x: x.account_id == self.wip_account)
         wip_amount = sum(jis_wip.mapped("balance"))
-        self.assertEqual(wip_amount, 0.0)
+        self.assertEqual(wip_amount, 375.0)
 
         jis_var = jis.filtered(lambda x: x.account_id == self.variance_account)
+        var_amount = sum(jis_var.mapped("balance"))
+        self.assertEqual(var_amount, 0.0)
+
+        # Closing clears generates variances
+        JournalItems = self.env["account.move.line"]
+        tracking_items.clear_wip_journal_entries()
+        jis_wip = JournalItems.search([("account_id", "=", self.wip_account.id)])
+        wip_amount = sum(jis_wip.mapped("balance"))
+        # WIP is not cleared at the moment. Reconsider?
+        self.assertEqual(wip_amount, 300.0)
+
+        jis_var = JournalItems.search([("account_id", "=", self.variance_account.id)])
         var_amount = sum(jis_var.mapped("balance"))
         self.assertEqual(var_amount, 75.0)
