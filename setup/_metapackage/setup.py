@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo-addon-account_analytic_tag_default>=15.0dev,<15.1dev',
         'odoo-addon-procurement_mto_analytic>=15.0dev,<15.1dev',
         'odoo-addon-product_analytic>=15.0dev,<15.1dev',
+        'odoo-addon-purchase_analytic>=15.0dev,<15.1dev',
     ],
     classifiers=[
         'Programming Language :: Python',
