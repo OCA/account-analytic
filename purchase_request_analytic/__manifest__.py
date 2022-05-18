@@ -3,8 +3,8 @@
 
 {
     "name": "Purchase Request Analytic",
-    "version": "13.0.1.0.0",
-    "author": "Eficent, Odoo Community Association (OCA)",
+    "version": "14.0.1.0.0",
+    "author": "ForgeFlow, Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["purchase_request"],
