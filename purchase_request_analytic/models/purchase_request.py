@@ -24,8 +24,8 @@ class PurchaseRequest(models.Model):
 
     @api.depends("line_ids.analytic_account_id")
     def _compute_analytic_account_id(self):
-        """ If all purchase request lines have same analytic account set
-            analytic_account_id
+        """If all purchase request lines have same analytic account set
+        analytic_account_id
         """
         for pr in self:
             al = pr.analytic_account_id2
@@ -38,8 +38,8 @@ class PurchaseRequest(models.Model):
             pr.analytic_account_id = al
 
     def _inverse_analytic_account_id(self):
-        """ If analytic_account is set on PR, propagate it to all purchase
-            request lines
+        """If analytic_account is set on PR, propagate it to all purchase
+        request lines
         """
         for pr in self:
             if pr.analytic_account_id:
@@ -48,11 +48,11 @@ class PurchaseRequest(models.Model):
 
     @api.onchange("analytic_account_id")
     def _onchange_analytic_account_id(self):
-        """ When analytic_account_id is changed, set analytic account on all
-            purchase request lines.
-            Do it in one operation to avoid to recompute the
-            analytic_account_id field during the change.
-            In case of new record, nothing is recomputed to avoid ugly message
+        """When analytic_account_id is changed, set analytic account on all
+        purchase request lines.
+        Do it in one operation to avoid to recompute the
+        analytic_account_id field during the change.
+        In case of new record, nothing is recomputed to avoid ugly message
         """
         res = []
         for prl in self.line_ids:
