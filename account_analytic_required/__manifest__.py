@@ -8,7 +8,7 @@
     "license": "AGPL-3",
     "author": "Akretion, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["account_menu"],
+    "depends": ["account_usability"],
     "data": ["views/account_account_type.xml"],
     "installable": True,
 }
