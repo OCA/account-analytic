@@ -12,9 +12,9 @@ class TestPurchaseRequestAnalytic(TransactionCase):
         )
 
     def test_analytic_account(self):
-        """ Create a purchase order with line
-            Set analytic account on purchase
-            Check analytic account on line is set
+        """Create a purchase order with line
+        Set analytic account on purchase
+        Check analytic account on line is set
         """
         product_id = self.env.ref("product.product_product_9")
         pr = self.env["purchase.request"].create(
@@ -40,9 +40,9 @@ class TestPurchaseRequestAnalytic(TransactionCase):
         self.assertEqual(pr.line_ids.analytic_account_id.id, self.anal_id.id)
 
     def test_analytic(self):
-        """ Create a purchase order without line
-            Set analytic account on purchase
-            Check analytic account is on purchase
+        """Create a purchase order without line
+        Set analytic account on purchase
+        Check analytic account is on purchase
         """
         pr = self.env["purchase.request"].new(
             {"requested_by": self.env.user.id, "analytic_account_id": self.anal_id.id}
