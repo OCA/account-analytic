@@ -23,7 +23,7 @@ Purchase Request Analytic
     :target: https://runbot.odoo-community.org/runbot/87/14.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module adds the analytic account field to Purchase Requests.
 
@@ -85,7 +85,6 @@ Contributors
 * Beñat Jimenez <benat.jimenez@eficent.com>
 * Pimolnat Suntian <pimolnats@ecosoft.co.th>
 * Juany Davila <juany.davila@forgeflow.com>
-
 
 Maintainers
 ~~~~~~~~~~~
