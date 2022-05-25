@@ -9,3 +9,5 @@ class AccountMoveLine(models.Model):
     _name = "account.move.line"
     _inherit = ["analytic.dimension.line", "account.move.line"]
     _analytic_tag_field_name = "analytic_tag_ids"
+    _analytic_account_field_name = "analytic_account_id"
+    _add_dynamic_fields_in_views = False

@@ -4,3 +4,4 @@ from . import account_analytic_line
 from . import account_analytic_tag
 from . import account_invoice_report
 from . import account_move_line
+from . import ir_ui_view

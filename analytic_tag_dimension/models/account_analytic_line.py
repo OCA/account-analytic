@@ -9,3 +9,5 @@ class AccountAnalyticLine(models.Model):
     _name = "account.analytic.line"
     _inherit = ["analytic.dimension.line", "account.analytic.line"]
     _analytic_tag_field_name = "tag_ids"
+    _analytic_account_field_name = "account_id"
+    _add_dynamic_fields_in_views = False
