@@ -83,6 +83,23 @@
                         groups="analytic.group_analytic_tags"
                     />
                 </xpath>
+                <xpath expr="//sheet" position="inside">
+                    <field name="picking_type_analytic_account_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_picking_type_form_analytic" model="ir.ui.view">
+            <field name="name">view.picking.type.form.analytic</field>
+            <field name="model">stock.picking.type</field>
+            <field name="inherit_id" ref="stock.view_picking_type_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <group>
+                        <group string="Analytic" name="analytic_group" groups="analytic.group_analytic_accounting">
+                            <field name="analytic_account_id"/>
+                        </group>
+                    </group>
+                </xpath>
             </field>
         </record>
     </data>
