@@ -3,7 +3,7 @@
 
 {
     "name": "Analytic Accounting support for WIP and Variances",
-    "version": "14.0.3.0.0",
+    "version": "14.0.3.0.1",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "summary": "Track and report WIP and Variances based on Analytic Items",
     "website": "https://github.com/OCA/account-analytic",
