@@ -310,7 +310,7 @@ class AnalyticTrackingItem(models.Model):
                 item.accounted_amount = item.actual_amount
 
     def _cron_process_wip_and_variance(self):
-        items = self.search([("state", " in", ["draft"])])
+        items = self.search([("state", "in", ["draft"])])
         items.process_wip_and_variance()
 
     def action_cancel(self):
