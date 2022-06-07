@@ -4,12 +4,13 @@ from odoo.tests.common import TransactionCase
 
 
 class LineDepartmentCase(TransactionCase):
-    def setUp(self):
+    @classmethod
+    def setUpClass(cls):
         """Assign user and department."""
-        super(LineDepartmentCase, self).setUp()
+        super(LineDepartmentCase, cls).setUpClass()
         # base.user_demo --> hr.employee_qdp --> hr.dep_rd
-        self.user = self.env.ref("base.user_demo")
-        self.dep = self.env.ref("hr.dep_rd")
+        cls.user = cls.env.ref("base.user_demo")
+        cls.dep = cls.env.ref("hr.dep_rd")
 
     def test_default_department(self):
         """In a new users form, a user set only the firstname."""
