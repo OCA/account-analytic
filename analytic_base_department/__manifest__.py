@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Base Analytic Department Categorization",
-    "summary": "Add relationshet between Analytic and Department",
-    "version": "14.0.1.0.0",
+    "summary": "Add relationship between Analytic and Department",
+    "version": "15.0.1.0.0",
     "author": "Camptocamp, Daniel Reis, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
