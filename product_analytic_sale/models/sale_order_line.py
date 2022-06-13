@@ -10,9 +10,12 @@ class SaleOrderLine(models.Model):
 
     def _prepare_invoice_line(self, **optional_values):
         vals = super()._prepare_invoice_line(**optional_values)
-        ana_account = self.product_id.product_tmpl_id._get_product_analytic_accounts()[
-            "income"
-        ]
-        if ana_account:
-            vals["analytic_account_id"] = ana_account.id
+        if self.product_id:
+            ana_account = (
+                self.product_id.product_tmpl_id._get_product_analytic_accounts()[
+                    "income"
+                ]
+            )
+            if ana_account:
+                vals["analytic_account_id"] = ana_account.id
         return vals
