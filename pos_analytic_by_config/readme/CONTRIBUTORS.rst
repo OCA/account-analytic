@@ -6,3 +6,7 @@
 * `Tecnativa <https://www.tecnativa.com>`_
 
   * David Vidal
+
+* `Factor Libre S.L. <https://factorlibre.com/>`_
+
+  * Luis J. Salvatierra <luis.salvatierra@factorlibre.com>
