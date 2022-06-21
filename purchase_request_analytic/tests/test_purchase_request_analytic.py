@@ -1,4 +1,4 @@
-# Copyright 2019 Eficent Business and IT Consulting Services S.L.
+# Copyright 2019 ForgeFlow S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.tests.common import TransactionCase
@@ -47,5 +47,4 @@ class TestPurchaseRequestAnalytic(TransactionCase):
         pr = self.env["purchase.request"].new(
             {"requested_by": self.env.user.id, "analytic_account_id": self.anal_id.id}
         )
-        pr._onchange_analytic_account_id()
         self.assertEqual(pr.analytic_account_id.id, self.anal_id.id)
