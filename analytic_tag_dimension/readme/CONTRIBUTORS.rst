@@ -4,4 +4,5 @@
 * `Tecnativa <https://www.tecnativa.com>`__:
 
   * Carlos Dauden
+  * César A. Sánchez
 * Saran Lim. <saranl@ecosoft.co.th>
