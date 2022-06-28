@@ -50,12 +50,16 @@ class AccountAnalyticTag(models.Model):
                         raise ValidationError(
                             _(
                                 "You can not set two tags from same dimension.\n"
-                                " Records {} in the model {} have {}".format(
-                                    records_to_update.ids,
-                                    model._description,
-                                    same_dimension_tags.mapped("display_name"),
-                                )
+                                " Records %(records_to_update)s in the model "
+                                "%(description)s have %(display_name)s"
                             )
+                            % {
+                                "records_to_update": records_to_update.ids,
+                                "description": model._description,
+                                "display_name": same_dimension_tags.mapped(
+                                    "display_name"
+                                ),
+                            }
                         )
                     records_to_update.write({old_field: False, new_field: tag.id})
         return super().write(vals)
