@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form_purchase" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form (in purchase_procurement_analytic)</field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="purchase.res_config_settings_view_form_purchase"
+        />
+        <field name="arch" type="xml">
+            <div id="auto_receipt_reminder" position="after">
+                <div
+                    class="col-12 col-lg-6 o_setting_box"
+                    id="analytic_purchase_grouping"
+                >
+                    <div class="o_setting_right_pane">
+                        <label for="purchase_analytic_grouping" />
+                        <div class="text-muted">
+                            Choose the purchase grouping option if analytic account is set
+                        </div>
+                        <field name="purchase_analytic_grouping" />
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

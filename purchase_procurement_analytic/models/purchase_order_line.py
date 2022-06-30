@@ -32,6 +32,8 @@ class PurchaseOrderLine(models.Model):
             company_id,
             values,
         )
+        if company_id.purchase_analytic_grouping != "line":
+            return line
         analytic_id = values.get("analytic_account_id")
         if analytic_id:
             line_candidates = self.filtered(
@@ -48,6 +50,10 @@ class PurchaseOrderLine(models.Model):
     def _prepare_purchase_order_line_from_procurement(
         self, product_id, product_qty, product_uom, company_id, values, po
     ):
+        """
+        Add analytic account to purchase order line if analytic account
+        comes from procurement.
+        """
         res = super()._prepare_purchase_order_line_from_procurement(
             product_id, product_qty, product_uom, company_id, values, po
         )

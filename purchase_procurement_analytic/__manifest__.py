@@ -16,5 +16,6 @@
         "purchase_stock",
         "stock_analytic",
     ],
+    "data": ["views/res_config_settings.xml"],
     "installable": True,
 }

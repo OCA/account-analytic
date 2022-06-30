@@ -1,2 +1,4 @@
-This module allows to not group purchase lines that concern different
-analytic account if created from procurements.
+This module allows either:
+
+* To group generated purchase order lines per analytic account
+* To group generated purchase orders per analytic account
