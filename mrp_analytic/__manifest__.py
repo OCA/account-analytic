@@ -6,7 +6,7 @@
 {
     "name": "Analytic for manufacturing",
     "summary": "Adds the analytic account to the production order",
-    "version": "14.0.1.1.0",
+    "version": "15.0.1.0.0",
     "category": "Manufacturing",
     "author": "ForgeFlow, "
     "Antiun Ingeniería, "
@@ -16,7 +16,7 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "license": "AGPL-3",
-    "depends": ["mrp", "analytic", "stock_account"],
+    "depends": ["analytic", "mrp_account", ],
     "data": ["views/mrp_view.xml", "views/analytic_account_view.xml"],
     "installable": True,
 }
