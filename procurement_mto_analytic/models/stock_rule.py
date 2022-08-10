@@ -17,11 +17,12 @@ class StockRule(models.Model):
 
     def _make_po_get_domain(self, company_id, values, partner):
         res = super()._make_po_get_domain(company_id, values, partner)
-        res += (
-            (
-                "order_line.account_analytic_id",
-                "=",
-                values.get("account_analytic_id", False),
-            ),
-        )
+        if "account_analytic_id" in values and values["account_analytic_id"]:
+            res += (
+                (
+                    "order_line.account_analytic_id",
+                    "=",
+                    values.get("account_analytic_id", False),
+                ),
+            )
         return res
