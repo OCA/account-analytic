@@ -32,7 +32,7 @@ addon | version | maintainers | summary
 [analytic_tag_dimension_sale_warning](analytic_tag_dimension_sale_warning/) | 13.0.1.0.0 |  | Group Analytic Entries by Dimensions
 [mrp_analytic](mrp_analytic/) | 13.0.1.0.0 |  | Adds the analytic account to the production order
 [pos_analytic_by_config](pos_analytic_by_config/) | 13.0.1.0.1 |  | Use analytic account defined on POS configuration for POS orders
-[procurement_mto_analytic](procurement_mto_analytic/) | 13.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
+[procurement_mto_analytic](procurement_mto_analytic/) | 13.0.1.0.1 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 13.0.1.0.0 |  | Add analytic account on products and product categories
 [purchase_analytic](purchase_analytic/) | 13.0.1.0.0 |  | Purchase Analytic
 [purchase_request_analytic](purchase_request_analytic/) | 13.0.1.0.0 |  | Purchase Request Analytic
