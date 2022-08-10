@@ -1,0 +1,119 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_required
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-01 03:39+0000\n"
+"PO-Revision-Date: 2022-01-12 14:39+0000\n"
+"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
+"Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account_type
+msgid "Account Type"
+msgstr "Tipus de compte"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__always
+msgid "Always"
+msgstr "Sempre"
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
+msgstr ""
+"La política analítica s'ha establert en 'Sempre' en el compte %s '%s' però "
+"falta el compte analític a la línia de moviment del compte amb l'etiqueta "
+"'%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"line with label '%s' has an analytic account '%s'."
+msgstr ""
+"La política analítica s'ha establert en 'Mai' %s '%s' però l'apunt '%s' té "
+"el compte analític '%s'."
+
+#. module: account_analytic_required
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+"analytic account is missing in the account move line with label '%s'."
+msgstr ""
+"La política analítica conté el valor 'Moviments publicats' al compte %s '%s' "
+"però el compte analític no existeix en l'apunt amb etiqueta '%s'."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Journal Entries"
+msgstr "Assentaments"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunts"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
+msgid "Never"
+msgstr "Mai"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__optional
+msgid "Optional"
+msgstr "Opcional"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
+msgid "Policy for analytic account"
+msgstr "Política per als comptes analítics"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__posted
+msgid "Posted moves"
+msgstr "Moviments publicats"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
+msgstr ""
+"Estableix la política dels comptes analítics.\n"
+"Si seleccioneu:\n"
+"- Opcional: el comptable és lliure de posar un compte analític en una línia "
+"de moviment de compte amb aquest tipus de compte.\n"
+"- Sempre: el comptable rebrà un missatge d'error si no hi ha cap compte "
+"analític.\n"
+"- Moviments publicats: el comptable rebrà un missatge d'error si no es "
+"defineix cap compte analític quan es publica el moviment.\n"
+"- Mai: el comptable rebrà un missatge d'error si hi ha un compte analític.\n"
+"\n"
+"Aquest camp depèn de l'empresa."
