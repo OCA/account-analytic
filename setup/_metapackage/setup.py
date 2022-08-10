@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo-addon-account_analytic_parent>=15.0dev,<15.1dev',
+        'odoo-addon-account_analytic_required>=15.0dev,<15.1dev',
         'odoo-addon-account_analytic_sequence>=15.0dev,<15.1dev',
         'odoo-addon-account_analytic_tag_default>=15.0dev,<15.1dev',
         'odoo-addon-procurement_mto_analytic>=15.0dev,<15.1dev',
