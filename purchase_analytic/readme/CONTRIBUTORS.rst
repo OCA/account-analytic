@@ -4,3 +4,5 @@
 * `Jarsa <https://www.jarsa.com>`_
 
   * Alan Ramos
+
+* Lois Rilo <lois.rilo@forgeflow.com>
