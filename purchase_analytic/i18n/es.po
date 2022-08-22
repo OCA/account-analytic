@@ -18,13 +18,8 @@ msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__project_id
-msgid "Contract / Analytic"
-msgstr "Contrato / Cuenta analítica"
-
-#. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__project_id2
-msgid "Project Id2"
-msgstr "Id2 del proyecto"
+msgid "Analytic Account"
+msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model,name:purchase_analytic.model_purchase_order
@@ -33,10 +28,17 @@ msgstr "Pedido de compra"
 
 #. module: purchase_analytic
 #: model:ir.model.fields,help:purchase_analytic.field_purchase_order__project_id
-msgid "The analytic account related to a sales order."
-msgstr "La cuenta analítica relacionada con un pedido de venta."
+msgid "The analytic account related to a purchase order."
+msgstr ""
 
-#. module: purchase_analytic
-#: model:ir.model.fields,help:purchase_analytic.field_purchase_order__project_id2
-msgid "Use to store the value of project_id if there is no lines"
-msgstr "Almacena el valor de project_id si no hay líneas"
+#~ msgid "Contract / Analytic"
+#~ msgstr "Contrato / Cuenta analítica"
+
+#~ msgid "Project Id2"
+#~ msgstr "Id2 del proyecto"
+
+#~ msgid "The analytic account related to a sales order."
+#~ msgstr "La cuenta analítica relacionada con un pedido de venta."
+
+#~ msgid "Use to store the value of project_id if there is no lines"
+#~ msgstr "Almacena el valor de project_id si no hay líneas"
