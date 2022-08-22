@@ -92,6 +92,8 @@ Contributors
 
   * Alan Ramos
 
+* Lois Rilo <lois.rilo@forgeflow.com>
+
 Maintainers
 ~~~~~~~~~~~
 
