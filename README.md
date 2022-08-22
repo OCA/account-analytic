@@ -28,7 +28,7 @@ addon | version | maintainers | summary
 [analytic_tag_dimension](analytic_tag_dimension/) | 15.0.1.0.0 |  | Group Analytic Entries by Dimensions
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 15.0.1.0.0 |  | Add analytic account on products and product categories
-[purchase_analytic](purchase_analytic/) | 15.0.1.0.0 |  | Purchase Analytic
+[purchase_analytic](purchase_analytic/) | 15.0.2.0.0 |  | Purchase Analytic
 
 [//]: # (end addons)
 
