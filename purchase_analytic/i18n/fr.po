@@ -18,12 +18,22 @@ msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__project_id
-msgid "Contract / Analytic"
-msgstr "Contrat / analytique"
+msgid "Analytic Account"
+msgstr ""
 
 #. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__project_id2
-msgid "Project Id2"
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__id
+msgid "ID"
+msgstr ""
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: purchase_analytic
@@ -33,12 +43,13 @@ msgstr "Bon de commande"
 
 #. module: purchase_analytic
 #: model:ir.model.fields,help:purchase_analytic.field_purchase_order__project_id
-msgid "The analytic account related to a sales order."
+msgid "The analytic account related to a purchase order."
 msgstr ""
 
-#. module: purchase_analytic
-#: model:ir.model.fields,help:purchase_analytic.field_purchase_order__project_id2
-msgid "Use to store the value of project_id if there is no lines"
-msgstr ""
-"Utilisé pour stocker la valeur du champs project_id lorsqu'il n'y a pas de "
-"lignes"
+#~ msgid "Contract / Analytic"
+#~ msgstr "Contrat / analytique"
+
+#~ msgid "Use to store the value of project_id if there is no lines"
+#~ msgstr ""
+#~ "Utilisé pour stocker la valeur du champs project_id lorsqu'il n'y a pas "
+#~ "de lignes"
