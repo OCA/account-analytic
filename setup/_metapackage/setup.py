@@ -24,6 +24,7 @@ setuptools.setup(
         'odoo13-addon-purchase_analytic',
         'odoo13-addon-purchase_request_analytic',
         'odoo13-addon-purchase_stock_analytic',
+        'odoo13-addon-sale_stock_analytic',
         'odoo13-addon-stock_analytic',
         'odoo13-addon-stock_inventory_analytic',
         'odoo13-addon-stock_landed_costs_analytic',
