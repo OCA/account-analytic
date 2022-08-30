@@ -3,6 +3,7 @@
 
 
 from odoo import _, api, exceptions, fields, models
+from odoo.tools.float_utils import float_round
 
 
 class Product(models.Model):
@@ -28,9 +29,13 @@ class Product(models.Model):
     @api.onchange("activity_cost_ids")
     def onchange_for_standard_price(self):
         "Rollup Activity Costs to parent Cost Type"
+        precision = self.env["decimal.precision"].precision_get("Product Price")
         for product in self.filtered("is_cost_type"):
             if product.type in ["consu", "service"]:
                 product.standard_price = sum(
-                    x.standard_price * x.factor
+                    float_round(
+                        x.standard_price * x.factor,
+                        precision_digits=precision,
+                    )
                     for x in product.sudo().activity_cost_ids
                 )
