@@ -32,7 +32,7 @@ addon | version | maintainers | summary
 [analytic_partner](analytic_partner/) | 14.0.1.0.0 |  | Search and group analytic entries by partner
 [analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 14.0.1.0.0 |  | Classify HR activities by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 14.0.1.0.0 |  | Group Analytic Entries by Dimensions
-[analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 14.0.1.1.1 |  | Analytic Accounts Dimensions Enhanced
+[analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 14.0.1.1.2 |  | Analytic Accounts Dimensions Enhanced
 [mrp_analytic](mrp_analytic/) | 14.0.1.1.0 |  | Adds the analytic account to the production order
 [mrp_analytic_child_mo](mrp_analytic_child_mo/) | 14.0.1.0.1 |  | Carry the Manufacturing Order Analytic Account to the generated Manufacturing Orders
 [mrp_analytic_sale_project](mrp_analytic_sale_project/) | 14.0.1.0.0 |  | Carry the Sales Order Analytic Account to the generated Manufacturing Orders
