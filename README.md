@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [account_analytic_required](account_analytic_required/) | 15.0.1.0.1 |  | Account Analytic Required
 [account_analytic_sequence](account_analytic_sequence/) | 15.0.1.0.0 |  | Restore the analytic account sequence
 [account_analytic_tag_default](account_analytic_tag_default/) | 15.0.1.0.0 |  | Set default tags on analytic accounts.
+[analytic_base_department](analytic_base_department/) | 15.0.1.0.0 |  | Add relationship between Analytic and Department
 [analytic_tag_dimension](analytic_tag_dimension/) | 15.0.1.0.0 |  | Group Analytic Entries by Dimensions
 [mrp_analytic](mrp_analytic/) | 15.0.1.0.0 |  | Adds the analytic account to the production order
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
