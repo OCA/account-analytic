@@ -185,6 +185,7 @@ class AnalyticTrackingItem(models.Model):
             "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
+            "analytic_account_id": self.analytic_id.id,
         }
 
     def _get_accounting_data_for_valuation(self):
