@@ -7,7 +7,7 @@
 # Hosni Hadj Taher <hajhasni@hotmail.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-17 23:05+0000\n"
 "PO-Revision-Date: 2017-02-17 23:05+0000\n"
