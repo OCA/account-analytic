@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <data>
 
         <record id="view_product_template_form" model="ir.ui.view">
             <field name="name">Product Variant: add Activity Costs</field>
@@ -17,17 +16,17 @@
 
                 <notebook position="inside">
                     <page
-                        string="Activity Driven Costs"
-                        name="activity_cost"
-                        attrs="{'invisible': [('is_cost_type', '=', False)]}"
-                    >
+                    string="Activity Driven Costs"
+                    name="activity_cost"
+                    attrs="{'invisible': [('is_cost_type', '=', False)]}"
+                >
                         <field name="activity_cost_ids">
                             <tree name="activity_cost_ids_tree" editable="bottom">
                                 <field
-                                    name="product_id"
-                                    context="{'default_sale_ok': False, 'default_purchase_ok': False, 'default_type': 'service', 'default_taxes_id': False}"
-                                    domain="[('type', 'in', ['consu', 'service'])]"
-                                />
+                                name="product_id"
+                                context="{'default_sale_ok': False, 'default_purchase_ok': False, 'default_type': 'service', 'default_taxes_id': False}"
+                                domain="[('type', 'in', ['consu', 'service'])]"
+                            />
                                 <field name="standard_price" />
                                 <field name="factor" />
                                 <field name="name" />
@@ -46,11 +45,11 @@
             <field name="arch" type="xml">
                 <search position="inside">
                     <filter
-                        string="Is Cost Driver"
-                        name="filter_is_cost_type"
-                        domain="[('is_cost_type','=',True)]"
-                        context="{'default_is_cost_type': True, 'default_sale_ok': False, 'default_purchase_ok': False, 'default_type': 'service', 'default_taxes_id': False}"
-                    />
+                    string="Is Cost Driver"
+                    name="filter_is_cost_type"
+                    domain="[('is_cost_type','=',True)]"
+                    context="{'default_is_cost_type': True, 'default_sale_ok': False, 'default_purchase_ok': False, 'default_type': 'service', 'default_taxes_id': False}"
+                />
                 </search>
             </field>
         </record>
@@ -69,12 +68,11 @@
         </record>
 
         <menuitem
-            id="product_product_menu_cost_type"
-            name="Cost Drivers"
-            action="product_product_action_cost_type"
-            parent="account.menu_analytic_accounting"
-            sequence="500"
-        />
+        id="product_product_menu_cost_type"
+        name="Cost Drivers"
+        action="product_product_action_cost_type"
+        parent="account.menu_analytic_accounting"
+        sequence="500"
+    />
 
-    </data>
 </odoo>
