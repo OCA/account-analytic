@@ -27,6 +27,7 @@ setuptools.setup(
         'odoo14-addon-procurement_mto_analytic',
         'odoo14-addon-product_analytic',
         'odoo14-addon-product_analytic_purchase',
+        'odoo14-addon-product_analytic_sale',
         'odoo14-addon-purchase_analytic',
         'odoo14-addon-purchase_request_analytic',
         'odoo14-addon-purchase_stock_analytic',
