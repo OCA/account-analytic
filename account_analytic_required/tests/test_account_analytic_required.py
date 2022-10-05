@@ -194,7 +194,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         self._create_move(with_analytic=False, with_analytic_tag=True)
         self._set_analytic_policy("posted")
         line = self._create_move(with_analytic=False, with_analytic_tag=True)
-        line.move_id.post()
+        line.move_id.action_post()
         self._set_analytic_policy("never")
         with self.assertRaises(exceptions.ValidationError), self.cr.savepoint():
             self._create_move(with_analytic=False, with_analytic_tag=True)
