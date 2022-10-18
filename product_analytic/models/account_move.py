@@ -28,17 +28,19 @@ class AccountMoveLine(models.Model):
             self.analytic_account_id = ana_account.id
         return res
 
+    def _apply_product_analytic_accounts(self, vals, inv_type):
+        return (
+            vals.get("product_id") and inv_type and not vals.get("analytic_account_id")
+        )
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
             inv_type = self.env.context.get("inv_type", "out_invoice")
-            if (
-                vals.get("product_id")
-                and inv_type
-                and not vals.get("analytic_account_id")
-            ):
+            if self._apply_product_analytic_accounts(vals, inv_type):
                 product = self.env["product.product"].browse(vals.get("product_id"))
                 ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
                 ana_account = ana_accounts[INV_TYPE_MAP[inv_type]]
-                vals["analytic_account_id"] = ana_account.id
+                if ana_account:
+                    vals["analytic_account_id"] = ana_account.id
         return super().create(vals_list)
