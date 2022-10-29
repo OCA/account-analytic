@@ -7,8 +7,15 @@ from odoo.tests import common
 class TestMrpAnalytic(common.TransactionCase):
     def setUp(self):
         super(TestMrpAnalytic, self).setUp()
+        self.default_plan = self.env["account.analytic.plan"].create(
+            {"name": "Default", "company_id": False}
+        )
         self.analytic_account = self.env["account.analytic.account"].create(
-            {"name": "Analytic account test"}
+            {
+                "name": "Analytic account test",
+                "plan_id": self.default_plan.id,
+                "company_id": False,
+            }
         )
         self.product_category = self.env.ref("product.product_category_all")
         self.product_category.write(
