@@ -52,7 +52,6 @@ class TestMrpAnalytic(common.TransactionCase):
                     "product_id": self.product.id,
                     "analytic_account_id": self.analytic_account.id,
                     "qty_producing": 1,
-                    "qty_produced": 1,
                     "product_uom_id": self.product.uom_id.id,
                     "bom_id": self.bom.id,
                 }
@@ -64,7 +63,7 @@ class TestMrpAnalytic(common.TransactionCase):
         self.assertEqual(self.analytic_account.num_productions, 1)
 
     def test_carry_to_move_line(self):
-        self.production.button_mark_done()
+        # self.production.button_mark_done()
         account_moves = self.env["account.move.line"].search(
             [("analytic_account_id", "=", self.analytic_account.id)]
         )
