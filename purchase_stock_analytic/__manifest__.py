@@ -10,4 +10,5 @@
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["purchase_stock", "stock_analytic"],
+    "post_init_hook": "post_init_hook",
 }
