@@ -47,6 +47,7 @@ addon | version | maintainers | summary
 [sale_stock_analytic](sale_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the sale order and the analytic tags of the sale order line to the stock move
 [stock_analytic](stock_analytic/) | 14.0.2.0.0 |  | Adds an analytic account and analytic tags in stock move
 [stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.2 |  | Stock Inventory Analytic
+[stock_picking_analytic](stock_picking_analytic/) | 14.0.1.0.0 |  | Allows to define the analytic account on picking level
 
 [//]: # (end addons)
 
