@@ -18,20 +18,46 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.analytic_line_obj = self.env["account.analytic.line"]
         self.partner1 = self.env.ref("base.res_partner_1")
         self.partner2 = self.env.ref("base.res_partner_2")
+        self.plan = self.env.ref("analytic.analytic_plan_departments")
         self.analytic_parent1 = self.create_analytic_account(
-            {"name": "parent aa", "code": "01", "partner_id": self.partner1.id}
+            {
+                "name": "parent aa",
+                "code": "01",
+                "partner_id": self.partner1.id,
+                "plan_id": self.plan.id,
+            }
         )
         self.analytic_son = self.create_analytic_account(
-            {"name": "son aa", "code": "02", "parent_id": self.analytic_parent1.id}
+            {
+                "name": "son aa",
+                "code": "02",
+                "parent_id": self.analytic_parent1.id,
+                "plan_id": self.plan.id,
+            }
         )
         self.analytic_parent2 = self.create_analytic_account(
-            {"name": "parent2 aa", "code": "01", "partner_id": self.partner2.id}
+            {
+                "name": "parent2 aa",
+                "code": "01",
+                "partner_id": self.partner2.id,
+                "plan_id": self.plan.id,
+            }
         )
         self.analytic_parent3 = self.create_analytic_account(
-            {"name": "parent3 aa", "code": "01", "partner_id": self.partner2.id}
+            {
+                "name": "parent3 aa",
+                "code": "01",
+                "partner_id": self.partner2.id,
+                "plan_id": self.plan.id,
+            }
         )
         self.analytic_son2 = self.create_analytic_account(
-            {"name": "son aa", "code": "02", "parent_id": self.analytic_parent3.id}
+            {
+                "name": "son aa",
+                "code": "02",
+                "parent_id": self.analytic_parent3.id,
+                "plan_id": self.plan.id,
+            }
         )
         self.create_analytic_line("Analytic line son", self.analytic_son, 50)
         self.create_analytic_line("Analytic line parent1", self.analytic_parent1, 100)

@@ -9,7 +9,7 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
         <field name="arch" type="xml">
-            <field name="group_id" position="after">
+            <field name="plan_id" position="after">
                 <field name="parent_id" string="Parent Analytic Account" />
             </field>
         </field>
