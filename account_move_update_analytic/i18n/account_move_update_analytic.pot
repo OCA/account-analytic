@@ -6,8 +6,6 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-06 11:18+0000\n"
-"PO-Revision-Date: 2022-12-06 11:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,52 +16,52 @@ msgstr ""
 #. module: account_move_update_analytic
 #: model:ir.model,name:account_move_update_analytic.model_account_move_update_analytic_wizard
 msgid "Account Move Update Analytic Account Wizard"
-msgstr "Assistant Mise à jour analytique"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Analytic Account"
-msgstr "Compte analytique"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Analytic Tags"
-msgstr "Étiquettes analytiques"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__company_id
 msgid "Company"
-msgstr "Société"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__create_uid
 msgid "Created by"
-msgstr "Créé par"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__create_date
 msgid "Created on"
-msgstr "Créé le"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_account_id
 msgid "Current Analytic Account"
-msgstr "Compte analytique actuel"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_tag_ids
 msgid "Current Analytic Tags"
-msgstr "Étiquettes analytiques actuelles"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__display_name
 msgid "Display Name"
-msgstr "Nom affiché"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__id
@@ -73,51 +71,51 @@ msgstr ""
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__line_id
 msgid "Invoice line"
-msgstr "Ligne de facture"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard____last_update
 msgid "Last Modified on"
-msgstr "Dernière modification le"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__new_analytic_account_id
 msgid "New Analytic Account"
-msgstr "Nouveau compte analytique"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__new_analytic_tag_ids
 msgid "New Analytic Tags"
-msgstr "Nouvelles étiquettes analytiques"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_move_line_tree_grouped
 msgid "Update Analytic"
-msgstr "Mettre à jour Analytique"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update Analytic Accounts / Tags"
-msgstr "Mettre à jour les comptes/étiquettes analytiques"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
 msgid "Update Analytic for selected Account Moves"
-msgstr "Mettre à jour analytique pour les pièces sélectionnées"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update analytic lines"
-msgstr "Mettre à jour les lignes analytiques"
+msgstr ""
