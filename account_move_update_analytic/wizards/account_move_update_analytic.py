@@ -25,9 +25,8 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
 
     @api.model
     def default_get(self, fields):
-        rec = super(AccountMoveUpdateAnalytic, self).default_get(fields)
-        context = dict(self._context or {})
-        active_id = context.get("active_id", False)
+        rec = super().default_get(fields)
+        active_id = self.env.context.get("active_id", False)
         aml = self.env["account.move.line"].browse(active_id)
         rec.update(
             {
@@ -40,14 +39,13 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         return rec
 
     def update_analytic_lines(self):
+        self.ensure_one()
         self.line_id.analytic_line_ids.unlink()
         if self.user_has_groups("analytic.group_analytic_accounting"):
-            self.line_id.write(
-                {"analytic_account_id": self.new_analytic_account_id.id or False}
-            )
+            self.line_id.analytic_account_id = self.new_analytic_account_id.id
         if self.user_has_groups("analytic.group_analytic_tags"):
             self.line_id.write(
-                {"analytic_tag_ids": [(6, 0, self.new_analytic_tag_ids.ids or [])]}
+                {"analytic_tag_ids": [(6, 0, self.new_analytic_tag_ids.ids)]}
             )
         if self.new_analytic_account_id or self.new_analytic_tag_ids:
             self.line_id.create_analytic_lines()
