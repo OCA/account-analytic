@@ -9,6 +9,6 @@
     "license": "AGPL-3",
     "category": "Analytic Accounting",
     "author": "Odoo Community Association (OCA), Solvos",
-    "website": "https://www.github.com/OCA/account-analytic",
+    "website": "https://github.com/OCA/account-analytic",
     "depends": ["analytic"],
 }
