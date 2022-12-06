@@ -5,38 +5,29 @@
 # Copyright 2018 Hibou Corp.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import api, models
 
 
 class StockMove(models.Model):
-    _inherit = "stock.move"
-
-    analytic_account_id = fields.Many2one(
-        string="Analytic Account",
-        comodel_name="account.analytic.account",
-    )
-    analytic_tag_ids = fields.Many2many("account.analytic.tag", string="Analytic Tags")
+    _name = "stock.move"
+    _inherit = ["stock.move", "analytic.mixin"]
 
     def _prepare_account_move_line(
-        self, qty, cost, credit_account_id, debit_account_id, description
+        self, qty, cost, credit_account_id, debit_account_id, svl_id, description
     ):
         self.ensure_one()
         res = super(StockMove, self)._prepare_account_move_line(
-            qty, cost, credit_account_id, debit_account_id, description
+            qty, cost, credit_account_id, debit_account_id, svl_id, description
         )
+        if not self.analytic_distribution:
+            return res
         for line in res:
             if (
                 line[2]["account_id"]
                 != self.product_id.categ_id.property_stock_valuation_account_id.id
             ):
                 # Add analytic account in debit line
-                if self.analytic_account_id:
-                    line[2].update({"analytic_account_id": self.analytic_account_id.id})
-                # Add analytic tags in debit line
-                if self.analytic_tag_ids:
-                    line[2].update(
-                        {"analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)]}
-                    )
+                line[2].update({"analytic_distribution": self.analytic_distribution})
         return res
 
     def _prepare_procurement_values(self):
@@ -45,19 +36,13 @@ class StockMove(models.Model):
         moves through procurement.
         """
         res = super()._prepare_procurement_values()
-        if self.analytic_account_id:
+        if self.analytic_distribution:
             res.update(
                 {
-                    "analytic_account_id": self.analytic_account_id.id,
+                    "analytic_distribution": self.analytic_distribution,
                 }
             )
         return res
-
-    @api.model
-    def _prepare_merge_moves_distinct_fields(self):
-        fields = super()._prepare_merge_moves_distinct_fields()
-        fields.append("analytic_account_id")
-        return fields
 
     def _prepare_move_line_vals(self, quantity=None, reserved_quant=None):
         """
@@ -67,15 +52,14 @@ class StockMove(models.Model):
         res = super()._prepare_move_line_vals(
             quantity=quantity, reserved_quant=reserved_quant
         )
-        if self.analytic_account_id:
-            res.update({"analytic_account_id": self.analytic_account_id.id})
+        if self.analytic_distribution:
+            res.update({"analytic_distribution": self.analytic_distribution})
         return res
 
 
 class StockMoveLine(models.Model):
-    _inherit = "stock.move.line"
-
-    analytic_account_id = fields.Many2one(comodel_name="account.analytic.account")
+    _name = "stock.move.line"
+    _inherit = ["stock.move.line", "analytic.mixin"]
 
     @api.model
     def _prepare_stock_move_vals(self):
@@ -84,6 +68,6 @@ class StockMoveLine(models.Model):
         new move created here with the analytic account if filled in.
         """
         res = super()._prepare_stock_move_vals()
-        if self.analytic_account_id:
-            res.update({"analytic_account_id": self.analytic_account_id.id})
+        if self.analytic_distribution:
+            res.update({"analytic_distribution": self.analytic_distribution})
         return res
