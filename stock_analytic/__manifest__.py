@@ -7,7 +7,7 @@
 {
     "name": "Stock Analytic",
     "summary": "Adds an analytic account and analytic tags in stock move",
-    "version": "14.0.2.0.0",
+    "version": "16.0.1.0.0",
     "author": "Julius Network Solutions, "
     "ClearCorp, OpenSynergy Indonesia, "
     "Hibou Corp., "
@@ -18,8 +18,9 @@
     "depends": ["stock_account", "analytic"],
     "data": [
         "views/stock_move_views.xml",
-        "views/stock_scrap.xml",
-        "views/stock_move_line.xml",
+        "views/stock_scrap_views.xml",
+        "views/stock_move_line_views.xml",
+        "views/stock_picking_views.xml",
     ],
     "installable": True,
 }

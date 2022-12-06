@@ -10,12 +10,8 @@ class TestStockScrap(TransactionCase):
         self.product = self.env.ref("product.product_product_4")
         self.warehouse = self.env.ref("stock.warehouse0")
         self.location = self.warehouse.lot_stock_id
-        self.analytic_account = self.env.ref("analytic.analytic_agrolait")
-        self.analytic_tag_1 = self.env["account.analytic.tag"].create(
-            {"name": "analytic tag test 1"}
-        )
-        self.analytic_tag_2 = self.env["account.analytic.tag"].create(
-            {"name": "analytic tag test 2"}
+        self.analytic_distribution = dict(
+            {str(self.env.ref("analytic.analytic_agrolait").id): 100.0}
         )
 
     def __update_qty_on_hand_product(self, product, new_qty):
@@ -28,16 +24,13 @@ class TestStockScrap(TransactionCase):
         )
         qty_wizard.change_product_qty()
 
-    def _create_scrap(self, analytic_account_id=False, analytic_tag_ids=False):
+    def _create_scrap(self, analytic_distribution=False):
         scrap_data = {
             "product_id": self.product.id,
             "scrap_qty": 1.00,
             "product_uom_id": self.product.uom_id.id,
             "location_id": self.location.id,
-            "analytic_account_id": analytic_account_id
-            and analytic_account_id.id
-            or False,
-            "analytic_tag_ids": [(6, 0, analytic_tag_ids if analytic_tag_ids else [])],
+            "analytic_distribution": analytic_distribution or False,
         }
         return self.env["stock.scrap"].create(scrap_data)
 
@@ -45,7 +38,7 @@ class TestStockScrap(TransactionCase):
         scrap.action_validate()
         self.assertEqual(scrap.state, "done")
 
-    def _check_analytic_account_no_error(self, scrap):
+    def _check_analytic_distribution_no_error(self, scrap):
         domain = [("name", "=", scrap.name)]
         acc_lines = self.env["account.move.line"].search(domain)
         for acc_line in acc_lines:
@@ -54,10 +47,7 @@ class TestStockScrap(TransactionCase):
                 != scrap.product_id.categ_id.property_stock_valuation_account_id
             ):
                 self.assertEqual(
-                    acc_line.analytic_account_id.id, scrap.analytic_account_id.id
-                )
-                self.assertEqual(
-                    acc_line.analytic_tag_ids.ids, scrap.analytic_tag_ids.ids
+                    acc_line.analytic_distribution, scrap.analytic_distribution
                 )
 
     def test_scrap_without_analytic(self):
@@ -68,7 +58,7 @@ class TestStockScrap(TransactionCase):
     def test_scrap_with_analytic(self):
         self.__update_qty_on_hand_product(self.product, 1)
         scrap = self._create_scrap(
-            self.analytic_account, [self.analytic_tag_1.id | self.analytic_tag_2.id]
+            self.analytic_distribution,
         )
         self._validate_scrap_no_error(scrap)
-        self._check_analytic_account_no_error(scrap)
+        self._check_analytic_distribution_no_error(scrap)
