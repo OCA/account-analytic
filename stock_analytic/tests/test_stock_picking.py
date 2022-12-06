@@ -13,15 +13,20 @@ from odoo.tests.common import TransactionCase
 class TestStockPicking(TransactionCase):
     def setUp(self):
         super(TestStockPicking, self).setUp()
-
-        self.product = self.env.ref("product.product_product_4")
+        self.product = self.env["product.product"].create(
+            {
+                "name": "Test Product",
+                "type": "product",
+                "standard_price": 1.0,
+            }
+        )
         self.product_2 = self.env.ref("product.product_product_5")
         self.product_categ = self.env.ref("product.product_category_5")
         self.valuation_account = self.env["account.account"].create(
             {
                 "name": "Test stock valuation",
                 "code": "tv",
-                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "account_type": "liability_current",
                 "reconcile": True,
                 "company_id": self.env.ref("base.main_company").id,
             }
@@ -30,7 +35,7 @@ class TestStockPicking(TransactionCase):
             {
                 "name": "Test stock input",
                 "code": "tsti",
-                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "account_type": "expense",
                 "reconcile": True,
                 "company_id": self.env.ref("base.main_company").id,
             }
@@ -39,7 +44,7 @@ class TestStockPicking(TransactionCase):
             {
                 "name": "Test stock output",
                 "code": "tout",
-                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "account_type": "income",
                 "reconcile": True,
                 "company_id": self.env.ref("base.main_company").id,
             }
@@ -47,13 +52,9 @@ class TestStockPicking(TransactionCase):
         self.stock_journal = self.env["account.journal"].create(
             {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
         )
-        self.analytic_tag_1 = self.env["account.analytic.tag"].create(
-            {"name": "analytic tag test 1"}
+        self.analytic_distribution = dict(
+            {str(self.env.ref("analytic.analytic_agrolait").id): 100.0}
         )
-        self.analytic_tag_2 = self.env["account.analytic.tag"].create(
-            {"name": "analytic tag test 2"}
-        )
-        self.analytic_account = self.env.ref("analytic.analytic_agrolait")
         self.warehouse = self.env.ref("stock.warehouse0")
         self.location = self.warehouse.lot_stock_id
         self.dest_location = self.env.ref("stock.stock_location_customers")
@@ -76,8 +77,7 @@ class TestStockPicking(TransactionCase):
         location_id,
         location_dest_id,
         picking_type_id,
-        analytic_account_id=False,
-        analytic_tag_ids=False,
+        analytic_distribution=False,
     ):
         picking_data = {
             "picking_type_id": picking_type_id.id,
@@ -99,10 +99,7 @@ class TestStockPicking(TransactionCase):
             "procure_method": "make_to_stock",
             "product_uom": self.product.uom_id.id,
             "product_uom_qty": 1.0,
-            "analytic_account_id": (
-                analytic_account_id.id if analytic_account_id else False
-            ),
-            "analytic_tag_ids": [(6, 0, analytic_tag_ids if analytic_tag_ids else [])],
+            "analytic_distribution": analytic_distribution or False,
         }
 
         self.env["stock.move"].create(move_data)
@@ -110,27 +107,16 @@ class TestStockPicking(TransactionCase):
         return picking
 
     def __update_qty_on_hand_product(self, product, new_qty):
-        qty_wizard = self.env["stock.change.product.qty"].create(
-            {
-                "product_id": product.id,
-                "product_tmpl_id": product.product_tmpl_id.id,
-                "new_quantity": new_qty,
-            }
+        self.env["stock.quant"]._update_available_quantity(
+            product, self.location, new_qty
         )
-        qty_wizard.change_product_qty()
 
     def _confirm_picking_no_error(self, picking):
         picking.action_confirm()
-        self.assertEqual(picking.state, "confirmed")
-
-    def _force_assign_out_no_error(self, picking):
-        self.assertEqual(picking.move_lines.reserved_availability, 0)
-        picking.action_assign()
-        self.assertEqual(picking.move_lines.reserved_availability, 1)
         self.assertEqual(picking.state, "assigned")
 
     def _picking_done_no_error(self, picking):
-        picking.move_lines.quantity_done = 1.0
+        picking.move_ids.quantity_done = 1.0
         picking.button_validate()
         self.assertEqual(picking.state, "done")
 
@@ -139,10 +125,10 @@ class TestStockPicking(TransactionCase):
             ["ref", "=", "{} - {}".format(picking.name, picking.product_id.name)]
         ]
         acc_moves = self.env["account.move"].search(criteria1)
-        self.assertGreater(len(acc_moves), 0)
+        self.assertTrue(len(acc_moves) > 0)
 
     def _check_analytic_account_no_error(self, picking):
-        move = picking.move_lines[0]
+        move = picking.move_ids[0]
         criteria2 = [["move_id.ref", "=", picking.name]]
         acc_lines = self.env["account.move.line"].search(criteria2)
         for acc_line in acc_lines:
@@ -151,24 +137,15 @@ class TestStockPicking(TransactionCase):
                 != move.product_id.categ_id.property_stock_valuation_account_id
             ):
                 self.assertEqual(
-                    acc_line.analytic_account_id.id, move.analytic_account_id.id
-                )
-                self.assertEqual(
-                    acc_line.analytic_tag_ids.ids, move.analytic_tag_ids.ids
+                    acc_line.analytic_distribution, move.analytic_distribution
                 )
 
     def _check_no_analytic_account(self, picking):
         criteria2 = [
             ("move_id.ref", "=", picking.name),
-            ("analytic_account_id", "!=", False),
-        ]
-        criteria3 = [
-            ("move_id.ref", "=", picking.name),
-            ("analytic_tag_ids", "not in", []),
+            ("analytic_distribution", "!=", False),
         ]
         line_count = self.env["account.move.line"].search_count(criteria2)
-        self.assertEqual(line_count, 0)
-        line_count = self.env["account.move.line"].search_count(criteria3)
         self.assertEqual(line_count, 0)
 
     def test_outgoing_picking_with_analytic(self):
@@ -176,12 +153,10 @@ class TestStockPicking(TransactionCase):
             self.location,
             self.dest_location,
             self.outgoing_picking_type,
-            self.analytic_account,
-            [self.analytic_tag_1.id | self.analytic_tag_2.id],
+            self.analytic_distribution,
         )
         self.__update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
-        self._force_assign_out_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_analytic_account_no_error(picking)
@@ -194,7 +169,6 @@ class TestStockPicking(TransactionCase):
         )
         self.__update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
-        self._force_assign_out_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_no_analytic_account(picking)
@@ -204,9 +178,9 @@ class TestStockPicking(TransactionCase):
             self.location,
             self.dest_location,
             self.incoming_picking_type,
-            self.analytic_account,
-            [self.analytic_tag_1.id | self.analytic_tag_2.id],
+            self.analytic_distribution,
         )
+        self.__update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
@@ -217,10 +191,9 @@ class TestStockPicking(TransactionCase):
             self.location,
             self.dest_location,
             self.outgoing_picking_type,
-            self.analytic_account,
-            [self.analytic_tag_1.id | self.analytic_tag_2.id],
+            self.analytic_distribution,
         )
-        move_before = picking.move_lines
+        move_before = picking.move_ids
 
         self.env["stock.move.line"].create(
             {
@@ -229,13 +202,30 @@ class TestStockPicking(TransactionCase):
                 "location_dest_id": self.dest_location.id,
                 "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "product_uom_id": self.product_2.uom_id.id,
-                "product_uom_qty": 1.0,
-                "analytic_account_id": self.analytic_account.id,
+                "reserved_uom_qty": 1.0,
+                "analytic_distribution": self.analytic_distribution,
                 "company_id": self.env.company.id,
                 "picking_id": picking.id,
             }
         )
 
-        move_after = picking.move_lines - move_before
+        move_after = picking.move_ids - move_before
 
-        self.assertEqual(self.analytic_account, move_after.analytic_account_id)
+        self.assertEqual(self.analytic_distribution, move_after.analytic_distribution)
+
+    def test__prepare_procurement_values(self):
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_distribution,
+        )
+        values = picking.move_ids._prepare_procurement_values()
+        self.assertEqual(self.analytic_distribution, values["analytic_distribution"])
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+        )
+        values = picking.move_ids._prepare_procurement_values()
+        self.assertEqual(values.get("analytic_distribution"), None)
