@@ -9,11 +9,14 @@ class TestSaleAnalytic(common.TransactionCase):
         mto_route = self.env.ref("stock.route_warehouse0_mto")
         mto_route.active = True
 
+        self.analytic_account = self.env["account.analytic.account"].create(
+            {"name": "Analytic account test"}
+        )
+
         self.product_service = self.env["product.product"].create(
             {
                 "name": "Service",
                 "type": "service",
-                "service_tracking": "task_in_project",
             }
         )
         self.product_stock = self.env["product.product"].create(
@@ -47,6 +50,7 @@ class TestSaleAnalytic(common.TransactionCase):
             {
                 "partner_id": customer.id,
                 "order_line": [(0, 0, vals) for vals in so_line_vals],
+                "analytic_account_id": self.analytic_account.id,
             }
         )
         so.action_confirm()
