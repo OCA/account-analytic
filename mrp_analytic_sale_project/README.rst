@@ -23,7 +23,7 @@ Carry Analytic Account from Sales Order to Manufacturing Orders
     :target: https://runbot.odoo-community.org/runbot/87/14.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 When confirming a Sales Order, Manufacturing Orders are created for product configured with an MTO route.
 
@@ -69,6 +69,7 @@ Contributors
 * `Open Source Integrators <https://opensourceintegrators.com>`:
 
     * Daniel Reis <dreis@opensourceintegrators.com>
+    * Sulivan Lominchar <slomichar@archeti.com>
     * Chandresh Thakkar <cthakkr@opensourceintegrators.com>
 
 Maintainers
