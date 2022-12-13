@@ -44,3 +44,12 @@ class PurchaseOrder(models.Model):
         """When change project_id set analytic account on all order lines"""
         if self.project_id:
             self.order_line.update({"account_analytic_id": self.project_id.id})
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = "purchase.order.line"
+
+    @api.onchange("product_id")
+    def onchange_set_account_analytic_id(self):
+        """Set the account_analytic_id on the onchange method.."""
+        self.account_analytic_id = self.order_id._origin.project_id
