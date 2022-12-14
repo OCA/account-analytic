@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 Le Filament
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_account_move_update_analytic_account" model="ir.ui.view">
+        <field name="name">account.move.update.analytic.form</field>
+        <field name="model">account.move.update.analytic.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Update analytic lines">
+                <group
+                    string="Analytic Account"
+                    groups="analytic.group_analytic_accounting"
+                >
+                    <group>
+                        <field name="current_analytic_account_id" readonly="1" />
+                    </group>
+                    <group>
+                        <field name="company_id" invisible="1" />
+                        <field name="new_analytic_account_id" />
+                    </group>
+                </group>
+                <group string="Analytic Tags" groups="analytic.group_analytic_tags">
+                    <group>
+                        <field
+                            name="current_analytic_tag_ids"
+                            readonly="1"
+                            widget="many2many_tags"
+                        />
+                    </group>
+                    <group>
+                        <field name="company_id" invisible="1" />
+                        <field name="new_analytic_tag_ids" widget="many2many_tags" />
+                    </group>
+                </group>
+                <footer>
+                    <button
+                        string='Update Analytic Accounts / Tags'
+                        name="update_analytic_lines"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_account_move_update_analytic" model="ir.actions.act_window">
+        <field name="name">Update Analytic for selected Account Moves</field>
+        <field name="res_model">account.move.update.analytic.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="domain">[('line_id', '=', active_id)]</field>
+        <field name="context">{'default_line_id': active_id}</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
