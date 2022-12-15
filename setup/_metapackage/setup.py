@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo-addon-account_analytic_required>=15.0dev,<15.1dev',
         'odoo-addon-account_analytic_sequence>=15.0dev,<15.1dev',
         'odoo-addon-account_analytic_tag_default>=15.0dev,<15.1dev',
+        'odoo-addon-account_move_update_analytic>=15.0dev,<15.1dev',
         'odoo-addon-analytic_base_department>=15.0dev,<15.1dev',
         'odoo-addon-analytic_tag_dimension>=15.0dev,<15.1dev',
         'odoo-addon-mrp_analytic>=15.0dev,<15.1dev',
