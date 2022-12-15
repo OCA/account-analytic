@@ -1,4 +1,5 @@
 # Copyright 2022 Le Filament
+# Copyright 2022 Moduon - Eduardo de Miguel
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
@@ -47,7 +48,9 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
             self.line_id.write(
                 {"analytic_tag_ids": [(6, 0, self.new_analytic_tag_ids.ids)]}
             )
-        if self.new_analytic_account_id or self.new_analytic_tag_ids:
+        if self.line_id.parent_state == "posted" and (
+            self.new_analytic_account_id or self.new_analytic_tag_ids
+        ):
             self.line_id.create_analytic_lines()
 
         return False
