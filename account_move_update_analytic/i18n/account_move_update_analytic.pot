@@ -19,11 +19,13 @@ msgid "Account Move Update Analytic Account Wizard"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_line__analytic_account_id
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Analytic Account"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_line__analytic_tag_ids
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Analytic Tags"
 msgstr ""
@@ -59,11 +61,13 @@ msgid "Current Analytic Tags"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_line__id
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__id
 msgid "ID"
 msgstr ""
@@ -74,6 +78,12 @@ msgid "Invoice line"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model,name:account_move_update_analytic.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard____last_update
 msgid "Last Modified on"
 msgstr ""
