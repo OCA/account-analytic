@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2022 Le Filament
+     Copyright 2022 Moduon - Eduardo de Miguel
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
 
@@ -18,7 +19,7 @@
                     string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting,analytic.group_analytic_tags"
-                    attrs="{'invisible': [('parent.state', '!=', 'posted')]}"
+                    attrs="{'invisible': [('parent_state', '!=', 'posted')]}"
                 />
             </xpath>
             <xpath
@@ -31,7 +32,7 @@
                     string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting,analytic.group_analytic_tags"
-                    attrs="{'invisible': [('parent.state', '!=', 'posted'), ('display_type', 'in', ('line_section', 'line_note'))]}"
+                    attrs="{'invisible': [('parent_state', '!=', 'posted'), ('display_type', 'in', ('line_section', 'line_note'))]}"
                 />
             </xpath>
         </field>
