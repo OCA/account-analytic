@@ -11,10 +11,7 @@ class PurchaseOrderLine(models.Model):
     def _prepare_stock_moves(self, picking):
         res = super(PurchaseOrderLine, self)._prepare_stock_moves(picking)
         for line in res:
-            account_analytic = self.account_analytic_id
-            analytic_tags = self.analytic_tag_ids
-            if account_analytic:
-                line.update({"analytic_account_id": account_analytic.id})
-            if analytic_tags:
-                line.update({"analytic_tag_ids": [(6, 0, analytic_tags.ids)]})
+            analytic_distribution = self.analytic_distribution
+            if analytic_distribution:
+                line.update({"analytic_distribution": analytic_distribution})
         return res
