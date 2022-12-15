@@ -26,6 +26,7 @@ Account move update analytic
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module allows users to update analytic account and tags on account_move lines
+Adds tracking to fields ``analytic_account_id`` and ``analytic_tag_ids`` on move lines
 
 **Table of contents**
 
@@ -56,11 +57,13 @@ Authors
 ~~~~~~~
 
 * Le Filament
+* Moduon
 
 Contributors
 ~~~~~~~~~~~~
 
 * Rémi - Le Filament <remi-filament>
+* Eduardo de Miguel (`Moduon <https://www.moduon.team/>`__)
 
 Maintainers
 ~~~~~~~~~~~
