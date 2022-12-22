@@ -11,9 +11,14 @@
         <field name="arch" type="xml">
             <field name="property_account_income_id" position="after">
                 <field name="income_analytic_account_id" />
+                <field name="income_analytic_account_tag_ids" widget="many2many_tags" />
             </field>
             <field name="property_account_expense_id" position="after">
                 <field name="expense_analytic_account_id" />
+                <field
+                    name="expense_analytic_account_tag_ids"
+                    widget="many2many_tags"
+                />
             </field>
         </field>
     </record>
@@ -24,9 +29,14 @@
         <field name="arch" type="xml">
             <field name="property_account_income_categ_id" position="after">
                 <field name="income_analytic_account_id" />
+                <field name="income_analytic_account_tag_ids" widget="many2many_tags" />
             </field>
             <field name="property_account_expense_categ_id" position="after">
                 <field name="expense_analytic_account_id" />
+                <field
+                    name="expense_analytic_account_tag_ids"
+                    widget="many2many_tags"
+                />
             </field>
         </field>
     </record>

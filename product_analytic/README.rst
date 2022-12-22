@@ -25,8 +25,8 @@ Product Analytic
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module allows to define an analytic account at product or category level
-for using it when creating invoices.
+This module allows to define analytic account/tags at product or category level
+for using them when creating invoices.
 
 This module is an alternative to the official module
 *account_analytic_default*. The advantages of this module are:
@@ -34,7 +34,7 @@ This module is an alternative to the official module
 * it only depends on the *account* module, whereas the
   *account_analytic_default* module depends on *sale_stock* ;
 
-* the analytic account is configured on the product form or the product
+* the analytic account/tags are configured on the product form or the product
   category form, and not on a separate object.
 
 **Table of contents**
@@ -45,13 +45,14 @@ This module is an alternative to the official module
 Usage
 =====
 
-This module allows you to configure an **income analytic account** and an
-**expense analytic account** on products and on product categories. When you
+This module allows you to configure **income analytic account/tags** and
+**expense analytic account/tags** on products and on product categories. When you
 select the product in an invoice line, it will check if this product has an
-income analytic account (for customer invoice/refunds) or an expense analytic
-account (for supplier invoice/refunds) ; if it doesn't find any, it checks if
-the category of the product has an income or expense analytic account ; if an
-analytic account is found, it will be set by default on the invoice line.
+income analytic account/tags (for customer invoice/refund/receipt) or an expense analytic
+account/tags (for supplier invoice/refund/receipt) ; if it doesn't find any, it checks if
+the category of the product has an income or expense analytic account/tags ; if
+an analytic account and/or analytic tags are found, they will be set by default
+on the invoice line.
 
 Changelog
 =========
@@ -136,8 +137,8 @@ Contributors
 * Pimolnat Suntian <pimolnats@ecosoft.co.th>
 * Reyes4711
 * Denis Roussel <denis.roussel@acsone.eu>
-
 * Darius Žižys <darius@vialaurea.lt>
+* Julien Guenat <jgu@open-net.ch>
 
 Maintainers
 ~~~~~~~~~~~

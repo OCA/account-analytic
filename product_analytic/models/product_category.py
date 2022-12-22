@@ -2,6 +2,7 @@
 # Copyright 2016 Antiun Ingeniería S.L. - Javier Iniesta
 # Copyright 2017 Tecnativa - Luis Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 from odoo import fields, models
 
 
@@ -17,4 +18,16 @@ class ProductCategory(models.Model):
         "account.analytic.account",
         string="Expense Analytic Account",
         company_dependent=True,
+    )
+    income_analytic_account_tag_ids = fields.Many2many(
+        string="Income Analytic Tags",
+        help="Not company-specific but tags can be company dependent",
+        comodel_name="account.analytic.tag",
+        relation="category_income_analytic_tag_rel",
+    )
+    expense_analytic_account_tag_ids = fields.Many2many(
+        string="Expense Analytic Tags",
+        help="Not company-specific but tags can be company dependent",
+        comodel_name="account.analytic.tag",
+        relation="category_expense_analytic_tag_rel",
     )
