@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-03 13:07+0000\n"
-"PO-Revision-Date: 2018-11-21 18:09+0000\n"
-"Last-Translator: Marco Calcagni <mcalcagni@dinamicheaziendali.it>\n"
+"PO-Revision-Date: 2022-12-26 16:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.2.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: account_analytic_default_account
 #: model:ir.model.fields,field_description:account_analytic_default_account.field_account_analytic_default_account_id
@@ -27,14 +27,13 @@ msgstr "Conto"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_move
-#, fuzzy
 msgid "Account Entry"
 msgstr "Registrazione Contabile"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_analytic_default
 msgid "Analytic Distribution"
-msgstr ""
+msgstr "Distribuzione analitica"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_invoice_line
@@ -43,9 +42,8 @@ msgstr "Riga fattura"
 
 #. module: account_analytic_default_account
 #: model:ir.model,name:account_analytic_default_account.model_account_move_line
-#, fuzzy
 msgid "Journal Item"
-msgstr "Riga di Sezionale"
+msgstr "Movimento contabile"
 
 #. module: account_analytic_default_account
 #: model:ir.model.fields,help:account_analytic_default_account.field_account_analytic_default_account_id
@@ -53,3 +51,5 @@ msgid ""
 "Select the account corresponding to an analytic account which will be used "
 "on the lines of invoices or account moves"
 msgstr ""
+"Selezionare il conto corrispondente al conto analitico che verrà utilizzato "
+"nelle righe delle fatture o dei movimenti contabili"
