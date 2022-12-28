@@ -4,7 +4,7 @@
 
 {
     "name": "Partner in HR timesheets",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "summary": "Classify HR activities by partner",
     "category": "Human Resources",
     "author": "Tecnativa, Odoo Community Association (OCA)",
