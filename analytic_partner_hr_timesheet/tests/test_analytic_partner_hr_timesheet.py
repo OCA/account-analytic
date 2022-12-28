@@ -5,7 +5,7 @@
 import odoo.tests.common as common
 
 
-class TestAnalyticPartnerHrTimesheet(common.SavepointCase):
+class TestAnalyticPartnerHrTimesheet(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestAnalyticPartnerHrTimesheet, cls).setUpClass()

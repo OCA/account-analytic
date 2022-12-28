@@ -3,7 +3,6 @@ __pycache__/
 *.py[cod]
 /.venv
 /.pytest_cache
-
 # C extensions
 *.so
 
