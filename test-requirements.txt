@@ -1,0 +1,1 @@
+odoo-addon-analytic_partner@ git+https://github.com/oca/account-analytic@refs/pull/515/head#subdirectory=setup/analytic_partner
