@@ -32,6 +32,7 @@ addon | version | maintainers | summary
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 15.0.1.0.0 |  | Add analytic account on products and product categories
 [purchase_analytic](purchase_analytic/) | 15.0.2.0.0 |  | Purchase Analytic
+[stock_analytic](stock_analytic/) | 15.0.1.0.0 |  | Adds an analytic account and analytic tags in stock move
 
 [//]: # (end addons)
 
