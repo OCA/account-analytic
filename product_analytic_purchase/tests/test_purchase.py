@@ -21,8 +21,8 @@ class TestPurchaseOrderLine(TransactionCase):
                 "list_price": 450.0,
                 "standard_price": 300.0,
                 "type": "consu",
-                "uom_id": self.env.ref("uom.product_uom_unit").id,
-                "uom_po_id": self.env.ref("uom.product_uom_unit").id,
+                "uom_id": self.env.ref("product.product_uom_unit").id,
+                "uom_po_id": self.env.ref("product.product_uom_unit").id,
                 "description_sale": "17 LCD Monitor Processor AMD",
             }
         )
@@ -33,8 +33,8 @@ class TestPurchaseOrderLine(TransactionCase):
                 "list_price": 90,
                 "standard_price": 40,
                 "type": "service",
-                "uom_id": self.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": self.env.ref("uom.product_uom_hour").id,
+                "uom_id": self.env.ref("product.product_uom_hour").id,
+                "uom_po_id": self.env.ref("product.product_uom_hour").id,
                 "description": "Example of product to invoice on order.",
                 "default_code": "SERV_ORDER",
                 "expense_analytic_account_id": self.analytic.id,
