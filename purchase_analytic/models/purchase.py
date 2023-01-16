@@ -6,41 +6,39 @@ from odoo import api, fields, models
 
 
 class PurchaseOrder(models.Model):
-    _inherit = "purchase.order"
+    _name = "purchase.order"
+    _inherit = ["purchase.order", "analytic.mixin"]
 
-    project_id = fields.Many2one(
-        compute="_compute_project_id",
-        inverse="_inverse_project_id",
-        comodel_name="account.analytic.account",
-        string="Analytic Account",
+    analytic_distribution = fields.Json(
+        inverse="_inverse_analytic_distribution",
         readonly=True,
         states={"draft": [("readonly", False)]},
-        store=True,
-        help="The analytic account related to a purchase order.",
     )
 
-    @api.depends("order_line.account_analytic_id")
-    def _compute_project_id(self):
-        """If all order line have same analytic account set project_id.
+    @api.depends("order_line.analytic_distribution")
+    def _compute_analytic_distribution(self):
+        """If all order line have same analytic distribution set analytic_distribution.
         If no lines, respect value given by the user.
         """
         for po in self:
             if po.order_line:
-                al = po.order_line[0].account_analytic_id or False
+                al = po.order_line[0].analytic_distribution or False
                 for ol in po.order_line:
-                    if ol.account_analytic_id != al:
+                    if ol.analytic_distribution != al:
                         al = False
                         break
-                po.project_id = al
+                po.analytic_distribution = al
 
-    def _inverse_project_id(self):
-        """When set project_id set analytic account on all order lines"""
+    def _inverse_analytic_distribution(self):
+        """When set analytic_distribution set analytic distribution on all order lines"""
         for po in self:
-            if po.project_id:
-                po.order_line.write({"account_analytic_id": po.project_id.id})
+            if po.analytic_distribution:
+                po.order_line.write({"analytic_distribution": po.analytic_distribution})
 
-    @api.onchange("project_id")
-    def _onchange_project_id(self):
-        """When change project_id set analytic account on all order lines"""
-        if self.project_id:
-            self.order_line.update({"account_analytic_id": self.project_id.id})
+    @api.onchange("analytic_distribution")
+    def _onchange_analytic_distribution(self):
+        """When change analytic_distribution set analytic distribution on all order lines"""
+        if self.analytic_distribution:
+            self.order_line.update(
+                {"analytic_distribution": self.analytic_distribution}
+            )
