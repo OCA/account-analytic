@@ -12,14 +12,18 @@ class TestPurchaseAnalytic(TransactionCase):
         self.partner_id = self.env.ref("base.res_partner_12")
         self.product_id = self.env.ref("product.product_product_9")
         self.uom_id = self.env.ref("uom.product_uom_unit")
-        self.project = self.env["account.analytic.account"].create(
-            {"name": "Account Analytic for Tests"}
+        analytic_plan = self.env["account.analytic.plan"].create(
+            {"name": "Plan Test", "company_id": False}
         )
+        analytic_account_manual = self.env["account.analytic.account"].create(
+            {"name": "manual", "plan_id": analytic_plan.id}
+        )
+        self.analytic_distribution_manual = {str(analytic_account_manual.id): 100}
 
-    def test_analytic_account(self):
+    def test_analytic_distribution(self):
         """Create a purchase order (create)
-        Set analytic account on purchase
-        Check analytic account and line is set
+        Set analytic distribution on purchase
+        Check analytic distribution and line is set
         """
         po = self.env["purchase.order"].create(
             {
@@ -40,20 +44,22 @@ class TestPurchaseAnalytic(TransactionCase):
                 ],
             }
         )
-        po.project_id = self.project.id
-        po._onchange_project_id()
-        self.assertEqual(po.project_id.id, self.project.id)
-        self.assertEqual(po.order_line.account_analytic_id.id, self.project.id)
+        po.analytic_distribution = self.analytic_distribution_manual
+        po._onchange_analytic_distribution()
+        self.assertEqual(po.analytic_distribution, self.analytic_distribution_manual)
+        self.assertEqual(
+            po.order_line.analytic_distribution, self.analytic_distribution_manual
+        )
 
-    def test_project_id(self):
+    def test_analytic_disctribution_with_new(self):
         """Create a purchase order (new)
-        Set analytic account on purchase
-        Check analytic account and line is set
+        Set analytic distribution on purchase
+        Check analytic distribution and line is set
         """
         po = self.env["purchase.order"].new(
             {
                 "partner_id": self.partner_id.id,
-                "project_id": self.project.id,
+                "analytic_distribution": self.analytic_distribution_manual,
                 "order_line": [
                     (
                         0,
@@ -70,6 +76,8 @@ class TestPurchaseAnalytic(TransactionCase):
                 ],
             }
         )
-        po._onchange_project_id()
-        self.assertEqual(po.project_id.id, self.project.id)
-        self.assertEqual(po.order_line.account_analytic_id.id, self.project.id)
+        po._onchange_analytic_distribution()
+        self.assertEqual(po.analytic_distribution, self.analytic_distribution_manual)
+        self.assertEqual(
+            po.order_line.analytic_distribution, self.analytic_distribution_manual
+        )

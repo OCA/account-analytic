@@ -6,3 +6,6 @@
   * Alan Ramos
 
 * Lois Rilo <lois.rilo@forgeflow.com>
+* `Quartile <https://www.quartile.co>`__:
+
+  * Aung Ko Ko Lin
