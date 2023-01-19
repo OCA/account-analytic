@@ -10,7 +10,7 @@
     "category": "Manufacturing",
     "website": "https://github.com/OCA/account-analytic",
     "license": "AGPL-3",
-    "depends": ["mrp_analytic", "sale_project"],
+    "depends": ["mrp_analytic", "sale"],
     "installable": True,
     "maintainer": "dreispt",
     "development_status": "Beta",
