@@ -1,7 +1,11 @@
 # Copyright (C) 2021 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import logging
+
 from odoo import _, api, exceptions, fields, models
+
+_logger = logging.getLogger(__name__)
 
 
 class AnalyticTrackingItem(models.Model):
@@ -185,7 +189,6 @@ class AnalyticTrackingItem(models.Model):
             "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
-            "analytic_account_id": self.analytic_id.id,
         }
 
     def _get_accounting_data_for_valuation(self):
@@ -223,26 +226,32 @@ class AnalyticTrackingItem(models.Model):
             {
                 "stock_wip": categ.property_wip_account_id,
                 "stock_variance": categ.property_variance_account_id,
+                "categ": categ,
             }
         )
         return accounts
 
-    def _create_wip_journal_entry(self):
+    def _create_wip_journal_entry(self, cron=False):
+        amount = self.pending_amount
         accounts = self._get_accounting_data_for_valuation()
         wip_journal = accounts.get("stock_journal")
+        acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
+        error_msg = None
         if not wip_journal:
-            exceptions.ValidationError(
-                _("Missing Stock Journal for Product %s in operation %s")
-                % (self.product_id.display_name, self.display_name)
+            error_msg = _("Missing Stock Journal for Product %s in operation %s") % (
+                self.product_id.display_name,
+                self.display_name,
             )
-        amount = self.pending_amount
-        if amount and wip_journal:
-            acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
-            if not acc_wip:
-                raise exceptions.ValidationError(
-                    _("Missing WIP Account for Product %s in operation %s")
-                    % (self.product_id.display_name, self.display_name)
-                )
+        elif not acc_wip:
+            error_msg = _("Missing WIP Account for Product %s in operation %s") % (
+                self.product_id.display_name,
+                self.display_name,
+            )
+        if error_msg and not cron:
+            raise exceptions.ValidationError(error_msg)
+        elif error_msg and cron:
+            _logger.debug(error_msg)
+        elif amount:
             move_lines = [
                 self._prepare_account_move_line(acc_applied, -amount),
                 self._prepare_account_move_line(acc_wip, amount),
@@ -295,24 +304,29 @@ class AnalyticTrackingItem(models.Model):
                 je_new = AccountMove.create(je_vals)
                 je_new._post()
 
-    def process_wip_and_variance(self, close=False):
+    def process_wip_and_variance(self, close=False, cron=False):
         """
         For each Analytic Tracking Item with a Pending Amount different from zero,
         generate Journal Entries for WIP and excess Variances
+
+        When running from cron, skip items that don't have accounting setup.
         """
         all_tracking = self | self.child_ids
         if close:
             # Set to done, to have negative variances computed
             all_tracking.write({"state": "done"})
         for item in all_tracking:
-            is_posted = item._create_wip_journal_entry()
-            if is_posted:
+            posted = item._create_wip_journal_entry(cron=cron)
+            if posted:
                 # Update accounted amount to equal actual amounts
                 item.accounted_amount = item.actual_amount
 
-    def _cron_process_wip_and_variance(self):
-        items = self.search([("state", "in", ["draft"])])
-        items.process_wip_and_variance()
+    @api.model
+    def _cron_process_wip_and_variance(self, add_domain=None):
+        domain = [("state", "in", ["draft"]), ("product_id", "!=", False)]
+        domain.extend(add_domain or [])
+        items = self.search(domain)
+        items.process_wip_and_variance(cron=True)
 
     def action_cancel(self):
         # TODO: what to do if there are JEs done?
