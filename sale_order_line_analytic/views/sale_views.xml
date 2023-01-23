@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='analytic_tag_ids']"
+                position="before"
+            >
+                <field
+                    name="analytic_account_id"
+                    groups="analytic.group_analytic_accounting"
+                    domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/tree//field[@name='analytic_tag_ids']"
+                position="before"
+            >
+                <field
+                    name="analytic_account_id"
+                    optional="hide"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{'readonly': [('parent.invoice_count','!=',0), ('parent.state','=','sale')]}"
+                    domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
