@@ -9,7 +9,7 @@
                     name="analytic_distribution"
                     widget="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
-                    options="{'product_field': 'product_id', 'business_domain': 'stock_scrap'}"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
                 />
             </xpath>
         </field>
@@ -24,7 +24,7 @@
                     name="analytic_distribution"
                     widget="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
-                    options="{'product_field': 'product_id', 'business_domain': 'stock_scrap'}"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
                 />
             </xpath>
         </field>

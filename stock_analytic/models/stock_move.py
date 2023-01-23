@@ -3,6 +3,7 @@
 # Copyright 2016 OpenSynergy Indonesia
 # Copyright 2017 ForgeFlow S.L.
 # Copyright 2018 Hibou Corp.
+# Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, models
@@ -55,6 +56,23 @@ class StockMove(models.Model):
         if self.analytic_distribution:
             res.update({"analytic_distribution": self.analytic_distribution})
         return res
+
+    def _action_done(self, cancel_backorder=False):
+        for move in self:
+            # Validate analytic distribution only for outgoing moves.
+            if move.location_id.usage not in (
+                "internal",
+                "transit",
+            ) or move.location_dest_id.usage in ("internal", "transit"):
+                continue
+            move._validate_distribution(
+                **{
+                    "product": move.product_id.id,
+                    "business_domain": "stock_move",
+                    "company_id": move.company_id.id,
+                }
+            )
+        return super()._action_done(cancel_backorder=cancel_backorder)
 
 
 class StockMoveLine(models.Model):

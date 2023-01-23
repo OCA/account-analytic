@@ -13,7 +13,7 @@
                     widget="analytic_distribution"
                     optional="hide"
                     groups="analytic.group_analytic_accounting"
-                    options="{'product_field': 'product_id', 'business_domain': 'stock_move_line'}"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
                 />
             </field>
         </field>
@@ -46,7 +46,7 @@
                     widget="analytic_distribution"
                     optional="hide"
                     groups="analytic.group_analytic_accounting"
-                    options="{'product_field': 'product_id', 'business_domain': 'stock_move_line'}"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
                 />
             </field>
         </field>
