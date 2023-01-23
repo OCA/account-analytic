@@ -15,3 +15,7 @@ class StockScrap(models.Model):
             }
         )
         return res
+
+    def action_validate(self):
+        self = self.with_context(validate_analytic=True)
+        return super().action_validate()
