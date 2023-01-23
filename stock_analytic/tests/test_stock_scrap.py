@@ -1,5 +1,7 @@
 # Copyright (C) 2019 Open Source Integrators
+# Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 
@@ -12,6 +14,14 @@ class TestStockScrap(TransactionCase):
         self.location = self.warehouse.lot_stock_id
         self.analytic_distribution = dict(
             {str(self.env.ref("analytic.analytic_agrolait").id): 100.0}
+        )
+        # analytic.analytic_agrolait belongs to analytic.analytic_plan_projects
+        self.analytic_applicability = self.env["account.analytic.applicability"].create(
+            {
+                "business_domain": "stock_move",
+                "applicability": "optional",
+                "analytic_plan_id": self.env.ref("analytic.analytic_plan_projects").id,
+            }
         )
 
     def __update_qty_on_hand_product(self, product, new_qty):
@@ -50,10 +60,17 @@ class TestStockScrap(TransactionCase):
                     acc_line.analytic_distribution, scrap.analytic_distribution
                 )
 
-    def test_scrap_without_analytic(self):
+    def test_scrap_without_analytic_optional(self):
         self.__update_qty_on_hand_product(self.product, 1)
         scrap = self._create_scrap()
         self._validate_scrap_no_error(scrap)
+
+    def test_scrap_without_analytic_mandatory(self):
+        self.analytic_applicability.write({"applicability": "mandatory"})
+        self.__update_qty_on_hand_product(self.product, 1)
+        scrap = self._create_scrap()
+        with self.assertRaises(ValidationError):
+            self._validate_scrap_no_error(scrap)
 
     def test_scrap_with_analytic(self):
         self.__update_qty_on_hand_product(self.product, 1)
