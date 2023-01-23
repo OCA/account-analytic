@@ -9,3 +9,6 @@
 * Jared Kipe <jared@hibou.io>
 * Alan Ramos <alan.ramos@jarsa.com.mx>
 * Mantas Šniukas <mantas@vialaurea.lt>
+* `Quartile <https://www.quartile.co>`__:
+
+  * Yoshi Tashiro
