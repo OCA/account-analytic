@@ -27,7 +27,7 @@ class StockInventoryLine(models.Model):
         if location_id:
             warehouse = self.env["stock.location"].browse(location_id).get_warehouse()
             if warehouse.account_analytic_tag_ids:
-                return warehouse.analytic_account_tag_ids
+                return warehouse.account_analytic_tag_ids
         return super()._get_default_analytic_tags()
 
     @api.model_create_multi
