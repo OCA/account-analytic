@@ -33,7 +33,9 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
             {
                 "line_id": active_id,
                 "current_analytic_account_id": aml.analytic_account_id.id,
+                "new_analytic_account_id": aml.analytic_account_id.id,
                 "current_analytic_tag_ids": [(6, 0, aml.analytic_tag_ids.ids or [])],
+                "new_analytic_tag_ids": [(6, 0, aml.analytic_tag_ids.ids or [])],
                 "company_id": aml.company_id.id,
             }
         )
