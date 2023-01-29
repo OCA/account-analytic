@@ -19,7 +19,7 @@
                     string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting,analytic.group_analytic_tags"
-                    attrs="{'invisible': [('parent_state', '!=', 'posted')]}"
+                    attrs="{'column_invisible': [('parent.state', '!=', 'posted')]}"
                 />
             </xpath>
             <xpath
@@ -32,7 +32,10 @@
                     string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting,analytic.group_analytic_tags"
-                    attrs="{'invisible': [('parent_state', '!=', 'posted'), ('display_type', 'in', ('line_section', 'line_note'))]}"
+                    attrs="{
+                        'column_invisible': [('parent.state', '!=', 'posted')],
+                        'invisible': [('display_type', 'in', ('line_section', 'line_note'))],
+                    }"
                 />
             </xpath>
         </field>
