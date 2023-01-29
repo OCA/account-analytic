@@ -3,7 +3,7 @@
 
 {
     "name": "Account move update analytic",
-    "version": "15.0.1.0.1",
+    "version": "15.0.1.1.0",
     "category": "Accounting & Finance",
     "summary": "This module allows the user to update analytic on posted moves",
     "author": "Le Filament, Moduon, Odoo Community Association (OCA)",
