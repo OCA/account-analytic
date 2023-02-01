@@ -1,6 +1,5 @@
-# Copyright 2011-2016 Camptocamp SA
-# Copyright 2013 Daniel Reis
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# -*- coding: utf-8 -*-
+
 from odoo import api, fields, models
 
 
@@ -21,8 +20,10 @@ class AnalyticLine(models.Model):
     def _default_department(self):
         department_id = False
         employee = self.env.user.employee_ids
+        print("=============employeeee---------", employee)
         if employee and employee[0].department_id:
             department_id = employee[0].department_id.id
+            print("====department----------", department_id)
         return department_id
 
     department_id = fields.Many2one(
