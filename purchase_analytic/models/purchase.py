@@ -11,8 +11,8 @@ class PurchaseOrder(models.Model):
 
     analytic_distribution = fields.Json(
         inverse="_inverse_analytic_distribution",
-        readonly=True,
-        states={"draft": [("readonly", False)]},
+        # To be consistent with order_line readonly behavior
+        states={"done": [("readonly", True)], "cancel": [("readonly", True)]},
     )
 
     @api.depends("order_line.analytic_distribution")
