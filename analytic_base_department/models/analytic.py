@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from odoo import api, fields, models
 
 
@@ -20,10 +18,8 @@ class AnalyticLine(models.Model):
     def _default_department(self):
         department_id = False
         employee = self.env.user.employee_ids
-        print("=============employeeee---------", employee)
         if employee and employee[0].department_id:
             department_id = employee[0].department_id.id
-            print("====department----------", department_id)
         return department_id
 
     department_id = fields.Many2one(

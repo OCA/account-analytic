@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from odoo.tests.common import TransactionCase
 
 
@@ -7,7 +5,7 @@ class LineDepartmentCase(TransactionCase):
     @classmethod
     def setUpClass(cls):
         """Assign user and department."""
-        super(LineDepartmentCase, cls).setUpClass()
+        super().setUpClass()
         # base.user_demo --> hr.employee_qdp --> hr.dep_rd
         cls.user = cls.env.ref("base.user_demo")
         cls.dep = cls.env.ref("hr.dep_rd")

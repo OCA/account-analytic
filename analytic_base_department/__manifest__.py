@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 {
     "name": "Base Analytic Department Categorization",
     "summary": "Add relationship between Analytic and Department",
