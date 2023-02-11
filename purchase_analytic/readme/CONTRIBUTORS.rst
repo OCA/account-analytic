@@ -1,0 +1,11 @@
+* Laetitia Gangloff <laetitia.gangloff@acsone.eu>
+* Cédric Pigeon <cedric.pigeon@acsone.eu>
+* Pimolnat Suntian <pimolnats@ecosoft.co.th>
+* `Jarsa <https://www.jarsa.com>`_
+
+  * Alan Ramos
+
+* Lois Rilo <lois.rilo@forgeflow.com>
+* `Quartile <https://www.quartile.co>`__:
+
+  * Aung Ko Ko Lin
