@@ -26,8 +26,8 @@ class ActivityCostRule(models.Model):
         readonly=False,
     )
 
-    @api.model
-    def create(self, vals):
-        new = super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        new = super().create(vals_list)
         new.parent_id.onchange_for_standard_price()
         return new

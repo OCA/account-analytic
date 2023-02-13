@@ -98,8 +98,8 @@ class AnalyticLine(models.Model):
                 cost_vals = analytic_parent._prepare_activity_cost_data(cost_rule)
                 analytic_parent.copy(cost_vals)
 
-    @api.model
-    def create(self, vals):
-        res = super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
         res._populate_abcost_lines()
         return res
