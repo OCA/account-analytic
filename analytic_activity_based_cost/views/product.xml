@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
 
                 <div name="options" position="inside">
-                    <field name="is_cost_type" invisible="1"/>
+                    <field name="is_cost_type" invisible="1" />
                     <div groups="analytic.group_analytic_accounting">
                         <field name="is_cost_type" />
                         <label for="is_cost_type" />
