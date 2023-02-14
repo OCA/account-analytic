@@ -216,8 +216,11 @@ class AnalyticTrackingItem(models.Model):
             }
         if not accounts.get("stock_journal"):
             exceptions.ValidationError(
-                _("Missing Stock Journal for Category %s when closing %s")
-                % (categ.display_name, self.display_name)
+                _(
+                    "Missing Stock Journal for Category %(categ_name)s when closing %(name)s",
+                    categ_name=categ.display_name,
+                    name=self.display_name,
+                )
             )
         accounts.update(
             {
@@ -232,16 +235,23 @@ class AnalyticTrackingItem(models.Model):
         wip_journal = accounts.get("stock_journal")
         if not wip_journal:
             exceptions.ValidationError(
-                _("Missing Stock Journal for Product %s in operation %s")
-                % (self.product_id.display_name, self.display_name)
+                _(
+                    "Missing Stock Journal for Product %(product_name)s in operation %(name)s",
+                    product_name=self.product_id.display_name,
+                    name=self.display_name,
+                )
             )
         amount = self.pending_amount
         if amount and wip_journal:
             acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
             if not acc_wip:
                 raise exceptions.ValidationError(
-                    _("Missing WIP Account for Product %s in operation %s")
-                    % (self.product_id.display_name, self.display_name)
+                    _(
+                        "Missing WIP Account for \
+                        Product %(product_name)s in operation %(name)s",
+                        product_name=self.product_id.display_name,
+                        name=self.display_name,
+                    )
                 )
             move_lines = [
                 self._prepare_account_move_line(acc_applied, -amount),
