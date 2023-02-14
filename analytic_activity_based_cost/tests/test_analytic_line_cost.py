@@ -1,8 +1,8 @@
 # Copyright (C) 2020 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests import common
 from odoo.exceptions import ValidationError
+from odoo.tests import common
 
 
 class TestAnalyticLineCost(common.TransactionCase):
@@ -16,17 +16,26 @@ class TestAnalyticLineCost(common.TransactionCase):
             {"name": "Analytic X", "plan_id": analytic_plan.id}
         )
         self.cost_product_id = self.env.ref("analytic_activity_based_cost.labor_cost")
-        self.product_id = self.env.ref("analytic_activity_based_cost.machine_cost_driver")
-        self.ActivityLaborCostRule = self.env.ref("analytic_activity_based_cost.machine_cost_driver_labor_cost")
-        self.ActivityOverheadCostRule = self.env.ref("analytic_activity_based_cost.machine_cost_driver_overhead_cost")
+        self.product_id = self.env.ref(
+            "analytic_activity_based_cost.machine_cost_driver"
+        )
+        self.ActivityLaborCostRule = self.env.ref(
+            "analytic_activity_based_cost.machine_cost_driver_labor_cost"
+        )
+        self.ActivityOverheadCostRule = self.env.ref(
+            "analytic_activity_based_cost.machine_cost_driver_overhead_cost"
+        )
 
     def test_analytic_item_create(self):
         with self.assertRaises(ValidationError):
-            self.cost_product_id.activity_cost_ids = [(6, 0, [self.ActivityLaborCostRule.id])]
-        AnalyticItem1 = self.env["account.analytic.line"].create(
+            self.cost_product_id.activity_cost_ids = [
+                (6, 0, [self.ActivityLaborCostRule.id])
+            ]
+        self.env["account.analytic.line"].create(
             {
                 "name": "{}".format(
-                    self.ActivityLaborCostRule.product_id.display_name or self.ActivityLaborCostRule.name
+                    self.ActivityLaborCostRule.product_id.display_name
+                    or self.ActivityLaborCostRule.name
                 ),
                 "parent_id": False,
                 "account_id": self.analytic_x.id,
@@ -39,10 +48,11 @@ class TestAnalyticLineCost(common.TransactionCase):
         )
 
         self.product_id.activity_cost_ids = [(6, 0, [self.ActivityOverheadCostRule.id])]
-        AnalyticItem = self.env["account.analytic.line"].create(
+        self.env["account.analytic.line"].create(
             {
                 "name": "{}".format(
-                    self.ActivityOverheadCostRule.product_id.display_name or self.ActivityOverheadCostRule.name
+                    self.ActivityOverheadCostRule.product_id.display_name
+                    or self.ActivityOverheadCostRule.name
                 ),
                 "parent_id": False,
                 "account_id": self.analytic_x.id,
