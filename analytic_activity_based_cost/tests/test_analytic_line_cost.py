@@ -56,8 +56,11 @@ class TestAnalyticLineCost(common.TransactionCase):
         self.product_id.standard_price = 10.0
         analytic_line._compute_amount_abcost()
         self.product_id.activity_cost_ids = [(6, 0, [self.ActivityOverheadCostRule.id])]
-        self.ActivityOverheadCostRule.write({"factor": 0.70})
-        analytic_line._prepare_activity_cost_data(self.ActivityOverheadCostRule)
+        vals = analytic_line._prepare_activity_cost_data(self.ActivityOverheadCostRule)
+        if hasattr(analytic_line, "project_id"):
+            vals["project_id"] = False
+        if hasattr(analytic_line, "task_id"):
+            vals["task_id"] = False
         AnalyticItem = self.env["account.analytic.line"].create(
             {
                 "name": "{} / {}".format(
@@ -74,8 +77,19 @@ class TestAnalyticLineCost(common.TransactionCase):
                 "amount": 0.0,
             }
         )
+        AnalyticItem.write(
+            {
+                "unit_amount": 7.0,
+            }
+        )
+        self.ActivityOverheadCostRule.write({"factor": 0.70})
+        AnalyticItem._compute_unit_abcost()
         AnalyticItem._populate_abcost_lines()
         self.assertEqual(AnalyticItem.activity_cost_id, self.ActivityOverheadCostRule)
         self.assertEqual(
             AnalyticItem.product_id, self.ActivityOverheadCostRule.product_id
         )
+        cost_vals = AnalyticItem.with_context(
+            product_id=False, task_id=False
+        )._prepare_activity_cost_data(self.ActivityOverheadCostRule)
+        AnalyticItem.copy(cost_vals)
