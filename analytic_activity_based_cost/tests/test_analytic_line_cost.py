@@ -31,7 +31,7 @@ class TestAnalyticLineCost(common.TransactionCase):
             self.cost_product_id.activity_cost_ids = [
                 (6, 0, [self.ActivityLaborCostRule.id])
             ]
-        self.env["account.analytic.line"].create(
+        analytic_line = self.env["account.analytic.line"].create(
             {
                 "name": "{}".format(
                     self.ActivityLaborCostRule.product_id.display_name
@@ -46,15 +46,26 @@ class TestAnalyticLineCost(common.TransactionCase):
                 "amount": 0.0,
             }
         )
-
-        self.product_id.activity_cost_ids = [(6, 0, [self.ActivityOverheadCostRule.id])]
-        self.env["account.analytic.line"].create(
+        self.ActivityLaborCostRule.write({"factor": 0.50})
+        analytic_line.write(
             {
-                "name": "{}".format(
+                "unit_amount": 5.0,
+            }
+        )
+        analytic_line._compute_unit_abcost()
+        self.product_id.standard_price = 10.0
+        analytic_line._compute_amount_abcost()
+        self.product_id.activity_cost_ids = [(6, 0, [self.ActivityOverheadCostRule.id])]
+        self.ActivityOverheadCostRule.write({"factor": 0.70})
+        analytic_line._prepare_activity_cost_data(self.ActivityOverheadCostRule)
+        AnalyticItem = self.env["account.analytic.line"].create(
+            {
+                "name": "{} / {}".format(
+                    analytic_line.name,
                     self.ActivityOverheadCostRule.product_id.display_name
-                    or self.ActivityOverheadCostRule.name
+                    or self.ActivityOverheadCostRule.name,
                 ),
-                "parent_id": False,
+                "parent_id": analytic_line.id,
                 "account_id": self.analytic_x.id,
                 "activity_cost_id": self.ActivityOverheadCostRule.id,
                 "product_id": self.ActivityOverheadCostRule.product_id.id,
@@ -62,4 +73,9 @@ class TestAnalyticLineCost(common.TransactionCase):
                 "unit_amount": 0.0,
                 "amount": 0.0,
             }
+        )
+        AnalyticItem._populate_abcost_lines()
+        self.assertEqual(AnalyticItem.activity_cost_id, self.ActivityOverheadCostRule)
+        self.assertEqual(
+            AnalyticItem.product_id, self.ActivityOverheadCostRule.product_id
         )
