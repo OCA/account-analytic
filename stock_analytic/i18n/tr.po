@@ -26,10 +26,20 @@ msgid "Analytic"
 msgstr ""
 
 #. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_account_analytic_applicability
+msgid "Analytic Plan's Applicabilities"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_precision
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_precision
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_precision
 msgid "Analytic Precision"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
+msgid "Domain"
 msgstr ""
 
 #. module: stock_analytic
@@ -44,5 +54,11 @@ msgstr ""
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move
+#: model:ir.model.fields.selection,name:stock_analytic.selection__account_analytic_applicability__business_domain__stock_move
 msgid "Stock Move"
 msgstr "Stok Taşı"
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_picking
+msgid "Transfer"
+msgstr ""
