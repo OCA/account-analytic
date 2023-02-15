@@ -176,16 +176,15 @@ class AnalyticTrackingItem(models.Model):
         }
 
     def _prepare_account_move_line(self, account, amount):
-        # Note: do not set analytic_account_id,
+        # Note: do not set account_id,
         # as that triggers a (repeated) Analytic Item
         return {
             "ref": _("%s - WIP") % (self.display_name),
             "product_id": self.product_id.id,
             "product_uom_id": self.product_id.uom_id.id,
-            "account_id": account.id,
             "debit": amount if amount > 0.0 else 0.0,
             "credit": -amount if amount < 0.0 else 0.0,
-            "analytic_account_id": self.analytic_id.id,
+            "account_id": self.analytic_id.id,
         }
 
     def _get_accounting_data_for_valuation(self):
