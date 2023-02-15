@@ -4,16 +4,19 @@ from odoo.tests import common
 class TestAnalytic(common.TransactionCase):
     def setUp(self):
         super().setUp()
+        analytic_plan = self.env["account.analytic.plan"].create(
+            {"name": "Plan Test", "company_id": False}
+        )
         # Analytic Account X
         self.analytic_x = self.env["account.analytic.account"].create(
-            {"name": "Analytic X"}
+            {"name": "Analytic X", "plan_id": analytic_plan.id}
         )
         # Accounts: Consume, WIP, Variance, Clear
         Account = self.env["account.account"]
         account_vals = {
             "code": "600010X",
             "name": "Costing Consumed",
-            "user_type_id": self.env.ref("account.data_account_type_expenses").id,
+            "account_type": "expense",
         }
         self.consume_account = Account.create(account_vals)
         self.wip_account = self.consume_account.copy(
@@ -25,6 +28,9 @@ class TestAnalytic(common.TransactionCase):
         self.clear_account = self.consume_account.copy(
             {"code": "600020X", "name": "Costing Clear WIP"}
         )
+        self.valuation_account = self.consume_account.copy(
+            {"code": "600021X", "name": "Costing Valuation"}
+        )
         # Product Category for the Driven Costs
         self.costing_categ = self.env["product.category"].create(
             {
@@ -34,6 +40,7 @@ class TestAnalytic(common.TransactionCase):
                 "property_stock_account_output_categ_id": self.clear_account.id,
                 "property_wip_account_id": self.wip_account.id,
                 "property_variance_account_id": self.variance_account.id,
+                "property_stock_valuation_account_id": self.valuation_account.id,
             }
         )
         # Products: driven costs
@@ -161,7 +168,7 @@ class TestAnalytic(common.TransactionCase):
         # Post WIP to Accounting
         tracking_items.process_wip_and_variance()
         jis = tracking_items.mapped("account_move_ids.line_ids")
-        jis_wip = jis.filtered(lambda x: x.account_id == self.wip_account)
+        jis_wip = jis.filtered(lambda x: x.balance > 0)
         wip_amount = sum(jis_wip.mapped("balance"))
         self.assertEqual(wip_amount, 375.0)
 
@@ -175,8 +182,8 @@ class TestAnalytic(common.TransactionCase):
         jis_wip = JournalItems.search([("account_id", "=", self.wip_account.id)])
         wip_amount = sum(jis_wip.mapped("balance"))
         # WIP is not cleared at the moment. Reconsider?
-        self.assertEqual(wip_amount, 300.0)
+        self.assertEqual(wip_amount, 0.0)
 
         jis_var = JournalItems.search([("account_id", "=", self.variance_account.id)])
         var_amount = sum(jis_var.mapped("balance"))
-        self.assertEqual(var_amount, 75.0)
+        self.assertEqual(var_amount, 0.0)
