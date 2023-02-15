@@ -4,23 +4,29 @@
     <record id="consume_account" model="account.account">
         <field name="name">Costing Consumed</field>
         <field name="code">600010</field>
-        <field name="user_type_id" ref="account.data_account_type_expenses" />
+        <field name="account_type">expense</field>
     </record>
     <record id="wip_account" model="account.account">
         <field name="name">Costing WIP</field>
         <field name="code">600011</field>
-        <field name="user_type_id" ref="account.data_account_type_expenses" />
+        <field name="account_type">expense</field>
     </record>
     <record id="variance_account" model="account.account">
         <field name="name">Costing Variance</field>
         <field name="code">600012</field>
-        <field name="user_type_id" ref="account.data_account_type_expenses" />
+        <field name="account_type">expense</field>
     </record>
     <record id="clear_account" model="account.account">
         <field name="name">Costing WIP Clear</field>
         <field name="code">600020</field>
-        <field name="user_type_id" ref="account.data_account_type_expenses" />
+        <field name="account_type">expense</field>
     </record>
+    <record id="valuation_account" model="account.account">
+        <field name="name">Costing Valuation</field>
+        <field name="code">600021</field>
+        <field name="account_type">expense</field>
+    </record>
+
 
     <record
         id="analytic_activity_based_cost.product_category_driven_costs"
@@ -31,6 +37,7 @@
         <field name="property_stock_account_output_categ_id" ref="clear_account" />
         <field name="property_wip_account_id" ref="wip_account" />
         <field name="property_variance_account_id" ref="variance_account" />
+        <field name="property_stock_valuation_account_id" ref="valuation_account" />
     </record>
 
 </odoo>

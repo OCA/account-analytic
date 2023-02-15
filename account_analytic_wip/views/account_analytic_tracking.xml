@@ -43,7 +43,22 @@
                     </group>
                     </group>
                     <separator string="Analytic Items" />
-                    <field colspan="4" name="analytic_line_ids" />
+                    <field name="analytic_line_ids">
+                        <tree editable="bottom">
+                            <field name="date" optional="show" />
+                            <field name="name" />
+                            <field name="account_id" />
+                            <field name="plan_id" />
+                            <field name="company_id" optional="show" />
+                            <field name="amount" optional="show" />
+                            <field name="amount_abcost" optional="show" />
+                            <field name="general_account_id" optional="hide" />
+                            <field name="move_line_id" optional="hide" />
+                            <field name="product_id" optional="hide" />
+                            <field name="unit_amount" optional="hide" />
+                            <field name="partner_id" optional="hide" />
+                        </tree>
+                    </field>
                 </sheet>
             </form>
         </field>
