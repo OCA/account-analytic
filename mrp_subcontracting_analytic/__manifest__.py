@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "depends": [
         "mrp_subcontracting",
-        "mrp_production_analytic",
+        "mrp_stock_analytic",
     ],
     "installable": True,
 }
