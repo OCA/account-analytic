@@ -1,1 +1,1 @@
-odoo-addon-mrp-production-analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/536/head#subdirectory=setup/mrp_production_analytic
+odoo-addon-mrp-stock-analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/536/head#subdirectory=setup/mrp_stock_analytic
