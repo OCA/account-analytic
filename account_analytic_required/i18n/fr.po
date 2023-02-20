@@ -2,16 +2,12 @@
 # This file contains the translation of the following modules:
 # 	* account_analytic_required
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2018
-# Quentin THEURET <odoo@kerpeo.com>, 2018
-# Nicolas JEUDY <njeudy@panda-chi.io>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-27 14:37+0000\n"
-"PO-Revision-Date: 2022-01-27 14:37+0000\n"
+"POT-Creation-Date: 2023-02-17 07:26+0000\n"
+"PO-Revision-Date: 2023-02-17 07:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,62 +21,44 @@ msgid "Account"
 msgstr "Compte"
 
 #. module: account_analytic_required
-#: model:ir.model,name:account_analytic_required.model_account_account_type
-msgid "Account Type"
-msgstr "Type de compte"
-
-#. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__always
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__always
 msgid "Always"
 msgstr "Toujours"
 
 #. module: account_analytic_required
+#. odoo-python
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account '%s' but the analytic "
-"account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
-"La règle analytique est définie sur 'Toujours' pour le comptes'%s'mais le "
-"compte analytique est absent de l'écriture ayant libellé '%s'."
+"La règle analytique est définie sur 'Toujours' pour le comptes '%(account)s' mais le "
+"compte analytique est absent de l'écriture ayant libellé '%(move)s'."
 
 #. module: account_analytic_required
+#. odoo-python
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account '%s' but the account move "
-"line with label '%s' has an analytic account '%s'."
+"Analytic policy is set to 'Never' with account '%(account)s' but the account"
+" move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
 msgstr ""
-"La règle analytique est définie sur 'Jamais' pour le compte '%s' mais "
-"l'écriture avec le libellé '%s' a un compte analytique de définit '%s'."
-
+"La règle analytique est définie sur 'Jamais' pour le compte '%(account)s' mais "
+"l'écriture avec le libellé '%(move)s' a un compte analytique de définit '%(analytic_account)s'."
 
 #. module: account_analytic_required
+#. odoo-python
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
-"account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
 "La règle analytique est définie à 'Ecritures comptabilisées' pour le compte "
-"'%s' mais le compte analytique est absent de l'écriture ayant le libellé "
-"'%s'."
-
-#. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__display_name
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
-msgid "Display Name"
-msgstr "Nom affiché"
-
-#. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__id
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
-msgid "ID"
-msgstr ""
+"'%(account)s' mais le compte analytique est absent de l'écriture ayant le libellé "
+"'%(move)s'."
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
@@ -93,35 +71,27 @@ msgid "Journal Item"
 msgstr "Écriture comptable"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account____last_update
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type____last_update
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
-msgid "Last Modified on"
-msgstr "Dernière modification le"
-
-#. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__never
 msgid "Never"
 msgstr "Jamais"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__optional
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__optional
 msgid "Optional"
 msgstr "Facultatif"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__property_analytic_policy
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__analytic_policy
 msgid "Policy for analytic account"
 msgstr "Politique pour les comptes analytiques"
 
 #. module: account_analytic_required
-#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__posted
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__posted
 msgid "Posted moves"
 msgstr "Ecritures comptabilisées"
 
 #. module: account_analytic_required
-#: model:ir.model.fields,help:account_analytic_required.field_account_account_type__property_analytic_policy
+#: model:ir.model.fields,help:account_analytic_required.field_account_account__analytic_policy
 msgid ""
 "Sets the policy for analytic accounts.\n"
 "If you select:\n"
