@@ -14,20 +14,19 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         cls.move_obj = cls.env["account.move"]
         cls.move_line_obj = cls.env["account.move.line"]
         cls.analytic_account_obj = cls.env["account.analytic.account"]
-        cls.analytic_account = cls.analytic_account_obj.create({"name": "test aa"})
+        cls.analytic_plan_obj = cls.env["account.analytic.plan"]
+        cls.analytic_plan = cls.analytic_plan_obj.create({"name": "test aa plan"})
         cls.analytic_account_1 = cls.analytic_account_obj.create(
-            {"name": "test aa 1 for distribution"}
+            {"name": "test aa 1 for distribution", "plan_id": cls.analytic_plan.id}
         )
         cls.analytic_account_2 = cls.analytic_account_obj.create(
-            {"name": "test aa 2 for distribution"}
+            {"name": "test aa 2 for distribution", "plan_id": cls.analytic_plan.id}
         )
-        cls.analytic_tag_obj = cls.env["account.analytic.tag"]
-        cls.analytic_distribution_obj = cls.env["account.analytic.distribution"]
         cls.account_sales = cls.account_obj.create(
             {
                 "code": "X1020",
                 "name": "Product Sales - (test)",
-                "user_type_id": cls.env.ref("account.data_account_type_revenue").id,
+                "account_type": "income",
             }
         )
         cls.account_recv = cls.account_obj.create(
@@ -35,14 +34,14 @@ class TestAccountAnalyticRequired(common.TransactionCase):
                 "code": "X11002",
                 "name": "Debtors - (test)",
                 "reconcile": True,
-                "user_type_id": cls.env.ref("account.data_account_type_receivable").id,
+                "account_type": "asset_receivable",
             }
         )
         cls.account_exp = cls.account_obj.create(
             {
                 "code": "X2110",
                 "name": "Expenses - (test)",
-                "user_type_id": cls.env.ref("account.data_account_type_expenses").id,
+                "account_type": "expense",
             }
         )
         cls.sales_journal = cls.env["account.journal"].create(
@@ -52,36 +51,15 @@ class TestAccountAnalyticRequired(common.TransactionCase):
                 "type": "sale",
             }
         )
-        cls.analytic_tag = cls.analytic_tag_obj.create(
-            {
-                "name": "Analytic tag for test",
-                "company_id": cls.env.company.id,
-                "active_analytic_distribution": True,
-            }
-        )
-        cls.analytic_tag_wo_distribution = cls.analytic_tag_obj.create(
-            {"name": "Analytic tag for test 2", "company_id": cls.env.company.id}
-        )
-        cls.analytic_distribution_line_1 = cls.analytic_distribution_obj.create(
-            {
-                "name": "Analytic distribution line 1",
-                "account_id": cls.analytic_account_1.id,
-                "tag_id": cls.analytic_tag.id,
-                "percentage": 50.0,
-            }
-        )
-        cls.analytic_distribution_line_2 = cls.analytic_distribution_obj.create(
-            {
-                "name": "Analytic distribution line 2",
-                "account_id": cls.analytic_account_1.id,
-                "tag_id": cls.analytic_tag.id,
-                "percentage": 50.0,
-            }
-        )
+        cls.analytic_distribution_1 = {
+            str(cls.analytic_account_1.id): 50.0,
+        }
+        cls.analytic_distribution_2 = {
+            str(cls.analytic_account_2.id): 50.0,
+        }
 
     def _create_move(self, amount=100, **kwargs):
         with_analytic = kwargs.get("with_analytic")
-        with_analytic_tag = kwargs.get("with_analytic_tag")
         date = datetime.now()
         ml_obj = self.move_line_obj.with_context(check_move_validity=False)
         move_vals = {"name": "/", "journal_id": self.sales_journal.id, "date": date}
@@ -93,14 +71,9 @@ class TestAccountAnalyticRequired(common.TransactionCase):
                 "debit": 0,
                 "credit": amount,
                 "account_id": self.account_sales.id,
-                "analytic_account_id": self.analytic_account.id
+                "analytic_distribution": self.analytic_distribution_1
                 if with_analytic
-                else False,
-                "analytic_tag_ids": [
-                    (6, 0, [self.analytic_tag.id, self.analytic_tag_wo_distribution.id])
-                ]
-                if with_analytic_tag
-                else False,
+                else {},
             }
         )
         ml_obj.create(
@@ -117,7 +90,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
     def _set_analytic_policy(self, policy, account=None):
         if account is None:
             account = self.account_sales
-        account.user_type_id.property_analytic_policy = policy
+        account.analytic_policy = policy
 
     def test_optional(self):
         self._set_analytic_policy("optional")
@@ -157,7 +130,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         self._set_analytic_policy("always")
         line = self._create_move(with_analytic=True)
         with self.assertRaises(exceptions.ValidationError):
-            line.write({"analytic_account_id": False})
+            line.write({"analytic_distribution": {}})
 
     def test_change_account(self):
         self._set_analytic_policy("always", account=self.account_exp)
@@ -171,7 +144,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         line.write(
             {
                 "account_id": self.account_exp.id,
-                "analytic_account_id": self.analytic_account.id,
+                "analytic_distribution": self.analytic_distribution_1,
             }
         )
 
@@ -188,13 +161,3 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         move = line.move_id
         move.action_post()
         self.assertEqual(move.state, "posted")
-
-    def test_exception_policy_for_analytic_distribution(self):
-        self._set_analytic_policy("always")
-        self._create_move(with_analytic=False, with_analytic_tag=True)
-        self._set_analytic_policy("posted")
-        line = self._create_move(with_analytic=False, with_analytic_tag=True)
-        line.move_id.action_post()
-        self._set_analytic_policy("never")
-        with self.assertRaises(exceptions.ValidationError), self.cr.savepoint():
-            self._create_move(with_analytic=False, with_analytic_tag=True)
