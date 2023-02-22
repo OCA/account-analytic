@@ -4,8 +4,8 @@
 {
     "name": "Purchase Stock Analytic",
     "summary": """
-        Copies the analytic account of the purchase order item to the stock move""",
-    "version": "15.0.1.0.0",
+        Copies the analytic distribution of the purchase order item to the stock move""",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
