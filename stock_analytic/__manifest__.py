@@ -18,6 +18,7 @@
     "license": "AGPL-3",
     "depends": ["stock_account", "analytic"],
     "data": [
+        "views/account_analytic_plan_views.xml",
         "views/stock_move_views.xml",
         "views/stock_scrap_views.xml",
         "views/stock_move_line_views.xml",
