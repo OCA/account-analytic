@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_analytic_plan_form_view" model="ir.ui.view">
+        <field name="name">account.analytic.plan.form</field>
+        <field name="model">account.analytic.plan</field>
+        <field name="inherit_id" ref="analytic.account_analytic_plan_form_view" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='applicability_ids']//field[@name='business_domain']"
+                position="after"
+            >
+                <field
+                    name="stock_picking_type_id"
+                    attrs="{'readonly': [('business_domain', '!=', 'stock_move')]}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
