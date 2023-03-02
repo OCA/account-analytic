@@ -233,7 +233,7 @@ class AnalyticTrackingItem(models.Model):
 
     def _create_wip_journal_entry(self, cron=False):
         amount = self.pending_amount
-        accounts = self._get_accounting_data_for_valuation()
+        accounts = self.sudo()._get_accounting_data_for_valuation()
         wip_journal = accounts.get("stock_journal")
         acc_applied, acc_wip = accounts["stock_valuation"], accounts["stock_wip"]
         error_msg = None
