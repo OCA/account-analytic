@@ -250,7 +250,7 @@ class AnalyticTrackingItem(models.Model):
         if error_msg and not cron:
             raise exceptions.ValidationError(error_msg)
         elif error_msg and cron:
-            _logger.debug(error_msg)
+            _logger.warning(error_msg)
         elif amount:
             move_lines = [
                 self._prepare_account_move_line(acc_applied, -amount),
