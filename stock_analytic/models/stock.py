@@ -51,6 +51,8 @@ class StockMove(models.Model):
                     "analytic_account_id": self.analytic_account_id.id,
                 }
             )
+        if self.analytic_tag_ids:
+            res.update({"analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)]})
         return res
 
     @api.model
@@ -69,6 +71,8 @@ class StockMove(models.Model):
         )
         if self.analytic_account_id:
             res.update({"analytic_account_id": self.analytic_account_id.id})
+        if self.analytic_tag_ids:
+            res.update({"analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)]})
         return res
 
 
@@ -76,6 +80,10 @@ class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
     analytic_account_id = fields.Many2one(comodel_name="account.analytic.account")
+    analytic_tag_ids = fields.Many2many(
+        comodel_name="account.analytic.tag",
+        string="Analytic Tags",
+    )
 
     @api.model
     def _prepare_stock_move_vals(self):
@@ -86,4 +94,6 @@ class StockMoveLine(models.Model):
         res = super()._prepare_stock_move_vals()
         if self.analytic_account_id:
             res.update({"analytic_account_id": self.analytic_account_id.id})
+        if self.analytic_tag_ids:
+            res.update({"analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)]})
         return res

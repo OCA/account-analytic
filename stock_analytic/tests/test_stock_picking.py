@@ -249,6 +249,4 @@ class TestStockPicking(TransactionCase):
             self.outgoing_picking_type,
         )
         values = picking.move_lines._prepare_procurement_values()
-        self.assertEqual(
-            values.get("analytic_account_id"), self.env["account.analytic.account"]
-        )
+        self.assertEqual(values.get("analytic_account_id"), None)

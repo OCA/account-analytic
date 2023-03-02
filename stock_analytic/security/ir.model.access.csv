@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_analytic_tag_user,access_account_analytic_tag_user,analytic.model_account_analytic_tag,base.group_user,1,0,0,0

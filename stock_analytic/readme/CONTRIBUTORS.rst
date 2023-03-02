@@ -9,3 +9,4 @@
 * Jared Kipe <jared@hibou.io>
 * Alan Ramos <alan.ramos@jarsa.com.mx>
 * Mantas Šniukas <mantas@vialaurea.lt>
+* Saran Lim. <saranl@ecosoft.co.th>

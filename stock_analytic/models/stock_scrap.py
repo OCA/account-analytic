@@ -13,7 +13,15 @@ class StockScrap(models.Model):
 
     def _prepare_move_values(self):
         res = super()._prepare_move_values()
+        # Update stock move
         res.update(
+            {
+                "analytic_account_id": self.analytic_account_id.id,
+                "analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)],
+            }
+        )
+        # Update stock move line
+        res["move_line_ids"][0][2].update(
             {
                 "analytic_account_id": self.analytic_account_id.id,
                 "analytic_tag_ids": [(6, 0, self.analytic_tag_ids.ids)],

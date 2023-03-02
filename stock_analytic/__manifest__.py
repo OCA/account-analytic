@@ -17,6 +17,7 @@
     "license": "AGPL-3",
     "depends": ["stock_account", "analytic"],
     "data": [
+        "security/ir.model.access.csv",
         "views/stock_move_views.xml",
         "views/stock_scrap.xml",
         "views/stock_move_line.xml",
