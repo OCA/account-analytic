@@ -4,12 +4,12 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 from ..hooks import uninstall_hook
 
 
-class TestAnalyticDimensionBase(SavepointCase):
+class TestAnalyticDimensionBase(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
