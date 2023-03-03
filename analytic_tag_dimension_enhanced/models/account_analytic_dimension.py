@@ -25,7 +25,6 @@ class AccountAnalyticDimension(models.Model):
         "of selected analytic tags in working document",
     )
     required = fields.Boolean(
-        string="Required",
         default=False,
         help="If required, this dimension needed to be selected in working document",
     )
