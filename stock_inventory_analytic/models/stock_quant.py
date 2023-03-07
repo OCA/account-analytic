@@ -3,8 +3,8 @@
 from odoo import fields, models
 
 
-class StockInventoryLine(models.Model):
-    _inherit = "stock.inventory.line"
+class StockQuant(models.Model):
+    _inherit = "stock.quant"
 
     analytic_account_id = fields.Many2one(
         "account.analytic.account",
@@ -23,8 +23,8 @@ class StockInventoryLine(models.Model):
     def _get_default_analytic_tags(self):
         return self.env.company.analytic_tag_ids.ids
 
-    def _get_move_values(self, qty, location_id, location_dest_id, out):
-        res = super(StockInventoryLine, self)._get_move_values(
+    def _get_inventory_move_values(self, qty, location_id, location_dest_id, out=False):
+        res = super(StockQuant, self)._get_inventory_move_values(
             qty, location_id, location_dest_id, out
         )
         if self.analytic_account_id:

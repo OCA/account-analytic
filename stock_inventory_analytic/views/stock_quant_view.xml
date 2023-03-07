@@ -2,12 +2,12 @@
 <!-- Copyright 2019 ForgeFlow S.L.
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="stock_analytic_inventory_line_tree" model="ir.ui.view">
-        <field name="name">stock.inventory.line.tree</field>
-        <field name="model">stock.inventory.line</field>
-        <field name="inherit_id" ref="stock.stock_inventory_line_tree" />
+    <record id="view_stock_quant_tree_editable_analytic" model="ir.ui.view">
+        <field name="name">stock.quant.tree.analytic</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_inventory_editable" />
         <field name="arch" type="xml">
-            <field name="location_id" position="after">
+            <field name="product_id" position="after">
                 <field
                     name="analytic_account_id"
                     groups="analytic.group_analytic_accounting"

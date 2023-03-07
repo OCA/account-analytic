@@ -2,20 +2,21 @@
 # Copyright 2019 brain-tec AG
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 
-class TestInventoryAnalytic(SavepointCase):
+class TestInventoryAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
-
+        cls.Quant = cls.env["stock.quant"].with_context(inventory_mode=True)
         # MODELS
         cls.product_product_model = cls.env["product.product"]
         cls.product_category_model = cls.env["product.category"]
         cls.account_move_line_model = cls.env["account.move.line"]
         cls.account_analytic_tag = cls.env["account.analytic.tag"]
+        Location = cls.env["stock.location"]
 
         # INSTANCES
         cls.analytic_tag_1 = cls.account_analytic_tag.create(
@@ -26,6 +27,20 @@ class TestInventoryAnalytic(SavepointCase):
         )
         cls.stock_journal = cls.env["account.journal"].create(
             {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
+        )
+        cls.warehouse = Location.create(
+            {
+                "name": "Warehouse",
+                "usage": "internal",
+            }
+        )
+
+        cls.stock = Location.create(
+            {
+                "name": "Stock",
+                "usage": "internal",
+                "location_id": cls.warehouse.id,
+            }
         )
         cls.valuation_account = cls.env["account.account"].create(
             {
@@ -89,27 +104,28 @@ class TestInventoryAnalytic(SavepointCase):
         )
 
     def test_inventory_adjustment_analytic(self):
-        inventory = self.env["stock.inventory"].create(
+        # Creates a quants...
+        quants = self.env["stock.quant"].search([("product_id", "=", self.product.id)])
+        eur = self.env["res.currency"].search([("name", "=", "EUR")])
+        eur.active = True
+        self.assertEqual(len(quants), 0)
+        self.Quant.create(
             {
-                "name": "add product",
-                "location_ids": [(4, self.stock_location.id)],
-                "product_ids": [(4, self.product.id)],
-            }
-        )
-        inventory.action_start()
-        self.assertEqual(len(inventory.line_ids), 0)
-
-        self.env["stock.inventory.line"].create(
-            {
-                "inventory_id": inventory.id,
                 "product_id": self.product.id,
-                "product_qty": 5,
-                "location_id": self.stock_location.id,
+                "location_id": self.stock.id,
+                "inventory_quantity": 24,
             }
+        ).action_apply_inventory()
+        quants = self.env["stock.quant"].search(
+            [
+                ("product_id", "=", self.product.id),
+                ("quantity", ">", 0),
+            ]
         )
-        self.assertEqual(len(inventory.line_ids), 1)
-        self.assertEqual(inventory.line_ids.theoretical_qty, 0)
-        inventory.action_validate()
+
+        # self.assertEqual(len(inventory.line_ids), 1)
+        # self.assertEqual(inventory.line_ids.theoretical_qty, 0)
+        #     inventory.action_validate()
 
         # Checks that there exists one analytic line created with that account
         account_move_lines = self.account_move_line_model.search(
