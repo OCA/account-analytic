@@ -3,7 +3,7 @@
 
 {
     "name": "Product Analytic Purchase",
-    "version": "14.0.1.0.1",
+    "version": "15.0.1.0.1",
     "category": "Purchases",
     "license": "AGPL-3",
     "summary": "Glue module between purchase and product_analytic",
