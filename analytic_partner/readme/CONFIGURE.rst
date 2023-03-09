@@ -1,5 +1,6 @@
 To configure this module, you need to:
 
-#. Go to **Setting > Users > Users** and check you have as at least "Adviser"
-   in your user profile and have checked the "Show Full Accounting Features" and
-   "Analytic Accounting" access rights.
+#. Go to **Setting > Users > Groups**.
+#. Search "Show Full Accounting Features".
+#. Make sure your user is included in such group.
+#. Do the same for "Analytic Accounting" group.
