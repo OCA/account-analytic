@@ -9,7 +9,7 @@ class PosOrder(models.Model):
 
     def _prepare_invoice_line(self, line):
         """The method that allowed to add the analytic account to the invoice lines
-        has been dropped in v13. Fortunately we can add it easily with this
+        has been dropped in v15. Fortunately we can add it easily with this
         prepare method.
         """
         res = super()._prepare_invoice_line(line)

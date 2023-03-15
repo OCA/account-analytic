@@ -1,10 +1,10 @@
 # Copyright 2015 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo import fields
-from odoo.tests import common
+from odoo.tests.common import TransactionCase
 
 
-class TestPosAnalyticConfig(common.SavepointCase):
+class TestPosAnalyticConfig(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
