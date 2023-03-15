@@ -33,10 +33,10 @@ class AccountMoveLine(models.Model):
             return _(
                 "Analytic policy is set to "
                 "'Always (analytic distribution)' with account "
-                "'%s' but the analytic distribution is "
+                "'{}' but the analytic distribution is "
                 "missing in the account move line with "
-                "label '%s'."
-            ) % (
+                "label '{}'."
+            ).format(
                 self.account_id.display_name,
                 self.name or "",
             )
@@ -48,20 +48,20 @@ class AccountMoveLine(models.Model):
             return _(
                 "Analytic policy is set to "
                 "'Always (analytic account or distribution)' "
-                "with account '%s' but the analytic "
+                "with account '{}' but the analytic "
                 "distribution and the analytic account are "
                 "missing in the account move line "
-                "with label '%s'."
-            ) % (
+                "with label '{}'."
+            ).format(
                 self.account_id.display_name,
                 self.name or "",
             )
         elif analytic_policy == "never" and analytic_distribution:
             return _(
                 "Analytic policy is set to 'Never' with account "
-                "'%s' but the account move line with label "
-                "'%s' has an analytic distribution"
-            ) % (
+                "'{}' but the account move line with label "
+                "'{}' has an analytic distribution"
+            ).format(
                 self.account_id.display_name,
                 self.name or "",
             )
@@ -74,4 +74,4 @@ class AccountMoveLine(models.Model):
             message = rec._check_analytic_distribution_required_msg()
             if message:
                 raise exceptions.ValidationError(message)
-        super()._check_analytic_required()
+        return super()._check_analytic_required()

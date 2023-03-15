@@ -5,10 +5,10 @@
 from datetime import datetime
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 
-class TestAccountAnalyticPlanRequired(SavepointCase):
+class TestAccountAnalyticPlanRequired(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestAccountAnalyticPlanRequired, cls).setUpClass()
