@@ -1,0 +1,1 @@
+odoo-addon-stock_analytic@ git+https://github.com/oca/account-analytic@refs/pull/448/head#subdirectory=setup/stock_analytic
