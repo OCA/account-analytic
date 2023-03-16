@@ -1,10 +1,10 @@
 # Copyright 2021 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 
-class TestStockAnalytic(SavepointCase):
+class TestStockAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -28,6 +28,8 @@ class TestStockAnalytic(SavepointCase):
                             "name": "move test",
                             "product_id": cls.product_id.id,
                             "product_uom": cls.uom_id.id,
+                            "location_id": cls.stock_location.id,
+                            "location_dest_id": cls.customer_location.id,
                         },
                     )
                 ],
