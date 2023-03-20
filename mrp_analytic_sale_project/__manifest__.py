@@ -5,7 +5,7 @@
     "name": "Carry Analytic Account from Sales Order to Manufacturing Orders",
     "summary": "Carry the Sales Order Analytic Account to "
     "the generated Manufacturing Orders",
-    "version": "15.0.1.0.2",
+    "version": "16.0.1.0.0",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Manufacturing",
     "website": "https://github.com/OCA/account-analytic",
