@@ -8,9 +8,15 @@ class TestSaleAnalytic(common.TransactionCase):
         mfg_route = self.env.ref("mrp.route_warehouse0_manufacture")
         mto_route = self.env.ref("stock.route_warehouse0_mto")
         mto_route.active = True
-
+        self.default_plan = self.env["account.analytic.plan"].create(
+            {"name": "Default", "company_id": False}
+        )
         self.analytic_account = self.env["account.analytic.account"].create(
-            {"name": "Analytic account test"}
+            {
+                "name": "Analytic account test",
+                "plan_id": self.default_plan.id,
+                "company_id": False,
+            }
         )
 
         self.product_service = self.env["product.product"].create(

@@ -71,6 +71,7 @@ Contributors
     * Daniel Reis <dreis@opensourceintegrators.com>
     * Sulivan Lominchar <slomichar@archeti.com>
     * Chandresh Thakkar <cthakkr@opensourceintegrators.com>
+    * Murtuza Saleh <msaleh@opensourceintegrators.com>
 
 Maintainers
 ~~~~~~~~~~~
