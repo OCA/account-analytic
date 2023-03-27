@@ -8,7 +8,12 @@ class TestMrpAnalytic(common.TransactionCase):
         AnalyticAccount = self.env["account.analytic.account"]
         Product = self.env["product.product"]
 
-        self.analytic_x = AnalyticAccount.create({"name": "Analytic X"})
+        analytic_plan = self.env["account.analytic.plan"].create(
+            {"name": "Plan Test", "company_id": False}
+        )
+        self.analytic_x = AnalyticAccount.create(
+            {"name": "Analytic X", "plan_id": analytic_plan.id}
+        )
 
         mfg_route = self.env.ref("mrp.route_warehouse0_manufacture")
         mto_route = self.env.ref("stock.route_warehouse0_mto")
@@ -58,8 +63,6 @@ class TestMrpAnalytic(common.TransactionCase):
                 "analytic_account_id": self.analytic_x.id,
             }
         )
-        mo._onchange_bom_id()
-        mo._onchange_move_raw()
         mo.action_confirm()
         child_mo = self.env["mrp.production"].search(
             [("product_id", "=", self.product_subassembly.id)]
@@ -79,8 +82,6 @@ class TestMrpAnalytic(common.TransactionCase):
                 "bom_id": self.bom_product_final.id,
             }
         )
-        mo._onchange_bom_id()
-        mo._onchange_move_raw()
         mo.action_confirm()
         mo.analytic_account_id = self.analytic_x
         child_mo = self.env["mrp.production"].search(
