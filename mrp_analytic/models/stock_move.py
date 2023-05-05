@@ -16,6 +16,7 @@ class StockMove(models.Model):
         credit_value,
         debit_account_id,
         credit_account_id,
+        svl_id,
         description,
     ):
         """
@@ -29,6 +30,7 @@ class StockMove(models.Model):
             credit_value,
             debit_account_id,
             credit_account_id,
+            svl_id,
             description,
         )
         analytic = (
@@ -36,6 +38,6 @@ class StockMove(models.Model):
             or self.production_id.analytic_account_id
         )
         for entry in rslt.values():
-            if not entry.get("analytic_account_id") and analytic:
-                entry["analytic_account_id"] = analytic.id
+            if not entry.get("analytic_distribution") and analytic:
+                entry["analytic_distribution"] = {analytic.id: 100}
         return rslt

@@ -100,6 +100,7 @@ Contributors
 * José L. Sandoval A. <alagunasalahaddin@live.com>
 * Pimolnat Suntian <pimolnats@ecosoft.co.th>
 * Daniel Reis <dreis@opensourceintegrators.com>
+* Hardik Suthar <hsuthar@opensourceintegrators.com>
 
 Maintainers
 ~~~~~~~~~~~
