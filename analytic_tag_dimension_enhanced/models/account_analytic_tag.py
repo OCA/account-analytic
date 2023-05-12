@@ -29,6 +29,7 @@ class AccountAnalyticTag(models.Model):
                 and record.move_id.move_type == "entry"
             )
             or ("display_type" in record and record.display_type)
+            or self._context.get("bypass_required_dimension")
         ):
             return
         Dimension = self.env["account.analytic.dimension"]
@@ -36,8 +37,15 @@ class AccountAnalyticTag(models.Model):
         tags_dimension = self.filtered("analytic_dimension_id.required")
         dimensions = tags_dimension.mapped("analytic_dimension_id")
         missing = req_dimensions - dimensions
+        # Check record in exclude required, it will skip it
+        if (
+            req_dimensions
+            and req_dimensions.exclude_required
+            and record._name in req_dimensions.exclude_required.mapped("model")
+        ):
+            missing = False
         if missing:
             raise ValidationError(
-                _("Following dimension(s) not selected: %s")
+                _("Following analytic tag dimension(s) not selected: %s")
                 % ", ".join(missing.mapped("name"))
             )

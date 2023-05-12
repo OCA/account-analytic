@@ -8,6 +8,10 @@
     "author": "Ecosoft, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["analytic_tag_dimension"],
-    "data": ["views/analytic_view.xml", "views/account_move_view.xml"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/analytic_view.xml",
+        "views/account_move_view.xml",
+    ],
     "installable": True,
 }

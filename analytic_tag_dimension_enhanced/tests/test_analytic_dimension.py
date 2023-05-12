@@ -41,6 +41,7 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         """
         self.dimension_1.required = True
         self.dimension_2.required = True
+        model = self.env["ir.model"].search([("model", "=", "account.move.line")])
 
         values = {
             "name": "test",
@@ -54,6 +55,12 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         # Error if missing required dimension
         with self.assertRaises(ValidationError):
             invoice_line_obj.create(values)
+
+        # Exclude required dimension (for some model)
+        self.dimension_1.exclude_required = model
+        line = invoice_line_obj.create(values)
+        self.assertTrue(line.x_dimension_test_dim_1.id == self.analytic_tag_1a.id)
+
         self.invoice.invoice_line_ids.unlink()
         values["analytic_tag_ids"] = [
             (6, 0, [self.analytic_tag_1a.id, self.analytic_tag_2a.id])

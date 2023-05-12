@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ir_model_analytic_tags,access_ir_model_analytic_tags,base.model_ir_model,analytic.group_analytic_tags,1,0,0,0

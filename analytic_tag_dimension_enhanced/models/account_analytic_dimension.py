@@ -28,6 +28,10 @@ class AccountAnalyticDimension(models.Model):
         default=False,
         help="If required, this dimension needed to be selected in working document",
     )
+    exclude_required = fields.Many2many(
+        comodel_name="ir.model",
+        string="Exclude Module Required",
+    )
     by_sequence = fields.Boolean(
         default=False,
         help="If checked, this dimemsion's tags will be available "
