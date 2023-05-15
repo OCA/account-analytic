@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-account-analytic Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-account_analytic_required>=16.0dev,<16.1dev',
         'odoo-addon-purchase_analytic>=16.0dev,<16.1dev',
         'odoo-addon-stock_analytic>=16.0dev,<16.1dev',
     ],
