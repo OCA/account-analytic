@@ -17,16 +17,27 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__project_id
-msgid "Analytic Account"
-msgstr "Cuenta Analítica"
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution
+msgid "Analytic"
+msgstr ""
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_precision
+msgid "Analytic Precision"
+msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model,name:purchase_analytic.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de Compra"
 
-#. module: purchase_analytic
-#: model:ir.model.fields,help:purchase_analytic.field_purchase_order__project_id
-msgid "The analytic account related to a purchase order."
-msgstr "La cuenta analítica relacionada al pedido de compra."
+#~ msgid "Analytic Account"
+#~ msgstr "Cuenta Analítica"
+
+#~ msgid "The analytic account related to a purchase order."
+#~ msgstr "La cuenta analítica relacionada al pedido de compra."
