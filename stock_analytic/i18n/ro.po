@@ -28,6 +28,13 @@ msgid "Analytic"
 msgstr ""
 
 #. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution_search
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution_search
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_account_analytic_applicability
 msgid "Analytic Plan's Applicabilities"
 msgstr ""
