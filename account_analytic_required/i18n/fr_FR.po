@@ -6,23 +6,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-05-15 18:34+0000\n"
+"Last-Translator: Sandrine (ACSONE) <sandrine.ravet@acsone.eu>\n"
 "Language-Team: none\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account
 msgid "Account"
-msgstr ""
+msgstr "Compte"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__always
 msgid "Always"
-msgstr ""
+msgstr "Toujours"
 
 #. module: account_analytic_required
 #. odoo-python
@@ -32,6 +34,9 @@ msgid ""
 "Analytic policy is set to 'Always' with account '%(account)s' but the "
 "analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
+"La politique analytique est définie comme 'Toujours' avec le compte "
+"'%(account)s' mais le compte analytique est manquant sur l'écriture "
+"comptable ayant le libellé '%(move)s'."
 
 #. module: account_analytic_required
 #. odoo-python
@@ -42,6 +47,9 @@ msgid ""
 " move line with label '%(move)s' has an analytic account "
 "'%(analytic_account)s'."
 msgstr ""
+"La politique analytique est définie comme 'Jamais' sur le compte '%(account)"
+"s' mais l'écriture comptable ayant le libellé '%(move)s' a un compte "
+"analytique '%(analytic_account)s'."
 
 #. module: account_analytic_required
 #. odoo-python
@@ -51,36 +59,39 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
 "analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
+"La politique analytique est définie comme 'Pièces comptabilisées' sur le "
+"compte '%(account)s' mais le compte analytique est manquant sur l'écriture "
+"comptable ayant le libellé '%(move)s'."
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Pièce comptable"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Ecriture comptable"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__never
 msgid "Never"
-msgstr ""
+msgstr "Jamais"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__optional
 msgid "Optional"
-msgstr ""
+msgstr "Optionnel"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account__analytic_policy
 msgid "Policy for analytic account"
-msgstr ""
+msgstr "Politique pour les comptes analytiques"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__posted
 msgid "Posted moves"
-msgstr ""
+msgstr "Pièces comptabilisées"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account__analytic_policy
@@ -94,3 +105,15 @@ msgid ""
 "\n"
 "This field is company dependent."
 msgstr ""
+"Défini la politique pour les comptes analytiques.\n"
+"Si vous sélectionnez :\n"
+"- Optionnel : Le comptable est libre de mettre un compte analytique sur une "
+"écriture comptable ayant ce type de compte.\n"
+"- Toujours : Le comptable recevra un message d'erreur s'il n'y a pas de "
+"compte analytique.\n"
+"- Pièces comptabilisées : Le comptable recevra un message d'erreur s'il n'y "
+"a pas de compte analytique au moment de comptabiliser la pièce.\n"
+"- Jamais : Le comptable recevra un message d'erreur s'il y a un compte "
+"analytique.\n"
+"\n"
+"Ce champ est spécifique à chaque société."
