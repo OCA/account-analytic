@@ -1,0 +1,1 @@
+from . import test_account_analytic_plan_applicability_product
