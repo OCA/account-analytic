@@ -4,7 +4,7 @@ from odoo import fields
 from odoo.tests import common
 
 
-class TestPosAnalyticConfig(common.SavepointCase):
+class TestPosAnalyticConfig(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -109,6 +109,9 @@ class TestPosAnalyticConfig(common.SavepointCase):
         ]
         # There aren't lines with the analytic account yet
         self.assertFalse(self.aml_obj.search(aml_domain))
+        self.session_01.total_payments_amount = 0
+        self.main_config.journal_id.type = "sale"
+        self.pos_order.action_pos_order_invoice()
         self.session_01.action_pos_session_closing_control()
         # There they are
         self.assertEqual(len(self.aml_obj.search(aml_domain)), 1)
@@ -120,6 +123,7 @@ class TestPosAnalyticConfig(common.SavepointCase):
             ("product_id", "=", self.product_01.id),
             ("analytic_account_id", "=", self.aa_01.id),
         ]
+        self.main_config.journal_id.type = "sale"
         lines = self.aml_obj.search(aml_domain)
         # There aren't lines with the analytic account yet
         self.assertEqual(len(lines.ids), 0)
