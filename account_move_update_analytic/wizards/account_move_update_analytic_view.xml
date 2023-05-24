@@ -7,34 +7,30 @@
         <field name="model">account.move.update.analytic.wizard</field>
         <field name="arch" type="xml">
             <form string="Update analytic lines">
-                <group
-                    string="Analytic Account"
-                    groups="analytic.group_analytic_accounting"
-                >
-                    <group>
-                        <field name="current_analytic_account_id" readonly="1" />
-                    </group>
-                    <group>
-                        <field name="company_id" invisible="1" />
-                        <field name="new_analytic_account_id" />
-                    </group>
-                </group>
-                <group string="Analytic Tags" groups="analytic.group_analytic_tags">
+                <group groups="analytic.group_analytic_accounting">
                     <group>
                         <field
-                            name="current_analytic_tag_ids"
+                            name="current_analytic_distribution"
                             readonly="1"
-                            widget="many2many_tags"
+                            widget="analytic_distribution"
                         />
                     </group>
                     <group>
                         <field name="company_id" invisible="1" />
-                        <field name="new_analytic_tag_ids" widget="many2many_tags" />
+                        <field name="product_id" invisible="1" />
+                        <field name="account_id" invisible="1" />
+                        <field name="move_type" invisible="1" />
+                        <field
+                            name="analytic_distribution"
+                            widget="analytic_distribution"
+                            options="{'product_field': 'product_id', 'account_field': 'account_id'}"
+                            business_domain_compute="move_type in ['out_invoice', 'out_refund', 'out_receipt'] and 'invoice' or move_type in ['in_invoice', 'in_refund', 'in_receipt'] and 'bill' or 'general'"
+                        />
                     </group>
                 </group>
                 <footer>
                     <button
-                        string='Update Analytic Accounts / Tags'
+                        string='Update Analytic Distribution'
                         name="update_analytic_lines"
                         type="object"
                         class="btn-primary"
@@ -49,7 +45,6 @@
         <field name="name">Update Analytic for selected Account Moves</field>
         <field name="res_model">account.move.update.analytic.wizard</field>
         <field name="view_mode">form</field>
-        <field name="domain">[('line_id', '=', active_id)]</field>
         <field name="context">{'default_line_id': active_id}</field>
         <field name="target">new</field>
     </record>
