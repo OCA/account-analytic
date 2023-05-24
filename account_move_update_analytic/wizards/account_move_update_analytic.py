@@ -10,19 +10,15 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
     _description = "Account Move Update Analytic Account Wizard"
 
     line_id = fields.Many2one("account.move.line", string="Invoice line")
-    current_analytic_account_id = fields.Many2one(
-        related="line_id.analytic_account_id", string="Current Analytic Account"
-    )
-    current_analytic_tag_ids = fields.Many2many(
-        related="line_id.analytic_tag_ids", string="Current Analytic Tags"
+    product_id = fields.Many2one(related="line_id.product_id")
+    account_id = fields.Many2one(related="line_id.account_id")
+    move_type = fields.Selection(related="line_id.move_id.move_type")
+    analytic_precision = fields.Integer(related="line_id.analytic_precision")
+    current_analytic_distribution = fields.Json(
+        related="line_id.analytic_distribution", string="Current Analytic Distribution"
     )
     company_id = fields.Many2one(related="line_id.company_id")
-    new_analytic_account_id = fields.Many2one(
-        "account.analytic.account", string="New Analytic Account", check_company=True
-    )
-    new_analytic_tag_ids = fields.Many2many(
-        "account.analytic.tag", string="New Analytic Tags", check_company=True
-    )
+    analytic_distribution = fields.Json(string="New Analytic Distribution")
 
     @api.model
     def default_get(self, fields):
@@ -31,28 +27,17 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         aml = self.env["account.move.line"].browse(active_id)
         rec.update(
             {
-                "line_id": active_id,
-                "current_analytic_account_id": aml.analytic_account_id.id,
-                "new_analytic_account_id": aml.analytic_account_id.id,
-                "current_analytic_tag_ids": [(6, 0, aml.analytic_tag_ids.ids or [])],
-                "new_analytic_tag_ids": [(6, 0, aml.analytic_tag_ids.ids or [])],
-                "company_id": aml.company_id.id,
+                "line_id": aml.id,
+                "product_id": aml.product_id.id,
+                "account_id": aml.account_id.id,
+                "move_type": aml.move_id.move_type,
+                "analytic_precision": aml.analytic_precision,
+                "current_analytic_distribution": aml.analytic_distribution,
+                "analytic_distribution": aml.analytic_distribution,
             }
         )
         return rec
 
     def update_analytic_lines(self):
         self.ensure_one()
-        self.line_id.analytic_line_ids.unlink()
-        if self.user_has_groups("analytic.group_analytic_accounting"):
-            self.line_id.analytic_account_id = self.new_analytic_account_id.id
-        if self.user_has_groups("analytic.group_analytic_tags"):
-            self.line_id.write(
-                {"analytic_tag_ids": [(6, 0, self.new_analytic_tag_ids.ids)]}
-            )
-        if self.line_id.parent_state == "posted" and (
-            self.new_analytic_account_id or self.new_analytic_tag_ids
-        ):
-            self.line_id.create_analytic_lines()
-
-        return False
+        self.line_id.analytic_distribution = self.analytic_distribution
