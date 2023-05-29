@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form - partner_analytic</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <group name="sale" position="inside">
+                <field
+                    name="property_analytic_account_id"
+                    attrs="{'invisible': [('is_company','=',False),('parent_id','!=',False)]}"
+                />
+            </group>
+            <group name="purchase" position="inside">
+                <field
+                    name="property_supplier_analytic_account_id"
+                    attrs="{'invisible': [('is_company','=',False),('parent_id','!=',False)]}"
+                />
+            </group>
+        </field>
+    </record>
+</odoo>
