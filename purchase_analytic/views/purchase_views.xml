@@ -36,11 +36,16 @@
         <field name="inherit_id" ref="purchase.purchase_order_form" />
         <field name="arch" type="xml">
             <field name="partner_ref" position="after">
-                <field
-                    name="analytic_distribution"
-                    widget="analytic_distribution"
-                    groups="analytic.group_analytic_accounting"
-                />
+                <!-- The 'groups="analytic.group_analytic_accounting"' attribute has been removed from the field,
+                since it would cause an error when the value of this field is passed as a context. -->
+                <field name="analytic_distribution" widget="analytic_distribution" />
+            </field>
+            <field name="order_line" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        "default_analytic_distribution": analytic_distribution,
+                    }
+                </attribute>
             </field>
         </field>
     </record>
