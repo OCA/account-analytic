@@ -31,6 +31,7 @@ addon | version | maintainers | summary
 [analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 13.0.1.0.0 |  | Analytic Accounts Dimensions Enhanced
 [analytic_tag_dimension_sale_warning](analytic_tag_dimension_sale_warning/) | 13.0.1.0.0 |  | Group Analytic Entries by Dimensions
 [mrp_analytic](mrp_analytic/) | 13.0.1.0.0 |  | Adds the analytic account to the production order
+[partner_analytic](partner_analytic/) | 13.0.1.0.0 | [![GuillemCForgeFlow](https://github.com/GuillemCForgeFlow.png?size=30px)](https://github.com/GuillemCForgeFlow) | Adds Income/Expense Analytic Accounts on Contacts.
 [pos_analytic_by_config](pos_analytic_by_config/) | 13.0.1.0.1 |  | Use analytic account defined on POS configuration for POS orders
 [procurement_mto_analytic](procurement_mto_analytic/) | 13.0.1.0.1 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 13.0.1.0.0 |  | Add analytic account on products and product categories
