@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-05-30 11:09+0000\n"
+"PO-Revision-Date: 2023-06-07 11:11+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -30,7 +30,7 @@ msgstr "Dipartimento associato al conto"
 #. module: analytic_base_department
 #: model:ir.model,name:analytic_base_department.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Conto Analitico"
+msgstr "Conto analitico"
 
 #. module: analytic_base_department
 #: model:ir.model,name:analytic_base_department.model_account_analytic_line
