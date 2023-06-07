@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo13-addon-analytic_tag_dimension_enhanced',
         'odoo13-addon-analytic_tag_dimension_sale_warning',
         'odoo13-addon-mrp_analytic',
+        'odoo13-addon-partner_analytic',
         'odoo13-addon-pos_analytic_by_config',
         'odoo13-addon-procurement_mto_analytic',
         'odoo13-addon-product_analytic',
