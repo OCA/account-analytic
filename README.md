@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_analytic_required](account_analytic_required/) | 16.0.1.0.0 |  | Account Analytic Required
-[purchase_analytic](purchase_analytic/) | 16.0.1.0.0 |  | Purchase Analytic
+[purchase_analytic](purchase_analytic/) | 16.0.2.0.0 |  | Purchase Analytic
 [stock_analytic](stock_analytic/) | 16.0.1.1.0 |  | Adds analytic distribution in stock move
 
 [//]: # (end addons)
