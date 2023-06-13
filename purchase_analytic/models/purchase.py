@@ -53,12 +53,16 @@ class PurchaseOrder(models.Model):
             In case of new record, nothing is recomputed to avoid ugly message
         """
         r = []
+        self._reset_sequence()
         for ol in self.order_line:
             if isinstance(ol.id, int):
                 r.append((1, ol.id,
                           {'account_analytic_id': self.project_id.id}))
             else:
+                if isinstance(ol.id, models.NewId):
+                    ol.account_analytic_id = self.project_id.id
+                else:
+                    return
                 # this is new record, do nothing !
-                return
         self.project_id2 = self.project_id
         self.order_line = r
