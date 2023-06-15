@@ -46,4 +46,21 @@
             </xpath>
         </field>
     </record>
+    <record
+        id="view_move_tree_receipt_picking_inherit_analytic_account"
+        model="ir.ui.view"
+    >
+        <field name="name">stock.move.tree2 - Analytic Account</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_tree_receipt_picking" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_dest_id']" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                />
+            </xpath>
+        </field>
+    </record>
 </odoo>
