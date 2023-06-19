@@ -33,7 +33,7 @@ class TestPosAnalyticConfig(common.TransactionCase):
             }
         )
         cls.aa_01 = cls.env["account.analytic.account"].create(
-            {"name": "Test Analytic Account"}
+            {"name": "Test Analytic Account", "plan_id": 1}
         )
         cls.customer_01 = cls.env["res.partner"].create({"name": "Mr. Odoo"})
         cls.product_01 = cls.env["product.product"].create({"name": "Test product"})

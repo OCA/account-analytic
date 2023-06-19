@@ -7,3 +7,7 @@
 * `Tecnativa <https://www.tecnativa.com>`_
 
   * David Vidal
+
+* 'Camptocamp SA <https://www.camptocamp.com>'_
+
+  * Andreas Hochuli <andreas.hochuli@camptocamp.com>
