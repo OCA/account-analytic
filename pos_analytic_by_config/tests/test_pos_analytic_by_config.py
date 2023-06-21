@@ -99,7 +99,7 @@ class TestPosAnalyticConfig(common.TransactionCase):
         """Simple tickets are grouped by account in single move lines"""
         aml_domain = [
             ("account_id", "=", self.income_account),
-            ("analytic_line_ids.account_id", "=", self.aa_01.id),
+            ("analytic_account_id", "=", self.aa_01.id),
         ]
         # There aren't lines with the analytic account yet
         self.assertFalse(self.aml_obj.search(aml_domain))
@@ -115,7 +115,7 @@ class TestPosAnalyticConfig(common.TransactionCase):
         aml_domain = [
             ("account_id", "=", self.income_account),
             ("product_id", "=", self.product_01.id),
-            ("analytic_line_ids.account_id", "=", self.aa_01.id),
+            ("analytic_account_id", "=", self.aa_01.id),
         ]
         self.main_config.journal_id.type = "sale"
         lines = self.aml_obj.search(aml_domain)
