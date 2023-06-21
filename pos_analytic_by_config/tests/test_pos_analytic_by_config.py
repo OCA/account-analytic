@@ -37,7 +37,7 @@ class TestPosAnalyticConfig(common.TransactionCase):
         )
         cls.customer_01 = cls.env["res.partner"].create({"name": "Mr. Odoo"})
         cls.product_01 = cls.env["product.product"].create({"name": "Test product"})
-        cls.main_config.pos_account_analytic_id = cls.aa_01
+        cls.main_config.account_analytic_id = cls.aa_01
         cls.main_config.invoice_journal_id = cls.main_config.journal_id
         cls.session_01 = cls.env["pos.session"].create(
             {"config_id": cls.main_config.id}
