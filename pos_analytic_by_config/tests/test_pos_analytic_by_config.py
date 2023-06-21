@@ -85,7 +85,6 @@ class TestPosAnalyticConfig(common.TransactionCase):
                             "amount": 10,
                             "name": fields.Datetime.now(),
                             "account_id": account_receivable_id,
-                            "statement_line_id": cls.session_01.statement_ids[0].id,
                             "payment_method_id": payment_methods.filtered(
                                 lambda pm: pm.is_cash_count
                                 and not pm.split_transactions
