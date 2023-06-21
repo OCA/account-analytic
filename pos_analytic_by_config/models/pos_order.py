@@ -15,7 +15,7 @@ class PosOrder(models.Model):
         res = super()._prepare_invoice_line(line)
         analytic_account = line.order_id.session_id.config_id.account_analytic_id
         if analytic_account:
-            res.update({"analytic_line_ids.account_id": analytic_account.id})
+            res.update({"analytic_account_id": analytic_account.id})
         return res
 
     def action_pos_order_invoice(self):
