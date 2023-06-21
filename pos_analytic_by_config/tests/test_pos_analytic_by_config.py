@@ -44,9 +44,6 @@ class TestPosAnalyticConfig(common.TransactionCase):
         )
         cls.session_01.action_pos_session_open()
         payment_methods = cls.session_01.payment_method_ids
-        account_receivable_id = (
-            cls.env.user.partner_id.property_account_receivable_id.id
-        )
         order_vals = {
             "id": "test-id-pos_analytic_by_config",
             "data": {
@@ -76,21 +73,19 @@ class TestPosAnalyticConfig(common.TransactionCase):
                 "amount_tax": 0.0,
                 "amount_paid": 10.0,
                 "amount_return": 0.0,
-                "statement_line_ids": [
-                    [
+                "statement_ids": [
+                    (
                         0,
                         0,
                         {
-                            "journal_id": cls.main_config.journal_id.id,
                             "amount": 10,
                             "name": fields.Datetime.now(),
-                            "account_id": account_receivable_id,
                             "payment_method_id": payment_methods.filtered(
                                 lambda pm: pm.is_cash_count
                                 and not pm.split_transactions
                             )[0].id,
                         },
-                    ]
+                    )
                 ],
             },
         }
