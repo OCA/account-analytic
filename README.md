@@ -39,7 +39,7 @@ addon | version | maintainers | summary
 [purchase_request_analytic](purchase_request_analytic/) | 13.0.1.0.0 |  | Purchase Request Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 13.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
 [sale_stock_analytic](sale_stock_analytic/) | 13.0.1.0.0 |  | Copies the analytic account of the sale order and the analytic tags of the sale order line to the stock move
-[stock_analytic](stock_analytic/) | 13.0.1.0.1 |  | Adds an analytic account and analytic tags in stock move
+[stock_analytic](stock_analytic/) | 13.0.1.1.0 |  | Adds an analytic account and analytic tags in stock move
 [stock_inventory_analytic](stock_inventory_analytic/) | 13.0.1.0.0 |  | Stock Inventory Analytic
 [stock_landed_costs_analytic](stock_landed_costs_analytic/) | 13.0.1.0.0 |  | This module adds an analytic account and analytic tags on landed costs lines so that on landed costs validation account moves get analytic account and analytic tags values from landed costs lines.
 
