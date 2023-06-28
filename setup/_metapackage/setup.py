@@ -20,6 +20,7 @@ setuptools.setup(
         'odoo-addon-procurement_mto_analytic>=15.0dev,<15.1dev',
         'odoo-addon-product_analytic>=15.0dev,<15.1dev',
         'odoo-addon-purchase_analytic>=15.0dev,<15.1dev',
+        'odoo-addon-purchase_stock_analytic>=15.0dev,<15.1dev',
         'odoo-addon-stock_analytic>=15.0dev,<15.1dev',
     ],
     classifiers=[
