@@ -5,7 +5,7 @@
   * Cristina Martin R.
   * Sergio Teruel
   * Carlos Roca
-
+  * Stefan Ungureanu
 * `Ecosoft <https://ecosoft.co.th/>`__:
 
   * Pimolnat Suntian <pimolnats@ecosoft.co.th>
