@@ -25,7 +25,7 @@ class ResPartner(models.Model):
         self.ensure_one()
         if not company_id:
             company_id = self.env.context.get("company_id")
-        self = self.with_context(force_company=company_id)
+        self = self.with_company(company_id)
         return {
             "income": self.property_analytic_account_id,
             "expense": self.property_supplier_analytic_account_id,

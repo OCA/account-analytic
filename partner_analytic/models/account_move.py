@@ -17,7 +17,7 @@ class AccountMoveLine(models.Model):
     @api.onchange("product_id")
     def _onchange_product_id(self):
         res = super()._onchange_product_id()
-        inv_type = self.move_id.type
+        inv_type = self.move_id.move_type
         partner = self.move_id.partner_id
         if (
             partner
@@ -37,7 +37,7 @@ class AccountMoveLine(models.Model):
                 continue
             move = self.env["account.move"].browse(vals.get("move_id"))
             partner = move.partner_id
-            inv_type = move.type
+            inv_type = move.move_type
             company_id = move.company_id.id if move.company_id else False
             if (
                 partner

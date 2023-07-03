@@ -1,10 +1,10 @@
 # Copyright 2023 ForgeFlow S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests.common import Form, SavepointCase
+from odoo.tests.common import Form, TransactionCase
 
 
-class TestPartnerAnalytic(SavepointCase):
+class TestPartnerAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -71,20 +71,20 @@ class TestPartnerAnalytic(SavepointCase):
             }
         )
         cls.partner = cls.partner_model.create({"name": "Test Partner 1"})
-        cls.partner.with_context(force_company=cls.company_1.id).write(
+        cls.partner.with_company(cls.company_1.id).write(
             {
                 "property_account_receivable_id": cls.account_1.id,
                 "property_account_payable_id": cls.account_1.id,
             }
         )
-        cls.partner.with_context(force_company=cls.company_2.id).write(
+        cls.partner.with_company(cls.company_2.id).write(
             {
                 "property_account_receivable_id": cls.account_2.id,
                 "property_account_payable_id": cls.account_2.id,
             }
         )
         cls.template = cls.template_model.create(
-            {"name": "Test Template", "lst_price": 50, "standard_price": 50}
+            {"name": "Test Template", "list_price": 50, "standard_price": 50}
         )
         cls.product = cls.template.product_variant_ids
 
@@ -94,7 +94,7 @@ class TestPartnerAnalytic(SavepointCase):
             {
                 "partner_id": partner.id,
                 "journal_id": journal.id,
-                "type": "in_invoice" if bill else "out_invoice",
+                "move_type": "in_invoice" if bill else "out_invoice",
                 "company_id": company.id,
             }
         )
@@ -133,7 +133,7 @@ class TestPartnerAnalytic(SavepointCase):
         for the partner, the Analytic Account should be set as default.
         """
         company_id = self.company_1.id
-        self.partner.with_context(force_company=company_id).write(
+        self.partner.with_company(company_id).write(
             {"property_analytic_account_id": self.analytic_account.id}
         )
         invoice = self._create_move(
@@ -147,9 +147,7 @@ class TestPartnerAnalytic(SavepointCase):
         invoice_line = invoice.invoice_line_ids[0]
         self.assertEqual(
             invoice_line.analytic_account_id,
-            self.partner.with_context(
-                force_company=company_id
-            ).property_analytic_account_id,
+            self.partner.with_company(company_id).property_analytic_account_id,
         )
 
     def test_03_create_bill_with_partner_analytic_account(self):
@@ -158,7 +156,7 @@ class TestPartnerAnalytic(SavepointCase):
         for the partner, the Analytic Account should be set as default.
         """
         company_id = self.company_1.id
-        self.partner.with_context(force_company=company_id).write(
+        self.partner.with_company(company_id).write(
             {"property_supplier_analytic_account_id": self.analytic_account.id}
         )
         bill = self._create_move(
@@ -171,9 +169,7 @@ class TestPartnerAnalytic(SavepointCase):
         bill_line = bill.invoice_line_ids[0]
         self.assertEqual(
             bill_line.analytic_account_id,
-            self.partner.with_context(
-                force_company=company_id
-            ).property_supplier_analytic_account_id,
+            self.partner.with_company(company_id).property_supplier_analytic_account_id,
         )
 
     def test_04_create_bill_for_different_company(self):
@@ -183,7 +179,7 @@ class TestPartnerAnalytic(SavepointCase):
         different company.
         """
         company_id = self.company_1.id
-        self.partner.with_context(force_company=company_id).write(
+        self.partner.with_company(company_id).write(
             {"property_supplier_analytic_account_id": self.analytic_account.id}
         )
         bill = self._create_move(
@@ -202,14 +198,13 @@ class TestPartnerAnalytic(SavepointCase):
         the user interface.
         """
         company_id = self.company_1.id
-        self.partner.with_context(force_company=company_id).write(
+        self.partner.with_company(company_id).write(
             {"property_supplier_analytic_account_id": self.analytic_account.id}
         )
         form = Form(
-            self.account_move_model.with_context(
-                default_type="in_invoice",
+            self.account_move_model.with_company(company_id).with_context(
+                default_move_type="in_invoice",
                 default_journal_id=self.journal_purchase_1.id,
-                force_company=company_id,
             )
         )
         form.partner_id = self.partner
@@ -223,7 +218,5 @@ class TestPartnerAnalytic(SavepointCase):
         self.assertEqual(len(bill_line), 1)
         self.assertEqual(
             bill_line.analytic_account_id,
-            self.partner.with_context(
-                force_company=company_id
-            ).property_supplier_analytic_account_id,
+            self.partner.with_company(company_id).property_supplier_analytic_account_id,
         )
