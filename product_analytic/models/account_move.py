@@ -21,7 +21,7 @@ class AccountMoveLine(models.Model):
         res = super()._onchange_product_id()
         for line in self:
             inv_type = line.move_id.move_type
-            if line.product_id and inv_type:
+            if line.product_id and inv_type and inv_type in INV_TYPE_MAP.keys():
                 ana_accounts = (
                     line.product_id.product_tmpl_id._get_product_analytic_accounts()
                 )
@@ -35,7 +35,8 @@ class AccountMoveLine(models.Model):
             inv_type = self.env["account.move"].browse([vals.get("move_id")]).move_type
             if (
                 vals.get("product_id")
-                and inv_type != "entry"
+                and inv_type
+                and inv_type in INV_TYPE_MAP.keys()
                 and not vals.get("analytic_account_id")
             ):
                 product = self.env["product.product"].browse(vals.get("product_id"))
