@@ -34,7 +34,7 @@ addon | version | maintainers | summary
 [partner_analytic](partner_analytic/) | 13.0.1.0.0 | [![GuillemCForgeFlow](https://github.com/GuillemCForgeFlow.png?size=30px)](https://github.com/GuillemCForgeFlow) | Adds Income/Expense Analytic Accounts on Contacts.
 [pos_analytic_by_config](pos_analytic_by_config/) | 13.0.1.0.1 |  | Use analytic account defined on POS configuration for POS orders
 [procurement_mto_analytic](procurement_mto_analytic/) | 13.0.1.0.1 |  | This module sets analytic account in purchase order line from sale order analytic account
-[product_analytic](product_analytic/) | 13.0.1.0.0 |  | Add analytic account on products and product categories
+[product_analytic](product_analytic/) | 13.0.1.0.1 |  | Add analytic account on products and product categories
 [purchase_analytic](purchase_analytic/) | 13.0.2.0.0 |  | Purchase Analytic
 [purchase_request_analytic](purchase_request_analytic/) | 13.0.1.0.0 |  | Purchase Request Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 13.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
