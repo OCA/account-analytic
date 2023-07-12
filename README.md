@@ -29,6 +29,7 @@ addon | version | maintainers | summary
 [analytic_base_department](analytic_base_department/) | 15.0.1.0.0 |  | Add relationship between Analytic and Department
 [analytic_tag_dimension](analytic_tag_dimension/) | 15.0.1.0.0 |  | Group Analytic Entries by Dimensions
 [mrp_analytic](mrp_analytic/) | 15.0.1.0.0 |  | Adds the analytic account to the production order
+[partner_analytic](partner_analytic/) | 15.0.1.0.0 | [![GuillemCForgeFlow](https://github.com/GuillemCForgeFlow.png?size=30px)](https://github.com/GuillemCForgeFlow) | Adds Income/Expense Analytic Accounts on Contacts.
 [pos_analytic_by_config](pos_analytic_by_config/) | 15.0.1.0.0 |  | Use analytic account defined on POS configuration for POS orders
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 15.0.1.0.0 |  | Add analytic account on products and product categories
