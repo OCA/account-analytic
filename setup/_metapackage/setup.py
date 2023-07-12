@@ -16,6 +16,7 @@ setuptools.setup(
         'odoo-addon-analytic_base_department>=15.0dev,<15.1dev',
         'odoo-addon-analytic_tag_dimension>=15.0dev,<15.1dev',
         'odoo-addon-mrp_analytic>=15.0dev,<15.1dev',
+        'odoo-addon-partner_analytic>=15.0dev,<15.1dev',
         'odoo-addon-pos_analytic_by_config>=15.0dev,<15.1dev',
         'odoo-addon-procurement_mto_analytic>=15.0dev,<15.1dev',
         'odoo-addon-product_analytic>=15.0dev,<15.1dev',
