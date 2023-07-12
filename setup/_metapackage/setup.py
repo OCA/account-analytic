@@ -36,6 +36,7 @@ setuptools.setup(
         'odoo14-addon-stock_analytic',
         'odoo14-addon-stock_inventory_analytic',
         'odoo14-addon-stock_picking_analytic',
+        'odoo14-addon-stock_warehouse_analytic',
     ],
     classifiers=[
         'Programming Language :: Python',
