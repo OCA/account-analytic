@@ -49,6 +49,7 @@ addon | version | maintainers | summary
 [stock_analytic](stock_analytic/) | 14.0.2.0.0 |  | Adds an analytic account and analytic tags in stock move
 [stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.2 |  | Stock Inventory Analytic
 [stock_picking_analytic](stock_picking_analytic/) | 14.0.1.0.0 |  | Allows to define the analytic account on picking level
+[stock_warehouse_analytic](stock_warehouse_analytic/) | 14.0.1.0.0 |  | Allows to mention an analytic account on warehouse level
 
 [//]: # (end addons)
 
