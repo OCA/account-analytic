@@ -7,65 +7,66 @@ from odoo.tests.common import TransactionCase
 
 
 class TestPurchaseOrderLine(TransactionCase):
-    def setUp(self):
-        super(TestPurchaseOrderLine, self).setUp()
-        self.default_plan = self.env["account.analytic.plan"].create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        cls.default_plan = cls.env["account.analytic.plan"].create(
             {"name": "Default Plan", "company_id": False}
         )
-        self.analytic = self.env["account.analytic.account"].create(
+        cls.analytic = cls.env["account.analytic.account"].create(
             {
                 "name": "Our Super Product Development",
-                "plan_id": self.default_plan.id,
+                "plan_id": cls.default_plan.id,
             }
         )
-        self.product1 = self.env["product.product"].create(
+        cls.product1 = cls.env["product.product"].create(
             {
                 "name": "Computer SC234",
-                "categ_id": self.env.ref("product.product_category_all").id,
+                "categ_id": cls.env.ref("product.product_category_all").id,
                 "list_price": 450.0,
                 "standard_price": 300.0,
                 "type": "consu",
-                "uom_id": self.env.ref("uom.product_uom_unit").id,
-                "uom_po_id": self.env.ref("uom.product_uom_unit").id,
+                "uom_id": cls.env.ref("uom.product_uom_unit").id,
+                "uom_po_id": cls.env.ref("uom.product_uom_unit").id,
                 "description_sale": "17 LCD Monitor Processor AMD",
             }
         )
-        self.product2 = self.env["product.product"].create(
+        cls.product2 = cls.env["product.product"].create(
             {
                 "name": "Prepaid Consulting",
-                "categ_id": self.env.ref("product.product_category_all").id,
+                "categ_id": cls.env.ref("product.product_category_all").id,
                 "list_price": 90,
                 "standard_price": 40,
                 "type": "service",
-                "uom_id": self.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": self.env.ref("uom.product_uom_hour").id,
+                "uom_id": cls.env.ref("uom.product_uom_hour").id,
+                "uom_po_id": cls.env.ref("uom.product_uom_hour").id,
                 "description": "Example of product to invoice on order.",
                 "default_code": "SERV_ORDER",
-                "expense_analytic_account_id": self.analytic.id,
-                "income_analytic_account_id": self.analytic.id,
+                "expense_analytic_account_id": cls.analytic.id,
+                "income_analytic_account_id": cls.analytic.id,
             }
         )
-        self.assertTrue(self.product2.expense_analytic_account_id)
-        self.po = self.env["purchase.order"].create(
+        cls.po = cls.env["purchase.order"].create(
             {
-                "partner_id": self.env.ref("base.res_partner_1").id,
+                "partner_id": cls.env.ref("base.res_partner_1").id,
                 "order_line": [
                     (
                         0,
                         0,
                         {
-                            "product_id": self.product1.id,
-                            "name": self.product1.name,
+                            "product_id": cls.product1.id,
+                            "name": cls.product1.name,
                             "date_planned": "2017-07-17 12:42:12",
                             "product_qty": 12,
-                            "product_uom": self.product1.uom_id.id,
+                            "product_uom": cls.product1.uom_id.id,
                             "price_unit": 42,
                         },
                     )
                 ],
             }
         )
-        self.po_line1 = self.po.order_line[0]
+        cls.po_line1 = cls.po.order_line[0]
 
     def test_change_product_id(self):
         self.po_line1.product_id = self.product2.id
