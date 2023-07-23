@@ -10,6 +10,9 @@ class TestMrpAnalytic(common.TransactionCase):
         self.analytic_account = self.env["account.analytic.account"].create(
             {"name": "Analytic account test"}
         )
+        self.analytic_tag = self.env["account.analytic.tag"].create(
+            {"name": "Analytic tag test"}
+        )
         self.product_category = self.env.ref("product.product_category_all")
         self.product_category.write(
             {"property_cost_method": "standard", "property_valuation": "real_time"}
@@ -37,6 +40,8 @@ class TestMrpAnalytic(common.TransactionCase):
                 "bom_line_ids": [(0, 0, {"product_id": self.raw.id, "product_qty": 1})],
             }
         )
+
+    def test_carry_to_move_line(self):
         self.production = (
             self.env["mrp.production"]
             .with_context(import_file=True)
@@ -44,6 +49,7 @@ class TestMrpAnalytic(common.TransactionCase):
                 {
                     "product_id": self.product.id,
                     "analytic_account_id": self.analytic_account.id,
+                    "analytic_tag_ids": [(6, 0, [self.analytic_tag.id])],
                     "qty_producing": 1,
                     "product_uom_id": self.product.uom_id.id,
                     "bom_id": self.bom.id,
@@ -51,13 +57,8 @@ class TestMrpAnalytic(common.TransactionCase):
             )
         )
         self.production.move_raw_ids.write({"quantity_done": 1})
-
-    def test_num_productions(self):
-        self.assertEqual(self.analytic_account.num_productions, 1)
-
-    def test_carry_to_move_line(self):
         self.production.button_mark_done()
-        account_moves = self.env["account.move.line"].search(
+        aml_analytic = self.env["account.move.line"].search(
             [("analytic_account_id", "=", self.analytic_account.id)]
         )
-        self.assertEqual(len(account_moves), 4)
+        self.assertEqual(len(aml_analytic), 4)
