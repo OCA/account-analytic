@@ -8,31 +8,32 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
-            <field name="picking_type_id" position="after">
+            <xpath expr="//group/group/field[@name='picking_type_id']" position="after">
                 <field
-                    name="analytic_account_id"
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
-                    options="{'no_create': True}"
                 />
-            </field>
-            <field name="move_ids_without_package" position="attributes">
-                <attribute
-                    name="context"
-                    operation="python_dict"
-                    key="default_analytic_account_id"
-                >
-                    analytic_account_id
+                <field name="analytic_distribution" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//notebook/page[@name='operations']
+                /field[@name='move_ids_without_package']"
+                position="attributes"
+            >
+                <attribute name="context" operation="update">
+                    {"default_analytic_distribution": analytic_distribution}
                 </attribute>
-            </field>
-            <field name="move_line_ids_without_package" position="attributes">
-                <attribute
-                    name="context"
-                    operation="python_dict"
-                    key="default_analytic_account_id"
-                >
-                    analytic_account_id
+            </xpath>
+            <xpath
+                expr="//notebook/page[@name='detailed_operations']
+                /field[@name='move_line_ids_without_package']"
+                position="attributes"
+            >
+                <attribute name="context" operation="update">
+                    {"default_analytic_distribution": analytic_distribution}
                 </attribute>
-            </field>
+            </xpath>
         </field>
     </record>
 
@@ -41,9 +42,9 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.view_picking_internal_search" />
         <field name="arch" type="xml">
-            <field name="name" position="after">
-                <field name="analytic_account_id" />
-            </field>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="analytic_distribution" />
+            </xpath>
         </field>
     </record>
 
@@ -52,9 +53,13 @@
         <field name="model">stock.picking</field>
         <field name="inherit_id" ref="stock.vpicktree" />
         <field name="arch" type="xml">
-            <field name="name" position="after">
-                <field name="analytic_account_id" />
-            </field>
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="show"
+                />
+            </xpath>
         </field>
     </record>
 
