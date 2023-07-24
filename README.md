@@ -35,7 +35,7 @@ addon | version | maintainers | summary
 [product_analytic](product_analytic/) | 15.0.1.0.0 |  | Add analytic account on products and product categories
 [purchase_analytic](purchase_analytic/) | 15.0.2.0.0 |  | Purchase Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 15.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
-[stock_analytic](stock_analytic/) | 15.0.1.0.0 |  | Adds an analytic account and analytic tags in stock move
+[stock_analytic](stock_analytic/) | 15.0.1.1.0 |  | Adds an analytic account and analytic tags in stock move
 
 [//]: # (end addons)
 
