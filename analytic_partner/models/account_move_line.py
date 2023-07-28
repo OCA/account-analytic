@@ -8,7 +8,8 @@ from odoo import models
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
-    def _prepare_analytic_line(self):
-        res = super()._prepare_analytic_line()
-        res[0]["other_partner_id"] = self.move_id.partner_id.commercial_partner_id.id
+    def _prepare_analytic_lines(self):
+        res = super()._prepare_analytic_lines()
+        for val in res:
+            val["other_partner_id"] = self.move_id.partner_id.commercial_partner_id.id
         return res

@@ -6,7 +6,7 @@ from odoo.tests import common, tagged
 
 
 @tagged("post_install", "-at_install")
-class TestAnalyticPartner(common.SavepointCase):
+class TestAnalyticPartner(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -14,18 +14,14 @@ class TestAnalyticPartner(common.SavepointCase):
         cls.journal = cls.env["account.journal"].create(
             {"name": "Test journal", "code": "TEST", "type": "sale"}
         )
-        cls.account_type = cls.env["account.account.type"].create(
-            {"name": "Test account type", "type": "other", "internal_group": "equity"}
-        )
         cls.account = cls.env["account.account"].create(
-            {
-                "name": "Test account",
-                "code": "TEST",
-                "user_type_id": cls.account_type.id,
-            }
+            {"name": "Test account", "code": "TEST", "account_type": "expense"}
+        )
+        cls.default_plan = cls.env["account.analytic.plan"].create(
+            {"name": "Default", "company_id": False}
         )
         cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "Test Analytic Account"}
+            {"name": "Test Analytic Account", "plan_id": cls.default_plan.id}
         )
         cls.account_move = cls.env["account.move"].create(
             {
@@ -39,7 +35,6 @@ class TestAnalyticPartner(common.SavepointCase):
                         {
                             "name": "Test line",
                             "account_id": cls.account.id,
-                            "analytic_account_id": cls.analytic_account.id,
                             "quantity": 10.0,
                             "price_unit": 50.0,
                         },
