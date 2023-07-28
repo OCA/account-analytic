@@ -6,7 +6,7 @@
 {
     "name": "Link analytic items and partner",
     "summary": "Search and group analytic entries by partner",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "category": "Analytic Accounting",
     "website": "https://github.com/OCA/account-analytic",
     "author": "Tecnativa," "Odoo Community Association (OCA)",
