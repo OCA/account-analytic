@@ -9,3 +9,5 @@
 * `Ecosoft <https://ecosoft.co.th/>`__:
 
   * Pimolnat Suntian <pimolnats@ecosoft.co.th>
+
+* Daniel Reis <dreis@opensourceintegrators.com>
