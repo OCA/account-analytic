@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [purchase_analytic](purchase_analytic/) | 16.0.2.0.0 |  | Purchase Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 16.0.1.0.0 |  | Copies the analytic distribution of the purchase order item to the stock move
 [stock_analytic](stock_analytic/) | 16.0.1.1.0 |  | Adds analytic distribution in stock move
+[stock_picking_analytic](stock_picking_analytic/) | 16.0.1.0.0 |  | Allows to define the analytic account on picking level
 
 [//]: # (end addons)
 
