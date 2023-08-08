@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo-addon-purchase_analytic>=16.0dev,<16.1dev',
         'odoo-addon-purchase_stock_analytic>=16.0dev,<16.1dev',
         'odoo-addon-stock_analytic>=16.0dev,<16.1dev',
+        'odoo-addon-stock_picking_analytic>=16.0dev,<16.1dev',
     ],
     classifiers=[
         'Programming Language :: Python',
