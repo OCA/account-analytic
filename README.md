@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [account_analytic_tag_default](account_analytic_tag_default/) | 15.0.1.0.0 |  | Set default tags on analytic accounts.
 [account_move_update_analytic](account_move_update_analytic/) | 15.0.1.1.0 |  | This module allows the user to update analytic on posted moves
 [analytic_base_department](analytic_base_department/) | 15.0.1.0.0 |  | Add relationship between Analytic and Department
+[analytic_partner](analytic_partner/) | 15.0.1.0.0 |  | Search and group analytic entries by partner
 [analytic_tag_dimension](analytic_tag_dimension/) | 15.0.1.0.0 |  | Group Analytic Entries by Dimensions
 [mrp_analytic](mrp_analytic/) | 15.0.1.0.0 |  | Adds the analytic account to the production order
 [partner_analytic](partner_analytic/) | 15.0.1.0.0 | [![GuillemCForgeFlow](https://github.com/GuillemCForgeFlow.png?size=30px)](https://github.com/GuillemCForgeFlow) | Adds Income/Expense Analytic Accounts on Contacts.
