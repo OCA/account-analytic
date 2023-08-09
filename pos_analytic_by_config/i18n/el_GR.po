@@ -36,8 +36,8 @@ msgid "Analytic Account that these orders link to"
 msgstr ""
 
 #. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_invoice_line
-msgid "Invoice Line"
+#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
+msgid "Journal Item"
 msgstr ""
 
 #. module: pos_analytic_by_config
@@ -48,4 +48,9 @@ msgstr ""
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_session
+msgid "Point of Sale Session"
 msgstr ""

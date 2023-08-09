@@ -25,7 +25,7 @@ class PosSession(models.Model):
             partial_move_line_vals, amount, amount_converted, force_company_currency
         )
 
-    def _get_sale_vals(self, key, amount, amount_converted):
+    def _get_sale_vals(self, key, amount, amount_converted, tax_amount):
         """The method that allowed to add the analytic account to the sales items
         has been dropped in v13, so we have to add it in the moment the sales
         items values are prepared.
@@ -35,5 +35,5 @@ class PosSession(models.Model):
             return super(
                 PosSession,
                 self.with_context(account_analytic_id=account_analytic_id.id),
-            )._get_sale_vals(key, amount, amount_converted)
-        return super()._get_sale_vals(key, amount, amount_converted)
+            )._get_sale_vals(key, amount, amount_converted, tax_amount)
+        return super()._get_sale_vals(key, amount, amount_converted, tax_amount)
