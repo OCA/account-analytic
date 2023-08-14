@@ -1,0 +1,82 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_parent
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-30 02:40+0000\n"
+"PO-Revision-Date: 2019-08-08 12:44+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.7.1\n"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "%(name)s - %(partner)s"
+msgstr "%(name)s - %(partner)s"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "%(parent)s / %(own)s"
+msgstr "%(parent)s / %(own)s"
+
+#. module: account_analytic_parent
+#: model:ir.model,name:account_analytic_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Analitični konto"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__child_ids
+msgid "Child Accounts"
+msgstr "Podrejeni konti"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
+msgid "Complete Name"
+msgstr "Polni naziv"
+
+#. module: account_analytic_parent
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
+msgid "Name"
+msgstr "Naziv"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
+msgid "Parent Analytic Account"
+msgstr "Nadrejeni konto"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_path
+msgid "Parent Path"
+msgstr "Pot nadrejenega"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "Please activate first parent account %s"
+msgstr "Najprej aktivirajte nadrejeni konto %s"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "You can not create recursive analytic accounts."
+msgstr "Ustvarjanje rekurzivnih analitičnih kontov ni dovoljeno."
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "[%(code)s] %(name)s"
+msgstr "[%(code)s] %(name)s"

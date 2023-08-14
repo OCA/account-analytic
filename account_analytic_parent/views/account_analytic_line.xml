@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="analytic.account_analytic_line_action" model="ir.actions.act_window">
+            <field name="domain">["|",('account_id','=', active_id),('parent_id','=', active_id)]</field>
+        </record>
+    </data>
+</odoo>

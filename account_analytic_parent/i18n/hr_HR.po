@@ -1,0 +1,136 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_parent
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-18 02:38+0000\n"
+"PO-Revision-Date: 2017-08-18 02:38+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/"
+"hr_HR/)\n"
+"Language: hr_HR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "%(name)s - %(partner)s"
+msgstr ""
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "%(parent)s / %(own)s"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:ir.model,name:account_analytic_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Analitički konto"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__child_ids
+msgid "Child Accounts"
+msgstr "Podređena konta"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
+msgid "Complete Name"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
+msgid "Name"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
+msgid "Parent Analytic Account"
+msgstr "Nadređeni analitički konto"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_path
+msgid "Parent Path"
+msgstr ""
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "Please activate first parent account %s"
+msgstr ""
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "You can not create recursive analytic accounts."
+msgstr "Nije moguće kreiranje rekurzivnih analitičkih konta."
+
+#. module: account_analytic_parent
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+#, python-format
+msgid "[%(code)s] %(name)s"
+msgstr ""
+
+#~ msgid "(Keep empty to open the current situation)"
+#~ msgstr "(ostavite prazno za otvaranje trenutne situacije)"
+
+#~ msgid "Account Analytic Chart"
+#~ msgstr "Analitički kontni plan"
+
+#~ msgid "Analytic Account Charts"
+#~ msgstr "Analitički kontni planovi"
+
+#~ msgid "Analytic Accounts"
+#~ msgstr "Analitička konta"
+
+#~ msgid "Cancel"
+#~ msgstr "Odustani"
+
+#~ msgid "Chart of Analytic Accounts"
+#~ msgstr "Plan analitičkih konta"
+
+#~ msgid "Click to add an analytic account."
+#~ msgstr "Kliknite za dodavanje analitičkog konta"
+
+#~ msgid "Created by"
+#~ msgstr "Kreirao"
+
+#~ msgid "Created on"
+#~ msgstr "Kreirano"
+
+#~ msgid "Display Name"
+#~ msgstr "Naziv"
+
+#~ msgid "From"
+#~ msgstr "Od"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Zadnji modificirao"
+
+#~ msgid "Last Updated by"
+#~ msgstr "Zanji ažurirao"
+
+#~ msgid "Last Updated on"
+#~ msgstr "Zadnje ažuriranje"
+
+#~ msgid "Open Charts"
+#~ msgstr "Otvori planove"
+
+#~ msgid "Select the Period for Analysis"
+#~ msgstr "Odaberite period za analizu"
+
+#~ msgid "To"
+#~ msgstr "Za"
