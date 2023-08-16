@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_analytic_distribution_required](account_analytic_distribution_required/) | 14.0.1.0.0 |  | Account Analytic Distribution Required
+[account_analytic_no_lines](account_analytic_no_lines/) | 14.0.1.0.0 |  | Hide analytics lines and disable their generation from a move line.
 [account_analytic_parent](account_analytic_parent/) | 14.0.1.0.1 |  | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 14.0.1.0.3 |  | Account Analytic Required
 [account_analytic_sequence](account_analytic_sequence/) | 14.0.1.0.1 |  | Restore the analytic account sequence
