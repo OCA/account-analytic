@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright 2017-2021 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+<record id="view_move_line_form" model="ir.ui.view">
+    <field name="name">hide_analytic_lines.account.move.line.form</field>
+    <field name="model">account.move.line</field>
+    <field name="inherit_id" ref="account.view_move_line_form" />
+    <field name="arch" type="xml">
+        <page name="analytic_lines" position="attributes">
+            <attribute
+                    name="groups"
+                >account_analytic_no_lines.show_analytic_entries</attribute>
+        </page>
+    </field>
+</record>
+
+<record id="view_account_move_line_filter" model="ir.ui.view">
+    <field name="name">easy_analytic_search.account.move.line.form</field>
+    <field name="model">account.move.line</field>
+    <field name="inherit_id" ref="account.view_account_move_line_filter" />
+    <field name="arch" type="xml">
+        <field name="account_id" position="after">
+            <field name="analytic_account_id" />
+        </field>
+        <filter name="group_by_account" position="after">
+            <filter
+                    name="analytic_account_groupby"
+                    string="Analytic Account"
+                    context="{'group_by': 'analytic_account_id'}"
+                />
+        </filter>
+    </field>
+</record>
+
+</odoo>
