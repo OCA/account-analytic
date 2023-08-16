@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo14-addon-account_analytic_distribution_required',
+        'odoo14-addon-account_analytic_no_lines',
         'odoo14-addon-account_analytic_parent',
         'odoo14-addon-account_analytic_required',
         'odoo14-addon-account_analytic_sequence',
