@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Acsone SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+  <record model="ir.ui.view" id="view_account_analytic_account_form">
+    <field
+            name="name"
+        >account.analytic.account.form (in account_analytic_account_tag)</field>
+    <field name="model">account.analytic.account</field>
+    <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+    <field name="arch" type="xml">
+      <field name="plan_id" position="after">
+        <field name="id" invisible="1" />
+        <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    options="{'color_field': 'color'}"
+                    domain="['|', ('account_analytic_id', '=', False),('account_analytic_id', '=', id)]"
+                />
+      </field>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="account_analytic_account_tree_inherit_tag">
+    <field
+            name="name"
+        >account.analytic.account.tree (in account_analytic_account_tag)</field>
+    <field name="model">account.analytic.account</field>
+    <field name="inherit_id" ref="analytic.view_account_analytic_account_list" />
+    <field name="arch" type="xml">
+      <field name="plan_id" position="after">
+        <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    options="{'color_field': 'color'}"
+                />
+      </field>
+    </field>
+  </record>
+
+    <record id="view_account_analytic_account_search" model="ir.ui.view">
+    <field
+            name="name"
+        >account.analytic.account.search (in account_analytic_account_tag)</field>
+    <field name="model">account.analytic.account</field>
+    <field name="inherit_id" ref="analytic.view_account_analytic_account_search" />
+    <field name="arch" type="xml">
+        <field name="partner_id" position="before">
+            <field name="tag_ids" />
+        </field>
+    </field>
+    </record>
+
+</odoo>
