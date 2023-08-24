@@ -67,7 +67,7 @@ class TestAccountAnalyticTagBase(common.TransactionCase):
         )
         cls.product_b = cls.env["product.product"].create(
             {
-                "name": "product_a",
+                "name": "product_b",
                 "uom_id": cls.env.ref("uom.product_uom_unit").id,
                 "lst_price": 200.0,
                 "standard_price": 100.0,
