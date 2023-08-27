@@ -59,8 +59,8 @@ class AnalyticLine(models.Model):
         for item in self.filtered(lambda x: not x.analytic_tracking_item_id):
             item._get_set_tracking_item()
 
-    @api.model
-    def create(self, vals):
-        new = super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        new = super().create(vals_list)
         new.populate_tracking_items()
         return new

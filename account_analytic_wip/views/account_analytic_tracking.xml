@@ -23,14 +23,14 @@
                     <group>
                         <field name="date" />
                         <field name="parent_id" />
-                        <field name="planned_amount"  string="Standard"/>
+                        <field name="planned_amount" string="Standard" />
                     </group>
                     <group string="Actuals" name="actuals">
-                        <field name="remaining_actual_amount" string="Remaining"/>
-                        <field name="actual_amount"  string="Actuals"/>
-                        <field name="wip_actual_amount" string="WIP"/>
-                        <field name="difference_actual_amount" string="Difference"/>
-                        <field name="variance_actual_amount" string="Variance"/>
+                        <field name="remaining_actual_amount" string="Remaining" />
+                        <field name="actual_amount" string="Actuals" />
+                        <field name="wip_actual_amount" string="WIP" />
+                        <field name="difference_actual_amount" string="Difference" />
+                        <field name="variance_actual_amount" string="Variance" />
                     </group>
                     <group string="Accounted" name="accounted">
                         <field name="pending_amount" />
