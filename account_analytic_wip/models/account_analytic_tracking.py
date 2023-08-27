@@ -359,9 +359,9 @@ class AnalyticTrackingItem(models.Model):
                     }
                     tracking.copy(vals)
 
-    @api.model
-    def create(self, vals):
-        new = super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        new = super().create(vals_list)
         new._populate_abcost_tracking_item()
         return new
 
