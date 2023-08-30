@@ -13,34 +13,28 @@ class TestAnalytic(common.TransactionCase):
         )
         # Accounts: Consume, WIP, Variance, Clear
         Account = self.env["account.account"]
-        account_vals = {
-            "code": "600010X",
-            "name": "Costing Consumed",
-            "account_type": "expense",
-        }
-        self.consume_account = Account.create(account_vals)
-        self.wip_account = self.consume_account.copy(
-            {"code": "600011X", "name": "Costing WIP"}
+        self.valuation_account = Account.create(
+            {"code": "600010X", "name": "Valuation", "account_type": "expense"}
         )
-        self.variance_account = self.consume_account.copy(
-            {"code": "600012X", "name": "Costing Variance"}
+        self.wip_account = Account.create(
+            {"code": "600011X", "name": "WIP", "account_type": "expense"}
         )
-        self.clear_account = self.consume_account.copy(
-            {"code": "600020X", "name": "Costing Clear WIP"}
+        self.variance_account = Account.create(
+            {"code": "600012X", "name": "Variance", "account_type": "expense"}
         )
-        self.valuation_account = self.consume_account.copy(
-            {"code": "600021X", "name": "Costing Valuation"}
+        self.clear_account = Account.create(
+            {"code": "600020X", "name": "Clear WIP", "account_type": "expense"}
         )
-        # Product Category for the Driven Costs
+        # Product Category for the Activity Driven Costs
         self.costing_categ = self.env["product.category"].create(
             {
-                "name": "Driven Costs",
+                "name": "Activity Driven Costs",
                 "property_cost_method": "standard",
                 "property_valuation": "real_time",
-                "property_stock_account_output_categ_id": self.clear_account.id,
+                "property_stock_valuation_account_id": self.valuation_account.id,
                 "property_wip_account_id": self.wip_account.id,
                 "property_variance_account_id": self.variance_account.id,
-                "property_stock_valuation_account_id": self.valuation_account.id,
+                "property_stock_account_output_categ_id": self.clear_account.id,
             }
         )
         # Products: driven costs
@@ -63,6 +57,7 @@ class TestAnalytic(common.TransactionCase):
         )
         # Products: cost driver Engineering work,
         # driving Labor and Overhead costs
+        # Total cost expeted is $25
         self.engineering_product = Product.create(
             {
                 "name": "Engineering (cost driver)",
@@ -86,15 +81,11 @@ class TestAnalytic(common.TransactionCase):
                 "product_id": self.overhead_driven_cost.id,
             }
         )
-
-    def test_110_product_cost_driver_compute_cost(self):
-        """Cost Driver unit cost is the sum of the driver costs"""
-        # TODO: this should really be a analytic_activity_based_cost test...
-        self.assertEqual(self.engineering_product.standard_price, 25.0)
-
-    def test_200_analytic_item_create(self):
+        # Create a couple of Analytic Items for Engineering Work
+        # 15 units at $25/unit = $375
+        # split by $225 Labor + $150 Overhead
         AnalyticItem = self.env["account.analytic.line"]
-        AnalyticItem.create(
+        self.analytic_items = AnalyticItem.create(
             {
                 "name": "Engineering work 1",
                 "account_id": self.analytic_x.id,
@@ -102,8 +93,7 @@ class TestAnalytic(common.TransactionCase):
                 "unit_amount": 10,
             }
         )
-        tracking_items = self.analytic_x.analytic_tracking_item_ids
-        AnalyticItem.create(
+        self.analytic_items |= AnalyticItem.create(
             {
                 "name": "Engineering work 2",
                 "account_id": self.analytic_x.id,
@@ -111,79 +101,93 @@ class TestAnalytic(common.TransactionCase):
                 "unit_amount": 5,
             }
         )
+        self.tracking_items = self.analytic_x.analytic_tracking_item_ids
+        self.tracking_engineering = self.tracking_items.filtered(
+            lambda x: x.product_id == self.engineering_product
+        )
+        self.tracking_labor = self.tracking_items.filtered(
+            lambda x: x.product_id == self.labor_driven_cost
+        )
 
+    def _get_account_balance(self, account, domain=None):
+        JournalItems = self.env["account.move.line"]
+        full_domain = [("account_id", "=", account.id)] + (domain or [])
+        jis = JournalItems.search(full_domain)
+        return sum(jis.mapped("balance"))
+
+    def _get_account_balances(self, domain=None):
+        return {
+            "valuation": self._get_account_balance(self.valuation_account, domain),
+            "wip": self._get_account_balance(self.wip_account, domain),
+            "variance": self._get_account_balance(self.variance_account, domain),
+            "clearing": self._get_account_balance(self.clear_account, domain),
+        }
+
+    def test_110_product_cost_driver_compute_cost(self):
+        """Cost Driver unit cost is the sum of the driver costs"""
+        # TODO: this should really be a analytic_activity_based_cost test...
+        self.assertEqual(self.engineering_product.standard_price, 25.0)
+
+    def test_200_analytic_item_tracking(self):
         # Expected Tracking Item with $25 * 15 U
-        tracking_items = self.analytic_x.analytic_tracking_item_ids
-        actual_amount = sum(tracking_items.mapped("actual_amount"))
+        actual_amount = sum(self.tracking_items.mapped("actual_amount"))
         self.assertEqual(
             actual_amount,
             375.0,  # = ($10 + $15) * 15
             "Tracking total actual amount computation.",
         )
-
         # Expected line for Labor with amount 15 * 10
-        tracking_labor = tracking_items.filtered(
-            lambda x: x.product_id == self.labor_driven_cost
-        )
         self.assertEqual(
-            tracking_labor.actual_amount,
+            self.tracking_labor.actual_amount,
             225.0,  # = $15 * 15
             "Tracking Labor actual amount computation.",
         )
-
         # No planned qty, means actual qty is WIP qty
         self.assertEqual(
-            tracking_labor.wip_actual_amount,
+            self.tracking_labor.wip_actual_amount,
             0.0,
             "With no planned amount, WIP is zero.",
         )
         self.assertEqual(
-            tracking_labor.variance_actual_amount,
+            self.tracking_labor.variance_actual_amount,
             225.0,
             "With no planned amount, Variance is the actual amount.",
         )
 
+    def test_220_tracking_planned(self):
         # Set Planned Qty, means WIP and Variance are recomputed
         # for the activiy cost child lines
-        tracking_engineering = tracking_items.filtered(
-            lambda x: x.product_id == self.engineering_product
-        )
-        tracking_engineering.planned_qty = 12
+        # $225 value = $180 WIP Actual + $45 Variance
+        self.tracking_engineering.planned_qty = 12
         self.assertEqual(
-            tracking_labor.planned_amount,
+            self.tracking_labor.planned_amount,
             180.0,
             "Tracking child item Planned Amount recomputed when Planned Qty is set.",
         )
         self.assertEqual(
-            tracking_labor.wip_actual_amount,
+            self.tracking_labor.wip_actual_amount,
             180.0,
             "Tracking child item WIP recomputed when Planned Qty is set.",
         )
         self.assertEqual(
-            tracking_labor.variance_actual_amount,
+            self.tracking_labor.variance_actual_amount,
             45.0,
             "Tracking child item Variance recomputed when Planned Qty is set.",
         )
 
-        # Post WIP to Accounting
-        tracking_items.process_wip_and_variance()
-        jis = tracking_items.mapped("account_move_ids.line_ids")
-        jis_wip = jis.filtered(lambda x: x.balance > 0)
-        wip_amount = sum(jis_wip.mapped("balance"))
-        self.assertEqual(wip_amount, 375.0)
+        # Post WIP to Accounting, check Journal Items
+        # WIP Balance = 375
+        # Variance not posted until the job is closed
+        self.tracking_items.process_wip_and_variance()
+        balances = self._get_account_balances()
+        self.assertEqual(balances["wip"], 375.0)
+        self.assertEqual(balances["variance"], 0.0)
 
-        jis_var = jis.filtered(lambda x: x.account_id == self.variance_account)
-        var_amount = sum(jis_var.mapped("balance"))
-        self.assertEqual(var_amount, 0.0)
-
-        # Closing clears generates variances
-        JournalItems = self.env["account.move.line"]
-        tracking_items.clear_wip_journal_entries()
-        jis_wip = JournalItems.search([("account_id", "=", self.wip_account.id)])
-        wip_amount = sum(jis_wip.mapped("balance"))
+        # Closing clears WIP and Posts variances
+        # WIP Balance = 0
+        # Variance Balance =75 (3 units excess * $25/unit)
+        self.tracking_items.clear_wip_journal_entries()
+        balances = self._get_account_balances()
         # WIP is not cleared at the moment. Reconsider?
-        self.assertEqual(wip_amount, 0.0)
-
-        jis_var = JournalItems.search([("account_id", "=", self.variance_account.id)])
-        var_amount = sum(jis_var.mapped("balance"))
-        self.assertEqual(var_amount, 0.0)
+        self.assertEqual(balances["wip"], 0.0)
+        self.assertEqual(balances["variance"], 75.0)

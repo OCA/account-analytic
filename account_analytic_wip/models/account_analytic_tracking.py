@@ -274,19 +274,34 @@ class AnalyticTrackingItem(models.Model):
         mrp_Account_analytic_wip does clear WIP amount.
         """
         self and self.ensure_one()
-        var_amount = self.difference_actual_amount
         accounts = self._get_accounting_data_for_valuation()
         journal = accounts["stock_journal"]
         acc_wip = accounts["stock_wip"]
-        acc_var = accounts.get("stock_variance") or acc_wip
-        move_lines = (
-            var_amount
-            and [
-                self._prepare_account_move_line(acc_wip, -var_amount),
-                self._prepare_account_move_line(acc_var, +var_amount),
-            ]
-            or []
-        )
+        acc_out = accounts["stock_output"]
+        acc_var = accounts.get("stock_variance")
+
+        if acc_var:
+            wip_amount = self.wip_actual_amount
+            var_amount = self.difference_actual_amount
+        else:
+            wip_amount = self.actual_amount
+            var_amount = 0
+
+        move_lines = []
+        if wip_amount:
+            move_lines.extend(
+                [
+                    self._prepare_account_move_line(acc_wip, -wip_amount),
+                    self._prepare_account_move_line(acc_out, +wip_amount),
+                ]
+            )
+        if var_amount:
+            move_lines.extend(
+                [
+                    self._prepare_account_move_line(acc_wip, -var_amount),
+                    self._prepare_account_move_line(acc_var, +var_amount),
+                ]
+            )
         return move_lines, journal
 
     def clear_wip_journal_entries(self):
