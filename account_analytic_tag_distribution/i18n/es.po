@@ -1,0 +1,46 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_tag_distribution
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-24 11:31+0000\n"
+"PO-Revision-Date: 2023-08-24 11:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model.fields,field_description:account_analytic_tag_distribution.field_account_analytic_tag__analytic_distribution
+msgid "Analytic"
+msgstr "Analítico"
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model.fields,field_description:account_analytic_tag_distribution.field_account_analytic_tag__active_analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Distribución Analítica"
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model.fields,field_description:account_analytic_tag_distribution.field_account_analytic_tag__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr "Búsqueda de distribución analítica"
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model.fields,field_description:account_analytic_tag_distribution.field_account_analytic_tag__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisión analítica"
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model,name:account_analytic_tag_distribution.model_account_analytic_tag
+msgid "Analytic Tags"
+msgstr "Etiquetas Analíticas"
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model,name:account_analytic_tag_distribution.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
