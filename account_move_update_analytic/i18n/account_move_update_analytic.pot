@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-21 06:59+0000\n"
+"PO-Revision-Date: 2023-09-21 06:59+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -106,13 +108,6 @@ msgid "New Analytic Tags"
 msgstr ""
 
 #. module: account_move_update_analytic
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_move_line_tree_grouped
-msgid "Update Analytic"
-msgstr ""
-
-#. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update Analytic Accounts / Tags"
 msgstr ""
@@ -120,6 +115,13 @@ msgstr ""
 #. module: account_move_update_analytic
 #: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
 msgid "Update Analytic for selected Account Moves"
+msgstr ""
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_move_line_tree_grouped
+msgid "Update analytic account and tags"
 msgstr ""
 
 #. module: account_move_update_analytic
