@@ -16,10 +16,30 @@
                 <field name="parent_state" invisible="1" />
                 <button
                     name="account_move_update_analytic.action_view_account_move_update_analytic"
-                    string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting"
                     attrs="{'column_invisible': [('parent.state', '!=', 'posted')]}"
+                    icon="fa-tags"
+                    title="Update analytic distribution"
+                    aria-label="Update analytic distribution"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='line_ids']/tree/field[@name='analytic_distribution']"
+                position="after"
+            >
+                <field name="parent_state" invisible="1" />
+                <button
+                    name="account_move_update_analytic.action_view_account_move_update_analytic"
+                    type="action"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{
+                        'column_invisible': [('parent.state', '!=', 'posted')],
+                        'invisible': [('display_type', 'in', ('line_section', 'line_note'))],
+                    }"
+                    icon="fa-tags"
+                    title="Update analytic distribution"
+                    aria-label="Update analytic distribution"
                 />
             </xpath>
         </field>

@@ -102,12 +102,6 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: account_move_update_analytic
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
-msgid "Update Analytic"
-msgstr "Atualizar Analítico"
-
-#. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update Analytic Distribution"
 msgstr "Atualizar Distribuição Analítica"
@@ -118,6 +112,15 @@ msgid "Update Analytic for selected Account Moves"
 msgstr "Atualizar Analítico para movimentos de conta selecionados"
 
 #. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+msgid "Update analytic distribution"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update analytic lines"
 msgstr "Atualizar Linhas Analíticas"
+
+#~ msgid "Update Analytic"
+#~ msgstr "Atualizar Analítico"
