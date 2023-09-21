@@ -11,13 +11,14 @@
             <field name="analytic_distribution" position="after">
                 <button
                     name="account_move_update_analytic.action_view_account_move_update_analytic"
-                    string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting"
                     attrs="{'invisible': [('parent_state', '!=', 'posted')]}"
+                    icon="fa-tags"
+                    title="Update analytic distribution"
+                    aria-label="Update analytic distribution"
                 />
             </field>
         </field>
     </record>
-
 </odoo>

@@ -3,7 +3,7 @@
 
 {
     "name": "Account move update analytic",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "category": "Accounting & Finance",
     "summary": "This module allows the user to update analytic on posted moves",
     "author": "Le Filament, Moduon, Odoo Community Association (OCA)",
@@ -17,4 +17,5 @@
         "views/account_move_line_view.xml",
     ],
     "installable": True,
+    "maintainers": ["remi-filament", "Shide"],
 }
