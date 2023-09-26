@@ -16,10 +16,12 @@
                 <field name="parent_state" invisible="1" />
                 <button
                     name="account_move_update_analytic.action_view_account_move_update_analytic"
-                    string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting,analytic.group_analytic_tags"
                     attrs="{'column_invisible': [('parent.state', '!=', 'posted')]}"
+                    icon="fa-tags"
+                    title="Update analytic account and tags"
+                    aria-label="Update analytic account and tags"
                 />
             </xpath>
             <xpath
@@ -29,13 +31,15 @@
                 <field name="parent_state" invisible="1" />
                 <button
                     name="account_move_update_analytic.action_view_account_move_update_analytic"
-                    string="Update Analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting,analytic.group_analytic_tags"
                     attrs="{
                         'column_invisible': [('parent.state', '!=', 'posted')],
                         'invisible': [('display_type', 'in', ('line_section', 'line_note'))],
                     }"
+                    icon="fa-tags"
+                    title="Update analytic account and tags"
+                    aria-label="Update analytic account and tags"
                 />
             </xpath>
         </field>
