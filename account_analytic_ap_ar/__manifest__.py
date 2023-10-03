@@ -1,4 +1,4 @@
-# Copyright 2023 ForgeFlow S.L.
+# Copyright 2024 ForgeFlow S.L.
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 
 {
