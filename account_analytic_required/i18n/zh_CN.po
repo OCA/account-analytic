@@ -17,6 +17,11 @@ msgstr ""
 "X-Generator: Weblate 3.8\n"
 
 #. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "账户类型"
@@ -30,40 +35,59 @@ msgstr "总是"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"Analytic policy is set to 'Always' with account '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"分析策略设置为“始终”，帐户为%s'%s',但标签为'%s'的帐户移动行中缺少分析帐户。"
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"Analytic policy is set to 'Never' with account '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
-"分析策略设置为“从不”，帐户为%s'%s'，但标签为'％s'的帐户移动行具有分析帐"
-"户'％s'。"
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
-"analytic account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
 msgstr ""
-"分析策略设置为“已发布移动”，帐户为%s'%s'，但在标签为'％s'的帐户移动行中缺少分"
-"析帐户。"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
+msgid "ID"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Journal Entries"
-msgstr "日记帐分录"
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
 msgstr "日记帐项目"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
@@ -106,6 +130,33 @@ msgstr ""
 "置分析帐户; 如果您选择“始终”，如果没有分析帐户，会计将收到错误消息; 如果您选"
 "择“已发布的移动”，则如果在发布移动时未定义分析帐户，则会计将收到错误消息; 如"
 "果您选择“从不”，如果存在分析帐户，会计将收到错误消息。"
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "分析策略设置为“始终”，帐户为%s'%s',但标签为'%s'的帐户移动行中缺少分析帐"
+#~ "户。"
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "分析策略设置为“从不”，帐户为%s'%s'，但标签为'％s'的帐户移动行具有分析帐"
+#~ "户'％s'。"
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+#~ "analytic account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "分析策略设置为“已发布移动”，帐户为%s'%s'，但在标签为'％s'的帐户移动行中缺"
+#~ "少分析帐户。"
+
+#~ msgid "Journal Entries"
+#~ msgstr "日记帐分录"
 
 #~ msgid "Analytic Policy"
 #~ msgstr "分析策略"

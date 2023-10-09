@@ -11,14 +11,19 @@ msgstr ""
 "POT-Creation-Date: 2018-02-01 03:39+0000\n"
 "PO-Revision-Date: 2020-08-12 18:59+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 3.10\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -34,42 +39,59 @@ msgstr "Sempre"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"Analytic policy is set to 'Always' with account '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"A política analítica é definida como \"Sempre\" com conta%s '%s' Mas a conta "
-"analítica está faltando na linha de mudança de conta com o rótulo '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"Analytic policy is set to 'Never' with account '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
-"A política analítica é definida como \"Nunca\" com conta%s '%s' mas a linha "
-"de movimento da conta com o rótulo '%s' tem uma conta analítica '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
-"analytic account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
 msgstr ""
-"A política analítica está definida como 'Movimentos Publicados' com a conta "
-"%s '%s', mas a conta analítica está ausente na linha de movimentação da "
-"conta com o rótulo '%s'."
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
+msgid "ID"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Journal Entries"
-msgstr "Entradas de Diário"
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
 msgstr "Item diário"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
@@ -119,6 +141,36 @@ msgstr ""
 "estiver presente.\n"
 "\n"
 "Este campo depende da empresa."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "A política analítica é definida como \"Sempre\" com conta%s '%s' Mas a "
+#~ "conta analítica está faltando na linha de mudança de conta com o rótulo "
+#~ "'%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "A política analítica é definida como \"Nunca\" com conta%s '%s' mas a "
+#~ "linha de movimento da conta com o rótulo '%s' tem uma conta analítica "
+#~ "'%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+#~ "analytic account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "A política analítica está definida como 'Movimentos Publicados' com a "
+#~ "conta %s '%s', mas a conta analítica está ausente na linha de "
+#~ "movimentação da conta com o rótulo '%s'."
+
+#~ msgid "Journal Entries"
+#~ msgstr "Entradas de Diário"
 
 #~ msgid "Analytic Policy"
 #~ msgstr "Política Analítica"

@@ -20,6 +20,11 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "Tipo de cuenta"
@@ -33,44 +38,59 @@ msgstr "Siempre"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"Analytic policy is set to 'Always' with account '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"La política analítica está configurada como \"Siempre\" para la cuenta %s "
-"'%s' pero falta la cuenta análitica en la línea de movimiento de la cuenta "
-"con la etiqueta '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"Analytic policy is set to 'Never' with account '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
-"La política analítica está configurada como \"Nunca\" para la cuenta %s '%s' "
-"pero la línea de movimiento de la cuenta con la etiqueta '%s' tiene una "
-"cuenta analítica '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
-"analytic account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
 msgstr ""
-"La política analítica está configurada como \"Movimientos publicados\" para "
-"la cuenta %s '%s' pero falta la cuenta análitica en la línea de movimiento "
-"de la cuenta con la etiqueta '%s'."
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
+msgid "ID"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Journal Entries"
-msgstr "Apuntes contables"
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
 msgstr "Apunte contable"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
@@ -120,6 +140,36 @@ msgstr ""
 "analítica presente.\n"
 "\n"
 "Este campo depende de la compañía."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "La política analítica está configurada como \"Siempre\" para la cuenta %s "
+#~ "'%s' pero falta la cuenta análitica en la línea de movimiento de la "
+#~ "cuenta con la etiqueta '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "La política analítica está configurada como \"Nunca\" para la cuenta %s "
+#~ "'%s' pero la línea de movimiento de la cuenta con la etiqueta '%s' tiene "
+#~ "una cuenta analítica '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+#~ "analytic account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "La política analítica está configurada como \"Movimientos publicados\" "
+#~ "para la cuenta %s '%s' pero falta la cuenta análitica en la línea de "
+#~ "movimiento de la cuenta con la etiqueta '%s'."
+
+#~ msgid "Journal Entries"
+#~ msgstr "Apuntes contables"
 
 #~ msgid "Analytic Policy"
 #~ msgstr "Política Analítica"

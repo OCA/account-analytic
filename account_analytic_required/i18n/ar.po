@@ -21,6 +21,11 @@ msgstr ""
 "X-Generator: Weblate 3.1.1\n"
 
 #. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "نوع الحساب"
@@ -34,42 +39,59 @@ msgstr "دائماً"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+"Analytic policy is set to 'Always' with account '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
-"سياسة الحسابات التحليلية هي ’دائماً‘ للحساب %s ’%s‘ ولكن الحساب التحليلي فارغ "
-"في عنصر اليومية باسم ’%s‘."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
+"Analytic policy is set to 'Never' with account '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
-"سياسة الحسابات التحليلية هي ’ممنوع‘ للحساب %s ’%s‘ ولكن في عنصر اليومية باسم "
-"’%s‘ تم تحديد حساب التحليلي ’%s‘ ."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
-"analytic account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
+"account is missing in the account move line with label '%s'."
 msgstr ""
-"سياسة الحسابات التحليلية هي ’القيود المرحّلة‘ للحساب %s ’%s‘ ولكن الحساب "
-"التحليلي فارغ في عنصر اليومية باسم ’%s‘."
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
+msgid "ID"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
-#, fuzzy
-msgid "Journal Entries"
-msgstr "عنصر اليومية"
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
 msgstr "عنصر اليومية"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
@@ -114,6 +136,34 @@ msgstr ""
 "حساب تحليلي; و ان قمت بإختيار \"قيويد مرحلة\" ستظهر للمحاسب رسالة خطأ اذا لم "
 "يحدد حساب تحليلي في ترحيل القيود; و إن اخترت \"ابداً\\نهائي\"، ستظهر للمحاسب "
 "رسالة خطأ اذا تم تحديد حساب تحليلي."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "سياسة الحسابات التحليلية هي ’دائماً‘ للحساب %s ’%s‘ ولكن الحساب التحليلي "
+#~ "فارغ في عنصر اليومية باسم ’%s‘."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "سياسة الحسابات التحليلية هي ’ممنوع‘ للحساب %s ’%s‘ ولكن في عنصر اليومية "
+#~ "باسم ’%s‘ تم تحديد حساب التحليلي ’%s‘ ."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+#~ "analytic account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "سياسة الحسابات التحليلية هي ’القيود المرحّلة‘ للحساب %s ’%s‘ ولكن الحساب "
+#~ "التحليلي فارغ في عنصر اليومية باسم ’%s‘."
+
+#, fuzzy
+#~ msgid "Journal Entries"
+#~ msgstr "عنصر اليومية"
 
 #~ msgid "Analytic Policy"
 #~ msgstr "سياسة الحسابات التحليلية"
