@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-04-06 02:55+0000\n"
 "PO-Revision-Date: 2022-10-31 20:44+0000\n"
 "Last-Translator: Douglas Custódio <douglascstd@yahoo.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,9 +37,33 @@ msgid "Analytic Account that these orders link to"
 msgstr "Conta analítica que essas ordem estão vinculadas"
 
 #. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Linha da Fatura"
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__display_name
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_session__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_move_line__id
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__id
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_order__id
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_session__id
+msgid "ID"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config____last_update
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_order____last_update
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_session____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_config
@@ -50,3 +74,11 @@ msgstr "Configuração do Ponto de Venda"
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
 msgstr "Pedido do Ponto de Venda"
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_session
+msgid "Point of Sale Session"
+msgstr ""
+
+#~ msgid "Invoice Line"
+#~ msgstr "Linha da Fatura"

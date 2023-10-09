@@ -35,8 +35,32 @@ msgid "Analytic Account that these orders link to"
 msgstr ""
 
 #. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_invoice_line
-msgid "Invoice Line"
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__display_name
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_session__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_move_line__id
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__id
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_order__id
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_session__id
+msgid "ID"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_move_line____last_update
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config____last_update
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_order____last_update
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_session____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: pos_analytic_by_config
@@ -47,4 +71,9 @@ msgstr ""
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_session
+msgid "Point of Sale Session"
 msgstr ""
