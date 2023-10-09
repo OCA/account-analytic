@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_sequence
+# 	* account_analytic_sequence
 #
 msgid ""
 msgstr ""
@@ -25,3 +25,8 @@ msgstr "Conta analítica"
 #: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__code
 msgid "Reference"
 msgstr "Referencia"
+
+#. module: account_analytic_sequence
+#: model:ir.model.constraint,message:account_analytic_sequence.constraint_account_analytic_account_code_uniq
+msgid "Reference must be unique per Company!"
+msgstr ""

@@ -28,3 +28,8 @@ msgstr "વિશ્લેષણાત્મક ખાતું"
 #: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__code
 msgid "Reference"
 msgstr ""
+
+#. module: account_analytic_sequence
+#: model:ir.model.constraint,message:account_analytic_sequence.constraint_account_analytic_account_code_uniq
+msgid "Reference must be unique per Company!"
+msgstr ""
