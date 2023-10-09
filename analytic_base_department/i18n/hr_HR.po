@@ -37,16 +37,34 @@ msgid "Analytic Account"
 msgstr "Analitički konto"
 
 #. module: analytic_base_department
+#: model:ir.model.fields,field_description:analytic_base_department.field_hr_department__analytic_account_ids
+msgid "Analytic Accounts"
+msgstr ""
+
+#. module: analytic_base_department
 #: model:ir.model,name:analytic_base_department.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Stavke analitike"
 
 #. module: analytic_base_department
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_department_form
+msgid "Analytics"
+msgstr ""
+
+#. module: analytic_base_department
+#: model:ir.model,name:analytic_base_department.model_hr_department
 #: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_account__department_id
 #: model:ir.model.fields,field_description:analytic_base_department.field_account_analytic_line__department_id
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_account_search
 #: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
 msgid "Department"
 msgstr "Odjel"
+
+#. module: analytic_base_department
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_account_search
+#: model_terms:ir.ui.view,arch_db:analytic_base_department.view_account_analytic_line_filter
+msgid "My Department"
+msgstr ""
 
 #. module: analytic_base_department
 #: model:ir.model.fields,help:analytic_base_department.field_account_analytic_line__department_id
