@@ -89,12 +89,20 @@ msgstr "Dimensie"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__display_name
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_tag__display_name
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_invoice_report__display_name
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__display_name
 msgid "Display Name"
 msgstr "Weergavenaam"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__id
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_tag__id
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_invoice_report__id
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_move_line__id
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__id
 msgid "ID"
 msgstr "ID"
@@ -111,6 +119,10 @@ msgstr "Boekingen"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension____last_update
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_tag____last_update
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_invoice_report____last_update
+#: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line____last_update
 msgid "Last Modified on"
 msgstr "Laatst gewijzigd op"
