@@ -22,21 +22,6 @@ msgid "Analytic Account"
 msgstr "Conto analitico"
 
 #. module: account_analytic_sequence
-#: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__display_name
-msgid "Display Name"
-msgstr "Nome visualizzato"
-
-#. module: account_analytic_sequence
-#: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__id
-msgid "ID"
-msgstr "ID"
-
-#. module: account_analytic_sequence
-#: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account____last_update
-msgid "Last Modified on"
-msgstr "Ultima modifica il"
-
-#. module: account_analytic_sequence
 #: model:ir.model.fields,field_description:account_analytic_sequence.field_account_analytic_account__code
 msgid "Reference"
 msgstr "Riferimento"
@@ -45,3 +30,12 @@ msgstr "Riferimento"
 #: model:ir.model.constraint,message:account_analytic_sequence.constraint_account_analytic_account_code_uniq
 msgid "Reference must be unique per Company!"
 msgstr "Il riferimento deve essere unico per l'azienda!"
+
+#~ msgid "Display Name"
+#~ msgstr "Nome visualizzato"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Ultima modifica il"
