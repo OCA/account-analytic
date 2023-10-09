@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* procurement_mto_analytic
+# 	* procurement_mto_analytic
 #
 msgid ""
 msgstr ""
