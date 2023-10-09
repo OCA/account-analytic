@@ -22,22 +22,17 @@ msgid "Account Type"
 msgstr "Kontotyp"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Always"
-msgstr "Immer"
-
-#. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_distribution_required.selection__account_account_type__property_analytic_policy__always_plan_or_account
 msgid "Always (analytic account or distribution)"
 msgstr "Immer (Kostenstelle oder -aufteilung)"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_distribution_required.selection__account_account_type__property_analytic_policy__always_plan
 msgid "Always (analytic distribution)"
 msgstr "Immer (Kostenaufteilung)"
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:30
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid "Analytic account and analytic distribution are mutually exclusive"
 msgstr ""
@@ -45,39 +40,42 @@ msgstr ""
 "sich gegenseitig aus."
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:47
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always (analytic account or distribution)' with "
-"account %s '%s' but the analytic distribution and the analytic account are "
+"account '%s' but the analytic distribution and the analytic account are "
 "missing in the account move line with label '%s'."
 msgstr ""
-"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
-"(Kostenstelle oder -aufteilung)\" gesetzt, aber die Kostenaufteilung und die "
-"Kostenstelle fehlen in der Buchungszeile mit der Bezeichnung '%s'."
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:36
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always (analytic distribution)' with account %s "
-"'%s' but the analytic distribution is missing in the account move line with "
-"label '%s'."
+"Analytic policy is set to 'Always (analytic distribution)' with account '%s' "
+"but the analytic distribution is missing in the account move line with label "
+"'%s'."
 msgstr ""
-"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
-"(Kostenaufteilung)\" gesetzt, aber die Kostenaufteilung fehlt in der "
-"Buchungszeile mit der Bezeichnung '%s'."
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:57
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
-"line with label '%s' has an analytic distribution %s '%s'."
+"Analytic policy is set to 'Never' with account '%s' but the account move "
+"line with label '%s' has an analytic distribution"
 msgstr ""
-"Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Nie\" gesetzt, "
-"aber in der Buchungszeile mit der Bezeichnung '%s' ist eine Kostenaufteilung "
-"%s '%s' angegeben."
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__display_name
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__id
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line__id
+msgid "ID"
+msgstr ""
 
 #. module: account_analytic_distribution_required
 #: model:ir.model,name:account_analytic_distribution_required.model_account_move_line
@@ -85,24 +83,15 @@ msgid "Journal Item"
 msgstr "Journal-Buchung"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Never"
-msgstr "Nie"
-
-#. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Optional"
-msgstr "Optional"
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type____last_update
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
 msgstr "Richtlinie für Kostenstelle"
-
-#. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Posted moves"
-msgstr "Gebuchte Zeilen"
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,help:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
@@ -130,3 +119,44 @@ msgstr ""
 "Buchen der Rechnungszeile keine Kostenstelle gesetzt ist.\n"
 "Wenn 'Nie' gewählt wird, erscheint eine Fehlermeldung, wenn eine "
 "Kostenstelle gesetzt ist."
+
+#~ msgid "Always"
+#~ msgstr "Immer"
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always (analytic account or distribution)' "
+#~ "with account %s '%s' but the analytic distribution and the analytic "
+#~ "account are missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
+#~ "(Kostenstelle oder -aufteilung)\" gesetzt, aber die Kostenaufteilung und "
+#~ "die Kostenstelle fehlen in der Buchungszeile mit der Bezeichnung '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always (analytic distribution)' with account "
+#~ "%s '%s' but the analytic distribution is missing in the account move line "
+#~ "with label '%s'."
+#~ msgstr ""
+#~ "Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Immer "
+#~ "(Kostenaufteilung)\" gesetzt, aber die Kostenaufteilung fehlt in der "
+#~ "Buchungszeile mit der Bezeichnung '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic distribution %s '%s'."
+#~ msgstr ""
+#~ "Die Kostenstellen-Richtlinie des Kontos %s '%s' ist auf \"Nie\" gesetzt, "
+#~ "aber in der Buchungszeile mit der Bezeichnung '%s' ist eine "
+#~ "Kostenaufteilung %s '%s' angegeben."
+
+#~ msgid "Never"
+#~ msgstr "Nie"
+
+#~ msgid "Optional"
+#~ msgstr "Optional"
+
+#~ msgid "Posted moves"
+#~ msgstr "Gebuchte Zeilen"

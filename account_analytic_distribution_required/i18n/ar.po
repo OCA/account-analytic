@@ -25,50 +25,57 @@ msgid "Account Type"
 msgstr "نوع الحساب"
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Always"
-msgstr ""
-
-#. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_distribution_required.selection__account_account_type__property_analytic_policy__always_plan_or_account
 msgid "Always (analytic account or distribution)"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
+#: model:ir.model.fields.selection,name:account_analytic_distribution_required.selection__account_account_type__property_analytic_policy__always_plan
 msgid "Always (analytic distribution)"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:30
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid "Analytic account and analytic distribution are mutually exclusive"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:47
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always (analytic account or distribution)' with "
-"account %s '%s' but the analytic distribution and the analytic account are "
+"account '%s' but the analytic distribution and the analytic account are "
 "missing in the account move line with label '%s'."
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:36
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always (analytic distribution)' with account %s "
-"'%s' but the analytic distribution is missing in the account move line with "
-"label '%s'."
+"Analytic policy is set to 'Always (analytic distribution)' with account '%s' "
+"but the analytic distribution is missing in the account move line with label "
+"'%s'."
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:57
+#: code:addons/account_analytic_distribution_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
-"line with label '%s' has an analytic distribution %s '%s'."
+"Analytic policy is set to 'Never' with account '%s' but the account move "
+"line with label '%s' has an analytic distribution"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__display_name
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_distribution_required
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__id
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line__id
+msgid "ID"
 msgstr ""
 
 #. module: account_analytic_distribution_required
@@ -77,23 +84,14 @@ msgid "Journal Item"
 msgstr ""
 
 #. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Never"
-msgstr ""
-
-#. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Optional"
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type____last_update
+#: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_move_line____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: account_analytic_distribution_required
 #: model:ir.model.fields,field_description:account_analytic_distribution_required.field_account_account_type__property_analytic_policy
 msgid "Policy for analytic account"
-msgstr ""
-
-#. module: account_analytic_distribution_required
-#: selection:account.account.type,property_analytic_policy:0
-msgid "Posted moves"
 msgstr ""
 
 #. module: account_analytic_distribution_required
