@@ -17,6 +17,11 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: procurement_mto_analytic
+#: model:ir.model,name:procurement_mto_analytic.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr ""
+
+#. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_sale_order_line
 msgid "Sales Order Line"
 msgstr "Línea de la Comanda de Venda"
