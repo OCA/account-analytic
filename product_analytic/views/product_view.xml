@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2015 Akretion - Alexis de Lattre <alexis.delattre@akretion.com>
+    Copyright 2017 Tecnativa - Luis Martínez
+-->
+<odoo>
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product_analytic_account.product.template.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="account.product_template_form_view" />
+        <field name="arch" type="xml">
+            <field name="property_account_income_id" position="after">
+                <field name="income_analytic_account_id" />
+            </field>
+            <field name="property_account_expense_id" position="after">
+                <field name="expense_analytic_account_id" />
+            </field>
+        </field>
+    </record>
+    <record id="view_category_property_form" model="ir.ui.view">
+        <field name="name">product_analytic_account.product.categ.form</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="account.view_category_property_form" />
+        <field name="arch" type="xml">
+            <field name="property_account_income_categ_id" position="after">
+                <field name="income_analytic_account_id" />
+            </field>
+            <field name="property_account_expense_categ_id" position="after">
+                <field name="expense_analytic_account_id" />
+            </field>
+        </field>
+    </record>
+</odoo>
