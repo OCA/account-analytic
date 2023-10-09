@@ -21,6 +21,11 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "Tip konta"
@@ -34,35 +39,31 @@ msgstr "Uvijek"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
-"account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
-"Analitičko pravilo je postavljeno na 'Uvijek'  za konto %s '%s' ali "
-"analitički konto nedostaje u stavci temeljnice sa naslovom '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
-"line with label '%s' has an analytic account '%s'."
+"Analytic policy is set to 'Never' with account '%(account)s' but the account "
+"move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
 msgstr ""
-"Analitičko pravilo je postavljeno na 'Nikada' za konto %s '%s' ali na stavci "
-"temeljnice sa oznakom '%s' postoji analitički konto '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
-"analytic account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
-#, fuzzy
-msgid "Journal Entries"
-msgstr "Stavka dnevnika"
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
@@ -105,6 +106,26 @@ msgid ""
 "\n"
 "This field is company dependent."
 msgstr ""
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "Analitičko pravilo je postavljeno na 'Uvijek'  za konto %s '%s' ali "
+#~ "analitički konto nedostaje u stavci temeljnice sa naslovom '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "Analitičko pravilo je postavljeno na 'Nikada' za konto %s '%s' ali na "
+#~ "stavci temeljnice sa oznakom '%s' postoji analitički konto '%s'."
+
+#, fuzzy
+#~ msgid "Journal Entries"
+#~ msgstr "Stavka dnevnika"
 
 #~ msgid "Analytic Policy"
 #~ msgstr "Analitička pravila"

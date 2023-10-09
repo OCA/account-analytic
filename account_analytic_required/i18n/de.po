@@ -20,6 +20,11 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr ""
+
+#. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
 msgid "Account Type"
 msgstr "Konto Typ"
@@ -33,39 +38,31 @@ msgstr "Immer"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account %s '%s' but the analytic "
-"account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
-"Die Analytic-Richtlinie ist mit dem Konto %s '  %s'  auf  'Immer' "
-"eingestellt, aber im  Analysekonto fehlt in der Buchungslinie mit der "
-"Bezeichnung ' %s '."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account %s '%s' but the account move "
-"line with label '%s' has an analytic account '%s'."
+"Analytic policy is set to 'Never' with account '%(account)s' but the account "
+"move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
 msgstr ""
-"Die Analytic-Richtlinie ist auf \"Nie\" eingestellt mit Konto  %s ' %s' aber "
-"die Buchungslinie mit Marke ' %s ' hat ein anlaytisches Konto  ' %s '.  "
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account %s '%s' but the "
-"analytic account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
-"Die Analytic-Richtlinie ist auf \"Posted moves\" eingestellt  mit dem "
-"Konto  \n"
-"%s '  %s '  aber das analytische Konto fehlt in der Buchungslinie mit dem "
-"Label ' %s'."
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
-msgid "Journal Entries"
-msgstr "Journaleintrag"
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
@@ -117,6 +114,37 @@ msgstr ""
 "Buchhalter eine Fehlermeldung, wenn bei der Buchung kein analytisches Konto "
 "definiert wurde. Wenn Sie \"Nie\" auswählen, erhält der Buchhalter eine "
 "Fehlermeldung, wenn ein analytisches Konto vorhanden ist."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account %s '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "Die Analytic-Richtlinie ist mit dem Konto %s '  %s'  auf  'Immer' "
+#~ "eingestellt, aber im  Analysekonto fehlt in der Buchungslinie mit der "
+#~ "Bezeichnung ' %s '."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account %s '%s' but the account "
+#~ "move line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "Die Analytic-Richtlinie ist auf \"Nie\" eingestellt mit Konto  %s ' %s' "
+#~ "aber die Buchungslinie mit Marke ' %s ' hat ein anlaytisches Konto  ' %s "
+#~ "'.  "
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Posted moves' with account %s '%s' but the "
+#~ "analytic account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "Die Analytic-Richtlinie ist auf \"Posted moves\" eingestellt  mit dem "
+#~ "Konto  \n"
+#~ "%s '  %s '  aber das analytische Konto fehlt in der Buchungslinie mit dem "
+#~ "Label ' %s'."
+
+#~ msgid "Journal Entries"
+#~ msgstr "Journaleintrag"
 
 #~ msgid "Analytic Policy"
 #~ msgstr "Analytische Richtlinie"

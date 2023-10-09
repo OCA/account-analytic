@@ -35,47 +35,26 @@ msgstr "Alltid"
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Always' with account '%s' but the analytic "
-"account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
-"Objektkontopolicyn är inställd på 'Alltid' för konto '%s' men objektkonto "
-"saknas på raden med etiketten '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Never' with account '%s' but the account move "
-"line with label '%s' has an analytic account '%s'."
+"Analytic policy is set to 'Never' with account '%(account)s' but the account "
+"move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
 msgstr ""
-"Objektkontopolicyn är inställd på 'Aldrig' för konto '%s' men raden med "
-"etiketten '%s' har ett objektkonto '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
 #, python-format
 msgid ""
-"Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
-"account is missing in the account move line with label '%s'."
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
-"Objektkontopolicyn är inställd på 'Bokförda poster' för konto '%s' men "
-"objektkonto saknas på raden med etiketten '%s'."
-
-#. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__display_name
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
-msgid "Display Name"
-msgstr "Visningsnamn"
-
-#. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type__id
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
-msgid "ID"
-msgstr "ID"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
@@ -86,14 +65,6 @@ msgstr "Verifikat"
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
 msgstr "Journalrad"
-
-#. module: account_analytic_required
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account____last_update
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_account_type____last_update
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
-#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
-msgid "Last Modified on"
-msgstr "Senast ändrad den"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
@@ -120,10 +91,14 @@ msgstr "Bokförda poster"
 msgid ""
 "Sets the policy for analytic accounts.\n"
 "If you select:\n"
-"- Optional: The accountant is free to put an analytic account on an account move line with this type of account.\n"
-"- Always: The accountant will get an error message if there is no analytic account.\n"
-"- Posted moves: The accountant will get an error message if no analytic account is defined when the move is posted.\n"
-"- Never: The accountant will get an error message if an analytic account is present.\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
 "\n"
 "This field is company dependent."
 msgstr ""
@@ -138,3 +113,36 @@ msgstr ""
 "- Aldrig: Bokföraren får ett felmeddelande om det finns ett objektkonto.\n"
 "\n"
 "Detta fält är bolagsberoende."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Always' with account '%s' but the analytic "
+#~ "account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "Objektkontopolicyn är inställd på 'Alltid' för konto '%s' men objektkonto "
+#~ "saknas på raden med etiketten '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Never' with account '%s' but the account move "
+#~ "line with label '%s' has an analytic account '%s'."
+#~ msgstr ""
+#~ "Objektkontopolicyn är inställd på 'Aldrig' för konto '%s' men raden med "
+#~ "etiketten '%s' har ett objektkonto '%s'."
+
+#, python-format
+#~ msgid ""
+#~ "Analytic policy is set to 'Posted moves' with account '%s' but the "
+#~ "analytic account is missing in the account move line with label '%s'."
+#~ msgstr ""
+#~ "Objektkontopolicyn är inställd på 'Bokförda poster' för konto '%s' men "
+#~ "objektkonto saknas på raden med etiketten '%s'."
+
+#~ msgid "Display Name"
+#~ msgstr "Visningsnamn"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Senast ändrad den"
