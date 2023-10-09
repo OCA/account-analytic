@@ -33,7 +33,6 @@ msgstr "Dimensions dels comptes analítics"
 #. module: analytic_tag_dimension
 #: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_form
 #: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_search
-#: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_tree
 msgid "Analytic Dimension"
 msgstr "Dimensió analítica"
 
@@ -86,13 +85,11 @@ msgstr "Dimensió"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__display_name
-#: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__display_name
 msgid "Display Name"
 msgstr "Nom mostrat"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__id
-#: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__id
 msgid "ID"
 msgstr "ID"
 
@@ -108,7 +105,6 @@ msgstr "Apunt comptable"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension____last_update
-#: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line____last_update
 msgid "Last Modified on"
 msgstr "Última modificació el"
 
@@ -143,10 +139,17 @@ msgstr "No podeu assignar dues etiquetes a la mateixa dimensió."
 #, python-format
 msgid ""
 "You can not set two tags from same dimension.\n"
-" Records {} in the model {} have {}"
+" Records %(records_to_update)s in the model %(description)s have "
+"%(display_name)s"
 msgstr ""
-"You can not set two tags from same dimension.\n"
-" Els registres {} al model {} contenen {}"
+
+#, python-format
+#~ msgid ""
+#~ "You can not set two tags from same dimension.\n"
+#~ " Records {} in the model {} have {}"
+#~ msgstr ""
+#~ "You can not set two tags from same dimension.\n"
+#~ " Els registres {} al model {} contenen {}"
 
 #~ msgid "Invoice Line"
 #~ msgstr "Línia factura"
