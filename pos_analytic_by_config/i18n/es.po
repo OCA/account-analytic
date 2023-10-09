@@ -36,9 +36,9 @@ msgid "Analytic Account that these orders link to"
 msgstr "Cuenta analítica relacionada con estos pedidos"
 
 #. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_invoice_line
-msgid "Invoice Line"
-msgstr "Línea de factura"
+#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
+msgid "Journal Item"
+msgstr ""
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_config
@@ -49,3 +49,11 @@ msgstr "Configuración del punto de venta"
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
 msgstr "Pedidos del punto de venta"
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_session
+msgid "Point of Sale Session"
+msgstr ""
+
+#~ msgid "Invoice Line"
+#~ msgstr "Línea de factura"
