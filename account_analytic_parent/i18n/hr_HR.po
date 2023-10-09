@@ -48,6 +48,21 @@ msgid "Complete Name"
 msgstr ""
 
 #. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__display_name
+msgid "Display Name"
+msgstr "Naziv"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account____last_update
+msgid "Last Modified on"
+msgstr "Zadnji modificirao"
+
+#. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
 msgid "Name"
 msgstr ""
@@ -74,12 +89,6 @@ msgstr ""
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "Nije moguće kreiranje rekurzivnih analitičkih konta."
-
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
-msgid "[%(code)s] %(name)s"
-msgstr ""
 
 #~ msgid "(Keep empty to open the current situation)"
 #~ msgstr "(ostavite prazno za otvaranje trenutne situacije)"
@@ -108,17 +117,8 @@ msgstr ""
 #~ msgid "Created on"
 #~ msgstr "Kreirano"
 
-#~ msgid "Display Name"
-#~ msgstr "Naziv"
-
 #~ msgid "From"
 #~ msgstr "Od"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Zadnji modificirao"
 
 #~ msgid "Last Updated by"
 #~ msgstr "Zanji ažurirao"

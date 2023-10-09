@@ -47,6 +47,21 @@ msgid "Complete Name"
 msgstr ""
 
 #. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__display_name
+msgid "Display Name"
+msgstr "Zobrazovaný název"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account____last_update
+msgid "Last Modified on"
+msgstr "Poslední změna dne"
+
+#. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
 msgid "Name"
 msgstr ""
@@ -73,12 +88,6 @@ msgstr ""
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "Nemůžete vytvářet rekurzivní analytické účty."
-
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
-msgid "[%(code)s] %(name)s"
-msgstr ""
 
 #~ msgid "(Keep empty to open the current situation)"
 #~ msgstr "(Uchovávejte prázdnou, abyste otevřeli aktuální situaci)"
@@ -107,17 +116,8 @@ msgstr ""
 #~ msgid "Created on"
 #~ msgstr "Vytvořeno"
 
-#~ msgid "Display Name"
-#~ msgstr "Zobrazovaný název"
-
 #~ msgid "From"
 #~ msgstr "Z"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Poslední změna dne"
 
 #~ msgid "Last Updated by"
 #~ msgstr "Naposledy aktualizováno"

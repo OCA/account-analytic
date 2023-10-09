@@ -47,6 +47,21 @@ msgid "Complete Name"
 msgstr ""
 
 #. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account____last_update
+msgid "Last Modified on"
+msgstr "Laatst gewijzigd op"
+
+#. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
 msgid "Name"
 msgstr ""
@@ -74,12 +89,6 @@ msgstr ""
 msgid "You can not create recursive analytic accounts."
 msgstr ""
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
-msgid "[%(code)s] %(name)s"
-msgstr ""
-
 #~ msgid "Cancel"
 #~ msgstr "Annuleer"
 
@@ -89,17 +98,8 @@ msgstr ""
 #~ msgid "Created on"
 #~ msgstr "Aangemaakt op"
 
-#~ msgid "Display Name"
-#~ msgstr "Weergavenaam"
-
 #~ msgid "From"
 #~ msgstr "Van"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Laatst gewijzigd op"
 
 #~ msgid "Last Updated by"
 #~ msgstr "Laatst bijgewerkt door"
