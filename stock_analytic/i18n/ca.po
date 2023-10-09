@@ -34,11 +34,6 @@ msgid "Analytic Tags"
 msgstr "Etiquetes analítiques"
 
 #. module: stock_analytic
-#: model:ir.model,name:stock_analytic.model_product_product
-msgid "Product"
-msgstr "Producte"
-
-#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "Moviments de producte (línia de moviment d'existències)"
@@ -52,3 +47,6 @@ msgstr "Ferralla"
 #: model:ir.model,name:stock_analytic.model_stock_move
 msgid "Stock Move"
 msgstr "Moviment d'estoc"
+
+#~ msgid "Product"
+#~ msgstr "Producte"

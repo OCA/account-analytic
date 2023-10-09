@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
 "PO-Revision-Date: 2022-02-01 19:33+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatica@protonmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,11 +35,6 @@ msgid "Analytic Tags"
 msgstr "Etiquetas Analíticas"
 
 #. module: stock_analytic
-#: model:ir.model,name:stock_analytic.model_product_product
-msgid "Product"
-msgstr "Produto"
-
-#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "Movimentos de produto (linha de movimentação de estoque)"
@@ -53,3 +48,6 @@ msgstr "Restos"
 #: model:ir.model,name:stock_analytic.model_stock_move
 msgid "Stock Move"
 msgstr "Movimentação de Estoque"
+
+#~ msgid "Product"
+#~ msgstr "Produto"
