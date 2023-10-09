@@ -73,9 +73,3 @@ msgstr "Activeer eerst de bovenliggende rekening %s"
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "U kunt geen recursieve analytische rekening aanmaken."
-
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
-msgid "[%(code)s] %(name)s"
-msgstr ""

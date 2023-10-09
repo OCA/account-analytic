@@ -75,12 +75,6 @@ msgstr ""
 msgid "You can not create recursive analytic accounts."
 msgstr "Nije moguće kreiranje rekurzivnih analitičkih konta."
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
-msgid "[%(code)s] %(name)s"
-msgstr ""
-
 #~ msgid "(Keep empty to open the current situation)"
 #~ msgstr "(ostavite prazno za otvaranje trenutne situacije)"
 

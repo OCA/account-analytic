@@ -75,8 +75,6 @@ msgstr "Najprej aktivirajte nadrejeni konto %s"
 msgid "You can not create recursive analytic accounts."
 msgstr "Ustvarjanje rekurzivnih analitičnih kontov ni dovoljeno."
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
-msgid "[%(code)s] %(name)s"
-msgstr "[%(code)s] %(name)s"
+#~ msgid "[%(code)s] %(name)s"
+#~ msgstr "[%(code)s] %(name)s"

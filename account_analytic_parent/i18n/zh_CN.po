@@ -75,8 +75,6 @@ msgstr "请激活第一个父帐户 %s"
 msgid "You can not create recursive analytic accounts."
 msgstr "不能创建递归分析帐户。"
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
-msgid "[%(code)s] %(name)s"
-msgstr "[%(code)s] %(name)s"
+#~ msgid "[%(code)s] %(name)s"
+#~ msgstr "[%(code)s] %(name)s"

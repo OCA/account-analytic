@@ -75,11 +75,9 @@ msgstr "Por favor primero activa la cuenta padre %s"
 msgid "You can not create recursive analytic accounts."
 msgstr "No puede crear cuentas analíticas recursivas."
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
-msgid "[%(code)s] %(name)s"
-msgstr "[%(code)s] %(name)s"
+#~ msgid "[%(code)s] %(name)s"
+#~ msgstr "[%(code)s] %(name)s"
 
 #~ msgid "(Keep empty to open the current situation)"
 #~ msgstr "(Dejar vacío para abrir la situación actual)"
