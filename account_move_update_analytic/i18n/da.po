@@ -109,13 +109,6 @@ msgid "New Analytic Tags"
 msgstr "Nye analyse tags"
 
 #. module: account_move_update_analytic
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
-#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_move_line_tree_grouped
-msgid "Update Analytic"
-msgstr "Opdatër analyse"
-
-#. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update Analytic Accounts / Tags"
 msgstr "Opdatér analyse konto / tags"
@@ -126,6 +119,16 @@ msgid "Update Analytic for selected Account Moves"
 msgstr "Opdatër Analyse for valgte journalposter"
 
 #. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_move_line_tree_grouped
+msgid "Update analytic account and tags"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update analytic lines"
 msgstr "Opdatér analyse linier"
+
+#~ msgid "Update Analytic"
+#~ msgstr "Opdatër analyse"
