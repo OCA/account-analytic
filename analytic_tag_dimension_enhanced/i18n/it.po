@@ -130,8 +130,11 @@ msgstr ""
 #. module: analytic_tag_dimension_enhanced
 #: model:ir.model.fields,help:analytic_tag_dimension_enhanced.field_account_analytic_dimension__ref_model_id
 msgid ""
-"Select model if you want to use it to create analytic tags, each tag will have reference to the data record in that model.\n"
-"For example, if you select Department (hr.department) then click Create Tags button, tags will be created from each department  and also has resource_ref to the department record"
+"Select model if you want to use it to create analytic tags, each tag will "
+"have reference to the data record in that model.\n"
+"For example, if you select Department (hr.department) then click Create Tags "
+"button, tags will be created from each department  and also has resource_ref "
+"to the department record"
 msgstr ""
 
 #. module: analytic_tag_dimension_enhanced
