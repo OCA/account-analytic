@@ -39,14 +39,17 @@ msgid "Journal Item"
 msgstr "Assentament Comptable"
 
 #. module: product_analytic
+#: model:ir.model,name:product_analytic.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
 msgid "Product Category"
 msgstr "Categoria de producte"
 
-#. module: product_analytic
-#: model:ir.model,name:product_analytic.model_product_template
-msgid "Product Template"
-msgstr "Plantilla del producte"
+#~ msgid "Product Template"
+#~ msgstr "Plantilla del producte"
 
 #~ msgid "Invoice Line"
 #~ msgstr "Línia factura"
