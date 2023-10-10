@@ -41,14 +41,17 @@ msgid "Journal Item"
 msgstr "Movimento contabile"
 
 #. module: product_analytic
+#: model:ir.model,name:product_analytic.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
 msgid "Product Category"
 msgstr "Categoria prodotto"
 
-#. module: product_analytic
-#: model:ir.model,name:product_analytic.model_product_template
-msgid "Product Template"
-msgstr "Modello prodotto"
+#~ msgid "Product Template"
+#~ msgstr "Modello prodotto"
 
 #~ msgid "Invoice Line"
 #~ msgstr "Riga fattura"

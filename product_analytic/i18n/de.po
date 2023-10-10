@@ -38,14 +38,17 @@ msgid "Journal Item"
 msgstr ""
 
 #. module: product_analytic
+#: model:ir.model,name:product_analytic.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
 msgid "Product Category"
 msgstr "Produktkategorie"
 
-#. module: product_analytic
-#: model:ir.model,name:product_analytic.model_product_template
-msgid "Product Template"
-msgstr "Produktvorlage"
+#~ msgid "Product Template"
+#~ msgstr "Produktvorlage"
 
 #~ msgid "Invoice Line"
 #~ msgstr "Rechnungszeile"
