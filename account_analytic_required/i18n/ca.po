@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-01 03:39+0000\n"
-"PO-Revision-Date: 2022-01-12 14:39+0000\n"
-"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
+"PO-Revision-Date: 2023-10-10 11:46+0000\n"
+"Last-Translator: eccit-quim <quim@eccit.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account
 msgid "Account"
-msgstr ""
+msgstr "Compte"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -41,6 +41,9 @@ msgid ""
 "Analytic policy is set to 'Always' with account '%(account)s' but the "
 "analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
+"La política d'anàlisi s'estableix en \"Sempre\" amb el compte '%(account)s', "
+"però falta el compte d'anàlisi a la línia de moviment del compte amb "
+"l'etiqueta '%(move)s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
@@ -50,6 +53,9 @@ msgid ""
 "move line with label '%(move)s' has an analytic account "
 "'%(analytic_account)s'."
 msgstr ""
+"La política analítica s'ha establert en \"Mai\" amb el compte '%(account)s', "
+"però l'apunt del compte amb l'etiqueta '%(move)s' té un compte analític "
+"'%(analytic_account)s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
@@ -58,11 +64,14 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
 "analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
+"La política d'anàlisi s'ha establert en 'Assentaments publicats' amb el "
+"compte '%(account)s', però falta el compte d'anàlisi en l'apunt del compte "
+"amb l'etiqueta \"%(move)s\"."
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Entrada al Diari"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
