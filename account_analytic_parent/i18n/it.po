@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_parent
+# 	* account_analytic_parent
 #
 msgid ""
 msgstr ""
