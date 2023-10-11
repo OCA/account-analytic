@@ -7,7 +7,7 @@
     "author": "Acsone SA/NV, Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["purchase"],
+    "depends": ["purchase", "base_view_inheritance_extension"],
     "data": ["views/purchase_views.xml"],
     "license": "AGPL-3",
     "installable": True,
