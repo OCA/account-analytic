@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2020-06-19 07:19+0000\n"
-"Last-Translator: Lorenzo Battistini <lb@takobi.online>\n"
+"PO-Revision-Date: 2023-10-12 20:36+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_dimension
@@ -142,6 +142,9 @@ msgid ""
 " Records %(records_to_update)s in the model %(description)s have "
 "%(display_name)s"
 msgstr ""
+"Non si possono impostare due etichette per la stessa dimensione.\n"
+" I record %(records_to_update)s nel modello %(description)s hanno "
+"%(display_name)s"
 
 #, python-format
 #~ msgid ""
