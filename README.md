@@ -43,7 +43,7 @@ addon | version | maintainers | summary
 [product_analytic](product_analytic/) | 14.0.1.0.0 |  | Add analytic account on products and product categories
 [product_analytic_purchase](product_analytic_purchase/) | 14.0.1.0.1 |  | Glue module between purchase and product_analytic
 [product_analytic_sale](product_analytic_sale/) | 14.0.1.0.0 | [![alexis-via](https://github.com/alexis-via.png?size=30px)](https://github.com/alexis-via) | Glue module between sale and product_analytic
-[purchase_analytic](purchase_analytic/) | 14.0.2.0.0 |  | Purchase Analytic
+[purchase_analytic](purchase_analytic/) | 14.0.3.0.0 |  | Purchase Analytic
 [purchase_request_analytic](purchase_request_analytic/) | 14.0.1.0.0 |  | Purchase Request Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
 [sale_stock_analytic](sale_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the sale order and the analytic tags of the sale order line to the stock move
