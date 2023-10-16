@@ -34,7 +34,7 @@ addon | version | maintainers | summary
 [pos_analytic_by_config](pos_analytic_by_config/) | 15.0.1.0.0 |  | Use analytic account defined on POS configuration for POS orders
 [procurement_mto_analytic](procurement_mto_analytic/) | 15.0.1.0.0 |  | This module sets analytic account in purchase order line from sale order analytic account
 [product_analytic](product_analytic/) | 15.0.1.0.1 |  | Add analytic account on products and product categories
-[purchase_analytic](purchase_analytic/) | 15.0.2.0.0 |  | Purchase Analytic
+[purchase_analytic](purchase_analytic/) | 15.0.3.0.0 |  | Purchase Analytic
 [purchase_request_analytic](purchase_request_analytic/) | 15.0.1.0.0 |  | Purchase Request Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 15.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
 [stock_analytic](stock_analytic/) | 15.0.1.1.0 |  | Adds an analytic account and analytic tags in stock move
