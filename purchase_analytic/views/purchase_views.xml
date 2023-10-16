@@ -36,9 +36,11 @@
                 />
             </field>
             <field name="order_line" position="attributes">
-                <attribute
-                    name="context"
-                >{'default_account_analytic_id': project_id}</attribute>
+                <attribute name="context" operation="update">
+                    {
+                        "default_account_analytic_id": project_id,
+                    }
+                </attribute>
             </field>
         </field>
     </record>
