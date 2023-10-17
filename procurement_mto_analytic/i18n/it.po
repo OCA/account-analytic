@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-10-17 19:36+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: procurement_mto_analytic
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_purchase_order_line__display_name
@@ -20,7 +22,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_move__display_name
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_rule__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: procurement_mto_analytic
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_purchase_order_line__id
@@ -28,7 +30,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_move__id
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_rule__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: procurement_mto_analytic
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_purchase_order_line____last_update
@@ -36,24 +38,24 @@ msgstr ""
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_move____last_update
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_rule____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr ""
+msgstr "Riga ordine di acquisto"
 
 #. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "Riga ordine di vendita"
 
 #. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_stock_move
 msgid "Stock Move"
-msgstr ""
+msgstr "Movimento di magazzino"
 
 #. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_stock_rule
 msgid "Stock Rule"
-msgstr ""
+msgstr "Regola di giacenza"
