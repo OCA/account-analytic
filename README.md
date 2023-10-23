@@ -29,6 +29,7 @@ addon | version | maintainers | summary
 [product_analytic](product_analytic/) | 16.0.1.0.1 |  | Add analytic account on products and product categories
 [purchase_analytic](purchase_analytic/) | 16.0.2.1.0 |  | Purchase Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 16.0.1.0.0 |  | Copies the analytic distribution of the purchase order item to the stock move
+[sale_analytic_tag](sale_analytic_tag/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Sale Analytic Tag
 [stock_analytic](stock_analytic/) | 16.0.1.2.0 |  | Adds analytic distribution in stock move
 [stock_picking_analytic](stock_picking_analytic/) | 16.0.1.0.0 |  | Allows to define the analytic account on picking level
 
