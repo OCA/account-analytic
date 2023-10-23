@@ -7,7 +7,7 @@
     "author": "ACSONE SA/NV, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "category": "Point Of Sale, Accounting",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "license": "AGPL-3",
     "depends": ["point_of_sale"],
     "data": ["views/pos_config_view.xml"],
