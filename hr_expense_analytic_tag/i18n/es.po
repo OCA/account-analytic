@@ -27,7 +27,5 @@ msgstr "Etiquetas analíticas"
 msgid "Expense"
 msgstr "Gasto"
 
-#. module: hr_expense_analytic_tag
-#: model:ir.model,name:hr_expense_analytic_tag.model_account_move_line
-msgid "Journal Item"
-msgstr "Apunte contable"
+#~ msgid "Journal Item"
+#~ msgstr "Apunte contable"
