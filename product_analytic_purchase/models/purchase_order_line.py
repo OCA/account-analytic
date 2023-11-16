@@ -34,5 +34,7 @@ class PurchaseOrderLine(models.Model):
                 product = self.env["product.product"].browse(vals.get("product_id"))
                 ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
                 ana_account = ana_accounts["expense"]
-                vals["analytic_distribution"] = {ana_account.id: 100.0}
+                vals["analytic_distribution"] = (
+                    {ana_account.id: 100.0} if ana_account else False
+                )
         return super().create(vals_list)
