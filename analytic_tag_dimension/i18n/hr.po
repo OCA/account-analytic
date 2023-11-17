@@ -34,7 +34,6 @@ msgstr "Dimenzije analitičkih konta"
 #. module: analytic_tag_dimension
 #: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_form
 #: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_search
-#: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_tree
 msgid "Analytic Dimension"
 msgstr "Dimenzija analitike"
 
