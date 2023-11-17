@@ -382,11 +382,6 @@ msgid "Tracking Items"
 msgstr ""
 
 #. module: account_analytic_wip
-#: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
-msgid "Tracking List"
-msgstr ""
-
-#. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_bank_statement_line__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_move__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_payment__analytic_tracking_item_id
