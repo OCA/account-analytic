@@ -54,7 +54,6 @@
         <field name="model">account.analytic.tracking.item</field>
         <field name="arch" type="xml">
             <tree
-                string="Tracking List"
                 decoration-bf="child_ids"
                 decoration-muted="not to_calculate"
                 decoration-danger="variance_actual_amount"
