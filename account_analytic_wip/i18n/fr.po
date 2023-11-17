@@ -395,11 +395,6 @@ msgid "Tracking Items"
 msgstr "Eléments de suivi"
 
 #. module: account_analytic_wip
-#: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
-msgid "Tracking List"
-msgstr "Liste de suivi"
-
-#. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_bank_statement_line__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_move__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_payment__analytic_tracking_item_id
@@ -435,6 +430,9 @@ msgstr "Compte d'encours"
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__wip_actual_amount
 msgid "Wip Actual Amount"
 msgstr "Montant réel des encours"
+
+#~ msgid "Tracking List"
+#~ msgstr "Liste de suivi"
 
 #~ msgid "Accounted amount incurred above the planned amount limit."
 #~ msgstr "Montant prévu encouru au-delà de la limite du montant planifié."
