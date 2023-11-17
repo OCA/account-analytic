@@ -21,7 +21,7 @@
         <field name="name">view.AccountAnalyticDimension.tree</field>
         <field name="model">account.analytic.dimension</field>
         <field name="arch" type="xml">
-            <tree string="Analytic Dimension">
+            <tree>
                 <field name="name" />
             </tree>
         </field>
