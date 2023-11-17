@@ -27,13 +27,13 @@ addon | version | maintainers | summary
 [account_analytic_required](account_analytic_required/) | 14.0.1.0.3 |  | Account Analytic Required
 [account_analytic_sequence](account_analytic_sequence/) | 14.0.1.0.1 |  | Restore the analytic account sequence
 [account_analytic_tag_default](account_analytic_tag_default/) | 14.0.1.0.0 |  | Set default tags on analytic accounts.
-[account_analytic_wip](account_analytic_wip/) | 14.0.3.0.2 | [![dreispt](https://github.com/dreispt.png?size=30px)](https://github.com/dreispt) | Track and report WIP and Variances based on Analytic Items
+[account_analytic_wip](account_analytic_wip/) | 14.0.3.0.3 | [![dreispt](https://github.com/dreispt.png?size=30px)](https://github.com/dreispt) | Track and report WIP and Variances based on Analytic Items
 [account_move_update_analytic](account_move_update_analytic/) | 14.0.1.0.1 |  | This module allows the user to update analytic on posted moves
-[analytic_activity_based_cost](analytic_activity_based_cost/) | 14.0.4.0.1 | [![dreispt](https://github.com/dreispt.png?size=30px)](https://github.com/dreispt) | Assign overhead costs to activities, using Analytic Items
+[analytic_activity_based_cost](analytic_activity_based_cost/) | 14.0.4.0.2 | [![dreispt](https://github.com/dreispt.png?size=30px)](https://github.com/dreispt) | Assign overhead costs to activities, using Analytic Items
 [analytic_base_department](analytic_base_department/) | 14.0.1.0.0 |  | Add relationshet between Analytic and Department
 [analytic_partner](analytic_partner/) | 14.0.1.0.0 |  | Search and group analytic entries by partner
 [analytic_partner_hr_timesheet](analytic_partner_hr_timesheet/) | 14.0.1.0.0 |  | Classify HR activities by partner
-[analytic_tag_dimension](analytic_tag_dimension/) | 14.0.1.0.0 |  | Group Analytic Entries by Dimensions
+[analytic_tag_dimension](analytic_tag_dimension/) | 14.0.1.0.1 |  | Group Analytic Entries by Dimensions
 [analytic_tag_dimension_enhanced](analytic_tag_dimension_enhanced/) | 14.0.1.1.2 |  | Analytic Accounts Dimensions Enhanced
 [mrp_analytic](mrp_analytic/) | 14.0.1.1.0 |  | Adds the analytic account to the production order
 [mrp_analytic_child_mo](mrp_analytic_child_mo/) | 14.0.1.0.1 |  | Carry the Manufacturing Order Analytic Account to the generated Manufacturing Orders
@@ -47,8 +47,8 @@ addon | version | maintainers | summary
 [purchase_request_analytic](purchase_request_analytic/) | 14.0.1.0.0 |  | Purchase Request Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
 [sale_stock_analytic](sale_stock_analytic/) | 14.0.1.0.0 |  | Copies the analytic account of the sale order and the analytic tags of the sale order line to the stock move
-[stock_analytic](stock_analytic/) | 14.0.2.1.0 |  | Adds an analytic account and analytic tags in stock move
-[stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.2 |  | Stock Inventory Analytic
+[stock_analytic](stock_analytic/) | 14.0.2.1.1 |  | Adds an analytic account and analytic tags in stock move
+[stock_inventory_analytic](stock_inventory_analytic/) | 14.0.1.0.3 |  | Stock Inventory Analytic
 [stock_picking_analytic](stock_picking_analytic/) | 14.0.1.0.0 |  | Allows to define the analytic account on picking level
 [stock_warehouse_analytic](stock_warehouse_analytic/) | 14.0.1.0.0 |  | Allows to mention an analytic account on warehouse level
 
