@@ -1,5 +1,5 @@
 # Copyright 2015 ForgeFlow - Jordi Ballester Alomar
-# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
 
@@ -7,6 +7,4 @@ from odoo import fields, models
 class MrpProduction(models.Model):
     _inherit = "mrp.production"
 
-    analytic_account_id = fields.Many2one(
-        comodel_name="account.analytic.account", string="Analytic Account"
-    )
+    analytic_tag_ids = fields.Many2many("account.analytic.tag", string="Analytic Tags")

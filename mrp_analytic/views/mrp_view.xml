@@ -10,21 +10,27 @@
                     name="analytic_account_id"
                     groups="analytic.group_analytic_accounting"
                 />
+                <field
+                    name="analytic_tag_ids"
+                    widget="many2many_tags"
+                    groups="analytic.group_analytic_tags"
+                />
             </field>
         </field>
     </record>
     <record id="custom_mrp_production_form_view" model="ir.ui.view">
         <field name="name">mrp.production.form.custom</field>
         <field name="model">mrp.production</field>
-        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="inherit_id" ref="mrp_account.mrp_production_form_view_inherited" />
         <field name="arch" type="xml">
             <xpath
-                expr="//page[@name='miscellaneous']/group/group[2]/field[@name='origin']"
+                expr="//page[@name='miscellaneous']/group/group[2]/field[@name='analytic_account_id']"
                 position="after"
             >
                 <field
-                    name="analytic_account_id"
-                    groups="analytic.group_analytic_accounting"
+                    name="analytic_tag_ids"
+                    widget="many2many_tags"
+                    groups="analytic.group_analytic_tags"
                 />
             </xpath>
         </field>
@@ -37,15 +43,6 @@
             <xpath expr='//field[@name="product_id"]' position="after">
                 <field
                     name="analytic_account_id"
-                    groups="analytic.group_analytic_accounting"
-                />
-            </xpath>
-            <xpath expr="//filter[@name='product']" position="after">
-                <filter
-                    string="Analytic Account"
-                    name="analytic_account"
-                    domain="[]"
-                    context="{'group_by': 'analytic_account_id'}"
                     groups="analytic.group_analytic_accounting"
                 />
             </xpath>
