@@ -20,25 +20,14 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: mrp_analytic
-#: model:ir.model,name:mrp_analytic.model_account_analytic_account
-#: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production__analytic_account_id
 #: model_terms:ir.ui.view,arch_db:mrp_analytic.custom_view_mrp_production_filter
 msgid "Analytic Account"
 msgstr "Cuenta analítica"
 
 #. module: mrp_analytic
-#: model:ir.model.fields,help:mrp_analytic.field_mrp_production__analytic_account_id
-msgid ""
-"Analytic account in which cost and revenue entries will take        place "
-"for financial management of the manufacturing order."
+#: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production__analytic_tag_ids
+msgid "Analytic Tags"
 msgstr ""
-"Cuenta analítica en la que se realizarán las entradas de costes e ingresos "
-"para la gestión financiera de la orden de producción."
-
-#. module: mrp_analytic
-#: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account__num_productions
-msgid "Num Productions"
-msgstr "Número de Producciones"
 
 #. module: mrp_analytic
 #: model:ir.model,name:mrp_analytic.model_mrp_production
@@ -46,14 +35,22 @@ msgid "Production Order"
 msgstr "Orden de producción"
 
 #. module: mrp_analytic
-#: model_terms:ir.ui.view,arch_db:mrp_analytic.view_account_analytic_account_form_mrp_production
-msgid "Productions"
-msgstr "Producciones"
-
-#. module: mrp_analytic
 #: model:ir.model,name:mrp_analytic.model_stock_move
 msgid "Stock Move"
 msgstr "Movimiento de existencias"
+
+#~ msgid ""
+#~ "Analytic account in which cost and revenue entries will take        place "
+#~ "for financial management of the manufacturing order."
+#~ msgstr ""
+#~ "Cuenta analítica en la que se realizarán las entradas de costes e "
+#~ "ingresos para la gestión financiera de la orden de producción."
+
+#~ msgid "Num Productions"
+#~ msgstr "Número de Producciones"
+
+#~ msgid "Productions"
+#~ msgstr "Producciones"
 
 #~ msgid "Display Name"
 #~ msgstr "Nombre a Mostrar"

@@ -20,32 +20,18 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: mrp_analytic
-#: model:ir.model,name:mrp_analytic.model_account_analytic_account
-#: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production__analytic_account_id
 #: model_terms:ir.ui.view,arch_db:mrp_analytic.custom_view_mrp_production_filter
 msgid "Analytic Account"
 msgstr "核算科目"
 
 #. module: mrp_analytic
-#: model:ir.model.fields,help:mrp_analytic.field_mrp_production__analytic_account_id
-msgid ""
-"Analytic account in which cost and revenue entries will take        place "
-"for financial management of the manufacturing order."
-msgstr ""
-
-#. module: mrp_analytic
-#: model:ir.model.fields,field_description:mrp_analytic.field_account_analytic_account__num_productions
-msgid "Num Productions"
+#: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production__analytic_tag_ids
+msgid "Analytic Tags"
 msgstr ""
 
 #. module: mrp_analytic
 #: model:ir.model,name:mrp_analytic.model_mrp_production
 msgid "Production Order"
-msgstr ""
-
-#. module: mrp_analytic
-#: model_terms:ir.ui.view,arch_db:mrp_analytic.view_account_analytic_account_form_mrp_production
-msgid "Productions"
 msgstr ""
 
 #. module: mrp_analytic
