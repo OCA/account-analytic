@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-15 17:04+0000\n"
-"PO-Revision-Date: 2023-10-29 08:27+0000\n"
+"PO-Revision-Date: 2023-11-19 16:34+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
@@ -27,7 +27,7 @@ msgstr "Cuenta analítica"
 #. module: mrp_analytic
 #: model:ir.model.fields,field_description:mrp_analytic.field_mrp_production__analytic_tag_ids
 msgid "Analytic Tags"
-msgstr ""
+msgstr "Etiquetas Analíticas"
 
 #. module: mrp_analytic
 #: model:ir.model,name:mrp_analytic.model_mrp_production
