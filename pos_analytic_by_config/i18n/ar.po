@@ -18,30 +18,9 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: pos_analytic_by_config
-#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__account_analytic_id
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account"
-msgstr "الحساب التحليلي"
-
-#. module: pos_analytic_by_config
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account for this config."
-msgstr "حساب تحليلي لهذا التكوين."
-
-#. module: pos_analytic_by_config
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account that these orders link to"
-msgstr "الحساب التحليلي الذي ترتبط به هذه الطلبات"
-
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
-msgid "Journal Item"
-msgstr "عنصر اليومية"
-
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_pos_config
-msgid "Point of Sale Configuration"
-msgstr "إعدادات نقطة البيع"
+#: model:ir.model,name:pos_analytic_by_config.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr ""
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
@@ -52,6 +31,31 @@ msgstr "أوامر نقطة البيع"
 #: model:ir.model,name:pos_analytic_by_config.model_pos_session
 msgid "Point of Sale Session"
 msgstr "جلسة نقطة البيع"
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Pos Config"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Select a Point of Sale for which the analytic distribution will be used"
+msgstr ""
+
+#~ msgid "Analytic Account"
+#~ msgstr "الحساب التحليلي"
+
+#~ msgid "Analytic Account for this config."
+#~ msgstr "حساب تحليلي لهذا التكوين."
+
+#~ msgid "Analytic Account that these orders link to"
+#~ msgstr "الحساب التحليلي الذي ترتبط به هذه الطلبات"
+
+#~ msgid "Journal Item"
+#~ msgstr "عنصر اليومية"
+
+#~ msgid "Point of Sale Configuration"
+#~ msgstr "إعدادات نقطة البيع"
 
 #~ msgid "Display Name"
 #~ msgstr "الاسم المعروض"

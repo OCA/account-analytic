@@ -1,133 +1,80 @@
 # Copyright 2015 ACSONE SA/NV
+# Copyright 2024 Tecnativa - David Vidal
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import fields
-from odoo.tests import common
+from odoo.tests import tagged
+
+from odoo.addons.point_of_sale.tests.common import TestPointOfSaleCommon, TestPoSCommon
 
 
-class TestPosAnalyticConfig(common.TransactionCase):
+@tagged("post_install", "-at_install")
+class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.aml_obj = cls.env["account.move.line"]
-        cls.pricelist = cls.env["product.pricelist"].create(
+        cls.env.user.groups_id += cls.env.ref("analytic.group_analytic_accounting")
+        cls.analytic_plan = cls.env["account.analytic.plan"].create(
             {
-                "name": "Test pricelist",
-                "item_ids": [
-                    (
-                        0,
-                        0,
-                        {
-                            "applied_on": "3_global",
-                            "compute_price": "formula",
-                            "base": "list_price",
-                        },
-                    )
-                ],
+                "name": "Stores",
             }
         )
-        cls.main_config = cls.env.ref("point_of_sale.pos_config_main")
-        cls.main_config.write(
+        cls.env["account.analytic.applicability"].create(
             {
-                "available_pricelist_ids": [(6, 0, cls.pricelist.ids)],
-                "pricelist_id": cls.pricelist.id,
+                "business_domain": "general",
+                "analytic_plan_id": cls.analytic_plan.id,
+                "applicability": "mandatory",
             }
         )
-        cls.aa_01 = cls.env["account.analytic.account"].create(
-            {"name": "Test Analytic Account"}
+        cls.analytic_account = cls.env["account.analytic.account"].create(
+            {
+                "name": "Test Analytic Account",
+                "plan_id": cls.analytic_plan.id,
+            }
         )
-        cls.customer_01 = cls.env["res.partner"].create({"name": "Mr. Odoo"})
-        cls.product_01 = cls.env["product.product"].create({"name": "Test product"})
-        cls.main_config.account_analytic_id = cls.aa_01
-        cls.main_config.invoice_journal_id = cls.main_config.journal_id
-        cls.session_01 = cls.env["pos.session"].create(
-            {"config_id": cls.main_config.id}
+        cls.env["account.analytic.distribution.model"].create(
+            {
+                "account_prefix": cls.sales_account.code,
+                "pos_config_id": cls.basic_config.id,
+                "analytic_distribution": {cls.analytic_account.id: 100},
+            }
         )
-        cls.session_01.action_pos_session_open()
-        payment_methods = cls.session_01.payment_method_ids
-        account_receivable_id = (
-            cls.env.user.partner_id.property_account_receivable_id.id
-        )
-        order_vals = {
-            "id": "test-id-pos_analytic_by_config",
-            "data": {
-                "creation_date": "2021-04-05 12:00:00",
-                "sequence_number": 1,
-                "user_id": 1,
-                "name": "Order test-id-pos_analytic_by_config",
-                "uid": "test-id-pos_analytic_by_config",
-                "partner_id": cls.customer_01.id,
-                "pricelist_id": cls.pricelist.id,
-                "fiscal_position_id": False,
-                "pos_session_id": cls.session_01.id,
-                "lines": [
-                    (
-                        0,
-                        0,
-                        {
-                            "product_id": cls.product_01.id,
-                            "qty": 1,
-                            "price_unit": 10.0,
-                            "price_subtotal": 10,
-                            "price_subtotal_incl": 10,
-                        },
-                    )
-                ],
-                "amount_total": 10.0,
-                "amount_tax": 0.0,
-                "amount_paid": 10.0,
-                "amount_return": 0.0,
-                "statement_ids": [
-                    [
-                        0,
-                        0,
-                        {
-                            "journal_id": cls.main_config.journal_id.id,
-                            "amount": 10,
-                            "name": fields.Datetime.now(),
-                            "account_id": account_receivable_id,
-                            "statement_id": cls.session_01.statement_ids[0].id,
-                            "payment_method_id": payment_methods.filtered(
-                                lambda pm: pm.is_cash_count
-                                and not pm.split_transactions
-                            )[0].id,
-                        },
-                    ]
-                ],
-            },
-        }
-        order = cls.env["pos.order"].create_from_ui([order_vals])
-        cls.pos_order = cls.env["pos.order"].browse(order[0]["id"])
-        cls.income_account = cls.session_01._prepare_line(cls.pos_order.lines)[
-            "income_account_id"
-        ]
+        cls.config = cls.basic_config
+        cls.session = cls.open_new_session(cls)
+
+    def _create_order(self):
+        order_data = self.create_ui_order_data([(self.product_a, 1)])
+        order = self.env["pos.order"].create_from_ui([order_data])
+        self.pos_order = self.env["pos.order"].browse(order[0]["id"])
+
+    def _close_session(self, amount_paid):
+        self.session.post_closing_cash_details(amount_paid)
+        self.session.close_session_from_ui()
 
     def test_order_simple_receipt(self):
         """Simple tickets are grouped by account in single move lines"""
+        self._create_order()
         aml_domain = [
-            ("account_id", "=", self.income_account),
-            ("analytic_account_id", "=", self.aa_01.id),
+            ("account_id", "=", self.sales_account.id),
+            ("analytic_distribution", "=", {f"{self.analytic_account.id}": 100.0}),
         ]
         # There aren't lines with the analytic account yet
-        self.assertFalse(self.aml_obj.search(aml_domain))
-        self.session_01.total_payments_amount = 0
-        self.main_config.journal_id.type = "sale"
-        self.pos_order.action_pos_order_invoice()
-        self.session_01.action_pos_session_closing_control()
+        self.assertFalse(self.env["account.move.line"].search(aml_domain))
+        self._close_session(self.pos_order.amount_total)
         # There they are
-        self.assertEqual(len(self.aml_obj.search(aml_domain)), 1)
+        self.assertEqual(len(self.env["account.move.line"].search(aml_domain)), 1)
 
     def test_order_invoice(self):
         """Tickets with invoice are posted prior to session reconcilation"""
+        self._create_order()
+        self.pos_order.partner_id = self.partner_a
         aml_domain = [
-            ("account_id", "=", self.income_account),
-            ("product_id", "=", self.product_01.id),
-            ("analytic_account_id", "=", self.aa_01.id),
+            ("account_id", "=", self.sales_account.id),
+            ("product_id", "=", self.product_a.id),
+            ("analytic_distribution", "=", {f"{self.analytic_account.id}": 100.0}),
         ]
-        self.main_config.journal_id.type = "sale"
-        lines = self.aml_obj.search(aml_domain)
+        lines = self.env["account.move.line"].search(aml_domain)
         # There aren't lines with the analytic account yet
-        self.assertEqual(len(lines.ids), 0)
+        self.assertEqual(len(lines), 0)
         self.pos_order.action_pos_order_invoice()
-        lines = self.aml_obj.search(aml_domain)
+        lines = self.env["account.move.line"].search(aml_domain)
         # There they are
-        self.assertEqual(len(lines.ids), 1)
+        self.assertEqual(len(lines), 1)
