@@ -6,34 +6,16 @@ from odoo import models
 class PosSession(models.Model):
     _inherit = "pos.session"
 
-    def _credit_amounts(
+    def _validate_session(
         self,
-        partial_move_line_vals,
-        amount,
-        amount_converted,
-        force_company_currency=False,
+        balancing_account=False,
+        amount_to_balance=0,
+        bank_payment_method_diffs=None,
     ):
-        """We only want the analyitic account set in the sales items from the account
-        move. This is called from `_get_sale_vals` but from other credit methods
-        as well. To ensure that only sales items get the analytic account we flag
-        the context from the former method with the proper analytic account id.
-        """
-        account_analytic_id = self.env.context.get("account_analytic_id")
-        if account_analytic_id:
-            partial_move_line_vals.update({"analytic_account_id": account_analytic_id})
-        return super()._credit_amounts(
-            partial_move_line_vals, amount, amount_converted, force_company_currency
+        return super(
+            PosSession, self.with_context(pos_config_id=self.config_id.id)
+        )._validate_session(
+            balancing_account=balancing_account,
+            amount_to_balance=amount_to_balance,
+            bank_payment_method_diffs=bank_payment_method_diffs,
         )
-
-    def _get_sale_vals(self, key, amount, amount_converted, tax_amount):
-        """The method that allowed to add the analytic account to the sales items
-        has been dropped in v13, so we have to add it in the moment the sales
-        items values are prepared.
-        """
-        account_analytic_id = self.config_id.account_analytic_id
-        if account_analytic_id:
-            return super(
-                PosSession,
-                self.with_context(account_analytic_id=account_analytic_id.id),
-            )._get_sale_vals(key, amount, amount_converted, tax_amount)
-        return super()._get_sale_vals(key, amount, amount_converted, tax_amount)
