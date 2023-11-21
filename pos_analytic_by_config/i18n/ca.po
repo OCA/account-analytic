@@ -20,30 +20,9 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: pos_analytic_by_config
-#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__account_analytic_id
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account"
-msgstr "Compte analític"
-
-#. module: pos_analytic_by_config
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account for this config."
-msgstr "Compte analític per a aquesta configuració."
-
-#. module: pos_analytic_by_config
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account that these orders link to"
-msgstr "Compte analític al qual enllacen aquestes comandes"
-
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
-msgid "Journal Item"
+#: model:ir.model,name:pos_analytic_by_config.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
 msgstr ""
-
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_pos_config
-msgid "Point of Sale Configuration"
-msgstr "Configuració del punt de venda"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
@@ -54,6 +33,28 @@ msgstr "Comandes al punt de venda"
 #: model:ir.model,name:pos_analytic_by_config.model_pos_session
 msgid "Point of Sale Session"
 msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Pos Config"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Select a Point of Sale for which the analytic distribution will be used"
+msgstr ""
+
+#~ msgid "Analytic Account"
+#~ msgstr "Compte analític"
+
+#~ msgid "Analytic Account for this config."
+#~ msgstr "Compte analític per a aquesta configuració."
+
+#~ msgid "Analytic Account that these orders link to"
+#~ msgstr "Compte analític al qual enllacen aquestes comandes"
+
+#~ msgid "Point of Sale Configuration"
+#~ msgstr "Configuració del punt de venda"
 
 #~ msgid "Invoice Line"
 #~ msgstr "Línia de factura"
