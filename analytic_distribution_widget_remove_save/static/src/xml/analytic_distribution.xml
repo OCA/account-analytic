@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2023 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<t
+    id="analytic_distribution_inherit"
+    t-inherit="analytic.AnalyticDistributionPopup"
+    t-inherit-mode="extension"
+    owl="1"
+>
+        <!-- Removing button -->
+       <xpath expr="//div[@class='popupButtons']//span" position="replace" />
+   </t>
