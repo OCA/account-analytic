@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [account_analytic_tag](account_analytic_tag/) | 16.0.1.0.0 |  | Account Analytic Tag
 [account_analytic_tag_distribution](account_analytic_tag_distribution/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Account Analytic Tag Distribution
 [account_move_update_analytic](account_move_update_analytic/) | 16.0.1.0.1 |  | This module allows the user to update analytic on posted moves
+[analytic_distribution_widget_remove_save](analytic_distribution_widget_remove_save/) | 16.0.1.0.1 |  | Remove save button on analytic distribution widget
 [hr_expense_analytic_tag](hr_expense_analytic_tag/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Hr Expense Analytic Tag
 [product_analytic](product_analytic/) | 16.0.1.0.1 |  | Add analytic account on products and product categories
 [purchase_analytic](purchase_analytic/) | 16.0.2.1.0 |  | Purchase Analytic

@@ -5,7 +5,7 @@
     "name": "Analytic Distribution Widget Remove Save",
     "summary": """
         Remove save button on analytic distribution widget""",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
