@@ -12,6 +12,7 @@ INV_TYPE_MAP = {
     'in_refund': 'expense',
 }
 
+GROUP_AUPAA = 'product_analytic.group_always_use_product_analytic_account'
 
 class AccountInvoiceLine(models.Model):
     _inherit = 'account.invoice.line'
@@ -31,8 +32,8 @@ class AccountInvoiceLine(models.Model):
     def create(self, vals_list):
         for vals in vals_list:
             inv_type = self.env.context.get('inv_type', 'out_invoice')
-            if vals.get('product_id') and inv_type and \
-                    not vals.get('account_analytic_id'):
+            replace_account_analytic = self.env.user.has_group(GROUP_AUPAA) or not vals.get('account_analytic_id')
+            if vals.get('product_id') and inv_type and replace_account_analytic:
                 product = self.env['product.product'].browse(
                     vals.get('product_id'))
                 ana_accounts = product.product_tmpl_id.\

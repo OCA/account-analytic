@@ -14,7 +14,9 @@
               'Odoo Community Association (OCA)',
     'website': 'https://github.com/OCA/account-analytic',
     'depends': ['account'],
-    'data': ['views/product_view.xml'],
+    'data': ['views/product_view.xml',
+             'views/res_config_settings.xml',
+             'security/account_invoice_security.xml'],
     'demo': ['demo/product_demo.xml'],
     'installable': True,
 }
