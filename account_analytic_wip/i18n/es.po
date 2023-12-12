@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-12-11 23:36+0000\n"
+"PO-Revision-Date: 2023-12-12 16:34+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -235,35 +235,35 @@ msgstr "Última Actualización por"
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última Actualización el"
 
 #. module: account_analytic_wip
 #: code:addons/account_analytic_wip/models/account_analytic_tracking.py:0
 #, python-format
 msgid "Missing Stock Journal for Category %s when closing %s"
-msgstr ""
+msgstr "Falta el diario de existencias de la Categoría %s al cerrar %s"
 
 #. module: account_analytic_wip
 #: code:addons/account_analytic_wip/models/account_analytic_tracking.py:0
 #, python-format
 msgid "Missing Stock Journal for Product %s in operation %s"
-msgstr ""
+msgstr "Falta el diario de existencias del producto %s en la operación %s"
 
 #. module: account_analytic_wip
 #: code:addons/account_analytic_wip/models/account_analytic_tracking.py:0
 #, python-format
 msgid "Missing WIP Account for Product %s in operation %s"
-msgstr ""
+msgstr "Falta cuenta WIP para producto %s en operación %s"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__name
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields.selection,name:account_analytic_wip.selection__account_analytic_tracking_item__state__draft
 msgid "Open"
-msgstr ""
+msgstr "Abierto"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__state
@@ -272,98 +272,102 @@ msgid ""
 "operations are completed, negative variances are computed. Locked operations"
 " are done and posted, no more actions to do."
 msgstr ""
+"Operaciones abiertas en curso, no se computan desviaciones negativas. Las "
+"operaciones realizadas se han completado, se calculan desviaciones "
+"negativas. Las operaciones bloqueadas están terminadas y contabilizadas, no "
+"hay más acciones que realizar."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__parent_id
 msgid "Parent Tracking Item"
-msgstr ""
+msgstr "Elemento de Seguimiento Parental"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__pending_amount
 msgid "Pending Amount"
-msgstr ""
+msgstr "Importe Pendiente"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Planned"
-msgstr ""
+msgstr "Planificado"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__planned_amount
 msgid "Planned Amount"
-msgstr ""
+msgstr "Importe Planificado"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__planned_qty
 msgid "Planned Qty"
-msgstr ""
+msgstr "Cantidad Planificada"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Post"
-msgstr ""
+msgstr "Publicar"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Post WIP and Variances"
-msgstr ""
+msgstr "Contabilizar WIP y Variaciones"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Posted"
-msgstr ""
+msgstr "Publicada"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_search
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
 #. module: account_analytic_wip
 #: model:ir.model,name:account_analytic_wip.model_product_category
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__product_categ_id
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_search
 msgid "Product Category"
-msgstr ""
+msgstr "Categoría de Producto"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__analytic_line_ids
 msgid "Related analytic items with the project actuals."
-msgstr ""
+msgstr "Partidas analíticas relacionadas con los datos reales del proyecto."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__account_move_ids
 msgid "Related journal entries with the posted WIP."
-msgstr ""
+msgstr "Asientos relacionados con el WIP contabilizado."
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Remaining"
-msgstr ""
+msgstr "Restante"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__remaining_actual_amount
 msgid "Remaining Actual Amount"
-msgstr ""
+msgstr "Importe Restante Actual"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__product_categ_id
 msgid "Select category for the current product"
-msgstr ""
+msgstr "Seleccione categoría para el producto actual"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__state
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__to_calculate
 msgid "To Calculate"
-msgstr ""
+msgstr "A Calcular"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "To Post"
-msgstr ""
+msgstr "A Publicar"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_analytic_tracking_item__actual_amount
@@ -372,6 +376,9 @@ msgid ""
 "generated when a cost is incurred, and will later generated WIP and Variance"
 " Journal Entries."
 msgstr ""
+"Importe total del coste de las Partidas Analíticas relacionadas. Estas "
+"Partidas Analíticas se generan cuando se incurre en un coste, y "
+"posteriormente generarán Entradas de Diario WIP y de Desviación."
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_line__analytic_tracking_item_id
@@ -379,47 +386,47 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_move__analytic_tracking_item_id
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_payment__analytic_tracking_item_id
 msgid "Tracking Item"
-msgstr ""
+msgstr "Seguimiento del Artículo"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_account__analytic_tracking_item_ids
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_form
 msgid "Tracking Items"
-msgstr ""
+msgstr "Seguimiento de Artículos"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,help:account_analytic_wip.field_account_bank_statement_line__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_move__analytic_tracking_item_id
 #: model:ir.model.fields,help:account_analytic_wip.field_account_payment__analytic_tracking_item_id
 msgid "Tracking item generating this journal entry"
-msgstr ""
+msgstr "Elemento de seguimiento que genera esta entrada en el diario"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "Variance"
-msgstr ""
+msgstr "Variación"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__property_variance_account_id
 msgid "Variance Account"
-msgstr ""
+msgstr "Cuenta de Variación"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__variance_actual_amount
 msgid "Variance Actual Amount"
-msgstr ""
+msgstr "Importe Actual de Variación"
 
 #. module: account_analytic_wip
 #: model_terms:ir.ui.view,arch_db:account_analytic_wip.account_analytic_tracking_tree
 msgid "WIP"
-msgstr ""
+msgstr "WIP"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_product_category__property_wip_account_id
 msgid "WIP Account"
-msgstr ""
+msgstr "Cuenta WIP"
 
 #. module: account_analytic_wip
 #: model:ir.model.fields,field_description:account_analytic_wip.field_account_analytic_tracking_item__wip_actual_amount
 msgid "Wip Actual Amount"
-msgstr ""
+msgstr "Importe Actual WIP"
