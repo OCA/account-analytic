@@ -17,7 +17,7 @@ class StockMove(models.Model):
         self, qty, cost, credit_account_id, debit_account_id, svl_id, description
     ):
         self.ensure_one()
-        res = super(StockMove, self)._prepare_account_move_line(
+        res = super()._prepare_account_move_line(
             qty, cost, credit_account_id, debit_account_id, svl_id, description
         )
         if not self.analytic_distribution:
