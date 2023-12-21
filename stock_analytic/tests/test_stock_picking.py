@@ -127,7 +127,7 @@ class TestStockPicking(TransactionCase):
         self.assertEqual(picking.state, "assigned")
 
     def _picking_done_no_error(self, picking):
-        picking.move_ids.quantity_done = 1.0
+        picking.move_ids.quantity = 1.0
         picking.button_validate()
         self.assertEqual(picking.state, "done")
 
@@ -222,7 +222,6 @@ class TestStockPicking(TransactionCase):
                 "location_dest_id": self.dest_location.id,
                 "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "product_uom_id": self.product_2.uom_id.id,
-                "reserved_uom_qty": 1.0,
                 "analytic_distribution": self.analytic_distribution,
                 "company_id": self.env.company.id,
                 "picking_id": picking.id,
