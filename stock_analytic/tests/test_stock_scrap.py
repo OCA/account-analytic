@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 
 class TestStockScrap(TransactionCase):
     def setUp(self):
-        super(TestStockScrap, self).setUp()
+        super().setUp()
 
         self.product = self.env.ref("product.product_product_4")
         self.warehouse = self.env.ref("stock.warehouse0")
