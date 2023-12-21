@@ -132,9 +132,7 @@ class TestStockPicking(TransactionCase):
         self.assertEqual(picking.state, "done")
 
     def _check_account_move_no_error(self, picking):
-        criteria1 = [
-            ["ref", "=", "{} - {}".format(picking.name, picking.product_id.name)]
-        ]
+        criteria1 = [["ref", "=", f"{picking.name} - {picking.product_id.name}"]]
         acc_moves = self.env["account.move"].search(criteria1)
         self.assertTrue(len(acc_moves) > 0)
 
