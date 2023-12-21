@@ -1,10 +1,10 @@
 # Copyright 2020 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 
-class TestSaleStockAnalytic(SavepointCase):
+class TestSaleStockAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -45,3 +45,18 @@ class TestSaleStockAnalytic(SavepointCase):
             self.move.analytic_tag_ids.ids,
             [self.analytic_tag_1.id, self.analytic_tag_2.id],
         )
+
+    def test_sale_stock_analytic_no_analytic_tags(self):
+        self.sale_order_line.analytic_tag_ids = False
+        self.sale_order.action_confirm()
+        self.move = self.sale_order.picking_ids.move_ids_without_package
+        self.assertEqual(self.move.analytic_account_id, self.analytic_account)
+        self.assertEqual(self.move.analytic_tag_ids.ids, [])
+
+    def test_sale_stock_analytic_no_analytic_account(self):
+        self.sale_order_line.analytic_tag_ids = False
+        self.sale_order.analytic_account_id = False
+        self.sale_order.action_confirm()
+        self.move = self.sale_order.picking_ids.move_ids_without_package
+        self.assertEqual(self.move.analytic_account_id.ids, [])
+        self.assertEqual(self.move.analytic_tag_ids.ids, [])
