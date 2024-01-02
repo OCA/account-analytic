@@ -18,7 +18,7 @@ class StockRule(models.Model):
         company_id,
         values,
     ):
-        move_values = super(StockRule, self)._get_stock_move_values(
+        move_values = super()._get_stock_move_values(
             product_id,
             product_qty,
             product_uom,
