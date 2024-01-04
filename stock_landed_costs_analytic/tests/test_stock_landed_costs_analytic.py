@@ -16,13 +16,23 @@ class TestStockLandedCostsAnalytic(TransactionCase):
 
         self.analytic_tag_1 = self.AnalyticTag.create({"name": "analytic tag test 1"})
         self.analytic_tag_2 = self.AnalyticTag.create({"name": "analytic tag test 2"})
-        self.analytic_account_1 = self.env.ref("analytic.analytic_agrolait")
-        self.analytic_account_2 = self.env.ref("analytic.analytic_asustek")
+        self.analytic_distribution_1 = dict(
+            {str(self.env.ref("analytic.analytic_agrolait").id): 100.0}
+        )
+        self.analytic_distribution_2 = dict(
+            {str(self.env.ref("analytic.analytic_asustek").id): 100.0}
+        )
+        self.picking_type_in = self.env.ref("stock.picking_type_out")
+        self.supplier_location = self.env.ref("stock.stock_location_suppliers")
+        self.customer_location = self.env.ref("stock.stock_location_customers")
+
         self.account_1 = self.Account.create(
             {
                 "name": "Account 1 test",
                 "code": "Account1",
-                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "account_type": self.env["account.account"]
+                .search([], limit=1)
+                .account_type,
                 "reconcile": True,
             }
         )
@@ -30,7 +40,9 @@ class TestStockLandedCostsAnalytic(TransactionCase):
             {
                 "name": "Account 2 test",
                 "code": "Account2",
-                "user_type_id": self.env["account.account.type"].search([], limit=1).id,
+                "account_type": self.env["account.account"]
+                .search([], limit=1)
+                .account_type,
                 "reconcile": True,
             }
         )
@@ -52,12 +64,13 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         self.landed_cost_product = self.Product.create(
             {"name": "Landed Cost Product Test", "type": "service"}
         )
+
         picking_vals = {
             "name": "Landed Cost Picking Test",
-            "picking_type_id": self.ref("stock.picking_type_out"),
-            "location_id": self.ref("stock.stock_location_stock"),
-            "location_dest_id": self.ref("stock.stock_location_customers"),
-            "move_lines": [
+            "picking_type_id": self.picking_type_in.id,
+            "location_id": self.supplier_location.id,
+            "location_dest_id": self.customer_location.id,
+            "move_ids": [
                 (
                     0,
                     0,
@@ -66,6 +79,8 @@ class TestStockLandedCostsAnalytic(TransactionCase):
                         "product_id": self.product.id,
                         "product_uom_qty": 5,
                         "product_uom": self.ref("uom.product_uom_unit"),
+                        "location_id": self.supplier_location.id,
+                        "location_dest_id": self.customer_location.id,
                     },
                 )
             ],
@@ -82,7 +97,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
                         "price_unit": 2.0,
                         "split_method": "equal",
                         "account_id": self.account_1.id,
-                        "analytic_account_id": self.analytic_account_1.id,
+                        "analytic_distribution": self.analytic_distribution_1,
                         "analytic_tag_ids": [(6, 0, self.analytic_tag_1.ids)],
                     },
                 ),
@@ -94,7 +109,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
                         "price_unit": 4.0,
                         "split_method": "equal",
                         "account_id": self.account_2.id,
-                        "analytic_account_id": self.analytic_account_2.id,
+                        "analytic_distribution": self.analytic_distribution_2,
                         "analytic_tag_ids": [(6, 0, self.analytic_tag_2.ids)],
                     },
                 ),
@@ -108,7 +123,11 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         for line in self.landed_cost.account_move_id.line_ids:
             if line.account_id == self.account_1:
                 self.assertEqual(line.analytic_tag_ids.ids, self.analytic_tag_1.ids)
-                self.assertEqual(line.analytic_account_id, self.analytic_account_1)
+                self.assertEqual(
+                    line.analytic_distribution, self.analytic_distribution_1
+                )
             if line.account_id == self.account_2:
                 self.assertEqual(line.analytic_tag_ids.ids, self.analytic_tag_2.ids)
-                self.assertEqual(line.analytic_account_id, self.analytic_account_2)
+                self.assertEqual(
+                    line.analytic_distribution, self.analytic_distribution_2
+                )
