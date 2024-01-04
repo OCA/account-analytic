@@ -14,9 +14,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: stock_landed_costs_analytic
-#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_account_id
-msgid "Analytic Account"
-msgstr ""
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution
+msgid "Analytic"
+msgstr "Analítico"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_tag_ids
