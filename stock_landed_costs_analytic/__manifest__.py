@@ -7,11 +7,12 @@
         This module adds an analytic account and analytic tags on landed costs
         lines so that on landed costs validation account moves get analytic
         account and analytic tags values from landed costs lines.""",
-    "version": "13.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["stock_landed_costs"],
+    "depends": ["stock_landed_costs", "account_analytic_tag"],
     "data": ["views/stock_landed_cost_lines.xml"],
+    "installable": True,
     "demo": [],
 }

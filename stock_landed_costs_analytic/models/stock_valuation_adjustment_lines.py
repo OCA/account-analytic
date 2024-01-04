@@ -6,7 +6,8 @@ from odoo import models
 
 class StockValuationAdjustmentLines(models.Model):
 
-    _inherit = "stock.valuation.adjustment.lines"
+    _name = "stock.valuation.adjustment.lines"
+    _inherit = ["stock.valuation.adjustment.lines", "analytic.mixin"]
 
     def _create_account_move_line(
         self, move, credit_account_id, debit_account_id, qty_out, already_out_account_id
@@ -17,9 +18,9 @@ class StockValuationAdjustmentLines(models.Model):
         cost_line = self.cost_line_id
         for line in res:
             if line[2]["account_id"] == cost_line.account_id.id:
-                if cost_line.analytic_account_id:
+                if cost_line.analytic_distribution:
                     line[2].update(
-                        {"analytic_account_id": cost_line.analytic_account_id.id}
+                        {"analytic_distribution": cost_line.analytic_distribution}
                     )
                 if cost_line.analytic_tag_ids:
                     line[2].update(
