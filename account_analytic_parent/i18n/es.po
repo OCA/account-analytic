@@ -21,12 +21,14 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "%(name)s - %(partner)s"
 msgstr "%(name)s - %(partner)s"
 
 #. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "%(parent)s / %(own)s"
@@ -64,22 +66,22 @@ msgid "Parent Path"
 msgstr "Cuenta del Padre"
 
 #. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "Please activate first parent account %s"
 msgstr "Por favor primero activa la cuenta padre %s"
 
 #. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "No puede crear cuentas analíticas recursivas."
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
-msgid "[%(code)s] %(name)s"
-msgstr "[%(code)s] %(name)s"
+#~ msgid "[%(code)s] %(name)s"
+#~ msgstr "[%(code)s] %(name)s"
 
 #~ msgid "(Keep empty to open the current situation)"
 #~ msgstr "(Dejar vacío para abrir la situación actual)"
