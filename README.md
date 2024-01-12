@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_analytic_account_tag](account_analytic_account_tag/) | 16.0.1.0.0 |  | Restore the tag_ids in account.analytic.account
+[account_analytic_parent](account_analytic_parent/) | 16.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 16.0.1.0.0 |  | Account Analytic Required
 [account_analytic_tag](account_analytic_tag/) | 16.0.1.0.0 |  | Account Analytic Tag
 [account_analytic_tag_distribution](account_analytic_tag_distribution/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Account Analytic Tag Distribution
