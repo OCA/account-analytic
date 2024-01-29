@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="group_always_use_product_analytic_account" model="res.groups">
+        <field name="name">Always use product analytic account</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+</odoo>

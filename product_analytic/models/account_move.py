@@ -13,6 +13,7 @@ INV_TYPE_MAP = {
     "in_refund": "expense",
     "in_receipt": "expense",
 }
+GROUP_AUPAA = "product_analytic.group_always_use_product_analytic_account"
 
 
 class AccountMoveLine(models.Model):
@@ -37,10 +38,13 @@ class AccountMoveLine(models.Model):
     def create(self, vals_list):
         for vals in vals_list:
             inv_type = self.env["account.move"].browse([vals.get("move_id")]).move_type
+            replace_account_analytic = self.env.user.has_group(
+                GROUP_AUPAA
+            ) or not vals.get("analytic_distribution")
             if (
                 vals.get("product_id")
                 and inv_type != "entry"
-                and not vals.get("analytic_distribution")
+                and replace_account_analytic
             ):
                 product = self.env["product.product"].browse(vals.get("product_id"))
                 ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
