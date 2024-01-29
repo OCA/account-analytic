@@ -13,6 +13,7 @@ class AccountAnalytic(models.Model):
         compute="_compute_top_parent_analytic_account",
         string="Top Parent Analytic Account",
         store=True,
+        recursive=True,
     )
 
     def _get_top_parent_analytic_account(self):
