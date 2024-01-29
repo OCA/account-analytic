@@ -6,21 +6,22 @@ from odoo.tests.common import TransactionCase
 
 
 class TestAccountInvoiceLine(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.analytic_account_A = self.env["account.analytic.account"].create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.analytic_account_A = cls.env["account.analytic.account"].create(
             {"name": "test analytic_account_A"}
         )
-        self.analytic_account_AB = self.env["account.analytic.account"].create(
+        cls.analytic_account_AB = cls.env["account.analytic.account"].create(
             {
                 "name": "test analytic_account_AB",
-                "parent_id": self.analytic_account_A.id,
+                "parent_id": cls.analytic_account_A.id,
             }
         )
-        self.analytic_account_ABC = self.env["account.analytic.account"].create(
+        cls.analytic_account_ABC = cls.env["account.analytic.account"].create(
             {
                 "name": "test analytic_account_AB",
-                "parent_id": self.analytic_account_AB.id,
+                "parent_id": cls.analytic_account_AB.id,
             }
         )
 

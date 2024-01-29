@@ -5,7 +5,7 @@
 {
     "name": "Analytic Account Top Parent ",
     "summary": """Compute the Analytic Account Top Parent """,
-    "version": "14.0.1.0.1",
+    "version": "15.0.1.0.1",
     "category": "Account",
     "website": "https://github.com/OCA/account-analytic",
     "author": "Coop IT Easy SC, Odoo Community Association (OCA)",
