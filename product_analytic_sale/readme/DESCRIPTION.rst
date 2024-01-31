@@ -3,8 +3,6 @@ from the one stored either on product category either on product level
 (see product_analytic module).
 
 Developers
-==========
+----------
 
 This module is a glue module between the modules **product_analytic** and **sale**.
-
-The module **product_analytic** inherits the *create()* method of account.move.line to add the Analytic Account depending on the Product. But it is not enough in some specific scenarios: for example, if you have *Analytic Policy* set to *Required* on Revenue accounts and you have a sale tax configured with a revenue account and with the option *Include in Analytic Cost* enabled, then Odoo will not allow to create the invoice from a sale order. This module solves this issue by inheriting the method *_prepare_invoice_line()* of the sale order line.

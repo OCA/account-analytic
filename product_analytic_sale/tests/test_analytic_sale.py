@@ -19,6 +19,12 @@ class TestSaleAnalytic(BaseCommon):
                 "plan_id": cls.default_plan.id,
             }
         )
+        cls.analytic_2 = cls.env["account.analytic.account"].create(
+            {
+                "name": "Our Super Product Development Bis",
+                "plan_id": cls.default_plan.id,
+            }
+        )
         cls.product1 = cls.env["product.product"].create(
             {
                 "name": "Computer SC234",
@@ -91,6 +97,56 @@ class TestSaleAnalytic(BaseCommon):
             int(analytic_account_id[0]),
             self.product2.expense_analytic_account_id.id,
         )
+
+    def test_create_invoice_after(self):
+        """
+        Create a sale order with no distribution on product 1
+        Then, set a distribution
+        Create the invoice and check the invoice line has the analytic
+        """
+        self.so.action_confirm()
+        self.product1.income_analytic_account_id = self.analytic
+        invoice = self.so._create_invoices()
+        analytic_account_id = [
+            key for key in invoice.invoice_line_ids.analytic_distribution
+        ]
+        self.assertEqual(int(analytic_account_id[0]), self.analytic.id)
+
+    def test_create_invoice_distribution_plan(self):
+        """
+        Check the distribution plan is still well applied if no
+        income_analytic_account_id field is field in
+        """
+        self.env["account.analytic.distribution.model"].create(
+            {
+                "product_id": self.product1.id,
+                "analytic_distribution": {self.analytic_2.id: 100.0},
+            }
+        )
+        self.so = self.env["sale.order"].create(
+            {
+                "partner_id": self.env.ref("base.res_partner_1").id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product1.id,
+                            "name": self.product1.name,
+                            "product_uom_qty": 12,
+                            "product_uom": self.product1.uom_id.id,
+                            "price_unit": 42,
+                        },
+                    )
+                ],
+            }
+        )
+        self.so.action_confirm()
+        invoice = self.so._create_invoices()
+        analytic_account_id = [
+            key for key in invoice.invoice_line_ids.analytic_distribution
+        ]
+        self.assertEqual(int(analytic_account_id[0]), self.analytic_2.id)
 
     def test_create(self):
         pol_vals = {
