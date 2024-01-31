@@ -8,23 +8,6 @@ from odoo import models
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    def _prepare_invoice_line(self, **optional_values):
-        """
-        If the analytic distribution is not yet set on the sale order line,
-        check on the product level if there is one and transmit it to
-        the invoice line.
-        """
-        vals = super()._prepare_invoice_line(**optional_values)
-        if self.product_id and not self.analytic_distribution:
-            ana_account = (
-                self.product_id.product_tmpl_id._get_product_analytic_accounts()[
-                    "income"
-                ]
-            )
-            if ana_account:
-                self.analytic_distribution = {ana_account.id: 100}
-        return vals
-
     def _compute_analytic_distribution(self):
         """
         Get analytic distribution from product expense analytic account
@@ -39,8 +22,8 @@ class SaleOrderLine(models.Model):
                 ana_account = ana_accounts["income"]
                 if ana_account:
                     line.analytic_distribution = {ana_account.id: 100}
-                else:
-                    lines_without_analytic_ids |= line
+                    continue
+            lines_without_analytic_ids |= line
         return super(
             SaleOrderLine, lines_without_analytic_ids
         )._compute_analytic_distribution()
