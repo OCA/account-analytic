@@ -21,7 +21,7 @@
               'Tecnativa, '
               'CorporateHub, '
               'Odoo Community Association (OCA)',
-    'website': 'https://www.github.com/OCA/account-analytic.git',
+    'website': 'https://github.com/OCA/account-analytic',
     'depends': [
         'account',
         'analytic',

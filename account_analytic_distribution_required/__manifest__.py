@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2014 Acsone - Stéphane Bidoul <stephane.bidoul@acsone.eu>
 # Copyright 2017 Tecnativa - Vicent Cubells <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
@@ -10,7 +9,7 @@
     'author': "ACSONE SA/NV, "
               "Tecnativa, "
               "Odoo Community Association (OCA)",
-    'website': 'http://www.acsone.eu/',
+    'website': 'https://github.com/OCA/account-analytic',
     'depends': [
         'account_analytic_required',
     ],

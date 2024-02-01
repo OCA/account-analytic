@@ -5,7 +5,7 @@
     'summary': """
         Stock Inventory Analytic """,
     'author': 'Eficent, Odoo Community Association (OCA)',
-    'website': "https://github.com/OCA/analytic-account",
+    'website': "https://github.com/OCA/account-analytic",
     'category': 'Warehouse Management',
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
