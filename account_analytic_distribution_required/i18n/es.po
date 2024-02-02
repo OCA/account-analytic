@@ -41,14 +41,14 @@ msgid "Always (analytic distribution)"
 msgstr "Siempre (distribución analítica)"
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:30
+#: code:addons/account_analytic_distribution_required/models/account.py:29
 #, python-format
 msgid "Analytic account and analytic distribution are mutually exclusive"
 msgstr ""
 "La cuenta analítica y la distribución analítica son mutuamente exclusivas"
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:47
+#: code:addons/account_analytic_distribution_required/models/account.py:46
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always (analytic account or distribution)' with "
@@ -60,7 +60,7 @@ msgstr ""
 "la cuenta analítica en el apunte contable con la etiqueta '%s'."
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:36
+#: code:addons/account_analytic_distribution_required/models/account.py:35
 #, python-format
 msgid ""
 "Analytic policy is set to 'Always (analytic distribution)' with account %s "
@@ -72,7 +72,7 @@ msgstr ""
 "contable con la etiqueta '%s'."
 
 #. module: account_analytic_distribution_required
-#: code:addons/account_analytic_distribution_required/models/account.py:57
+#: code:addons/account_analytic_distribution_required/models/account.py:56
 #, python-format
 msgid ""
 "Analytic policy is set to 'Never' with account %s '%s' but the account move "
