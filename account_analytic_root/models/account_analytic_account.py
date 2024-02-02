@@ -8,7 +8,7 @@ from odoo import api, fields, models
 class AccountAnalytic(models.Model):
     _inherit = "account.analytic.account"
 
-    root_id = fields.Many2one(
+    root_analytic_account_id = fields.Many2one(
         "account.analytic.account",
         compute="_compute_root_analytic_account",
         string="Top Parent Analytic Account",
@@ -23,7 +23,7 @@ class AccountAnalytic(models.Model):
         else:
             return self
 
-    @api.depends("parent_id", "parent_id.root_id")
+    @api.depends("parent_id", "parent_id.root_analytic_account_id")
     def _compute_root_analytic_account(self):
         for account in self:
-            account.root_id = account._get_root_analytic_account()
+            account.root_analytic_account_id = account._get_root_analytic_account()

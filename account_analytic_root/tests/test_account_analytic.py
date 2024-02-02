@@ -29,10 +29,16 @@ class TestAccountAnalytic(TransactionCase):
         )
 
     def test_root_if_no_parent_returns_itself(self):
-        self.assertEqual(self.analytic_account_A, self.analytic_account_A.root_id)
+        self.assertEqual(
+            self.analytic_account_A, self.analytic_account_A.root_analytic_account_id
+        )
 
     def test_root_if_parent(self):
-        self.assertEqual(self.analytic_account_AB.root_id, self.analytic_account_A)
+        self.assertEqual(
+            self.analytic_account_AB.root_analytic_account_id, self.analytic_account_A
+        )
 
     def test_root_if_grand_parent(self):
-        self.assertEqual(self.analytic_account_ABC.root_id, self.analytic_account_A)
+        self.assertEqual(
+            self.analytic_account_ABC.root_analytic_account_id, self.analytic_account_A
+        )
