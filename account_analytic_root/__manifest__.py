@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 {
-    "name": "Analytic Account Top Parent ",
-    "summary": """Compute the Analytic Account Top Parent """,
+    "name": "Root Analytic Account",
+    "summary": """Compute the Root Analytic Account""",
     "version": "16.0.1.0.0",
     "category": "Account",
     "website": "https://github.com/OCA/account-analytic",

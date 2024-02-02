@@ -5,7 +5,7 @@
 from odoo.tests.common import TransactionCase
 
 
-class TestAccountInvoiceLine(TransactionCase):
+class TestAccountAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -28,15 +28,11 @@ class TestAccountInvoiceLine(TransactionCase):
             }
         )
 
-    def test_top_parent_if_no_parent_returns_itself(self):
-        self.assertEqual(self.analytic_account_A, self.analytic_account_A.top_parent_id)
+    def test_root_if_no_parent_returns_itself(self):
+        self.assertEqual(self.analytic_account_A, self.analytic_account_A.root_id)
 
-    def test_top_parent_if_parent(self):
-        self.assertEqual(
-            self.analytic_account_AB.top_parent_id, self.analytic_account_A
-        )
+    def test_root_if_parent(self):
+        self.assertEqual(self.analytic_account_AB.root_id, self.analytic_account_A)
 
-    def test_top_parent_if_grand_parent(self):
-        self.assertEqual(
-            self.analytic_account_ABC.top_parent_id, self.analytic_account_A
-        )
+    def test_root_if_grand_parent(self):
+        self.assertEqual(self.analytic_account_ABC.root_id, self.analytic_account_A)
