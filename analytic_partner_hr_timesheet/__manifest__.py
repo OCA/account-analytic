@@ -10,7 +10,7 @@
     'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
     'license': 'AGPL-3',
-    'website': 'https://www.tecnativa.com',
+    'website': 'https://github.com/OCA/account-analytic',
     'depends': [
         'analytic_partner',
         'hr_timesheet',

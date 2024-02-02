@@ -8,7 +8,7 @@
     'summary': 'Search and group analytic entries by partner',
     'version': '12.0.1.0.0',
     'category': 'Analytic Accounting',
-    'website': 'https://www.tecnativa.com',
+    'website': 'https://github.com/OCA/account-analytic',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
     'license': 'AGPL-3',
