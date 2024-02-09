@@ -7,9 +7,10 @@ from openupgradelib import openupgrade
 @openupgrade.migrate()
 def migrate(env, version):
     # Convert analytic_policy to property_analytic_policy
-    openupgrade.convert_to_company_dependent(
-        env=env,
-        model_name="account.account.type",
-        origin_field_name="analytic_policy",
-        destination_field_name="property_analytic_policy",
-    )
+    if openupgrade.column_exists(env.cr, "account_account_type", "analytic_policy"):
+        openupgrade.convert_to_company_dependent(
+            env=env,
+            model_name="account.account.type",
+            origin_field_name="analytic_policy",
+            destination_field_name="property_analytic_policy",
+        )
