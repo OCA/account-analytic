@@ -5,7 +5,6 @@ from odoo import models
 
 
 class PurchaseOrderLine(models.Model):
-
     _inherit = "purchase.order.line"
 
     def _prepare_stock_moves(self, picking):
