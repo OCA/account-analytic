@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo-addon-hr_timesheet_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-product_analytic>=16.0dev,<16.1dev',
         'odoo-addon-purchase_analytic>=16.0dev,<16.1dev',
+        'odoo-addon-purchase_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-purchase_stock_analytic>=16.0dev,<16.1dev',
         'odoo-addon-sale_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-stock_analytic>=16.0dev,<16.1dev',
