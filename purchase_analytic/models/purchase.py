@@ -9,11 +9,7 @@ class PurchaseOrder(models.Model):
     _name = "purchase.order"
     _inherit = ["purchase.order", "analytic.mixin"]
 
-    analytic_distribution = fields.Json(
-        inverse="_inverse_analytic_distribution",
-        # To be consistent with order_line readonly behavior
-        states={"done": [("readonly", True)], "cancel": [("readonly", True)]},
-    )
+    analytic_distribution = fields.Json(inverse="_inverse_analytic_distribution")
 
     @api.depends("order_line.analytic_distribution")
     def _compute_analytic_distribution(self):

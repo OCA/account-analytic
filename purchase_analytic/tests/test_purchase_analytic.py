@@ -12,9 +12,7 @@ class TestPurchaseAnalytic(TransactionCase):
         self.partner_id = self.env.ref("base.res_partner_12")
         self.product_id = self.env.ref("product.product_product_9")
         self.uom_id = self.env.ref("uom.product_uom_unit")
-        analytic_plan = self.env["account.analytic.plan"].create(
-            {"name": "Plan Test", "company_id": False}
-        )
+        analytic_plan = self.env["account.analytic.plan"].create({"name": "Plan Test"})
         analytic_account_manual = self.env["account.analytic.account"].create(
             {"name": "manual", "plan_id": analytic_plan.id}
         )
