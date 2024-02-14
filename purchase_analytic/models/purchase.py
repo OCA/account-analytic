@@ -30,14 +30,18 @@ class PurchaseOrder(models.Model):
                 po.analytic_distribution = al
 
     def _inverse_analytic_distribution(self):
-        """When set analytic_distribution set analytic distribution on all order lines"""
+        """
+        When set analytic_distribution set analytic distribution on all order lines
+        """
         for po in self:
             if po.analytic_distribution:
                 po.order_line.write({"analytic_distribution": po.analytic_distribution})
 
     @api.onchange("analytic_distribution")
     def _onchange_analytic_distribution(self):
-        """When change analytic_distribution set analytic distribution on all order lines"""
+        """
+        When change analytic_distribution set analytic distribution on all order lines
+        """
         if self.analytic_distribution:
             self.order_line.update(
                 {"analytic_distribution": self.analytic_distribution}
