@@ -21,11 +21,12 @@ class AccountAnalyticAccount(models.Model):
         ),
     ]
 
-    @api.model
-    def create(self, vals):
-        if "code" not in vals:
-            vals["code"] = self._default_code()
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if "code" not in vals:
+                vals["code"] = self._default_code()
+        return super().create(vals_list)
 
     @api.model
     def _default_code(self):

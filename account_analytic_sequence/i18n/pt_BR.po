@@ -34,12 +34,3 @@ msgstr "Referência"
 #: model:ir.model.constraint,message:account_analytic_sequence.constraint_account_analytic_account_code_uniq
 msgid "Reference must be unique per Company!"
 msgstr "A referência deve ser única por empresa!"
-
-#~ msgid "Display Name"
-#~ msgstr "Nome Exibido"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Última Modificação em"
