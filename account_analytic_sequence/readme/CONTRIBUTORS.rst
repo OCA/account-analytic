@@ -5,3 +5,7 @@
 
 * Pierre Verkest <pierreverkest84@gmail.com>
 * Manuel Regidor <manuel.regidor@sygel.es>
+
+* `Tecnativa <https://www.tecnativa.com>`_:
+
+  * Víctor Martínez
