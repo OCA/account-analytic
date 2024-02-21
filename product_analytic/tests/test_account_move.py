@@ -33,6 +33,12 @@ class TestAccountInvoiceLine(TransactionCase):
                 "plan_id": cls.default_plan.id,
             }
         )
+        cls.analytic_account3 = cls.env["account.analytic.account"].create(
+            {
+                "name": "test analytic_account3",
+                "plan_id": cls.default_plan.id,
+            }
+        )
         cls.product = cls.env["product.product"].create(
             {
                 "name": "test product",
@@ -239,4 +245,72 @@ class TestAccountInvoiceLine(TransactionCase):
         self.assertEqual(
             int(analytic_account_id[0]),
             self.analytic_account2.id,
+        )
+
+    def test_create_out_with_existing_analytic_account(self):
+        # if always_use_product_analytic_account is off
+        # existing analytic account should not be overiden
+        self.env.user.groups_id -= self.env.ref(
+            "product_analytic.group_always_use_product_analytic_account"
+        )
+        invoice = self.env["account.move"].create(
+            [
+                {
+                    "partner_id": self.partner.id,
+                    "journal_id": self.journal_sale.id,
+                    "move_type": "out_invoice",
+                    "invoice_line_ids": [
+                        Command.create(
+                            {
+                                "name": "Test line",
+                                "quantity": 1,
+                                "price_unit": 50,
+                                "account_id": self.account_out.id,
+                                "product_id": self.product.id,
+                                "analytic_distribution": {
+                                    self.analytic_account3.id: 100
+                                },
+                            }
+                        )
+                    ],
+                }
+            ]
+        )
+        self.assertEqual(
+            invoice.invoice_line_ids[0].analytic_distribution,
+            {str(self.analytic_account3.id): 100},
+        )
+
+    def test_create_out_with_existing_analytic_account_force_product(self):
+        # if always_use_product_analytic_account is on
+        # existing analytic account should be overiden
+        self.env.user.groups_id += self.env.ref(
+            "product_analytic.group_always_use_product_analytic_account"
+        )
+        invoice = self.env["account.move"].create(
+            [
+                {
+                    "partner_id": self.partner.id,
+                    "journal_id": self.journal_sale.id,
+                    "move_type": "out_invoice",
+                    "invoice_line_ids": [
+                        Command.create(
+                            {
+                                "name": "Test line",
+                                "quantity": 1,
+                                "price_unit": 50,
+                                "account_id": self.account_out.id,
+                                "product_id": self.product.id,
+                                "analytic_distribution": {
+                                    self.analytic_account3.id: 100
+                                },
+                            }
+                        )
+                    ],
+                }
+            ]
+        )
+        self.assertEqual(
+            invoice.invoice_line_ids[0].analytic_distribution,
+            {str(self.product.income_analytic_account_id.id): 100},
         )
