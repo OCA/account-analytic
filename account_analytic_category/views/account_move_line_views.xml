@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_move_line_view_tree" model="ir.ui.view">
+        <field name="name">account.move.line.view.tree.inherit</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_tree" />
+        <field name="arch" type="xml">
+            <field name="analytic_distribution" position="after">
+                <field
+                    name="analytic_category_ids"
+                    widget="many2many_tags"
+                    optional="hide"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

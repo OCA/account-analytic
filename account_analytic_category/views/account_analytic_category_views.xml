@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_analytic_category_view_form" model="ir.ui.view">
+        <field name="name">account.analytic.category.form</field>
+        <field name="model">account.analytic.category</field>
+        <field name="arch" type="xml">
+            <form string="Analytic Account Categories">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="company_id" groups="base.group_multi_company" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="account_analytic_category_view_tree" model="ir.ui.view">
+        <field name="name">account.analytic.category.tree</field>
+        <field name="model">account.analytic.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="account_analytic_category_action" model="ir.actions.act_window">
+        <field name="name">Analytic Account Categories</field>
+        <field name="res_model">account.analytic.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to add a new analytic account category.
+            </p>
+            <p>
+                This allows you to classify your analytic accounts.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="account_analytic_category_menu"
+        name="Analytic Categories"
+        parent="account.menu_analytic_accounting"
+        action="account_analytic_category_action"
+        groups="account.group_account_manager"
+    />
+</odoo>
