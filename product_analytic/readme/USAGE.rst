@@ -5,3 +5,5 @@ income analytic account (for customer invoice/refunds) or an expense analytic
 account (for supplier invoice/refunds) ; if it doesn't find any, it checks if
 the category of the product has an income or expense analytic account ; if an
 analytic account is found, it will be set by default on the invoice line.
+
+If you want to always set the product analytic account in the invoice lines, you can check the option Settings>Analytic>Always use product analytic account. This way, default analytic account such as the Sale Order analytic account will be overiden in the invoice lines.  
