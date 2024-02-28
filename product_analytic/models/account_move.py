@@ -21,6 +21,9 @@ class AccountMoveLine(models.Model):
     @api.onchange("product_id")
     def _inverse_product_id(self):
         res = super()._inverse_product_id()
+        # Compatibility with `pos_analytic_by_config`
+        if self.env.context.get("pos_config_id"):
+            return res
         for line in self:
             inv_type = line.move_id.move_type
             if line.product_id and inv_type and inv_type != "entry":
@@ -35,6 +38,9 @@ class AccountMoveLine(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        # Compatibility with `pos_analytic_by_config`
+        if self.env.context.get("pos_config_id"):
+            return super().create(vals_list)
         for vals in vals_list:
             inv_type = self.env["account.move"].browse([vals.get("move_id")]).move_type
             if (
