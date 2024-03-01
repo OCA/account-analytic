@@ -20,30 +20,9 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: pos_analytic_by_config
-#: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__account_analytic_id
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account"
-msgstr "Cuenta analítica"
-
-#. module: pos_analytic_by_config
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account for this config."
-msgstr "Cuenta analítica para esta configuración."
-
-#. module: pos_analytic_by_config
-#: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
-msgid "Analytic Account that these orders link to"
-msgstr "Cuenta analítica relacionada con estos pedidos"
-
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_account_move_line
-msgid "Journal Item"
-msgstr "Artículo Diario"
-
-#. module: pos_analytic_by_config
-#: model:ir.model,name:pos_analytic_by_config.model_pos_config
-msgid "Point of Sale Configuration"
-msgstr "Configuración del Punto de Venta"
+#: model:ir.model,name:pos_analytic_by_config.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr ""
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
@@ -54,6 +33,31 @@ msgstr "Pedidos en el punto de venta"
 #: model:ir.model,name:pos_analytic_by_config.model_pos_session
 msgid "Point of Sale Session"
 msgstr "Sesión del Puto de Venta"
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Pos Config"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Select a Point of Sale for which the analytic distribution will be used"
+msgstr ""
+
+#~ msgid "Analytic Account"
+#~ msgstr "Cuenta analítica"
+
+#~ msgid "Analytic Account for this config."
+#~ msgstr "Cuenta analítica para esta configuración."
+
+#~ msgid "Analytic Account that these orders link to"
+#~ msgstr "Cuenta analítica relacionada con estos pedidos"
+
+#~ msgid "Journal Item"
+#~ msgstr "Artículo Diario"
+
+#~ msgid "Point of Sale Configuration"
+#~ msgstr "Configuración del Punto de Venta"
 
 #~ msgid "Invoice Line"
 #~ msgstr "Línea de Factura"
