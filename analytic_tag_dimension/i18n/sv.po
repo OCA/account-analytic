@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-09 02:38+0000\n"
-"PO-Revision-Date: 2017-06-09 02:38+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2024-03-01 13:33+0000\n"
+"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_dimension
@@ -43,13 +44,13 @@ msgstr ""
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Objektrad"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_analytic_tag
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__analytic_tag_ids
 msgid "Analytic Tags"
-msgstr ""
+msgstr "Objektetikett"
 
 #. module: analytic_tag_dimension
 #: model_terms:ir.actions.act_window,help:analytic_tag_dimension.AccountAnalyticDimension_action
@@ -59,23 +60,23 @@ msgstr ""
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__code
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_dimension.py:0
 #, python-format
 msgid "Code can't contain spaces!"
-msgstr ""
+msgstr "Kod kan inte innehålla mellanslag!"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Skapad av"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Skapad den"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_tag__analytic_dimension_id
@@ -90,7 +91,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__id
@@ -100,7 +101,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_move_line__id
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_invoice_report
@@ -110,7 +111,7 @@ msgstr ""
 #. module: analytic_tag_dimension
 #: model:ir.model,name:analytic_tag_dimension.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Journalrad"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension____last_update
@@ -120,27 +121,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_analytic_dimension_line____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Senast ändrad den"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Senast uppdaterad den"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Senast uppdaterad på"
 
 #. module: analytic_tag_dimension
 #: model:ir.model.fields,field_description:analytic_tag_dimension.field_account_analytic_dimension__name
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #. module: analytic_tag_dimension
 #: model_terms:ir.ui.view,arch_db:analytic_tag_dimension.view_AccountAnalyticDimension_form
 msgid "Tags"
-msgstr ""
+msgstr "Etiketter"
 
 #. module: analytic_tag_dimension
 #: code:addons/analytic_tag_dimension/models/account_analytic_tag.py:0
