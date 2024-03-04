@@ -57,8 +57,10 @@ class AccountAnalyticDimension(models.Model):
     @api.model
     def create(self, values):
         res = super().create(values)
-        _models = self.env["ir.model"].search(
-            [("model", "in", self.get_model_names())], order="id"
+        _models = (
+            self.env["ir.model"]
+            .sudo()
+            .search([("model", "in", self.get_model_names())], order="id")
         )
         _models.write(
             {
