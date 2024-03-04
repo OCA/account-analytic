@@ -9,55 +9,56 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 23:05+0000\n"
-"PO-Revision-Date: 2016-12-23 23:05+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
+"PO-Revision-Date: 2024-03-04 13:34+0000\n"
+"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Objektrad"
 
 #. module: analytic_partner
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
 msgid "Cost/Revenue"
-msgstr ""
+msgstr "Kostnad/inkomst"
 
 #. module: analytic_partner
 #: model:ir.actions.act_window,name:analytic_partner.act_analytic_cost_revenue
 msgid "Costs & Revenues"
-msgstr ""
+msgstr "Kostnad & inkomst"
 
 #. module: analytic_partner
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:analytic_partner.field_account_move_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: analytic_partner
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:analytic_partner.field_account_move_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Journalrad"
 
 #. module: analytic_partner
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line____last_update
 #: model:ir.model.fields,field_description:analytic_partner.field_account_move_line____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Senast ändrad den"
 
 #. module: analytic_partner
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__other_partner_id
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
 msgid "Other Partner"
-msgstr ""
+msgstr "Annan kontakt"
