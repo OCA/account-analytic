@@ -17,7 +17,7 @@ class AccountAnalyticAccount(models.Model):
     _parent_store = True
     _order = "complete_name"
 
-    parent_path = fields.Char(index=True)
+    parent_path = fields.Char(index=True, unaccent=False)
     parent_id = fields.Many2one(
         string="Parent Analytic Account",
         comodel_name="account.analytic.account",
