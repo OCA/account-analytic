@@ -17,7 +17,7 @@ class AccountAnalyticAccount(models.Model):
     _parent_store = True
     _order = "complete_name"
 
-    parent_path = fields.Char(index=True)
+    parent_path = fields.Char(index=True, unaccent=False)
     parent_id = fields.Many2one(
         string="Parent Analytic Account",
         comodel_name="account.analytic.account",
@@ -129,21 +129,16 @@ class AccountAnalyticAccount(models.Model):
 
     @api.depends("complete_name", "code", "partner_id.commercial_partner_id.name")
     def _compute_display_name(self):
-        return super()._compute_display_name()
-
-    def name_get(self):
-        res = []
         for analytic in self:
             name = analytic.complete_name
             if analytic.code:
-                name = ("[%(code)s] %(name)s") % {"code": analytic.code, "name": name}
+                name = f"[{analytic.code}] {name}"
             if analytic.partner_id:
                 name = _("%(name)s - %(partner)s") % {
                     "name": name,
                     "partner": analytic.partner_id.commercial_partner_id.name,
                 }
-            res.append((analytic.id, name))
-        return res
+            analytic.display_name = name
 
     def write(self, vals):
         if self and "active" in vals and not vals["active"]:
