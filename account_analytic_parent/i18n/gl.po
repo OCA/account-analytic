@@ -17,16 +17,23 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "%(name)s - %(partner)s"
 msgstr "%(name)s - %(partner)s"
 
 #. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_administratif
+msgid "Administrative"
+msgstr ""
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
@@ -39,14 +46,65 @@ msgid "Child Accounts"
 msgstr "Contas Fillas"
 
 #. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_commercial_marketing
+msgid "Commercial & Marketing"
+msgstr ""
+
+#. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
 msgid "Complete Name"
 msgstr "Nome Completo"
 
 #. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_consultancy
+msgid "Consultancy"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_customers
+msgid "Customers"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_development
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_development
+msgid "Development"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_in_house
+msgid "In House"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_integration
+msgid "Integration"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_support_internal
+msgid "Internal"
+msgstr ""
+
+#. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
 msgid "Name"
 msgstr "Nome"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_online
+msgid "Online"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_our_super_product_development
+msgid "Our Super Product Development"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_paid
+msgid "Paid"
+msgstr ""
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
@@ -60,19 +118,72 @@ msgid "Parent Path"
 msgstr "Ruta Pai"
 
 #. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_partners
+msgid "Partners"
+msgstr ""
+
+#. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "Please activate first parent account %s"
 msgstr "Por favor, primeiro activa a aconta pai %s"
 
 #. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_1
+msgid "Project 1"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_2
+msgid "Project 2"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p1
+msgid "Seagate P1"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p2
+msgid "Seagate P2"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_stable
+msgid "Stable"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_support
+#: model:account.analytic.account,name:account_analytic_parent.analytic_support
+msgid "Support"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_journal_trainings
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_trainings
+#: model:account.analytic.account,name:account_analytic_parent.analytic_super_product_trainings
+msgid "Training"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_trunk
+msgid "Trunk"
+msgstr ""
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_unpaid
+msgid "Unpaid"
+msgstr ""
+
+#. module: account_analytic_parent
+#. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "Non podes crear contas analíticas recursivas."
 
-#. module: account_analytic_parent
-#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
 #, python-format
-msgid "[%(code)s] %(name)s"
-msgstr "[%(code)s] %(name)s"
+#~ msgid "[%(code)s] %(name)s"
+#~ msgstr "[%(code)s] %(name)s"

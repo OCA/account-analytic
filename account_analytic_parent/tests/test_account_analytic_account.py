@@ -12,7 +12,7 @@ from odoo.tests.common import TransactionCase
 
 class TestAccountAnalyticRecursion(TransactionCase):
     def setUp(self):
-        super(TestAccountAnalyticRecursion, self).setUp()
+        super().setUp()
 
         self.analytic_account_obj = self.env["account.analytic.account"]
         self.analytic_line_obj = self.env["account.analytic.line"]
@@ -75,7 +75,12 @@ class TestAccountAnalyticRecursion(TransactionCase):
 
     def create_analytic_line(self, name, analytic, amount):
         return self.analytic_line_obj.create(
-            {"name": name, "amount": amount, "account_id": analytic.id}
+            {
+                "name": name,
+                "amount": amount,
+                "account_id": analytic.id,
+                "auto_account_id": analytic.id,
+            }
         )
 
     def test_recursion(self):
