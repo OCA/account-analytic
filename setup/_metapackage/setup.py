@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo-addon-account_analytic_account_tag>=16.0dev,<16.1dev',
         'odoo-addon-account_analytic_parent>=16.0dev,<16.1dev',
         'odoo-addon-account_analytic_required>=16.0dev,<16.1dev',
+        'odoo-addon-account_analytic_root>=16.0dev,<16.1dev',
         'odoo-addon-account_analytic_sequence>=16.0dev,<16.1dev',
         'odoo-addon-account_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-account_analytic_tag_distribution>=16.0dev,<16.1dev',
