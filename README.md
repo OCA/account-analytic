@@ -17,7 +17,11 @@ TODO: add repo description.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_analytic_parent](account_analytic_parent/) | 17.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
 
 [//]: # (end addons)
 
