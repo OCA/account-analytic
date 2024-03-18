@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo-addon-analytic_distribution_widget_remove_save>=16.0dev,<16.1dev',
         'odoo-addon-hr_expense_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-hr_timesheet_analytic_tag>=16.0dev,<16.1dev',
+        'odoo-addon-mrp_stock_analytic>=16.0dev,<16.1dev',
         'odoo-addon-pos_analytic_by_config>=16.0dev,<16.1dev',
         'odoo-addon-product_analytic>=16.0dev,<16.1dev',
         'odoo-addon-product_analytic_purchase>=16.0dev,<16.1dev',
