@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_department_form" model="ir.ui.view">
+        <field name="name">hr.department.form</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page name="analytic_department" string="Analytics">
+                        <field
+                            name="analytic_account_ids"
+                            widget="many2many"
+                            nolabel="1"
+                        />
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
