@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_picking_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-09-21 15:39+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_distribution
+msgid "Analytic"
+msgstr "Analítica"
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr "Búsqueda de Distribución Analítica"
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisión Analítica"
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__original_analytic_distribution
+msgid "Original Analytic Distribution"
+msgstr "Distribución Analítica Original"
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__move_ids_without_package
+msgid "Stock moves not in package"
+msgstr "Las acciones no se mueven en el paquete"
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,help:stock_picking_analytic.field_stock_picking__original_analytic_distribution
+msgid ""
+"Technical field. Use to store the value ofanalytic_distribution if there is "
+"no lines"
+msgstr ""
+"Campo técnico. Úselo para almacenar el valor de distribución_analítica si no "
+"hay líneas"
+
+#. module: stock_picking_analytic
+#: model:ir.model,name:stock_picking_analytic.model_stock_picking
+msgid "Transfer"
+msgstr "Transferencia"
