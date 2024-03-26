@@ -21,8 +21,7 @@ class TestAccountAnalyticTagBase(common.TransactionCase):
         cls.user = new_test_user(
             cls.env,
             login="test-analytic-tag-user",
-            groups="%s,%s,%s"
-            % (
+            groups="{},{},{}".format(
                 "account.group_account_invoice",
                 "analytic.group_analytic_accounting",
                 "account_analytic_tag.group_analytic_tags",

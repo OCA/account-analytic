@@ -20,10 +20,15 @@ class TestAccountAnalyticTag(TestAccountAnalyticTagBase):
         with invoice_form.invoice_line_ids.new() as line_form:
             line_form.product_id = cls.product_a
             line_form.analytic_tag_ids.add(cls.account_analytic_tag_a)
+            line_form.analytic_distribution = {cls.analytic_account_a.id: 100}
         with invoice_form.invoice_line_ids.new() as line_form:
             line_form.product_id = cls.product_b
             line_form.analytic_tag_ids.add(cls.account_analytic_tag_a)
             line_form.analytic_tag_ids.add(cls.account_analytic_tag_b)
+            line_form.analytic_distribution = {
+                cls.analytic_account_a.id: 50,
+                cls.analytic_account_b.id: 50,
+            }
         cls.invoice = invoice_form.save()
         cls.line_a = cls.invoice.invoice_line_ids.filtered(
             lambda x: x.product_id == cls.product_a
@@ -35,8 +40,8 @@ class TestAccountAnalyticTag(TestAccountAnalyticTagBase):
     @users("test-analytic-tag-user")
     def test_action_post_analytic_lines_01(self):
         self.invoice.action_post()
-        self.assertFalse(self.line_a.analytic_line_ids)
-        self.assertFalse(self.line_b.analytic_line_ids)
+        self.assertTrue(self.line_a.analytic_line_ids)
+        self.assertTrue(self.line_b.analytic_line_ids)
 
     @users("test-analytic-tag-user")
     def test_action_post_analytic_lines_02(self):
