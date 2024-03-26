@@ -5,7 +5,6 @@ from odoo import models
 
 
 class StockValuationAdjustmentLines(models.Model):
-
     _name = "stock.valuation.adjustment.lines"
     _inherit = ["stock.valuation.adjustment.lines", "analytic.mixin"]
 

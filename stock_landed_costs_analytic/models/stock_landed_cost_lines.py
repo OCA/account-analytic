@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class StockLandedCostLines(models.Model):
-
     _name = "stock.landed.cost.lines"
     _inherit = ["stock.landed.cost.lines", "analytic.mixin"]
 
