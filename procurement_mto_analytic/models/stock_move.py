@@ -8,7 +8,8 @@ class StockMove(models.Model):
 
     def _prepare_procurement_values(self):
         res = super()._prepare_procurement_values()
-        res.update(
-            {"account_analytic_id": self.group_id.sale_id.analytic_account_id.id}
-        )
+        analytic_distribution = self.sale_line_id.analytic_distribution
+        # Update the procurement values with analytic_distribution if it exists
+        if analytic_distribution:
+            res.update({"analytic_distribution": analytic_distribution})
         return res
