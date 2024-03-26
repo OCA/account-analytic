@@ -15,5 +15,5 @@ class PurchaseOrderLine(models.Model):
         )._prepare_purchase_order_line_from_procurement(
             product_id, product_qty, product_uom, company_id, values, po
         )
-        res["account_analytic_id"] = values.get("account_analytic_id", False)
+        res["analytic_distribution"] = values.get("analytic_distribution", False)
         return res
