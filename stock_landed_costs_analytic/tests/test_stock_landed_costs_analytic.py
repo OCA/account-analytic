@@ -6,7 +6,7 @@ from odoo.tests.common import TransactionCase
 
 class TestStockLandedCostsAnalytic(TransactionCase):
     def setUp(self):
-        super(TestStockLandedCostsAnalytic, self).setUp()
+        super().setUp()
         self.Product = self.env["product.product"]
         self.Picking = self.env["stock.picking"]
         self.LandedCost = self.env["stock.landed.cost"]
@@ -78,6 +78,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
                         "name": "Move Test",
                         "product_id": self.product.id,
                         "product_uom_qty": 5,
+                        "quantity": 5,
                         "product_uom": self.ref("uom.product_uom_unit"),
                         "location_id": self.supplier_location.id,
                         "location_dest_id": self.customer_location.id,
