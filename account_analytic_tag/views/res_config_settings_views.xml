@@ -7,7 +7,7 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="account.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@id='track_costs_revenues']" position="after">
+            <xpath expr="//setting[@id='track_costs_revenues']" position="after">
                 <div
                     class="col-12 col-lg-6 o_setting_box"
                     id="tag_analytic_entries"
