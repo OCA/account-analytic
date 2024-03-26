@@ -9,8 +9,10 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestPurchaseProcurementAnalytic, cls).setUpClass()
-        vendor = cls.env["res.partner"].create({"name": "Partner #2"})
-        supplierinfo = cls.env["product.supplierinfo"].create({"name": vendor.id})
+        cls.vendor = cls.env["res.partner"].create({"name": "Partner #2"})
+        supplierinfo = cls.env["product.supplierinfo"].create(
+            {"partner_id": cls.vendor.id}
+        )
         mto = cls.env.ref("stock.route_warehouse0_mto")
         mto.write({"active": True})
         buy = cls.env.ref("purchase_stock.route_warehouse0_buy")
@@ -22,7 +24,7 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
             }
         )
         supplierinfo_service = cls.env["product.supplierinfo"].create(
-            {"name": vendor.id}
+            {"partner_id": cls.vendor.id}
         )
         cls.service_product = cls.env["product.product"].create(
             {
@@ -33,15 +35,14 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
             }
         )
         cls.partner = cls.env["res.partner"].create({"name": "Partner #1"})
+        cls.analytic_distribution = dict(
+            {str(cls.env.ref("analytic.analytic_agrolait").id): 100.0}
+        )
 
     def test_sale_to_procurement(self):
-        analytic_account = self.env["account.analytic.account"].create(
-            {"name": "Test Analytic Account"}
-        )
         sale_order = self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
-                "analytic_account_id": analytic_account.id,
                 "order_line": [
                     (
                         0,
@@ -51,6 +52,7 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
                             "product_uom_qty": 1,
                             "price_unit": self.product.list_price,
                             "name": self.product.name,
+                            "analytic_distribution": self.analytic_distribution,
                         },
                     )
                 ],
@@ -58,20 +60,18 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
             }
         )
         sale_order.with_context(test_enabled=True).action_confirm()
-
-        purchase_order = self.env["purchase.order.line"].search(
-            [("account_analytic_id", "=", analytic_account.id)]
+        purchase_order_line = self.env["purchase.order.line"].search(
+            [("partner_id", "=", self.vendor.id)]
         )
-        self.assertTrue(purchase_order)
+        self.assertTrue(purchase_order_line)
+        self.assertEqual(
+            purchase_order_line.analytic_distribution, self.analytic_distribution
+        )
 
     def test_sale_service_product(self):
-        analytic_account = self.env["account.analytic.account"].create(
-            {"name": "Test Service Analytic Account"}
-        )
         sale_order = self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
-                "analytic_account_id": analytic_account.id,
                 "order_line": [
                     (
                         0,
@@ -79,8 +79,9 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
                         {
                             "product_id": self.service_product.id,
                             "product_uom_qty": 1,
-                            "price_unit": self.product.list_price,
-                            "name": self.product.name,
+                            "price_unit": self.service_product.list_price,
+                            "name": self.service_product.name,
+                            "analytic_distribution": self.analytic_distribution,
                         },
                     )
                 ],
@@ -89,7 +90,10 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
         )
         sale_order.with_context(test_enabled=True).action_confirm()
 
-        purchase_order = self.env["purchase.order.line"].search(
-            [("account_analytic_id", "=", analytic_account.id)]
+        purchase_order_line = self.env["purchase.order.line"].search(
+            [("partner_id", "=", self.vendor.id)]
         )
-        self.assertTrue(purchase_order)
+        self.assertTrue(purchase_order_line)
+        self.assertTrue(
+            purchase_order_line.analytic_distribution, self.analytic_distribution
+        )
