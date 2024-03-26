@@ -10,7 +10,7 @@
             >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
         </record>
     </data>
-    <data noupdate="0">
+    <data>
         <record id="group_analytic_tags" model="res.groups">
             <field name="name">Analytic Accounting Tags</field>
             <field name="category_id" ref="base.module_category_hidden" />
