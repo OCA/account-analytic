@@ -1,0 +1,34 @@
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_account_analytic_line_tree_inherit_tags" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.inherit.tags</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <field name="amount" position="after">
+                <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    groups="account_analytic_tag.group_analytic_tags"
+                    optional="hide"
+                    options="{'color_field': 'color'}"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_account_analytic_line_form" model="ir.ui.view">
+        <field name="name">account.analytic.line.form.inherit.tags</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    groups="account_analytic_tag.group_analytic_tags"
+                    options="{'color_field': 'color'}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

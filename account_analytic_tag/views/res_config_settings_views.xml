@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.account_analytic_tag</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='track_costs_revenues']" position="after">
+                <div
+                    class="col-12 col-lg-6 o_setting_box"
+                    id="tag_analytic_entries"
+                    groups="account.group_account_user"
+                >
+                    <div class="o_setting_left_pane">
+                        <field name="group_analytic_tags" />
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="group_analytic_tags" />
+                        <div class="text-muted">
+                            Allows to tag analytic entries and to manage analytic distributions
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
