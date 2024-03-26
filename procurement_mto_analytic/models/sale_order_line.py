@@ -8,12 +8,12 @@ class SaleOrderLine(models.Model):
 
     def _prepare_procurement_values(self, group_id=False):
         res = super()._prepare_procurement_values(group_id)
-        res.update({"account_analytic_id": self.order_id.analytic_account_id.id})
+        res.update({"analytic_distribution": self.analytic_distribution})
         return res
 
     def _purchase_service_prepare_line_values(self, purchase_order, quantity=False):
         res = super()._purchase_service_prepare_line_values(
             purchase_order=purchase_order, quantity=quantity
         )
-        res.update({"account_analytic_id": self.order_id.analytic_account_id.id})
+        res.update({"analytic_distribution": self.analytic_distribution})
         return res
