@@ -57,17 +57,28 @@ class StockMove(models.Model):
             res.update({"analytic_distribution": self.analytic_distribution})
         return res
 
+    def _need_validate_distribution(self):
+        """Return moves are made outside the scope of the validation for now, since
+        there could be cases where the necessity cannot be judged solely by the
+        operation type.
+        """
+        self.ensure_one()
+        if self._is_in() and self._is_returned(valued_type="in"):
+            return False
+        elif self._is_out() and self._is_returned(valued_type="out"):
+            return False
+        elif self.company_id.anglo_saxon_accounting and self._is_dropshipped_returned():
+            return False
+        return True
+
     def _action_done(self, cancel_backorder=False):
         for move in self:
-            # Validate analytic distribution only for outgoing moves.
-            if move.location_id.usage not in (
-                "internal",
-                "transit",
-            ) or move.location_dest_id.usage in ("internal", "transit"):
+            if not move._need_validate_distribution():
                 continue
             move._validate_distribution(
                 **{
                     "product": move.product_id.id,
+                    "picking_type": move.picking_type_id.id,
                     "business_domain": "stock_move",
                     "company_id": move.company_id.id,
                 }
