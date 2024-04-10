@@ -16,6 +16,9 @@ class TestStockPicking(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        # Get the MTO route and activate it if necessary
+        cls.mto_route = cls.env.ref("stock.route_warehouse0_mto")
+        cls.mto_route.write({"active": True})
         cls.product = cls.env["product.product"].create(
             {
                 "name": "Test Product",
@@ -251,3 +254,37 @@ class TestStockPicking(TransactionCase):
         )
         values = picking.move_ids._prepare_procurement_values()
         self.assertEqual(values.get("analytic_distribution"), None)
+
+    def test_procurement_analytic(self):
+        rule = self.env["stock.rule"].create(
+            {
+                "name": "Test MTO Rule",
+                "action": "pull",
+                "location_src_id": self.location.id,
+                "location_dest_id": self.dest_location.id,
+                "procure_method": "make_to_order",
+                "route_id": self.mto_route.id,
+                "picking_type_id": self.outgoing_picking_type.id,
+            }
+        )
+        # Manually creating a stock move as would result from the rule being triggered
+        move_values = rule._get_stock_move_values(
+            self.product,
+            10,
+            self.product.uom_id,
+            self.dest_location,
+            "Test Move",
+            False,
+            self.env.company,
+            {
+                "analytic_distribution": self.analytic_distribution,
+                "date_planned": datetime.now(),
+            },
+        )
+        move = self.env["stock.move"].create(move_values)
+        # Check that the analytic_distribution data was passed correctly
+        self.assertEqual(
+            move.analytic_distribution,
+            self.analytic_distribution,
+            "Analytic distribution not correctly propagated.",
+        )
