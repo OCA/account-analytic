@@ -11,10 +11,6 @@ class MrpProduction(models.Model):
 
     analytic_distribution = fields.Json(
         inverse="_inverse_analytic_distribution",
-        states={
-            "done": [("readonly", True)],
-            "cancel": [("readonly", True)],
-        },
     )
 
     def _inverse_analytic_distribution(self):
@@ -25,7 +21,3 @@ class MrpProduction(models.Model):
             production.move_raw_ids.write(
                 {"analytic_distribution": production.analytic_distribution}
             )
-
-    def button_mark_done(self):
-        self = self.with_context(validate_analytic=True)
-        return super().button_mark_done()
