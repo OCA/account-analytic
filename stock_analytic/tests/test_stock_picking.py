@@ -89,6 +89,7 @@ class TestStockPicking(TransactionCase):
         location_dest_id,
         picking_type_id,
         analytic_distribution=False,
+        procure_method="make_to_stock",
     ):
         picking_data = {
             "picking_type_id": picking_type_id.id,
@@ -107,7 +108,7 @@ class TestStockPicking(TransactionCase):
             "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "date_deadline": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "name": self.product.name,
-            "procure_method": "make_to_stock",
+            "procure_method": procure_method,
             "product_uom": self.product.uom_id.id,
             "product_uom_qty": 1.0,
             "analytic_distribution": analytic_distribution or False,
@@ -232,19 +233,34 @@ class TestStockPicking(TransactionCase):
 
         self.assertEqual(self.analytic_distribution, move_after.analytic_distribution)
 
-    def test__prepare_procurement_values(self):
+    def test_procurement_with_analytic(self):
         picking = self._create_picking(
             self.location,
             self.dest_location,
             self.outgoing_picking_type,
             self.analytic_distribution,
+            procure_method="make_to_order",
         )
-        values = picking.move_ids._prepare_procurement_values()
-        self.assertEqual(self.analytic_distribution, values["analytic_distribution"])
+        picking.action_confirm()
+        procured_moves = picking.move_ids.move_orig_ids
+        self.assertTrue(procured_moves)
+        for move in procured_moves:
+            self.assertEqual(
+                move.analytic_distribution,
+                self.analytic_distribution,
+                msg="In MTO procurement, the analytic distribution should propagate",
+            )
+
+    def test_procurement_without_analytic(self):
         picking = self._create_picking(
             self.location,
             self.dest_location,
             self.outgoing_picking_type,
+            analytic_distribution=False,
+            procure_method="make_to_order",
         )
-        values = picking.move_ids._prepare_procurement_values()
-        self.assertEqual(values.get("analytic_distribution"), None)
+        picking.action_confirm()
+        procured_moves = picking.move_ids.move_orig_ids
+        self.assertTrue(procured_moves)
+        for move in procured_moves:
+            self.assertFalse(move.analytic_distribution)
