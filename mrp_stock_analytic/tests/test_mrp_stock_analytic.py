@@ -55,13 +55,13 @@ class TestMrpStockAnalytic(TestStockPicking):
             {
                 "product_id": cls.product_A.id,
                 "bom_id": cls.bom.id,
-                "product_qty": 1,
+                "product_qty": 2,
                 "product_uom_id": cls.product_A.uom_id.id,
             }
         )
         production.action_confirm()
         mo_form = Form(production)
-        mo_form.qty_producing = 1
+        mo_form.qty_producing = 2
         cls.production = mo_form.save()
 
     def test_propagate_analytic_distribution(self):
@@ -107,3 +107,42 @@ class TestMrpStockAnalytic(TestStockPicking):
                 self.assertEqual(
                     move_line.analytic_distribution, self.analytic_distribution
                 )
+
+    def _action_wizard_form(self, open_record, action_res: dict) -> Form:
+        context = dict(
+            action_res.get("context", {}),
+            active_model=open_record._name,
+            active_ids=open_record.ids,
+            active_id=open_record.id,
+        )
+        target = open_record.env[action_res["res_model"]].with_context(**context)
+        return Form(target)
+
+    def test_analytic_propagation_backorder(self):
+        edit_production = Form(self.production)
+        edit_production.qty_producing = 1
+        production = edit_production.save()
+        production.analytic_distribution = self.analytic_distribution
+        self.assertNotEqual(production.analytic_distribution, False)
+        quantity_issues = production._get_quantity_produced_issues()
+        self.assertTrue(quantity_issues)
+        backorder_action = production.button_mark_done()
+        self.assertEqual(
+            backorder_action.get("res_model"),
+            "mrp.production.backorder",
+        )
+        backorder_wizard = self._action_wizard_form(production, backorder_action)
+        backorder_wizard.save().action_backorder()
+        action_view_backorders = production.action_view_mrp_production_backorders()
+        backorder = (
+            self.env["mrp.production"].search(action_view_backorders["domain"])
+            - production
+        )
+        self.assertEqual(len(backorder), 1)
+        self.assertEqual(
+            backorder.analytic_distribution, production.analytic_distribution
+        )
+        self.assertEqual(
+            backorder.move_raw_ids.analytic_distribution,
+            backorder.analytic_distribution,
+        )
