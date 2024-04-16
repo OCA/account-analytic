@@ -1,0 +1,12 @@
+- [Tecnativa](https://www.tecnativa.com):
+  - Carlos Dauden
+  - Pedro M. Baeza
+  - Vicent Cubells
+- Ventor-Tech:
+  - Sergej Lozikov
+- [Komit](https://komit-consulting.com/):
+  - Duc, Dao Dong \<<duc.dd@komit-consulting.com>\>
+- [Ecosoft](https://ecosoft.co.th/):
+  - Pimolnat Suntian \<<pimolnats@ecosoft.co.th>\>
+- [Jarsa](https://www.jarsa.com/):
+  - Alan Ramos \<<alan.ramos@jarsa.com>\>
