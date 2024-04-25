@@ -75,7 +75,8 @@ class StockMove(models.Model):
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
-    analytic_account_id = fields.Many2one(comodel_name="account.analytic.account")
+    #analytic_account_id = fields.Many2one(comodel_name="account.analytic.account")
+    analytic_account_id = fields.Many2one(related="move_id.analytic_account_id")
 
     @api.model
     def _prepare_stock_move_vals(self):
