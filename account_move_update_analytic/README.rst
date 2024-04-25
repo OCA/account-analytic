@@ -17,18 +17,19 @@ Account move update analytic
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/16.0/account_move_update_analytic
+    :target: https://github.com/OCA/account-analytic/tree/17.0/account_move_update_analytic
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-16-0/account-analytic-16-0-account_move_update_analytic
+    :target: https://translation.odoo-community.org/projects/account-analytic-17-0/account-analytic-17-0-account_move_update_analytic
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows users to update the analytic distribution on journal items.
+This module allows users to update the analytic distribution on journal
+items.
 
 **Table of contents**
 
@@ -38,13 +39,21 @@ This module allows users to update the analytic distribution on journal items.
 Usage
 =====
 
-1. In a posted move and from customer invoices and vendor bills, go to the move line you want to update, and click on 'Update analytic' to open the wizard. (You also have the button directly on account move lines).
-2. Current analytic account and tags are shown, you can select another one then click on Confirm
-3. Analytic lines will be dropped from current analytic account and recreated on new analytic distribution.
+1. In a posted move and from customer invoices and vendor bills, go to
+   the move line you want to update, and click on 'Update analytic' to
+   open the wizard. (You also have the button directly on account move
+   lines).
+2. Current analytic account and tags are shown, you can select another
+   one then click on Confirm
+3. Analytic lines will be dropped from current analytic account and
+   recreated on new analytic distribution.
 
-.. figure:: https://raw.githubusercontent.com/OCA/account-analytic/16.0/account_move_update_analytic/static/description/update_from_invoice.png
+|image1|
 
-.. figure:: https://raw.githubusercontent.com/OCA/account-analytic/16.0/account_move_update_analytic/static/description/update_from_journals.png
+|image2|
+
+.. |image1| image:: https://raw.githubusercontent.com/OCA/account-analytic/17.0/account_move_update_analytic/static/description/update_from_invoice.png
+.. |image2| image:: https://raw.githubusercontent.com/OCA/account-analytic/17.0/account_move_update_analytic/static/description/update_from_journals.png
 
 Bug Tracker
 ===========
@@ -52,7 +61,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_move_update_analytic%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_move_update_analytic%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -60,20 +69,20 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Le Filament
 * Moduon
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Rémi - Le Filament <remi-filament>
-* Eduardo de Miguel (`Moduon <https://www.moduon.team/>`__)
-* Rafael Blasco (`Moduon <https://www.moduon.team/>`__)
+-  Rémi - Le Filament <remi-filament>
+-  Eduardo de Miguel (`Moduon <https://www.moduon.team/>`__)
+-  Rafael Blasco (`Moduon <https://www.moduon.team/>`__)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -96,6 +105,6 @@ Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-remi-filament| |maintainer-Shide| 
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/16.0/account_move_update_analytic>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/17.0/account_move_update_analytic>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
