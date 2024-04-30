@@ -38,8 +38,7 @@ msgstr "Configurazione POS"
 
 #. module: pos_analytic_by_config
 #: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
-msgid ""
-"Select a Point of Sale for which the analytic distribution will be used"
+msgid "Select a Point of Sale for which the analytic distribution will be used"
 msgstr ""
 "Selezionare un Punto vendita per il quale verrà usata la distribuzione "
 "analitica"
