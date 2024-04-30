@@ -4,3 +4,5 @@
   - Xavier Bouquiaux \<<xavier.bouquiaux@acsone.eu>\>
 - [Tecnativa](https://www.tecnativa.com)
   - David Vidal
+- [APSL-Nagarro](https://www.apsl.tech)
+  - Antoni Marroig \<<amarroig@apsl.net>\>

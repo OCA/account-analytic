@@ -38,6 +38,10 @@ class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
             }
         )
         cls.config = cls.basic_config
+        # Set the cash payment method to False for split transactions
+        cls.config.payment_method_ids.filtered_domain(
+            [("type", "=", "cash")]
+        ).split_transactions = False
         cls.session = cls.open_new_session(cls)
 
     def _create_order(self):
