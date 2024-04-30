@@ -95,6 +95,10 @@ Contributors
 
    -  David Vidal
 
+-  `APSL-Nagarro <https://www.apsl.tech>`__
+
+   -  Antoni Marroig <amarroig@apsl.net>
+
 Maintainers
 -----------
 

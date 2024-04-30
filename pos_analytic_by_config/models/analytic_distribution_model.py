@@ -13,8 +13,9 @@ class AccountAnalyticDistributionModel(models.Model):
     )
 
     def _get_distribution(self, vals):
+        new_context = vals.copy()
         pos_config_id = self.env.context.get("pos_config_id")
         if pos_config_id:
-            vals["pos_config_id"] = pos_config_id
-        res = super()._get_distribution(vals)
+            new_context["pos_config_id"] = pos_config_id
+        res = super()._get_distribution(new_context)
         return res
