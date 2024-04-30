@@ -13,6 +13,7 @@ class AccountAnalyticDistributionModel(models.Model):
     )
 
     def _get_distribution(self, vals):
+        vals = vals.copy()
         pos_config_id = self.env.context.get("pos_config_id")
         if pos_config_id:
             vals["pos_config_id"] = pos_config_id
