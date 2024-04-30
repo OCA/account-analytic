@@ -158,6 +158,12 @@ class TestStockPicking(TransactionCase):
         line_count = self.env["account.move.line"].search_count(criteria2)
         self.assertEqual(line_count, 0)
 
+    def _check_analytic_consistency(self, picking):
+        for move_line in picking.move_line_ids:
+            self.assertEqual(
+                move_line.analytic_distribution, move_line.move_id.analytic_distribution
+            )
+
     def test_outgoing_picking_with_analytic(self):
         picking = self._create_picking(
             self.location,
@@ -170,6 +176,7 @@ class TestStockPicking(TransactionCase):
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_analytic_account_no_error(picking)
+        self._check_analytic_consistency(picking)
 
     def test_outgoing_picking_without_analytic_optional(self):
         picking = self._create_picking(
@@ -182,6 +189,7 @@ class TestStockPicking(TransactionCase):
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_no_analytic_account(picking)
+        self._check_analytic_consistency(picking)
 
     def test_outgoing_picking_without_analytic_mandatory(self):
         self.analytic_applicability.write({"applicability": "mandatory"})
@@ -207,6 +215,7 @@ class TestStockPicking(TransactionCase):
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
         self._check_analytic_account_no_error(picking)
+        self._check_analytic_consistency(picking)
 
     def test_picking_add_extra_move_line(self):
         picking = self._create_picking(
