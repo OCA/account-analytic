@@ -9,4 +9,4 @@ class PosOrder(models.Model):
 
     def _generate_pos_order_invoice(self):
         self = self.with_context(pos_config_id=self.config_id.id)
-        return super(PosOrder, self)._generate_pos_order_invoice()
+        return super()._generate_pos_order_invoice()

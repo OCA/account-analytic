@@ -25,7 +25,9 @@ def migrate(env, version):
     }
     pos_configs = env["pos.config"].browse([pc.id for pc in pos_configs_dict.keys()])
     for company in pos_configs.company_id:
-        company_configs = pos_configs.filtered(lambda x: x.company_id == company)
+        company_configs = pos_configs.filtered(
+            lambda x, company=company: x.company_id == company
+        )
         default_account_revenue = env["account.account"].search(
             [
                 ("company_id", "=", company.id),
