@@ -21,12 +21,9 @@ class TestAccountAnalyticTagBase(common.TransactionCase):
         cls.user = new_test_user(
             cls.env,
             login="test-analytic-tag-user",
-            groups="%s,%s,%s"
-            % (
-                "account.group_account_invoice",
-                "analytic.group_analytic_accounting",
-                "account_analytic_tag.group_analytic_tags",
-            ),
+            groups="account.group_account_invoice \
+                    analytic.group_analytic_accounting \
+                    account_analytic_tag.group_analytic_tags",
         )
         # ==== For Accounting ====
         cls.default_plan = cls.env["account.analytic.plan"].create({"name": "Default"})

@@ -16,8 +16,8 @@ class AccountMoveLine(models.Model):
             for val in vals:
                 account_id = val.get("account_id")
                 tags = self.analytic_tag_ids.filtered(
-                    lambda x: not x.account_analytic_id
-                    or x.account_analytic_id.id == account_id
+                    lambda x, y=account_id: not x.account_analytic_id
+                    or x.account_analytic_id.id == y
                 )
                 val.update({"tag_ids": [(6, 0, tags.ids)]})
         return vals
