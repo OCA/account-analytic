@@ -82,6 +82,10 @@ Contributors
    -  Yadier Quesada
    -  Víctor Martínez
 
+-  `APSL a Nagarro company <https://apsl.tech>``:
+
+   -  Miquel Alzanillas
+
 Maintainers
 -----------
 

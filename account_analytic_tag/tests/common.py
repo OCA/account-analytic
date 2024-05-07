@@ -21,11 +21,16 @@ class TestAccountAnalyticTagBase(common.TransactionCase):
         cls.user = new_test_user(
             cls.env,
             login="test-analytic-tag-user",
-            groups="account.group_account_invoice \
-                    analytic.group_analytic_accounting \
+            groups="account.group_account_invoice, analytic.group_analytic_accounting, \
                     account_analytic_tag.group_analytic_tags",
         )
         # ==== For Accounting ====
+        cls.default_company_id = cls.env["res.company"].browse(1)
+        # Set chart template
+        cls.default_company_id._chart_template_selection()
+        cls.default_journal_id = cls.env["account.journal"].create(
+            {"name": "Test Journal", "type": "sale", "code": "TST"}
+        )
         cls.default_plan = cls.env["account.analytic.plan"].create({"name": "Default"})
         cls.analytic_account_a = cls.env["account.analytic.account"].create(
             {
