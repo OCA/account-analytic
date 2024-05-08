@@ -110,11 +110,6 @@ msgid "Journal Item"
 msgstr "Apunte contable"
 
 #. module: account_analytic_tag
-#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
-
-#. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización por"
@@ -152,6 +147,9 @@ msgstr ""
 "analíticos que se generen.\n"
 "Con cuenta analítica: Se definirá esta etiqueta solo a los apuntes "
 "analíticos que tengan la misma cuenta analítica."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación el"
 
 #~ msgid "Journal Entry"
 #~ msgstr "Asiento contable"
