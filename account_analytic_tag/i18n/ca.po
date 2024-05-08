@@ -109,11 +109,6 @@ msgid "Journal Item"
 msgstr "Apunt comptable"
 
 #. module: account_analytic_tag
-#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag____last_update
-msgid "Last Modified on"
-msgstr "Darrera modificació el"
-
-#. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
 msgid "Last Updated by"
 msgstr "Darrera modificació per"
@@ -143,10 +138,15 @@ msgstr "Etiquetes"
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
-"Without analytical account: This label will be set for all the analytical items generated.\n"
-" With analytical account: This label will be set only to the analytical items that have the same analytical account."
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
 msgstr ""
 "Sense compte analític: aquesta etiqueta s'establirà per a tots els elements "
 "analítics generats.\n"
 " Amb compte analític: aquesta etiqueta només s'establirà als elements "
 "analítics que tinguin el mateix compte analític."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Darrera modificació el"
