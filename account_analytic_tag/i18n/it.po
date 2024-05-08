@@ -110,11 +110,6 @@ msgid "Journal Item"
 msgstr "Movimento contabile"
 
 #. module: account_analytic_tag
-#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag____last_update
-msgid "Last Modified on"
-msgstr "Ultima modifica il"
-
-#. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
 msgid "Last Updated by"
 msgstr "Ultimo aggiornamento di"
@@ -144,10 +139,15 @@ msgstr "Etichette"
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
-"Without analytical account: This label will be set for all the analytical items generated.\n"
-" With analytical account: This label will be set only to the analytical items that have the same analytical account."
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
 msgstr ""
 "Senza conto analitico: questa etichetta verrà impostata per tutti i "
 "movimenti analitici generati.\n"
 "Con conto analitico: questa etichetta verrà impostata solo ai movimenti "
 "analitici che hanno lo stesso conto analitico."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Ultima modifica il"
