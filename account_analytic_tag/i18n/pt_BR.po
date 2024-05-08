@@ -29,7 +29,8 @@ msgstr "Add um novo Marcador"
 #. module: account_analytic_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_tag.res_config_settings_view_form
 msgid "Allows to tag analytic entries and to manage analytic distributions"
-msgstr "Permite marcar entradas analíticas e gerenciar distribuições analíticas"
+msgstr ""
+"Permite marcar entradas analíticas e gerenciar distribuições analíticas"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__account_analytic_id
@@ -108,11 +109,6 @@ msgid "Journal Item"
 msgstr "Item Diário"
 
 #. module: account_analytic_tag
-#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag____last_update
-msgid "Last Modified on"
-msgstr "Última Modificação em"
-
-#. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
 msgid "Last Updated by"
 msgstr "Última Atualização por"
@@ -141,10 +137,15 @@ msgstr "Marcadores"
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
-"Without analytical account: This label will be set for all the analytical items generated.\n"
-" With analytical account: This label will be set only to the analytical items that have the same analytical account."
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
 msgstr ""
 "Sem conta analítica: Este rótulo será definido para todos os itens "
 "analíticos gerados.\n"
 " Com conta analítica: Este rótulo será definido apenas para os itens "
 "analíticos que possuem a mesma conta analítica."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificação em"
