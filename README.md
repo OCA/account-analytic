@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_analytic_parent](account_analytic_parent/) | 17.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
+[account_analytic_tag](account_analytic_tag/) | 17.0.1.0.0 |  | Account Analytic Tag
 
 [//]: # (end addons)
 
