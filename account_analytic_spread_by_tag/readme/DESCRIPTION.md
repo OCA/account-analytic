@@ -1,0 +1,1 @@
+This module distributes the amount of the accounting entry among all the analytical accounts that share the same analytical tag. This module is particularly useful for managing costs in projects, departments, or any other analytic dimensions.
