@@ -1,0 +1,147 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_tag
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230706\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-07-09 23:36+0000\n"
+"PO-Revision-Date: 2023-07-09 23:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__active
+msgid "Active"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model_terms:ir.actions.act_window,help:account_analytic_tag.account_analytic_tag_action
+msgid "Add a new tag"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.res_config_settings_view_form
+msgid "Allows to tag analytic entries and to manage analytic distributions"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__account_analytic_id
+msgid "Analytic Account filter"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:res.groups,name:account_analytic_tag.group_analytic_tags
+msgid "Analytic Accounting Tags"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__name
+msgid "Analytic Tag"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.actions.act_window,name:account_analytic_tag.account_analytic_tag_action
+#: model:ir.model,name:account_analytic_tag.model_account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__analytic_tag_ids
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__group_analytic_tags
+#: model:ir.ui.menu,name:account_analytic_tag.account_analytic_tag_menu
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_form_view
+msgid "Analytic Tags"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_form_view
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__color
+msgid "Color Index"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__company_id
+msgid "Company"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__id
+msgid "ID"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_view_search
+msgid "Search Analytic Tags"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__active
+msgid "Set active to false to hide the Analytic Tag without removing it."
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__tag_ids
+msgid "Tags"
+msgstr ""
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
+msgid ""
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
+msgstr ""
