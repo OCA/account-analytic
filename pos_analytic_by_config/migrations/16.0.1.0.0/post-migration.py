@@ -20,7 +20,7 @@ def migrate(env, version):
     """
     )
     pos_configs_dict = {
-        env["pos.config"].browse(id): env["analytic.account"].browse(aa_id)
+        env["pos.config"].browse(id): env["account.analytic.account"].browse(aa_id)
         for id, aa_id, *_ in env.cr.fetchall()
     }
     pos_configs = env["pos.config"].browse([pc.id for pc in pos_configs_dict.keys()])
@@ -54,11 +54,12 @@ def migrate(env, version):
         )
         for config in company_configs:
             analytic_account = pos_configs_dict[config]
-            analytic_account.analytic_plan_id = analytic_plan.id
+            analytic_account.plan_id = analytic_plan.id
             env["account.analytic.distribution.model"].create(
                 {
                     "account_prefix": default_account_revenue.code[:3],
                     "pos_config_id": config.id,
                     "analytic_distribution": {analytic_account.id: 100},
+                    "company_id": company.id,
                 }
             )
