@@ -16,7 +16,9 @@ class TestStockPicking(TransactionCase):
 
         self.product = self.env.ref("product.product_product_4")
         self.product_2 = self.env.ref("product.product_product_5")
-        self.product_categ = self.env.ref("product.product_category_5")
+        self.product_categ = self.env["product.category"].create(
+            {"name": "Test category"}
+        )
         self.valuation_account = self.env["account.account"].create(
             {
                 "name": "Test stock valuation",
