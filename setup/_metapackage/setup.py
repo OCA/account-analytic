@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo12-addon-account_analytic_line_name_text',
         'odoo12-addon-account_analytic_parent',
         'odoo12-addon-account_analytic_required',
+        'odoo12-addon-account_analytic_root',
         'odoo12-addon-account_analytic_sequence',
         'odoo12-addon-account_move_analytic_recreate',
         'odoo12-addon-analytic_base_department',

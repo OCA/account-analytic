@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [account_analytic_line_name_text](account_analytic_line_name_text/) | 12.0.1.0.0 |  | Changes account analytic line name field to Text.
 [account_analytic_parent](account_analytic_parent/) | 12.0.2.3.1 |  | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 12.0.3.0.0 |  | Account Analytic Required
+[account_analytic_root](account_analytic_root/) | 12.0.1.0.1 | [![victor-champonnois](https://github.com/victor-champonnois.png?size=30px)](https://github.com/victor-champonnois) | Compute the Root Analytic Account
 [account_analytic_sequence](account_analytic_sequence/) | 12.0.1.1.0 |  | Restore the analytic account sequence
 [account_move_analytic_recreate](account_move_analytic_recreate/) | 12.0.1.0.0 |  | Recreate analytic lines when modifying account moves.
 [analytic_base_department](analytic_base_department/) | 12.0.1.0.0 |  | Base Analytic Department Categorization
