@@ -10,16 +10,17 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2020-07-27 18:19+0000\n"
-"Last-Translator: Fernando Colus <fcolus1@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
-"teams/23907/pt_BR/)\n"
+"PO-Revision-Date: 2024-05-20 16:35+0000\n"
+"Last-Translator: Rodrigo Macedo <sottomaiormacedotec@users.noreply."
+"translation.odoo-community.org>\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
+"23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: account_analytic_no_lines
 #: model:ir.model,name:account_analytic_no_lines.model_account_analytic_account
@@ -35,7 +36,7 @@ msgstr "Balanço Analítico (GL)"
 #. module: account_analytic_no_lines
 #: model_terms:ir.ui.view,arch_db:account_analytic_no_lines.account_analytic_account_form_view
 msgid "Cost/Revenue"
-msgstr ""
+msgstr "Custo/Receita"
 
 #. module: account_analytic_no_lines
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account__gl_credit
@@ -56,13 +57,13 @@ msgstr "Débito (GL)"
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account__display_name
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_move_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Exibir Nome"
 
 #. module: account_analytic_no_lines
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account__id
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_move_line__id
 msgid "ID"
-msgstr ""
+msgstr "Identificação"
 
 #. module: account_analytic_no_lines
 #: model:ir.model,name:account_analytic_no_lines.model_account_move_line
@@ -78,7 +79,7 @@ msgstr "Itens do Diário"
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_analytic_account____last_update
 #: model:ir.model.fields,field_description:account_analytic_no_lines.field_account_move_line____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificação em"
 
 #. module: account_analytic_no_lines
 #: model:res.groups,name:account_analytic_no_lines.show_analytic_entries
