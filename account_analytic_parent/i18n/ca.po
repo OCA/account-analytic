@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2019-10-07 11:10+0000\n"
-"Last-Translator: Jaume Planas <jaume.planas@minorisa.net>\n"
+"PO-Revision-Date: 2024-05-28 16:40+0000\n"
+"Last-Translator: Santiago Payà <santiagopim@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: account_analytic_parent
 #. odoo-python
@@ -36,7 +36,7 @@ msgstr "%(parent)s / %(own)s"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_administratif
 msgid "Administrative"
-msgstr ""
+msgstr "Administratiu"
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
@@ -51,7 +51,7 @@ msgstr "Comptes fills"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_commercial_marketing
 msgid "Commercial & Marketing"
-msgstr ""
+msgstr "Comercial & Màrqueting"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
@@ -61,33 +61,33 @@ msgstr "Nom complet"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_consultancy
 msgid "Consultancy"
-msgstr ""
+msgstr "Assessorament"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_customers
 msgid "Customers"
-msgstr ""
+msgstr "Clients"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_development
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_development
 msgid "Development"
-msgstr ""
+msgstr "En desenvolupament"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_in_house
 msgid "In House"
-msgstr ""
+msgstr "En l'emplaçament"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_integration
 msgid "Integration"
-msgstr ""
+msgstr "Integració"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_support_internal
 msgid "Internal"
-msgstr ""
+msgstr "Intern"
 
 #. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
@@ -97,17 +97,17 @@ msgstr "Nom"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_online
 msgid "Online"
-msgstr ""
+msgstr "En línia"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_our_super_product_development
 msgid "Our Super Product Development"
-msgstr ""
+msgstr "El Nostre Súper Desenvolupament de Producte"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_paid
 msgid "Paid"
-msgstr ""
+msgstr "Pagat"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
@@ -123,7 +123,7 @@ msgstr "Camí pare"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_partners
 msgid "Partners"
-msgstr ""
+msgstr "Socis"
 
 #. module: account_analytic_parent
 #. odoo-python
@@ -135,50 +135,50 @@ msgstr "Primer activeu el compte pare %s"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1
 msgid "Project 1"
-msgstr ""
+msgstr "Projecte 1"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2
 msgid "Project 2"
-msgstr ""
+msgstr "Projecte 2"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p1
 msgid "Seagate P1"
-msgstr ""
+msgstr "P1 de Seagate"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p2
 msgid "Seagate P2"
-msgstr ""
+msgstr "P2 de Seagate"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_stable
 msgid "Stable"
-msgstr ""
+msgstr "Estable"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_support
 #: model:account.analytic.account,name:account_analytic_parent.analytic_support
 msgid "Support"
-msgstr ""
+msgstr "Suport"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_journal_trainings
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_trainings
 #: model:account.analytic.account,name:account_analytic_parent.analytic_super_product_trainings
 msgid "Training"
-msgstr ""
+msgstr "Formació"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_trunk
 msgid "Trunk"
-msgstr ""
+msgstr "Bagul"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_unpaid
 msgid "Unpaid"
-msgstr ""
+msgstr "Impagat"
 
 #. module: account_analytic_parent
 #. odoo-python
