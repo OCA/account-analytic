@@ -17,7 +17,11 @@ class TestStockAnalytic(TransactionCase):
         analytic_account = cls.env["account.analytic.account"].create(
             {"name": "analytic account test", "plan_id": analytic_plan.id}
         )
+        analytic_account_2 = cls.env["account.analytic.account"].create(
+            {"name": "analytic account test 2", "plan_id": analytic_plan.id}
+        )
         cls.analytic_distribution = {str(analytic_account.id): 100}
+        cls.analytic_distribution_2 = {str(analytic_account_2.id): 100}
         cls.stock_location = cls.env.ref("stock.stock_location_stock")
         cls.customer_location = cls.env.ref("stock.stock_location_customers")
         cls.picking = cls.env["stock.picking"].create(
@@ -107,6 +111,7 @@ class TestStockAnalytic(TransactionCase):
                             "product_uom": self.uom_id.id,
                             "location_id": self.stock_location.id,
                             "location_dest_id": self.customer_location.id,
+                            "analytic_distribution": self.analytic_distribution_2,
                         },
                     )
                 ]
