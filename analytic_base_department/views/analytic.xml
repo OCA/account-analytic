@@ -68,7 +68,7 @@
         <field name="model">account.analytic.line</field>
         <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
         <field name="arch" type="xml">
-            <field name="tag_ids" position="after">
+            <field name="date" position="after">
                 <field name="department_id" />
                 <field name="account_department_id" />
             </field>
