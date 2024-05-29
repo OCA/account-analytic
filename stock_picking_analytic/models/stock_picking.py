@@ -26,9 +26,6 @@ class StockPicking(models.Model):
     # pylint: disable=method-search
     move_ids_without_package = fields.One2many(search="[]")
 
-    # We use move_ids_without_package instead of move_ids throughout this method to
-    # guarantee consistent behavior. i.e. the value of move_ids is available only after
-    # the record has been saved.
     @api.depends(
         "move_ids_without_package.analytic_distribution",
         "original_analytic_distribution",
@@ -37,18 +34,40 @@ class StockPicking(models.Model):
         """
         Get analytic account from first move and put it on picking
         """
+        if not self.filtered("id"):
+            return
+        self.flush_model(["move_ids", "original_analytic_distribution"])
+        self.env["stock.move"].flush_model(["analytic_distribution"])
+        self.env.cr.execute(
+            """
+            SELECT
+                picking.id,
+                CASE
+                    WHEN
+                        COUNT(move.id) = 0
+                        THEN picking.original_analytic_distribution
+                    WHEN
+                        COUNT(DISTINCT move.analytic_distribution) = 1
+                        THEN (
+                            ARRAY_AGG(move.analytic_distribution)
+                            FILTER (WHERE move.analytic_distribution IS NOT NULL)
+                        )[1]
+                END AS analytic_distribution
+            FROM
+                stock_picking AS picking
+            LEFT JOIN
+                stock_move AS move
+                ON picking.id = move.picking_id
+            WHERE
+                picking.id IN %s
+            GROUP BY
+                picking.id;
+            """,
+            [tuple(self.ids)],
+        )
+        result = dict(self.env.cr.fetchall())
         for picking in self:
-            analytic_distribution = picking.original_analytic_distribution
-            if picking.move_ids_without_package:
-                analytic_distribution = picking.move_ids_without_package[
-                    0
-                ].analytic_distribution
-                if any(
-                    move.analytic_distribution != analytic_distribution
-                    for move in picking.move_ids_without_package
-                ):
-                    analytic_distribution = False
-            picking.analytic_distribution = analytic_distribution
+            picking.analytic_distribution = result.get(picking.id)
 
     def _inverse_analytic_distribution(self):
         """
