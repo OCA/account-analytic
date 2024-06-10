@@ -29,6 +29,7 @@ setuptools.setup(
         'odoo-addon-purchase_stock_analytic>=16.0dev,<16.1dev',
         'odoo-addon-sale_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-stock_analytic>=16.0dev,<16.1dev',
+        'odoo-addon-stock_landed_costs_analytic>=16.0dev,<16.1dev',
         'odoo-addon-stock_picking_analytic>=16.0dev,<16.1dev',
     ],
     classifiers=[
