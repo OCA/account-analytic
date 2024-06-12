@@ -5,3 +5,4 @@
 - Manuel Regidor \<<manuel.regidor@sygel.es>\>
 - [Tecnativa](https://www.tecnativa.com):
   - Víctor Martínez
+- Daniel Herreros \<<daniel.herreros@braintec.com>\>
