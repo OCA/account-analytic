@@ -67,6 +67,8 @@ Contributors
 
    -  Víctor Martínez
 
+-  Daniel Herreros <daniel.herreros@braintec.com>
+
 Maintainers
 -----------
 
