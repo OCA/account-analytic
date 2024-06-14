@@ -7,7 +7,7 @@
     "category": "Generic Modules/Accounting",
     "version": "10.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Camptocamp SA,Odoo Community Association (OCA)",
+    "author": "Camptocamp,Odoo Community Association (OCA)",
     "website": "http://www.camptocamp.com",
     "depends": [
         'analytic_tag_dimension',
