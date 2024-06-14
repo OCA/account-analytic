@@ -6,7 +6,7 @@
     "category": "Generic Modules/Accounting",
     "version": "13.0.1.0.0",
     "license": "AGPL-3",
-    "author": "Camptocamp SA,Odoo Community Association (OCA)",
+    "author": "Camptocamp,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["analytic_tag_dimension", "sale"],
     "auto_install": True,
