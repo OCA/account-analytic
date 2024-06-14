@@ -43,7 +43,7 @@ addon | version | maintainers | summary
 [sale_analytic_tag](sale_analytic_tag/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Sale Analytic Tag
 [stock_analytic](stock_analytic/) | 16.0.1.2.0 |  | Adds analytic distribution in stock move
 [stock_landed_costs_analytic](stock_landed_costs_analytic/) | 16.0.1.0.0 |  | This module adds an analytic account and analytic tags on landed costs lines so that on landed costs validation account moves get analytic account and analytic tags values from landed costs lines.
-[stock_picking_analytic](stock_picking_analytic/) | 16.0.1.0.0 |  | Allows to define the analytic account on picking level
+[stock_picking_analytic](stock_picking_analytic/) | 16.0.1.0.1 |  | Allows to define the analytic account on picking level
 
 [//]: # (end addons)
 
