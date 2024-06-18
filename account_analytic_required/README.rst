@@ -95,6 +95,10 @@ Contributors
 
       -  Nguyễn Minh Chiến <chien@trobz.com>
 
+-  `APSL-Nagarro <https://apsl.tech>`__:
+
+      -  Antoni Marroig <amarroig@apsl.net>
+
 Other credits
 -------------
 

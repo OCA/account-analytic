@@ -19,3 +19,7 @@
 - [Trobz](https://trobz.com):
 
   > - Nguyễn Minh Chiến \<<chien@trobz.com>\>
+
+- [APSL-Nagarro](https://apsl.tech):
+
+  > - Antoni Marroig \<<amarroig@apsl.net>\>
