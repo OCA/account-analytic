@@ -9,7 +9,7 @@ from odoo.tests import common
 class TestAccountAnalyticRequired(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
-        super(TestAccountAnalyticRequired, cls).setUpClass()
+        super().setUpClass()
         cls.account_obj = cls.env["account.account"]
         cls.move_obj = cls.env["account.move"]
         cls.move_line_obj = cls.env["account.move.line"]
