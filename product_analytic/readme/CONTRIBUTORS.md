@@ -7,3 +7,5 @@
 - Reyes4711
 - Denis Roussel \<<denis.roussel@acsone.eu>\>
 - Darius Žižys \<<darius@vialaurea.lt>\>
+- [Binhex Systems Solutions](https://binhex.cloud/):
+  - Deriman Alonso \<<d.alonso@binhex.cloud>\>
