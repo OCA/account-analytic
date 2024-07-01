@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-03-19 13:37+0000\n"
+"PO-Revision-Date: 2024-07-01 10:47+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -171,7 +171,7 @@ msgstr "Addestramento"
 #: model:account.analytic.account,name:account_analytic_parent.analytic_trunk
 #, fuzzy
 msgid "Trunk"
-msgstr "Trunk"
+msgstr "Tronco"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_unpaid
