@@ -26,6 +26,16 @@ class PurchaseRequest(models.Model):
         for pr in self:
             al = pr.analytic_account_id
             if pr.line_ids:
+                first_line_analytic_account_id = pr.line_ids[0].analytic_account_id
+                all_lines_same = all(
+                    prl.analytic_account_id == first_line_analytic_account_id
+                    for prl in pr.line_ids
+                )
+                # If all lines share the same analytic_account_id,
+                # set it to the purchase request.
+                if all_lines_same:
+                    pr.analytic_account_id = first_line_analytic_account_id
+                    continue
                 for prl in pr.line_ids:
                     if prl.analytic_account_id != al:
                         al = False
