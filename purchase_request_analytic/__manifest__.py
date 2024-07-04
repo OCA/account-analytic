@@ -3,7 +3,7 @@
 
 {
     "name": "Purchase Request Analytic",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
     "category": "Purchase Management",
     "website": "https://github.com/OCA/account-analytic",
