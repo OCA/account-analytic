@@ -47,7 +47,7 @@ class AccountAnalyticAccount(models.Model):
         user_currency_id = self.env.user.company_id.currency_id
 
         # Re-compute only accounts with children
-        for account in self.filtered("child_ids"):
+        for account in self.exists().filtered("child_ids"):
             domain = [("account_id", "child_of", account.id)]
 
             credit_groups = AccountAnalyticLine.read_group(
