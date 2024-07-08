@@ -12,7 +12,7 @@
     "name": "Account Analytic Parent",
     "summary": """
         This module reintroduces the hierarchy to the analytic accounts.""",
-    "version": "15.0.1.0.0",
+    "version": "15.0.1.0.1",
     "category": "Accounting & Finance",
     "license": "AGPL-3",
     "author": "Matmoz d.o.o., "

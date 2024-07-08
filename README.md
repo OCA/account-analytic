@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_analytic_parent](account_analytic_parent/) | 15.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
+[account_analytic_parent](account_analytic_parent/) | 15.0.1.0.1 |  | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 15.0.1.0.2 |  | Account Analytic Required
 [account_analytic_sequence](account_analytic_sequence/) | 15.0.1.0.1 |  | Restore the analytic account sequence
 [account_analytic_tag_default](account_analytic_tag_default/) | 15.0.1.0.0 |  | Set default tags on analytic accounts.
