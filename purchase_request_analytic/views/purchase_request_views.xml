@@ -7,8 +7,10 @@
         <field name="arch" type="xml">
             <field name="date_start" position="after">
                 <field
-                    name="analytic_account_id"
+                    name="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
+                    optional="show"
+                    widget="analytic_distribution"
                 />
             </field>
         </field>
@@ -21,15 +23,23 @@
             <data>
                 <field name="date_start" position="after">
                     <field
-                        name="analytic_account_id"
+                        name="analytic_distribution"
+                        widget="analytic_distribution"
                         groups="analytic.group_analytic_accounting"
-                        options="{'no_create': True}"
+                        options="{'business_domain': 'purchase_order'}"
+                        readonly="state != 'draft'"
+                    />
+                    <field
+                        name="analytic_distribution"
+                        widget="analytic_distribution"
+                        groups="!analytic.group_analytic_accounting"
+                        invisible="1"
                     />
                 </field>
                 <field name="line_ids" position="attributes">
                     <attribute
                         name="context"
-                    >{'default_analytic_account_id': analytic_account_id}</attribute>
+                    >{'default_analytic_distribution': analytic_distribution}</attribute>
                 </field>
             </data>
         </field>
@@ -39,17 +49,20 @@
         <field name="model">purchase.request</field>
         <field name="inherit_id" ref="purchase_request.view_purchase_request_search" />
         <field name="arch" type="xml">
+            <group position="before">
+                <field
+                    name="analytic_distribution_search"
+                    string="Analytic Distribution"
+                />
+            </group>
             <xpath expr="//group" position="inside">
                 <filter
-                    name="analytic_account"
-                    string="Analytic Account"
+                    name="analytic_distribution"
+                    string="Analytic Distribution"
                     domain="[]"
-                    context="{'group_by':'analytic_account_id'}"
+                    context="{'group_by':'analytic_distribution'}"
                 />
             </xpath>
-            <field name="state" position="after">
-                <field name="analytic_account_id" />
-            </field>
         </field>
     </record>
 </odoo>

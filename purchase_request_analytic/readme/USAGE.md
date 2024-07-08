@@ -1,2 +1,3 @@
-- Assign an analytic account to the purchase request or to purchase
+- Assign an analytic distribution to the purchase request or to purchase
   request lines.
+

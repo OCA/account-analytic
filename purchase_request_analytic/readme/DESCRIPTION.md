@@ -1,1 +1,2 @@
-This module adds the analytic account field to Purchase Requests.
+This module adds an analytic distribution field to Purchase Requests. The field
+serves as a default for new lines on a request.
