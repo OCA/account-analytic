@@ -16,7 +16,7 @@ class AccountMoveLine(models.Model):
         help="The categories of related analytic accounts. Save to update the field.",
     )
 
-    @api.depends("analytic_distribution")
+    @api.depends("analytic_distribution", "analytic_account_ids.category_id")
     def _compute_analytic_category_ids(self):
         for line in self:
             line.analytic_category_ids = line.analytic_account_ids.mapped("category_id")
