@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t
+        id="analytic_distribution_inherit"
+        t-inherit="analytic.AnalyticDistributionPopup"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+       <xpath expr="//span[@t-if='!sortedList.length']" position="before">
+            <div class="pb-4 border-bottom">
+                <strong>Manual distribution</strong>
+                <AutoComplete
+                    id="'analytic_manual_distribution'"
+                    placeholder="'Search a Manual distribution...'"
+                    value="''"
+                    sources="sourcesAnalyticDistributionManual()"
+                    autoSelect="true"
+                    onSelect.alike="(option) => this.onSelectDistributionManual(option)"
+                />
+            </div>
+       </xpath>
+   </t>
+</templates>
