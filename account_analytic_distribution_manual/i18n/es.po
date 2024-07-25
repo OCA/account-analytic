@@ -1,0 +1,149 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_distribution_manual
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-29 06:51-0500\n"
+"PO-Revision-Date: 2024-07-29 06:55-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: account_analytic_distribution_manual
+#. odoo-python
+#: code:addons/account_analytic_distribution_manual/models/account_analytic_distribution_manual.py:0
+#, python-format
+msgid "%s (Copy)"
+msgstr "%s (Copia)"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_distribution_manual
+msgid "Account analytic distribution manual"
+msgstr "Distribución Analítica Manual"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: account_analytic_distribution_manual
+#: model_terms:ir.actions.act_window,help:account_analytic_distribution_manual.action_account_analytic_distribution_manual
+msgid "Add a new Manual Analytic Distributions"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
+msgid "Analytic"
+msgstr "Analítico"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr "Buscar Distribución Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisión Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__id
+msgid "ID"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: account_analytic_distribution_manual
+#. odoo-javascript
+#: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.esm.js:0
+#, python-format
+msgid "Loading..."
+msgstr "Cargando..."
+
+#. module: account_analytic_distribution_manual
+#: model:ir.actions.act_window,name:account_analytic_distribution_manual.action_account_analytic_distribution_manual
+#: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
+msgid "Manual Analytic Distributions"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#. odoo-javascript
+#: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.xml:0
+#, python-format
+msgid "Manual distribution"
+msgstr "Distribución Manual"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: account_analytic_distribution_manual
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
+msgid "Name..."
+msgstr "Nombre..."
+
+#. module: account_analytic_distribution_manual
+#. odoo-javascript
+#: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.esm.js:0
+#, python-format
+msgid "No Analytic Distribution Manual found"
+msgstr "Distribuciones Manuales no encontradas"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.constraint,message:account_analytic_distribution_manual.constraint_account_analytic_distribution_manual_unique_name_by_company
+msgid "The name must be unique per Company!"
+msgstr "El nombre debe ser único por compañía!"
+
+#~ msgid "Add a new Manual analytic distributions"
+#~ msgstr "Agregar nueva Distribución Analítica Manual"
+
+#~ msgid "Manual analytic distributions"
+#~ msgstr "Distribuciones analíticas manuales"
