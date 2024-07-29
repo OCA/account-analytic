@@ -36,8 +36,8 @@ msgstr "Activo"
 
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.actions.act_window,help:account_analytic_distribution_manual.action_account_analytic_distribution_manual
-msgid "Add a new Manual analytic distributions"
-msgstr "Agregar nueva Distribución Analítica Manual"
+msgid "Add a new Manual Analytic Distributions"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
@@ -110,8 +110,8 @@ msgstr "Cargando..."
 #. module: account_analytic_distribution_manual
 #: model:ir.actions.act_window,name:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 #: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
-msgid "Manual analytic distributions"
-msgstr "Distribuciones analíticas manuales"
+msgid "Manual Analytic Distributions"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
@@ -141,3 +141,9 @@ msgstr "Distribuciones Manuales no encontradas"
 #: model:ir.model.constraint,message:account_analytic_distribution_manual.constraint_account_analytic_distribution_manual_unique_name_by_company
 msgid "The name must be unique per Company!"
 msgstr "El nombre debe ser único por compañía!"
+
+#~ msgid "Add a new Manual analytic distributions"
+#~ msgstr "Agregar nueva Distribución Analítica Manual"
+
+#~ msgid "Manual analytic distributions"
+#~ msgstr "Distribuciones analíticas manuales"
