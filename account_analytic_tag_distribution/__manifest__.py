@@ -10,7 +10,6 @@
     "license": "AGPL-3",
     "data": [
         "views/account_analytic_tag_views.xml",
-        "views/account_move_views.xml",
     ],
     "installable": True,
     "maintainers": ["victoralmau"],

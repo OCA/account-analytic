@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_account_analytic_distribution_manual_tree" model="ir.ui.view">
+        <field name="name">view.account.analytic.distribution.manual.tree</field>
+        <field name="model">account.analytic.distribution.manual</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="show"
+                />
+                <field name="company_id" groups="base.group_multi_company" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_distribution_manual_form" model="ir.ui.view">
+        <field name="name">view.account.analytic.distribution.manual.form</field>
+        <field name="model">account.analytic.distribution.manual</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': [('active', '=', True)]}"
+                    />
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="Name..." />
+                        </h1>
+                    </div>
+                    <group colspan="2">
+                        <field name="active" invisible="1" />
+                        <field name="company_id" groups="base.group_multi_company" />
+                        <field
+                            name="analytic_distribution"
+                            widget="analytic_distribution"
+                            required="1"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_distribution_manual_search" model="ir.ui.view">
+        <field name="name">view.account.analytic.distribution.manual.search</field>
+        <field name="model">account.analytic.distribution.manual</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <filter
+                    name="archived"
+                    string="Archived"
+                    domain="[('active', '=', False)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record
+        id="action_account_analytic_distribution_manual"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Manual Analytic Distributions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.analytic.distribution.manual</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Manual Analytic Distributions
+            </p>
+        </field>
+    </record>
+    <menuitem
+        id="account_analytic_distribution_manual_menu"
+        name="Manual Analytic Distributions"
+        action="action_account_analytic_distribution_manual"
+        groups="analytic.group_analytic_accounting"
+        parent="account.menu_analytic_accounting"
+        sequence="10"
+    />
+
+</odoo>
