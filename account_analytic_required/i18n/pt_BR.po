@@ -1,0 +1,124 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-17 07:26+0000\n"
+"PO-Revision-Date: 2023-10-28 13:31+0000\n"
+"Last-Translator: Adriano Prado <adrianojprado@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr "Conta"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__always
+msgid "Always"
+msgstr "Sempre"
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
+msgstr ""
+"A política analítica é definida como \"Sempre\" com conta '%(account)s' Mas "
+"a conta analítica está faltando na linha de mudança de conta com o rótulo "
+"'%(move)s'."
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Never' with account '%(account)s' but the account "
+"move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
+msgstr ""
+"A política analítica é definida como 'Nunca' com conta'%(account)s' mas a "
+"linha de movimento da conta com o rótulo '%(move)s' tem uma conta analítica "
+"'%(analytic_account)s'."
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account.py:0
+#, python-format
+msgid ""
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
+msgstr ""
+"A política analítica está definida como 'Movimentos Publicados' com a conta "
+"'%(account)s', mas a conta analítica está ausente na linha de movimentação "
+"da conta com o rótulo '%(move)s'."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Journal Entry"
+msgstr "Entrada de Diário"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr "Item diário"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__never
+msgid "Never"
+msgstr "Nunca"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__optional
+msgid "Optional"
+msgstr "Opcional"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__analytic_policy
+msgid "Policy for analytic account"
+msgstr "Política para conta analítica"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__posted
+msgid "Posted moves"
+msgstr "Movimentos publicados"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account__analytic_policy
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Optional: The accountant is free to put an analytic account on an account "
+"move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic "
+"account.\n"
+"- Posted moves: The accountant will get an error message if no analytic "
+"account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is "
+"present.\n"
+"\n"
+"This field is company dependent."
+msgstr ""
+"Define a política para contas analíticas.\n"
+"Se você selecionar:\n"
+"- Opcional: o contador é livre para colocar uma conta analítica em uma linha "
+"de movimentação de conta com este tipo de conta.\n"
+"- Sempre: o contador receberá uma mensagem de erro se não houver conta "
+"analítica.\n"
+"- Movimentos publicados: O contador receberá uma mensagem de erro se nenhuma "
+"conta analítica for definida quando o movimento for publicado.\n"
+"- Nunca: o contador receberá uma mensagem de erro se uma conta analítica "
+"estiver presente.\n"
+"\n"
+"Este campo depende da empresa."
