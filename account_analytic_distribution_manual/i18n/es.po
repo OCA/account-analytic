@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-29 06:51-0500\n"
-"PO-Revision-Date: 2024-07-29 06:55-0500\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-08-02 14:08+0000\n"
+"Last-Translator: carolinafernandez-tecnativa <carolina.fernandez@tecnativa."
+"com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: account_analytic_distribution_manual
 #. odoo-python
@@ -37,7 +38,7 @@ msgstr "Activo"
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.actions.act_window,help:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 msgid "Add a new Manual Analytic Distributions"
-msgstr ""
+msgstr "Agregar nueva Distribución Analítica Manual"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
@@ -111,7 +112,7 @@ msgstr "Cargando..."
 #: model:ir.actions.act_window,name:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 #: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
 msgid "Manual Analytic Distributions"
-msgstr ""
+msgstr "Distribuciones analíticas manuales"
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
