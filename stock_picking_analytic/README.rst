@@ -63,6 +63,10 @@ Contributors
 
    -  Yoshi Tashiro
 
+-  `APSL-Nagarro <https://apsl.tech>`__:
+
+   -  Antoni Marroig <amarroig@apsl.net>
+
 Maintainers
 -----------
 
