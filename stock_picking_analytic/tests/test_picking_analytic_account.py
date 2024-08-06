@@ -11,9 +11,7 @@ class TestStockAnalytic(TransactionCase):
         super().setUpClass()
         cls.product_id = cls.env.ref("product.product_product_9")
         cls.uom_id = cls.env.ref("uom.product_uom_unit")
-        analytic_plan = cls.env["account.analytic.plan"].create(
-            {"name": "Plan Test", "company_id": False}
-        )
+        analytic_plan = cls.env["account.analytic.plan"].create({"name": "Plan Test"})
         analytic_account = cls.env["account.analytic.account"].create(
             {"name": "analytic account test", "plan_id": analytic_plan.id}
         )

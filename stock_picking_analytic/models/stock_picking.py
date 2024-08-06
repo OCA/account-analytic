@@ -12,19 +12,7 @@ class StockPicking(models.Model):
         help="Technical field. Use to store the value of"
         "analytic_distribution if there is no lines",
     )
-    analytic_distribution = fields.Json(
-        inverse="_inverse_analytic_distribution",
-        states={
-            "done": [("readonly", True)],
-            "cancel": [("readonly", True)],
-        },
-    )
-    # Assign a dummy search arg to the field to avoid triggering the warning.
-    # Without this, use of move_ids_without_package in @api.depends() of the compute
-    # method would trigger a warning from
-    # https://github.com/odoo/odoo/blob/0f84366/odoo/fields.py#L808-L812
-    # pylint: disable=method-search
-    move_ids_without_package = fields.One2many(search="[]")
+    analytic_distribution = fields.Json(inverse="_inverse_analytic_distribution")
 
     @api.depends(
         "move_ids_without_package.analytic_distribution",
