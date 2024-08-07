@@ -66,6 +66,11 @@ msgid "Stock Move"
 msgstr ""
 
 #. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_picking
 msgid "Transfer"
 msgstr ""
