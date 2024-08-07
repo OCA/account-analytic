@@ -51,6 +51,11 @@ msgid "Analytic Distribution Search"
 msgstr "Buscar Distribución Analítica"
 
 #. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_analytic_mixin
+msgid "Analytic Mixin"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_precision
 msgid "Analytic Precision"
 msgstr "Precisión Analítica"
@@ -60,6 +65,11 @@ msgstr "Precisión Analítica"
 #: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_search
 msgid "Archived"
 msgstr "Archivado"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_base
+msgid "Base"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__company_id
@@ -113,6 +123,22 @@ msgstr "Cargando..."
 #: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
 msgid "Manual Analytic Distributions"
 msgstr "Distribuciones analíticas manuales"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_model__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense_split__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__manual_distribution_id
+msgid "Manual Distribution ID"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
