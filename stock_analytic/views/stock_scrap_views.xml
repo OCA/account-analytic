@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_scrap_analytic_form" model="ir.ui.view">
+        <field name="name">stock.scrap.analytic.form</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[1]" position="inside">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="stock_scrap_form_view2" model="ir.ui.view">
+        <field name="name">stock.scrap.form2</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view2" />
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[1]" position="inside">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
