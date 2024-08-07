@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
 "PO-Revision-Date: 2023-10-28 13:31+0000\n"
 "Last-Translator: Adriano Prado <adrianojprado@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,8 +24,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution
-msgid "Analytic"
-msgstr "Analítico"
+msgid "Analytic Distribution"
+msgstr ""
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution_search
@@ -68,9 +68,17 @@ msgid "Stock Move"
 msgstr "Movimento de Estoque"
 
 #. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_picking
 msgid "Transfer"
 msgstr "Transferir"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítico"
 
 #~ msgid "Analytic Account"
 #~ msgstr "Conta analítica"
