@@ -24,8 +24,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution
-msgid "Analytic"
-msgstr "Analítico"
+msgid "Analytic Distribution"
+msgstr ""
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution_search
@@ -68,9 +68,17 @@ msgid "Stock Move"
 msgstr "Movimiento de existencias"
 
 #. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_picking
 msgid "Transfer"
 msgstr "Transferir"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítico"
 
 #~ msgid "Analytic Account"
 #~ msgstr "Cuenta analítica"
