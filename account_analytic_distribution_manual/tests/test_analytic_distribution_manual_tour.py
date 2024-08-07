@@ -31,7 +31,6 @@ class TestAnalyticDistributionManual(DistributionManualCommon, HttpCase):
                 login="analytic-manual-distribution-user",
             )
         invoice = capt.records
-        invoice.action_post()
         self.assertEqual(invoice.partner_id, self.partner_a)
         self.assertEqual(len(invoice.invoice_line_ids.analytic_line_ids), 2)
         analytic_line1 = invoice.invoice_line_ids.analytic_line_ids.filtered(
