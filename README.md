@@ -25,6 +25,7 @@ addon | version | maintainers | summary
 [account_analytic_required](account_analytic_required/) | 17.0.1.0.0 |  | Account Analytic Required
 [account_analytic_tag](account_analytic_tag/) | 17.0.1.0.0 |  | Account Analytic Tag
 [analytic_base_department](analytic_base_department/) | 17.0.1.0.0 |  | Add relationship between Analytic and Department
+[stock_analytic](stock_analytic/) | 17.0.1.0.0 |  | Adds analytic distribution in stock move
 
 [//]: # (end addons)
 
