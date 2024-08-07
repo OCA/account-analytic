@@ -80,6 +80,24 @@ tour.register(
                 'div[name="invoice_line_ids"] .o_selected_row .analytic_distribution_popup input[id="analytic_manual_distribution"]',
             run: "click",
         },
+        // Compatibility with analytic_distribution_widget_remove_save
+        // this module remove buttons
+        // so to close popup click on any form area
+        {
+            content: "Close Popup",
+            trigger: "div.o_form_sheet_bg",
+            run: "click",
+        },
+        {
+            content: "Check Tag Manual is on the top",
+            trigger:
+                'div[name="invoice_line_ids"] .o_selected_row div.o_field_analytic_distribution[name="analytic_distribution"] div.o_field_tags div.o_tag_badge_text:contains("Manual Distribution 1")',
+        },
+        {
+            content: "Confirm Invoice",
+            trigger: 'button[name="action_post"]',
+            run: "click",
+        },
         // Save account.move
         ...tour.stepUtils.saveForm(),
     ]
