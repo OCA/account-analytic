@@ -32,6 +32,12 @@ msgid "Analytic Precision"
 msgstr ""
 
 #. module: stock_landed_costs_analytic
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__manual_distribution_id
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__manual_distribution_id
+msgid "Manual Distribution ID"
+msgstr ""
+
+#. module: stock_landed_costs_analytic
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_landed_cost_lines
 msgid "Stock Landed Cost Line"
 msgstr ""
