@@ -32,6 +32,11 @@ msgid "Analytic Precision"
 msgstr "Precisión analítica"
 
 #. module: mrp_stock_analytic
+#: model:ir.model.fields,field_description:mrp_stock_analytic.field_mrp_production__manual_distribution_id
+msgid "Manual Distribution ID"
+msgstr ""
+
+#. module: mrp_stock_analytic
 #: model:ir.model,name:mrp_stock_analytic.model_mrp_production
 msgid "Production Order"
 msgstr "Orden de producción"
