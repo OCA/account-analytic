@@ -18,13 +18,27 @@ msgstr ""
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution
 msgid "Analytic"
 msgstr "Analítico"
 
 #. module: stock_landed_costs_analytic
-#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_tag_ids
-msgid "Analytic Tags"
-msgstr "Etiquetas analíticas"
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_search
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: stock_landed_costs_analytic
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_precision
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_precision
+msgid "Analytic Precision"
+msgstr ""
+
+#. module: stock_landed_costs_analytic
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__manual_distribution_id
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__manual_distribution_id
+msgid "Manual Distribution ID"
+msgstr ""
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_landed_cost_lines
@@ -35,3 +49,6 @@ msgstr "Línea Existencias de Costes de destino"
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_valuation_adjustment_lines
 msgid "Valuation Adjustment Lines"
 msgstr "Líneas de ajustes de valoración"
+
+#~ msgid "Analytic Tags"
+#~ msgstr "Etiquetas analíticas"
