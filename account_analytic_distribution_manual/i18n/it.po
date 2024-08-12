@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-07-31 15:58+0000\n"
+"PO-Revision-Date: 2024-08-12 09:58+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -51,7 +51,7 @@ msgstr "Ricerca distribuzione analitica"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_analytic_mixin
 msgid "Analytic Mixin"
-msgstr ""
+msgstr "Mixin analitica"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_precision
@@ -67,7 +67,7 @@ msgstr "In archivio"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_base
 msgid "Base"
-msgstr ""
+msgstr "Imponibile"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__company_id
@@ -136,7 +136,7 @@ msgstr "Distribuzione analitica manuale"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__manual_distribution_id
 msgid "Manual Distribution ID"
-msgstr ""
+msgstr "ID distribuzione manuale"
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
