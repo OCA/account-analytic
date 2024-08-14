@@ -135,8 +135,8 @@ msgstr "Distribuzione analitica manuale"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__manual_distribution_id
-msgid "Manual Distribution ID"
-msgstr "ID distribuzione manuale"
+msgid "Manual Distribution"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
@@ -166,3 +166,6 @@ msgstr "Nessuna distribuzione analitica manuale trovata"
 #: model:ir.model.constraint,message:account_analytic_distribution_manual.constraint_account_analytic_distribution_manual_unique_name_by_company
 msgid "The name must be unique per Company!"
 msgstr "Il nome deve essere univoco per azienda!"
+
+#~ msgid "Manual Distribution ID"
+#~ msgstr "ID distribuzione manuale"

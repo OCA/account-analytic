@@ -9,7 +9,9 @@ patch(AnalyticDistribution.prototype, "account_analytic_distribution_manual", {
         this._super();
         this.manual_distribution_by_id = {};
         this.state_manual_distribution = useState({
-            id: this.props.record.data.manual_distribution_id || 0,
+            id: this.props.record.data.manual_distribution_id
+                ? this.props.record.data.manual_distribution_id[0]
+                : 0,
             label: "",
             analytic_distribution: [],
         });
@@ -24,8 +26,9 @@ patch(AnalyticDistribution.prototype, "account_analytic_distribution_manual", {
         await this._super(nextProps);
         const record_id = this.props.record.data.id || 0;
         const current_manual_distribution_id = this.state_manual_distribution.id;
-        const new_manual_distribution_id =
-            nextProps.record.data.manual_distribution_id || 0;
+        const new_manual_distribution_id = nextProps.record.data.manual_distribution_id
+            ? this.props.record.data.manual_distribution_id[0]
+            : 0;
         const manual_distribution_Changed =
             current_manual_distribution_id !== new_manual_distribution_id;
         // When record is created, and manual_distribution_id is cleared
@@ -41,7 +44,10 @@ patch(AnalyticDistribution.prototype, "account_analytic_distribution_manual", {
     async save() {
         await this._super();
         await this.props.record.update({
-            manual_distribution_id: this.state_manual_distribution.id,
+            manual_distribution_id: [
+                this.state_manual_distribution.id,
+                this.state_manual_distribution.label,
+            ],
         });
     },
     async refreshManualDistribution(manual_distribution_id) {

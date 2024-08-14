@@ -6,5 +6,4 @@ from odoo import fields, models
 class AnalyticMixin(models.AbstractModel):
     _inherit = "analytic.mixin"
 
-    # it will not be a many2one field
-    manual_distribution_id = fields.Integer(string="Manual Distribution ID")
+    manual_distribution_id = fields.Many2one("account.analytic.distribution.manual")
