@@ -49,7 +49,7 @@ msgstr "Artículo diario"
 
 #. module: account_analytic_tag_distribution
 #: model:ir.model.fields,field_description:account_analytic_tag_distribution.field_account_analytic_tag__manual_distribution_id
-msgid "Manual Distribution ID"
+msgid "Manual Distribution"
 msgstr ""
 
 #~ msgid "Journal Entry"
