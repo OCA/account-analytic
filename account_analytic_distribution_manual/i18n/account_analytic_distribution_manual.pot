@@ -132,7 +132,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__manual_distribution_id
-msgid "Manual Distribution ID"
+msgid "Manual Distribution"
 msgstr ""
 
 #. module: account_analytic_distribution_manual
