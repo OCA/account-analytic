@@ -30,7 +30,7 @@ msgstr ""
 
 #. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__manual_distribution_id
-msgid "Manual Distribution ID"
+msgid "Manual Distribution"
 msgstr ""
 
 #. module: stock_picking_analytic
