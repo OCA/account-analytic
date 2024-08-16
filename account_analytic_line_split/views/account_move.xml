@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="view_move_form">
+        <field name="name">account.move.form (in account_analytic_line_split)</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+           <notebook position="inside">
+                <page
+                    string="Analytic Lines"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{'invisible': [('analytic_line_ids', '=', [])]}"
+                >
+                    <field name="analytic_line_ids">
+                        <tree string="Analytic Lines" default_order="id">
+                            <button
+                                name="action_edit_analytic_line"
+                                type="object"
+                                icon="fa-pencil-square-o"
+                                string=""
+                                aria-label="Edit Line"
+                                class="float-left"
+                            />
+                            <field name="date" optional="show" />
+                            <field name="name" />
+                            <field name="account_id" />
+                            <field
+                                name="ref"
+                                invisible="context.get('to_invoice', False)"
+                                optional="hide"
+                            />
+                            <field name="general_account_id" />
+                            <field name="move_id" />
+                            <field name="product_id" />
+                            <field name="currency_id" invisible="1" />
+                            <field name="unit_amount" sum="Quantity" optional="hide" />
+                            <field name="product_uom_id" optional="hide" />
+                            <field name="partner_id" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                optional="show"
+                            />
+                            <field name="amount" sum="Total" optional="show" />
+                            <field
+                                name="tag_ids"
+                                optional="hide"
+                                widget="many2many_tags"
+                            />
+                            <button
+                                name="action_split_analytic_line"
+                                type="object"
+                                icon="fa-clone"
+                                string="Split Line"
+                                aria-label="Split line"
+                                class="float-right"
+                                attrs="{'invisible': [('amount', '=', 0)]}"
+                            />
+                        </tree>
+                    </field>
+                </page>
+           </notebook>
+        </field>
+    </record>
+
+</odoo>
