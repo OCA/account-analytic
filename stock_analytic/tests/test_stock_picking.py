@@ -12,7 +12,7 @@ from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 
-class TestStockPicking(TransactionCase):
+class CommonStockPicking(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -118,7 +118,7 @@ class TestStockPicking(TransactionCase):
 
         return picking
 
-    def __update_qty_on_hand_product(self, product, new_qty):
+    def _update_qty_on_hand_product(self, product, new_qty):
         self.env["stock.quant"]._update_available_quantity(
             product, self.location, new_qty
         )
@@ -157,6 +157,8 @@ class TestStockPicking(TransactionCase):
         line_count = self.env["account.move.line"].search_count(criteria2)
         self.assertEqual(line_count, 0)
 
+
+class TestStockPicking(CommonStockPicking):
     def test_outgoing_picking_with_analytic(self):
         picking = self._create_picking(
             self.location,
@@ -164,7 +166,7 @@ class TestStockPicking(TransactionCase):
             self.outgoing_picking_type,
             self.analytic_distribution,
         )
-        self.__update_qty_on_hand_product(self.product, 1)
+        self._update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
@@ -176,7 +178,7 @@ class TestStockPicking(TransactionCase):
             self.dest_location,
             self.outgoing_picking_type,
         )
-        self.__update_qty_on_hand_product(self.product, 1)
+        self._update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
@@ -189,7 +191,7 @@ class TestStockPicking(TransactionCase):
             self.dest_location,
             self.outgoing_picking_type,
         )
-        self.__update_qty_on_hand_product(self.product, 1)
+        self._update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
         with self.assertRaises(ValidationError):
             self._picking_done_no_error(picking)
@@ -201,7 +203,7 @@ class TestStockPicking(TransactionCase):
             self.incoming_picking_type,
             self.analytic_distribution,
         )
-        self.__update_qty_on_hand_product(self.product, 1)
+        self._update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)
