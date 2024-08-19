@@ -3,10 +3,10 @@
 
 from odoo.tests import Form
 
-from odoo.addons.stock_analytic.tests.test_stock_picking import TestStockPicking
+from odoo.addons.stock_analytic.tests.test_stock_picking import CommonStockPicking
 
 
-class TestMrpStockAnalytic(TestStockPicking):
+class TestMrpStockAnalytic(CommonStockPicking):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
