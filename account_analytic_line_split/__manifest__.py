@@ -16,5 +16,4 @@
         "wizard/analytic_line_split_wizard.xml",
         "security/ir.model.access.csv",
     ],
-    "demo": [],
 }

@@ -1,31 +1,24 @@
 # Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
-    parent_id = fields.Many2one(
+    parent_line_id = fields.Many2one(
         comodel_name="account.analytic.line",
         string="Origin",
         ondelete="cascade",
         readonly=True,
     )
-    child_ids = fields.One2many(
+    child_line_ids = fields.One2many(
         comodel_name="account.analytic.line",
-        inverse_name="parent_id",
+        inverse_name="parent_line_id",
         string="Child Lines",
-        compute="_compute_child_ids",
-        store=True,
         readonly=True,
     )
-
-    @api.depends("parent_id")
-    def _compute_child_ids(self):
-        for line in self:
-            line.child_ids = self.search([("parent_id", "=", line.id)])
 
     def action_edit_analytic_line(self):
         context = dict(self.env.context)
