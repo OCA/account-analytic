@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="stock_picking_form_view">
+        <field name="name">stock.picking.form (in stock_picking_analytic)</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group/group/field[@name='picking_type_id']" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    readonly="state in ['done', 'cancel']"
+                />
+                <field name="analytic_distribution" invisible="1" />
+            </xpath>
+            <xpath
+                expr="//notebook/page[@name='operations']
+                /field[@name='move_ids_without_package']"
+                position="attributes"
+            >
+                <attribute name="context" operation="update">
+                    {"default_analytic_distribution": analytic_distribution}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="stock_picking_search_view">
+        <field name="name">stock.picking.search (in stock_picking_analytic)</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="analytic_distribution" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="stock_picking_tree_view">
+        <field name="name">stock.picking.tree (in stock_picking_analytic)</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="show"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
