@@ -18,8 +18,8 @@ msgstr ""
 
 #. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_distribution
-msgid "Analytic"
-msgstr "Analitico"
+msgid "Analytic Distribution"
+msgstr ""
 
 #. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_distribution_search
@@ -37,11 +37,6 @@ msgid "Original Analytic Distribution"
 msgstr "Distribuzione analitica originale"
 
 #. module: stock_picking_analytic
-#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__move_ids_without_package
-msgid "Stock moves not in package"
-msgstr "Movimenti di magazzino non nel collo"
-
-#. module: stock_picking_analytic
 #: model:ir.model.fields,help:stock_picking_analytic.field_stock_picking__original_analytic_distribution
 msgid ""
 "Technical field. Use to store the value ofanalytic_distribution if there is "
@@ -54,3 +49,9 @@ msgstr ""
 #: model:ir.model,name:stock_picking_analytic.model_stock_picking
 msgid "Transfer"
 msgstr "Trasferimento"
+
+#~ msgid "Analytic"
+#~ msgstr "Analitico"
+
+#~ msgid "Stock moves not in package"
+#~ msgstr "Movimenti di magazzino non nel collo"
