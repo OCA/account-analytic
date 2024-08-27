@@ -95,6 +95,11 @@ msgid "ID"
 msgstr "ID"
 
 #. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
 msgid "Last Modified on"
 msgstr "Ultima modifica il"
@@ -125,6 +130,7 @@ msgstr "Distribuzione analitica manuale"
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_model__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_invoice_report__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__manual_distribution_id
