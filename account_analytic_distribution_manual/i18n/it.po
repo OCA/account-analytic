@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-08-16 09:58+0000\n"
+"PO-Revision-Date: 2024-08-29 13:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -97,7 +97,7 @@ msgstr "ID"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_invoice_report
 msgid "Invoices Statistics"
-msgstr ""
+msgstr "Statistiche fatture"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
