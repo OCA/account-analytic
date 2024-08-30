@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo-addon-account_move_update_analytic>=16.0dev,<16.1dev',
         'odoo-addon-analytic_base_department>=16.0dev,<16.1dev',
         'odoo-addon-analytic_distribution_widget_remove_save>=16.0dev,<16.1dev',
+        'odoo-addon-analytic_partner>=16.0dev,<16.1dev',
         'odoo-addon-hr_department_analytic>=16.0dev,<16.1dev',
         'odoo-addon-hr_expense_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-hr_timesheet_analytic_tag>=16.0dev,<16.1dev',
