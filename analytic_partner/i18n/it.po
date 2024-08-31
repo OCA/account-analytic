@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-30 22:27+0000\n"
-"PO-Revision-Date: 2018-08-21 21:30+0000\n"
-"Last-Translator: Marco Calcagni <mcalcagni@dinamicheaziendali.it>\n"
+"PO-Revision-Date: 2024-08-31 12:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.1.1\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_analytic_line
@@ -27,12 +27,12 @@ msgstr ""
 #. module: analytic_partner
 #: model:ir.ui.view,arch_db:analytic_partner.view_partner_form_analytic
 msgid "Cost/Revenue"
-msgstr "Costi/Ricavi"
+msgstr "Costo/Ricavo"
 
 #. module: analytic_partner
 #: model:ir.actions.act_window,name:analytic_partner.act_analytic_cost_revenue
 msgid "Costs & Revenues"
-msgstr "Costi e Ricavi"
+msgstr "Costi & ricavi"
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_move_line
@@ -43,7 +43,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line_other_partner_id
 #: model:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
 msgid "Other Partner"
-msgstr "Altro Partner"
+msgstr "Altro partner"
 
 #~ msgid "Invoice"
 #~ msgstr "Fattura"
