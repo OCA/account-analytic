@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-30 22:27+0000\n"
-"PO-Revision-Date: 2022-12-26 16:44+0000\n"
+"PO-Revision-Date: 2024-08-31 12:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_analytic_line
@@ -32,7 +32,7 @@ msgstr "Costo/Ricavo"
 #. module: analytic_partner
 #: model:ir.actions.act_window,name:analytic_partner.act_analytic_cost_revenue
 msgid "Costs & Revenues"
-msgstr "Costi & ricavi"
+msgstr "Costi e ricavi"
 
 #. module: analytic_partner
 #: model:ir.model,name:analytic_partner.model_account_move_line
@@ -43,7 +43,7 @@ msgstr "Movimento contabile"
 #: model:ir.model.fields,field_description:analytic_partner.field_account_analytic_line__other_partner_id
 #: model_terms:ir.ui.view,arch_db:analytic_partner.view_account_analytic_line_filter
 msgid "Other Partner"
-msgstr "Altri partner"
+msgstr "Altro partner"
 
 #~ msgid "Invoice"
 #~ msgstr "Fattura"
