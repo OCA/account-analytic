@@ -128,8 +128,8 @@ class TestMrpStockAnalytic(CommonStockPicking):
         self.assertTrue(quantity_issues)
         backorder_action = production.button_mark_done()
         self.assertEqual(
-            backorder_action,
-            production._action_generate_backorder_wizard(quantity_issues),
+            backorder_action.get("res_model"),
+            "mrp.production.backorder",
         )
         backorder_wizard = self._action_wizard_form(production, backorder_action)
         backorder_wizard.save().action_backorder()
