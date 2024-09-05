@@ -17,9 +17,7 @@ class TestAnalyticPartner(common.TransactionCase):
         cls.account = cls.env["account.account"].create(
             {"name": "Test account", "code": "TEST", "account_type": "expense"}
         )
-        cls.default_plan = cls.env["account.analytic.plan"].create(
-            {"name": "Default", "company_id": False}
-        )
+        cls.default_plan = cls.env["account.analytic.plan"].create({"name": "Default"})
         cls.analytic_account = cls.env["account.analytic.account"].create(
             {"name": "Test Analytic Account", "plan_id": cls.default_plan.id}
         )
