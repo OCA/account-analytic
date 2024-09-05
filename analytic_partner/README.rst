@@ -17,22 +17,22 @@ Link analytic items and partner
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/16.0/analytic_partner
+    :target: https://github.com/OCA/account-analytic/tree/17.0/analytic_partner
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-16-0/account-analytic-16-0-analytic_partner
+    :target: https://translation.odoo-community.org/projects/account-analytic-17-0/account-analytic-17-0-analytic_partner
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module adds a commercial partner on each analytic item for allowing to
-have another dimension for data analysis.
+This module adds a commercial partner on each analytic item for allowing
+to have another dimension for data analysis.
 
-It also handles the proper propagation of this field to the created analytic
-entries when validating invoices.
+It also handles the proper propagation of this field to the created
+analytic entries when validating invoices.
 
 **Table of contents**
 
@@ -44,61 +44,65 @@ Configuration
 
 To configure this module, you need to:
 
-#.  Go to **Setting > Users > Groups** and check that
-    your user has the "Show Full Accounting Features" and
-    "Analytic Accounting" access rights.
+1. Go to **Setting > Users > Groups** and check that your user has the
+   "Show Full Accounting Features" and "Analytic Accounting" access
+   rights.
 
 Usage
 =====
 
-#. Go to **Invoicing > Accounting > Management > Analytic Items**.
-#. Set the **other partner** in the form view of an the analytic entry.
-#. Go back to list view where you can search and group by this new field.
+1. Go to **Invoicing > Accounting > Management > Analytic Items**.
+2. Set the **other partner** in the form view of an the analytic entry.
+3. Go back to list view where you can search and group by this new
+   field.
 
 You can also:
 
-#. Go to the form view of one of the partners selected as "other partner".
-#. Click on the smart-button **Cost/Revenue** placed on the upper-right part.
-#. Navigate to the analytic items associated to this partner.
+1. Go to the form view of one of the partners selected as "other
+   partner".
+2. Click on the smart-button **Cost/Revenue** placed on the upper-right
+   part.
+3. Navigate to the analytic items associated to this partner.
 
 Known issues / Roadmap
 ======================
 
-This module hasn't been tested with *account_analytic_distribution* module
-installed, so maybe it's incompatible with it.
+This module hasn't been tested with *account_analytic_distribution*
+module installed, so maybe it's incompatible with it.
 
 Changelog
 =========
 
 13.0.1.0.0 (2020-01-07)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Migrated to odoo 13.
 
 12.0.1.0.0 (2019-01-17)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Migrated to odoo 12.
 
 11.0.1.0.0 (2018-10-15)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Migrated to odoo 11.
 
 10.0.1.0.0 (2017-05-22)
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 Migrated to odoo 10.
 
 8.0.1.0.1 (2015-08-20)
-~~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
-* [IMP] Distinguish between the partner of the account and the specific partner.
-* [FIX] Allow grouping on partner_id field.
-* [FIX] README - Indentation is not correct in Known issues.
+-  [IMP] Distinguish between the partner of the account and the specific
+   partner.
+-  [FIX] Allow grouping on partner_id field.
+-  [FIX] README - Indentation is not correct in Known issues.
 
 8.0.1.0.0 (2015-08-13)
-~~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 First version.
 
@@ -108,7 +112,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -116,29 +120,29 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Tecnativa
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  * Pedro M. Baeza
-  * Luis M. Ontalba
-  * Cristina Martin R.
-  * Sergio Teruel
-  * Carlos Roca
+   -  Pedro M. Baeza
+   -  Luis M. Ontalba
+   -  Cristina Martin R.
+   -  Sergio Teruel
+   -  Carlos Roca
 
-* `Ecosoft <https://ecosoft.co.th/>`__:
+-  `Ecosoft <https://ecosoft.co.th/>`__:
 
-  * Pimolnat Suntian <pimolnats@ecosoft.co.th>
+   -  Pimolnat Suntian <pimolnats@ecosoft.co.th>
 
-* Daniel Reis <dreis@opensourceintegrators.com>
+-  Daniel Reis <dreis@opensourceintegrators.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -150,6 +154,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/16.0/analytic_partner>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/17.0/analytic_partner>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

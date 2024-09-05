@@ -369,11 +369,11 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:bfdc51503d6bda511d455f968ca0ffe34df27f0974bd7a3dfd16afe07ea94f82
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/account-analytic/tree/16.0/analytic_partner"><img alt="OCA/account-analytic" src="https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/account-analytic-16-0/account-analytic-16-0-analytic_partner"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module adds a commercial partner on each analytic item for allowing to
-have another dimension for data analysis.</p>
-<p>It also handles the proper propagation of this field to the created analytic
-entries when validating invoices.</p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/account-analytic/tree/17.0/analytic_partner"><img alt="OCA/account-analytic" src="https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/account-analytic-17-0/account-analytic-17-0-analytic_partner"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module adds a commercial partner on each analytic item for allowing
+to have another dimension for data analysis.</p>
+<p>It also handles the proper propagation of this field to the created
+analytic entries when validating invoices.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -402,9 +402,9 @@ entries when validating invoices.</p>
 <h1><a class="toc-backref" href="#toc-entry-1">Configuration</a></h1>
 <p>To configure this module, you need to:</p>
 <ol class="arabic simple">
-<li>Go to <strong>Setting &gt; Users &gt; Groups</strong> and check that
-your user has the “Show Full Accounting Features” and
-“Analytic Accounting” access rights.</li>
+<li>Go to <strong>Setting &gt; Users &gt; Groups</strong> and check that your user has the
+“Show Full Accounting Features” and “Analytic Accounting” access
+rights.</li>
 </ol>
 </div>
 <div class="section" id="usage">
@@ -412,19 +412,22 @@ your user has the “Show Full Accounting Features” and
 <ol class="arabic simple">
 <li>Go to <strong>Invoicing &gt; Accounting &gt; Management &gt; Analytic Items</strong>.</li>
 <li>Set the <strong>other partner</strong> in the form view of an the analytic entry.</li>
-<li>Go back to list view where you can search and group by this new field.</li>
+<li>Go back to list view where you can search and group by this new
+field.</li>
 </ol>
 <p>You can also:</p>
 <ol class="arabic simple">
-<li>Go to the form view of one of the partners selected as “other partner”.</li>
-<li>Click on the smart-button <strong>Cost/Revenue</strong> placed on the upper-right part.</li>
+<li>Go to the form view of one of the partners selected as “other
+partner”.</li>
+<li>Click on the smart-button <strong>Cost/Revenue</strong> placed on the upper-right
+part.</li>
 <li>Navigate to the analytic items associated to this partner.</li>
 </ol>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h1><a class="toc-backref" href="#toc-entry-3">Known issues / Roadmap</a></h1>
-<p>This module hasn’t been tested with <em>account_analytic_distribution</em> module
-installed, so maybe it’s incompatible with it.</p>
+<p>This module hasn’t been tested with <em>account_analytic_distribution</em>
+module installed, so maybe it’s incompatible with it.</p>
 </div>
 <div class="section" id="changelog">
 <h1><a class="toc-backref" href="#toc-entry-4">Changelog</a></h1>
@@ -447,7 +450,8 @@ installed, so maybe it’s incompatible with it.</p>
 <div class="section" id="section-5">
 <h2><a class="toc-backref" href="#toc-entry-9">8.0.1.0.1 (2015-08-20)</a></h2>
 <ul class="simple">
-<li>[IMP] Distinguish between the partner of the account and the specific partner.</li>
+<li>[IMP] Distinguish between the partner of the account and the specific
+partner.</li>
 <li>[FIX] Allow grouping on partner_id field.</li>
 <li>[FIX] README - Indentation is not correct in Known issues.</li>
 </ul>
@@ -462,7 +466,7 @@ installed, so maybe it’s incompatible with it.</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/account-analytic/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_partner%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -500,7 +504,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/account-analytic/tree/16.0/analytic_partner">OCA/account-analytic</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/account-analytic/tree/17.0/analytic_partner">OCA/account-analytic</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
