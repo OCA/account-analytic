@@ -1,0 +1,31 @@
+<odoo>
+    <record id="account_analytic_account_spread_tree_view" model="ir.ui.view">
+        <field name="name">account.analytic.account.spread.tree</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='balance']" position="after">
+                <field name="mapped_analytic_tag_ids" widget="many2many_tags" />
+            </xpath>
+        </field>
+    </record>
+
+   <record id="account_analytic_acount_spread_form_view" model="ir.ui.view">
+        <field name="name">account.analytic.account.spread.form</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='code']" position="after">
+                <div colspan="2">
+                    <group string="Spreading" name="spreading">>
+                        <field
+                            name="mapped_analytic_tag_ids"
+                            string="Tags Mapping"
+                            widget="many2many_tags"
+                        />
+                    </group>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

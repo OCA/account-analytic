@@ -1,0 +1,68 @@
+<odoo>
+    <record id="account_analytic_tag_spread_tree_view" model="ir.ui.view">
+        <field name="name">account.analytic.tag.spread.tree</field>
+        <field name="model">account.analytic.tag</field>
+        <field
+            name="inherit_id"
+            ref="account_analytic_tag.account_analytic_tag_tree_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='color']" position="before">
+                <field name="to_spread" />
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="account_analytic_tag_spread_form_view" model="ir.ui.view">
+        <field name="name">account.analytic.tag.spread.form</field>
+        <field name="model">account.analytic.tag</field>
+        <field
+            name="inherit_id"
+            ref="account_analytic_tag.account_analytic_tag_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group[1]" position="after">
+                <group>
+                    <group string="Spreading Configuration" name="spreading">
+                        <field name="to_spread" />
+                    </group>
+                    <group>
+                        <separator
+                            string="Spreading Filters"
+                            colspan="4"
+                            invisible="to_spread == False"
+                        />
+                        <field
+                            name="spread_filter_operation"
+                            invisible="to_spread == False"
+                        />
+                        <field
+                            name="spread_filter_analytic_account_ids"
+                            invisible="to_spread == False"
+                            widget="many2many_tags"
+                        />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="account_analytic_tag_spread_search_view" model="ir.ui.view">
+        <field name="name">account.analytic.tag.spread.search</field>
+        <field name="model">account.analytic.tag</field>
+        <field
+            name="inherit_id"
+            ref="account_analytic_tag.account_analytic_tag_view_search"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="before">
+                <filter
+                    string="To Spread"
+                    name="to_spread"
+                    domain="[('to_spread', '=', True)]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
