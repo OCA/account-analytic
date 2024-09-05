@@ -140,6 +140,9 @@ Contributors
    -  Pimolnat Suntian <pimolnats@ecosoft.co.th>
 
 -  Daniel Reis <dreis@opensourceintegrators.com>
+-  `APSL-Nagarro <https://apsl.tech>`__:
+
+   -  Bernat Obrador <bobrador@apsl.net>
 
 Maintainers
 -----------

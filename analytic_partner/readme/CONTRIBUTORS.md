@@ -7,3 +7,5 @@
 - [Ecosoft](https://ecosoft.co.th/):
   - Pimolnat Suntian \<<pimolnats@ecosoft.co.th>\>
 - Daniel Reis \<<dreis@opensourceintegrators.com>\>
+- [APSL-Nagarro](<https://apsl.tech>):
+  - Bernat Obrador \<<bobrador@apsl.net>\>
