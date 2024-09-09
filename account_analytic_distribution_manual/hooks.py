@@ -182,3 +182,14 @@ def post_init_hook(cr, registry):
                         """,
                         (distribution_map[tag_id].id, res_id),
                     )
+        # Define the value of manual_distribution_id in the line items
+        env.cr.execute(
+            """
+            UPDATE account_analytic_line AS aal
+            SET manual_distribution_id = aml.manual_distribution_id
+            FROM account_move_line AS aml
+            WHERE aal.move_line_id = aml.id
+            AND aml.manual_distribution_id IS NOT NULL
+            AND aal.manual_distribution_id IS NULL
+            """,
+        )
