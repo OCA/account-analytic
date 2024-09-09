@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from psycopg2.errors import UniqueViolation
 
-from odoo.tests import tagged
+from odoo.tests import Form, tagged
 from odoo.tools import mute_logger
 
 from odoo.addons.account_analytic_distribution_manual.tests.common import (
@@ -25,6 +25,24 @@ class TestAnalyticDistributionManual(DistributionManualCommon):
                     "name": "Manual Distribution 1",
                 }
             )
+
+    def test_manual_distribution_analytic_distribution_process(self):
+        invoice_form = Form(
+            self.env["account.move"].with_context(default_move_type="out_invoice")
+        )
+        invoice_form.partner_id = self.partner_a
+        with invoice_form.invoice_line_ids.new() as line_form:
+            line_form.product_id = self.product_a
+            line_form.manual_distribution_id = self.distribution_1
+        invoice = invoice_form.save()
+        invoice_line = invoice.invoice_line_ids
+        invoice_line.analytic_distribution = self.distribution_1.analytic_distribution
+        invoice.action_post()
+        self.assertTrue(len(invoice_line.analytic_line_ids), 2)
+        self.assertEqual(
+            invoice_line.analytic_line_ids.mapped("manual_distribution_id"),
+            self.distribution_1,
+        )
 
     def test_manual_distribution_analytic_distribution_text(self):
         self.analytic_account_a1.name = "test-1"
