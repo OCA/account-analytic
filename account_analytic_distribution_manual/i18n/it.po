@@ -49,6 +49,11 @@ msgid "Analytic Distribution Search"
 msgstr "Ricerca distribuzione analitica"
 
 #. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_analytic_mixin
 msgid "Analytic Mixin"
 msgstr "Mixin analitica"
@@ -62,6 +67,11 @@ msgstr "Precisione analitica"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_import
 msgid "Analytic distribution (importable)"
 msgstr "Distribuzione analitica (importabile)"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_line__manual_distribution_id
+msgid "Analytic distribution manual"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
@@ -114,6 +124,11 @@ msgstr "ID"
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_invoice_report
 msgid "Invoices Statistics"
 msgstr "Statistiche fatture"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_move_line
+msgid "Journal Item"
+msgstr ""
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
