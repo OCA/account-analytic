@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-04-03 13:07+0000\n"
-"PO-Revision-Date: 2019-02-01 11:03+0000\n"
-"Last-Translator: Marta Vázquez Rodríguez <vazrodmar@gmail.com>\n"
+"PO-Revision-Date: 2024-09-10 15:36+0000\n"
+"Last-Translator: Jaume Planas <jaume.planas@minorisa.net>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: account_analytic_sequence
 #: model:ir.model,name:account_analytic_sequence.model_account_analytic_account
@@ -32,4 +32,4 @@ msgstr "Referencia"
 #. module: account_analytic_sequence
 #: model:ir.model.constraint,message:account_analytic_sequence.constraint_account_analytic_account_code_uniq
 msgid "Reference must be unique per Company!"
-msgstr ""
+msgstr "¡La Referencia debe ser única por cada Compañía!"
