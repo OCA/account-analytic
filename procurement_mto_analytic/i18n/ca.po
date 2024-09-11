@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-03-26 18:46+0000\n"
-"Last-Translator: eduardgm <eduard.garcia@qubiq.es>\n"
+"PO-Revision-Date: 2024-09-11 15:57+0000\n"
+"Last-Translator: Jaume Planas <jaumeplan@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: procurement_mto_analytic
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_purchase_order_line__display_name
@@ -22,7 +22,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_move__display_name
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_rule__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom mostrat"
 
 #. module: procurement_mto_analytic
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_purchase_order_line__id
@@ -30,7 +30,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_move__id
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_rule__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: procurement_mto_analytic
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_purchase_order_line____last_update
@@ -38,12 +38,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_move____last_update
 #: model:ir.model.fields,field_description:procurement_mto_analytic.field_stock_rule____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificació el"
 
 #. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr ""
+msgstr "Línia de comanda de compra"
 
 #. module: procurement_mto_analytic
 #: model:ir.model,name:procurement_mto_analytic.model_sale_order_line
