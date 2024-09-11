@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-09-06 15:06+0000\n"
+"PO-Revision-Date: 2024-09-11 09:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -51,7 +51,7 @@ msgstr "Ricerca distribuzione analitica"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Riga analitica"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_analytic_mixin
@@ -71,7 +71,7 @@ msgstr "Distribuzione analitica (importabile)"
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_line__manual_distribution_id
 msgid "Analytic distribution manual"
-msgstr ""
+msgstr "Distribuzione analitica manuale"
 
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
@@ -128,7 +128,7 @@ msgstr "Statistiche fatture"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Movimento contabile"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
