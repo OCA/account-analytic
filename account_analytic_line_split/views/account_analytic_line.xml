@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record id="view_account_analytic_line_form" model="ir.ui.view">
+        <field
+            name="name"
+        >account.analytic.line.form (in account_analytic_line_split)</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button
+                        name="action_split_analytic_line"
+                        string="Split Line"
+                        class="oe_highlight"
+                        type="object"
+                        attrs="{'invisible': [('amount', '=', 0)]}"
+                        groups="analytic.group_analytic_accounting"
+                    />
+                </header>
+            </sheet>
+            <field name="name" position="before">
+                <field
+                    name="parent_line_id"
+                    attrs="{'invisible': [('parent_line_id', '=', False)]}"
+                />
+            </field>
+            <sheet position="inside">
+                <notebook attrs="{'invisible': [('child_line_ids', '=', [])]}">
+                    <page string="Child Lines">
+                        <field name="child_line_ids" />
+                    </page>
+                </notebook>
+            </sheet>
+        </field>
+    </record>
+
+</odoo>

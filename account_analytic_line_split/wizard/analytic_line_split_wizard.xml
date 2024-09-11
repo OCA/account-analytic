@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 - TODAY, Wesley Oliveira <wesley.oliveira@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="analytic_line_split_wizard_view">
+        <field
+            name="name"
+        >analytic.line.split.wizard (in account_analytic_line_split)</field>
+        <field name="model">analytic.line.split.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Analytic Line Split">
+                <field name="line_id" invisible="1" />
+                <group>
+                    <group>
+                        <field name="account_id" />
+                        <field name="percentage" />
+                        <field name="amount" />
+                    </group>
+                    <group>
+                        <field name="amount_total" />
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Analytic Entries">
+                        <field
+                            name="analytic_line_split_ids"
+                            context="{'line_id': line_id}"
+                        >
+                            <tree string="Analytic Entries" editable="bottom">
+                                <field name="line_id" invisible="1" />
+                                <field name="account_id" />
+                                <field name="percentage" />
+                                <field name="amount" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button
+                        string="Split"
+                        name="action_split_line"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="analytic_line_split_wizard_action" model="ir.actions.act_window">
+        <field name="name">Analytic Line Split</field>
+        <field name="res_model">analytic.line.split.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
