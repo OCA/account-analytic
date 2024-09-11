@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-01 03:39+0000\n"
-"PO-Revision-Date: 2022-01-12 14:39+0000\n"
-"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
+"PO-Revision-Date: 2024-09-11 15:53+0000\n"
+"Last-Translator: Jaume Planas <jaumeplan@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account
 msgid "Account"
-msgstr ""
+msgstr "Compte"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account_type
@@ -41,6 +41,8 @@ msgid ""
 "Analytic policy is set to 'Always' with account '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
+"S'ha establert la política analítica en 'Sempre' amb el compte '%s' però el "
+"compte analític no hi és a l'apunt comptable amb l'etiqueta '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
@@ -49,6 +51,8 @@ msgid ""
 "Analytic policy is set to 'Never' with account '%s' but the account move "
 "line with label '%s' has an analytic account '%s'."
 msgstr ""
+"S'ha establert la política analítica en 'Mai' amb el compte '%s' però "
+"l'apunt comptable amb l'etiqueta '%s' conté un compte analític '%s'."
 
 #. module: account_analytic_required
 #: code:addons/account_analytic_required/models/account.py:0
@@ -57,6 +61,9 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account '%s' but the analytic "
 "account is missing in the account move line with label '%s'."
 msgstr ""
+"S'ha establert la política analítica en 'Moviments publicats' amb el compte "
+"'%s' però a l'apunt comptable amb l'etiqueta '%s' no hi ha cap compte "
+"analític."
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
@@ -64,7 +71,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom mostrat"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
@@ -72,12 +79,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Assentament"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
@@ -90,7 +97,7 @@ msgstr "Apunts"
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_move____last_update
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificació el"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account_type__property_analytic_policy__never
