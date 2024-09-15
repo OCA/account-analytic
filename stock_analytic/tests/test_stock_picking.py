@@ -8,6 +8,7 @@
 
 from datetime import datetime
 
+from odoo import Command
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
@@ -235,10 +236,69 @@ class TestStockPicking(CommonStockPicking):
 
         self.assertEqual(self.analytic_distribution, move_after.analytic_distribution)
 
+    def _replace_default_mto_route(self):
+        """
+        Set a new MTO route on the product.
+
+        If the tests of this module are run in a database that will also install
+        mrp (such as when also testing mrp_stock_analytic), the mrp module will
+        change the stock settings so that the default stock routes stop working.
+        So we make our own MTO route that will work regardless of whether mrp is
+        loaded alongside this module or not.
+        """
+        src_location = self.location.copy(
+            {
+                "location_id": self.location.id,
+                "name": "Test location",
+            }
+        )
+        dst_location = self.dest_location.copy(
+            {
+                "location_id": self.dest_location.id,
+                "name": "Test location",
+            }
+        )
+        test_route = self.env["stock.route"].create(
+            {
+                "name": "Test route",
+                "product_selectable": True,
+                "rule_ids": [
+                    Command.create(
+                        {
+                            "name": f"Pull MTO {src_location.display_name} "
+                            f"-> {dst_location.display_name}",
+                            "action": "pull",
+                            "picking_type_id": self.outgoing_picking_type.id,
+                            "location_src_id": src_location.id,
+                            "location_dest_id": dst_location.id,
+                            "procure_method": "make_to_order",
+                        }
+                    ),
+                    Command.create(
+                        {
+                            "name": f"Pull MTO {self.location.display_name} "
+                            f"-> {src_location.display_name}",
+                            "action": "pull",
+                            "picking_type_id": self.outgoing_picking_type.id,
+                            "location_src_id": self.location.id,
+                            "location_dest_id": src_location.id,
+                            "procure_method": "make_to_stock",
+                        }
+                    ),
+                ],
+            }
+        )
+        self.product.route_ids = [
+            Command.clear(),
+            Command.link(test_route.id),
+        ]
+        return src_location, dst_location
+
     def test_procurement_with_analytic(self):
+        src_location, dst_location = self._replace_default_mto_route()
         picking = self._create_picking(
-            self.location,
-            self.dest_location,
+            src_location,
+            dst_location,
             self.outgoing_picking_type,
             self.analytic_distribution,
             procure_method="make_to_order",
@@ -254,9 +314,10 @@ class TestStockPicking(CommonStockPicking):
             )
 
     def test_procurement_without_analytic(self):
+        src_location, dst_location = self._replace_default_mto_route()
         picking = self._create_picking(
-            self.location,
-            self.dest_location,
+            src_location,
+            dst_location,
             self.outgoing_picking_type,
             analytic_distribution=False,
             procure_method="make_to_order",
