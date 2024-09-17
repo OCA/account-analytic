@@ -11,6 +11,7 @@
     "website": "https://github.com/OCA/account-analytic",
     "depends": [
         "stock_analytic",
+        "stock_picking_invoicing",
         "base_view_inheritance_extension",
     ],
     "data": [
