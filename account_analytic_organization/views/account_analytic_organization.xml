@@ -1,0 +1,9 @@
+<odoo>
+    <record id="account_analytic_organization_action" model="ir.actions.act_window">
+        <field name="name">Account Analytic Organization</field>
+        <field name="res_model">account.analytic.organization</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="account_analytic_organization" name="Analytic Organization" action="account_analytic_organization_action" parent="account.menu_analytic_accounting" groups="analytic.group_analytic_accounting"/>
+</odoo>
