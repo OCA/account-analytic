@@ -93,7 +93,7 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         account.analytic_policy = policy
 
     def test_optional(self):
-        self._set_analytic_policy("optional")
+        self._set_analytic_policy(False)
         self._create_move(with_analytic=False)
         self._create_move(with_analytic=True)
 
