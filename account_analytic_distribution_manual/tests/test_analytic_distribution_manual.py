@@ -26,7 +26,7 @@ class TestAnalyticDistributionManual(DistributionManualCommon):
                 }
             )
 
-    def test_manual_distribution_analytic_distribution_process(self):
+    def test_manual_distribution_analytic_distribution_process_01(self):
         invoice_form = Form(
             self.env["account.move"].with_context(default_move_type="out_invoice")
         )
@@ -43,6 +43,38 @@ class TestAnalyticDistributionManual(DistributionManualCommon):
             invoice_line.analytic_line_ids.mapped("manual_distribution_id"),
             self.distribution_1,
         )
+
+    def test_manual_distribution_analytic_distribution_process_02(self):
+        invoice_form = Form(
+            self.env["account.move"].with_context(default_move_type="out_invoice")
+        )
+        invoice_form.partner_id = self.partner_a
+        with invoice_form.invoice_line_ids.new() as line_form:
+            line_form.product_id = self.product_a
+        invoice = invoice_form.save()
+        invoice_line = invoice.invoice_line_ids
+        invoice_line.manual_distribution_id = self.distribution_1
+        self.analytic_account_a1.name = "test-1"
+        aa_1 = self.analytic_account_a1
+        self.analytic_account_a2.name = "test-2"
+        aa_2 = self.analytic_account_a2
+        invoice_line.analytic_distribution_import = {
+            "test-1": 20.0,
+            "test-2": 80.0,
+        }
+        self.assertEqual(
+            invoice_line.analytic_distribution,
+            {str(aa_1.id): 20.0, str(aa_2.id): 80.0},
+        )
+        invoice.action_post()
+        self.assertTrue(len(invoice_line.analytic_line_ids), 2)
+        self.assertEqual(
+            invoice_line.analytic_line_ids.mapped("manual_distribution_id"),
+            self.distribution_1,
+        )
+        accounts = invoice_line.analytic_line_ids.mapped("account_id")
+        self.assertIn(aa_1, accounts)
+        self.assertIn(aa_2, accounts)
 
     def test_manual_distribution_analytic_distribution_text(self):
         self.analytic_account_a1.name = "test-1"

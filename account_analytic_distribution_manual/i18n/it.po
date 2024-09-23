@@ -65,6 +65,17 @@ msgstr "Precisione analitica"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_model__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense_split__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__analytic_distribution_import
 msgid "Analytic distribution (importable)"
 msgstr "Distribuzione analitica (importabile)"
 
@@ -101,6 +112,17 @@ msgstr "Creato il"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_analytic_distribution_model__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_move_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_reconcile_model_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_hr_expense__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_hr_expense_split__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_stock_move__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_stock_move_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_stock_scrap__analytic_distribution_import
 msgid ""
 "Defining this field, it will set the analytical distribution in JSON format, "
 "but using the analytic accounts names as keys of the dictionary, so it eases "
