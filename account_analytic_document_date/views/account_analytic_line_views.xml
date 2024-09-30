@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Copyright 2024 (APSL - Nagarro) Miquel Pascual, Bernat Obrador
+ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_account_analytic_line_tree" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="document_date" />
+            </field>
+        </field>
+    </record>
+    <record id="view_account_analytic_line_form" model="ir.ui.view">
+        <field name="name">account.analytic.line.form</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <field name="account_id" position="after">
+                <field name="document_date" />
+            </field>
+        </field>
+    </record>
+
+    <record
+        id="view_account_analytic_line_filter_inherit_document_date"
+        model="ir.ui.view"
+    >
+        <field name="name">Analytic Document Date Search</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="document_date" />
+            </xpath>
+            <xpath expr="//filter[@name='date']" position="after">
+                <filter name="document_date" date="document_date" />
+            </xpath>
+            <xpath expr="//group//filter[@name='group_date']" position="after">
+                <filter
+                    name="group_document_date"
+                    context="{'group_by': 'document_date'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
