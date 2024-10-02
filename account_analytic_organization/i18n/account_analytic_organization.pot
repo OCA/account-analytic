@@ -6,11 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 11:11+0000\n"
-"PO-Revision-Date: 2024-09-18 11:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -25,7 +22,7 @@ msgstr ""
 #. module: account_analytic_organization
 #: model:ir.model,name:account_analytic_organization.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Línea analítica"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_line__analytic_org
@@ -36,27 +33,27 @@ msgstr "Línea analítica"
 #: model_terms:ir.ui.view,arch_db:account_analytic_organization.view_account_analytic_line_search_inherit
 #: model_terms:ir.ui.view,arch_db:account_analytic_organization.view_account_move_line_search_inherit
 msgid "Analytic Organization"
-msgstr "Organitzación Analítica"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model,name:account_analytic_organization.model_res_partner
 msgid "Contact"
-msgstr "Contacto"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__create_date
 msgid "Created on"
-msgstr "Creado el"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__display_name
 msgid "Display Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__id
@@ -66,27 +63,24 @@ msgstr ""
 #. module: account_analytic_organization
 #: model:ir.model,name:account_analytic_organization.model_account_move_line
 msgid "Journal Item"
-msgstr "Apunte contable"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization____last_update
 msgid "Last Modified on"
-msgstr "Última Modificación el"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__write_uid
 msgid "Last Updated by"
-msgstr "Última Actualización por"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__write_date
 msgid "Last Updated on"
-msgstr "Última Actualización el"
+msgstr ""
 
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__name
 msgid "Name"
-msgstr "Nombre"
-
-#~ msgid "Old"
-#~ msgstr "Antiguo"
+msgstr ""
