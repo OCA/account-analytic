@@ -1,0 +1,28 @@
+<odoo>
+    <record id="view_account_analytic_line_tree_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='plan_id']" position="after">
+                <field name="analytic_org" readonly="1" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_search_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.search.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                 <field name="analytic_org" string="Analytic Organization" />
+                <filter
+                    string="Analytic Organization"
+                    name="group_by_analytic_org"
+                    context="{'group_by':'analytic_org'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
