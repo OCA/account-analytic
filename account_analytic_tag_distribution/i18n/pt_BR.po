@@ -43,6 +43,19 @@ msgid "Analytic Tags"
 msgstr "Marcadores Analíticos"
 
 #. module: account_analytic_tag_distribution
+#: model:ir.model.fields,field_description:account_analytic_tag_distribution.field_account_analytic_tag__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr ""
+
+#. module: account_analytic_tag_distribution
+#: model:ir.model.fields,help:account_analytic_tag_distribution.field_account_analytic_tag__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+
+#. module: account_analytic_tag_distribution
 #: model:ir.model,name:account_analytic_tag_distribution.model_account_move_line
 msgid "Journal Item"
 msgstr "Item Diário"
