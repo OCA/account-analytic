@@ -35,6 +35,10 @@
         />
         <field name="arch" type="xml">
 
+            <xpath expr="//group[not(@name) and not(node())]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
             <group name="amount" position="after">
                 <group
                     name="activity_cost"
@@ -43,27 +47,37 @@
                 >
                     <field name="unit_abcost" />
                     <field name="amount_abcost" />
-                    <field
-                        name="parent_id"
-                        readonly="True"
-                        attrs="{'invisible': ('parent_id', '=', False)}"
-                    />
-                    <field
-                        name="child_ids"
-                        readonly="True"
-                        attrs="{'invisible': ('child_ids', '=', False)}"
-                    >
-                        <tree name="child_ids_tree">
-                            <field name="name" />
-                            <field name="unit_amount" />
-                            <field name="amount" />
-                            <field name="unit_abcost" />
-                            <field name="amount_abcost" />
-                        </tree>
-                    </field>
                 </group>
             </group>
 
+            <sheet position="inside">
+                <notebook
+                    attrs="{'invisible': [('parent_id', '=', False),('child_ids', '=', [])]}"
+                >
+                    <page string="Related Analytic Items">
+                        <group>
+                            <field
+                                name="parent_id"
+                                readonly="True"
+                                attrs="{'invisible': [('parent_id', '=', False)]}"
+                            />
+                            <field
+                                name="child_ids"
+                                readonly="True"
+                                attrs="{'invisible': [('child_ids', '=', [])]}"
+                            >
+                                <tree name="child_ids_tree">
+                                    <field name="name" />
+                                    <field name="unit_amount" />
+                                    <field name="amount" />
+                                    <field name="unit_abcost" />
+                                    <field name="amount_abcost" />
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
         </field>
     </record>
 
