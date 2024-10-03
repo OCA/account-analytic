@@ -32,6 +32,19 @@ msgid "Analytic Precision"
 msgstr "Precisión Analítica"
 
 #. module: stock_picking_analytic
+#: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr ""
+
+#. module: stock_picking_analytic
+#: model:ir.model.fields,help:stock_picking_analytic.field_stock_picking__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+
+#. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__manual_distribution_id
 msgid "Manual Distribution"
 msgstr ""
