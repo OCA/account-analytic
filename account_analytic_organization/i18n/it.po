@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_organization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-10-09 10:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
+
+#. module: account_analytic_organization
+#: model:ir.actions.act_window,name:account_analytic_organization.account_analytic_organization_action
+#: model:ir.model,name:account_analytic_organization.model_account_analytic_organization
+msgid "Account Analytic Organization"
+msgstr "Organizzazione analitica conto"
+
+#. module: account_analytic_organization
+#: model:ir.model,name:account_analytic_organization.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Riga analitica"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_line__analytic_org
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_move_line__analytic_org
+#: model:ir.model.fields,field_description:account_analytic_organization.field_res_partner__analytic_org_id
+#: model:ir.model.fields,field_description:account_analytic_organization.field_res_users__analytic_org_id
+#: model:ir.ui.menu,name:account_analytic_organization.account_analytic_organization
+#: model_terms:ir.ui.view,arch_db:account_analytic_organization.view_account_analytic_line_search_inherit
+#: model_terms:ir.ui.view,arch_db:account_analytic_organization.view_account_move_line_search_inherit
+msgid "Analytic Organization"
+msgstr "Organizzazione analitica"
+
+#. module: account_analytic_organization
+#: model:ir.model,name:account_analytic_organization.model_res_partner
+msgid "Contact"
+msgstr "Contatto"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_organization
+#: model:ir.model,name:account_analytic_organization.model_account_move_line
+msgid "Journal Item"
+msgstr "Movimento contabile"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__name
+msgid "Name"
+msgstr "Nome"
