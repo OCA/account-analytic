@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-08-16 09:58+0000\n"
+"PO-Revision-Date: 2024-10-03 17:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -34,7 +34,7 @@ msgstr "Precisione analitica"
 #. module: mrp_stock_analytic
 #: model:ir.model.fields,field_description:mrp_stock_analytic.field_mrp_production__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribuzione analitica (importabile)"
 
 #. module: mrp_stock_analytic
 #: model:ir.model.fields,help:mrp_stock_analytic.field_mrp_production__analytic_distribution_import
@@ -43,6 +43,9 @@ msgid ""
 "but using the analytic accounts names as keys of the dictionary, so it eases "
 "the human input."
 msgstr ""
+"Definendo questo campo, verrà impostata la distribuzione analitica in "
+"formato JSON, ma utilizzando i nomi degli account analitici come chiavi del "
+"dizionario, in modo da semplificare l'inserimento umano."
 
 #. module: mrp_stock_analytic
 #: model:ir.model.fields,field_description:mrp_stock_analytic.field_mrp_production__manual_distribution_id
