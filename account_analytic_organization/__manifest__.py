@@ -1,4 +1,4 @@
-# Copyright 2023 APSL - Nagarro
+# Copyright 2024 APSL - Nagarro
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Account Analytic Organization",
@@ -17,4 +17,5 @@
         "views/account_analytic_organization.xml",
     ],
     "installable": True,
+    "maintainers": ["mpascuall"],
 }
