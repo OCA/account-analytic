@@ -1,9 +1,9 @@
-# Copyright 2023 APSL - Nagarro
+# Copyright 2024 APSL - Nagarro
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Account Analytic Organization",
     "summary": """Adds organization field on the partner so you can use it on your analytic""",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "Analytic Accounting",
     "license": "AGPL-3",
     "author": "Miquel Pascual, Bernat Obrador, Odoo Community Association (OCA)",
@@ -17,4 +17,5 @@
         "views/account_analytic_organization.xml",
     ],
     "installable": True,
+    "maintainers": ["mpascuall"],
 }
