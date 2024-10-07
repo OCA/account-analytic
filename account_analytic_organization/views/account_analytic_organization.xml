@@ -3,8 +3,9 @@
     <field name="name">account.analytic.organization.tree</field>
     <field name="model">account.analytic.organization</field>
     <field name="arch" type="xml">
-        <tree editable="top">  <!-- O editable="top" -->
+        <tree editable="top">
             <field name="name" />
+            <field name="company_id" />
         </tree>
     </field>
     </record>
