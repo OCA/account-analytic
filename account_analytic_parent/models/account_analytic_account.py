@@ -17,7 +17,7 @@ class AccountAnalyticAccount(models.Model):
     _parent_store = True
     _order = "complete_name"
 
-    parent_path = fields.Char(index=True, unaccent=False)
+    parent_path = fields.Char(index=True)
     parent_id = fields.Many2one(
         string="Parent Analytic Account",
         comodel_name="account.analytic.account",
@@ -93,9 +93,8 @@ class AccountAnalyticAccount(models.Model):
 
     @api.constrains("parent_id")
     def check_recursion(self):
-        for account in self:
-            if not super(AccountAnalyticAccount, account)._check_recursion():
-                raise UserError(_("You can not create recursive analytic accounts."))
+        if self._has_cycle():
+            raise UserError(_("You can not create recursive analytic accounts."))
         return True
 
     @api.onchange("parent_id")
