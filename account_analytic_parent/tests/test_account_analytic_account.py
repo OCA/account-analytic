@@ -11,68 +11,67 @@ from odoo.tests.common import TransactionCase
 
 
 class TestAccountAnalyticRecursion(TransactionCase):
-    def setUp(self):
-        super().setUp()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
 
-        self.analytic_account_obj = self.env["account.analytic.account"]
-        self.analytic_line_obj = self.env["account.analytic.line"]
-        self.partner1 = self.env.ref("base.res_partner_1")
-        self.partner2 = self.env.ref("base.res_partner_2")
-        self.plan = self.env.ref("analytic.analytic_plan_departments")
-        self.analytic_parent1 = self.create_analytic_account(
+        cls.analytic_account_obj = cls.env["account.analytic.account"]
+        cls.analytic_line_obj = cls.env["account.analytic.line"]
+        cls.partner1 = cls.env.ref("base.res_partner_1")
+        cls.partner2 = cls.env.ref("base.res_partner_2")
+        cls.plan = cls.env.ref("analytic.analytic_plan_departments")
+        cls.analytic_parent1 = cls.create_analytic_account(
             {
                 "name": "parent aa",
                 "code": "01",
-                "partner_id": self.partner1.id,
-                "plan_id": self.plan.id,
+                "partner_id": cls.partner1.id,
+                "plan_id": cls.plan.id,
             }
         )
-        self.analytic_son = self.create_analytic_account(
+        cls.analytic_son = cls.create_analytic_account(
             {
                 "name": "son aa",
                 "code": "02",
-                "parent_id": self.analytic_parent1.id,
-                "plan_id": self.plan.id,
+                "parent_id": cls.analytic_parent1.id,
+                "plan_id": cls.plan.id,
             }
         )
-        self.analytic_parent2 = self.create_analytic_account(
+        cls.analytic_parent2 = cls.create_analytic_account(
             {
                 "name": "parent2 aa",
                 "code": "01",
-                "partner_id": self.partner2.id,
-                "plan_id": self.plan.id,
+                "partner_id": cls.partner2.id,
+                "plan_id": cls.plan.id,
             }
         )
-        self.analytic_parent3 = self.create_analytic_account(
+        cls.analytic_parent3 = cls.create_analytic_account(
             {
                 "name": "parent3 aa",
                 "code": "01",
-                "partner_id": self.partner2.id,
-                "plan_id": self.plan.id,
+                "partner_id": cls.partner2.id,
+                "plan_id": cls.plan.id,
             }
         )
-        self.analytic_son2 = self.create_analytic_account(
+        cls.analytic_son2 = cls.create_analytic_account(
             {
                 "name": "son aa",
                 "code": "02",
-                "parent_id": self.analytic_parent3.id,
-                "plan_id": self.plan.id,
+                "parent_id": cls.analytic_parent3.id,
+                "plan_id": cls.plan.id,
             }
         )
-        self.create_analytic_line("Analytic line son", self.analytic_son, 50)
-        self.create_analytic_line("Analytic line parent1", self.analytic_parent1, 100)
-        self.create_analytic_line("Analytic line parent2", self.analytic_parent2, 50)
-        self.create_analytic_line("Analytic line son2", self.analytic_son2, -50)
-        self.assertEqual(
-            self.analytic_parent1.debit, 0, "Analytic account in the debit side"
-        )
-        self.assertEqual(self.analytic_parent3.debit, 50)
+        cls.create_analytic_line("Analytic line son", cls.analytic_son, 50)
+        cls.create_analytic_line("Analytic line parent1", cls.analytic_parent1, 100)
+        cls.create_analytic_line("Analytic line parent2", cls.analytic_parent2, 50)
+        cls.create_analytic_line("Analytic line son2", cls.analytic_son2, -50)
 
+    @classmethod
     def create_analytic_account(self, values):
         if hasattr(self.analytic_account_obj, "_default_code"):
             values.pop("code")
         return self.analytic_account_obj.create(values)
 
+    @classmethod
     def create_analytic_line(self, name, analytic, amount):
         return self.analytic_line_obj.create(
             {
@@ -82,6 +81,12 @@ class TestAccountAnalyticRecursion(TransactionCase):
                 "auto_account_id": analytic.id,
             }
         )
+
+    def test_analytic_account_debit(self):
+        self.assertEqual(
+            self.analytic_parent1.debit, 0, "Analytic account in the debit side"
+        )
+        self.assertEqual(self.analytic_parent3.debit, 50)
 
     def test_recursion(self):
         with self.assertRaises(UserError):
