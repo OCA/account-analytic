@@ -49,7 +49,8 @@ class AnalyticMixin(models.AbstractModel):
             return manual_distribution_field_name in self.env[model]._fields
 
         def _merge_view_fields(all_models, new_models):
-            """Merge new_models into all_models. Both are {modelname(str) ➔ fields(tuple)}."""
+            """Merge new_models into all_models.
+            Both are {modelname(str) ➔ fields(tuple)}."""
             for model, view_fields in new_models.items():
                 if model in all_models:
                     all_models[model] = tuple(set(all_models[model]) | set(view_fields))
@@ -67,7 +68,7 @@ class AnalyticMixin(models.AbstractModel):
                 for node in root_node:
                     add_field(node, view_type, result.get("model"))
             # check fields one2many
-            for (res_model, field_list) in result["models"].items():
+            for res_model, field_list in result["models"].items():
                 for field_name in field_list:
                     if field_name not in self.env[res_model]._fields:
                         continue

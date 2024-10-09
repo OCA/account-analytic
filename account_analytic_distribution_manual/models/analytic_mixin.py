@@ -14,8 +14,8 @@ class AnalyticMixin(models.AbstractModel):
         readonly=False,
         string="Analytic distribution (importable)",
         help="Defining this field, it will set the analytical distribution in JSON "
-        "format, but using the analytic accounts names as keys of the dictionary, so it "
-        "eases the human input.",
+        "format, but using the analytic accounts names as keys of the dictionary, so "
+        "it eases the human input.",
     )
 
     @api.depends("analytic_distribution")

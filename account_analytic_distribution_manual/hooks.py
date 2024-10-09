@@ -133,7 +133,8 @@ def post_init_hook(cr, registry):
         FROM
             counted_tags tag
             INNER JOIN
-                account_analytic_distribution distribution ON tag.id = distribution.tag_id;
+                account_analytic_distribution distribution
+                ON tag.id = distribution.tag_id;
 
         """
         env.cr.execute(sql)
