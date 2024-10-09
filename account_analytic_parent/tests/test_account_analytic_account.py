@@ -127,6 +127,6 @@ class TestAccountAnalyticRecursion(TransactionCase):
             self.analytic_son.toggle_active()
 
     def test_name(self):
-        display_name = "[%s] parent aa / son aa" % self.analytic_son.code
+        display_name = f"[{self.analytic_son.code}] parent aa / son aa"
         self.assertEqual(self.analytic_son.complete_name, "parent aa / son aa")
         self.assertEqual(self.analytic_son.display_name, display_name)
