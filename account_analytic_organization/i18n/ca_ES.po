@@ -6,11 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 11:09+0000\n"
-"PO-Revision-Date: 2024-09-18 11:09+0000\n"
+"POT-Creation-Date: 2024-10-07 10:40+0000\n"
+"PO-Revision-Date: 2024-10-07 10:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -20,7 +19,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:account_analytic_organization.account_analytic_organization_action
 #: model:ir.model,name:account_analytic_organization.model_account_analytic_organization
 msgid "Account Analytic Organization"
-msgstr ""
+msgstr "Organització Analítica"
 
 #. module: account_analytic_organization
 #: model:ir.model,name:account_analytic_organization.model_account_analytic_line
@@ -37,6 +36,11 @@ msgstr "Línia analítica"
 #: model_terms:ir.ui.view,arch_db:account_analytic_organization.view_account_move_line_search_inherit
 msgid "Analytic Organization"
 msgstr "Organització Analítica"
+
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__company_id
+msgid "Company"
+msgstr "Empresa"
 
 #. module: account_analytic_organization
 #: model:ir.model,name:account_analytic_organization.model_res_partner
@@ -88,5 +92,7 @@ msgstr "Darrera Actualització el"
 msgid "Name"
 msgstr "Nom"
 
-#~ msgid "Old"
-#~ msgstr "Antic"
+#. module: account_analytic_organization
+#: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__old_id
+msgid "Old"
+msgstr "Antiga"
