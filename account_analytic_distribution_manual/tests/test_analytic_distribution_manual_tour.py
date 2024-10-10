@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo.tests import RecordCapturer, new_test_user, tagged
-from odoo.tests.common import HttpCase, users
+from odoo.tests.common import HttpCase
 
 from odoo.addons.account_analytic_distribution_manual.tests.common import (
     DistributionManualCommon,
@@ -20,7 +20,6 @@ class TestAnalyticDistributionManual(DistributionManualCommon, HttpCase):
             groups="analytic.group_analytic_accounting,account.group_account_invoice",
         )
 
-    @users("analytic-manual-distribution-user")
     def test_manual_distribution_tour(self):
         with RecordCapturer(
             self.env["account.move"], [("move_type", "=", "out_invoice")]
@@ -28,7 +27,7 @@ class TestAnalyticDistributionManual(DistributionManualCommon, HttpCase):
             self.start_tour(
                 "/web",
                 "account_analytic_distribution_manual",
-                login="analytic-manual-distribution-user",
+                login="admin",
             )
         invoice = capt.records
         self.assertEqual(invoice.partner_id, self.partner_a)

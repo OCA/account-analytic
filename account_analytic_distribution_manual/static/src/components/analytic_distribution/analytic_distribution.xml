@@ -4,9 +4,8 @@
         id="analytic_distribution_inherit"
         t-inherit="analytic.AnalyticDistributionPopup"
         t-inherit-mode="extension"
-        owl="1"
     >
-        <xpath expr="//span[@t-if='!sortedList.length']" position="before">
+        <xpath expr="//span[@t-if='!allPlans.length']" position="before">
             <div class="pb-4 border-bottom">
                 <strong>Manual distribution</strong>
                 <AutoComplete

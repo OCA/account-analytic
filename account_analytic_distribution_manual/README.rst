@@ -84,6 +84,10 @@ Contributors
 
    -  Carlos Lopez
 
+-  APSL - Nagarro <https://apsl.tech>
+
+   -  Bernat Obrador
+
 Maintainers
 -----------
 

@@ -1,7 +1,7 @@
 # Copyright 2024 Tecnativa - Carlos Lopez
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import SUPERUSER_ID, api, tools
+from odoo import tools
 
 # metadata for all models related to account_analytic_tag(m2m)
 # add more models if needed
@@ -105,37 +105,40 @@ RELATION_M2M_INFO = {
 }
 
 
-def post_init_hook(cr, registry):
-    if tools.table_exists(cr, "account_analytic_tag"):
-        env = api.Environment(cr, SUPERUSER_ID, {})
+def post_init_hook(env):
+    if tools.table_exists(env.cr, "account_analytic_tag"):
         DistributionManual = env["account.analytic.distribution.manual"]
         sql = """
-        WITH counted_tags AS (
+            WITH counted_tags AS (
+                SELECT
+                    tag.id,
+                    tag.name,
+                    tag.active,
+                    tag.company_id,
+                    ROW_NUMBER() OVER (PARTITION BY tag.name ORDER BY tag.id)
+                    AS row_count
+                FROM account_analytic_tag tag
+            )
+
             SELECT
+                CASE
+                    WHEN row_count = 1 THEN tag.name
+                    ELSE CONCAT(tag.name, ' (', tag.id, ')')
+                END AS name,
                 tag.id,
-                tag.name,
                 tag.active,
                 tag.company_id,
-                ROW_NUMBER() OVER (PARTITION BY tag.name ORDER BY tag.id) AS row_count
-            FROM account_analytic_tag tag
-            WHERE tag.active_analytic_distribution = true
-        )
-        SELECT
-            CASE
-                WHEN row_count = 1 THEN tag.name
-                ELSE CONCAT(tag.name, ' (', tag.id, ')')
-            END AS name,
-            tag.id,
-            tag.active,
-            tag.company_id,
-            distribution.account_id,
-            distribution.percentage
-        FROM
-            counted_tags tag
-            INNER JOIN
-                account_analytic_distribution distribution
-                ON tag.id = distribution.tag_id;
-
+                distribution.account_id,
+                distribution.percentage
+            FROM
+                counted_tags tag
+                INNER JOIN account_analytic_tag_account_move_line_rel rel ON
+                rel.account_analytic_tag_id = tag.id
+                INNER JOIN account_move_line line ON
+                line.id = rel.account_move_line_id
+                CROSS JOIN LATERAL jsonb_each(line.analytic_distribution)
+                AS distribution(account_id, percentage)
+          ;
         """
         env.cr.execute(sql)
         distribution_by_tag = {}
@@ -167,6 +170,7 @@ def post_init_hook(cr, registry):
             if (
                 res_model_name in env
                 and "manual_distribution_id" in env[res_model_name]._fields
+                and tools.table_exists(env.cr, table_m2m)
             ):
                 sql = f"""
                 SELECT {column1}, {column2}
