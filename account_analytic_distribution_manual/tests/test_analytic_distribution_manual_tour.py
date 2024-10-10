@@ -9,7 +9,7 @@ from odoo.addons.account_analytic_distribution_manual.tests.common import (
 )
 
 
-@tagged("post_install", "-at_install")
+@tagged("post_install", "-at_install", "mi_tag")
 class TestAnalyticDistributionManual(DistributionManualCommon, HttpCase):
     @classmethod
     def setUpClass(cls):
@@ -33,11 +33,15 @@ class TestAnalyticDistributionManual(DistributionManualCommon, HttpCase):
         invoice = capt.records
         self.assertEqual(invoice.partner_id, self.partner_a)
         self.assertEqual(len(invoice.invoice_line_ids.analytic_line_ids), 2)
+
+        account_id_field = self.plan_a._column_name()
+
         analytic_line1 = invoice.invoice_line_ids.analytic_line_ids.filtered(
-            lambda x: x.account_id == self.analytic_account_a1
+            lambda x: getattr(x, account_id_field) == self.analytic_account_a1
         )
         self.assertEqual(analytic_line1.amount, 40)
+
         analytic_line2 = invoice.invoice_line_ids.analytic_line_ids.filtered(
-            lambda x: x.account_id == self.analytic_account_a2
+            lambda x: getattr(x, account_id_field) == self.analytic_account_a2
         )
         self.assertEqual(analytic_line2.amount, 60)

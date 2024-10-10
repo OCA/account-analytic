@@ -6,9 +6,7 @@ from odoo import fields, models
 class AccountInvoiceReport(models.Model):
     _inherit = "account.invoice.report"
 
-    manual_distribution_id = fields.Many2one(
-        "account.analytic.distribution.manual", readonly=True
-    )
+    manual_distribution_id = fields.Many2one("account.analytic.distribution.manual")
 
     def _select(self):
         return super()._select() + ", line.manual_distribution_id"
