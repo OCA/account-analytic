@@ -1,0 +1,231 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_distribution_manual
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-15 12:54+0000\n"
+"PO-Revision-Date: 2024-10-15 12:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_distribution_manual
+#. odoo-python
+#: code:addons/account_analytic_distribution_manual/models/account_analytic_distribution_manual.py:0
+#, python-format
+msgid "%s (Copy)"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_distribution_manual
+msgid "Account analytic distribution manual"
+msgstr "Distribució Analítica Manual"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__active
+msgid "Active"
+msgstr "Actiu"
+
+#. module: account_analytic_distribution_manual
+#: model_terms:ir.actions.act_window,help:account_analytic_distribution_manual.action_account_analytic_distribution_manual
+msgid "Add a new Manual Analytic Distributions"
+msgstr "Afegir una nova Distribució Analítica Manual"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Distribució Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr "Cerca de Distribució Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línia Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_analytic_mixin
+msgid "Analytic Mixin"
+msgstr "Combinació Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisión Analítica"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_model__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_bom__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_production__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_workcenter__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr "Distribució analítica (importable)"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_line__manual_distribution_id
+msgid "Analytic distribution manual"
+msgstr "Distribució analítica manual"
+
+#. module: account_analytic_distribution_manual
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_search
+msgid "Archived"
+msgstr "Arxivat"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_base
+msgid "Base"
+msgstr "Base"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__company_id
+msgid "Company"
+msgstr "Companyia"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__create_date
+msgid "Created on"
+msgstr "Creat el"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_analytic_distribution_model__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_move_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_reconcile_model_line__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_mrp_bom__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_mrp_production__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_mrp_workcenter__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+"Definint aquest camp, es definirà la distribució analítica en format JSON, "
+"utilitzant els noms dels comptes analítics com a claus del diccionari, així "
+"facilitant l'entrada per part de l'usuari."
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__display_name
+msgid "Display Name"
+msgstr "Nom a mostrar"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_invoice_report
+msgid "Invoices Statistics"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model,name:account_analytic_distribution_manual.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__write_uid
+msgid "Last Updated by"
+msgstr "Última actualització per"
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__write_date
+msgid "Last Updated on"
+msgstr "Última actualització el"
+
+#. module: account_analytic_distribution_manual
+#. odoo-javascript
+#: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.esm.js:0
+#, python-format
+msgid "Loading..."
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.actions.act_window,name:account_analytic_distribution_manual.action_account_analytic_distribution_manual
+#: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
+msgid "Manual Analytic Distributions"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_model__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_invoice_report__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_bom__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_production__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_workcenter__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__manual_distribution_id
+msgid "Manual Distribution"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#. odoo-javascript
+#: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.xml:0
+#, python-format
+msgid "Manual distribution"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: account_analytic_distribution_manual
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
+msgid "Name..."
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#. odoo-javascript
+#: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.esm.js:0
+#, python-format
+msgid "No Analytic Distribution Manual found"
+msgstr ""
+
+#. module: account_analytic_distribution_manual
+#: model:ir.model.constraint,message:account_analytic_distribution_manual.constraint_account_analytic_distribution_manual_unique_name_by_company
+msgid "The name must be unique per Company!"
+msgstr ""
+
+#~ msgid "Type"
+#~ msgstr "Tipus"
+
+#~ msgid "Sequence"
+#~ msgstr "Seqüència"
+
+#~ msgid "Price"
+#~ msgstr "Preu"
+
+#~ msgid "Total Amount"
+#~ msgstr "Import Total"
+
+#~ msgid "Analytic Account"
+#~ msgstr "Compte Analític"
+
+#~ msgid "Amount"
+#~ msgstr "Import"

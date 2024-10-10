@@ -1,6 +1,5 @@
 # Copyright 2024 Tecnativa - Carlos Lopez
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-import json
 
 from lxml import etree
 
@@ -35,12 +34,13 @@ class AnalyticMixin(models.AbstractModel):
 
         def add_field(node, view_type, res_model):
             attribute = "column_invisible" if view_type == "tree" else "invisible"
-            modifiers = json.dumps({attribute: True})
             field_options = {
                 "name": manual_distribution_field_name,
-                "modifiers": modifiers,
             }
             field_element = etree.SubElement(node, "field", field_options)
+            # Now, attributes need to be set directly on the 'field_element'.
+            # If they are passed through 'field_options', it won't work correctly.
+            field_element.set(attribute, "1")
             new_arch, new_models = View.postprocess_and_fields(field_element, res_model)
             _merge_view_fields(all_models, new_models)
             return field_element

@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -37,7 +37,7 @@ msgstr ""
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
-msgid "Analytic"
+msgid "Analytic Distribution"
 msgstr ""
 
 #. module: account_analytic_distribution_manual
@@ -66,13 +66,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense__analytic_distribution_import
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense_split__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_bom__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_production__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_workcenter__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move__analytic_distribution_import
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__analytic_distribution_import
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__analytic_distribution_import
 msgid "Analytic distribution (importable)"
 msgstr ""
 
@@ -113,13 +110,10 @@ msgstr ""
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_move_line__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_reconcile_model_line__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
-#: model:ir.model.fields,help:account_analytic_distribution_manual.field_hr_expense__analytic_distribution_import
-#: model:ir.model.fields,help:account_analytic_distribution_manual.field_hr_expense_split__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_mrp_bom__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_mrp_production__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_mrp_workcenter__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
-#: model:ir.model.fields,help:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
-#: model:ir.model.fields,help:account_analytic_distribution_manual.field_stock_move__analytic_distribution_import
-#: model:ir.model.fields,help:account_analytic_distribution_manual.field_stock_move_line__analytic_distribution_import
-#: model:ir.model.fields,help:account_analytic_distribution_manual.field_stock_scrap__analytic_distribution_import
 msgid ""
 "Defining this field, it will set the analytical distribution in JSON format,"
 " but using the analytic accounts names as keys of the dictionary, so it "
@@ -144,11 +138,6 @@ msgstr ""
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_move_line
 msgid "Journal Item"
-msgstr ""
-
-#. module: account_analytic_distribution_manual
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: account_analytic_distribution_manual
@@ -181,13 +170,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_reconcile_model_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__manual_distribution_id
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense__manual_distribution_id
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense_split__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_bom__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_production__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_mrp_workcenter__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__manual_distribution_id
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__manual_distribution_id
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move__manual_distribution_id
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__manual_distribution_id
-#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__manual_distribution_id
 msgid "Manual Distribution"
 msgstr ""
 

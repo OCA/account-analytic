@@ -72,9 +72,17 @@ class TestAnalyticDistributionManual(DistributionManualCommon):
             invoice_line.analytic_line_ids.mapped("manual_distribution_id"),
             self.distribution_1,
         )
-        accounts = invoice_line.analytic_line_ids.mapped("account_id")
-        self.assertIn(aa_1, accounts)
-        self.assertIn(aa_2, accounts)
+        # In this case, the analytic account ID is stored in
+        # the field x_plan{self.plan_a.id}_id,
+        # not in the account_id field. The account_id field
+        # only contains the ID of the analytic
+        # account from the first plan (Projects),
+        # or the plan with ID = 1.
+        account_by_plan = invoice_line.analytic_line_ids.mapped(
+            f"x_plan{self.plan_a.id}_id"
+        )
+        self.assertIn(aa_1, account_by_plan)
+        self.assertIn(aa_2, account_by_plan)
 
     def test_manual_distribution_analytic_distribution_text(self):
         self.analytic_account_a1.name = "test-1"

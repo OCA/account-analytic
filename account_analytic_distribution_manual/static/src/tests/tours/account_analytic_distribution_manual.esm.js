@@ -1,20 +1,13 @@
 /** @odoo-module */
 
-import tour from "web_tour.tour";
+import {registry} from "@web/core/registry";
+import {stepUtils} from "@web_tour/tour_service/tour_utils";
 
-tour.register(
-    "account_analytic_distribution_manual",
-    {
-        test: true,
-        url: "/web",
-    },
-    [
-        tour.stepUtils.showAppsMenuItem(),
-        {
-            id: "account_menu_click",
-            content: "Go to Invoicing",
-            trigger: '.o_app[data-menu-xmlid="account.menu_finance"]',
-        },
+registry.category("web_tour.tours").add("account_analytic_distribution_manual", {
+    test: true,
+    url: "/web",
+    steps: () => [
+        ...stepUtils.goToAppSteps("account.menu_finance", ""),
         {
             content: "Go to Customers",
             trigger: 'span:contains("Customers")',
@@ -24,9 +17,8 @@ tour.register(
             trigger: 'a:contains("Invoices")',
         },
         {
-            extra_trigger: '.breadcrumb:contains("Invoices")',
             content: "Create new invoice",
-            trigger: ".o_list_button_add",
+            trigger: "button.o_list_button_add",
         },
         {
             content: "Add Customer",
@@ -61,8 +53,9 @@ tour.register(
         {
             content: "Select analytic_distribution",
             trigger:
-                'div[name="invoice_line_ids"] .o_selected_row div.o_field_analytic_distribution[name="analytic_distribution"]',
+                'div[name="invoice_line_ids"] .o_selected_row .o_analytic_distribution_cell',
         },
+
         {
             content: "Type Manual Distribution 1",
             trigger:
@@ -74,11 +67,17 @@ tour.register(
             trigger:
                 'div[name="invoice_line_ids"] .o_selected_row .analytic_distribution_popup li a:contains("Manual Distribution 1")',
         },
+        // The tour steps execute faster than the time it takes for JavaScript
+        // to set the distribution. This can cause the distribution step to
+        // not be fully completed before moving to the next step.
+        // To address this, we introduce a 1-second delay (1000 milliseconds)
+        // to give enough time for the distribution process to complete
+        // before closing the popup.
         {
-            content: "Apply selected Option",
+            content: "Wait 1 second before closing popup",
             trigger:
                 'div[name="invoice_line_ids"] .o_selected_row .analytic_distribution_popup input[id="analytic_manual_distribution"]',
-            run: "click",
+            run: () => new Promise((resolve) => setTimeout(resolve, 1000)),
         },
         // Compatibility with analytic_distribution_widget_remove_save
         // this module remove buttons
@@ -99,6 +98,6 @@ tour.register(
             run: "click",
         },
         // Save account.move
-        ...tour.stepUtils.saveForm(),
-    ]
-);
+        ...stepUtils.saveForm(),
+    ],
+});

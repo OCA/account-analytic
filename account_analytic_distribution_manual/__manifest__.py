@@ -4,7 +4,7 @@
 {
     "name": "Account analytic distribution manual",
     "summary": "Account analytic distribution manual",
-    "version": "16.0.2.4.0",
+    "version": "17.0.1.0.0",
     "license": "AGPL-3",
     "website": "https://github.com/OCA/account-analytic",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -24,5 +24,4 @@
         ],
     },
     "installable": True,
-    "post_init_hook": "post_init_hook",
 }
