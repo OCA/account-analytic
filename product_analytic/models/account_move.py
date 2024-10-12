@@ -26,7 +26,12 @@ class AccountMoveLine(models.Model):
             return res
         for line in self:
             inv_type = line.move_id.move_type
-            if line.product_id and inv_type and inv_type != "entry":
+            if (
+                line.product_id
+                and not line.analytic_distribution
+                and inv_type
+                and inv_type != "entry"
+            ):
                 ana_accounts = (
                     line.product_id.product_tmpl_id._get_product_analytic_accounts()
                 )

@@ -240,3 +240,54 @@ class TestAccountInvoiceLine(TransactionCase):
             int(analytic_account_id[0]),
             self.analytic_account2.id,
         )
+
+    def test_create_out_copy(self):
+        # Create invoice with product default analytic distribution
+        invoice = self.env["account.move"].create(
+            [
+                {
+                    "partner_id": self.partner.id,
+                    "journal_id": self.journal_sale.id,
+                    "move_type": "out_invoice",
+                    "invoice_line_ids": [
+                        Command.create(
+                            {
+                                "name": "Test line",
+                                "quantity": 1,
+                                "price_unit": 50,
+                                "account_id": self.account_out.id,
+                                "product_id": self.product.id,
+                            }
+                        )
+                    ],
+                }
+            ]
+        )
+        invoice_line = invoice.invoice_line_ids[0]
+        analytic_account_id = [key for key in invoice_line.analytic_distribution]
+        self.assertEqual(
+            int(analytic_account_id[0]),
+            self.product.income_analytic_account_id.id,
+        )
+        # Modify the analytic distribution
+        invoice_line.analytic_distribution = {
+            self.analytic_account2.id: 100,
+        }
+        analytic_account_id = [key for key in invoice_line.analytic_distribution]
+        self.assertEqual(
+            int(analytic_account_id[0]),
+            self.analytic_account2.id,
+        )
+        # Duplicate the invoice to check the analytic distribution is copied
+        new_invoice = invoice.copy()
+        new_invoice_line = new_invoice.invoice_line_ids[0]
+        analytic_account_id = [key for key in new_invoice_line.analytic_distribution]
+        self.assertNotEqual(
+            int(analytic_account_id[0]),
+            self.product.income_analytic_account_id.id,
+            "The analytic distribution should be copied, not recomputed.",
+        )
+        self.assertEqual(
+            int(analytic_account_id[0]),
+            self.analytic_account2.id,
+        )
