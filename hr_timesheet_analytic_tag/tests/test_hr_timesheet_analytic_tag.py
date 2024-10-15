@@ -13,7 +13,7 @@ class TestHrTimesheetAnalyticTag(common.TransactionCase):
         cls.user = new_test_user(
             cls.env,
             login="test-user",
-            groups="hr_timesheet.group_hr_timesheet_user",
+            groups="hr_timesheet.group_hr_timesheet_user,account_analytic_tag.group_analytic_tags,account.group_account_manager",
         )
         cls.employee = cls.env["hr.employee"].create(
             {
@@ -31,7 +31,6 @@ class TestHrTimesheetAnalyticTag(common.TransactionCase):
         cls.plan = cls.env["account.analytic.plan"].create(
             {
                 "name": "Projects Plan",
-                "company_id": False,
             }
         )
         cls.analytic_account_1 = cls.env["account.analytic.account"].create(
