@@ -29,7 +29,7 @@ Account Analytic Required
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module adds an option *analytic policy* on accounts.
-You have the choice between 4 policies : *always*, *never*, *posted moves* and *optional*.
+You have the choice between 4 policies : *always*, *never*, *posted moves* and empty (*optional*).
 
 **Table of contents**
 
@@ -79,6 +79,7 @@ Contributors
 * `Trobz <https://trobz.com>`_:
 
     * Nguyễn Minh Chiến <chien@trobz.com>
+* Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
 
 Other credits
 ~~~~~~~~~~~~~

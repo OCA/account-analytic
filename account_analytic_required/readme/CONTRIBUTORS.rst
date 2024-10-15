@@ -10,3 +10,4 @@
 * `Trobz <https://trobz.com>`_:
 
     * Nguyễn Minh Chiến <chien@trobz.com>
+* Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
