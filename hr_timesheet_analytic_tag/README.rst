@@ -63,6 +63,10 @@ Contributors
    -  Víctor Martínez
    -  Pedro M. Baeza
 
+-  APSL - Nagarro <https://apsl.tech>
+
+   -  Bernat Obrador
+
 Maintainers
 -----------
 
