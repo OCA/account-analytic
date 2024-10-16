@@ -1,0 +1,1 @@
+odoo-addon-account_analytic_distribution_manual @ git+https://github.com/OCA/account-analytic.git@refs/pull/700/head#subdirectory=account_analytic_distribution_manual
