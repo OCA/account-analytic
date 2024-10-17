@@ -1,0 +1,46 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_distribution_manual_date
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-14 13:14+0000\n"
+"PO-Revision-Date: 2024-10-14 13:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_distribution_manual_date
+#: model:ir.model,name:account_analytic_distribution_manual_date.model_account_analytic_distribution_manual
+msgid "Account analytic distribution manual"
+msgstr "Distribució Analítica Manual"
+
+#. module: account_analytic_distribution_manual_date
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual_date.view_account_analytic_distribution_manual_form_inherit
+msgid "Distribution Dates"
+msgstr "Dates de Distribució"
+
+#. module: account_analytic_distribution_manual_date
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual_date.field_account_analytic_distribution_manual__end_date
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual_date.view_account_analytic_distribution_manual_form_inherit
+msgid "End Date"
+msgstr "Data de Fi"
+
+#. module: account_analytic_distribution_manual_date
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual_date.field_account_analytic_distribution_manual__start_date
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual_date.view_account_analytic_distribution_manual_form_inherit
+msgid "Start Date"
+msgstr "Data d'Inici"
+
+#. module: account_analytic_distribution_manual_date
+#. odoo-python
+#: code:addons/account_analytic_distribution_manual_date/models/account_move.py:0
+#: code:addons/account_analytic_distribution_manual_date/models/account_move.py:0
+#, python-format
+msgid "The invoice date %s is outside the manual distribution period %s - %s."
+msgstr "La data de la factura %s està fora del període de la distribució manual %s - %s."
