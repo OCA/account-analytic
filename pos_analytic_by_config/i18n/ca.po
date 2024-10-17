@@ -1,0 +1,60 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * pos_analytic_by_config
+#
+# Translators:
+# Carles Antoli <carlesantoli@hotmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-13 23:06+0000\n"
+"PO-Revision-Date: 2022-03-21 13:17+0000\n"
+"Last-Translator: Noel estudillo <noelestudilloviera@gmail.com>\n"
+"Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_order
+msgid "Point of Sale Orders"
+msgstr "Comandes al punt de venda"
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_session
+msgid "Point of Sale Session"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Pos Config"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Select a Point of Sale for which the analytic distribution will be used"
+msgstr ""
+
+#~ msgid "Analytic Account"
+#~ msgstr "Compte analític"
+
+#~ msgid "Analytic Account for this config."
+#~ msgstr "Compte analític per a aquesta configuració."
+
+#~ msgid "Analytic Account that these orders link to"
+#~ msgstr "Compte analític al qual enllacen aquestes comandes"
+
+#~ msgid "Point of Sale Configuration"
+#~ msgstr "Configuració del punt de venda"
+
+#~ msgid "Invoice Line"
+#~ msgstr "Línia de factura"

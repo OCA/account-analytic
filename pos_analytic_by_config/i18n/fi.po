@@ -1,0 +1,47 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * pos_analytic_by_config
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-06 02:55+0000\n"
+"PO-Revision-Date: 2017-04-06 02:55+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Finnish (https://www.transifex.com/oca/teams/23907/fi/)\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_order
+msgid "Point of Sale Orders"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model,name:pos_analytic_by_config.model_pos_session
+msgid "Point of Sale Session"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Pos Config"
+msgstr ""
+
+#. module: pos_analytic_by_config
+#: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
+msgid "Select a Point of Sale for which the analytic distribution will be used"
+msgstr ""
+
+#~ msgid "Analytic Account"
+#~ msgstr "Analyyttinen tili"
