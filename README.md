@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [account_analytic_tag](account_analytic_tag/) | 17.0.1.0.0 |  | Account Analytic Tag
 [analytic_base_department](analytic_base_department/) | 17.0.1.0.0 |  | Add relationship between Analytic and Department
 [analytic_partner](analytic_partner/) | 17.0.1.0.0 |  | Search and group analytic entries by partner
+[hr_timesheet_analytic_tag](hr_timesheet_analytic_tag/) | 17.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Hr Timesheet Analytic Tag
 [mrp_stock_analytic](mrp_stock_analytic/) | 17.0.1.0.0 |  | MRP Stock Analytic
 [stock_analytic](stock_analytic/) | 17.0.1.1.0 |  | Adds analytic distribution in stock move
 [stock_picking_analytic](stock_picking_analytic/) | 17.0.1.0.0 |  | Allows to define the analytic account on picking level
