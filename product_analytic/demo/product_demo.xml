@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright 2017 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
+  License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+-->
+<odoo noupdate="1">
+    <record id="product.product_product_1" model="product.product">
+        <field
+            name="income_analytic_account_id"
+            ref="analytic.analytic_our_super_product"
+        />
+        <field
+            name="expense_analytic_account_id"
+            ref="analytic.analytic_our_super_product"
+        />
+    </record>
+    <record id="product.product_product_3" model="product.product">
+        <field
+            name="income_analytic_account_id"
+            ref="analytic.analytic_integration_c2c"
+        />
+        <field name="expense_analytic_account_id" ref="analytic.analytic_agrolait" />
+    </record>
+    <record id="product.product_delivery_01" model="product.product">
+        <field
+            name="income_analytic_account_id"
+            ref="analytic.analytic_our_super_product"
+        />
+        <field
+            name="expense_analytic_account_id"
+            ref="analytic.analytic_our_super_product"
+        />
+    </record>
+    <record id="product.product_product_10" model="product.product">
+        <field name="income_analytic_account_id" ref="analytic.analytic_seagate_p2" />
+        <field name="expense_analytic_account_id" ref="analytic.analytic_seagate_p2" />
+    </record>
+</odoo>
