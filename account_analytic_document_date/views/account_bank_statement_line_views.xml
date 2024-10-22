@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--  Copyright 2024 (APSL - Nagarro) Miquel Pascual, Bernat Obrador
+ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="bank_statement_line_form_reconcile_view_inherit" model="ir.ui.view">
+        <field name="name">bank_statement_line_form_reconcile_view.inherit</field>
+        <field name="model">account.bank.statement.line</field>
+        <field
+            name="inherit_id"
+            ref="account_reconcile_oca.bank_statement_line_form_reconcile_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='manual_partner_id']" position="after">
+                <field
+                    name="document_date"
+                    widget="date"
+                    attrs="{'invisible': [('analytic_distribution', '=', False)], 'readonly': [('is_reconciled', '=', True)]}"
+                    groups="analytic.group_analytic_accounting"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
