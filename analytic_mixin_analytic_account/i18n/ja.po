@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* analytic_mixin_analytic_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-15 09:38+0000\n"
+"PO-Revision-Date: 2023-06-15 09:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: analytic_mixin_analytic_account
+#: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_names
+#: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_analytic_mixin__analytic_account_names
+msgid "Analytic Account Names"
+msgstr "分析勘定名"
+
+#. module: analytic_mixin_analytic_account
+#: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_ids
+#: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_analytic_mixin__analytic_account_ids
+msgid "Analytic Accounts"
+msgstr "分析勘定"
+
+#. module: analytic_mixin_analytic_account
+#: model:ir.model,name:analytic_mixin_analytic_account.model_analytic_mixin
+msgid "Analytic Mixin"
+msgstr ""
+
+#. module: analytic_mixin_analytic_account
+#: model:ir.model.fields,help:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_ids
+#: model:ir.model.fields,help:analytic_mixin_analytic_account.field_analytic_mixin__analytic_account_ids
+msgid "Analytic accounts computed from analytic distribution."
+msgstr "分析分配に指定した分析勘定"
+
+#. module: analytic_mixin_analytic_account
+#: model:ir.model.fields,help:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_names
+#: model:ir.model.fields,help:analytic_mixin_analytic_account.field_analytic_mixin__analytic_account_names
+msgid ""
+"Comma-separated analytic account names, in case it is useful to be included "
+"in the exported data."
+msgstr ""
+"カンマ区切りの分析勘定名(データエクスポート時に分析勘定ごとの行分割を避けたい場合等での使用を想定)"
