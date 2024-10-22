@@ -61,14 +61,6 @@ class TestStockPicking(TransactionCase):
         cls.analytic_distribution = dict(
             {str(cls.env.ref("analytic.analytic_agrolait").id): 100.0}
         )
-        # analytic.analytic_agrolait belongs to analytic.analytic_plan_projects
-        cls.analytic_applicability = cls.env["account.analytic.applicability"].create(
-            {
-                "business_domain": "stock_move",
-                "applicability": "optional",
-                "analytic_plan_id": cls.env.ref("analytic.analytic_plan_projects").id,
-            }
-        )
         cls.warehouse = cls.env.ref("stock.warehouse0")
         cls.location = cls.warehouse.lot_stock_id
         cls.dest_location = cls.env.ref("stock.stock_location_customers")
@@ -85,6 +77,16 @@ class TestStockPicking(TransactionCase):
             }
         )
         cls.product.update({"categ_id": cls.product_categ.id})
+
+    def _create_analytic_applicability(self):
+        # analytic.analytic_agrolait belongs to analytic.analytic_plan_projects
+        return self.env["account.analytic.applicability"].create(
+            {
+                "business_domain": "stock_move",
+                "applicability": "optional",
+                "analytic_plan_id": self.env.ref("analytic.analytic_plan_projects").id,
+            }
+        )
 
     def _create_picking(
         self,
@@ -175,6 +177,17 @@ class TestStockPicking(TransactionCase):
         self._check_analytic_account_no_error(picking)
 
     def test_outgoing_picking_without_analytic_optional(self):
+        # Create a general optional applicability for stock moves.
+        self._create_analytic_applicability()
+        # Create a another applicability which makes the analytic mandatory only for
+        # incoming stock moves. i.e. applicability should be optional for the outgoing
+        applicability_specific = self._create_analytic_applicability()
+        applicability_specific.write(
+            {
+                "stock_picking_type_id": self.incoming_picking_type.id,
+                "applicability": "mandatory",
+            }
+        )
         picking = self._create_picking(
             self.location,
             self.dest_location,
@@ -187,7 +200,15 @@ class TestStockPicking(TransactionCase):
         self._check_no_analytic_account(picking)
 
     def test_outgoing_picking_without_analytic_mandatory(self):
-        self.analytic_applicability.write({"applicability": "mandatory"})
+        # Create a general mandatory applicability for stock moves.
+        applicability_general = self._create_analytic_applicability()
+        applicability_general.write({"applicability": "mandatory"})
+        # Create a another applicability which makes the analytic optional only for
+        # incoming stock moves.
+        applicability_specific = self._create_analytic_applicability()
+        applicability_specific.write(
+            {"stock_picking_type_id": self.incoming_picking_type.id}
+        )
         picking = self._create_picking(
             self.location,
             self.dest_location,
