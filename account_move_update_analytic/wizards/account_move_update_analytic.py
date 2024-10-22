@@ -40,4 +40,6 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
 
     def update_analytic_lines(self):
         self.ensure_one()
-        self.line_id.analytic_distribution = self.analytic_distribution
+        self.line_id.with_context(
+            skip_invoice_sync=True
+        ).analytic_distribution = self.analytic_distribution
