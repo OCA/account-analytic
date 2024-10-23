@@ -1,0 +1,4 @@
+- Tecnativa (<https://www.tecnativa.com>):
+  - Carlos Lopez
+- APSL - Nagarro \<<https://apsl.tech>\>
+  - Bernat Obrador
