@@ -1,0 +1,126 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_update_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-10-28 13:31+0000\n"
+"Last-Translator: Adriano Prado <adrianojprado@gmail.com>\n"
+"Language-Team: none\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__account_id
+msgid "Account"
+msgstr "Conta"
+
+#. module: account_move_update_analytic
+#: model:ir.model,name:account_move_update_analytic.model_account_move_update_analytic_wizard
+msgid "Account Move Update Analytic Account Wizard"
+msgstr "Assistente de atualização da conta analítica da movimentação"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisão Analítica"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__company_id
+msgid "Company"
+msgstr "Empresa"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__create_date
+msgid "Created on"
+msgstr "Criado em"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_distribution
+msgid "Current Analytic Distribution"
+msgstr "Distribuição Analítica Atual"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__display_name
+msgid "Display Name"
+msgstr "Nome Exibição"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__line_id
+msgid "Invoice line"
+msgstr "Item Fatura"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última Modificação por"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última Atualização em"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
+msgid "New Analytic Distribution"
+msgstr "Nova Distribuição Analítica"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__product_id
+msgid "Product"
+msgstr "Produto"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update Analytic Distribution"
+msgstr "Atualizar Distribuição Analítica"
+
+#. module: account_move_update_analytic
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
+msgid "Update Analytic for selected Account Moves"
+msgstr "Atualizar Analítico para movimentos de conta selecionados"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+msgid "Update analytic distribution"
+msgstr ""
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update analytic lines"
+msgstr "Atualizar Linhas Analíticas"
+
+#~ msgid "Update Analytic"
+#~ msgstr "Atualizar Analítico"
