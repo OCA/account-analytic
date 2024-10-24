@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!--
+Copyright 2024 (APSL - Nagarro) Bernat Obrador
+ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+ -->
+    <record
+        id="view_account_analytic_distribution_manual_tree_inherit"
+        model="ir.ui.view"
+    >
+        <field
+            name="name"
+        >view.account.analytic.distribution.manual.tree.inherit</field>
+        <field name="model">account.analytic.distribution.manual</field>
+        <field
+            name="inherit_id"
+            ref="account_analytic_distribution_manual.view_account_analytic_distribution_manual_tree"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="start_date" />
+                <field name="end_date" />
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="view_account_analytic_distribution_manual_form_inherit"
+        model="ir.ui.view"
+    >
+        <field
+            name="name"
+        >view.account.analytic.distribution.manual.form.inherit</field>
+        <field name="model">account.analytic.distribution.manual</field>
+        <field
+            name="inherit_id"
+            ref="account_analytic_distribution_manual.view_account_analytic_distribution_manual_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@colspan='2']" position="after">
+            <group string="Distribution Dates">
+                <group>
+                    <field name="start_date" string="Start Date" widget="date" />
+                    <field name="end_date" string="End Date" widget="date" />
+                </group>
+            </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
