@@ -112,6 +112,10 @@ Contributors
 
   * Alan Ramos <alan.ramos@jarsa.com>
 
+* `Quartile <https://www.quartile.co>`__:
+
+  * Aung Ko Ko Lin
+
 Maintainers
 ~~~~~~~~~~~
 

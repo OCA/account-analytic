@@ -8,7 +8,7 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
 
     @classmethod
     def setUpClass(cls):
-        super(TestPurchaseProcurementAnalytic, cls).setUpClass()
+        super().setUpClass()
         cls.vendor = cls.env["res.partner"].create({"name": "Partner #2"})
         supplierinfo = cls.env["product.supplierinfo"].create(
             {"partner_id": cls.vendor.id}
@@ -39,7 +39,7 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
             {str(cls.env.ref("analytic.analytic_agrolait").id): 100.0}
         )
 
-    def test_sale_to_procurement(self):
+    def create_sale_order(self, product):
         sale_order = self.env["sale.order"].create(
             {
                 "partner_id": self.partner.id,
@@ -48,10 +48,10 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
                         0,
                         0,
                         {
-                            "product_id": self.product.id,
+                            "product_id": product.id,
                             "product_uom_qty": 1,
-                            "price_unit": self.product.list_price,
-                            "name": self.product.name,
+                            "price_unit": product.list_price,
+                            "name": product.name,
                             "analytic_distribution": self.analytic_distribution,
                         },
                     )
@@ -59,6 +59,10 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
                 "picking_policy": "direct",
             }
         )
+        return sale_order
+
+    def test_sale_to_procurement(self):
+        sale_order = self.create_sale_order(self.product)
         sale_order.with_context(test_enabled=True).action_confirm()
         purchase_order_line = self.env["purchase.order.line"].search(
             [("partner_id", "=", self.vendor.id)]
@@ -69,27 +73,8 @@ class TestPurchaseProcurementAnalytic(common.TransactionCase):
         )
 
     def test_sale_service_product(self):
-        sale_order = self.env["sale.order"].create(
-            {
-                "partner_id": self.partner.id,
-                "order_line": [
-                    (
-                        0,
-                        0,
-                        {
-                            "product_id": self.service_product.id,
-                            "product_uom_qty": 1,
-                            "price_unit": self.service_product.list_price,
-                            "name": self.service_product.name,
-                            "analytic_distribution": self.analytic_distribution,
-                        },
-                    )
-                ],
-                "picking_policy": "direct",
-            }
-        )
+        sale_order = self.create_sale_order(self.service_product)
         sale_order.with_context(test_enabled=True).action_confirm()
-
         purchase_order_line = self.env["purchase.order.line"].search(
             [("partner_id", "=", self.vendor.id)]
         )
