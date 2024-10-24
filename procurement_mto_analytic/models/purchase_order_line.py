@@ -10,9 +10,7 @@ class PurchaseOrderLine(models.Model):
     def _prepare_purchase_order_line_from_procurement(
         self, product_id, product_qty, product_uom, company_id, values, po
     ):
-        res = super(
-            PurchaseOrderLine, self
-        )._prepare_purchase_order_line_from_procurement(
+        res = super()._prepare_purchase_order_line_from_procurement(
             product_id, product_qty, product_uom, company_id, values, po
         )
         res["analytic_distribution"] = values.get("analytic_distribution", False)
