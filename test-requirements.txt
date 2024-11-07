@@ -1,0 +1,1 @@
+odoo-addon-account_usability @ git+https://github.com/OCA/account-financial-tools.git@refs/pull/1963/head#subdirectory=account_usability
