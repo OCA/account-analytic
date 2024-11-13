@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-09-03 15:06+0000\n"
+"PO-Revision-Date: 2024-11-13 16:06+0000\n"
 "Last-Translator: Rodrigo Sottomaior Macedo "
 "<sottomaiormacedotec@sottomaiormacedo.tech>\n"
 "Language-Team: none\n"
@@ -35,7 +35,7 @@ msgstr "Precisão Analítica"
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribuição analítica (importável)"
 
 #. module: purchase_analytic
 #: model:ir.model.fields,help:purchase_analytic.field_purchase_order__analytic_distribution_import
@@ -44,6 +44,9 @@ msgid ""
 "but using the analytic accounts names as keys of the dictionary, so it eases "
 "the human input."
 msgstr ""
+"Ao definir esse campo, ele definirá a distribuição analítica no formato "
+"JSON, mas usando os nomes das contas analíticas como chaves do dicionário, "
+"facilitando a entrada humana."
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__manual_distribution_id
