@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="account.view_move_form" />
         <field name="arch" type="xml">
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_distribution']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_distribution']"
                 position="after"
             >
                 <field
@@ -18,7 +18,7 @@
                 />
             </xpath>
             <xpath
-                expr="//field[@name='line_ids']/tree/field[@name='analytic_distribution']"
+                expr="//field[@name='line_ids']/list/field[@name='analytic_distribution']"
                 position="after"
             >
                 <field
