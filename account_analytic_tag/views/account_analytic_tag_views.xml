@@ -3,13 +3,13 @@
         <field name="name">account.analytic.tag.tree</field>
         <field name="model">account.analytic.tag</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="display_name" column_invisible="True" />
                 <field name="account_analytic_id" />
                 <field name="color" widget="color_picker" />
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="account_analytic_tag_form_view" model="ir.ui.view">
@@ -60,7 +60,7 @@
     <record id="account_analytic_tag_action" model="ir.actions.act_window">
         <field name="name">Analytic Tags</field>
         <field name="res_model">account.analytic.tag</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Add a new tag
