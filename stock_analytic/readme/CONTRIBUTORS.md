@@ -12,3 +12,5 @@
 - Marcos Oitabén \<<marcos.oitaben@dynapps.eu>\>
 - [Quartile](https://www.quartile.co):
   - Yoshi Tashiro
+- [APSL-Nagarro](https://www.apsl.tech)
+  - Antoni Marroig \<<amarroig@apsl.net>\>
