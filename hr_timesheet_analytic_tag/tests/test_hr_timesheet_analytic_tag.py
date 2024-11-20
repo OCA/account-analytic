@@ -28,23 +28,6 @@ class TestHrTimesheetAnalyticTag(common.TransactionCase):
                 "project_id": cls.project.id,
             }
         )
-        cls.plan = cls.env["account.analytic.plan"].create(
-            {
-                "name": "Projects Plan",
-            }
-        )
-        cls.analytic_account_1 = cls.env["account.analytic.account"].create(
-            {
-                "name": "Test account 1",
-                "plan_id": cls.plan.id,
-            },
-        )
-        cls.analytic_account_2 = cls.env["account.analytic.account"].create(
-            {
-                "name": "Test account 2",
-                "plan_id": cls.plan.id,
-            },
-        )
         aa_tag_model = cls.env["account.analytic.tag"]
         cls.analytic_tag_1 = aa_tag_model.create({"name": "Test tag 1"})
         cls.analytic_tag_2 = aa_tag_model.create({"name": "Test tag 2"})
@@ -63,27 +46,23 @@ class TestHrTimesheetAnalyticTag(common.TransactionCase):
         )
 
     def test_hr_timesheet_without_tags(self):
-        self.task.analytic_account_id = self.analytic_account_1
         timesheet = self._create_hr_timesheet()
         self.assertNotIn(self.analytic_tag_1, timesheet.tag_ids)
         self.assertNotIn(self.analytic_tag_2, timesheet.tag_ids)
 
     def test_hr_timesheet_with_tag_01(self):
-        self.task.analytic_account_id = self.analytic_account_1
         self.task.analytic_tag_ids = self.analytic_tag_1
         timesheet = self._create_hr_timesheet()
         self.assertIn(self.analytic_tag_1, timesheet.tag_ids)
         self.assertNotIn(self.analytic_tag_2, timesheet.tag_ids)
 
     def test_hr_timesheet_with_tag_02(self):
-        self.task.analytic_account_id = self.analytic_account_1
         self.task.analytic_tag_ids = self.analytic_tag_2
         timesheet = self._create_hr_timesheet()
         self.assertNotIn(self.analytic_tag_1, timesheet.tag_ids)
         self.assertIn(self.analytic_tag_2, timesheet.tag_ids)
 
     def test_hr_timesheet_with_tags(self):
-        self.task.analytic_account_id = self.analytic_account_1
         self.task.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
         timesheet = self._create_hr_timesheet()
         self.assertIn(self.analytic_tag_1, timesheet.tag_ids)
