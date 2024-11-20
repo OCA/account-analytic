@@ -1,6 +1,7 @@
 # Copyright 2015 ACSONE SA/NV
 # Copyright 2024 Tecnativa - David Vidal
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
 from odoo.tests import tagged
 
 from odoo.addons.point_of_sale.tests.common import TestPointOfSaleCommon, TestPoSCommon
@@ -46,8 +47,8 @@ class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
 
     def _create_order(self):
         order_data = self.create_ui_order_data([(self.product_a, 1)])
-        order = self.env["pos.order"].create_from_ui([order_data])
-        self.pos_order = self.env["pos.order"].browse(order[0]["id"])
+        order = self.env["pos.order"].sync_from_ui([order_data])
+        self.pos_order = self.env["pos.order"].browse(int(order["pos.order"][0]["id"]))
 
     def _close_session(self, amount_paid):
         self.session.post_closing_cash_details(amount_paid)
@@ -58,13 +59,17 @@ class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
         self._create_order()
         aml_domain = [
             ("account_id", "=", self.sales_account.id),
-            ("analytic_distribution", "=", {f"{self.analytic_account.id}": 100.0}),
         ]
         # There aren't lines with the analytic account yet
-        self.assertFalse(self.env["account.move.line"].search(aml_domain))
+        self.assertFalse(
+            self.env["account.move.line"].search(aml_domain).analytic_distribution
+        )
         self._close_session(self.pos_order.amount_total)
         # There they are
-        self.assertEqual(len(self.env["account.move.line"].search(aml_domain)), 1)
+        self.assertEqual(
+            self.env["account.move.line"].search(aml_domain).analytic_distribution,
+            {str(self.analytic_account.id): 100.0},
+        )
 
     def test_order_invoice(self):
         """Tickets with invoice are posted prior to session reconcilation"""
@@ -73,7 +78,6 @@ class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
         aml_domain = [
             ("account_id", "=", self.sales_account.id),
             ("product_id", "=", self.product_a.id),
-            ("analytic_distribution", "=", {f"{self.analytic_account.id}": 100.0}),
         ]
         lines = self.env["account.move.line"].search(aml_domain)
         # There aren't lines with the analytic account yet
@@ -81,4 +85,7 @@ class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
         self.pos_order.action_pos_order_invoice()
         lines = self.env["account.move.line"].search(aml_domain)
         # There they are
-        self.assertEqual(len(lines), 1)
+        self.assertEqual(
+            self.env["account.move.line"].search(aml_domain).analytic_distribution,
+            {str(self.analytic_account.id): 100.0},
+        )
