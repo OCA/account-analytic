@@ -135,8 +135,10 @@ msgstr "标签"
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
-"Without analytical account: This label will be set for all the analytical items generated.\n"
-" With analytical account: This label will be set only to the analytical items that have the same analytical account."
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
 msgstr ""
 "没有分析账户：此标签将为所有生成的分析项目设置。\n"
 " 有分析账户：此标签仅设置为具有相同分析账户的分析项目。"
