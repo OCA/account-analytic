@@ -23,14 +23,12 @@ msgstr ""
 #. module: account_analytic_parent
 #. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
 msgid "%(name)s - %(partner)s"
 msgstr "%(name)s - %(partner)s"
 
 #. module: account_analytic_parent
 #. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
@@ -129,7 +127,6 @@ msgstr "Socios"
 #. module: account_analytic_parent
 #. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
 msgid "Please activate first parent account %s"
 msgstr "Por favor primero activa la cuenta padre %s"
 
@@ -184,7 +181,6 @@ msgstr "Sin pagar"
 #. module: account_analytic_parent
 #. odoo-python
 #: code:addons/account_analytic_parent/models/account_analytic_account.py:0
-#, python-format
 msgid "You can not create recursive analytic accounts."
 msgstr "No puede crear cuentas analíticas recursivas."
 
