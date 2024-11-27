@@ -1,46 +1,15 @@
-# Copyright 2023 Tecnativa - Víctor Martínez
+# Copyright 2023-2024 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo.tests import Form, common
+from odoo.tests import Form, tagged
 
-from odoo.addons.base.tests.common import DISABLED_MAIL_CONTEXT
+from odoo.addons.hr_expense.tests.common import TestExpenseCommon
 
 
-class TestHrExpenseAnalyticTag(common.TransactionCase):
+@tagged("-at_install", "post_install")
+class TestHrExpenseAnalyticTag(TestExpenseCommon):
     @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.env = cls.env(context=dict(cls.env.context, **DISABLED_MAIL_CONTEXT))
-        address = cls.env["res.partner"].create(
-            {"name": "Test private address", "type": "private"}
-        )
-        cls.employee = cls.env["hr.employee"].create(
-            {"name": "Test employee", "address_home_id": address.id}
-        )
-        cls.product = cls.env["product.product"].create(
-            {
-                "name": "Test product expense",
-                "can_be_expensed": True,
-                "standard_price": 100,
-            }
-        )
-        cls.plan = cls.env["account.analytic.plan"].create(
-            {
-                "name": "Projects Plan",
-                "company_id": False,
-            }
-        )
-        cls.analytic_account_1 = cls.env["account.analytic.account"].create(
-            {
-                "name": "Test account 1",
-                "plan_id": cls.plan.id,
-            },
-        )
-        cls.analytic_account_2 = cls.env["account.analytic.account"].create(
-            {
-                "name": "Test account 2",
-                "plan_id": cls.plan.id,
-            },
-        )
+    def setUpClass(cls, chart_template_ref=None):
+        super().setUpClass(chart_template_ref=chart_template_ref)
         aa_tag_model = cls.env["account.analytic.tag"]
         cls.analytic_tag_1 = aa_tag_model.create({"name": "Test tag 1"})
         cls.analytic_tag_2 = aa_tag_model.create({"name": "Test tag 2"})
@@ -49,8 +18,8 @@ class TestHrExpenseAnalyticTag(common.TransactionCase):
     def _create_expense(self):
         expense_form = Form(
             self.env["hr.expense"].with_context(
-                default_product_id=self.product.id,
-                default_employee_id=self.employee.id,
+                default_product_id=self.product_a.id,
+                default_employee_id=self.expense_employee.id,
             )
         )
         expense_form.name = "Test expense"
