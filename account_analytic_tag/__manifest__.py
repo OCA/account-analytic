@@ -13,6 +13,7 @@
         "security/ir.model.access.csv",
         "views/account_analytic_line_views.xml",
         "views/account_analytic_tag_views.xml",
+        "views/account_move_line_views.xml",
         "views/account_move_views.xml",
         "views/res_config_settings_views.xml",
     ],
