@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_move_line_tree" model="ir.ui.view">
+        <field name="name">account.move.line.tree</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_move_line_tree" />
+        <field name="arch" type="xml">
+            <field name="analytic_distribution" position="after">
+                <field
+                    name="analytic_tag_ids"
+                    groups="account_analytic_tag.group_analytic_tags"
+                    optional="hide"
+                    widget="many2many_tags"
+                    options="{'color_field': 'color'}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
