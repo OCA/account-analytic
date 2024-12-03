@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--# Copyright 2024 (APSL - Nagarro) Bernat Obrador
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).-->
+<odoo>
+    <record
+        id="inherit_account_analytic_distribution_model_tree_view"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.tree.inherit</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_tree_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="start_date" />
+                <field name="end_date" />
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="inherit_account_analytic_distribution_model_form_view"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.form.inherit</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//group[field[@name='analytic_distribution']]"
+                position="after"
+            >
+                <group string="Filter Dates" colspan="2">
+                    <field name="start_date" />
+                    <field name="end_date" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
