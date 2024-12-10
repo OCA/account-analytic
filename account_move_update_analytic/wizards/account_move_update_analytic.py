@@ -4,6 +4,8 @@
 
 from odoo import api, fields, models
 
+from ..models.account_move_line import force_state_sentinel
+
 
 class AccountMoveUpdateAnalytic(models.TransientModel):
     _name = "account.move.update.analytic.wizard"
@@ -40,4 +42,13 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
 
     def update_analytic_lines(self):
         self.ensure_one()
-        self.line_id.analytic_distribution = self.analytic_distribution
+
+        # force recreating lines with analytic taxes
+        taxes_with_analytic = self.line_id.tax_ids.filtered("analytic")
+        self.line_id.move_id.line_ids.filtered(
+            lambda x: x.tax_line_id in taxes_with_analytic
+        ).with_context(dynamic_unlink=True, force_delete=True).unlink()
+
+        self.line_id.with_context(
+            account_move_update_analytic=force_state_sentinel
+        ).analytic_distribution = self.analytic_distribution
