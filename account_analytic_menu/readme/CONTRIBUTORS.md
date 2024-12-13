@@ -1,0 +1,4 @@
+- [APSL-Nagarro](<https://apsl.tech>):
+  - Lansana Barry \<\<<lbarry@apsl.net>\>\>
+  - Miquel Alzanillas \<\<<malzanillas@apsl.net>\>\>
+  - Miquel Pascual \<\<<mpascual@apsl.net>\>\>

@@ -1,0 +1,1 @@
+This module adds a menu to structure the analytic in a more user-friendly way.

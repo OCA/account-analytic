@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <menuitem
+        id="account.menu_analytic_accounting"
+        name="Analytic Accounting"
+        groups="analytic.group_analytic_accounting"
+        sequence="4"
+        parent="account.menu_finance"
+    />
+
+    <menuitem
+        id="account.menu_action_analytic_lines_tree"
+        name="Analytic Items"
+        sequence="35"
+        parent="account.menu_analytic_accounting"
+    />
+
+</odoo>
