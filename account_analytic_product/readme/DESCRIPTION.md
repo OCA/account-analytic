@@ -1,0 +1,1 @@
+This module shows the product_id field on the Journal Entry.
