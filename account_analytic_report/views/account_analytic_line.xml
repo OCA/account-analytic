@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!-- # Copyright 2024 (APSL - Nagarro) Bernat Obrador
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+    <!--
+        This view modification sets the priority of the account.analytic.line tree view
+        to 1, ensuring that this view is used instead of the timesheet view when clicking
+        on the amounts in the report. This prioritization helps in displaying the correct
+        tree view for analytic lines rather than the timesheet-related view.
+    -->
+    <record id="analytic.view_account_analytic_line_tree" model="ir.ui.view">
+        <field name="priority">1</field>
+    </record>
+</odoo>

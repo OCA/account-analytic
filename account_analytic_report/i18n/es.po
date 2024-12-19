@@ -1,0 +1,506 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-25 11:51+0000\n"
+"PO-Revision-Date: 2025-08-25 11:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,help:account_analytic_report.field_ac_trial_balance_report_wizard__show_months
+msgid ""
+"\n"
+"    This option works only when exporting to Excel. It will create a separate sheet\n"
+"    for each selected analytic account, displaying all financial accounts with a\n"
+"    balance.\n"
+"    For each account, it shows the monthly balance within the selected date range.\n"
+"    "
+msgstr ""
+"Esta opción funciona solo al exportar a Excel. Creará una hoja separada para cada cuenta analítica seleccionada, mostrando todas las cuentas financieras con un saldo.\n"
+"Para cada cuenta, muestra el saldo mensual dentro del rango de fechas seleccionado."
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_account_analytic_report_abstract_wizard
+msgid "Abstract Wizard"
+msgstr ""
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_report_account_analytic_report_abstract_report_xlsx
+msgid "Abstract XLSX Account Analytic Report"
+msgstr ""
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_lines_header
+#, python-format
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__account_code_from
+msgid "Account Code From"
+msgstr "Cuenta desde"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__account_code_to
+msgid "Account Code To"
+msgstr "Cuenta hasta"
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_account_group
+msgid "Account Group"
+msgstr "Grupo de cuenta"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_group__account_ids
+msgid "Accounts"
+msgstr "Cuentas"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#, python-format
+msgid "Accounts Filter"
+msgstr "Filtro de Cuentas"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "Accounts Filters"
+msgstr "Filtro de cuentas"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "All accounts"
+msgstr "Todas las cuentas"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "Analytic"
+msgstr "Analítico"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model:ir.actions.act_window,name:account_analytic_report.action_analytic_trial_balance_wizard
+#: model:ir.ui.menu,name:account_analytic_report.menu_analytic_trial_balance
+#, python-format
+msgid "Analytic Trial Balance"
+msgstr "Balance Analítico"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_base
+msgid "Analytic Trial Balance -"
+msgstr "Balance Analítico -"
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_ac_trial_balance_report_wizard
+msgid "Analytic Trial Balance Report Wizard"
+msgstr "Asistente de balance analítico"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_group__group_child_ids
+msgid "Child Groups"
+msgstr "Grupos Hijos"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_lines_header
+#, python-format
+msgid "Code"
+msgstr "Código"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__company_id
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_analytic_report_abstract_wizard__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_group__compute_account_ids
+msgid "Compute accounts"
+msgstr "Cuentas calculadas"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__date_from
+msgid "Date From"
+msgstr "Desde"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__date_to
+msgid "Date To"
+msgstr "Hasta"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__date_range_id
+msgid "Date range"
+msgstr "Periodo"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+#, python-format
+msgid "Date range filter"
+msgstr "Filtro de fechas"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__display_name
+msgid "Display Name"
+msgstr "Nombre Mostrado"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,help:account_analytic_report.field_ac_trial_balance_report_wizard__account_code_to
+msgid "Ending account in a range"
+msgstr "Cuenta de fin del rango"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_lines_header
+#, python-format
+msgid "Ending balance"
+msgstr "Saldo Final"
+
+#. module: account_analytic_report
+#. odoo-javascript
+#: code:addons/account_analytic_report/static/src/xml/report.xml:0
+#: code:addons/account_analytic_report/static/src/xml/report.xml:0
+#: code:addons/account_analytic_report/static/src/xml/report.xml:0
+#: code:addons/account_analytic_report/static/src/xml/report.xml:0
+#, python-format
+msgid "Export"
+msgstr "Exportar"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "Export PDF"
+msgstr "Exportar PDF"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "Export XLSX"
+msgstr "Exportar XLSX"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__account_ids
+msgid "Filter accounts"
+msgstr "Filtrar cuentas"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "Financial"
+msgstr "Financiero"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__account_account_ids
+msgid "Financial Accounts Filter"
+msgstr "Filtro de cuentas Financieras"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "From:"
+msgstr "Desde"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#, python-format
+msgid "From: %(date_from)s To: %(date_to)s"
+msgstr "Desde: %(date_from)s Hasta: %(date_to)s"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_group__complete_code
+msgid "Full Code"
+msgstr "Código Completo"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_group__complete_name
+msgid "Full Name"
+msgstr "Nombre completo"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__fy_start_date
+msgid "Fy Start Date"
+msgstr "Fecha inicio ejercicio fiscal"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__group_by_analytic_account
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "Group by Analytic Account"
+msgstr "Agrupar por cuenta analítica"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#, python-format
+msgid "Grouped by analytic account"
+msgstr "Agrupar por cuenta analítica"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__hierarchy_level
+msgid "Hierarchy Level"
+msgstr "Nivel de Jerarquía\n"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,help:account_analytic_report.field_ac_trial_balance_report_wizard__hierarchy_level
+msgid "Hierarchy levels to show"
+msgstr "Nivel de Jerarquía a mostrar\n"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_lines_header
+#, python-format
+msgid "Initial balance"
+msgstr "Saldo Inicial"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_account_group__level
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "Level"
+msgstr "Nivel"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#, python-format
+msgid "Level %s"
+msgstr "Nivel %s"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__limit_hierarchy_level
+msgid "Limit Hierarchy Level"
+msgstr "Limitar niveles de jerarquía"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+#, python-format
+msgid "Limit hierarchy levels"
+msgstr "Limitar niveles de jerarquía"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,help:account_analytic_report.field_ac_trial_balance_report_wizard__limit_hierarchy_level
+msgid "Limits hierarchy level"
+msgstr "Límites de niveles de jerarquía"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+#, python-format
+msgid "No"
+msgstr ""
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+#, python-format
+msgid "No limit"
+msgstr "Sin Nivel"
+
+#. module: account_analytic_report
+#: model:ir.ui.menu,name:account_analytic_report.menu_oca_analytic_reports
+msgid "OCA Analytic reports"
+msgstr "Reportes Analíticos OCA"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_lines_header
+#, python-format
+msgid "Period balance"
+msgstr "Saldo Periodo"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__plan_id
+msgid "Plan"
+msgstr "Plan Analítico"
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_ir_actions_report
+msgid "Report Action"
+msgstr "Acción de informe"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#, python-format
+msgid "Selected Plan"
+msgstr "Plan Seleccionado"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__show_hierarchy
+msgid "Show Hierarchy"
+msgstr "Mostrar jerarquía"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,field_description:account_analytic_report.field_ac_trial_balance_report_wizard__show_months
+msgid "Show Months"
+msgstr "Mostrar meses"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,help:account_analytic_report.field_ac_trial_balance_report_wizard__show_hierarchy
+msgid "Shows hierarchy of the financial accounts"
+msgstr "Mostrar jerarquía de cuentas financieras"
+
+#. module: account_analytic_report
+#: model:ir.model.fields,help:account_analytic_report.field_ac_trial_balance_report_wizard__account_code_from
+msgid "Starting account in a range"
+msgstr "Cuenta inicial del rango"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "Target Plan"
+msgstr "Plan analítico"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "Target accounts filter"
+msgstr "Filtro de cuentas"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/wizard/trial_balance_analytic_wizard_view.py:0
+#: code:addons/account_analytic_report/wizard/trial_balance_analytic_wizard_view.py:0
+#, python-format
+msgid ""
+"The Company in the Trial Balance Report Wizard and in Date Range must be the"
+" same."
+msgstr "La Compañía en el reporte y el filtro de fechas debe ser de la misma compañía"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/wizard/trial_balance_analytic_wizard_view.py:0
+#: code:addons/account_analytic_report/wizard/trial_balance_analytic_wizard_view.py:0
+#, python-format
+msgid "The hierarchy level to filter on must be greater than 0."
+msgstr "El límite de jerarquía debe ser mayor que 0"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+msgid "To"
+msgstr "Hasta"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_totals
+#, python-format
+msgid "Total"
+msgstr ""
+
+#. module: account_analytic_report
+#: model:ir.actions.report,name:account_analytic_report.action_report_analytic_trial_balance_html
+#: model:ir.actions.report,name:account_analytic_report.action_report_analytic_trial_balance_qweb
+msgid "Trial Analytic Balance"
+msgstr "Balance Analítico"
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_report_account_analytic_report_trial_balance_analytic
+msgid "Trial Balance Analytic Report"
+msgstr "Informe de balance analítico"
+
+#. module: account_analytic_report
+#: model:ir.actions.report,name:account_analytic_report.action_report_analytic_trial_balance_xlsx
+msgid "Trial Balance XLSX"
+msgstr "Balance Analítico XLSX"
+
+#. module: account_analytic_report
+#: model:ir.model,name:account_analytic_report.model_report_a_a_r_report_trial_balance_analytic_xlsx
+msgid "Trial Balance XLSX Report"
+msgstr "Informe XLSX de balance analítico"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "View"
+msgstr "Ver"
+
+#. module: account_analytic_report
+#. odoo-python
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: code:addons/account_analytic_report/report/trial_balance_analytic_xlsx.py:0
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.report_trial_analytic_balance_filters
+#, python-format
+msgid "Yes"
+msgstr "Si"
+
+#. module: account_analytic_report
+#: model_terms:ir.ui.view,arch_db:account_analytic_report.analytic_trial_balance_wizard
+msgid "or"
+msgstr "o"

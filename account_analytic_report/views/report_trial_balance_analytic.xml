@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!-- # Copyright 2024 (APSL - Nagarro) Bernat Obrador
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+    <template id="report_trial_balance_analytic">
+        <div class="o_account_analytic_reports_page">
+            <t t-call="report_buttons" />
+            <t t-call="report_trial_analytic_balance_base" />
+        </div>
+    </template>
+</odoo>

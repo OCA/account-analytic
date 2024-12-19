@@ -1,0 +1,17 @@
+<template>
+    <t
+        t-name="info.ReportAction"
+        t-inherit="web.ReportAction"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//button" position="after">
+            <button
+                t-if="isAccountAnalyticReport"
+                t-on-click="export_analytic_report"
+                type="button"
+                class="btn btn-secondary"
+                title="Export"
+            >Export</button>
+        </xpath>
+    </t>
+</template>

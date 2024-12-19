@@ -1,0 +1,1 @@
+This module introduces an analytic report that provides an intuitive way to view and analyze analytic balances. It simplifies the process, offering enhanced insights and making it easier to leverage this information effectively.

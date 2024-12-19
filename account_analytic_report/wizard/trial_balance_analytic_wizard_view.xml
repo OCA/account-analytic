@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Copyright 2024 (APSL - Nagarro) Bernat Obrador
+ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+    <record id="analytic_trial_balance_wizard" model="ir.ui.view">
+        <field name="name">Analytic Trial Balance</field>
+        <field name="model">ac.trial.balance.report.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="main_info">
+                    <field
+                        name="company_id"
+                        options="{'no_create': True}"
+                        groups="base.group_multi_company"
+                    />
+                </group>
+                <div>
+                    <group name="filters">
+                        <group name="date_range">
+                            <field name="date_range_id" />
+                            <field name="date_from" />
+                            <field name="date_to" />
+                            <field name="fy_start_date" invisible="1" />
+                        </group>
+                        <group name="other_filters">
+                            <field name="plan_id" />
+                            <field name="group_by_analytic_account" />
+                            <field
+                                name="show_hierarchy"
+                                invisible="group_by_analytic_account or account_ids"
+                            />
+                            <field
+                                name="limit_hierarchy_level"
+                                invisible="not show_hierarchy or group_by_analytic_account"
+                            />
+                            <field
+                                name="hierarchy_level"
+                                invisible="not limit_hierarchy_level or group_by_analytic_account"
+                            />
+                        </group>
+                    </group>
+                    <div />
+                    <notebook>
+                        <page name="account_filters" string="Accounts Filters">
+                            <group name="account_filter" col="4">
+                                <separator string="Analytic" />
+                                <label for="account_ids" colspan="4" />
+                                <field
+                                    name="account_ids"
+                                    nolabel="1"
+                                    widget="many2many_tags"
+                                    options="{'no_create': True}"
+                                    colspan="4"
+                                    domain="[('root_plan_id', '=', plan_id)]"
+                                />
+                                 <field
+                                    name="show_months"
+                                    invisible="not account_ids or group_by_analytic_account"
+                                />
+                                <separator string="Financial" />
+                                <field name="account_code_from" />
+                                <field name="account_code_to" />
+                                <field
+                                    name="account_account_ids"
+                                    widget="many2many_tags"
+                                    readonly="0"
+                                    colspan="4"
+                                />
+                            </group>
+                        </page>
+
+                    </notebook>
+                </div>
+                <footer>
+                    <div>
+                        <button
+                            name="button_export_html"
+                            string="View"
+                            type="object"
+                            default_focus="1"
+                            class="oe_highlight"
+                        />
+                        or
+                        <button
+                            name="button_export_pdf"
+                            string="Export PDF"
+                            type="object"
+                        />
+                        or
+                        <button
+                            name="button_export_xlsx"
+                            string="Export XLSX"
+                            type="object"
+                        />
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </div>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_analytic_trial_balance_wizard" model="ir.actions.act_window">
+        <field name="name">Analytic Trial Balance</field>
+        <field name="res_model">ac.trial.balance.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="analytic_trial_balance_wizard" />
+        <field name="target">new</field>
+    </record>
+</odoo>

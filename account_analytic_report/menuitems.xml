@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        parent="account.menu_finance_reports"
+        id="menu_oca_analytic_reports"
+        name="OCA Analytic reports"
+        groups="analytic.group_analytic_accounting"
+    />
+    <menuitem
+        parent="menu_oca_analytic_reports"
+        action="action_analytic_trial_balance_wizard"
+        id="menu_analytic_trial_balance"
+        sequence="10"
+    />
+</odoo>
