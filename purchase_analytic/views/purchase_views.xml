@@ -11,6 +11,7 @@
                     widget="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
                     optional="show"
+                    readonly="state in ('done', 'cancel')"
                 />
             </field>
         </field>
@@ -26,6 +27,7 @@
                     widget="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
                     optional="show"
+                    readonly="state in ('done', 'cancel')"
                 />
             </field>
         </field>
@@ -40,6 +42,7 @@
                     name="analytic_distribution"
                     widget="analytic_distribution"
                     groups="analytic.group_analytic_accounting"
+                    readonly="state in ('done', 'cancel')"
                 />
                 <field name="analytic_distribution" invisible="1" />
             </field>
