@@ -9,16 +9,13 @@ class PurchaseOrder(models.Model):
     _name = "purchase.order"
     _inherit = ["purchase.order", "analytic.mixin"]
 
-    analytic_distribution = fields.Json(
-        inverse="_inverse_analytic_distribution",
-        # To be consistent with order_line readonly behavior
-        states={"done": [("readonly", True)], "cancel": [("readonly", True)]},
-    )
+    analytic_distribution = fields.Json(inverse="_inverse_analytic_distribution")
 
     @api.depends("order_line.analytic_distribution")
     def _compute_analytic_distribution(self):
-        """If all order line have same analytic distribution set analytic_distribution.
-        If no lines, respect value given by the user.
+        """If all lines have the same analytic distribution, set it on the order.
+
+        If no lines exist, respect the value given by the user.
         """
         for po in self:
             if po.order_line:
@@ -30,14 +27,14 @@ class PurchaseOrder(models.Model):
                 po.analytic_distribution = al
 
     def _inverse_analytic_distribution(self):
-        """When set analytic_distribution set analytic distribution on all order lines"""
+        """When setting the analytic distribution`, apply it to all order lines."""
         for po in self:
             if po.analytic_distribution:
                 po.order_line.write({"analytic_distribution": po.analytic_distribution})
 
     @api.onchange("analytic_distribution")
     def _onchange_analytic_distribution(self):
-        """When change analytic_distribution set analytic distribution on all order lines"""
+        """When changing the analytic distribution, apply it to all order lines."""
         if self.analytic_distribution:
             self.order_line.update(
                 {"analytic_distribution": self.analytic_distribution}
