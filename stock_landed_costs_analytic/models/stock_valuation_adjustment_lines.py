@@ -11,7 +11,7 @@ class StockValuationAdjustmentLines(models.Model):
     def _create_account_move_line(
         self, move, credit_account_id, debit_account_id, qty_out, already_out_account_id
     ):
-        res = super(StockValuationAdjustmentLines, self)._create_account_move_line(
+        res = super()._create_account_move_line(
             move, credit_account_id, debit_account_id, qty_out, already_out_account_id
         )
         cost_line = self.cost_line_id
