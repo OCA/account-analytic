@@ -6,7 +6,7 @@ from odoo.tests.common import TransactionCase
 
 class TestStockLandedCostsAnalytic(TransactionCase):
     def setUp(self):
-        super(TestStockLandedCostsAnalytic, self).setUp()
+        super().setUp()
         self.Product = self.env["product.product"]
         self.Picking = self.env["stock.picking"]
         self.LandedCost = self.env["stock.landed.cost"]
@@ -75,16 +75,28 @@ class TestStockLandedCostsAnalytic(TransactionCase):
                         "name": "Move Test",
                         "product_id": self.product.id,
                         "product_uom_qty": 5,
-                        "product_uom": self.ref("uom.product_uom_unit"),
+                        "quantity": 5,
+                        "product_uom": self.env.ref("uom.product_uom_unit").id,
                         "location_id": self.supplier_location.id,
                         "location_dest_id": self.customer_location.id,
                     },
                 )
             ],
         }
+        self.expenses_journal = self.env["account.journal"].create(
+            {
+                "name": "Vendor Bills - Test",
+                "code": "TEXJ",
+                "type": "purchase",
+                "company_id": self.env.company.id,
+                "refund_sequence": True,
+            }
+        )
         picking_landed_cost = self.Picking.create(picking_vals)
         landed_cost_vals = {
+            "company_id": self.expenses_journal.company_id.id,
             "picking_ids": [picking_landed_cost.id],
+            "account_journal_id": self.expenses_journal.id,
             "cost_lines": [
                 (
                     0,
