@@ -19,8 +19,8 @@ msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution
-msgid "Analytic"
-msgstr "Analítica"
+msgid "Analytic Distribution"
+msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_search
@@ -33,27 +33,24 @@ msgid "Analytic Precision"
 msgstr "Precisão Analítica"
 
 #. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_import
-msgid "Analytic distribution (importable)"
-msgstr "Distribuição analítica (importável)"
-
-#. module: purchase_analytic
-#: model:ir.model.fields,help:purchase_analytic.field_purchase_order__analytic_distribution_import
-msgid ""
-"Defining this field, it will set the analytical distribution in JSON format, "
-"but using the analytic accounts names as keys of the dictionary, so it eases "
-"the human input."
-msgstr ""
-"Ao definir esse campo, ele definirá a distribuição analítica no formato "
-"JSON, mas usando os nomes das contas analíticas como chaves do dicionário, "
-"facilitando a entrada humana."
-
-#. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__manual_distribution_id
-msgid "Manual Distribution"
-msgstr "Distribuição Manual"
-
-#. module: purchase_analytic
 #: model:ir.model,name:purchase_analytic.model_purchase_order
 msgid "Purchase Order"
 msgstr "Pedido de Compra"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítica"
+
+#~ msgid "Analytic distribution (importable)"
+#~ msgstr "Distribuição analítica (importável)"
+
+#~ msgid ""
+#~ "Defining this field, it will set the analytical distribution in JSON "
+#~ "format, but using the analytic accounts names as keys of the dictionary, "
+#~ "so it eases the human input."
+#~ msgstr ""
+#~ "Ao definir esse campo, ele definirá a distribuição analítica no formato "
+#~ "JSON, mas usando os nomes das contas analíticas como chaves do "
+#~ "dicionário, facilitando a entrada humana."
+
+#~ msgid "Manual Distribution"
+#~ msgstr "Distribuição Manual"

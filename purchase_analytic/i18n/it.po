@@ -18,8 +18,8 @@ msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution
-msgid "Analytic"
-msgstr "Analitico"
+msgid "Analytic Distribution"
+msgstr ""
 
 #. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_search
@@ -32,30 +32,27 @@ msgid "Analytic Precision"
 msgstr "Precisione analitica"
 
 #. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_import
-msgid "Analytic distribution (importable)"
-msgstr "Distribuzione analitica (importabile)"
-
-#. module: purchase_analytic
-#: model:ir.model.fields,help:purchase_analytic.field_purchase_order__analytic_distribution_import
-msgid ""
-"Defining this field, it will set the analytical distribution in JSON format, "
-"but using the analytic accounts names as keys of the dictionary, so it eases "
-"the human input."
-msgstr ""
-"Definendo questo campo, verrà impostata la distribuzione analitica in "
-"formato JSON, ma utilizzando i nomi degli account analitici come chiavi del "
-"dizionario, in modo da semplificare l'inserimento umano."
-
-#. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__manual_distribution_id
-msgid "Manual Distribution"
-msgstr "Distribuzione manuale"
-
-#. module: purchase_analytic
 #: model:ir.model,name:purchase_analytic.model_purchase_order
 msgid "Purchase Order"
 msgstr "Ordine di acquisto"
+
+#~ msgid "Analytic"
+#~ msgstr "Analitico"
+
+#~ msgid "Analytic distribution (importable)"
+#~ msgstr "Distribuzione analitica (importabile)"
+
+#~ msgid ""
+#~ "Defining this field, it will set the analytical distribution in JSON "
+#~ "format, but using the analytic accounts names as keys of the dictionary, "
+#~ "so it eases the human input."
+#~ msgstr ""
+#~ "Definendo questo campo, verrà impostata la distribuzione analitica in "
+#~ "formato JSON, ma utilizzando i nomi degli account analitici come chiavi "
+#~ "del dizionario, in modo da semplificare l'inserimento umano."
+
+#~ msgid "Manual Distribution"
+#~ msgstr "Distribuzione manuale"
 
 #~ msgid "Manual Distribution ID"
 #~ msgstr "ID distribuzione manuale"
