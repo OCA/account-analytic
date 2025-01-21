@@ -44,7 +44,6 @@
                     groups="analytic.group_analytic_accounting"
                     readonly="state in ('done', 'cancel')"
                 />
-                <field name="analytic_distribution" invisible="1" />
             </field>
             <field name="order_line" position="attributes">
                 <attribute name="context" operation="update">
