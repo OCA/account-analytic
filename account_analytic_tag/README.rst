@@ -77,14 +77,16 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Yadier Quesada
-  - Víctor Martínez
+   -  Yadier Quesada
+   -  Víctor Martínez
 
-- `APSL - Nagarro <https://apsl.tech/es/>`__:
+-  `APSL - Nagarro <https://apsl.tech/es/>`__:
 
-  - Miquel Pascual
+   -  Miquel Pascual
+
+-  Simone Rubino
 
 Maintainers
 -----------
