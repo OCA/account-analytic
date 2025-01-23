@@ -77,10 +77,12 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Yadier Quesada
-  - Víctor Martínez
+   -  Yadier Quesada
+   -  Víctor Martínez
+
+-  Simone Rubino
 
 Maintainers
 -----------
