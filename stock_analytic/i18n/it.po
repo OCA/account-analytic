@@ -29,13 +29,6 @@ msgid "Analytic Distribution"
 msgstr "Distribuzione analitica"
 
 #. module: stock_analytic
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution_search
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution_search
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution_search
-msgid "Analytic Distribution Search"
-msgstr "Ricerca distribuzione analitica"
-
-#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_account_analytic_applicability
 msgid "Analytic Plan's Applicabilities"
 msgstr "Applicabilità piano analitico"
@@ -46,6 +39,13 @@ msgstr "Applicabilità piano analitico"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_precision
 msgid "Analytic Precision"
 msgstr "Precisione analitica"
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__distribution_analytic_account_ids
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
@@ -77,6 +77,9 @@ msgstr "Regola di giacenza"
 #: model:ir.model,name:stock_analytic.model_stock_picking
 msgid "Transfer"
 msgstr "Trasferimento"
+
+#~ msgid "Analytic Distribution Search"
+#~ msgstr "Ricerca distribuzione analitica"
 
 #~ msgid "Analytic Account"
 #~ msgstr "Conto Analitico"
