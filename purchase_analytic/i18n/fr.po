@@ -23,19 +23,22 @@ msgid "Analytic Distribution"
 msgstr ""
 
 #. module: purchase_analytic
-#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_search
-msgid "Analytic Distribution Search"
-msgstr "Recherche de distribution analytique"
-
-#. module: purchase_analytic
 #: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_precision
 msgid "Analytic Precision"
 msgstr "Précision analytique"
 
 #. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
+
+#. module: purchase_analytic
 #: model:ir.model,name:purchase_analytic.model_purchase_order
 msgid "Purchase Order"
 msgstr "Bon de commande"
+
+#~ msgid "Analytic Distribution Search"
+#~ msgstr "Recherche de distribution analytique"
 
 #~ msgid "Analytic"
 #~ msgstr "Analytique"
