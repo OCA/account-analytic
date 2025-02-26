@@ -8,7 +8,7 @@
 {
     "name": "Stock Analytic",
     "summary": "Adds analytic distribution in stock move",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "author": "Julius Network Solutions, "
     "ClearCorp, OpenSynergy Indonesia, "
     "Hibou Corp., "
