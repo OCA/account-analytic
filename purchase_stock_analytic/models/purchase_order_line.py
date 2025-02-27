@@ -12,7 +12,7 @@ class PurchaseOrderLine(models.Model):
         if "analytic_distribution" in values:
             for line in self:
                 moves = line.move_ids.filtered(
-                    lambda s: s.state not in ("cancel", "done")
+                    lambda s, line=line: s.state not in ("cancel", "done")
                     and s.product_id == line.product_id
                 )
                 moves.write({"analytic_distribution": line.analytic_distribution})
