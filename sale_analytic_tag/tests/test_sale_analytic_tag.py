@@ -1,15 +1,25 @@
 # Copyright 2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo.tests import Form, common
+from odoo.tests import Form, common, tagged
 
 from odoo.addons.base.tests.common import DISABLED_MAIL_CONTEXT
 
 
+@tagged("-at_install", "post_install")
 class TestSaleAnalyticTag(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, **DISABLED_MAIL_CONTEXT))
+        if not cls.env.company.chart_template_id:
+            # Load a CoA if there's none in current company
+            coa = cls.env.ref("l10n_generic_coa.configurable_chart_template", False)
+            if not coa:
+                # Load the first available CoA
+                coa = cls.env["account.chart.template"].search(
+                    [("visible", "=", True)], limit=1
+                )
+            coa.try_loading(company=cls.env.company, install_demo=False)
         cls.customer = cls.env["res.partner"].create({"name": "Test customer"})
         cls.product = cls.env["product.product"].create({"name": "Test product"})
         cls.plan = cls.env["account.analytic.plan"].create(
