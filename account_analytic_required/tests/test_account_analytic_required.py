@@ -3,13 +3,14 @@
 from datetime import datetime
 
 from odoo import exceptions
-from odoo.tests import common
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestAccountAnalyticRequired(common.TransactionCase):
+class TestAccountAnalyticRequired(BaseCommon):
     @classmethod
     def setUpClass(cls):
-        super(TestAccountAnalyticRequired, cls).setUpClass()
+        super().setUpClass()
         cls.account_obj = cls.env["account.account"]
         cls.move_obj = cls.env["account.move"]
         cls.move_line_obj = cls.env["account.move.line"]

@@ -55,7 +55,7 @@ class AccountMoveLine(models.Model):
             return None
         analytic_policy = self.account_id._get_analytic_policy()
         if analytic_policy == "always" and not self.analytic_distribution:
-            return _(
+            return self.env._(
                 "Analytic policy is set to 'Always' with account "
                 "'%(account)s' but the analytic account is missing in "
                 "the account move line with label '%(move)s'."
@@ -69,7 +69,7 @@ class AccountMoveLine(models.Model):
             analytic_accs = self.env["account.analytic.account"].browse(
                 analytic_acc_ids
             )
-            return _(
+            return self.env._(
                 "Analytic policy is set to 'Never' with account "
                 "'%(account)s' but the account move line with label '%(move)s' "
                 "has an analytic account '%(analytic_account)s'."
@@ -83,7 +83,7 @@ class AccountMoveLine(models.Model):
             and not self.analytic_distribution
             and self.move_id.state == "posted"
         ):
-            return _(
+            return self.env._(
                 "Analytic policy is set to 'Posted moves' with "
                 "account '%(account)s' but the analytic account is missing "
                 "in the account move line with label '%(move)s'."

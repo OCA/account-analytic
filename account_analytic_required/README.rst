@@ -97,12 +97,6 @@ Contributors
 
 - Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
 
-Other credits
--------------
-
-The migration of this module from 15.0 to 16.0 was financially supported
-by Camptocamp
-
 Maintainers
 -----------
 
