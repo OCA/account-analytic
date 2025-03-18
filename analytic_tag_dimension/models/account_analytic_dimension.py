@@ -35,12 +35,10 @@ class AccountAnalyticDimension(models.Model):
         ]
 
     def get_field_name(self, code=False):
-        return "x_dimension_{}".format(code or self.code).lower()
+        return f"x_dimension_{code or self.code}".lower()
 
     def _convert_dict_query(self, field_vals):
-        val_query = [
-            "{} = '{}'".format(key, field_val) for key, field_val in field_vals.items()
-        ]
+        val_query = [f"{key} = '{field_val}'" for key, field_val in field_vals.items()]
         vals = ", ".join(val_query)
         return vals
 
