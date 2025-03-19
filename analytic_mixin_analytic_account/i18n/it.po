@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-03-19 14:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.2\n"
 
 #. module: analytic_mixin_analytic_account
 #: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_names
@@ -27,7 +29,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_stock_move_line__analytic_account_names
 #: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_stock_scrap__analytic_account_names
 msgid "Analytic Account Names"
-msgstr ""
+msgstr "Nomi conto analitico"
 
 #. module: analytic_mixin_analytic_account
 #: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_ids
@@ -42,12 +44,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_stock_move_line__analytic_account_ids
 #: model:ir.model.fields,field_description:analytic_mixin_analytic_account.field_stock_scrap__analytic_account_ids
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Conti analitici"
 
 #. module: analytic_mixin_analytic_account
 #: model:ir.model,name:analytic_mixin_analytic_account.model_analytic_mixin
 msgid "Analytic Mixin"
-msgstr ""
+msgstr "Mixin analitica"
 
 #. module: analytic_mixin_analytic_account
 #: model:ir.model.fields,help:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_ids
@@ -62,7 +64,7 @@ msgstr ""
 #: model:ir.model.fields,help:analytic_mixin_analytic_account.field_stock_move_line__analytic_account_ids
 #: model:ir.model.fields,help:analytic_mixin_analytic_account.field_stock_scrap__analytic_account_ids
 msgid "Analytic accounts computed from analytic distribution."
-msgstr ""
+msgstr "Conti analitici calcolati da distribuzione analitica."
 
 #. module: analytic_mixin_analytic_account
 #: model:ir.model.fields,help:analytic_mixin_analytic_account.field_account_analytic_distribution_model__analytic_account_names
@@ -80,3 +82,5 @@ msgid ""
 "Comma-separated analytic account names, in case it is useful to be included "
 "in the exported data."
 msgstr ""
+"Nomi conti analitici separati da virgola, nel caso sia utile includerli nei "
+"dati esportati."
