@@ -10,7 +10,6 @@ patch(AnalyticDistribution.prototype, {
     setup() {
         super.setup(...arguments);
         this.manual_distribution_by_id = {};
-        this.accountsDetails = {};
         this.state_manual_distribution = useState({
             id: this.props.record.data.manual_distribution_id
                 ? this.props.record.data.manual_distribution_id[0]
@@ -24,7 +23,6 @@ patch(AnalyticDistribution.prototype, {
         if (this.state_manual_distribution.id) {
             this.refreshManualDistribution(this.state_manual_distribution.id);
         }
-        this.accountsDetails = await this.fetchAccountDetails();
     },
     async willUpdateRecord(record) {
         await super.willUpdateRecord(record);
@@ -163,32 +161,7 @@ patch(AnalyticDistribution.prototype, {
         }
         return domain;
     },
-    async fetchAccountDetails() {
-        const domain = [];
-        if (this.props.record.data.company_id) {
-            domain.push(["company_id", "=", this.props.record.data.company_id[0]]);
-        }
-        const records = await this.orm.call(
-            "account.analytic.account",
-            "search_read",
-            [],
-            {
-                domain: domain,
-                fields: ["id", "name", "color", "root_plan_id"],
-            }
-        );
-        const accountsDetails = {};
 
-        for (const record of records) {
-            accountsDetails[record.id] = {
-                id: record.id,
-                display_name: record.name,
-                color: record.color,
-                root_plan_id: record.root_plan_id,
-            };
-        }
-        return accountsDetails;
-    },
     onChangeAutoCompleteDistributionManual(inputValue) {
         if (inputValue === "") {
             this.deleteManualTag();
@@ -196,28 +169,29 @@ patch(AnalyticDistribution.prototype, {
     },
     async processSelectedOption(selected_option) {
         const formattedLines = [];
-        for (const idsString in selected_option.analytic_distribution) {
-            const percentage = selected_option.analytic_distribution[idsString];
-
-            // Parse the IDs of selected_options, converting the key (e.g., "1,3") into an array of IDs [1, 3].
-            const idsArray = idsString.split(",").map((id) => parseInt(id, 10));
+        for (const [accountIds, percentage] of Object.entries(
+            selected_option.analytic_distribution
+        )) {
+            const ids = accountIds.split(",").map((id) => parseInt(id, 10));
+            const analyticAccountDict = ids.length
+                ? await this.fetchAnalyticAccounts([["id", "in", ids]])
+                : [];
             const lineToAdd = {
                 id: this.nextId++,
                 analyticAccounts: this.plansToArray(),
                 percentage: percentage / 100,
             };
+            for (const id of ids) {
+                const account = analyticAccountDict[id];
 
-            for (let i = 0; i < idsArray.length; i++) {
-                const accountId = idsArray[i];
-                const accountData = this.accountsDetails[accountId];
-                if (accountData) {
+                if (account) {
                     lineToAdd.analyticAccounts.push({
-                        accountId: accountData.id,
-                        accountDisplayName: accountData.display_name,
-                        planColor: accountData.color,
-                        accountRootPlanId: accountData.root_plan_id[0],
-                        planId: accountData.root_plan_id[0],
-                        planName: accountData.root_plan_id[1],
+                        accountId: id,
+                        accountDisplayName: account.display_name,
+                        planColor: account.color,
+                        accountRootPlanId: account.root_plan_id[0],
+                        planId: account.root_plan_id[0],
+                        planName: account.root_plan_id[1],
                     });
                 }
             }
