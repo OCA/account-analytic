@@ -31,14 +31,17 @@ class TestAnalyticDimensionBase(TransactionCase):
         cls.analytic_tag_2a = cls.tag_obj.create(
             {"name": "Test tag 2A", "analytic_dimension_id": cls.dimension_2.id}
         )
+        cls.analytic_plan = cls.env["account.analytic.plan"].create(
+            {"name": "Test analytic plan"}
+        )
         cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "Test analytic account"}
+            {"name": "Test analytic account", "plan_id": cls.analytic_plan.id}
         )
         cls.account = cls.env["account.account"].create(
             {
-                "code": "test_dimension_acc_01",
+                "code": "01",
                 "name": "test dimension account",
-                "user_type_id": cls.env.ref("account.data_account_type_receivable").id,
+                "account_type": "asset_receivable",
                 "reconcile": True,
             }
         )
@@ -99,7 +102,9 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
                 "name": "test",
                 "account_id": self.account.id,
                 "move_id": move.id,
-                "analytic_account_id": self.analytic_account.id,
+                "analytic_distribution": {
+                    self.analytic_account.id: 100,
+                },
                 "analytic_tag_ids": [
                     (4, self.analytic_tag_1a.id),
                     (4, self.analytic_tag_2a.id),
@@ -131,7 +136,9 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
                 "price_unit": 1,
                 "account_id": self.account.id,
                 "move_id": invoice.id,
-                "analytic_account_id": self.analytic_account.id,
+                "analytic_distribution": {
+                    self.analytic_account.id: 100,
+                },
                 "analytic_tag_ids": [
                     (4, self.analytic_tag_1a.id),
                     (4, self.analytic_tag_2a.id),
@@ -186,7 +193,7 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
     def test_remove_dimension(self):
         self.dimension_1.unlink()
         self.assertNotIn("x_dimension_test_dim_1", self.analytic_line_obj._fields)
-        uninstall_hook(self.env.cr, False)
+        uninstall_hook(self.env)
         self.assertNotIn("x_dimension_test_dim_2", self.analytic_line_obj._fields)
 
     def test_zz_dimension_rename(self):

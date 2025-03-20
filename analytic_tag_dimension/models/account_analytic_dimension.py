@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from psycopg2 import sql
+from psycopg2.extras import Json
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -38,7 +39,13 @@ class AccountAnalyticDimension(models.Model):
         return f"x_dimension_{code or self.code}".lower()
 
     def _convert_dict_query(self, field_vals):
-        val_query = [f"{key} = '{field_val}'" for key, field_val in field_vals.items()]
+        val_query = []
+        for key, val in field_vals.items():
+            if key != "field_description":
+                val_query.append(f"{key} = '{val}'")
+            else:
+                json_value = Json({"en_US": val})
+                val_query.append(f"{key} = {json_value}")
         vals = ", ".join(val_query)
         return vals
 
@@ -50,32 +57,30 @@ class AccountAnalyticDimension(models.Model):
                 )
             )
         )
-        field_to_update.invalidate_cache()
+        field_to_update._invalidate_cache()
 
-    @api.model
-    def create(self, values):
-        res = super().create(values)
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
         _models = (
             self.env["ir.model"]
             .sudo()
             .search([("model", "in", self.get_model_names())], order="id")
         )
-        _models.write(
-            {
-                "field_id": [
-                    (
-                        0,
-                        0,
-                        {
-                            "name": self.get_field_name(values["code"]),
-                            "field_description": values.get("name"),
-                            "ttype": "many2one",
-                            "relation": "account.analytic.tag",
-                        },
-                    )
-                ],
-            }
-        )
+        field_id_value = [
+            (
+                0,
+                0,
+                {
+                    "name": self.get_field_name(v["code"]),
+                    "field_description": v.get("name"),
+                    "ttype": "many2one",
+                    "relation": "account.analytic.tag",
+                },
+            )
+            for v in vals_list
+        ]
+        _models.write({"field_id": field_id_value})
         return res
 
     def write(self, vals):
