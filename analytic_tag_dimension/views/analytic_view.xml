@@ -11,7 +11,7 @@
                         <field name="code" />
                     </group>
                     <group string="Tags">
-                        <field name="analytic_tag_ids" nolabel="1" />
+                        <field name="analytic_tag_ids" />
                     </group>
                 </sheet>
             </form>
