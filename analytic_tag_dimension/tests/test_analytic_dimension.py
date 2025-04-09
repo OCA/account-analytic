@@ -3,13 +3,14 @@
 # Copyright 2020 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo import Command
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 from ..hooks import uninstall_hook
 
 
-class TestAnalyticDimensionBase(TransactionCase):
+class TestAnalyticDimension(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -50,8 +51,6 @@ class TestAnalyticDimensionBase(TransactionCase):
         )
         cls.partner = cls.env["res.partner"].create({"name": "Test_partner"})
 
-
-class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
     def test_analytic_dimension_spaces_error(self):
         """Test dimension creation with spaces in code."""
         dimension_error = {
@@ -202,3 +201,55 @@ class TestAnalyticDimensionCase(TestAnalyticDimensionBase):
         self.dimension_1.write({"code": "test_renamed"})
         self.assertIn("x_dimension_test_renamed", self.analytic_line_obj._fields)
         self.assertIn("x_dimension_test_renamed", self.env["account.move.line"]._fields)
+
+    def test_dimension_invoice_report(self):
+        """Test filter dimension in invoice report"""
+        report = self.env["account.invoice.report"].read_group(
+            [("x_dimension_test_dim_1", "=", self.dimension_1.id)],
+            ["price_subtotal", "quantity"],
+            groupby=[],
+        )
+        self.assertEqual(report[0]["__count"], 0)
+
+        # Add dimension in invoice
+        invoice = self.env["account.move"].create(
+            {
+                "partner_id": self.partner.id,
+                "move_type": "out_invoice",
+                "invoice_line_ids": [
+                    Command.create(
+                        {
+                            "name": "test",
+                            "price_unit": 20,
+                            "analytic_distribution": {
+                                self.analytic_account.id: 100,
+                            },
+                            "analytic_tag_ids": [
+                                (4, self.analytic_tag_1a.id),
+                                (4, self.analytic_tag_2a.id),
+                            ],
+                        }
+                    )
+                ],
+            }
+        )
+        self.assertEqual(
+            invoice.invoice_line_ids.x_dimension_test_dim_1, self.analytic_tag_1a
+        )
+        self.assertEqual(
+            invoice.invoice_line_ids.x_dimension_test_dim_2, self.analytic_tag_2a
+        )
+
+        invoice.action_post()
+
+        self.assertEqual(invoice.state, "posted")
+
+        # Check invoice report with filter dimension
+        report = self.env["account.invoice.report"].read_group(
+            [("x_dimension_test_dim_1", "=", self.analytic_tag_1a.id)],
+            ["price_subtotal", "quantity"],
+            [],
+        )
+        self.assertEqual(report[0]["__count"], 1)
+        self.assertAlmostEqual(report[0]["price_subtotal"], 20.0)
+        self.assertAlmostEqual(report[0]["quantity"], 1.0)
