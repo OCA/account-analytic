@@ -17,25 +17,27 @@ Analytic Accounts Dimensions Enhanced
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/14.0/analytic_tag_dimension_enhanced
+    :target: https://github.com/OCA/account-analytic/tree/18.0/analytic_tag_dimension_enhanced
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-14-0/account-analytic-14-0-analytic_tag_dimension_enhanced
+    :target: https://translation.odoo-community.org/projects/account-analytic-18-0/account-analytic-18-0-analytic_tag_dimension_enhanced
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=14.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Analytic Tags Dimension (analytic_tag_dimension) ensure that one tag can be selected for each dimension.
+Analytic Tags Dimension (analytic_tag_dimension) ensure that one tag can
+be selected for each dimension.
 
 This module add even more configurable usability to analytic tag field.
 
 1. Set required tag dimension
 2. Select tags by dimension sequence
 3. Mass create tags based on model data
-4. Filter subsequence tag selections based on previous selected tag's dimension
+4. Filter subsequence tag selections based on previous selected tag's
+   dimension
 
 **Table of contents**
 
@@ -45,14 +47,19 @@ This module add even more configurable usability to analytic tag field.
 Configuration
 =============
 
-Go to menu Invoicing > Configuration > Analytic Accounting > Analytic Accounts Dimensions
+Go to menu Invoicing > Configuration > Analytic Accounting > Analytic
+Accounts Dimensions
 
 Configurations:
 
-* Required: if checked, user must select the dimension, otherwise, cannot save.
-* By Sequence: if selected, this tag dimension is selectable only when previous sequences has been selected.
-* Ref Model: to refer this analytic tags into a model, and also allow to create analytic tags by data in model.
-* Filtered by fields: if ref model is set, you can also filter (domain) selections by its field(s).
+- Required: if checked, user must select the dimension, otherwise,
+  cannot save.
+- By Sequence: if selected, this tag dimension is selectable only when
+  previous sequences has been selected.
+- Ref Model: to refer this analytic tags into a model, and also allow to
+  create analytic tags by data in model.
+- Filtered by fields: if ref model is set, you can also filter (domain)
+  selections by its field(s).
 
 Bug Tracker
 ===========
@@ -60,7 +67,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_tag_dimension_enhanced%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20analytic_tag_dimension_enhanced%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -68,18 +75,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Ecosoft
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Kitti Upariphutthiphong <kittiu@ecosoft.co.th>
-* Saran Lim. <saranl@ecosoft.co.th>
+- Kitti Upariphutthiphong <kittiu@ecosoft.co.th>
+- Saran Lim. <saranl@ecosoft.co.th>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -91,6 +98,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/14.0/analytic_tag_dimension_enhanced>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/18.0/analytic_tag_dimension_enhanced>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

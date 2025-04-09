@@ -68,7 +68,7 @@ class AccountAnalyticDimension(models.Model):
             {
                 "name": rec.display_name,
                 "analytic_dimension_id": self.id,
-                "resource_ref": "{},{}".format(model, rec.id),
+                "resource_ref": f"{model},{rec.id}",
             }
             for rec in recs
         ]
