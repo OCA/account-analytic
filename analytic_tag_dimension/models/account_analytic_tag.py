@@ -2,7 +2,7 @@
 # Copyright 2020 Tecnativa - Carlos Dauden
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -23,7 +23,9 @@ class AccountAnalyticTag(models.Model):
         tags_with_dimension = self.filtered("analytic_dimension_id")
         dimensions = tags_with_dimension.mapped("analytic_dimension_id")
         if len(tags_with_dimension) != len(dimensions):
-            raise ValidationError(_("You can not set two tags from same dimension."))
+            raise ValidationError(
+                self.env._("You can not set two tags from same dimension.")
+            )
 
     def write(self, vals):
         if "analytic_dimension_id" in vals:
@@ -48,7 +50,7 @@ class AccountAnalyticTag(models.Model):
                     ).mapped(new_field)
                     if same_dimension_tags:
                         raise ValidationError(
-                            _(
+                            self.env._(
                                 "You can not set two tags from same dimension.\n"
                                 " Records %(records_to_update)s in the model "
                                 "%(description)s have %(display_name)s"

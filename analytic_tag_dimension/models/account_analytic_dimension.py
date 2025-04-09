@@ -5,7 +5,7 @@
 from psycopg2 import sql
 from psycopg2.extras import Json
 
-from odoo import _, api, fields, models
+from odoo import Command, api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -25,7 +25,7 @@ class AccountAnalyticDimension(models.Model):
     def _check_code(self):
         for dimension in self:
             if " " in dimension.code:
-                raise ValidationError(_("Code can't contain spaces!"))
+                raise ValidationError(self.env._("Code can't contain spaces!"))
 
     @api.model
     def get_model_names(self):
@@ -52,7 +52,11 @@ class AccountAnalyticDimension(models.Model):
     def _update_invoice_report(self, field_to_update, value):
         self._cr.execute(
             sql.SQL(
-                f""" UPDATE {field_to_update._table} SET {value} WHERE id={field_to_update.id} """
+                f"""
+                    UPDATE {field_to_update._table}
+                    SET {value}
+                    WHERE id={field_to_update.id}
+                """
             )
         )
         field_to_update._invalidate_cache()
@@ -66,9 +70,7 @@ class AccountAnalyticDimension(models.Model):
             .search([("model", "in", self.get_model_names())], order="id")
         )
         field_id_value = [
-            (
-                0,
-                0,
+            Command.create(
                 {
                     "name": self.get_field_name(v["code"]),
                     "field_description": v.get("name"),

@@ -5,7 +5,7 @@
 {
     "name": "Analytic Accounts Dimensions",
     "summary": "Group Analytic Entries by Dimensions",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "license": "AGPL-3",
     "author": "PESOL, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
