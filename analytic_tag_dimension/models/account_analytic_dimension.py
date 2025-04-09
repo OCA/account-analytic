@@ -85,15 +85,18 @@ class AccountAnalyticDimension(models.Model):
 
     def write(self, vals):
         field_vals = {}
-        if "name" in vals or "code" in vals:
-            if "name" in vals:
-                field_vals["field_description"] = vals["name"]
-            if "code" in vals:
-                field_vals["name"] = self.get_field_name(vals["code"])
+
+        if "name" in vals:
+            field_vals["field_description"] = vals["name"]
+        if "code" in vals:
+            field_vals["name"] = self.get_field_name(vals["code"])
+
+        if field_vals:
+            model_names = self.get_model_names()
             for dimension in self:
                 fields_to_update = self.env["ir.model.fields"].search(
                     [
-                        ("model", "in", self.get_model_names()),
+                        ("model", "in", model_names),
                         ("name", "=", dimension.get_field_name()),
                     ],
                     order="id",
