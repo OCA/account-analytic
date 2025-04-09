@@ -52,9 +52,7 @@ class AccountAnalyticDimension(models.Model):
     def _update_invoice_report(self, field_to_update, value):
         self._cr.execute(
             sql.SQL(
-                """ UPDATE {} SET {} WHERE id={} """.format(
-                    field_to_update._table, value, field_to_update.id
-                )
+                f""" UPDATE {field_to_update._table} SET {value} WHERE id={field_to_update.id} """
             )
         )
         field_to_update._invalidate_cache()
