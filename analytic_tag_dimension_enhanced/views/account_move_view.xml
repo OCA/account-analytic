@@ -7,13 +7,13 @@
         <field name="arch" type="xml">
             <!-- additional domain is needed on edit mode, which is not covered by onchange -->
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_tag_ids']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_tag_ids']"
                 position="before"
             >
-                <field name="domain_tag_ids" invisible="1" />
+                <field name="domain_tag_ids" column_invisible="1" />
             </xpath>
             <xpath
-                expr="//field[@name='invoice_line_ids']/tree/field[@name='analytic_tag_ids']"
+                expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_tag_ids']"
                 position="attributes"
             >
                 <attribute
@@ -22,13 +22,13 @@
             </xpath>
             <!-- journal items -->
             <xpath
-                expr="//field[@name='line_ids']/tree/field[@name='analytic_tag_ids']"
+                expr="//field[@name='line_ids']/list/field[@name='analytic_tag_ids']"
                 position="before"
             >
-                <field name="domain_tag_ids" invisible="1" />
+                <field name="domain_tag_ids" column_invisible="1" />
             </xpath>
             <xpath
-                expr="//field[@name='line_ids']/tree/field[@name='analytic_tag_ids']"
+                expr="//field[@name='line_ids']/list/field[@name='analytic_tag_ids']"
                 position="attributes"
             >
                 <attribute
