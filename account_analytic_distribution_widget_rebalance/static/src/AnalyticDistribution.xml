@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2025 Camptocamp SA (https://www.camptocamp.com).
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <t t-inherit="analytic.AnalyticDistributionPopup" t-inherit-mode="extension">
+        <xpath expr="//th[hasclass('deleteColumn')]" position="before">
+            <th class="rebalanceColumn" />
+        </xpath>
+        <xpath expr="//td/span[hasclass('fa-trash-o')]/parent::td" position="before">
+            <td class="rebalanceColumn">
+                <span
+                    class="fa fa-exchange cursor-pointer"
+                    title="Rebalance"
+                    t-if="canRebalanceLine(line_index)"
+                    t-on-click.stop="() => this.rebalanceLine(line_index)"
+                />
+            </td>
+        </xpath>
+    </t>
+
+</odoo>
