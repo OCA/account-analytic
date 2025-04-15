@@ -1,5 +1,6 @@
 # Copyright 2015 Antiun Ingenieria - Javier Iniesta
 # Copyright 2017 Tecnativa - Luis Martínez
+# Copyright 2025 Jacques-Etienne Baudoux (BCIM) <je@bcim.be>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import Command
 from odoo.tests.common import TransactionCase
@@ -228,6 +229,38 @@ class TestAccountInvoiceLine(TransactionCase):
                                 "price_unit": 50,
                                 "account_id": self.account_out.id,
                                 "product_id": self.product_1.id,
+                            }
+                        )
+                    ],
+                }
+            ]
+        )
+        invoice_line = invoice.invoice_line_ids[0]
+        analytic_account_id = [key for key in invoice_line.analytic_distribution]
+        self.assertEqual(
+            int(analytic_account_id[0]),
+            self.analytic_account2.id,
+        )
+
+    def test_create_out_preset(self):
+        """Test product analytic is not used when the analytic is forced"""
+        invoice = self.env["account.move"].create(
+            [
+                {
+                    "partner_id": self.partner.id,
+                    "journal_id": self.journal_sale.id,
+                    "move_type": "out_invoice",
+                    "invoice_line_ids": [
+                        Command.create(
+                            {
+                                "name": "Test line",
+                                "quantity": 1,
+                                "price_unit": 50,
+                                "account_id": self.account_out.id,
+                                "product_id": self.product.id,
+                                "analytic_distribution": {
+                                    self.analytic_account2.id: 100
+                                },
                             }
                         )
                     ],

@@ -8,3 +8,4 @@
 * Denis Roussel <denis.roussel@acsone.eu>
 
 * Darius Žižys <darius@vialaurea.lt>
+* Jacques-Etienne Baudoux (BCIM) <je@bcim.be>
