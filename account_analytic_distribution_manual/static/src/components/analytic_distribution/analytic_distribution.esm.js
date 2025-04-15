@@ -1,5 +1,3 @@
-/** @odoo-module **/
-
 import {AnalyticDistribution} from "@analytic/components/analytic_distribution/analytic_distribution";
 import {AutoComplete} from "@web/core/autocomplete/autocomplete";
 import {_t} from "@web/core/l10n/translation";
@@ -84,7 +82,6 @@ patch(AnalyticDistribution.prototype, {
             /* eslint-disable-next-line no-unused-vars */
             tags = tags.map(({onDelete, ...rest}) => rest);
             tags.unshift({
-                id: this.nextId++,
                 text: this.state_manual_distribution.label,
                 onDelete: this.editingRecord ? () => this.deleteManualTag() : undefined,
             });

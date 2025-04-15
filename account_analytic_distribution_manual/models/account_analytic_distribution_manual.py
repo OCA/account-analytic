@@ -1,7 +1,7 @@
 # Copyright 2024 Tecnativa - Carlos Lopez
 # Copyright 2024 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import _, api, fields, models
+from odoo import fields, models
 
 
 class AccountAnalyticDistributionManual(models.Model):
@@ -23,9 +23,10 @@ class AccountAnalyticDistributionManual(models.Model):
         ),
     ]
 
-    @api.returns("self", lambda value: value.id)
-    def copy(self, default=None):
+    def copy_data(self, default=None):
         default = dict(default or {})
+        vals_list = super().copy_data(default)
         if "name" not in default:
-            default["name"] = _("%s (Copy)") % self.name
-        return super().copy(default=default)
+            for record, vals in zip(self, vals_list, strict=False):
+                vals["name"] = self.env._("%s (Copy)", record.name)
+        return vals_list

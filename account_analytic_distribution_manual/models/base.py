@@ -15,7 +15,7 @@ class AnalyticMixin(models.AbstractModel):
         """
         The purpose of inheriting this method is to
         add a specific field, 'manual_distribution_id',
-        to the tree/form views if the model has this field defined.
+        to the list/form views if the model has this field defined.
 
         Additionally, if a one2many field exists
         and the related model has the 'manual_distribution_id' field,
@@ -33,7 +33,7 @@ class AnalyticMixin(models.AbstractModel):
         """
 
         def add_field(node, view_type, res_model):
-            attribute = "column_invisible" if view_type == "tree" else "invisible"
+            attribute = "column_invisible" if view_type == "list" else "invisible"
             field_options = {
                 "name": manual_distribution_field_name,
             }
@@ -58,7 +58,7 @@ class AnalyticMixin(models.AbstractModel):
                     all_models[model] = tuple(view_fields)
 
         result = super().get_view(view_id=view_id, view_type=view_type, **options)
-        if view_type in ["tree", "form"]:
+        if view_type in ["list", "form"]:
             View = self.env["ir.ui.view"]
             manual_distribution_field_name = "manual_distribution_id"
             all_models = result["models"].copy()  # {modelname(str) ➔ fields(tuple)}
@@ -77,7 +77,7 @@ class AnalyticMixin(models.AbstractModel):
                         continue
                     if not model_has_field(field_def.comodel_name):
                         continue
-                    for sub_view_type in ["tree", "form"]:
+                    for sub_view_type in ["list", "form"]:
                         xpath_expr = f"//field[@name='{field_name}']/{sub_view_type}"
                         sub_node = arch.xpath(xpath_expr)
                         for child_node in sub_node:
