@@ -1,6 +1,7 @@
 # Copyright 2024 Tecnativa - Carlos Lopez
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo import fields, models
+from odoo import api, fields, models
+from odoo.tools import SQL
 
 
 class AccountInvoiceReport(models.Model):
@@ -8,5 +9,6 @@ class AccountInvoiceReport(models.Model):
 
     manual_distribution_id = fields.Many2one("account.analytic.distribution.manual")
 
-    def _select(self):
-        return super()._select() + ", line.manual_distribution_id"
+    @api.model
+    def _select(self) -> SQL:
+        return SQL("%s, line.manual_distribution_id", super()._select())
