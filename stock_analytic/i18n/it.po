@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-16 03:41+0000\n"
-"PO-Revision-Date: 2025-01-25 15:06+0000\n"
+"PO-Revision-Date: 2025-04-16 18:55+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
@@ -45,7 +45,7 @@ msgstr "Precisione analitica"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribuzione analitica (importabile)"
 
 #. module: stock_analytic
 #: model:ir.model.fields,help:stock_analytic.field_stock_move__analytic_distribution_import
@@ -56,6 +56,9 @@ msgid ""
 "but using the analytic accounts names as keys of the dictionary, so it eases "
 "the human input."
 msgstr ""
+"Definendo questo campo, verrà impostata la distribuzione analitica in "
+"formato JSON, ma utilizzando i nomi degli account analitici come chiavi del "
+"dizionario, in modo da semplificare l'inserimento umano."
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
@@ -74,7 +77,7 @@ msgstr "Dominio"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__manual_distribution_id
 msgid "Manual Distribution"
-msgstr ""
+msgstr "Distribuzione manuale"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
