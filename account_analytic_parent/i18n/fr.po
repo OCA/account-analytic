@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-13.00:38+0000\n"
-"PO-Revision-Date: 2022-06-09 17:05+0000\n"
-"Last-Translator: Yann Papouin <ypa@decgroupe.com>\n"
+"PO-Revision-Date: 2025-04-16 13:24+0000\n"
+"Last-Translator: Romain BONNINGUE <bonninguer@gmail.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: account_analytic_parent
 #. odoo-python
@@ -65,13 +65,13 @@ msgstr ""
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_customers
 msgid "Customers"
-msgstr ""
+msgstr "Clients"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_development
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_development
 msgid "Development"
-msgstr ""
+msgstr "Développement"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_in_house
@@ -81,12 +81,12 @@ msgstr ""
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_integration
 msgid "Integration"
-msgstr ""
+msgstr "Intégration"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_support_internal
 msgid "Internal"
-msgstr ""
+msgstr "Interne"
 
 #. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
@@ -96,7 +96,7 @@ msgstr "Nom"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_online
 msgid "Online"
-msgstr ""
+msgstr "En ligne"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_our_super_product_development
@@ -106,7 +106,7 @@ msgstr ""
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_paid
 msgid "Paid"
-msgstr ""
+msgstr "Payé"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
@@ -121,8 +121,9 @@ msgstr "Chemin vers le parent"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_partners
+#, fuzzy
 msgid "Partners"
-msgstr ""
+msgstr "Partenaires"
 
 #. module: account_analytic_parent
 #. odoo-python
@@ -133,12 +134,12 @@ msgstr "Merci d'activer le compte parent %s"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1
 msgid "Project 1"
-msgstr ""
+msgstr "Projet 1"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2
 msgid "Project 2"
-msgstr ""
+msgstr "Projet 2"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p1
@@ -158,15 +159,17 @@ msgstr ""
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_support
 #: model:account.analytic.account,name:account_analytic_parent.analytic_support
+#, fuzzy
 msgid "Support"
-msgstr ""
+msgstr "Assistance"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_journal_trainings
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_trainings
 #: model:account.analytic.account,name:account_analytic_parent.analytic_super_product_trainings
+#, fuzzy
 msgid "Training"
-msgstr ""
+msgstr "Formation"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_trunk
@@ -175,8 +178,9 @@ msgstr ""
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_unpaid
+#, fuzzy
 msgid "Unpaid"
-msgstr ""
+msgstr "Non payé"
 
 #. module: account_analytic_parent
 #. odoo-python
