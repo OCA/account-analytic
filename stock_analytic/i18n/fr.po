@@ -9,33 +9,34 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2017-11-19 22:13+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2025-04-16 13:24+0000\n"
+"Last-Translator: Romain BONNINGUE <bonninguer@gmail.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution
 msgid "Analytic Distribution"
-msgstr ""
+msgstr "Distribution analytique"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_account_analytic_applicability
 msgid "Analytic Plan's Applicabilities"
-msgstr ""
+msgstr "Applicabilités du plan analytique"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_precision
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_precision
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_precision
 msgid "Analytic Precision"
-msgstr ""
+msgstr "Précision analytique"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
@@ -47,7 +48,7 @@ msgstr ""
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
 msgid "Domain"
-msgstr ""
+msgstr "Domaine"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
@@ -73,7 +74,7 @@ msgstr ""
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_picking
 msgid "Transfer"
-msgstr ""
+msgstr "Transfert"
 
 #~ msgid "Analytic Account"
 #~ msgstr "Compte analytique"
