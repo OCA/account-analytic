@@ -38,6 +38,23 @@ msgid "Analytic Precision"
 msgstr ""
 
 #. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution_import
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,help:stock_analytic.field_stock_move__analytic_distribution_import
+#: model:ir.model.fields,help:stock_analytic.field_stock_move_line__analytic_distribution_import
+#: model:ir.model.fields,help:stock_analytic.field_stock_scrap__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__distribution_analytic_account_ids
@@ -47,6 +64,13 @@ msgstr ""
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
 msgid "Domain"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__manual_distribution_id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__manual_distribution_id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__manual_distribution_id
+msgid "Manual Distribution"
 msgstr ""
 
 #. module: stock_analytic
