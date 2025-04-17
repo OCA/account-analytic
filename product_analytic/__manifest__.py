@@ -5,13 +5,15 @@
 
 {
     "name": "Product Analytic",
-    "version": "16.0.1.0.1",
+    "version": "18.0.1.0.0",
     "category": "Accounting & Finance",
     "license": "AGPL-3",
     "summary": "Add analytic account on products and product categories",
     "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["account"],
+    "depends": [
+        "account",
+    ],
     "data": ["views/product_view.xml"],
     "demo": ["demo/product_demo.xml"],
     "installable": True,
