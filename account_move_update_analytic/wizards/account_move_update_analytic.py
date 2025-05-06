@@ -47,7 +47,11 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         taxes_with_analytic = self.line_id.tax_ids.filtered("analytic")
         self.line_id.move_id.line_ids.filtered(
             lambda x: x.tax_line_id in taxes_with_analytic
-        ).with_context(dynamic_unlink=True, force_delete=True).unlink()
+        ).with_context(
+            dynamic_unlink=True,
+            force_delete=True,
+            account_move_update_analytic=force_state_sentinel,
+        ).unlink()
 
         self.line_id.with_context(
             account_move_update_analytic=force_state_sentinel

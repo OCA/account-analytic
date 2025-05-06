@@ -9,6 +9,14 @@ force_state_sentinel = object()
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
+    def _check_reconciliation(self):
+        """
+        Pass the check if we're asked to
+        """
+        if self.env.context.get("account_move_update_analytic") == force_state_sentinel:
+            return
+        return super()._check_reconciliation()
+
     def _compute_all_tax(self):
         """
         super() doesn't write the analytic distribution when the move is posted.
