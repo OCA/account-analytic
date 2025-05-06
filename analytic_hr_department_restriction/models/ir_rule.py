@@ -28,7 +28,7 @@ class IrRule(models.Model):
         user = self.env.user
         group1 = "base.group_user"
         group2 = "analytic.group_analytic_accounting"
-        group3 = "analytic_hr_department_restriction.group_analytic_accounting_without_department"  # noqa: B950
+        group3 = "analytic_hr_department_restriction.group_analytic_accounting_without_department"  # noqa: E501
         group4 = "account.group_account_invoice"
         test_condition = not config["test_enable"] or self.env.context.get(
             "test_analytic_hr_department_restriction"

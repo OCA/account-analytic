@@ -77,7 +77,6 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
             {
                 "name": "Test plan A",
                 "department_id": cls.department_a.id,
-                "company_id": cls.env.company.id,
             }
         )
         cls.account_a = cls.env["account.analytic.account"].create(
@@ -92,7 +91,6 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
             {
                 "name": "Test plan B",
                 "department_id": cls.department_b.id,
-                "company_id": cls.env.company.id,
             }
         )
         cls.account_b = cls.env["account.analytic.account"].create(
@@ -103,12 +101,7 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
                 "company_id": cls.env.company.id,
             }
         )
-        cls.plan_c = cls.env["account.analytic.plan"].create(
-            {
-                "name": "Test plan C",
-                "company_id": cls.env.company.id,
-            }
-        )
+        cls.plan_c = cls.env["account.analytic.plan"].create({"name": "Test plan C"})
         cls.account_c = cls.env["account.analytic.account"].create(
             {
                 "name": "Test account C",
@@ -149,10 +142,13 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
         # - No access error should be displayed and the user should be able to see
         # the corresponding plan/analytic account even if the employee's company
         # is not selected.
-        self.plan_a.company_id = False
         self.department_a.company_id = False
-        self.plan_b.company_id = False
-        self.plan_c.company_id = False
+        self.plan_a.with_company(
+            self.company_extra.id
+        ).department_id = self.department_a
+        self.plan_b.with_company(
+            self.company_extra.id
+        ).department_id = self.department_b
         plans = (
             self.env["account.analytic.plan"]
             .with_company(self.company_extra.id)
@@ -172,6 +168,17 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
         self.assertIn(self.account_a, accounts)
         self.assertNotIn(self.account_b, accounts)
         self.assertNotIn(self.account_c, accounts)
+
+    @users("test-user")
+    def test_get_relevant_plans(self):
+        self.plan_a.department_id = False
+        items = self.env["account.analytic.plan"].get_relevant_plans(
+            business_domain="general"
+        )
+        plan_ids = [item["id"] for item in items]
+        self.assertNotIn(self.plan_a.id, plan_ids)
+        self.assertNotIn(self.plan_b.id, plan_ids)
+        self.assertNotIn(self.plan_c.id, plan_ids)
 
     @users("test-user_extra")
     def test_analytic_data_user_extra(self):
