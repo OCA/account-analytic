@@ -15,14 +15,14 @@ class PurchaseOrderLine(models.Model):
                 self.product_id.product_tmpl_id._get_product_analytic_accounts()
             )
             ana_account = ana_accounts["expense"]
-            self.account_analytic_id = ana_account.id
+            self.analytic_distribution = {ana_account.id: 100} if ana_account else {}
         return res
 
     @api.model
     def create(self, vals):
-        if vals.get("product_id") and not vals.get("account_analytic_id"):
+        if vals.get("product_id") and not vals.get("analytic_distribution"):
             product = self.env["product.product"].browse(vals.get("product_id"))
             ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
             ana_account = ana_accounts["expense"]
-            vals["account_analytic_id"] = ana_account.id
+            vals["analytic_distribution"] = {ana_account.id: 100} if ana_account else {}
         return super().create(vals)

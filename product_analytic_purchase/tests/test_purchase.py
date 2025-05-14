@@ -9,9 +9,11 @@ from odoo.tests.common import TransactionCase
 class TestPurchaseOrderLine(TransactionCase):
     def setUp(self):
         super().setUp()
+        analytic_plan = self.env["account.analytic.plan"].create({"name": "Plan Test"})
         self.analytic = self.env["account.analytic.account"].create(
             {
                 "name": "Our Super Product Development",
+                "plan_id": analytic_plan.id,
             }
         )
         self.product1 = self.env["product.product"].create(
@@ -67,7 +69,7 @@ class TestPurchaseOrderLine(TransactionCase):
         self.po_line1.product_id = self.product2.id
         self.po_line1.onchange_product_id()
         self.assertEqual(
-            self.po_line1.account_analytic_id.id,
+            int(list(self.po_line1.analytic_distribution.keys())[0]),
             self.product2.expense_analytic_account_id.id,
         )
 
@@ -83,6 +85,6 @@ class TestPurchaseOrderLine(TransactionCase):
         }
         po_line2 = self.env["purchase.order.line"].create(pol_vals)
         self.assertEqual(
-            po_line2.account_analytic_id.id,
+            int(list(po_line2.analytic_distribution.keys())[0]),
             self.product2.expense_analytic_account_id.id,
         )

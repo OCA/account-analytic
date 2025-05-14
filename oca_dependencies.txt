@@ -1,0 +1,1 @@
+account-analytic https://github.com/OCA/account-analytic 18.0-mig-product_analytic e2d9351fae3b4af370cca60faf2042208078eb00
