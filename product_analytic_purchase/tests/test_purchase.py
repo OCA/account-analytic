@@ -8,7 +8,7 @@ from odoo.tests.common import TransactionCase
 
 class TestPurchaseOrderLine(TransactionCase):
     def setUp(self):
-        super(TestPurchaseOrderLine, self).setUp()
+        super().setUp()
         self.analytic = self.env["account.analytic.account"].create(
             {
                 "name": "Our Super Product Development",
