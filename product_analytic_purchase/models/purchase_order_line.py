@@ -9,7 +9,7 @@ class PurchaseOrderLine(models.Model):
 
     @api.onchange("product_id")
     def onchange_product_id(self):
-        res = super(PurchaseOrderLine, self).onchange_product_id()
+        res = super().onchange_product_id()
         if self.product_id:
             ana_accounts = (
                 self.product_id.product_tmpl_id._get_product_analytic_accounts()
@@ -25,4 +25,4 @@ class PurchaseOrderLine(models.Model):
             ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
             ana_account = ana_accounts["expense"]
             vals["account_analytic_id"] = ana_account.id
-        return super(PurchaseOrderLine, self).create(vals)
+        return super().create(vals)
