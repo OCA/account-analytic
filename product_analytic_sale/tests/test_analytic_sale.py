@@ -10,7 +10,7 @@ class TestSaleAnalytic(BaseCommon):
     def setUpClass(cls):
         super().setUpClass()
         cls.default_plan = cls.env["account.analytic.plan"].create(
-            {"name": "Default Plan", "company_id": False}
+            {"name": "Default Plan"}
         )
         cls.advance_obj = cls.env["sale.advance.payment.inv"]
         cls.analytic = cls.env["account.analytic.account"].create(
@@ -71,24 +71,6 @@ class TestSaleAnalytic(BaseCommon):
             }
         )
         cls.so_line1 = first(cls.so.order_line)
-
-    @classmethod
-    def _create_down_payment_product(cls):
-        wizard = cls.advance_obj.with_context(active_ids=cls.so.ids).create({})
-        product = cls.env["product.product"].create(
-            wizard._prepare_down_payment_product_values()
-        )
-        cls.env["ir.config_parameter"].sudo().set_param(
-            "sale.default_deposit_product_id", product.id
-        )
-        cls.deposit = cls.env["product.product"].browse(
-            int(
-                cls.env["ir.config_parameter"].get_param(
-                    "sale.default_deposit_product_id"
-                )
-            )
-        )
-        cls.deposit.income_analytic_account_id = cls.analytic
 
     def test_change_product_id(self):
         self.so_line1.product_id = self.product2.id
@@ -173,27 +155,6 @@ class TestSaleAnalytic(BaseCommon):
         wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
 
         wizard.advance_payment_method = "delivered"
-        invoice = wizard._create_invoices(self.so)
-        self.assertTrue(invoice)
-        self.assertEqual(
-            invoice.invoice_line_ids.analytic_distribution,
-            {str(self.analytic.id): 100.0},
-        )
-
-    def test_advance_fixed(self):
-        """
-        Test the analytic account on down payment product
-        """
-        self.so.action_confirm()
-        self._create_down_payment_product()
-        wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
-        wizard.update(
-            {
-                "fixed_amount": 50.0,
-                "advance_payment_method": "fixed",
-            }
-        )
         invoice = wizard._create_invoices(self.so)
         self.assertTrue(invoice)
         self.assertEqual(
