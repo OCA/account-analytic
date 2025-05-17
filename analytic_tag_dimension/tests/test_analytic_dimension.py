@@ -192,7 +192,7 @@ class TestAnalyticDimension(TransactionCase):
     def test_remove_dimension(self):
         self.dimension_1.unlink()
         self.assertNotIn("x_dimension_test_dim_1", self.analytic_line_obj._fields)
-        uninstall_hook(self.env)
+        uninstall_hook(self.env.cr, False)
         self.assertNotIn("x_dimension_test_dim_2", self.analytic_line_obj._fields)
 
     def test_zz_dimension_rename(self):
