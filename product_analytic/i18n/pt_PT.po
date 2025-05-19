@@ -20,6 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: product_analytic
+#: model:ir.model,name:product_analytic.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr ""
+
+#. module: product_analytic
 #: model:ir.model.fields,field_description:product_analytic.field_product_category__expense_analytic_account_id
 #: model:ir.model.fields,field_description:product_analytic.field_product_product__expense_analytic_account_id
 #: model:ir.model.fields,field_description:product_analytic.field_product_template__expense_analytic_account_id
