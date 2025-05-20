@@ -18,11 +18,14 @@ class PurchaseOrderLine(models.Model):
             self.analytic_distribution = {ana_account.id: 100} if ana_account else {}
         return res
 
-    @api.model
-    def create(self, vals):
-        if vals.get("product_id") and not vals.get("analytic_distribution"):
-            product = self.env["product.product"].browse(vals.get("product_id"))
-            ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
-            ana_account = ana_accounts["expense"]
-            vals["analytic_distribution"] = {ana_account.id: 100} if ana_account else {}
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("product_id") and not vals.get("analytic_distribution"):
+                product = self.env["product.product"].browse(vals.get("product_id"))
+                ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
+                ana_account = ana_accounts["expense"]
+                vals["analytic_distribution"] = (
+                    {ana_account.id: 100} if ana_account else {}
+                )
+        return super().create(vals_list)
