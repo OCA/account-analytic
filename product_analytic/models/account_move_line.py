@@ -12,6 +12,6 @@ class AccountMoveLine(models.Model):
         for line in self:
             move_type = self.env.context.get("move_type", line.move_id.move_type)
             super(
-                AccountMoveLine, self.with_context(move_type=move_type)
+                AccountMoveLine, line.with_context(move_type=move_type)
             )._compute_analytic_distribution()
         return
