@@ -19,7 +19,7 @@ class TestAccountInvoiceLine(TransactionCase):
         cls.default_plan = cls.env["account.analytic.plan"].create(
             {
                 "name": "Default Plan",
-                "company_id": False,
+                "applicability_ids": False,
             }
         )
         cls.analytic_account1 = cls.env["account.analytic.account"].create(
