@@ -56,11 +56,11 @@ class IrRule(models.Model):
             user = user.with_context(allowed_company_ids=user.company_ids.ids)
             if user.has_group(group2):
                 extra_domain = [
-                    ("department_id", "child_of", user.employee_ids.department_id.ids)
+                    ("department_ids", "child_of", user.employee_ids.department_id.ids)
                 ]
                 if user.has_group(group3):
                     extra_domain = expression.OR(
-                        [extra_domain, [("department_id", "=", False)]]
+                        [extra_domain, [("department_ids", "=", False)]]
                     )
             else:
                 extra_domain = [("id", "=", 0)]

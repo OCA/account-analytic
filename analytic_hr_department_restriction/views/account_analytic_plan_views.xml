@@ -5,7 +5,11 @@
         <field name="inherit_id" ref="analytic.account_analytic_plan_form_view" />
         <field name="arch" type="xml">
             <field name="color" position="after">
-                <field name="department_id" groups="account.group_account_invoice" />
+                <field
+                    name="department_ids"
+                    widget="many2many_tags"
+                    groups="account.group_account_invoice"
+                />
             </field>
         </field>
     </record>
@@ -15,7 +19,8 @@
         <field name="arch" type="xml">
             <field name="color" position="after">
                 <field
-                    name="department_id"
+                    name="department_ids"
+                    widget="many2many_tags"
                     groups="account.group_account_invoice"
                     optional="hide"
                 />

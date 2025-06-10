@@ -76,28 +76,28 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
         cls.plan_a = cls.env["account.analytic.plan"].create(
             {
                 "name": "Test plan A",
-                "department_id": cls.department_a.id,
+                "department_ids": [Command.set(cls.department_a.ids)],
             }
         )
         cls.account_a = cls.env["account.analytic.account"].create(
             {
                 "name": "Test account A",
                 "plan_id": cls.plan_a.id,
-                "department_id": cls.department_a.id,
+                "department_ids": [Command.set(cls.department_a.ids)],
                 "company_id": cls.env.company.id,
             }
         )
         cls.plan_b = cls.env["account.analytic.plan"].create(
             {
                 "name": "Test plan B",
-                "department_id": cls.department_b.id,
+                "department_ids": [Command.set(cls.department_b.ids)],
             }
         )
         cls.account_b = cls.env["account.analytic.account"].create(
             {
                 "name": "Test account B",
                 "plan_id": cls.plan_b.id,
-                "department_id": cls.department_b.id,
+                "department_ids": [Command.set(cls.department_b.ids)],
                 "company_id": cls.env.company.id,
             }
         )
@@ -143,12 +143,8 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
         # the corresponding plan/analytic account even if the employee's company
         # is not selected.
         self.department_a.company_id = False
-        self.plan_a.with_company(
-            self.company_extra.id
-        ).department_id = self.department_a
-        self.plan_b.with_company(
-            self.company_extra.id
-        ).department_id = self.department_b
+        self.plan_a.department_ids = [Command.set(self.department_a.ids)]
+        self.plan_b.department_ids = [Command.set(self.department_b.ids)]
         plans = (
             self.env["account.analytic.plan"]
             .with_company(self.company_extra.id)
@@ -171,7 +167,7 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
 
     @users("test-user")
     def test_get_relevant_plans(self):
-        self.plan_a.department_id = False
+        self.plan_a.department_ids = False
         items = self.env["account.analytic.plan"].get_relevant_plans(
             business_domain="general"
         )

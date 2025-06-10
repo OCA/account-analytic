@@ -33,8 +33,16 @@ msgid "Analytic Plans"
 msgstr "Planes analíticos"
 
 #. module: analytic_hr_department_restriction
-#: model:ir.model.fields,field_description:analytic_hr_department_restriction.field_account_analytic_account__department_id
-#: model:ir.model.fields,field_description:analytic_hr_department_restriction.field_account_analytic_plan__department_id
+#: model:ir.model.fields,field_description:analytic_hr_department_restriction.field_account_analytic_account__department_ids
+#: model:ir.model.fields,field_description:analytic_hr_department_restriction.field_account_analytic_plan__department_ids
 #: model_terms:ir.ui.view,arch_db:analytic_hr_department_restriction.view_account_analytic_account_search
-msgid "Department"
-msgstr "Departamento"
+msgid "Departments"
+msgstr ""
+
+#. module: analytic_hr_department_restriction
+#: model:ir.model,name:analytic_hr_department_restriction.model_ir_rule
+msgid "Record Rule"
+msgstr ""
+
+#~ msgid "Department"
+#~ msgstr "Departamento"

@@ -5,7 +5,11 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
         <field name="arch" type="xml">
             <field name="plan_id" position="before">
-                <field name="department_id" groups="account.group_account_invoice" />
+                <field
+                    name="department_ids"
+                    widget="many2many_tags"
+                    groups="account.group_account_invoice"
+                />
             </field>
         </field>
     </record>
@@ -15,7 +19,8 @@
         <field name="arch" type="xml">
             <field name="plan_id" position="after">
                 <field
-                    name="department_id"
+                    name="department_ids"
+                    widget="many2many_tags"
                     groups="account.group_account_invoice"
                     optional="hide"
                 />
@@ -27,14 +32,13 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_account_search" />
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="department_id" groups="account.group_account_invoice" />
+                <field name="department_ids" groups="account.group_account_invoice" />
             </field>
             <filter name="associatedpartner" position="after">
                 <filter
-                    string="Department"
-                    name="filter_department_id"
+                    string="Departments"
+                    name="filter_department_ids"
                     domain="[]"
-                    context="{'group_by': 'department_id'}"
                     groups="account.group_account_invoice"
                 />
             </filter>
