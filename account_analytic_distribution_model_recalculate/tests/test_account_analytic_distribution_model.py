@@ -323,3 +323,51 @@ class TestDistributionModelDate(TransactionCase):
             record.display_name,
             "123 | Acme Corp | VIP | Product | Electro (2024-01-01 - 2024-12-31)",
         )
+
+    @freeze_time("2024-01-01")
+    def test_action_sync_lines(self):
+        self.distribution_1.partner_id = False
+        self.distribution_1.account_prefix = "123"
+        move = self.env["account.move"].create(
+            {
+                "move_type": "entry",
+                "date": datetime.now().date(),
+                "line_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": "line_to_sync",
+                            "account_id": self.financial_account.id,
+                            "partner_id": self.partner_a.id,
+                            "debit": 100.0,
+                            "credit": 0.0,
+                        },
+                    ),
+                    (
+                        0,
+                        0,
+                        {
+                            "name": "counter_line",
+                            "account_id": self.financial_account.id,
+                            "debit": 0.0,
+                            "credit": 100.0,
+                        },
+                    ),
+                ],
+            }
+        )
+        move.action_post()
+
+        self.assertFalse(move.line_ids[0].distribution_model_id)
+        self.assertFalse(move.line_ids[1].distribution_model_id)
+
+        self.distribution_1.partner_id = self.partner_a.id
+        self.distribution_1.account_prefix = self.financial_account.code
+
+        self.distribution_1.action_sync_lines()
+
+        self.assertEqual(
+            move.line_ids[0].distribution_model_id.id, self.distribution_1.id
+        )
+        self.assertFalse(move.line_ids[1].distribution_model_id)
