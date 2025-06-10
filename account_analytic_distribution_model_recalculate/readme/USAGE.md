@@ -20,3 +20,15 @@
 - Modify the analytic distribution as needed.
 - Click the **Recalculate** button. (Partner and account prefix needs to be set)
 - All journal items originally updated using this model, and still within its date range and matching its criteria, will be recalculated, using the current distribution of the model.
+
+## **Sync Distribution Models with Journal Items**
+
+You can use the **Sync** button to associate all journal items that match the distribution model's criteria.
+
+This is especially useful in the following cases:
+
+- Journal items were created **before** the distribution model existed.
+- The model has been **updated or changed**, and you want to reassign journal items accordingly.
+- You need to **sync lines** from other entries that now match the model's conditions.
+
+By syncing, the system will disassociate any previous links and reassign journal items based on the current configuration of the distribution model.
