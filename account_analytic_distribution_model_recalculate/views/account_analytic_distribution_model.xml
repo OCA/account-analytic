@@ -20,6 +20,14 @@
             <xpath expr="//field[@name='analytic_distribution']" position="after">
                 <field name="recalculate" widget="boolean_toggle" />
                 <button
+                    name="action_sync_lines"
+                    type="object"
+                    string="Sync"
+                    class="btn-secondary"
+                    column_invisible="not recalculate"
+                    help="Sync the journal items with the analytic distribution model. Used to sync lines that were generated before the model was created."
+                />
+                <button
                     name="action_recalculate_analytic_lines"
                     type="object"
                     string="Recalculate"
