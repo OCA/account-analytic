@@ -16,17 +16,19 @@ class TestMrpStockAnalytic(CommonStockPicking):
         cls.product_A = cls.env["product.product"].create(
             {
                 "name": "Product A",
-                "type": "product",
+                "type": "consu",
                 "categ_id": cls.product_categ.id,
                 "standard_price": 10.0,
+                "is_storable": True,
             }
         )
         cls.product_B = cls.env["product.product"].create(
             {
                 "name": "Product B",
-                "type": "product",
+                "type": "consu",
                 "categ_id": cls.product_categ.id,
                 "standard_price": 10.0,
+                "is_storable": True,
             }
         )
         cls.bom = cls.env["mrp.bom"].create(
