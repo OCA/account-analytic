@@ -53,7 +53,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         self.product = self.Product.create(
             {
                 "name": "Product Test",
-                "type": "product",
+                "type": "consu",
                 "standard_price": 1.0,
                 "categ_id": self.category.id,
             }
