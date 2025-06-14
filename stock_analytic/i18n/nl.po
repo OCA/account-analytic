@@ -75,6 +75,11 @@ msgid "Manual Distribution"
 msgstr ""
 
 #. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__stock_picking_type_id
+msgid "Operation Type"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "Productverplaatsingen (voorraadverplaatsingslijn)"
