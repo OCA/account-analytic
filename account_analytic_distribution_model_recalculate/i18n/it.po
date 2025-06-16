@@ -92,6 +92,18 @@ msgid "Start Date"
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
+msgid "Sync"
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
+msgid ""
+"Sync the journal items with the analytic distribution model. Used to sync "
+"lines that were generated before the model was created."
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
 #, python-format
