@@ -5,7 +5,7 @@
     "name": "Account Analytic Distribution Model Recalculate",
     "summary": """Add the posibility to change the analytic distribution of the journal
     items assigned by the distribution model""",
-    "version": "17.0.1.0.0",
+    "version": "17.0.1.0.1",
     "license": "AGPL-3",
     "author": "Odoo Community Association (OCA), APSL-Nagarro, Bernat Obrador",
     "website": "https://github.com/OCA/account-analytic",
