@@ -1,0 +1,173 @@
+<odoo>
+<!-- # Copyright 2024 Bernat Obrador
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).-->
+    <record id="view_stock_analytic_rule_tree" model="ir.ui.view">
+        <field name="name">stock.analytic.rule.tree</field>
+        <field name="model">stock.analytic.rule</field>
+        <field name="arch" type="xml">
+            <tree editable="top" create="true">
+                <field name="name" required="1" />
+                <field name="location_from_ids" required="1" widget="many2many_tags" />
+                <field name="location_dest_ids" required="1" widget="many2many_tags" />
+                <field
+                    name="analytic_distribution"
+                    string="Positive Account"
+                    widget="analytic_distribution"
+                    options="{'force_applicability': 'optional', 'disable_save': true}"
+                    class="w-50"
+                />
+                <field
+                    name="analytic_distribution_negative"
+                    widget="analytic_distribution"
+                    string="Negative Account"
+                    options="{'force_applicability': 'optional', 'disable_save': true}"
+                    class="w-50"
+                />
+                <field name="amount_compute_type" />
+                <field
+                    name="include_taxes"
+                    invisible="amount_compute_type != 'product'"
+                    optional="hide"
+                />
+                <field name="financial_account_id" optional="hide" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="show"
+                />
+                <field name="active" widget="boolean_toggle" optional="hide" />
+                <button
+                    name="action_open_form"
+                    type="object"
+                    string="View"
+                    class="oe_highlight"
+                    icon="fa-eye"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_stock_analytic_rule_form" model="ir.ui.view">
+        <field name="name">stock.analytic.rule.form</field>
+        <field name="model">stock.analytic.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="2">
+                        <field name="name" required="1" />
+                        <field name="amount_compute_type" />
+                        <field
+                            name="include_taxes"
+                            invisible="amount_compute_type != 'product'"
+                        />
+                    </group>
+
+                    <notebook>
+                        <page string="Locations">
+                            <group col="2">
+                                <field
+                                    name="location_from_ids"
+                                    widget="many2many_tags"
+                                    required="1"
+                                />
+                                <field
+                                    name="location_dest_ids"
+                                    widget="many2many_tags"
+                                    required="1"
+                                />
+                            </group>
+                        </page>
+                        <page string="Analytic">
+                            <group string="Analytic Distribution" col="2">
+                                <field
+                                    name="analytic_distribution"
+                                    widget="analytic_distribution"
+                                    options="{'force_applicability': 'optional', 'disable_save': true}"
+                                    class="w-50"
+                                />
+                                <field
+                                    name="analytic_distribution_negative"
+                                    widget="analytic_distribution"
+                                    options="{'force_applicability': 'optional', 'disable_save': true}"
+                                    class="w-50"
+                                />
+                            </group>
+                        </page>
+
+                        <page string="Configuration">
+                            <group string="Aditional Parameters" col="2">
+                                <field name="financial_account_id" />
+                                <field
+                                    name="company_id"
+                                    groups="base.group_multi_company"
+                                />
+                                <field name="active" widget="boolean_toggle" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_stock_analytic_rule_search" model="ir.ui.view">
+        <field name="name">stock.analytic.rule.search</field>
+        <field name="model">stock.analytic.rule</field>
+        <field name="arch" type="xml">
+            <search string="Stock Analytic Rules">
+                <field name="name" string="Name" />
+                <field name="location_from_ids" string="From Location" />
+                <field name="location_dest_ids" string="To Location" />
+                <filter
+                    string="Archived"
+                    name="active_false"
+                    domain="[('active','=',False)]"
+                />
+
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_by_name"
+                        string="Name"
+                        context="{'group_by': 'name'}"
+                    />
+                    <filter
+                        name="group_by_from"
+                        string="Source Location"
+                        context="{'group_by': 'location_from_ids'}"
+                    />
+                    <filter
+                        name="group_by_dest"
+                        string="Destination Location"
+                        context="{'group_by': 'location_dest_ids'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_stock_analytic_rule" model="ir.actions.act_window">
+        <field name="name">Stock Analytic Rule</field>
+        <field name="res_model">stock.analytic.rule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_stock_analytic_rule_search" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_create">
+                Create your first Stock Analytic Rule
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        parent="account.menu_finance_configuration"
+        name="Stock Analytic"
+        id="stock_analytic_menu"
+        groups="analytic.group_analytic_accounting"
+    />
+    <menuitem
+        parent="stock_analytic_menu"
+        name="Stock Analytic Rules"
+        action="action_stock_analytic_rule"
+        id="stock_analytic_rule_menu"
+        sequence="1"
+    />
+</odoo>

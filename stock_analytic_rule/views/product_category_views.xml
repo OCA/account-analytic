@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="product_category_form_inherit" model="ir.ui.view">
+        <field name="name">product.category.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='logistics']" position="before">
+                <group name="analytic" string="Analytic">
+                    <field name="avg_price" />
+                    <field name="avg_weight" />
+                    <field
+                        name="supplement"
+                        string="Supplement for Stock Analytic Models"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
