@@ -14,7 +14,7 @@ class ResPartner(models.Model):
     )
 
     def name_get(self):
-        result = super(ResPartner, self).name_get()
+        result = super().name_get()
         updated_result = []
 
         for partner_id, name in result:
