@@ -13,16 +13,11 @@ class ResPartner(models.Model):
         domain=lambda self: [("company_id", "=", self.env.company.id)],
     )
 
-    def name_get(self):
-        result = super().name_get()
-        updated_result = []
-
-        for partner_id, name in result:
-            partner = self.browse(partner_id)
+    def _compute_display_name(self):
+        for partner in self:
             if partner.analytic_org_id:
-                name = f"{partner.name} ({partner.analytic_org_id.name})"
+                partner.display_name = (
+                    f"{partner.name} ({partner.analytic_org_id.name})"
+                )
             else:
-                name = partner.name or ""
-            updated_result.append((partner_id, name))
-
-        return updated_result
+                partner.display_name = partner.name or ""
