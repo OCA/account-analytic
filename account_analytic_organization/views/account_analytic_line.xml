@@ -4,7 +4,7 @@
         <field name="model">account.analytic.line</field>
         <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='plan_id']" position="after">
+            <xpath expr="//field[@name='account_id']" position="after">
                 <field name="analytic_org" readonly="1" />
             </xpath>
         </field>
