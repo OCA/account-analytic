@@ -2,7 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Account Analytic Organization",
-    "summary": """Adds organization field on the partner so you can use it on your analytic""",
+    "summary": """Adds organization field on the partner so you can use
+      it on your analytic""",
     "version": "16.0.1.0.1",
     "category": "Analytic Accounting",
     "license": "AGPL-3",
