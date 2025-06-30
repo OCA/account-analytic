@@ -13,7 +13,7 @@
                     name="account_move_update_analytic.action_view_account_move_update_analytic"
                     type="action"
                     groups="analytic.group_analytic_accounting"
-                    attrs="{'invisible': [('parent_state', '!=', 'posted')]}"
+                    invisible="parent_state != 'posted'"
                     icon="fa-tags"
                     title="Update analytic distribution"
                     aria-label="Update analytic distribution"

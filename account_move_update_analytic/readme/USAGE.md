@@ -7,6 +7,6 @@
 3.  Analytic lines will be dropped from current analytic account and
     recreated on new analytic distribution.
 
-![](../static/description/update_from_invoice.png)
+![Update from Invoice](../static/description/update_from_invoice.png)
 
-![](../static/description/update_from_journals.png)
+![Update from Journals](../static/description/update_from_journals.png)
