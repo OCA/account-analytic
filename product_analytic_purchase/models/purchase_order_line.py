@@ -26,4 +26,3 @@ class PurchaseOrderLine(models.Model):
             ana_account = ana_accounts["expense"]
             vals["account_analytic_id"] = ana_account.id
         return super(PurchaseOrderLine, self).create(vals)
-
