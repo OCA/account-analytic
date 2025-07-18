@@ -14,4 +14,5 @@
     "depends": ["product_analytic", "sale"],
     "auto_install": True,
     "installable": True,
+    "tests": ["tests"],
 }
