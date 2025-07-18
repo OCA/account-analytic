@@ -1,5 +1,6 @@
 from odoo.tests.common import TransactionCase
 
+
 class TestSaleOrderLineAnalytic(TransactionCase):
     def setUp(self):
         super().setUp()
@@ -9,34 +10,44 @@ class TestSaleOrderLineAnalytic(TransactionCase):
         )
         # 2) Create two products:
         #    - a consumable without analytic
-        self.product1 = self.env["product.product"].create({
-            "name": "Prod Sense Analytic",
-            "categ_id": self.env.ref("product.product_category_all").id,
-            "type": "consu",
-            "uom_id": self.env.ref("uom.product_uom_unit").id,
-            "uom_po_id": self.env.ref("uom.product_uom_unit").id,
-        })
+        self.product1 = self.env["product.product"].create(
+            {
+                "name": "Prod Sense Analytic",
+                "categ_id": self.env.ref("product.product_category_all").id,
+                "type": "consu",
+                "uom_id": self.env.ref("uom.product_uom_unit").id,
+                "uom_po_id": self.env.ref("uom.product_uom_unit").id,
+            }
+        )
         #    - a service with analytic account
-        self.product2 = self.env["product.product"].create({
-            "name": "Servei Analytic",
-            "categ_id": self.env.ref("product.product_category_all").id,
-            "type": "service",
-            "uom_id": self.env.ref("uom.product_uom_hour").id,
-            "uom_po_id": self.env.ref("uom.product_uom_hour").id,
-            "expense_analytic_account_id": self.analytic.id,
-            "income_analytic_account_id": self.analytic.id,
-        })
+        self.product2 = self.env["product.product"].create(
+            {
+                "name": "Servei Analytic",
+                "categ_id": self.env.ref("product.product_category_all").id,
+                "type": "service",
+                "uom_id": self.env.ref("uom.product_uom_hour").id,
+                "uom_po_id": self.env.ref("uom.product_uom_hour").id,
+                "expense_analytic_account_id": self.analytic.id,
+                "income_analytic_account_id": self.analytic.id,
+            }
+        )
         # 3) Create a sale order with one line using product1
-        self.so = self.env["sale.order"].create({
-            "partner_id": self.env.ref("base.res_partner_1").id,
-            "order_line": [
-                (0, 0, {
-                    "product_id": self.product1.id,
-                    "product_uom_qty": 1,
-                    "price_unit": 10,
-                })
-            ],
-        })
+        self.so = self.env["sale.order"].create(
+            {
+                "partner_id": self.env.ref("base.res_partner_1").id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product1.id,
+                            "product_uom_qty": 1,
+                            "price_unit": 10,
+                        },
+                    )
+                ],
+            }
+        )
         self.so_line1 = self.so.order_line[0]
 
     def test_onchange_product_id(self):
