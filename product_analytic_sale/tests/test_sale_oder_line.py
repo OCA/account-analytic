@@ -1,8 +1,9 @@
-from odoo.tests import SavepointCase, tagged
+from odoo.tests import tagged
+from odoo.tests.common import TransactionCase
 
 
 @tagged("post_install", "-at_install")
-class TestSaleOrderLineAnalyticDistribution(SavepointCase):
+class TestSaleOrderLineAnalyticDistribution(TransactionCase):
     @classmethod
     def setUpClass(cls):  # noqa: D102
         super().setUpClass()
@@ -19,8 +20,8 @@ class TestSaleOrderLineAnalyticDistribution(SavepointCase):
         ]
         if not income_field_candidates:
             raise AssertionError(
-                "No s'ha trobat cap camp analític d'ingressos al product.template. "
-                "Revisa el mòdul product_analytic."
+                "No income analytic account field found on product.template. "
+                "Check the product_analytic module."
             )
         cls.income_field_name = income_field_candidates[0]
 
@@ -49,7 +50,7 @@ class TestSaleOrderLineAnalyticDistribution(SavepointCase):
             {
                 "order_id": cls.so.id,
                 "product_id": cls.product_with.id,
-                "name": "Línia amb AA",
+                "name": "Line with AA",
                 "product_uom_qty": 1.0,
                 "product_uom": cls.uom_unit.id,
                 "price_unit": 100.0,
@@ -60,47 +61,51 @@ class TestSaleOrderLineAnalyticDistribution(SavepointCase):
             {
                 "order_id": cls.so.id,
                 "product_id": cls.product_without.id,
-                "name": "Línia sense AA",
+                "name": "Line without AA",
                 "product_uom_qty": 1.0,
                 "product_uom": cls.uom_unit.id,
                 "price_unit": 50.0,
             }
         )
 
+        # Line without product → make it "non accountable" to avoid SQL constraint
         cls.line_noproduct = env["sale.order.line"].create(
             {
                 "order_id": cls.so.id,
-                "name": "Línia sense producte",
-                "product_uom_qty": 1.0,
-                "product_uom": cls.uom_unit.id,
-                "price_unit": 10.0,
+                "name": "Line without product",
+                "display_type": "line_note",
+                "sequence": 99,
             }
         )
+
+    # -------------------------
+    # Utils
+    # -------------------------
+    def _recompute_distribution(self, lines):
+        """Force the recompute of the analytic field in the past records."""
+        lines.invalidate_cache(fnames=["analytic_distribution"])
+        lines._compute_analytic_distribution()
 
     # -------------------------
     # Tests
     # -------------------------
     def test_distribution_is_set_from_product_income_account(self):
-        """The line with an analytic account should have 100% assigned to that account."""
-        (
-            self.line_with | self.line_without | self.line_noproduct
-        )._compute_analytic_distribution()
-
+        """The line with analytic account should have 100% assigned to this account."""
+        self._recompute_distribution(self.line_with)
         dist_raw = self.line_with.analytic_distribution or {}
         dist = {int(k): v for k, v in dist_raw.items()}
         self.assertEqual(dist, {self.aa_income.id: 100})
 
     def test_lines_without_account_are_left_to_super(self):
-        """Lines without an analytic account (or without a product)
-        should not get forced distribution here.
-
-        We do not check the exact behavior of super;
-        only that our code does not set its own distribution for them."""
-
-        self.assertFalse(self.line_without.analytic_distribution)
-        self.assertFalse(self.line_noproduct.analytic_distribution)
+        """Lines without account should not receive forced distribution here."""
+        lines = self.line_without | self.line_noproduct
+        self._recompute_distribution(lines)
+        self.assertFalse(bool(self.line_without.analytic_distribution))
+        self.assertFalse(bool(self.line_noproduct.analytic_distribution))
 
     def test_mixed_recordset_branch_coverage(self):
-        """Call the compute with a mixed recordset to cover the loop and the OR (|=)."""
+        """Call compute with a mixed recordset to cover the
+        OR (|=) and the `return super(...)`."""
         lines = self.line_with | self.line_without | self.line_noproduct
+        self._recompute_distribution(lines)
         self.assertEqual(len(lines), 3)
