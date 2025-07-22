@@ -24,53 +24,67 @@ class TestSaleOrderLineAnalyticDistribution(SavepointCase):
             )
         cls.income_field_name = income_field_candidates[0]
 
-        cls.product_with = env["product.product"].create({
-            "name": "Product with AA",
-            "type": "service",
-        })
-        cls.product_with.product_tmpl_id.write({cls.income_field_name: cls.aa_income.id})
+        cls.product_with = env["product.product"].create(
+            {
+                "name": "Product with AA",
+                "type": "service",
+            }
+        )
+        cls.product_with.product_tmpl_id.write(
+            {cls.income_field_name: cls.aa_income.id}
+        )
 
-        cls.product_without = env["product.product"].create({
-            "name": "Product without AA",
-            "type": "service",
-        })
+        cls.product_without = env["product.product"].create(
+            {
+                "name": "Product without AA",
+                "type": "service",
+            }
+        )
 
         cls.uom_unit = env.ref("uom.product_uom_unit")
 
         cls.so = env["sale.order"].create({"partner_id": cls.partner.id})
 
-        cls.line_with = env["sale.order.line"].create({
-            "order_id": cls.so.id,
-            "product_id": cls.product_with.id,
-            "name": "Línia amb AA",
-            "product_uom_qty": 1.0,
-            "product_uom": cls.uom_unit.id,
-            "price_unit": 100.0,
-        })
+        cls.line_with = env["sale.order.line"].create(
+            {
+                "order_id": cls.so.id,
+                "product_id": cls.product_with.id,
+                "name": "Línia amb AA",
+                "product_uom_qty": 1.0,
+                "product_uom": cls.uom_unit.id,
+                "price_unit": 100.0,
+            }
+        )
 
-        cls.line_without = env["sale.order.line"].create({
-            "order_id": cls.so.id,
-            "product_id": cls.product_without.id,
-            "name": "Línia sense AA",
-            "product_uom_qty": 1.0,
-            "product_uom": cls.uom_unit.id,
-            "price_unit": 50.0,
-        })
+        cls.line_without = env["sale.order.line"].create(
+            {
+                "order_id": cls.so.id,
+                "product_id": cls.product_without.id,
+                "name": "Línia sense AA",
+                "product_uom_qty": 1.0,
+                "product_uom": cls.uom_unit.id,
+                "price_unit": 50.0,
+            }
+        )
 
-        cls.line_noproduct = env["sale.order.line"].create({
-            "order_id": cls.so.id,
-            "name": "Línia sense producte",
-            "product_uom_qty": 1.0,
-            "product_uom": cls.uom_unit.id,
-            "price_unit": 10.0,
-        })
+        cls.line_noproduct = env["sale.order.line"].create(
+            {
+                "order_id": cls.so.id,
+                "name": "Línia sense producte",
+                "product_uom_qty": 1.0,
+                "product_uom": cls.uom_unit.id,
+                "price_unit": 10.0,
+            }
+        )
 
     # -------------------------
     # Tests
     # -------------------------
     def test_distribution_is_set_from_product_income_account(self):
         """The line with an analytic account should have 100% assigned to that account."""
-        (self.line_with | self.line_without | self.line_noproduct)._compute_analytic_distribution()
+        (
+            self.line_with | self.line_without | self.line_noproduct
+        )._compute_analytic_distribution()
 
         dist_raw = self.line_with.analytic_distribution or {}
         dist = {int(k): v for k, v in dist_raw.items()}
