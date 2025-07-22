@@ -91,10 +91,10 @@ class TestSaleOrderLineAnalyticDistribution(SavepointCase):
         self.assertEqual(dist, {self.aa_income.id: 100})
 
     def test_lines_without_account_are_left_to_super(self):
-        """Lines without an analytic account (or without a product) 
+        """Lines without an analytic account (or without a product)
         should not get forced distribution here.
 
-        We do not check the exact behavior of super; 
+        We do not check the exact behavior of super;
         only that our code does not set its own distribution for them."""
 
         self.assertFalse(self.line_without.analytic_distribution)
