@@ -1,8 +1,13 @@
 # Copyright 2023 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo.fields import first
 
+from odoo.fields import first
 from odoo.addons.base.tests.common import BaseCommon
+
+
+def _first_key(dist):
+    """Torna el primer id (int) del dict analytic_distribution."""
+    return int(next(iter(dist))) if dist else False
 
 
 class TestSaleAnalytic(BaseCommon):
@@ -14,10 +19,7 @@ class TestSaleAnalytic(BaseCommon):
         )
         cls.advance_obj = cls.env["sale.advance.payment.inv"]
         cls.analytic = cls.env["account.analytic.account"].create(
-            {
-                "name": "Our Super Product Development",
-                "plan_id": cls.default_plan.id,
-            }
+            {"name": "Our Super Product Development", "plan_id": cls.default_plan.id}
         )
         cls.analytic_2 = cls.env["account.analytic.account"].create(
             {
@@ -92,38 +94,48 @@ class TestSaleAnalytic(BaseCommon):
 
     def test_change_product_id(self):
         self.so_line1.product_id = self.product2.id
-        analytic_account_id = [key for key in self.so_line1.analytic_distribution]
         self.assertEqual(
-            int(analytic_account_id[0]),
-            self.product2.expense_analytic_account_id.id,
+            _first_key(self.so_line1.analytic_distribution),
+            self.product2.income_analytic_account_id.id,
         )
 
+    def test_create(self):
+        pol_vals = {
+            "product_id": self.product2.id,
+            "name": self.product2.name,
+            "product_uom_qty": 42,
+            "product_uom": self.product2.uom_id.id,
+            "price_unit": 42,
+            "order_id": self.so.id,
+        }
+        so_line2 = self.env["sale.order.line"].create(pol_vals)
+        self.assertEqual(
+            _first_key(so_line2.analytic_distribution),
+            self.product2.income_analytic_account_id.id,
+        )
+
+    def test_no_income_account_no_model(self):
+        self.product1.income_analytic_account_id = False
+        self.so_line1.product_id = self.product1
+        self.assertFalse(self.so_line1.analytic_distribution)
+
     def test_create_invoice_after(self):
-        """
-        Create a sale order with no distribution on product 1
-        Then, set a distribution
-        Create the invoice and check the invoice line has the analytic
-        """
         self.so.action_confirm()
         self.product1.income_analytic_account_id = self.analytic
         invoice = self.so._create_invoices()
-        analytic_account_id = [
-            key for key in invoice.invoice_line_ids.analytic_distribution
-        ]
-        self.assertEqual(int(analytic_account_id[0]), self.analytic.id)
+        self.assertEqual(
+            _first_key(invoice.invoice_line_ids.analytic_distribution),
+            self.analytic.id,
+        )
 
     def test_create_invoice_distribution_plan(self):
-        """
-        Check the distribution plan is still well applied if no
-        income_analytic_account_id field is field in
-        """
         self.env["account.analytic.distribution.model"].create(
             {
                 "product_id": self.product1.id,
                 "analytic_distribution": {self.analytic_2.id: 100.0},
             }
         )
-        self.so = self.env["sale.order"].create(
+        so2 = self.env["sale.order"].create(
             {
                 "partner_id": self.env.ref("base.res_partner_1").id,
                 "order_line": [
@@ -141,37 +153,17 @@ class TestSaleAnalytic(BaseCommon):
                 ],
             }
         )
-        self.so.action_confirm()
-        invoice = self.so._create_invoices()
-        analytic_account_id = [
-            key for key in invoice.invoice_line_ids.analytic_distribution
-        ]
-        self.assertEqual(int(analytic_account_id[0]), self.analytic_2.id)
-
-    def test_create(self):
-        pol_vals = {
-            "product_id": self.product2.id,
-            "name": self.product2.name,
-            "product_uom_qty": 42,
-            "product_uom": self.product2.uom_id.id,
-            "price_unit": 42,
-            "order_id": self.so.id,
-        }
-        so_line2 = self.env["sale.order.line"].create(pol_vals)
-        analytic_account_id = [key for key in so_line2.analytic_distribution]
+        so2.action_confirm()
+        invoice = so2._create_invoices()
         self.assertEqual(
-            int(analytic_account_id[0]),
-            self.product2.expense_analytic_account_id.id,
+            _first_key(invoice.invoice_line_ids.analytic_distribution),
+            self.analytic_2.id,
         )
 
     def test_advance(self):
-        """
-        Test advance payment on product
-        """
         self.so_line1.product_id = self.product2
         self.so.action_confirm()
         wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
         wizard.advance_payment_method = "delivered"
         invoice = wizard._create_invoices(self.so)
         self.assertTrue(invoice)
@@ -181,19 +173,10 @@ class TestSaleAnalytic(BaseCommon):
         )
 
     def test_advance_fixed(self):
-        """
-        Test the analytic account on down payment product
-        """
         self.so.action_confirm()
         self._create_down_payment_product()
         wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
-        wizard.update(
-            {
-                "fixed_amount": 50.0,
-                "advance_payment_method": "fixed",
-            }
-        )
+        wizard.update({"fixed_amount": 50.0, "advance_payment_method": "fixed"})
         invoice = wizard._create_invoices(self.so)
         self.assertTrue(invoice)
         self.assertEqual(
@@ -202,18 +185,9 @@ class TestSaleAnalytic(BaseCommon):
         )
 
     def test_advance_fixed_no_analytic(self):
-        """
-        Test that analytic account on down payment product is not set
-        """
         self.so.action_confirm()
         wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
-        wizard.update(
-            {
-                "fixed_amount": 50.0,
-                "advance_payment_method": "fixed",
-            }
-        )
+        wizard.update({"fixed_amount": 50.0, "advance_payment_method": "fixed"})
         invoice = wizard._create_invoices(self.so)
         self.assertTrue(invoice)
         self.assertFalse(invoice.invoice_line_ids.analytic_distribution)
