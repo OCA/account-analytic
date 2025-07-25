@@ -19,6 +19,8 @@ class TestSaleAnalytic(TransactionCase):
             {
                 "name": "Cat Dist",
                 "account_id": cls.ana_cat.id,
+                "tag_id": cls.tag.id,
+                "percentage": 100,
             }
         )
 
