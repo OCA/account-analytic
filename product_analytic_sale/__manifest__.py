@@ -11,7 +11,7 @@
     "author": "Akretion,Odoo Community Association (OCA)",
     "maintainers": ["alexis-via"],
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["product_analytic", "sale", "account"],
+    "depends": ["product_analytic", "sale", "account", "analytic"],
     "auto_install": True,
     "installable": True,
 }
