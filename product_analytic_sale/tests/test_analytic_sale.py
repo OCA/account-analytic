@@ -18,6 +18,7 @@ class TestSaleAnalytic(TransactionCase):
         cls.dist_cat = cls.env["account.analytic.distribution"].create(
             {
                 "name": "Cat Dist",
+                "account_id": cls.ana_cat.id,
             }
         )
 
