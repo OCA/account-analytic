@@ -3,10 +3,10 @@
 # pragma: no cover
 from odoo.fields import first
 
-from odoo.addons.base.tests.common import BaseCommon
+from odoo.tests.common import TransactionCase
 
 
-class TestSaleAnalytic(BaseCommon):
+class TestSaleAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
