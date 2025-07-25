@@ -1,5 +1,6 @@
 # Copyright 2023 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+# pragma: no cover
 from odoo.fields import first
 
 from odoo.addons.base.tests.common import BaseCommon
@@ -217,3 +218,43 @@ class TestSaleAnalytic(BaseCommon):
         invoice = wizard._create_invoices(self.so)
         self.assertTrue(invoice)
         self.assertFalse(invoice.invoice_line_ids.analytic_distribution)
+
+    def test_compute_analytic_distribution_branches(self):
+        """Test that the compute_analytic_distribution method"""
+        so = self.env["sale.order"].create(
+            {
+                "partner_id": self.env.ref("base.res_partner_1").id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product2.id,
+                            "name": self.product2.name,
+                            "product_uom_qty": 1.0,
+                            "product_uom": self.product2.uom_id.id,
+                            "price_unit": 123.0,
+                        },
+                    ),
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product1.id,
+                            "name": self.product1.name,
+                            "product_uom_qty": 1.0,
+                            "product_uom": self.product1.uom_id.id,
+                            "price_unit": 456.0,
+                        },
+                    ),
+                ],
+            }
+        )
+        lines = so.order_line
+        lines._compute_analytic_distribution()
+
+        dist1 = lines[0].analytic_distribution
+        self.assertIn(self.product2.income_analytic_account_id.id, dist1)
+        self.assertEqual(dist1[self.product2.income_analytic_account_id.id], 100)
+
+        self.assertFalse(lines[1].analytic_distribution)
