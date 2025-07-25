@@ -14,7 +14,7 @@ class TestSaleAnalytic(TransactionCase):
         cls.ana_cat = cls.env["account.analytic.account"].create(
             {"name": "Category Analytic"}
         )
-
+        cls.tag = cls.env["account.analytic.tag"].create({"name": "Test Tag"})
         cls.dist_cat = cls.env["account.analytic.distribution"].create(
             {
                 "name": "Cat Dist",
