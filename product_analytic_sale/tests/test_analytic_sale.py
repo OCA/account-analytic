@@ -9,20 +9,15 @@ class TestSaleAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.default_plan = cls.env["account.analytic.plan"].create(
-            {"name": "Default Plan", "company_id": False}
-        )
         cls.advance_obj = cls.env["sale.advance.payment.inv"]
         cls.analytic = cls.env["account.analytic.account"].create(
             {
                 "name": "Our Super Product Development",
-                "plan_id": cls.default_plan.id,
             }
         )
         cls.analytic_2 = cls.env["account.analytic.account"].create(
             {
                 "name": "Our Super Product Development Bis",
-                "plan_id": cls.default_plan.id,
             }
         )
         cls.product1 = cls.env["product.product"].create(
