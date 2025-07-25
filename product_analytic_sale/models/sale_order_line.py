@@ -10,7 +10,6 @@ class SaleOrderLine(models.Model):
 
     analytic_distribution_id = fields.Many2one(
         "account.analytic.distribution",
-        string="Analytic Distribution",
         compute="_compute_analytic_distribution",
         readonly=True,
         help="Distribució analítica per defecte definida al producte o categoria",
@@ -28,13 +27,14 @@ class SaleOrderLine(models.Model):
 
     @api.onchange("product_id")
     def _onchange_product_id(self):
-        super()._onchange_product_id()
+        res = super()._onchange_product_id()
         # Assign analytic account if it exists
         analytic = self.product_id.analytic_account_id
         if analytic:
             self.analytic_account_id = analytic.id
         # Recompute analytic distribution
         self._compute_analytic_distribution()
+        return res
 
     def _prepare_invoice_line(self):
         vals = super()._prepare_invoice_line()

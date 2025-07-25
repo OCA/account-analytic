@@ -7,22 +7,20 @@ class TestSaleAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        # Income Analytic Account
+
         cls.ana_inc = cls.env["account.analytic.account"].create(
             {"name": "Income Analytic"}
         )
         cls.ana_cat = cls.env["account.analytic.account"].create(
             {"name": "Category Analytic"}
         )
-        # Analytic distribution for category (50%/50% example)
+
         cls.dist_cat = cls.env["account.analytic.distribution"].create(
             {
                 "name": "Cat Dist",
-                "analytic_account_ids": [(6, 0, [cls.ana_cat.id])],
-                "default_percent": {cls.ana_cat.id: 100.0},
             }
         )
-        # Product with analytic account and distribution
+
         cls.product = cls.env["product.product"].create(
             {
                 "name": "Prod Dist",
@@ -36,7 +34,7 @@ class TestSaleAnalytic(TransactionCase):
                 "analytic_distribution_id": cls.dist_cat.id,
             }
         )
-        # Product without analytics
+
         cls.product_no = cls.env["product.product"].create(
             {
                 "name": "Prod NoAna",
