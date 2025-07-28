@@ -18,6 +18,7 @@ class SaleOrderLine(models.Model):
     @api.depends("product_id")
     def _compute_analytic_distribution(self):
         dist_model = self.env["account.analytic.distribution"]
+        tag = self.env["account.analytic.tag"].search([], limit=1)
         for line in self:
             # Without product_id, no analytic distribution
             if not line.product_id:
@@ -33,7 +34,12 @@ class SaleOrderLine(models.Model):
                 continue
 
             dist = dist_model.search(
-                [("account_id", "=", income_ana.id), ("percentage", "=", 100)], limit=1
+                [
+                    ("account_id", "=", income_ana.id),
+                    ("percentage", "=", 100),
+                    ("tag_id", "=", tag.id),
+                ],
+                limit=1,
             )
 
             if not dist:
@@ -42,6 +48,7 @@ class SaleOrderLine(models.Model):
                         "name": income_ana.name,
                         "account_id": income_ana.id,
                         "percentage": 100,
+                        "tag_id": tag.id,
                     }
                 )
 

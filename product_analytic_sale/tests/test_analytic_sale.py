@@ -8,6 +8,7 @@ class TestSaleOrderLineAnalyticDistribution(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestSaleOrderLineAnalyticDistribution, cls).setUpClass()
+        cls.tag = cls.env["account.analytic.tag"].create({"name": "Test Tag"})
         # Create analytic accounts
         cls.analytic_account1 = cls.env["account.analytic.account"].create(
             {"name": "Test Analytic Income"}
@@ -78,7 +79,8 @@ class TestSaleOrderLineAnalyticDistribution(TransactionCase):
         dist1 = line.analytic_distribution
         self.assertTrue(dist1 and dist1._name == "account.analytic.distribution")
         self.assertEqual(dist1.account_id.id, self.analytic_account1.id)
-        self.assertEqual(dist1.percent, 100)
+        self.assertEqual(dist1.percentage, 100)
+        self.assertEqual(dist1.tag_id.id, self.tag.id)
         self.assertEqual(dist1.name, self.analytic_account1.name)
         # Second call: same record should be reused (not duplicated)
         line2 = self._create_order_line(self.product_with_income)
