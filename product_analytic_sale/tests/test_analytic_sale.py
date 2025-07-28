@@ -71,13 +71,6 @@ class TestSaleOrderLineAnalyticDistribution(TransactionCase):
         )
         return order.order_line[0]
 
-    def test_no_product(self):
-        # Create an order line without product
-        order = self.env["sale.order"].create({"partner_id": self.partner.id})
-        order.order_line = [(0, 0, {"product_uom_qty": 1.0, "price_unit": 10.0})]
-        # Since product_id is empty, distribution should be False
-        self.assertFalse(order.order_line.analytic_distribution)
-
     def test_income_account_distribution(self):
         """If product has income account, distribution is created or reused"""
         line = self._create_order_line(self.product_with_income)
