@@ -33,7 +33,7 @@ class SaleOrderLine(models.Model):
                 continue
 
             dist = dist_model.search(
-                [("account_id", "=", income_ana.id), ("percent", "=", 100)], limit=1
+                [("account_id", "=", income_ana.id), ("percentage", "=", 100)], limit=1
             )
 
             if not dist:
@@ -41,7 +41,7 @@ class SaleOrderLine(models.Model):
                     {
                         "name": income_ana.name,
                         "account_id": income_ana.id,
-                        "percent": 100,
+                        "percentage": 100,
                     }
                 )
 
