@@ -17,26 +17,32 @@ class SaleOrderLine(models.Model):
 
     @api.depends("product_id")
     def _compute_analytic_distribution(self):
-        """
-        Manual calculation of the analytic distribution:
-        1) Get the income account of the product (if it exists)
-        2) Assign 100% of the line to that account
-        3) If there is no account, leave the distribution empty
-        """
+        dist_model = self.env["account.analytic.distribution"]
         for line in self:
-            # without product there is no distribution
+            # Without product_id, no analytic distribution
             if not line.product_id:
-                line.analytic_distribution = {}
+                line.analytic_distribution = False
                 continue
 
-            # product_analytic defines this method to return
-            # {'income': analytic_account, 'expense': analytic_account}
+            # Get only the 'income' account from the product
             accounts = line.product_id.product_tmpl_id._get_product_analytic_accounts()
             income_ana = accounts.get("income")
 
-            if income_ana:
-                # total income account
-                line.analytic_distribution = {income_ana.id: 100}
-            else:
-                # no default distribution
-                line.analytic_distribution = {}
+            if not income_ana:
+                line.analytic_distribution = False
+                continue
+
+            dist = dist_model.search(
+                [("account_id", "=", income_ana.id), ("percent", "=", 100)], limit=1
+            )
+
+            if not dist:
+                dist = dist_model.create(
+                    {
+                        "name": income_ana.name,
+                        "account_id": income_ana.id,
+                        "percent": 100,
+                    }
+                )
+
+            line.analytic_distribution = dist
