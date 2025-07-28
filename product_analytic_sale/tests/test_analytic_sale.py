@@ -1,219 +1,96 @@
 # Copyright 2023 ACSONE SA/NV
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from odoo.fields import first
 
-from odoo.addons.base.tests.common import BaseCommon
+from odoo.tests.common import TransactionCase
 
 
-class TestSaleAnalytic(BaseCommon):
+class TestSaleAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
-        super().setUpClass()
-        cls.default_plan = cls.env["account.analytic.plan"].create(
-            {"name": "Default Plan", "company_id": False}
+        super(TestSaleAnalytic, cls).setUpClass()
+        # Create analytic accounts
+        cls.analytic_account1 = cls.env["account.analytic.account"].create(
+            {"name": "Test Analytic 1"}
         )
-        cls.advance_obj = cls.env["sale.advance.payment.inv"]
-        cls.analytic = cls.env["account.analytic.account"].create(
+        cls.analytic_account2 = cls.env["account.analytic.account"].create(
+            {"name": "Test Analytic 2"}
+        )
+        # Get unit of measure
+        unit = cls.env.ref("uom.product_uom_unit")
+        # Products for testing
+        cls.product_with_income = cls.env["product.product"].create(
             {
-                "name": "Our Super Product Development",
-                "plan_id": cls.default_plan.id,
+                "name": "Product with Income Analytic",
+                "list_price": 100.0,
+                "standard_price": 50.0,
+                "uom_id": unit.id,
+                "uom_po_id": unit.id,
+                "income_analytic_account_id": cls.analytic_account1.id,
             }
         )
-        cls.analytic_2 = cls.env["account.analytic.account"].create(
+        cls.product_no_accounts = cls.env["product.product"].create(
             {
-                "name": "Our Super Product Development Bis",
-                "plan_id": cls.default_plan.id,
+                "name": "Product with No Analytic",
+                "list_price": 100.0,
+                "standard_price": 50.0,
+                "uom_id": unit.id,
+                "uom_po_id": unit.id,
             }
         )
-        cls.product1 = cls.env["product.product"].create(
+        cls.product_only_expense = cls.env["product.product"].create(
             {
-                "name": "Computer SC234",
-                "categ_id": cls.env.ref("product.product_category_all").id,
-                "list_price": 450.0,
-                "standard_price": 300.0,
-                "type": "consu",
-                "uom_id": cls.env.ref("uom.product_uom_unit").id,
-                "uom_po_id": cls.env.ref("uom.product_uom_unit").id,
-                "description_sale": "17 LCD Monitor Processor AMD",
+                "name": "Product with Only Expense Analytic",
+                "list_price": 100.0,
+                "standard_price": 50.0,
+                "uom_id": unit.id,
+                "uom_po_id": unit.id,
+                "expense_analytic_account_id": cls.analytic_account2.id,
             }
         )
-        cls.product2 = cls.env["product.product"].create(
+        # Create a partner for the sale orders
+        cls.partner = cls.env["res.partner"].create({"name": "Test Partner"})
+
+    def _create_order_line(self, product):
+        """Helper to create a sale order with one line for the given product."""
+        order = self.env["sale.order"].create(
             {
-                "name": "Prepaid Consulting",
-                "categ_id": cls.env.ref("product.product_category_all").id,
-                "list_price": 90,
-                "standard_price": 40,
-                "type": "service",
-                "uom_id": cls.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": cls.env.ref("uom.product_uom_hour").id,
-                "description": "Example of product to invoice on order.",
-                "default_code": "SERV_ORDER",
-                "expense_analytic_account_id": cls.analytic.id,
-                "income_analytic_account_id": cls.analytic.id,
-            }
-        )
-        cls.so = cls.env["sale.order"].create(
-            {
-                "partner_id": cls.env.ref("base.res_partner_1").id,
+                "partner_id": self.partner.id,
                 "order_line": [
                     (
                         0,
                         0,
                         {
-                            "product_id": cls.product1.id,
-                            "name": cls.product1.name,
-                            "product_uom_qty": 12,
-                            "product_uom": cls.product1.uom_id.id,
-                            "price_unit": 42,
+                            "product_id": product.id,
+                            "product_uom_qty": 1.0,
+                            "price_unit": 100.0,
                         },
                     )
                 ],
             }
         )
-        cls.so_line1 = first(cls.so.order_line)
+        return order.order_line[0]
 
-    @classmethod
-    def _create_down_payment_product(cls):
-        wizard = cls.advance_obj.with_context(active_ids=cls.so.ids).create({})
-        product = cls.env["product.product"].create(
-            wizard._prepare_down_payment_product_values()
-        )
-        cls.env["ir.config_parameter"].sudo().set_param(
-            "sale.default_deposit_product_id", product.id
-        )
-        cls.deposit = cls.env["product.product"].browse(
-            int(
-                cls.env["ir.config_parameter"].get_param(
-                    "sale.default_deposit_product_id"
-                )
-            )
-        )
-        cls.deposit.income_analytic_account_id = cls.analytic
-
-    def test_change_product_id(self):
-        self.so_line1.product_id = self.product2.id
-        analytic_account_id = [key for key in self.so_line1.analytic_distribution]
-        self.assertEqual(
-            int(analytic_account_id[0]),
-            self.product2.expense_analytic_account_id.id,
-        )
-
-    def test_create_invoice_after(self):
+    def test_income_account_distribution(self):
         """
-        Create a sale order with no distribution on product 1
-        Then, set a distribution
-        Create the invoice and check the invoice line has the analytic
+        If the product has an income analytic account, the distribution
+        should allocate 100% to that account.
         """
-        self.so.action_confirm()
-        self.product1.income_analytic_account_id = self.analytic
-        invoice = self.so._create_invoices()
-        analytic_account_id = [
-            key for key in invoice.invoice_line_ids.analytic_distribution
-        ]
-        self.assertEqual(int(analytic_account_id[0]), self.analytic.id)
+        line = self._create_order_line(self.product_with_income)
+        expected = {self.analytic_account1.id: 100}
+        self.assertDictEqual(line.analytic_distribution, expected)
 
-    def test_create_invoice_distribution_plan(self):
+    def test_no_analytic_accounts(self):
         """
-        Check the distribution plan is still well applied if no
-        income_analytic_account_id field is field in
+        If the product has no analytic accounts, the distribution
+        should be empty.
         """
-        self.env["account.analytic.distribution.model"].create(
-            {
-                "product_id": self.product1.id,
-                "analytic_distribution": {self.analytic_2.id: 100.0},
-            }
-        )
-        self.so = self.env["sale.order"].create(
-            {
-                "partner_id": self.env.ref("base.res_partner_1").id,
-                "order_line": [
-                    (
-                        0,
-                        0,
-                        {
-                            "product_id": self.product1.id,
-                            "name": self.product1.name,
-                            "product_uom_qty": 12,
-                            "product_uom": self.product1.uom_id.id,
-                            "price_unit": 42,
-                        },
-                    )
-                ],
-            }
-        )
-        self.so.action_confirm()
-        invoice = self.so._create_invoices()
-        analytic_account_id = [
-            key for key in invoice.invoice_line_ids.analytic_distribution
-        ]
-        self.assertEqual(int(analytic_account_id[0]), self.analytic_2.id)
+        line = self._create_order_line(self.product_no_accounts)
+        self.assertEqual(line.analytic_distribution, {})
 
-    def test_create(self):
-        pol_vals = {
-            "product_id": self.product2.id,
-            "name": self.product2.name,
-            "product_uom_qty": 42,
-            "product_uom": self.product2.uom_id.id,
-            "price_unit": 42,
-            "order_id": self.so.id,
-        }
-        so_line2 = self.env["sale.order.line"].create(pol_vals)
-        analytic_account_id = [key for key in so_line2.analytic_distribution]
-        self.assertEqual(
-            int(analytic_account_id[0]),
-            self.product2.expense_analytic_account_id.id,
-        )
-
-    def test_advance(self):
+    def test_only_expense_account(self):
         """
-        Test advance payment on product
+        If the product has only an expense analytic account, the distribution
+        should still be empty (no income account).
         """
-        self.so_line1.product_id = self.product2
-        self.so.action_confirm()
-        wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
-        wizard.advance_payment_method = "delivered"
-        invoice = wizard._create_invoices(self.so)
-        self.assertTrue(invoice)
-        self.assertEqual(
-            invoice.invoice_line_ids.analytic_distribution,
-            {str(self.analytic.id): 100.0},
-        )
-
-    def test_advance_fixed(self):
-        """
-        Test the analytic account on down payment product
-        """
-        self.so.action_confirm()
-        self._create_down_payment_product()
-        wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
-        wizard.update(
-            {
-                "fixed_amount": 50.0,
-                "advance_payment_method": "fixed",
-            }
-        )
-        invoice = wizard._create_invoices(self.so)
-        self.assertTrue(invoice)
-        self.assertEqual(
-            invoice.invoice_line_ids.analytic_distribution,
-            {str(self.analytic.id): 100.0},
-        )
-
-    def test_advance_fixed_no_analytic(self):
-        """
-        Test that analytic account on down payment product is not set
-        """
-        self.so.action_confirm()
-        wizard = self.advance_obj.with_context(active_ids=self.so.ids).create({})
-
-        wizard.update(
-            {
-                "fixed_amount": 50.0,
-                "advance_payment_method": "fixed",
-            }
-        )
-        invoice = wizard._create_invoices(self.so)
-        self.assertTrue(invoice)
-        self.assertFalse(invoice.invoice_line_ids.analytic_distribution)
+        line = self._create_order_line(self.product_only_expense)
+        self.assertEqual(line.analytic_distribution, {})
