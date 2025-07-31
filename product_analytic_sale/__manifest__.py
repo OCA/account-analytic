@@ -4,14 +4,14 @@
 
 {
     "name": "Product Analytic Sale",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Accounting",
     "license": "AGPL-3",
     "summary": "Glue module between sale and product_analytic",
     "author": "Akretion,Odoo Community Association (OCA)",
     "maintainers": ["alexis-via"],
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["product_analytic", "sale"],
+    "depends": ["product_analytic", "sale", "analytic"],
     "auto_install": True,
     "installable": True,
 }
