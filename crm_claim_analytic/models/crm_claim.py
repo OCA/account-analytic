@@ -32,10 +32,11 @@ class CrmClaim(models.Model):
 
     def button_account_analytic_line_action(self):
         self.ensure_one()
-        action = self.env.ref("analytic.account_analytic_line_action_entries")
-        action_dict = action.read()[0] if action else {}
-        action_dict["context"] = safe_eval(action_dict.get("context", "{}"))
-        action_dict["context"].update(
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "analytic.account_analytic_line_action_entries"
+        )
+        action["context"] = safe_eval(action.get("context", "{}"))
+        action["context"].update(
             {
                 "search_default_claim_id": self.id,
                 "default_claim_id": self.id,
@@ -45,8 +46,8 @@ class CrmClaim(models.Model):
         domain = expression.AND(
             [
                 [("account_id", "=", self.analytic_account_id.id)],
-                safe_eval(action.domain or "[]"),
+                safe_eval(action["domain"] or "[]"),
             ]
         )
-        action_dict.update({"domain": domain})
-        return action_dict
+        action.update({"domain": domain})
+        return action
