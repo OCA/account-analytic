@@ -4,7 +4,7 @@
     "name": "Purchase Analytic (MTO)",
     "summary": "This module sets analytic distribution in purchase order line from "
     "sale order line analytic distribution",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Analytic",
     "license": "AGPL-3",
     "author": "Tecnativa, VentorTech, Odoo Community Association (OCA)",

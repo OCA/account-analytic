@@ -8,10 +8,27 @@ class PurchaseOrderLine(models.Model):
 
     @api.model
     def _prepare_purchase_order_line_from_procurement(
-        self, product_id, product_qty, product_uom, company_id, values, po
+        self,
+        product_id,
+        product_qty,
+        product_uom,
+        location_dest_id,
+        name,
+        origin,
+        company_id,
+        values,
+        po,
     ):
         res = super()._prepare_purchase_order_line_from_procurement(
-            product_id, product_qty, product_uom, company_id, values, po
+            product_id,
+            product_qty,
+            product_uom,
+            location_dest_id,
+            name,
+            origin,
+            company_id,
+            values,
+            po,
         )
         res["analytic_distribution"] = values.get("analytic_distribution", False)
         return res
@@ -27,6 +44,10 @@ class PurchaseOrderLine(models.Model):
         company_id,
         values,
     ):
+        """Return the record in self where the procument with values passed as
+        args can be merged. If it returns an empty record then a new line will
+        be created.
+        """
         lines = (
             self.filtered(
                 lambda po_line: po_line.analytic_distribution
