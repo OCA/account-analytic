@@ -20,7 +20,6 @@ class TestSaleStockAnalytic(TransactionCase):
         cls.sale_order = cls.sale_order_model.create(
             {
                 "partner_id": cls.partner.id,
-                "analytic_account_id": cls.analytic_account.id,
             }
         )
         cls.sale_order_line = cls.sale_order_line_model.create(
