@@ -10,6 +10,7 @@ msgstr ""
 "PO-Revision-Date: 2025-06-23 06:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -79,6 +80,12 @@ msgid "Analytic Precision"
 msgstr "Precisió analítica"
 
 #. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_import
+#, fuzzy
+msgid "Analytic distribution (importable)"
+msgstr "Distribució Analítica"
+
+#. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Archived"
 msgstr "Arxivat"
@@ -132,6 +139,14 @@ msgid "Created on"
 msgstr "Creat el"
 
 #. module: stock_analytic_rule
+#: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+
+#. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Destination Location"
 msgstr "Ubicació de destí"
@@ -179,7 +194,8 @@ msgstr "Identificador"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__include_taxes
 msgid "If checked, the amount will include taxes when computed by product."
-msgstr "Si està marcat, l'import inclourà impostos quan es calculi per producte."
+msgstr ""
+"Si està marcat, l'import inclourà impostos quan es calculi per producte."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__include_taxes
@@ -200,6 +216,12 @@ msgstr "Actualitzat el"
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Locations"
 msgstr "Ubicacions"
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__manual_distribution_id
+#, fuzzy
+msgid "Manual Distribution"
+msgstr "Distribució Analítica"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__name
@@ -246,12 +268,12 @@ msgid "Stock Analytic"
 msgstr "Estoc analític"
 
 #. module: stock_analytic_rule
+#: model:ir.actions.act_window,name:stock_analytic_rule.action_stock_analytic_rule
 #: model:ir.model,name:stock_analytic_rule.model_stock_analytic_rule
 msgid "Stock Analytic Rule"
 msgstr "Regla analítica d'estoc"
 
 #. module: stock_analytic_rule
-#: model:ir.actions.act_window,name:stock_analytic_rule.action_stock_analytic_rule
 #: model:ir.ui.menu,name:stock_analytic_rule.stock_analytic_rule_menu
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Stock Analytic Rules"
@@ -270,7 +292,8 @@ msgstr "Suplement"
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.product_category_form_inherit
-msgid "Supplement for Stock Analytic Rules"
+#, fuzzy
+msgid "Supplement for Stock Analytic Models"
 msgstr "Suplement per a les regles analítiques d'estoc"
 
 #. module: stock_analytic_rule
@@ -294,11 +317,13 @@ msgstr "Aquest camp s’utilitza per complementar el cost del producte."
 #, python-format
 msgid ""
 "This move has to generate analytic\n"
-"                    lines so the category must have a weight greater than 0.\n"
+"                    lines so the category must have a weight greater than "
+"0.\n"
 "\n"
 "                    Please, check the category %s weight."
 msgstr ""
-"Aquest moviment ha de generar línies analítiques,\\ així que la categoria ha de tenir un preu superior a 0.\n"
+"Aquest moviment ha de generar línies analítiques,\\ així que la categoria ha "
+"de tenir un preu superior a 0.\n"
 "Si us plau, comprova el pes de la categoria %s."
 
 #. module: stock_analytic_rule

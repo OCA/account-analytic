@@ -6,11 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-23 06:38+0000\n"
-"PO-Revision-Date: 2025-06-23 06:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -25,12 +22,6 @@ msgid ""
 "        Product: The amount is computed based on the product's price.\n"
 "        "
 msgstr ""
-"\n"
-"        Categoría: El importe se calcula en base al precio medio,\n"
-"        el peso medio y el suplemento definidos en la categoría del "
-"producto.\n"
-"        Producto: El importe se calcula en base al precio del producto.\n"
-"        "
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -40,66 +31,63 @@ msgid ""
 "A Stock Analytic Rule with the same\n"
 "                            'From' and 'To' already exists."
 msgstr ""
-"Ya existe una Regla Analítica de Stock con el "
-"mismo\\                            'Desde' y 'Hasta'"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__active
 msgid "Active"
-msgstr "Activo"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Aditional Parameters"
-msgstr "Parámetros Adicionales"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.product_category_form_inherit
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Analytic"
-msgstr "Analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Analytic Distribution"
-msgstr "Distribución Analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_search
 msgid "Analytic Distribution Search"
-msgstr "Distribución Analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model,name:stock_analytic_rule.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Línea analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__analytic_precision
 msgid "Analytic Precision"
-msgstr "Precisión Analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_import
-#, fuzzy
 msgid "Analytic distribution (importable)"
-msgstr "Distribución Analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Archived"
-msgstr "Archivado"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_price
 msgid "Average Price"
-msgstr "Precio Promedio"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_weight
 msgid "Average Weight"
-msgstr "Peso Promedio"
+msgstr ""
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -107,85 +95,85 @@ msgstr "Peso Promedio"
 #: model:ir.model.fields.selection,name:stock_analytic_rule.selection__stock_analytic_rule__amount_compute_type__category
 #, python-format
 msgid "Category"
-msgstr "Categoría"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__company_id
 msgid "Company"
-msgstr "Compañia"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__amount_compute_type
 msgid "Compute amount by"
-msgstr "Calcular importe por"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Configuration"
-msgstr "Configuración"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.actions.act_window,help:stock_analytic_rule.action_stock_analytic_rule
 msgid "Create your first Stock Analytic Rule"
-msgstr "Crea tu primera Regla Analítica de Stock"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__create_date
 msgid "Created on"
-msgstr "Creado el"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_import
 msgid ""
-"Defining this field, it will set the analytical distribution in JSON format, "
-"but using the analytic accounts names as keys of the dictionary, so it eases "
-"the human input."
+"Defining this field, it will set the analytical distribution in JSON format,"
+" but using the analytic accounts names as keys of the dictionary, so it "
+"eases the human input."
 msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Destination Location"
-msgstr "Ubicación de destino"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__display_name
 msgid "Display Name"
-msgstr "Nombre para Mostrar"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr "Cuenta Analítica de Distribución"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__financial_account_id
 msgid "Financial Account"
-msgstr "Cuenta Financiera"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__financial_account_id
 msgid "Financial account to use for the analytic lines."
-msgstr "Cuenta financiera usada en las líneas analíticas"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__location_from_ids
 msgid "From"
-msgstr "Desde"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "From Location"
-msgstr "Ubicación de origen"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Group By"
-msgstr "Agrupar por"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__id
@@ -196,55 +184,52 @@ msgstr ""
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__include_taxes
 msgid "If checked, the amount will include taxes when computed by product."
 msgstr ""
-"Si está marcado, el importe incluirá impuestos cuando se calcule por "
-"producto."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__include_taxes
 msgid "Include Taxes"
-msgstr "Incluir Impuestos"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__write_uid
 msgid "Last Updated by"
-msgstr "Última Actualización por"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__write_date
 msgid "Last Updated on"
-msgstr "Última Actualización el"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Locations"
-msgstr "Ubicaciones"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__manual_distribution_id
-#, fuzzy
 msgid "Manual Distribution"
-msgstr "Distribución Analítica"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__name
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_tree
 msgid "Negative Account"
-msgstr "Cuenta Negativa"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_negative
 msgid "Negative Analytic Distribution"
-msgstr "Distribución Analitica Negativa"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_tree
 msgid "Positive Account"
-msgstr "Cuenta Positiva"
+msgstr ""
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -252,66 +237,65 @@ msgstr "Cuenta Positiva"
 #: model:ir.model.fields.selection,name:stock_analytic_rule.selection__stock_analytic_rule__amount_compute_type__product
 #, python-format
 msgid "Product"
-msgstr "Producto"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model,name:stock_analytic_rule.model_product_category
 msgid "Product Category"
-msgstr "Categoría de producto"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Source Location"
-msgstr "Ubicación de origen"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.ui.menu,name:stock_analytic_rule.stock_analytic_menu
 msgid "Stock Analytic"
-msgstr "Analítica de Stock"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.actions.act_window,name:stock_analytic_rule.action_stock_analytic_rule
 #: model:ir.model,name:stock_analytic_rule.model_stock_analytic_rule
 msgid "Stock Analytic Rule"
-msgstr "Regla Analítica de Stock"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.ui.menu,name:stock_analytic_rule.stock_analytic_rule_menu
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Stock Analytic Rules"
-msgstr "Reglas Analíticas de Stock"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model,name:stock_analytic_rule.model_stock_move
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_account_analytic_line__stock_move_id
 msgid "Stock Move"
-msgstr "Movimiento de stock"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__supplement
 msgid "Supplement"
-msgstr "Suplemento"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.product_category_form_inherit
-#, fuzzy
 msgid "Supplement for Stock Analytic Models"
-msgstr "Suplemento para las Reglas Analíticas de Stock"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_price
 msgid "This field is used to store the average price of the products"
-msgstr "Precio promedio de los productos de la cateogria"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_weight
 msgid "This field is used to store the average weight of the products"
-msgstr "Peso promedio de los productos de la cateogria"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__supplement
 msgid "This field is used to supplement the cost of the product"
-msgstr "Este campo se utiliza para complementar el coste del producto."
+msgstr ""
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -319,14 +303,10 @@ msgstr "Este campo se utiliza para complementar el coste del producto."
 #, python-format
 msgid ""
 "This move has to generate analytic\n"
-"                    lines so the category must have a weight greater than "
-"0.\n"
+"                    lines so the category must have a weight greater than 0.\n"
 "\n"
 "                    Please, check the category %s weight."
 msgstr ""
-"Este movimiento debe generar líneas analíticas,\n"
-"por lo que la categoría debe tener un peso superior a 0.\n"
-"Por favor, verifica el peso de la categoría %s."
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -338,21 +318,18 @@ msgid ""
 "\n"
 "                    Please, check the category %s price."
 msgstr ""
-"Este movimiento debe generar líneas analíticas,\n"
-"por lo que la categoría debe tener un precio superior a 0.\n"
-"Por favor, verifica el precio de la categoría %s."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__location_dest_ids
 msgid "To"
-msgstr "Hasta"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "To Location"
-msgstr "Ubicación de destino"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_tree
 msgid "View"
-msgstr "Ver"
+msgstr ""
