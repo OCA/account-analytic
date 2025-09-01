@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+        <record id="stock_analytic_rule_comp_rule" model="ir.rule">
+            <field name="name">Stock Analytic Model multi company rule</field>
+            <field name="model_id" ref="model_stock_analytic_rule" />
+            <field eval="True" name="global" />
+            <field
+            name="domain_force"
+        >['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+        </record>
+</odoo>
