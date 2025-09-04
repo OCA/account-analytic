@@ -2,6 +2,7 @@
 # Copyright 2024 Tecnativa - David Vidal
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from odoo import Command
 from odoo.tests import tagged
 
 from odoo.addons.point_of_sale.tests.common import TestPointOfSaleCommon, TestPoSCommon
@@ -89,3 +90,77 @@ class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
             self.env["account.move.line"].search(aml_domain).analytic_distribution,
             {str(self.analytic_account.id): 100.0},
         )
+
+    def test_backend_invoice_ignores_pos_specific_model(self):
+        """Backend invoices must NOT use POS-specific analytic models"""
+        move = self.env["account.move"].create(
+            {
+                "move_type": "out_invoice",
+                "partner_id": self.partner_a.id,
+                "invoice_line_ids": [
+                    Command.create(
+                        {
+                            "product_id": self.product_a.id,
+                            "quantity": 1,
+                            "price_unit": 10.0,
+                            "account_id": self.sales_account.id,
+                        }
+                    )
+                ],
+            }
+        )
+        move.action_post()
+        lines = self.env["account.move.line"].search(
+            [
+                ("move_id", "=", move.id),
+                ("account_id", "=", self.sales_account.id),
+                ("product_id", "=", self.product_a.id),
+            ]
+        )
+        # No analytic distribution applied from a POS-specific model
+        self.assertTrue(lines, "Expected at least one backend invoice line")
+        self.assertFalse(any(line.analytic_distribution for line in lines))
+
+    def test_backend_invoice_uses_generic_model_only(self):
+        """Backend invoices use ONLY generic models (pos_config_id unset)"""
+        generic_account = self.env["account.analytic.account"].create(
+            {
+                "name": "Generic Analytic",
+                "plan_id": self.analytic_plan.id,
+            }
+        )
+        self.env["account.analytic.distribution.model"].create(
+            {
+                "account_prefix": self.sales_account.code,
+                "analytic_distribution": {generic_account.id: 100},
+            }
+        )
+        move = self.env["account.move"].create(
+            {
+                "move_type": "out_invoice",
+                "partner_id": self.partner_a.id,
+                "invoice_line_ids": [
+                    Command.create(
+                        {
+                            "product_id": self.product_a.id,
+                            "quantity": 1,
+                            "price_unit": 10.0,
+                            "account_id": self.sales_account.id,
+                        }
+                    )
+                ],
+            }
+        )
+        move.action_post()
+        lines = self.env["account.move.line"].search(
+            [
+                ("move_id", "=", move.id),
+                ("account_id", "=", self.sales_account.id),
+                ("product_id", "=", self.product_a.id),
+            ]
+        )
+        self.assertTrue(lines, "Expected at least one backend invoice line")
+        # Only the generic model should apply
+        expected = {str(generic_account.id): 100.0}
+        for line in lines:
+            self.assertEqual(line.analytic_distribution, expected)
