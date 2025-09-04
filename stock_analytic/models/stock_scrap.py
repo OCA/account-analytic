@@ -7,9 +7,15 @@ class StockScrap(models.Model):
     _inherit = "stock.scrap"
 
     analytic_account_id = fields.Many2one(
-        string="Analytic Account", comodel_name="account.analytic.account"
+        string="Analytic Account",
+        comodel_name="account.analytic.account",
+        check_company=True,
     )
-    analytic_tag_ids = fields.Many2many("account.analytic.tag", string="Analytic Tags")
+    analytic_tag_ids = fields.Many2many(
+        "account.analytic.tag",
+        string="Analytic Tags",
+        check_company=True,
+    )
 
     def _prepare_move_values(self):
         res = super()._prepare_move_values()
