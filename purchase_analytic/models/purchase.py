@@ -17,6 +17,7 @@ class PurchaseOrder(models.Model):
         states={"draft": [("readonly", False)]},
         store=True,
         help="The analytic account related to a purchase order.",
+        check_company=True,
     )
 
     @api.depends("order_line.account_analytic_id")
