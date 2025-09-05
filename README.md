@@ -37,7 +37,7 @@ addon | version | maintainers | summary
 [purchase_analytic](purchase_analytic/) | 15.0.3.1.0 |  | Purchase Analytic
 [purchase_request_analytic](purchase_request_analytic/) | 15.0.1.0.1 |  | Purchase Request Analytic
 [purchase_stock_analytic](purchase_stock_analytic/) | 15.0.1.0.0 |  | Copies the analytic account of the purchase order item to the stock move
-[stock_analytic](stock_analytic/) | 15.0.1.1.0 |  | Adds an analytic account and analytic tags in stock move
+[stock_analytic](stock_analytic/) | 15.0.1.2.0 |  | Adds an analytic account and analytic tags in stock move
 
 [//]: # (end addons)
 
