@@ -4,7 +4,6 @@
     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-
     <t t-inherit="analytic.AnalyticDistributionPopup" t-inherit-mode="extension">
         <xpath expr="//th[hasclass('deleteColumn')]" position="before">
             <th class="rebalanceColumn" />
@@ -20,5 +19,4 @@
             </td>
         </xpath>
     </t>
-
 </odoo>
