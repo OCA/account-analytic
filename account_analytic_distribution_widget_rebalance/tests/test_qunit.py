@@ -5,7 +5,7 @@ from pathlib import Path
 
 from odoo.tests import HttpCase, tagged
 
-from odoo.addons.web.tests.test_js import qunit_error_checker
+from odoo.addons.web.tests.test_js import unit_test_error_checker
 
 
 @tagged("post_install", "-at_install")
@@ -13,9 +13,9 @@ class TestQUnit(HttpCase):
     def test_qunit(self):
         module_name = Path(__file__).parent.parent.name
         self.browser_js(
-            f"/web/tests?module={module_name}",
+            f"/web/tests?filter={module_name}",
             "",
             login="admin",
             timeout=1800,
-            error_checker=qunit_error_checker,
+            error_checker=unit_test_error_checker,
         )
