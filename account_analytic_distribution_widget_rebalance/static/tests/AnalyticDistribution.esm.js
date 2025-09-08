@@ -1,3 +1,4 @@
+/* global window */
 /** @odoo-module **/
 /*
     Copyright 2025 Camptocamp SA (https://www.camptocamp.com).
