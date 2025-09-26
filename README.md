@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [account_analytic_sequence](account_analytic_sequence/) | 17.0.1.0.0 |  | Restore the analytic account sequence
 [account_analytic_spread_by_tag](account_analytic_spread_by_tag/) | 17.0.1.0.1 |  | Account Analytic Spread by Tag
 [account_analytic_tag](account_analytic_tag/) | 17.0.1.1.1 |  | Account Analytic Tag
-[account_move_update_analytic](account_move_update_analytic/) | 17.0.1.0.0 | <a href='https://github.com/remi-filament'><img src='https://github.com/remi-filament.png' width='32' height='32' style='border-radius:50%;' alt='remi-filament'/></a> <a href='https://github.com/Shide'><img src='https://github.com/Shide.png' width='32' height='32' style='border-radius:50%;' alt='Shide'/></a> | This module allows the user to update analytic on posted moves
+[account_move_update_analytic](account_move_update_analytic/) | 17.0.1.0.1 | <a href='https://github.com/remi-filament'><img src='https://github.com/remi-filament.png' width='32' height='32' style='border-radius:50%;' alt='remi-filament'/></a> <a href='https://github.com/Shide'><img src='https://github.com/Shide.png' width='32' height='32' style='border-radius:50%;' alt='Shide'/></a> | This module allows the user to update analytic on posted moves
 [analytic_base_department](analytic_base_department/) | 17.0.1.0.0 |  | Add relationship between Analytic and Department
 [analytic_partner](analytic_partner/) | 17.0.1.0.0 |  | Search and group analytic entries by partner
 [hr_timesheet_analytic_tag](hr_timesheet_analytic_tag/) | 17.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Hr Timesheet Analytic Tag
