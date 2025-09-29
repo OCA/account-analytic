@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <form string="Update analytic lines">
                 <group groups="analytic.group_analytic_accounting">
-                    <group>
+                    <group invisible="not line_id">
                         <field
                             name="current_analytic_distribution"
                             readonly="1"
@@ -16,6 +16,7 @@
                         />
                     </group>
                     <group>
+                        <field name="line_id" invisible="1" />
                         <field name="company_id" invisible="1" />
                         <field name="product_id" invisible="1" />
                         <field name="account_id" invisible="1" />
@@ -46,6 +47,16 @@
         <field name="res_model">account.move.update.analytic.wizard</field>
         <field name="view_mode">form</field>
         <field name="context">{'default_line_id': active_id}</field>
+        <field name="target">new</field>
+    </record>
+    <record
+        id="action_view_full_account_move_update_analytic"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Update Analytic</field>
+        <field name="res_model">account.move.update.analytic.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
         <field name="target">new</field>
     </record>
 </odoo>
