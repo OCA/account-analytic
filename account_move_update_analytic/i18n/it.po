@@ -27,9 +27,24 @@ msgid "Account Move Update Analytic Account Wizard"
 msgstr "Procedura guidata movimento contabile aggiorna conto analitico"
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
+msgid "Analytic Distribution"
+msgstr ""
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_precision
 msgid "Analytic Precision"
 msgstr "Precisione analitica"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
@@ -57,9 +72,22 @@ msgid "Current Analytic Distribution"
 msgstr "Distribuzione analitica attuale"
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,help:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__id
@@ -72,9 +100,9 @@ msgid "Invoice line"
 msgstr "Riga fattura"
 
 #. module: account_move_update_analytic
-#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard____last_update
-msgid "Last Modified on"
-msgstr "Ultima modifica il"
+#: model:ir.model,name:account_move_update_analytic.model_account_move
+msgid "Journal Entry"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
@@ -87,9 +115,14 @@ msgid "Last Updated on"
 msgstr "Ultimo aggiornamento il"
 
 #. module: account_move_update_analytic
-#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
-msgid "New Analytic Distribution"
-msgstr "Nuova distribuzione analitica"
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__manual_distribution_id
+msgid "Manual Distribution"
+msgstr ""
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
+msgid "Move Type"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__product_id
@@ -97,9 +130,10 @@ msgid "Product"
 msgstr "Prodotto"
 
 #. module: account_move_update_analytic
-#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
-msgid "Type"
-msgstr "Tipo"
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_full_account_move_update_analytic
+#: model:ir.actions.server,name:account_move_update_analytic.action_view_account_move_update_analytic_full
+msgid "Update Analytic"
+msgstr ""
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
@@ -121,3 +155,12 @@ msgstr "Aggiorna distribuzione analitica"
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Update analytic lines"
 msgstr "Aggiorna righe analitiche"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Ultima modifica il"
+
+#~ msgid "New Analytic Distribution"
+#~ msgstr "Nuova distribuzione analitica"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
