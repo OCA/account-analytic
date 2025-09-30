@@ -97,6 +97,11 @@ msgid "Invoice line"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model,name:account_move_update_analytic.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
 msgid "Last Updated by"
 msgstr ""
@@ -112,13 +117,19 @@ msgid "Manual Distribution"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
+msgid "Move Type"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__product_id
 msgid "Product"
 msgstr ""
 
 #. module: account_move_update_analytic
-#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
-msgid "Type"
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_full_account_move_update_analytic
+#: model:ir.actions.server,name:account_move_update_analytic.action_view_account_move_update_analytic_full
+msgid "Update Analytic"
 msgstr ""
 
 #. module: account_move_update_analytic
