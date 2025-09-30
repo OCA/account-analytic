@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2020-07-22 12:19+0000\n"
-"Last-Translator: c2cdidier <didier.donze@camptocamp.com>\n"
+"PO-Revision-Date: 2025-09-30 07:46+0000\n"
+"Last-Translator: Vincèn PUJOL <vincen@domedia.net>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_tag_ids
@@ -35,7 +35,7 @@ msgstr "Compte Analytique"
 #, python-format
 msgid "Analytic account and tags combination must be unique for distribution!"
 msgstr ""
-"Compte analytique et tags combines doivent etre uniques pour distribution!"
+"Compte analytique et tags combinés doivent être uniques pour distribution !"
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_analytic_distribution
@@ -97,7 +97,7 @@ msgstr "Distribution"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:39
 #, python-format
 msgid "Distribution name must be unique per Company!"
-msgstr "Le nom de distribution doit être unique par Société!"
+msgstr "Le nom de distribution doit être unique par Société !"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_ids
@@ -122,8 +122,8 @@ msgid ""
 "If checked, the sum of all percents of the analytic accounts in a "
 "distribution of this company must be 100%."
 msgstr ""
-"Lors teste, la somme de tous les pourcentages des comptes analytiques dans "
-"une distribution de cette societe doit etre 100%"
+"Si coché, la somme de tous les pourcentages des comptes analytiques dans une "
+"distribution de cette société doivent être de 100%."
 
 #. module: account_analytic_distribution
 #: model:ir.model,name:account_analytic_distribution.model_account_invoice
@@ -173,14 +173,14 @@ msgstr "Pourcentage"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:83
 #, python-format
 msgid "Percentage must be positive!"
-msgstr "Le pourcentage doit être positif!"
+msgstr "Le pourcentage doit être positif !"
 
 #. module: account_analytic_distribution
 #: sql_constraint:account.analytic.distribution.rule:0
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:85
 #, python-format
 msgid "Percentage must less or equal 100%!"
-msgstr "Le pourcentage doit être inférieur ou égal à 100%!"
+msgstr "Le pourcentage doit être inférieur ou égal à 100% !"
 
 #. module: account_analytic_distribution
 #: model:ir.ui.view,arch_db:account_analytic_distribution.account_analytic_distribution_form
@@ -191,7 +191,7 @@ msgstr "Règles"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:50
 #, python-format
 msgid "Rules percent doesn't sum 100%"
-msgstr "Le pourcentage selon les regles n'est pas 100%"
+msgstr "Le pourcentage selon les règles n'est pas de 100%"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_sequence
