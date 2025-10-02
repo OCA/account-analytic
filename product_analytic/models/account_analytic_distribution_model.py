@@ -34,5 +34,5 @@ class AccountAnalyticDistributionModel(models.Model):
             ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
             ana_account = ana_accounts[INV_TYPE_MAP[move_type]]
             if ana_account:
-                return {ana_account.id: 100}
+                return ana_account
         return res
