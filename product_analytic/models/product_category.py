@@ -6,15 +6,8 @@ from odoo import fields, models
 
 
 class ProductCategory(models.Model):
-    _inherit = "product.category"
+    _name = "product.category"
+    _inherit = ["product.category", "analytic.mixin"]
 
-    income_analytic_account_id = fields.Many2one(
-        "account.analytic.account",
-        string="Income Analytic Account",
-        company_dependent=True,
-    )
-    expense_analytic_account_id = fields.Many2one(
-        "account.analytic.account",
-        string="Expense Analytic Account",
-        company_dependent=True,
-    )
+    income_analytic_distribution = fields.Json()
+    expense_analytic_distribution = fields.Json()

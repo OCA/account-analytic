@@ -6,33 +6,42 @@
 <odoo noupdate="1">
     <record id="product.product_product_1" model="product.product">
         <field
-            name="income_analytic_account_id"
-            ref="analytic.analytic_our_super_product"
+            name="income_analytic_distribution"
+            eval="{ref('analytic.analytic_our_super_product'): 100}"
         />
         <field
-            name="expense_analytic_account_id"
-            ref="analytic.analytic_our_super_product"
+            name="expense_analytic_distribution"
+            eval="{ref('analytic.analytic_our_super_product'): 100}"
         />
     </record>
     <record id="product.product_product_3" model="product.product">
         <field
-            name="income_analytic_account_id"
-            ref="analytic.analytic_integration_c2c"
+            name="income_analytic_distribution"
+            eval="{ref('analytic.analytic_integration_c2c'): 100}"
         />
-        <field name="expense_analytic_account_id" ref="analytic.analytic_agrolait" />
+        <field
+            name="expense_analytic_distribution"
+            eval="{ref('analytic.analytic_agrolait'): 100}"
+        />
     </record>
     <record id="product.product_delivery_01" model="product.product">
         <field
-            name="income_analytic_account_id"
-            ref="analytic.analytic_our_super_product"
+            name="income_analytic_distribution"
+            eval="{ref('analytic.analytic_our_super_product'): 100}"
         />
         <field
-            name="expense_analytic_account_id"
-            ref="analytic.analytic_our_super_product"
+            name="expense_analytic_distribution"
+            eval="{ref('analytic.analytic_our_super_product'): 100}"
         />
     </record>
     <record id="product.product_product_10" model="product.product">
-        <field name="income_analytic_account_id" ref="analytic.analytic_seagate_p2" />
-        <field name="expense_analytic_account_id" ref="analytic.analytic_seagate_p2" />
+        <field
+            name="income_analytic_distribution"
+            eval="{ref('analytic.analytic_seagate_p2'): 100}"
+        />
+        <field
+            name="expense_analytic_distribution"
+            eval="{ref('analytic.analytic_seagate_p2'): 100}"
+        />
     </record>
 </odoo>
