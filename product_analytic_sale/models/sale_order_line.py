@@ -21,7 +21,7 @@ class SaleOrderLine(models.Model):
                 )
                 ana_account = ana_accounts["income"]
                 if ana_account:
-                    line.analytic_distribution = {ana_account.id: 100}
+                    line.analytic_distribution = ana_account
                     continue
             lines_without_analytic_ids |= line
         return super(
