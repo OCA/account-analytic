@@ -6,31 +6,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-10-05 04:54+0000\n"
+"Last-Translator: Rémi <remi@le-filament.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution
 msgid "Analytic Distribution"
-msgstr ""
+msgstr "Distribution analytique"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_precision
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_precision
 msgid "Analytic Precision"
-msgstr ""
+msgstr "Précision analytique"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_import
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribution analytique (importable)"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_import
@@ -40,25 +42,28 @@ msgid ""
 " but using the analytic accounts names as keys of the dictionary, so it "
 "eases the human input."
 msgstr ""
+"Le fait de définir ce champ va enregistrer la distribution analytique au "
+"format JSON en utilisant les noms des comptes analytiques comme clés du "
+"dictionnaire, ce qui facilite la saisie."
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr ""
+msgstr "Compte de distribution analytique"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__manual_distribution_id
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__manual_distribution_id
 msgid "Manual Distribution"
-msgstr ""
+msgstr "Distribution manuelle"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_landed_cost_lines
 msgid "Stock Landed Cost Line"
-msgstr ""
+msgstr "Ligne de coût logisitique"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_valuation_adjustment_lines
 msgid "Valuation Adjustment Lines"
-msgstr ""
+msgstr "Lignes d'ajustement de valorisation"
