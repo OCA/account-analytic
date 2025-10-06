@@ -24,22 +24,25 @@ class StockMove(models.Model):
                 {"analytic_distribution": move.analytic_distribution}
             )
 
-    def _prepare_account_move_line(
-        self, qty, cost, credit_account_id, debit_account_id, svl_id, description
-    ):
+    def _get_account_move_line_vals(self):
+        """Add analytic distribution to account move lines from stock moves.
+
+        In Odoo 19.0, this method returns a list of dicts for line creation.
+        We add analytic_distribution to non-valuation account lines.
+        """
         self.ensure_one()
-        res = super()._prepare_account_move_line(
-            qty, cost, credit_account_id, debit_account_id, svl_id, description
-        )
+        res = super()._get_account_move_line_vals()
         if not self.analytic_distribution:
             return res
-        for line in res:
-            if (
-                line[2]["account_id"]
-                != self.product_id.categ_id.property_stock_valuation_account_id.id
-            ):
-                # Add analytic account in debit line
-                line[2].update({"analytic_distribution": self.analytic_distribution})
+
+        valuation_account_id = (
+            self.product_id.categ_id.property_stock_valuation_account_id.id
+        )
+        for line_vals in res:
+            # Don't add analytic distribution to the stock valuation account line
+            if line_vals.get("account_id") != valuation_account_id:
+                line_vals["analytic_distribution"] = self.analytic_distribution
+
         return res
 
     def _prepare_procurement_values(self):

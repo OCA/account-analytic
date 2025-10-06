@@ -26,30 +26,18 @@ class CommonStockPicking(TransactionCase):
             }
         )
         cls.product_2 = cls.env.ref("product.product_product_5")
-        cls.product_categ = cls.env.ref("product.product_category_5")
+        cls.product_categ = cls.env["product.category"].create(
+            {
+                "name": "Test Product Category",
+                "property_valuation": "real_time",
+                "property_cost_method": "standard",
+            }
+        )
         cls.valuation_account = cls.env["account.account"].create(
             {
                 "name": "Test stock valuation",
                 "code": "tv",
-                "account_type": "liability_current",
-                "reconcile": True,
-                "company_ids": [Command.link(cls.env.ref("base.main_company").id)],
-            }
-        )
-        cls.stock_input_account = cls.env["account.account"].create(
-            {
-                "name": "Test stock input",
-                "code": "tsti",
-                "account_type": "expense",
-                "reconcile": True,
-                "company_ids": [Command.link(cls.env.ref("base.main_company").id)],
-            }
-        )
-        cls.stock_output_account = cls.env["account.account"].create(
-            {
-                "name": "Test stock output",
-                "code": "tout",
-                "account_type": "income",
+                "account_type": "asset_current",
                 "reconcile": True,
                 "company_ids": [Command.link(cls.env.ref("base.main_company").id)],
             }
@@ -57,21 +45,44 @@ class CommonStockPicking(TransactionCase):
         cls.stock_journal = cls.env["account.journal"].create(
             {"name": "Stock Journal", "code": "STJTEST", "type": "general"}
         )
+
+        # Create additional accounts for location-based accounting
+        cls.stock_input_account = cls.env["account.account"].create(
+            {
+                "name": "Stock Input Account",
+                "code": "STKIN",
+                "account_type": "asset_current",
+                "company_ids": [Command.link(cls.env.ref("base.main_company").id)],
+            }
+        )
+        cls.stock_output_account = cls.env["account.account"].create(
+            {
+                "name": "Stock Output Account",
+                "code": "STKOUT",
+                "account_type": "asset_current",
+                "company_ids": [Command.link(cls.env.ref("base.main_company").id)],
+            }
+        )
+
         cls.analytic_distribution = dict(
             {str(cls.env.ref("analytic.analytic_agrolait").id): 100.0}
         )
         cls.warehouse = cls.env.ref("stock.warehouse0")
         cls.location = cls.warehouse.lot_stock_id
+        cls.supplier_location = cls.env.ref("stock.stock_location_suppliers")
         cls.dest_location = cls.env.ref("stock.stock_location_customers")
+
+        # Configure external locations with valuation accounts to trigger account moves
+        cls.supplier_location.valuation_account_id = cls.stock_input_account.id
+        cls.dest_location.valuation_account_id = cls.stock_output_account.id
+
         cls.outgoing_picking_type = cls.env.ref("stock.picking_type_out")
         cls.incoming_picking_type = cls.env.ref("stock.picking_type_in")
 
-        cls.product_categ.update(
+        # Configure category with valuation account and stock journal
+        cls.product_categ.write(
             {
-                "property_valuation": "real_time",
                 "property_stock_valuation_account_id": cls.valuation_account.id,
-                "property_stock_account_input_categ_id": cls.stock_input_account.id,
-                "property_stock_account_output_categ_id": cls.stock_output_account.id,
                 "property_stock_journal": cls.stock_journal.id,
             }
         )
@@ -111,7 +122,6 @@ class CommonStockPicking(TransactionCase):
             "location_dest_id": location_dest_id.id,
             "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "date_deadline": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "name": self.product.name,
             "procure_method": procure_method,
             "product_uom": self.product.uom_id.id,
             "product_uom_qty": 1.0,
@@ -137,14 +147,15 @@ class CommonStockPicking(TransactionCase):
         self.assertEqual(picking.state, "done")
 
     def _check_account_move_no_error(self, picking):
-        criteria1 = [["ref", "=", f"{picking.name} - {picking.product_id.name}"]]
-        acc_moves = self.env["account.move"].search(criteria1)
-        self.assertTrue(len(acc_moves) > 0)
+        # In Odoo 19, stock moves link to account.move via stock_move_id field
+        stock_move = picking.move_ids[0]
+        acc_move = stock_move.account_move_id
+        self.assertTrue(acc_move, "No account move was created for the stock move")
 
     def _check_analytic_account_no_error(self, picking):
         move = picking.move_ids[0]
-        criteria2 = [["move_id.ref", "=", picking.name]]
-        acc_lines = self.env["account.move.line"].search(criteria2)
+        # Get account move lines from the stock move's account move
+        acc_lines = move.account_move_id.line_ids
         for acc_line in acc_lines:
             if acc_line.account_id == self.valuation_account:
                 self.assertEqual(acc_line.analytic_distribution, False)
@@ -154,12 +165,12 @@ class CommonStockPicking(TransactionCase):
                 )
 
     def _check_no_analytic_account(self, picking):
-        criteria2 = [
-            ("move_id.ref", "=", picking.name),
-            ("analytic_distribution", "!=", False),
-        ]
-        line_count = self.env["account.move.line"].search_count(criteria2)
-        self.assertEqual(line_count, 0)
+        move = picking.move_ids[0]
+        if move.account_move_id:
+            acc_lines = move.account_move_id.line_ids.filtered(
+                lambda line: line.analytic_distribution
+            )
+            self.assertEqual(len(acc_lines), 0)
 
     def _check_analytic_consistency(self, picking):
         for move_line in picking.move_line_ids:
@@ -229,12 +240,11 @@ class TestStockPicking(CommonStockPicking):
 
     def test_incoming_picking_with_analytic(self):
         picking = self._create_picking(
+            self.supplier_location,
             self.location,
-            self.dest_location,
             self.incoming_picking_type,
             self.analytic_distribution,
         )
-        self._update_qty_on_hand_product(self.product, 1)
         self._confirm_picking_no_error(picking)
         self._picking_done_no_error(picking)
         self._check_account_move_no_error(picking)

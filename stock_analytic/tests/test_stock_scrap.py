@@ -25,14 +25,10 @@ class TestStockScrap(TransactionCase):
         )
 
     def __update_qty_on_hand_product(self, product, new_qty):
-        qty_wizard = self.env["stock.change.product.qty"].create(
-            {
-                "product_id": product.id,
-                "product_tmpl_id": product.product_tmpl_id.id,
-                "new_quantity": new_qty,
-            }
+        # Use stock.quant API instead of removed stock.change.product.qty wizard
+        self.env["stock.quant"]._update_available_quantity(
+            product, self.location, new_qty
         )
-        qty_wizard.change_product_qty()
 
     def _create_scrap(self, analytic_distribution=False):
         scrap_data = {
