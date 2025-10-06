@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-10-05 05:02+0000\n"
+"PO-Revision-Date: 2025-10-06 16:42+0000\n"
 "Last-Translator: Rémi <remi@le-filament.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -25,7 +25,7 @@ msgstr "%s (Copie)"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_distribution_manual
 msgid "Account analytic distribution manual"
-msgstr "Distribution analytique manuelle"
+msgstr "Répartition analytique manuelle"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__active
@@ -35,12 +35,12 @@ msgstr "Actif"
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.actions.act_window,help:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 msgid "Add a new Manual Analytic Distributions"
-msgstr "Ajouter une nouvelle distribution analytique manuelle"
+msgstr "Ajouter une nouvelle répartition analytique manuelle"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
 msgid "Analytic Distribution"
-msgstr "Distribution Analytique"
+msgstr "Répartition Analytique"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_line
@@ -68,12 +68,12 @@ msgstr "Précision analytique"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr "Distribution analytique (importable)"
+msgstr "Répartition analytique (importable)"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_line__manual_distribution_id
 msgid "Analytic distribution manual"
-msgstr "Distribution analytique manuelle"
+msgstr "Répartition analytique manuelle"
 
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
@@ -116,7 +116,7 @@ msgid ""
 " but using the analytic accounts names as keys of the dictionary, so it "
 "eases the human input."
 msgstr ""
-"Le fait de définir ce champ va enregistrer la distribution analytique au "
+"Le fait de définir ce champ va enregistrer la répartition analytique au "
 "format JSON en utilisant les noms des comptes analytiques comme clés du "
 "dictionnaire, ce qui facilite la saisie."
 
@@ -128,7 +128,7 @@ msgstr "Nom affiché"
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr "Compte de distribution analytique"
+msgstr "Compte de répartition analytique"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__id
@@ -165,7 +165,7 @@ msgstr "Chargement..."
 #: model:ir.actions.act_window,name:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 #: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
 msgid "Manual Analytic Distributions"
-msgstr "Distributions analytiques manuelles"
+msgstr "Répartitions analytiques manuelles"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__manual_distribution_id
@@ -179,13 +179,13 @@ msgstr "Distributions analytiques manuelles"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__manual_distribution_id
 msgid "Manual Distribution"
-msgstr "Distribution manuelle"
+msgstr "Répartition manuelle"
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
 #: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.xml:0
 msgid "Manual distribution"
-msgstr "Distribution manuelle"
+msgstr "Répartition manuelle"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__name
@@ -201,7 +201,7 @@ msgstr "Nom..."
 #. odoo-javascript
 #: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.esm.js:0
 msgid "No Analytic Distribution Manual found"
-msgstr "Aucune distribution analytique manuelle trouvée"
+msgstr "Aucune répartition analytique manuelle trouvée"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.constraint,message:account_analytic_distribution_manual.constraint_account_analytic_distribution_manual_unique_name_by_company
