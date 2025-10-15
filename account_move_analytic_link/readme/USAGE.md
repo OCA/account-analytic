@@ -1,0 +1,1 @@
+- In a posted move, go to the move line with analytic distribution assigned and click on the Open analytic items button to navigate to the related Analytic Lines. The same button could be found in the journal items view.
