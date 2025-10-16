@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_distribution_sales_team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_distribution_sales_team
+#: model:ir.model,name:account_analytic_distribution_sales_team.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr "Modèle de répartition analytique"
+
+#. module: account_analytic_distribution_sales_team
+#: model:ir.model,name:account_analytic_distribution_sales_team.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: account_analytic_distribution_sales_team
+#: model:ir.model.fields,field_description:account_analytic_distribution_sales_team.field_account_analytic_distribution_model__team_id
+msgid "Sales Team"
+msgstr "Équipe commerciale"
+
+#. module: account_analytic_distribution_sales_team
+#: model:ir.model.fields,help:account_analytic_distribution_sales_team.field_account_analytic_distribution_model__team_id
+msgid ""
+"Select a sales team for this distribution model to be applied automatically "
+"to invoice lines."
+msgstr ""
+"Sélectionnez une équipe commerciale pour ce modèle de répartition afin qu'il "
+"soit appliqué automatiquement aux lignes de factures."
