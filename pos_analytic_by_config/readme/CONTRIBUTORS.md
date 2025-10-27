@@ -6,3 +6,5 @@
   - David Vidal
 - [APSL-Nagarro](https://www.apsl.tech)
   - Antoni Marroig \<<amarroig@apsl.net>\>
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia
