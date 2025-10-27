@@ -5,15 +5,15 @@
 from odoo import Command
 from odoo.tests import tagged
 
-from odoo.addons.point_of_sale.tests.common import TestPointOfSaleCommon, TestPoSCommon
+from odoo.addons.point_of_sale.tests.common import CommonPosTest, TestPoSCommon
 
 
 @tagged("post_install", "-at_install")
-class TestPosAnalyticConfig(TestPointOfSaleCommon, TestPoSCommon):
+class TestPosAnalyticConfig(CommonPosTest, TestPoSCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env.user.groups_id += cls.env.ref("analytic.group_analytic_accounting")
+        cls.env.user.group_ids += cls.env.ref("analytic.group_analytic_accounting")
         cls.analytic_plan = cls.env["account.analytic.plan"].create(
             {
                 "name": "Stores",
