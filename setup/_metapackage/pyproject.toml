@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-account-analytic"
-version = "18.0.20251014.0"
+version = "18.0.20251028.0"
 dependencies = [
     "odoo-addon-account_analytic_distribution_manual==18.0.*",
     "odoo-addon-account_analytic_parent==18.0.*",
@@ -8,6 +8,7 @@ dependencies = [
     "odoo-addon-account_analytic_sequence==18.0.*",
     "odoo-addon-account_analytic_spread_by_tag==18.0.*",
     "odoo-addon-account_analytic_tag==18.0.*",
+    "odoo-addon-account_move_analytic_link==18.0.*",
     "odoo-addon-account_move_update_analytic==18.0.*",
     "odoo-addon-analytic_base_department==18.0.*",
     "odoo-addon-analytic_hr_department_restriction==18.0.*",
