@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 ForgeFlow S.L.
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="account_move_form_view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='invoice_line_ids']/list/field[@name='analytic_distribution']"
+                position="after"
+            >
+                <button
+                    name="open_analytic_items"
+                    type="object"
+                    groups="analytic.group_analytic_accounting"
+                    invisible="not analytic_line_ids"
+                    icon="fa-arrow-right"
+                    title="Open analytic items"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='line_ids']/list/field[@name='analytic_distribution']"
+                position="after"
+            >
+                <button
+                    name="open_analytic_items"
+                    type="object"
+                    groups="analytic.group_analytic_accounting"
+                    invisible="not analytic_line_ids"
+                    icon="fa-arrow-right"
+                    title="Open analytic items"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
