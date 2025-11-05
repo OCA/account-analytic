@@ -1,0 +1,6 @@
+{
+  "pull_requests": {
+    "OCA/account-analytic#440": "Not needed anymore since 16.0 migration PR #541",
+    "OCA/account-analytic#442": "Not needed anymore since 16.0 migration PR #541"
+  }
+}
