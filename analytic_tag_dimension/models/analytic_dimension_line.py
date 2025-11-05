@@ -19,27 +19,34 @@ class AnalyticDimensionLine(models.AbstractModel):
         if vals.get(field):
             new_commands = []
             for command in vals.get(field):
-                if command[0] == 0:
-                    tag = Tag.create(command[2])
-                    tags += tag
-                    new_commands.append((4, tag.id))
-                elif command[0] == 1:
-                    tag = Tag.browse(command[1])
-                    tag.write(command[2])
-                    tags |= tag
-                    new_commands.append((4, tag.id))
+                if isinstance(command, tuple | list):
+                    if command[0] == 0:
+                        tag = Tag.create(command[2])
+                        tags += tag
+                        new_commands.append((4, tag.id))
+                    elif command[0] == 1:
+                        tag = Tag.browse(command[1])
+                        tag.write(command[2])
+                        tags |= tag
+                        new_commands.append((4, tag.id))
+                    else:
+                        new_commands.append(command)
+                        if command[0] == 2:
+                            tags -= Tag.browse(command[1])
+                        elif command[0] == 3:
+                            tags -= Tag.browse(command[1])
+                        elif command[0] == 4:
+                            tags += Tag.browse(command[1])
+                        elif command[0] == 5:
+                            tags = Tag
+                        elif command[0] == 6:
+                            tags = Tag.browse(command[2])
+                elif isinstance(command, dict):
+                    new_commands = vals[field]
+                    tags += Tag.new(command)
                 else:
-                    new_commands.append(command)
-                    if command[0] == 2:
-                        tags -= Tag.browse(command[1])
-                    elif command[0] == 3:
-                        tags -= Tag.browse(command[1])
-                    elif command[0] == 4:
-                        tags += Tag.browse(command[1])
-                    elif command[0] == 5:
-                        tags = Tag
-                    elif command[0] == 6:
-                        tags = Tag.browse(command[2])
+                    new_commands = vals[field]
+                    tags = Tag.browse(command)
             vals[field] = new_commands
         else:
             tags = Tag
