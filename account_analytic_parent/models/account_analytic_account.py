@@ -16,6 +16,7 @@ class AccountAnalyticAccount(models.Model):
     _parent_name = "parent_id"
     _parent_store = True
     _order = "complete_name"
+    _rec_names_search = ["name", "code", "complete_name"]
 
     parent_path = fields.Char(index=True)
     parent_id = fields.Many2one(
