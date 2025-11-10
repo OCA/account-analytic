@@ -36,6 +36,7 @@ addon | version | maintainers | summary
 [pos_analytic_by_config](pos_analytic_by_config/) | 18.0.1.0.1 |  | Use analytic account defined on POS configuration for POS orders
 [purchase_analytic](purchase_analytic/) | 18.0.1.0.0 |  | Purchase Analytic
 [purchase_analytic_tag](purchase_analytic_tag/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Purchase Analytic Tag
+[purchase_stock_analytic](purchase_stock_analytic/) | 18.0.1.0.0 |  | Copies the analytic distribution of the purchase order itemto the stock move
 [sale_analytic_tag](sale_analytic_tag/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Sale Analytic Tag
 [stock_analytic](stock_analytic/) | 18.0.1.1.0 |  | Adds analytic distribution in stock move
 [stock_landed_costs_analytic](stock_landed_costs_analytic/) | 18.0.1.0.0 |  | This module adds an analytic account and analytic tags on landed costs lines so that on landed costs validation account moves get analytic account and analytic tags values from landed costs lines.
