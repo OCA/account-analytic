@@ -6,18 +6,11 @@
 from odoo import fields, models
 
 
-class ProductTemplate(models.Model):
-    _name = "product.template"
-    _inherit = ["product.template", "analytic.mixin"]
+class ProductProduct(models.Model):
+    _inherit = "product.product"
 
-    income_analytic_distribution = fields.Json()
-    expense_analytic_distribution = fields.Json()
-
-    def _get_product_analytic_accounts(self):
-        self.ensure_one()
-        return {
-            "income": self.income_analytic_distribution
-            or self.categ_id.income_analytic_distribution,
-            "expense": self.expense_analytic_distribution
-            or self.categ_id.expense_analytic_distribution,
-        }
+    analytic_distribution_model_ids = fields.One2many(
+        "account.analytic.distribution.model",
+        "product_id",
+        string="Analytic Distribution Models",
+    )

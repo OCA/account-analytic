@@ -39,8 +39,6 @@ class TestAccountInvoiceLine(TransactionCase):
                 "name": "test product",
                 "lst_price": 50,
                 "standard_price": 50,
-                "income_analytic_account_id": cls.analytic_account1.id,
-                "expense_analytic_account_id": cls.analytic_account2.id,
             }
         )
         cls.product_1 = cls.env["product.product"].create(
@@ -48,8 +46,28 @@ class TestAccountInvoiceLine(TransactionCase):
                 "name": "test product 1",
                 "lst_price": 20,
                 "standard_price": 20,
-                "income_analytic_account_id": False,
-                "expense_analytic_account_id": False,
+            }
+        )
+        cls.analytic_distribution_model_expense = cls.env[
+            "account.analytic.distribution.model"
+        ].create(
+            {
+                "product_id": cls.product.id,
+                "account_prefix": "TESTIN",
+                "analytic_distribution": {
+                    cls.analytic_account2.id: 100,
+                },
+            }
+        )
+        cls.analytic_distribution_model_income = cls.env[
+            "account.analytic.distribution.model"
+        ].create(
+            {
+                "product_id": cls.product.id,
+                "account_prefix": "TESTOUT",
+                "analytic_distribution": {
+                    cls.analytic_account1.id: 100,
+                },
             }
         )
         cls.partner = cls.env["res.partner"].create({"name": "Test partner"})
@@ -99,7 +117,7 @@ class TestAccountInvoiceLine(TransactionCase):
         analytic_account_id = [key for key in invoice_line.analytic_distribution]
         self.assertEqual(
             int(analytic_account_id[0]),
-            self.product.expense_analytic_account_id.id,
+            self.analytic_account2.id,
         )
 
     def test_create_in_without(self):
@@ -129,7 +147,17 @@ class TestAccountInvoiceLine(TransactionCase):
 
     def test_create_in_category(self):
         # Create an incoming invoice with analytic on category
-        self.category.expense_analytic_account_id = self.analytic_account2
+        self.analytic_distribution_model_expense = self.env[
+            "account.analytic.distribution.model"
+        ].create(
+            {
+                "product_categ_id": self.category.id,
+                "account_prefix": "TESTIN",
+                "analytic_distribution": {
+                    self.analytic_account2.id: 100,
+                },
+            }
+        )
         self.product_1.categ_id = self.category
         invoice = self.env["account.move"].create(
             [
@@ -183,7 +211,7 @@ class TestAccountInvoiceLine(TransactionCase):
         analytic_account_id = [key for key in invoice_line.analytic_distribution]
         self.assertEqual(
             int(analytic_account_id[0]),
-            self.product.income_analytic_account_id.id,
+            self.analytic_account1.id,
         )
 
     def test_create_out_without(self):
@@ -213,7 +241,17 @@ class TestAccountInvoiceLine(TransactionCase):
 
     def test_create_out_category(self):
         # Create outgoing invoice without analytic
-        self.category.income_analytic_account_id = self.analytic_account2
+        self.analytic_distribution_model_expense = self.env[
+            "account.analytic.distribution.model"
+        ].create(
+            {
+                "product_categ_id": self.category.id,
+                "account_prefix": "TESTOUT",
+                "analytic_distribution": {
+                    self.analytic_account1.id: 100,
+                },
+            }
+        )
         self.product_1.categ_id = self.category
         invoice = self.env["account.move"].create(
             [
@@ -239,7 +277,7 @@ class TestAccountInvoiceLine(TransactionCase):
         analytic_account_id = [key for key in invoice_line.analytic_distribution]
         self.assertEqual(
             int(analytic_account_id[0]),
-            self.analytic_account2.id,
+            self.analytic_account1.id,
         )
 
     def test_create_out_preset(self):
