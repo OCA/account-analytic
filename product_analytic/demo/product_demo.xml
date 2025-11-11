@@ -4,43 +4,43 @@
   License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 -->
 <odoo noupdate="1">
-    <record id="product.product_product_1" model="product.product">
+    <record
+        id="analytic_distribution_model_product_product_1"
+        model="account.analytic.distribution.model"
+    >
+        <field name="product_id" ref="product.product_product_1" />
         <field
-            name="income_analytic_distribution"
-            eval="{ref('analytic.analytic_our_super_product'): 100}"
-        />
-        <field
-            name="expense_analytic_distribution"
+            name="analytic_distribution"
             eval="{ref('analytic.analytic_our_super_product'): 100}"
         />
     </record>
-    <record id="product.product_product_3" model="product.product">
+    <record
+        id="analytic_distribution_model_product_product_3"
+        model="account.analytic.distribution.model"
+    >
+        <field name="product_id" ref="product.product_product_3" />
         <field
-            name="income_analytic_distribution"
+            name="analytic_distribution"
             eval="{ref('analytic.analytic_integration_c2c'): 100}"
         />
-        <field
-            name="expense_analytic_distribution"
-            eval="{ref('analytic.analytic_agrolait'): 100}"
-        />
     </record>
-    <record id="product.product_delivery_01" model="product.product">
+    <record
+        id="analytic_distribution_model_product_delivery_01"
+        model="account.analytic.distribution.model"
+    >
+        <field name="product_id" ref="product.product_delivery_01" />
         <field
-            name="income_analytic_distribution"
-            eval="{ref('analytic.analytic_our_super_product'): 100}"
-        />
-        <field
-            name="expense_analytic_distribution"
+            name="analytic_distribution"
             eval="{ref('analytic.analytic_our_super_product'): 100}"
         />
     </record>
-    <record id="product.product_product_10" model="product.product">
+    <record
+        id="analytic_distribution_model_product_product_10"
+        model="account.analytic.distribution.model"
+    >
+        <field name="product_id" ref="product.product_product_10" />
         <field
-            name="income_analytic_distribution"
-            eval="{ref('analytic.analytic_seagate_p2'): 100}"
-        />
-        <field
-            name="expense_analytic_distribution"
+            name="analytic_distribution"
             eval="{ref('analytic.analytic_seagate_p2'): 100}"
         />
     </record>

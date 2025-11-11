@@ -28,8 +28,8 @@ Product Analytic
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows to define an analytic account at product or category
-level for using it when creating invoices.
+This module allows to define analytic distribution models at product or
+category level for using it when creating invoices.
 
 **Table of contents**
 
@@ -39,13 +39,11 @@ level for using it when creating invoices.
 Usage
 =====
 
-This module allows you to configure an **income analytic account** and
-an **expense analytic account** on products and on product categories.
-When you select the product in an invoice line, it will check if this
-product has an income analytic account (for customer invoice/refunds) or
-an expense analytic account (for supplier invoice/refunds) ; if it
-doesn't find any, it checks if the category of the product has an income
-or expense analytic account ; if an analytic account is found, it will
+This module allows you to configure analytic distribution models on
+products and on product categories. When you select the product in an
+invoice line, it will check if this product has analytic distribution
+models configured; if it doesn't find any, it checks if the category of
+the product has; if some analytic distribution model is found, it will
 be set by default on the invoice line.
 
 Changelog
@@ -134,6 +132,7 @@ Contributors
 -  Darius Žižys <darius@vialaurea.lt>
 -  Jacques-Etienne Baudoux (BCIM) <je@bcim.be>
 -  Saran Lim. <saranl@ecosoft.co.th>
+-  Thiago Mulero <thiago.mulero@forgeflow.com>
 
 Maintainers
 -----------

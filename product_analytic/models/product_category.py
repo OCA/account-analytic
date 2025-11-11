@@ -7,7 +7,10 @@ from odoo import fields, models
 
 class ProductCategory(models.Model):
     _name = "product.category"
-    _inherit = ["product.category", "analytic.mixin"]
+    _inherit = "product.category"
 
-    income_analytic_distribution = fields.Json()
-    expense_analytic_distribution = fields.Json()
+    analytic_distribution_model_ids = fields.One2many(
+        "account.analytic.distribution.model",
+        "product_categ_id",
+        string="Analytic Distribution Models",
+    )

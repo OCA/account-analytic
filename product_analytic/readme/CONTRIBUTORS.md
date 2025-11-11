@@ -9,3 +9,4 @@
 - Darius Žižys \<darius@vialaurea.lt\>
 - Jacques-Etienne Baudoux (BCIM) \<je@bcim.be\>
 - Saran Lim. \<saranl@ecosoft.co.th\>
+- Thiago Mulero \<thiago.mulero@forgeflow.com\>
