@@ -19,14 +19,8 @@ msgstr ""
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution
-msgid "Analytic"
-msgstr "Analítico"
-
-#. module: stock_landed_costs_analytic
-#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_search
-#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution_search
-msgid "Analytic Distribution Search"
-msgstr "Búsqueda de distribución analítica"
+msgid "Analytic Distribution"
+msgstr ""
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_precision
@@ -41,6 +35,11 @@ msgid "Analytic distribution (importable)"
 msgstr "Distribución Analítica (Importable)"
 
 #. module: stock_landed_costs_analytic
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__company_id
+msgid "Company"
+msgstr ""
+
+#. module: stock_landed_costs_analytic
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_import
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution_import
 msgid ""
@@ -51,6 +50,12 @@ msgstr ""
 "Definir este campo establecerá la distribución analítica en formato JSON, "
 "utilizando los nombres de las cuentas analíticas como claves del "
 "diccionario, lo que facilita la introducción manual por parte del usuario."
+
+#. module: stock_landed_costs_analytic
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__distribution_analytic_account_ids
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__manual_distribution_id
@@ -67,6 +72,12 @@ msgstr "Línea Existencias de Costes de destino"
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_valuation_adjustment_lines
 msgid "Valuation Adjustment Lines"
 msgstr "Líneas de ajustes de valoración"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítico"
+
+#~ msgid "Analytic Distribution Search"
+#~ msgstr "Búsqueda de distribución analítica"
 
 #~ msgid "Analytic Tags"
 #~ msgstr "Etiquetas analíticas"
