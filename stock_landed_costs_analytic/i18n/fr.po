@@ -35,12 +35,17 @@ msgid "Analytic distribution (importable)"
 msgstr "Répartition analytique (importable)"
 
 #. module: stock_landed_costs_analytic
+#: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__company_id
+msgid "Company"
+msgstr ""
+
+#. module: stock_landed_costs_analytic
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_import
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution_import
 msgid ""
-"Defining this field, it will set the analytical distribution in JSON format,"
-" but using the analytic accounts names as keys of the dictionary, so it "
-"eases the human input."
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
 msgstr ""
 "Le fait de définir ce champ va enregistrer la répartition analytique au "
 "format JSON en utilisant les noms des comptes analytiques comme clés du "
