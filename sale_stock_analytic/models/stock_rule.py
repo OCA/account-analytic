@@ -33,10 +33,12 @@ class StockRule(models.Model):
         if sol_id:
             sol_model = self.env["sale.order.line"]
             sol = sol_model.browse(sol_id)
-            analytic_tags = sol.analytic_tag_ids
-            analytic_account = sol.order_id.analytic_account_id
-            if analytic_tags:
-                move_values.update({"analytic_tag_ids": [(6, 0, analytic_tags.ids)]})
-            if analytic_account:
-                move_values.update({"analytic_account_id": analytic_account.id})
+            analytic_distribution = sol.analytic_distribution
+            if analytic_distribution:
+                move_values.update({"analytic_distribution": analytic_distribution})
+            else:
+                analytic_account_id = sol.order_id.analytic_account_id.id
+                if analytic_account_id:
+                    analytic_account_id = str(analytic_account_id)
+                    move_values["analytic_distribution"] = {analytic_account_id: 100}
         return move_values

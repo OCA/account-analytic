@@ -18,4 +18,4 @@ msgstr ""
 #. module: sale_stock_analytic
 #: model:ir.model,name:sale_stock_analytic.model_stock_rule
 msgid "Stock Rule"
-msgstr ""
+msgstr "Regla de inventario"

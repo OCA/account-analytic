@@ -46,6 +46,10 @@ Contributors
 ------------
 
 * Benoit Aimont <benoit.aimont@acsone.eu>
+* Marcos Oitabén <marcos.oitaben@dynapps.eu>
+
+* `Trey <https://www.trey.es>`__:
+    * Alejandro Bermudez <alex@trey.es>
 
 Maintainer
 ----------
