@@ -14,7 +14,6 @@ class PurchaseOrder(models.Model):
     @api.depends("order_line.analytic_distribution")
     def _compute_analytic_distribution(self):
         """If all lines have the same analytic distribution, set it on the order.
-
         If no lines exist, respect the value given by the user.
         """
         for po in self:

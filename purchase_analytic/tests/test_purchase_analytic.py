@@ -3,16 +3,17 @@
 
 
 from odoo import Command
-from odoo.tests import Form, TransactionCase
+from odoo.tests import Form
+
+from odoo.addons.product.tests.common import ProductCommon
 
 
-class TestPurchaseAnalytic(TransactionCase):
+class TestPurchaseAnalytic(ProductCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env.user.groups_id |= cls.env.ref("analytic.group_analytic_accounting")
-        cls.partner = cls.env.ref("base.res_partner_12")
-        cls.product = cls.env.ref("product.product_product_9")
+        cls.env.user.group_ids |= cls.env.ref("analytic.group_analytic_accounting")
+        cls.partner = cls.env["res.partner"].create({"name": "Partner 12"})
         cls.uom = cls.env.ref("uom.product_uom_unit")
         analytic_plan = cls.env["account.analytic.plan"].create({"name": "Plan Test"})
         analytic_account_manual = cls.env["account.analytic.account"].create(
@@ -38,11 +39,9 @@ class TestPurchaseAnalytic(TransactionCase):
         Check analytic distribution and line is set
         """
         po = self.env["purchase.order"].create({"partner_id": self.partner.id})
-
         # Test setting analytic distribution without order lines
         po.analytic_distribution = self.analytic_distribution_manual
         self.assertEqual(po.analytic_distribution, self.analytic_distribution_manual)
-
         # Test setting analytic distribution with an order line
         self.add_po_line(po)
         po.analytic_distribution = self.analytic_distribution_manual2
@@ -50,7 +49,6 @@ class TestPurchaseAnalytic(TransactionCase):
         self.assertEqual(
             po.order_line.analytic_distribution, self.analytic_distribution_manual2
         )
-
         # Test clearing analytic distribution with an order line
         po.analytic_distribution = False
         self.assertEqual(
@@ -65,11 +63,9 @@ class TestPurchaseAnalytic(TransactionCase):
         order = Form(
             self.env["purchase.order"].with_context(default_partner_id=self.partner.id)
         )
-
         # Test setting analytic distribution without order lines
         order.analytic_distribution = self.analytic_distribution_manual
         self.assertEqual(order.analytic_distribution, self.analytic_distribution_manual)
-
         # Test setting analytic distribution with an order line
         order = order.save()
         self.add_po_line(order)
@@ -84,7 +80,6 @@ class TestPurchaseAnalytic(TransactionCase):
                 ],
                 self.analytic_distribution_manual2,
             )
-
             # Test clearing analytic distribution with an order line
             po.analytic_distribution = False
             self.assertEqual(
