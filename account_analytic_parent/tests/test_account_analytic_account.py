@@ -123,13 +123,13 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.assertEqual(self.analytic_parent3.balance, -50)
 
     def test_archive(self):
-        self.analytic_parent1.toggle_active()
+        self.analytic_parent1.action_archive()
         self.assertEqual(self.analytic_son.active, False)
-        self.analytic_parent1.toggle_active()
+        self.analytic_parent1.action_unarchive()
         self.assertEqual(self.analytic_son.active, False)
-        self.analytic_parent1.toggle_active()
+        self.analytic_parent1.action_archive()
         with self.assertRaises(UserError):
-            self.analytic_son.toggle_active()
+            self.analytic_son.action_unarchive()
 
     def test_name(self):
         display_name = f"[{self.analytic_son.code}] parent aa / son aa"

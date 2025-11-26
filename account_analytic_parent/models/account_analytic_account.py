@@ -7,7 +7,7 @@
 # Copyright 2019 Pesol
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -50,16 +50,15 @@ class AccountAnalyticAccount(models.Model):
         for account in self.filtered("child_ids"):
             domain = [("account_id", "child_of", account.id)]
 
-            credit_groups = AccountAnalyticLine.read_group(
+            credit_groups = AccountAnalyticLine._read_group(
                 domain=domain + [("amount", ">=", 0.0)],
-                fields=["currency_id", "amount"],
+                aggregates=['amount:sum'],
                 groupby=["currency_id"],
-                lazy=False,
             )
             credit = sum(
                 map(
-                    lambda x: ResCurrency.browse(x["currency_id"][0])._convert(
-                        x["amount"],
+                    lambda x: ResCurrency.browse(x[0].id)._convert(
+                        x[1],
                         user_currency_id,
                         self.env.user.company_id,
                         fields.Date.today(),
@@ -68,16 +67,15 @@ class AccountAnalyticAccount(models.Model):
                 )
             )
 
-            debit_groups = AccountAnalyticLine.read_group(
+            debit_groups = AccountAnalyticLine._read_group(
                 domain=domain + [("amount", "<", 0.0)],
-                fields=["currency_id", "amount"],
+                aggregates=['amount:sum'],
                 groupby=["currency_id"],
-                lazy=False,
             )
             debit = sum(
                 map(
-                    lambda x: ResCurrency.browse(x["currency_id"][0])._convert(
-                        x["amount"],
+                    lambda x: ResCurrency.browse(x[0].id)._convert(
+                        x[1],
                         user_currency_id,
                         self.env.user.company_id,
                         fields.Date.today(),
@@ -94,7 +92,9 @@ class AccountAnalyticAccount(models.Model):
     @api.constrains("parent_id")
     def check_recursion(self):
         if self._has_cycle():
-            raise UserError(_("You can not create recursive analytic accounts."))
+            raise UserError(
+                self.env._("You can not create recursive analytic accounts.")
+            )
         return True
 
     @api.onchange("parent_id")
@@ -106,10 +106,11 @@ class AccountAnalyticAccount(models.Model):
     def _compute_complete_name(self):
         for account in self:
             if account.parent_id:
-                account.complete_name = _("%(parent)s / %(own)s") % {
-                    "parent": account.parent_id.complete_name,
-                    "own": account.name,
-                }
+                account.complete_name = self.env._(
+                    "%(parent)s / %(own)s",
+                    parent=account.parent_id.complete_name,
+                    own=account.name
+                )
             else:
                 account.complete_name = account.name
 
@@ -122,8 +123,10 @@ class AccountAnalyticAccount(models.Model):
             and not a.parent_id.active
         ):
             raise UserError(
-                _("Please activate first parent account %s")
-                % account.parent_id.complete_name
+                self.env._(
+                    "Please activate first parent account %(name)s",
+                    name=account.parent_id.complete_name,
+                )
             )
 
     @api.depends("complete_name", "code", "partner_id.commercial_partner_id.name")
@@ -133,10 +136,10 @@ class AccountAnalyticAccount(models.Model):
             if analytic.code:
                 name = f"[{analytic.code}] {name}"
             if analytic.partner_id:
-                name = _("%(name)s - %(partner)s") % {
-                    "name": name,
-                    "partner": analytic.partner_id.commercial_partner_id.name,
-                }
+                name = self.env._(
+                    "%(name)s - %(partner)s", name= name,
+                        partner=analytic.partner_id.commercial_partner_id.name,
+                )
             analytic.display_name = name
 
     def write(self, vals):
