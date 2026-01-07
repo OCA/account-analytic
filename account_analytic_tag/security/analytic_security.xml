@@ -13,7 +13,6 @@
     <data>
         <record id="group_analytic_tags" model="res.groups">
             <field name="name">Analytic Accounting Tags</field>
-            <field name="category_id" ref="base.module_category_hidden" />
         </record>
     </data>
 </odoo>

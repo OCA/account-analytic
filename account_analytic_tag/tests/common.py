@@ -1,10 +1,12 @@
 # Copyright 2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo.tests import common, new_test_user, tagged
+from odoo.tests import new_test_user, tagged
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
 @tagged("post_install", "-at_install")
-class TestAccountAnalyticTagBase(common.TransactionCase):
+class TestAccountAnalyticTagBase(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
