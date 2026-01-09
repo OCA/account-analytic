@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Moduon Team S.L.
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_account_analytic_line_filter_inherit_account" model="ir.ui.view">
+        <field name="name">account.analytic.line.inherit.account</field>
+        <field name="model">account.analytic.line</field>
+        <field
+            name="inherit_id"
+            ref="account.view_account_analytic_line_filter_inherit_account"
+        />
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='partner']" position="after">
+                <filter
+                    string="Commercial Entity"
+                    name="commercial_partner_id"
+                    context="{'group_by':'commercial_partner_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
