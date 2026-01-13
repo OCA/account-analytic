@@ -17,7 +17,11 @@ account-analytic
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[account_analytic_tag](account_analytic_tag/) | 19.0.1.0.0 |  | Account Analytic Tag
 
 [//]: # (end addons)
 
