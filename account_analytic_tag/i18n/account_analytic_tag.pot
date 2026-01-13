@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -90,12 +90,18 @@ msgid "Created on"
 msgstr ""
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__id
 msgid "ID"
 msgstr ""
 
