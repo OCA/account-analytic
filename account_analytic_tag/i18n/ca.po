@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_tag
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-11-17 19:34+0000\n"
+"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
+"Language-Team: none\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__active
+msgid "Active"
+msgstr "Activa"
+
+#. module: account_analytic_tag
+#: model_terms:ir.actions.act_window,help:account_analytic_tag.account_analytic_tag_action
+msgid "Add a new tag"
+msgstr "Afegir una nova etiqueta"
+
+#. module: account_analytic_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.res_config_settings_view_form
+msgid "Allows to tag analytic entries and to manage analytic distributions"
+msgstr ""
+"Permet etiquetar entrades analítiques i gestionar distribucions analítiques"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__account_analytic_id
+msgid "Analytic Account filter"
+msgstr "Filtre de compte analític"
+
+#. module: account_analytic_tag
+#: model:res.groups,name:account_analytic_tag.group_analytic_tags
+msgid "Analytic Accounting Tags"
+msgstr "Etiquetes de comptabilitat analítica"
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línia analítica"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__name
+msgid "Analytic Tag"
+msgstr "Etiqueta analítica"
+
+#. module: account_analytic_tag
+#: model:ir.actions.act_window,name:account_analytic_tag.account_analytic_tag_action
+#: model:ir.model,name:account_analytic_tag.model_account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__analytic_tag_ids
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__group_analytic_tags
+#: model:ir.ui.menu,name:account_analytic_tag.account_analytic_tag_menu
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_form_view
+msgid "Analytic Tags"
+msgstr "Etiquetes analítiques"
+
+#. module: account_analytic_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_form_view
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_view_search
+msgid "Archived"
+msgstr "Arxivada"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__color
+msgid "Color Index"
+msgstr "Índex de color"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__company_id
+msgid "Company"
+msgstr "Companyia"
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paràmetres de configuració"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__create_uid
+msgid "Created by"
+msgstr "Creada per"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__create_date
+msgid "Created on"
+msgstr "Creada el"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__display_name
+msgid "Display Name"
+msgstr "Nom mostrat"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunt comptable"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
+msgid "Last Updated by"
+msgstr "Darrera modificació per"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_date
+msgid "Last Updated on"
+msgstr "Darrera modificació el"
+
+#. module: account_analytic_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_view_search
+msgid "Search Analytic Tags"
+msgstr "Cerca etiquetes analítiques"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__active
+msgid "Set active to false to hide the Analytic Tag without removing it."
+msgstr ""
+"Estableix activa com a fals per amagar l'etiqueta analítica sense eliminar-"
+"la."
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__tag_ids
+msgid "Tags"
+msgstr "Etiquetes"
+
+#. module: account_analytic_tag
+#: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
+msgid ""
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
+msgstr ""
+"Sense compte analític: aquesta etiqueta s'establirà per a tots els elements "
+"analítics generats.\n"
+" Amb compte analític: aquesta etiqueta només s'establirà als elements "
+"analítics que tinguin el mateix compte analític."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Darrera modificació el"
