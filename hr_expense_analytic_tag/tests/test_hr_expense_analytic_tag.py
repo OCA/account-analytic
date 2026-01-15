@@ -25,22 +25,13 @@ class TestHrExpenseAnalyticTag(TestExpenseCommon):
         expense_form.name = "Test expense"
         return expense_form.save()
 
-    def _action_submit_expenses(self, expense):
-        res = expense.action_submit_expenses()
-        sheet_form = self.env[res["res_model"]].browse(res["res_id"])
-        self.assertEqual(sheet_form.state, "draft")
-        sheet_form.action_submit_sheet()
-        self.assertEqual(sheet_form.state, "submit")
-        return sheet_form
-
     def test_hr_expense_with_tag(self):
         """Tag without analytic accounts."""
         self.expense.analytic_distribution = {self.analytic_account_1.id: 100}
         self.expense.analytic_tag_ids = self.analytic_tag_1
-        expense_sheet = self._action_submit_expenses(self.expense)
-        expense_sheet.action_approve_expense_sheets()
-        expense_sheet.action_sheet_move_post()
-        move = expense_sheet.account_move_ids
+        self.expense._do_approve(check=False)
+        self.expense._post_without_wizard()
+        move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
         self.assertIn(self.analytic_tag_1, tags)
         self.assertNotIn(self.analytic_tag_2, tags)
@@ -49,10 +40,9 @@ class TestHrExpenseAnalyticTag(TestExpenseCommon):
         """Tags without analytic accounts."""
         self.expense.analytic_distribution = {self.analytic_account_1.id: 100}
         self.expense.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
-        expense_sheet = self._action_submit_expenses(self.expense)
-        expense_sheet.action_approve_expense_sheets()
-        expense_sheet.action_sheet_move_post()
-        move = expense_sheet.account_move_ids
+        self.expense._do_approve(check=False)
+        self.expense._post_without_wizard()
+        move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
         self.assertIn(self.analytic_tag_1, tags)
         self.assertIn(self.analytic_tag_2, tags)
@@ -66,10 +56,9 @@ class TestHrExpenseAnalyticTag(TestExpenseCommon):
             self.analytic_account_2.id: 50,
         }
         self.expense.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
-        expense_sheet = self._action_submit_expenses(self.expense)
-        expense_sheet.action_approve_expense_sheets()
-        expense_sheet.action_sheet_move_post()
-        move = expense_sheet.account_move_ids
+        self.expense._do_approve(check=False)
+        self.expense._post_without_wizard()
+        move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
         self.assertIn(self.analytic_tag_1, tags)
         self.assertIn(self.analytic_tag_2, tags)
@@ -82,20 +71,18 @@ class TestHrExpenseAnalyticTag(TestExpenseCommon):
             self.analytic_account_1.id: 50,
         }
         self.expense.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
-        expense_sheet = self._action_submit_expenses(self.expense)
-        expense_sheet.action_approve_expense_sheets()
-        expense_sheet.action_sheet_move_post()
-        move = expense_sheet.account_move_ids
+        self.expense._do_approve(check=False)
+        self.expense._post_without_wizard()
+        move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
         self.assertIn(self.analytic_tag_1, tags)
         self.assertNotIn(self.analytic_tag_2, tags)
 
     def test_hr_expense_without_tags(self):
         self.expense.analytic_distribution = {self.analytic_account_1.id: 100}
-        expense_sheet = self._action_submit_expenses(self.expense)
-        expense_sheet.action_approve_expense_sheets()
-        expense_sheet.action_sheet_move_post()
-        move = expense_sheet.account_move_ids
+        self.expense._do_approve(check=False)
+        self.expense._post_without_wizard()
+        move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
         self.assertNotIn(self.analytic_tag_1, tags)
         self.assertNotIn(self.analytic_tag_2, tags)
