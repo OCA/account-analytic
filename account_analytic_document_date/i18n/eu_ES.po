@@ -1,0 +1,47 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_document_date
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: eu_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: account_analytic_document_date
+#: model:ir.model.fields,field_description:account_analytic_document_date.field_account_bank_statement_line__analytic_document_date
+#: model:ir.model.fields,field_description:account_analytic_document_date.field_account_move__analytic_document_date
+#: model:ir.model.fields,field_description:account_analytic_document_date.field_account_payment__analytic_document_date
+msgid "Analytic Document Date"
+msgstr ""
+
+#. module: account_analytic_document_date
+#: model:ir.model,name:account_analytic_document_date.model_account_analytic_line
+msgid "Analytic Line"
+msgstr ""
+
+#. module: account_analytic_document_date
+#: model:ir.model,name:account_analytic_document_date.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr ""
+
+#. module: account_analytic_document_date
+#: model:ir.model.fields,field_description:account_analytic_document_date.field_account_analytic_line__document_date
+msgid "Document Date"
+msgstr ""
+
+#. module: account_analytic_document_date
+#: model:ir.model,name:account_analytic_document_date.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: account_analytic_document_date
+#: model:ir.model,name:account_analytic_document_date.model_account_move_line
+msgid "Journal Item"
+msgstr ""
