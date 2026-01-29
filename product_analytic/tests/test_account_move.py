@@ -273,3 +273,94 @@ class TestAccountInvoiceLine(TransactionCase):
             int(analytic_account_id[0]),
             self.analytic_account2.id,
         )
+
+
+class TestAccountAnalyticDistributionMultiCompany(TransactionCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        # Create two companies
+        cls.company_1, cls.company_2 = cls.env["res.company"].create(
+            [
+                {"name": "foo", "currency_id": cls.env.ref("base.USD").id},
+                {"name": "bar", "currency_id": cls.env.ref("base.USD").id},
+            ]
+        )
+        cls.default_plan = cls.env["account.analytic.plan"].create(
+            {
+                "name": "Default Plan",
+                "applicability_ids": False,
+            }
+        )
+        # Create analytic accounts for each company
+        cls.analytic_account_1 = (
+            cls.env["account.analytic.account"]
+            .with_company(cls.company_1)
+            .create(
+                {
+                    "name": "Analytic Account 1",
+                    "plan_id": cls.default_plan.id,
+                    "company_id": cls.company_1.id,
+                }
+            )
+        )
+        cls.analytic_account_2 = (
+            cls.env["account.analytic.account"]
+            .with_company(cls.company_2)
+            .create(
+                {
+                    "name": "Analytic Account 2",
+                    "plan_id": cls.default_plan.id,
+                    "company_id": cls.company_2.id,
+                }
+            )
+        )
+        cls.product = cls.env["product.product"].create(
+            {
+                "name": "test product",
+                "lst_price": 50,
+                "standard_price": 50,
+            }
+        )
+        cls.product.with_company(cls.company_1).write(
+            {
+                "income_analytic_account_id": cls.analytic_account_1.id,
+                "expense_analytic_account_id": cls.analytic_account_1.id,
+            }
+        )
+        cls.product.with_company(cls.company_2).write(
+            {
+                "income_analytic_account_id": cls.analytic_account_2.id,
+                "expense_analytic_account_id": cls.analytic_account_2.id,
+            }
+        )
+
+    def test_distribution_multicompany(self):
+        # Simulate context for company 1
+        vals = {
+            "product_id": self.product.id,
+            "company_id": self.company_1.id,
+        }
+        ctx = self.env.context.copy()
+        ctx.update({"move_type": "out_invoice"})
+        distribution = (
+            self.env["account.analytic.distribution.model"]
+            .with_context(**ctx)
+            ._get_distribution(vals)
+        )
+        self.assertTrue(distribution)
+        self.assertEqual(list(distribution.keys())[0], self.analytic_account_1.id)
+        # Simulate context for company 2
+        vals = {
+            "product_id": self.product.id,
+            "company_id": self.company_2.id,
+        }
+        ctx = self.env.context.copy()
+        ctx.update({"move_type": "out_invoice"})
+        distribution = (
+            self.env["account.analytic.distribution.model"]
+            .with_context(**ctx)
+            ._get_distribution(vals)
+        )
+        self.assertTrue(distribution)
+        self.assertEqual(list(distribution.keys())[0], self.analytic_account_2.id)

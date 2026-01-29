@@ -31,7 +31,10 @@ class AccountAnalyticDistributionModel(models.Model):
         move_type = self.env.context.get("move_type")
         if vals.get("product_id") and move_type and move_type in INV_TYPE_MAP:
             product = self.env["product.product"].browse(vals["product_id"])
-            ana_accounts = product.product_tmpl_id._get_product_analytic_accounts()
+            company_id = vals.get("company_id") or self.env.company.id
+            ana_accounts = product.product_tmpl_id.with_company(
+                company_id
+            )._get_product_analytic_accounts()
             ana_account = ana_accounts[INV_TYPE_MAP[move_type]]
             if ana_account:
                 return {ana_account.id: 100}
