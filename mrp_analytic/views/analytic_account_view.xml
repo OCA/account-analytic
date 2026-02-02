@@ -12,7 +12,7 @@
                     class="oe_inline oe_stat_button"
                     type="action"
                     groups="mrp.group_mrp_user, mrp.group_mrp_manager"
-                    context="{'default_analytic_account_id': active_id,'search_default_analytic_account_id': [active_id]}"
+                    context="{'default_analytic_account_id': id, 'search_default_analytic_account_id': [id]}"
                 >
                     <field
                         name="num_productions"
