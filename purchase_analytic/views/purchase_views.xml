@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="purchase_order_kpis_tree_inherit_purchase_analytic" model="ir.ui.view">
+        <field name="name">purchase.order.kpis.tree (purchase_analytic)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree" />
+        <field name="arch" type="xml">
+            <field name="origin" position="before">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    optional="show"
+                    readonly="state in ('done', 'cancel')"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="purchase_order_view_tree_inherit_purchase_analytic" model="ir.ui.view">
+        <field name="name">purchase.order.tree (purchase_analytic)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_view_tree" />
+        <field name="arch" type="xml">
+            <field name="origin" position="before">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    optional="show"
+                    readonly="state in ('done', 'cancel')"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="purchase_order_view_form_inherit_purchase_analytic" model="ir.ui.view">
+        <field name="name">purchase.order.form (purchase_analytic)</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <field name="partner_ref" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    readonly="state in ('done', 'cancel')"
+                />
+            </field>
+            <field name="order_line" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        "default_analytic_distribution": analytic_distribution,
+                    }
+                </attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
