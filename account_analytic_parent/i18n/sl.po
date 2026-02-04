@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-30 02:40+0000\n"
-"PO-Revision-Date: 2026-02-01 09:09+0000\n"
+"PO-Revision-Date: 2026-02-04 11:09+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -35,7 +35,7 @@ msgstr "%(parent)s / %(own)s"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_administratif
 msgid "Administrative"
-msgstr ""
+msgstr "Administrativno"
 
 #. module: account_analytic_parent
 #: model:ir.model,name:account_analytic_parent.model_account_analytic_account
@@ -50,7 +50,7 @@ msgstr "Podrejeni konti"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_commercial_marketing
 msgid "Commercial & Marketing"
-msgstr ""
+msgstr "Komerciala in marketing"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
@@ -60,33 +60,33 @@ msgstr "Polni naziv"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_consultancy
 msgid "Consultancy"
-msgstr ""
+msgstr "Svetovanje"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_customers
 msgid "Customers"
-msgstr ""
+msgstr "Kupci"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_development
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_development
 msgid "Development"
-msgstr ""
+msgstr "Razvoj"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_in_house
 msgid "In House"
-msgstr ""
+msgstr "Lastna obdelava"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_integration
 msgid "Integration"
-msgstr ""
+msgstr "Integracija"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_support_internal
 msgid "Internal"
-msgstr ""
+msgstr "Interno"
 
 #. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
@@ -96,17 +96,17 @@ msgstr "Naziv"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_online
 msgid "Online"
-msgstr ""
+msgstr "Online"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_our_super_product_development
 msgid "Our Super Product Development"
-msgstr ""
+msgstr "Razvoj našega super proizvoda"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_paid
 msgid "Paid"
-msgstr ""
+msgstr "Plačano"
 
 #. module: account_analytic_parent
 #: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
@@ -122,7 +122,7 @@ msgstr "Nadrejena pot"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_partners
 msgid "Partners"
-msgstr ""
+msgstr "Partnerji"
 
 #. module: account_analytic_parent
 #. odoo-python
@@ -133,50 +133,50 @@ msgstr "Najprej aktivirajte nadrejeni konto %s"
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1
 msgid "Project 1"
-msgstr ""
+msgstr "Projekt 1"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2
 msgid "Project 2"
-msgstr ""
+msgstr "Projekt 2"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p1
 msgid "Seagate P1"
-msgstr ""
+msgstr "Seagate P1"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p2
 msgid "Seagate P2"
-msgstr ""
+msgstr "Seagate P2"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_stable
 msgid "Stable"
-msgstr ""
+msgstr "Stabilno"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_support
 #: model:account.analytic.account,name:account_analytic_parent.analytic_support
 msgid "Support"
-msgstr ""
+msgstr "Podpora"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_journal_trainings
 #: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_trainings
 #: model:account.analytic.account,name:account_analytic_parent.analytic_super_product_trainings
 msgid "Training"
-msgstr ""
+msgstr "Trening"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_trunk
 msgid "Trunk"
-msgstr ""
+msgstr "Glavna veja"
 
 #. module: account_analytic_parent
 #: model:account.analytic.account,name:account_analytic_parent.analytic_unpaid
 msgid "Unpaid"
-msgstr ""
+msgstr "Neplačano"
 
 #. module: account_analytic_parent
 #. odoo-python
