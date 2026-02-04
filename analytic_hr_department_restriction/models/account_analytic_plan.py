@@ -22,6 +22,10 @@ class AccountAnalyticPlan(models.Model):
             "test_analytic_hr_department_restriction"
         )
         if test_condition:
-            project_plan = self.search([("id", "in", project_plan.ids)])
-            other_plans = self.search([("id", "in", other_plans.ids)])
+            # Avoid error if the user does not have read access to account.analytic.plan
+            if self.has_access("read"):
+                project_plan = self.search([("id", "in", project_plan.ids)])
+                other_plans = self.search([("id", "in", other_plans.ids)])
+            else:
+                project_plan = other_plans = self
         return project_plan, other_plans
