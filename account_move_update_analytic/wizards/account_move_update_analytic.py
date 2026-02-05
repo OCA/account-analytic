@@ -33,29 +33,35 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         rec = super().default_get(fields)
         active_id = self.env.context.get("active_id", False)
         active_model = self.env.context.get("active_model", "account.move.line")
-        if active_model == "account.move":
+        line_id = self.env.context.get("default_line_id") or (
+            active_id if active_model == "account.move.line" else False
+        )
+
+        if line_id:
+            aml = self.env["account.move.line"].browse(line_id)
+            if aml:
+                rec.update(
+                    {
+                        "line_id": aml.id,
+                        "product_id": aml.product_id.id,
+                        "account_id": aml.account_id.id,
+                        "move_type": aml.move_id.move_type,
+                        "analytic_precision": aml.analytic_precision,
+                        "company_id": aml.company_id.id,
+                        "current_analytic_distribution": aml.analytic_distribution,
+                        "analytic_distribution": aml.analytic_distribution,
+                    }
+                )
+        elif active_model == "account.move":
             moves = self.env["account.move"].browse(self.env.context.get("active_ids"))
-            move_0 = moves[0]
-            rec.update(
-                {
-                    "move_type": move_0.move_type,
-                    "company_id": move_0.company_id.id,
-                }
-            )
-        elif active_model == "account.move.line":
-            aml = self.env["account.move.line"].browse(active_id)
-            rec.update(
-                {
-                    "line_id": aml.id,
-                    "product_id": aml.product_id.id,
-                    "account_id": aml.account_id.id,
-                    "move_type": aml.move_id.move_type,
-                    "analytic_precision": aml.analytic_precision,
-                    "company_id": aml.company_id.id,
-                    "current_analytic_distribution": aml.analytic_distribution,
-                    "analytic_distribution": aml.analytic_distribution,
-                }
-            )
+            move_0 = moves[0] if moves else False
+            if move_0:
+                rec.update(
+                    {
+                        "move_type": move_0.move_type,
+                        "company_id": move_0.company_id.id,
+                    }
+                )
         return rec
 
     def update_analytic_lines(self):
