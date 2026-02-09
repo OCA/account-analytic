@@ -1,0 +1,1 @@
+This module adds a new field to track affected accounts in analytic accounting.
