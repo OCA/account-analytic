@@ -19,6 +19,10 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
     company_id = fields.Many2one(
         comodel_name="res.company", string="Company", readonly=True
     )
+    amount = fields.Float(
+        compute="_compute_amount",
+        readonly=True,
+    )
     current_analytic_distribution = fields.Json(
         related="line_id.analytic_distribution", string="Current Analytic Distribution"
     )
@@ -27,6 +31,11 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         return self.env["account.move"].fields_get(allfields=["move_type"])[
             "move_type"
         ]["selection"]
+
+    @api.depends("line_id.amount_currency")
+    def _compute_amount(self):
+        for rec in self:
+            rec.amount = abs(rec.line_id.amount_currency) if rec.line_id else 0.0
 
     @api.model
     def default_get(self, fields):

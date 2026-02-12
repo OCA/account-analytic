@@ -13,6 +13,7 @@
                             name="current_analytic_distribution"
                             readonly="1"
                             widget="analytic_distribution"
+                            options="{'amount_field': 'amount'}"
                         />
                     </group>
                     <group>
@@ -21,10 +22,11 @@
                         <field name="product_id" invisible="1" />
                         <field name="account_id" invisible="1" />
                         <field name="move_type" invisible="1" />
+                        <field name="amount" invisible="1" />
                         <field
                             name="analytic_distribution"
                             widget="analytic_distribution"
-                            options="{'product_field': 'product_id', 'account_field': 'account_id'}"
+                            options="{'product_field': 'product_id', 'account_field': 'account_id', 'amount_field': 'amount'}"
                             business_domain_compute="move_type in ['out_invoice', 'out_refund', 'out_receipt'] and 'invoice' or move_type in ['in_invoice', 'in_refund', 'in_receipt'] and 'bill' or 'general'"
                         />
                     </group>
