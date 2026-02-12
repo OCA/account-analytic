@@ -1,6 +1,3 @@
-[project]
-name = "odoo-addon-account_move_analytic"
-
 [build-system]
 requires = ["whool"]
 build-backend = "whool.buildapi"
