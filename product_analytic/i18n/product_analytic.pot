@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,35 +14,23 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: product_analytic
-#: model:ir.model,name:product_analytic.model_account_analytic_distribution_model
-msgid "Analytic Distribution Model"
+#: model_terms:ir.ui.view,arch_db:product_analytic.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:product_analytic.view_category_property_form
+msgid "Analytic"
 msgstr ""
 
 #. module: product_analytic
-#: model:ir.model.fields,field_description:product_analytic.field_product_category__expense_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_product__expense_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_template__expense_analytic_account_id
-msgid "Expense Analytic Account"
-msgstr ""
-
-#. module: product_analytic
-#: model:ir.model.fields,field_description:product_analytic.field_product_category__income_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_product__income_analytic_account_id
-#: model:ir.model.fields,field_description:product_analytic.field_product_template__income_analytic_account_id
-msgid "Income Analytic Account"
-msgstr ""
-
-#. module: product_analytic
-#: model:ir.model,name:product_analytic.model_account_move_line
-msgid "Journal Item"
-msgstr ""
-
-#. module: product_analytic
-#: model:ir.model,name:product_analytic.model_product_template
-msgid "Product"
+#: model:ir.model.fields,field_description:product_analytic.field_product_category__analytic_distribution_model_ids
+#: model:ir.model.fields,field_description:product_analytic.field_product_product__analytic_distribution_model_ids
+msgid "Analytic Distribution Models"
 msgstr ""
 
 #. module: product_analytic
 #: model:ir.model,name:product_analytic.model_product_category
 msgid "Product Category"
+msgstr ""
+
+#. module: product_analytic
+#: model:ir.model,name:product_analytic.model_product_product
+msgid "Product Variant"
 msgstr ""
