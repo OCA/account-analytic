@@ -24,6 +24,11 @@ msgid "Account Move Update Analytic Account Wizard"
 msgstr ""
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__amount
+msgid "Amount"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
 msgid "Analytic Distribution"
 msgstr ""
