@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[account_analytic_distribution_manual](account_analytic_distribution_manual/) | 18.0.1.0.0 |  | Account analytic distribution manual
+[account_analytic_distribution_manual](account_analytic_distribution_manual/) | 18.0.1.0.1 |  | Account analytic distribution manual
 [account_analytic_line_commercial_partner](account_analytic_line_commercial_partner/) | 18.0.1.0.1 | <a href='https://github.com/rafaelbn'><img src='https://github.com/rafaelbn.png' width='32' height='32' style='border-radius:50%;' alt='rafaelbn'/></a> <a href='https://github.com/Andrii9090'><img src='https://github.com/Andrii9090.png' width='32' height='32' style='border-radius:50%;' alt='Andrii9090'/></a> <a href='https://github.com/chienandalu'><img src='https://github.com/chienandalu.png' width='32' height='32' style='border-radius:50%;' alt='chienandalu'/></a> | This module add the commercial partner field to analytic items
 [account_analytic_parent](account_analytic_parent/) | 18.0.1.0.0 |  | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 18.0.1.0.0 |  | Account Analytic Required
