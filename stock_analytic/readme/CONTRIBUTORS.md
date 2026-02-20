@@ -14,3 +14,4 @@
   - Yoshi Tashiro
 - [APSL-Nagarro](https://www.apsl.tech)
   - Antoni Marroig \<<amarroig@apsl.net>\>
+- Saran Lim. \<<saranl@ecosoft.co.th>\>
