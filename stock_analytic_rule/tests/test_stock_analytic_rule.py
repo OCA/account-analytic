@@ -363,6 +363,7 @@ class TestStockAnalyticModel(TransactionCase):
 
     def test_validation_checks(self):
         """Test validation checks for category weight and price"""
+        self.stock_analytic_rule.mandatory = True
 
         zero_weight_category = self.env["product.category"].create(
             {
@@ -388,7 +389,6 @@ class TestStockAnalyticModel(TransactionCase):
                 "type": "product",
             }
         )
-
         product_2 = self.env["product.product"].create(
             {
                 "name": "Zero AVG Price Product",
@@ -423,6 +423,22 @@ class TestStockAnalyticModel(TransactionCase):
                     "state": "done",
                 }
             )
+
+        self.stock_analytic_rule.mandatory = False
+        move = self.env["stock.move"].create(
+            {
+                "name": "Zero Weight Move",
+                "product_id": product_1.id,
+                "product_uom": product_1.uom_id.id,
+                "product_uom_qty": 5.0,
+                "location_id": self.stock_location.id,
+                "location_dest_id": self.stock_location_2.id,
+                "state": "done",
+            }
+        )
+        self.assertTrue(
+            move, "Move should be created even with zero weight when not mandatory"
+        )
 
     def test_partial_analytic_distribution(self):
         """Test creation of analytic lines with partial distribution"""

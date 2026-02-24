@@ -54,12 +54,17 @@
             <form>
                 <sheet>
                     <group col="2">
-                        <field name="name" required="1" />
-                        <field name="amount_compute_type" />
-                        <field
-                            name="include_taxes"
-                            invisible="amount_compute_type != 'product'"
-                        />
+                        <group>
+                            <field name="name" required="1" />
+                            <field name="amount_compute_type" />
+                            <field
+                                name="include_taxes"
+                                invisible="amount_compute_type != 'product'"
+                            />
+                        </group>
+                        <group>
+                            <field name="mandatory" />
+                        </group>
                     </group>
 
                     <notebook>

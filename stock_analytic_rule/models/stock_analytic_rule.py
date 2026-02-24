@@ -68,6 +68,11 @@ class StockAnalyticRule(models.Model):
         default=lambda self: self.env.company,
         required=True,
     )
+    mandatory = fields.Boolean(
+        default=False,
+        help="If checked, couldn't validate a stock move"
+        " if it doesn't generate analytic lines.",
+    )
 
     def copy(self, default=None):
         default = dict(default or {})
@@ -225,25 +230,26 @@ class StockAnalyticRule(models.Model):
         return analytic_lines
 
     def _validation_checks(self, category):
-        if not category.avg_weight > 0:
-            raise ValidationError(
-                _(
-                    """This move has to generate analytic
-                    lines so the category must have a weight greater than 0.\n
-                    Please, check the category %s weight."""
+        if self.mandatory:
+            if not category.avg_weight > 0:
+                raise ValidationError(
+                    _(
+                        """This move has to generate analytic
+                        lines so the category must have a weight greater than 0.\n
+                        Please, check the category %s weight."""
+                    )
+                    % category.name
                 )
-                % category.name
-            )
 
-        if not category.avg_price > 0:
-            raise ValidationError(
-                _(
-                    """This move has to generate analytic lines
-                    so the category must have a price greater than 0.\n
-                    Please, check the category %s price."""
+            if not category.avg_price > 0:
+                raise ValidationError(
+                    _(
+                        """This move has to generate analytic lines
+                        so the category must have a price greater than 0.\n
+                        Please, check the category %s price."""
+                    )
+                    % category.name
                 )
-                % category.name
-            )
 
     @api.model
     def generate_analytic_lines(self, stock_move):
