@@ -8,7 +8,7 @@ For each relevant product category, configure the following fields:
 - `Average Weight`: Used to scale the cost relative to quantity.
 - `Supplement`: Additional surcharge applied on top of base cost.
 
-### Custom Computation for Internal Moves
+## Custom Computation for Internal Moves
 
 If **Custom Computation for Internal Moves** is enabled, specific values can be defined for internal transfers.
 
