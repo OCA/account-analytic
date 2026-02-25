@@ -752,3 +752,101 @@ class TestStockAnalyticModel(TransactionCase):
             -expected_amount,
             "Negative amount for internal move should use custom computation values",
         )
+
+    def test_applicable_category_ids(self):
+        """Test that the rule is only applied to specified categories"""
+
+        category_1 = self.env["product.category"].create(
+            {"name": "Category 1", "avg_price": 100.0, "avg_weight": 20.0}
+        )
+        category_2 = self.env["product.category"].create(
+            {"name": "Category 2", "avg_price": 150.0, "avg_weight": 30.0}
+        )
+
+        product_1 = self.env["product.product"].create(
+            {
+                "name": "Product 1",
+                "categ_id": category_1.id,
+                "list_price": 100.0,
+                "type": "product",
+            }
+        )
+        product_2 = self.env["product.product"].create(
+            {
+                "name": "Product 2",
+                "categ_id": category_2.id,
+                "list_price": 150.0,
+                "type": "product",
+            }
+        )
+
+        new_location = self.env["stock.location"].create({"name": "New Location"})
+        new_location_2 = self.env["stock.location"].create({"name": "New Location 2"})
+
+        self.env["stock.analytic.rule"].create(
+            {
+                "name": "Category Specific Rule",
+                "location_from_ids": [(6, 0, [new_location.id])],
+                "location_dest_ids": [(6, 0, [new_location_2.id])],
+                "analytic_distribution": {str(self.analytic_account.id): 100},
+                "analytic_distribution_negative": {
+                    str(self.analytic_account_negative.id): 100
+                },
+                "applicable_category_ids": [(6, 0, [category_1.id])],
+            }
+        )
+
+        self.env["stock.quant"].create(
+            {
+                "product_id": product_1.id,
+                "location_id": new_location.id,
+                "quantity": 50.0,
+            }
+        )
+        self.env["stock.quant"].create(
+            {
+                "product_id": product_2.id,
+                "location_id": new_location.id,
+                "quantity": 50.0,
+            }
+        )
+
+        move1 = self.env["stock.move"].create(
+            {
+                "name": "Move Product 1",
+                "product_id": product_1.id,
+                "product_uom": product_1.uom_id.id,
+                "product_uom_qty": 5.0,
+                "quantity": 5.0,
+                "location_id": new_location.id,
+                "location_dest_id": new_location_2.id,
+                "state": "done",
+                "company_id": self.env.company.id,
+            }
+        )
+        move2 = self.env["stock.move"].create(
+            {
+                "name": "Move Product 2",
+                "product_id": product_2.id,
+                "product_uom": product_2.uom_id.id,
+                "product_uom_qty": 5.0,
+                "quantity": 5.0,
+                "location_id": new_location.id,
+                "location_dest_id": new_location_2.id,
+                "state": "done",
+                "company_id": self.env.company.id,
+            }
+        )
+        analytic_lines1 = self.env["account.analytic.line"].search(
+            [("stock_move_id", "=", move1.id)]
+        )
+        analytic_lines2 = self.env["account.analytic.line"].search(
+            [("stock_move_id", "=", move2.id)]
+        )
+        self.assertTrue(
+            analytic_lines1, "Analytic lines should be created for applicable category"
+        )
+        self.assertFalse(
+            analytic_lines2,
+            "Analytic lines should not be created for non-applicable category",
+        )

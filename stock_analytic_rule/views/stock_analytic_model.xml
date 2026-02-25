@@ -101,12 +101,20 @@
 
                         <page string="Configuration">
                             <group string="Aditional Parameters" col="2">
-                                <field name="financial_account_id" />
-                                <field
-                                    name="company_id"
-                                    groups="base.group_multi_company"
-                                />
-                                <field name="active" widget="boolean_toggle" />
+                                <group>
+                                    <field name="financial_account_id" />
+                                    <field
+                                        name="company_id"
+                                        groups="base.group_multi_company"
+                                    />
+                                    <field name="active" widget="boolean_toggle" />
+                                </group>
+                                <group>
+                                    <field
+                                        name="applicable_category_ids"
+                                        widget="many2many_tags"
+                                    />
+                                </group>
                             </group>
                         </page>
                     </notebook>
