@@ -73,6 +73,14 @@ class StockAnalyticRule(models.Model):
         help="If checked, couldn't validate a stock move"
         " if it doesn't generate analytic lines.",
     )
+    applicable_category_ids = fields.Many2many(
+        "product.category",
+        "stock_analytic_rule_category_rel",
+        "rule_id",
+        "category_id",
+        string="Applicable Categories",
+        help="If set, the rule will only be applied to products of these categories.",
+    )
 
     def copy(self, default=None):
         default = dict(default or {})
@@ -266,6 +274,15 @@ class StockAnalyticRule(models.Model):
                     % category.name
                 )
 
+    def _is_applicable_to_category(self, product):
+        """Return True if the rule applies to the product category."""
+        self.ensure_one()
+
+        if not self.applicable_category_ids:
+            return True
+
+        return product.categ_id in self.applicable_category_ids
+
     @api.model
     def generate_analytic_lines(self, stock_move):
         """Generates analytic lines based on matching stock analytic rules."""
@@ -290,7 +307,7 @@ class StockAnalyticRule(models.Model):
             limit=1,
         )
 
-        if record:
+        if record and record._is_applicable_to_category(product):
             # If the stock moves matches with the rule criteria,
             # then generate the analytic lines.
             amount = record._compute_amount(
@@ -298,22 +315,21 @@ class StockAnalyticRule(models.Model):
             )
             record._create_analytic_lines(amount, product, stock_move.id, company_id)
             return
-        else:
-            # Look for the reversal rule, if it exists.
-            reversal = self.search(
-                [
-                    ("location_from_ids", "in", [location_dest_id]),
-                    ("location_dest_ids", "in", [location_from_id]),
-                    ("active", "=", True),
-                    ("company_id", "=", company_id),
-                ],
-                limit=1,
-            )
+        # Look for the reversal rule, if it exists.
+        reversal = self.search(
+            [
+                ("location_from_ids", "in", [location_dest_id]),
+                ("location_dest_ids", "in", [location_from_id]),
+                ("active", "=", True),
+                ("company_id", "=", company_id),
+            ],
+            limit=1,
+        )
 
-            if reversal:
-                amount = reversal._compute_amount(
-                    product, quantity, is_internal_move, partner=partner
-                )
-                reversal._create_analytic_lines(
-                    amount, product, stock_move.id, company_id, is_reversal=True
-                )
+        if reversal and reversal._is_applicable_to_category(product):
+            amount = reversal._compute_amount(
+                product, quantity, is_internal_move, partner=partner
+            )
+            reversal._create_analytic_lines(
+                amount, product, stock_move.id, company_id, is_reversal=True
+            )
