@@ -135,25 +135,34 @@ class StockAnalyticRule(models.Model):
         )
         return tax_result["total_included"]
 
-    def _get_amount_by_category(self, product, quantity):
+    def _get_amount_by_category(self, product, quantity, is_internal_move):
         """
         Computes the amount for the analytic line based on the product's category.
         This method is used when the amount_compute_type is set to 'category'.
         """
         category = product.categ_id
+        avg_price = category.avg_price
+        avg_weight = category.avg_weight
+
+        # Use custom computation for internal moves if the flag is set and it's
+        # an internal move
+        if is_internal_move and category.custom_computation_for_internal_moves:
+            avg_price = category.avg_price_for_internal_moves
+            avg_weight = category.avg_weight_for_internal_moves
+
         self._validation_checks(category)
-        return (category.avg_price * (category.avg_weight * quantity)) + (
-            (category.avg_weight * quantity) * category.supplement
+        return (avg_price * (avg_weight * quantity)) + (
+            (avg_weight * quantity) * category.supplement
         )
 
-    def _compute_amount(self, product, quantity, partner=None):
+    def _compute_amount(self, product, quantity, is_internal_move, partner=None):
         """
         Computes the amount for the analytic line.
         """
         if self.amount_compute_type == "product":
             return self._get_amount_by_product(product, quantity, partner)
 
-        return self._get_amount_by_category(product, quantity)
+        return self._get_amount_by_category(product, quantity, is_internal_move)
 
     def _prepare_analytic_line(
         self, amount, stock_move_id, financial_account_id, company_id
@@ -231,7 +240,13 @@ class StockAnalyticRule(models.Model):
 
     def _validation_checks(self, category):
         if self.mandatory:
-            if not category.avg_weight > 0:
+            weight_error = (
+                category.avg_weight <= 0 and category.avg_weight_for_internal_moves <= 0
+            )
+            price_error = (
+                category.avg_price <= 0 and category.avg_price_for_internal_moves <= 0
+            )
+            if weight_error:
                 raise ValidationError(
                     _(
                         """This move has to generate analytic
@@ -241,7 +256,7 @@ class StockAnalyticRule(models.Model):
                     % category.name
                 )
 
-            if not category.avg_price > 0:
+            if price_error:
                 raise ValidationError(
                     _(
                         """This move has to generate analytic lines
@@ -262,6 +277,9 @@ class StockAnalyticRule(models.Model):
         company_id = stock_move.company_id.id
         partner = stock_move.partner_id
 
+        move_type = stock_move.picking_id.picking_type_code
+        is_internal_move = move_type == "internal"
+
         record = self.search(
             [
                 ("location_from_ids", "in", [location_from_id]),
@@ -275,7 +293,9 @@ class StockAnalyticRule(models.Model):
         if record:
             # If the stock moves matches with the rule criteria,
             # then generate the analytic lines.
-            amount = record._compute_amount(product, quantity, partner=partner)
+            amount = record._compute_amount(
+                product, quantity, is_internal_move, partner=partner
+            )
             record._create_analytic_lines(amount, product, stock_move.id, company_id)
             return
         else:
@@ -291,7 +311,9 @@ class StockAnalyticRule(models.Model):
             )
 
             if reversal:
-                amount = reversal._compute_amount(product, quantity, partner=partner)
+                amount = reversal._compute_amount(
+                    product, quantity, is_internal_move, partner=partner
+                )
                 reversal._create_analytic_lines(
                     amount, product, stock_move.id, company_id, is_reversal=True
                 )

@@ -16,6 +16,24 @@ class TestStockAnalyticModel(TransactionCase):
         cls.stock_location_2 = cls.env["stock.location"].create(
             {"name": "Test Location 2"}
         )
+
+        cls.internal_location_1 = cls.env["stock.location"].create(
+            {"name": "Internal Location 1", "usage": "internal"}
+        )
+        cls.internal_location_2 = cls.env["stock.location"].create(
+            {"name": "Internal Location 2", "usage": "internal"}
+        )
+
+        cls.internal_picking_type = cls.env["stock.picking.type"].create(
+            {
+                "name": "Internal Picking Type",
+                "code": "internal",
+                "default_location_src_id": cls.internal_location_1.id,
+                "default_location_dest_id": cls.internal_location_2.id,
+                "sequence_code": "INT",
+            }
+        )
+
         cls.product_category = cls.env["product.category"].create(
             {
                 "name": "Test Category",
@@ -91,7 +109,7 @@ class TestStockAnalyticModel(TransactionCase):
         self.stock_analytic_rule.include_taxes = True
         self.product.taxes_id = [(6, 0, [self.tax.id])]
         product = self.product
-        amount = self.stock_analytic_rule._compute_amount(product, 5.0)
+        amount = self.stock_analytic_rule._compute_amount(product, 5.0, False)
         taxes = product.taxes_id.filtered(lambda t: t.company_id == self.env.company)
         price_unit = product.lst_price
         tax_result = taxes.compute_all(price_unit, quantity=5.0, product=product)
@@ -105,7 +123,7 @@ class TestStockAnalyticModel(TransactionCase):
         self.stock_analytic_rule.amount_compute_type = "product"
         self.stock_analytic_rule.include_taxes = False
         product = self.product
-        amount = self.stock_analytic_rule._compute_amount(product, 5.0)
+        amount = self.stock_analytic_rule._compute_amount(product, 5.0, False)
         expected_amount = product.lst_price * 5.0
 
         self.assertEqual(
@@ -667,4 +685,70 @@ class TestStockAnalyticModel(TransactionCase):
             round(analytic_lines2.filtered(lambda line: line.amount > 0)[0].amount, 2),
             round(expected_amount2, 2),
             "Second move should use new rule supplement",
+        )
+
+    def test_internal_moves_with_custom_computation(self):
+        """Test that internal moves use custom computation when enabled"""
+
+        self.env["stock.analytic.rule"].create(
+            {
+                "name": "Internal Move Rule",
+                "location_from_ids": [(6, 0, [self.internal_location_1.id])],
+                "location_dest_ids": [(6, 0, [self.internal_location_2.id])],
+                "analytic_distribution": {str(self.analytic_account.id): 100},
+                "analytic_distribution_negative": {
+                    str(self.analytic_account_negative.id): 100
+                },
+            }
+        )
+
+        self.product_category.custom_computation_for_internal_moves = True
+        self.product_category.avg_price_for_internal_moves = 80.0
+        self.product_category.avg_weight_for_internal_moves = 15.0
+
+        picking = self.env["stock.picking"].create(
+            {
+                "name": "Internal Move Picking",
+                "picking_type_id": self.internal_picking_type.id,
+                "location_id": self.internal_location_1.id,
+                "location_dest_id": self.internal_location_2.id,
+                "company_id": self.env.company.id,
+            }
+        )
+
+        move = self.env["stock.move"].create(
+            {
+                "name": "Internal Move",
+                "product_id": self.product.id,
+                "product_uom": self.product.uom_id.id,
+                "product_uom_qty": 6.0,
+                "quantity": 6.0,
+                "location_id": self.internal_location_1.id,
+                "location_dest_id": self.internal_location_2.id,
+                "state": "done",
+                "company_id": self.env.company.id,
+                "picking_id": picking.id,
+            }
+        )
+        analytic_lines = self.env["account.analytic.line"].search(
+            [("stock_move_id", "=", move.id)]
+        )
+        expected_amount = (
+            self.product_category.avg_price_for_internal_moves
+            * (self.product_category.avg_weight_for_internal_moves * 6.0)
+        ) + (
+            (self.product_category.avg_weight_for_internal_moves * 6.0)
+            * self.product_category.supplement
+        )
+        positive_line = analytic_lines.filtered(lambda line: line.amount > 0)
+        self.assertEqual(
+            positive_line.amount,
+            expected_amount,
+            "Amount for internal move should use custom computation values",
+        )
+        negative_line = analytic_lines.filtered(lambda line: line.amount < 0)
+        self.assertEqual(
+            negative_line.amount,
+            -expected_amount,
+            "Negative amount for internal move should use custom computation values",
         )
