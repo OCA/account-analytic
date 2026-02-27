@@ -10,6 +10,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env.user.groups_id += cls.env.ref("analytic.group_analytic_accounting")
         cls.stock_location_id = cls.env["ir.model.data"]._xmlid_to_res_id(
             "stock.stock_location_stock"
         )
@@ -53,18 +54,23 @@ class TestMrpStockAnalytic(CommonStockPicking):
             )
         )
         quants.action_apply_inventory()
+        cls.production = cls._create_production(2)
+        cls.wip_account_id = cls.env.company.account_production_wip_account_id.id
+
+    @classmethod
+    def _create_production(cls, qty):
         production = cls.env["mrp.production"].create(
             {
                 "product_id": cls.product_A.id,
                 "bom_id": cls.bom.id,
-                "product_qty": 2,
+                "product_qty": qty,
                 "product_uom_id": cls.product_A.uom_id.id,
             }
         )
         production.action_confirm()
         mo_form = Form(production)
-        mo_form.qty_producing = 2
-        cls.production = mo_form.save()
+        mo_form.qty_producing = qty
+        return mo_form.save()
 
     def test_propagate_analytic_distribution(self):
         production = self.production
@@ -148,3 +154,87 @@ class TestMrpStockAnalytic(CommonStockPicking):
             backorder.move_raw_ids.analytic_distribution,
             backorder.analytic_distribution,
         )
+
+    def test_wip_accounting_with_analytic_distribution(self):
+        """Test analytic distribution flows from MO to WIP wizard lines and then
+        to the created journal entries."""
+        production = self.production
+        production.analytic_distribution = self.analytic_distribution
+        wizard = Form(
+            self.env["mrp.account.wip.accounting"].with_context(
+                active_ids=[production.id]
+            )
+        ).save()
+        wip_line = wizard.line_ids.filtered(
+            lambda line: line.account_id.id == self.wip_account_id
+        )
+        self.assertTrue(wip_line)
+        self.assertEqual(wip_line.analytic_distribution, self.analytic_distribution)
+        wizard.confirm()
+        wip_move = self.env["account.move"].search(
+            [
+                ("wip_production_ids", "in", production.ids),
+                ("reversed_entry_id", "=", False),
+            ]
+        )
+        self.assertTrue(wip_move)
+        wip_move_line = wip_move.line_ids.filtered(
+            lambda line: line.account_id.id == self.wip_account_id
+        )
+        self.assertTrue(wip_move_line)
+        self.assertEqual(
+            wip_move_line.analytic_distribution, self.analytic_distribution
+        )
+
+    def test_wip_accounting_multi_analytic_distribution(self):
+        """Test WIP wizard correctly groups MOs by analytic distribution and
+        creates separate WIP journal lines with respective distributions."""
+        # Create a second analytic account for a different distribution
+        analytic_plan = self.env["account.analytic.plan"].create({"name": "Test Plan"})
+        analytic_account_2 = self.env["account.analytic.account"].create(
+            {"name": "Test Analytic 2", "plan_id": analytic_plan.id}
+        )
+        analytic_distribution_2 = {str(analytic_account_2.id): 100.0}
+        # Create a second MO
+        production_2 = self._create_production(3)
+        # Assign different analytic distributions to each MO
+        self.production.analytic_distribution = self.analytic_distribution
+        production_2.analytic_distribution = analytic_distribution_2
+        # Open WIP wizard with both MOs
+        wizard = Form(
+            self.env["mrp.account.wip.accounting"].with_context(
+                active_ids=[self.production.id, production_2.id]
+            )
+        ).save()
+        wip_lines = wizard.line_ids.filtered(
+            lambda x: x.account_id.id == self.wip_account_id
+        )
+        # Two WIP debit lines, one per analytic distribution group
+        self.assertEqual(len(wip_lines), 2)
+        wip_distributions = wip_lines.mapped("analytic_distribution")
+        self.assertIn(self.analytic_distribution, wip_distributions)
+        self.assertIn(analytic_distribution_2, wip_distributions)
+        # Non-WIP lines should have no analytic distribution
+        non_wip_lines = wizard.line_ids - wip_lines
+        for line in non_wip_lines:
+            self.assertFalse(line.analytic_distribution)
+        # Confirm and verify the journal entry
+        wizard.confirm()
+        wip_move = self.env["account.move"].search(
+            [
+                (
+                    "wip_production_ids",
+                    "in",
+                    (self.production | production_2).ids,
+                ),
+                ("reversed_entry_id", "=", False),
+            ]
+        )
+        self.assertEqual(len(wip_move), 1)
+        wip_move_lines = wip_move.line_ids.filtered(
+            lambda x: x.account_id.id == self.wip_account_id
+        )
+        self.assertEqual(len(wip_move_lines), 2)
+        move_distributions = wip_move_lines.mapped("analytic_distribution")
+        self.assertIn(self.analytic_distribution, move_distributions)
+        self.assertIn(analytic_distribution_2, move_distributions)
