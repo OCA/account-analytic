@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 23:05+0000\n"
-"PO-Revision-Date: 2019-02-01 11:03+0000\n"
-"Last-Translator: Marta Vázquez Rodríguez <vazrodmar@gmail.com>\n"
+"PO-Revision-Date: 2026-03-02 21:44+0000\n"
+"Last-Translator: Anxo López Rodríguez <lopezrodriguezanxo@gmail.com>\n"
 "Language-Team: Galician (https://www.transifex.com/oca/teams/23907/gl/)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: analytic_partner_hr_timesheet
 #: model_terms:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
@@ -43,19 +43,19 @@ msgstr "Contacto"
 #: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome a amosar"
 
 #. module: analytic_partner_hr_timesheet
 #: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner__id
 msgid "ID"
-msgstr ""
+msgstr "Identificador"
 
 #. module: analytic_partner_hr_timesheet
 #: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_account_analytic_line____last_update
 #: model:ir.model.fields,field_description:analytic_partner_hr_timesheet.field_res_partner____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación"
 
 #. module: analytic_partner_hr_timesheet
 #: model_terms:ir.ui.view,arch_db:analytic_partner_hr_timesheet.hr_timesheet_line_search_partner
