@@ -2,8 +2,12 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
 """Convert company-dependant field to normal."""
 
+from openupgradelib import openupgrade
+
 
 def migrate(cr, version):
+    if not openupgrade.table_exists(cr, "ir_property"):
+        return
     cr.execute(
         r"""
         UPDATE account_account AS acc
