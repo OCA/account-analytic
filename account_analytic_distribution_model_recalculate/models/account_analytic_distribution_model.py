@@ -139,20 +139,12 @@ class AccountAnalyticDistributionModel(models.Model):
     def _create_domain(self, fname, value):
         if fname == "date" and value:
             return [
-                "|",
                 "&",
+                "|",
                 ("start_date", "<=", value),
-                ("end_date", ">=", value),
-                "|",
-                "&",
-                ("start_date", "<=", value),
-                ("end_date", "=", False),
-                "|",
-                "&",
                 ("start_date", "=", False),
+                "|",
                 ("end_date", ">=", value),
-                "&",
-                ("start_date", "=", False),
                 ("end_date", "=", False),
             ]
         return super()._create_domain(fname, value)
