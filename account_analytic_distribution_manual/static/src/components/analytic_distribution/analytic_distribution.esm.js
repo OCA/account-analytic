@@ -165,14 +165,18 @@ patch(AnalyticDistribution.prototype, {
         }
     },
     async processSelectedOption(selected_option) {
+        const analyticAccountIds = Object.keys(selected_option.analytic_distribution)
+            .map((key) => key.split(","))
+            .flat()
+            .map((id) => parseInt(id));
+        const analyticAccountDict = analyticAccountIds.length
+            ? await this.fetchAnalyticAccounts([["id", "in", analyticAccountIds]])
+            : [];
         const formattedLines = [];
         for (const [accountIds, percentage] of Object.entries(
             selected_option.analytic_distribution
         )) {
             const ids = accountIds.split(",").map((id) => parseInt(id, 10));
-            const analyticAccountDict = ids.length
-                ? await this.fetchAnalyticAccounts([["id", "in", ids]])
-                : [];
             const lineToAdd = {
                 id: this.nextId++,
                 analyticAccounts: this.plansToArray(),

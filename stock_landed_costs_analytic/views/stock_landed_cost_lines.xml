@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="stock_landed_cost_form_view">
+        <field
+            name="name"
+        >stock.landed.cost.form (in stock_landed_costs_analytic)</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='cost_lines']/list/field[@name='account_id']"
+                position="after"
+            >
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    optional="show"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

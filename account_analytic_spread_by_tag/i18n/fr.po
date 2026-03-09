@@ -1,0 +1,96 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_spread_by_tag
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-10-05 07:42+0000\n"
+"Last-Translator: Rémi <remi@le-filament.com>\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model,name:account_analytic_spread_by_tag.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_tag__spread_filter_analytic_account_ids
+msgid "Analytic Accounts"
+msgstr "Comptes analytiques"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model,name:account_analytic_spread_by_tag.model_account_analytic_tag
+msgid "Analytic Tags"
+msgstr "Étiquettes analytiques"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields.selection,name:account_analytic_spread_by_tag.selection__account_analytic_tag__spread_filter_operation__exclude
+msgid "Exclude"
+msgstr "Exclure"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields,help:account_analytic_spread_by_tag.field_account_analytic_tag__to_spread
+msgid ""
+"If enabled, the move line amounts using this tag will be spread across"
+"             all the analytic accounts that use this same tag."
+msgstr ""
+"Si activé, les montants des lignes utilisant cette étiquette seront répartis "
+"parmi tous les comptes analytiques utilisant la même étiquette."
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields.selection,name:account_analytic_spread_by_tag.selection__account_analytic_tag__spread_filter_operation__include
+msgid "Include"
+msgstr "Inclure"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model,name:account_analytic_spread_by_tag.model_account_move_line
+msgid "Journal Item"
+msgstr "Écriture comptable"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_account__mapped_analytic_tag_ids
+msgid "Mapped Analytic Tag"
+msgstr "Étiquette analytique correspondante"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_tag__spread_filter_operation
+msgid "Operation"
+msgstr "Opération"
+
+#. module: account_analytic_spread_by_tag
+#: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_tag__to_spread
+msgid "Spread analytic amounts"
+msgstr "Répartir les montants analytiques"
+
+#. module: account_analytic_spread_by_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_acount_spread_form_view
+msgid "Spreading"
+msgstr "Répartition"
+
+#. module: account_analytic_spread_by_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_tag_spread_form_view
+msgid "Spreading Configuration"
+msgstr "Configuration de la répartition"
+
+#. module: account_analytic_spread_by_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_tag_spread_form_view
+msgid "Spreading Filters"
+msgstr "Filtres de répartition"
+
+#. module: account_analytic_spread_by_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_acount_spread_form_view
+msgid "Tags Mapping"
+msgstr "Correspondance des étiquettes"
+
+#. module: account_analytic_spread_by_tag
+#: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_tag_spread_search_view
+msgid "To Spread"
+msgstr "À répartir"
