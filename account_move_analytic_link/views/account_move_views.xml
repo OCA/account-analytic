@@ -18,6 +18,7 @@
                     invisible="not analytic_line_ids"
                     icon="fa-arrow-right"
                     title="Open analytic items"
+                    width="0.1"
                 />
             </xpath>
             <xpath
@@ -31,6 +32,7 @@
                     invisible="not analytic_line_ids"
                     icon="fa-arrow-right"
                     title="Open analytic items"
+                    width="0.1"
                 />
             </xpath>
         </field>
