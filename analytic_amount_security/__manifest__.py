@@ -3,7 +3,7 @@
 {
     "name": "Analytic amount security",
     "summary": "Add a group to constrain which users can see what info on the analytic lines",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "development_status": "Alpha",
     "category": "Technical",
     "website": "https://github.com/OCA/account-analytic",

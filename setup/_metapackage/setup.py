@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo-addon-account_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-account_analytic_tag_distribution>=16.0dev,<16.1dev',
         'odoo-addon-account_move_update_analytic>=16.0dev,<16.1dev',
+        'odoo-addon-analytic_amount_security>=16.0dev,<16.1dev',
         'odoo-addon-analytic_base_department>=16.0dev,<16.1dev',
         'odoo-addon-analytic_distribution_widget_remove_save>=16.0dev,<16.1dev',
         'odoo-addon-analytic_hr_department_restriction>=16.0dev,<16.1dev',
