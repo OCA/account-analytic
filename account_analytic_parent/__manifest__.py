@@ -12,7 +12,7 @@
     "name": "Account Analytic Parent",
     "summary": """
         This module reintroduces the hierarchy to the analytic accounts.""",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Accounting & Finance",
     "license": "AGPL-3",
     "author": "Matmoz d.o.o., "
@@ -24,7 +24,10 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["account", "analytic"],
-    "data": ["views/account_analytic_account_view.xml"],
+    "data": [
+        "views/account_analytic_account_view.xml",
+        "views/account_analytic_line_views.xml",
+    ],
     "demo": ["demo/analytic_account_demo.xml"],
     "post_init_hook": "post_init_hook",
 }

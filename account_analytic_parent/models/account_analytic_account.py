@@ -7,7 +7,7 @@
 # Copyright 2019 Pesol
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -42,59 +42,44 @@ class AccountAnalyticAccount(models.Model):
         """
         res = super()._compute_debit_credit_balance()
 
-        ResCurrency = self.env["res.currency"]
+        domain = [("company_id", "in", [False] + self.env.companies.ids)]
+        if self.env.context.get("from_date", False):
+            domain.append(("date", ">=", self.env.context["from_date"]))
+        if self.env.context.get("to_date", False):
+            domain.append(("date", "<=", self.env.context["to_date"]))
+
         AccountAnalyticLine = self.env["account.analytic.line"]
-        user_currency_id = self.env.user.company_id.currency_id
+        company = self.env.user.company_id
+        today = fields.Date.today()
+
+        def _sum_in_company_currency(domain):
+            return sum(
+                currency._convert(amount_sum, company.currency_id, company, today)
+                for currency, amount_sum in AccountAnalyticLine._read_group(
+                    domain=domain,
+                    groupby=["currency_id"],
+                    aggregates=["amount:sum"],
+                )
+            )
 
         # Re-compute only accounts with children
-        for account in self.filtered("child_ids"):
-            domain = [("account_id", "child_of", account.id)]
+        for plan, accounts in self.grouped("plan_id").items():
+            for account in accounts.filtered("child_ids"):
+                domain += [(plan._column_name(), "child_of", account.id)]
+                credit = _sum_in_company_currency(domain + [("amount", ">=", 0.0)])
+                debit = _sum_in_company_currency(domain + [("amount", "<", 0.0)])
 
-            credit_groups = AccountAnalyticLine.read_group(
-                domain=domain + [("amount", ">=", 0.0)],
-                fields=["currency_id", "amount"],
-                groupby=["currency_id"],
-                lazy=False,
-            )
-            credit = sum(
-                map(
-                    lambda x: ResCurrency.browse(x["currency_id"][0])._convert(
-                        x["amount"],
-                        user_currency_id,
-                        self.env.user.company_id,
-                        fields.Date.today(),
-                    ),
-                    credit_groups,
-                )
-            )
-
-            debit_groups = AccountAnalyticLine.read_group(
-                domain=domain + [("amount", "<", 0.0)],
-                fields=["currency_id", "amount"],
-                groupby=["currency_id"],
-                lazy=False,
-            )
-            debit = sum(
-                map(
-                    lambda x: ResCurrency.browse(x["currency_id"][0])._convert(
-                        x["amount"],
-                        user_currency_id,
-                        self.env.user.company_id,
-                        fields.Date.today(),
-                    ),
-                    debit_groups,
-                )
-            )
-
-            account.debit = abs(debit)
-            account.credit = credit
-            account.balance = account.credit - account.debit
+                account.debit = abs(debit)
+                account.credit = credit
+                account.balance = account.credit - account.debit
         return res
 
     @api.constrains("parent_id")
     def check_recursion(self):
         if self._has_cycle():
-            raise UserError(_("You can not create recursive analytic accounts."))
+            raise UserError(
+                self.env._("You can not create recursive analytic accounts.")
+            )
         return True
 
     @api.onchange("parent_id")
@@ -106,10 +91,11 @@ class AccountAnalyticAccount(models.Model):
     def _compute_complete_name(self):
         for account in self:
             if account.parent_id:
-                account.complete_name = _("%(parent)s / %(own)s") % {
-                    "parent": account.parent_id.complete_name,
-                    "own": account.name,
-                }
+                account.complete_name = self.env._(
+                    "%(parent)s / %(own)s",
+                    parent=account.parent_id.complete_name,
+                    own=account.name,
+                )
             else:
                 account.complete_name = account.name
 
@@ -122,8 +108,10 @@ class AccountAnalyticAccount(models.Model):
             and not a.parent_id.active
         ):
             raise UserError(
-                _("Please activate first parent account %s")
-                % account.parent_id.complete_name
+                self.env._(
+                    "Please activate first parent account %s",
+                    account.parent_id.complete_name,
+                )
             )
 
     @api.depends("complete_name", "code", "partner_id.commercial_partner_id.name")
@@ -133,10 +121,11 @@ class AccountAnalyticAccount(models.Model):
             if analytic.code:
                 name = f"[{analytic.code}] {name}"
             if analytic.partner_id:
-                name = _("%(name)s - %(partner)s") % {
-                    "name": name,
-                    "partner": analytic.partner_id.commercial_partner_id.name,
-                }
+                name = self.env._(
+                    "%(name)s - %(partner)s",
+                    name=name,
+                    partner=analytic.partner_id.commercial_partner_id.name,
+                )
             analytic.display_name = name
 
     def write(self, vals):
