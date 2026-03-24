@@ -4,7 +4,7 @@
 {
     "name": "Analytic plans per product",
     "summary": "Configure applicability of an analytic plan per product",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Accounting",
     "website": "https://github.com/OCA/account-analytic",
