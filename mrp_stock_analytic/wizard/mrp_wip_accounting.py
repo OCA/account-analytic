@@ -1,6 +1,7 @@
 # Copyright 2026 Quartile (https://www.quartile.co)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import json
 from datetime import datetime, time
 
 from odoo import Command, _, api, fields, models
@@ -33,7 +34,11 @@ class MrpWipAccounting(models.TransientModel):
             # Group MOs by analytic distribution pattern
             mo_groups = {}
             for mo in wizard.mo_ids:
-                key = str(mo.analytic_distribution) if mo.analytic_distribution else ""
+                key = (
+                    json.dumps(mo.analytic_distribution, sort_keys=True)
+                    if mo.analytic_distribution
+                    else ""
+                )
                 mo_groups.setdefault(key, self.env["mrp.production"])
                 mo_groups[key] |= mo
             # Create lines per group with analytic on WIP lines
