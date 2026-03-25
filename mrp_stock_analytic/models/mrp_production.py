@@ -21,3 +21,17 @@ class MrpProduction(models.Model):
             production.move_raw_ids.write(
                 {"analytic_distribution": production.analytic_distribution}
             )
+
+    def _validate_analytic_distribution(self):
+        for rec in self:
+            rec._validate_distribution(
+                product=rec.product_id.id,
+                picking_type=rec.picking_type_id.id,
+                business_domain="manufacturing_order",
+                company_id=rec.company_id.id,
+            )
+
+    def button_mark_done(self):
+        self = self.with_context(validate_analytic=True)
+        self._validate_analytic_distribution()
+        return super().button_mark_done()

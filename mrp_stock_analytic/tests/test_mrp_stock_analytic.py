@@ -1,6 +1,7 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo.exceptions import ValidationError
 from odoo.tests import Form
 
 from odoo.addons.stock_analytic.tests.test_stock_picking import CommonStockPicking
@@ -238,3 +239,25 @@ class TestMrpStockAnalytic(CommonStockPicking):
         move_distributions = wip_move_lines.mapped("analytic_distribution")
         self.assertIn(self.analytic_distribution, move_distributions)
         self.assertIn(analytic_distribution_2, move_distributions)
+
+    def test_mandatory_analytic_plan_validation(self):
+        analytic_plan = self.env.ref("analytic.analytic_plan_projects")
+        analytic_account = self.env["account.analytic.account"].create(
+            {"name": "Test Manufacturing Project", "plan_id": analytic_plan.id}
+        )
+        self.env["account.analytic.applicability"].create(
+            {
+                "business_domain": "manufacturing_order",
+                "analytic_plan_id": analytic_plan.id,
+                "applicability": "mandatory",
+            }
+        )
+        production = self._create_production(1)
+        with self.assertRaisesRegex(ValidationError, "100% analytic distribution"):
+            production.button_mark_done()
+        production.analytic_distribution = {str(analytic_account.id): 50.0}
+        with self.assertRaisesRegex(ValidationError, "100% analytic distribution"):
+            production.button_mark_done()
+        production.analytic_distribution = {str(analytic_account.id): 100.0}
+        production.button_mark_done()
+        self.assertEqual(production.state, "done")
