@@ -13,13 +13,10 @@ class AccountAnalyticAccount(models.Model):
         copy=False,
     )
 
-    _sql_constraints = [
-        (
-            "code_uniq",
-            "UNIQUE(code, company_id)",
-            "Reference must be unique per Company!",
-        ),
-    ]
+    _code_company_uniq = models.Constraint(
+        "UNIQUE(code, company_id)",
+        "Reference must be unique per Company!",
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
