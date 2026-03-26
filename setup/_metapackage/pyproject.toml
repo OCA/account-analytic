@@ -1,10 +1,11 @@
 [project]
 name = "odoo-addons-oca-account-analytic"
-version = "19.0.20260310.0"
+version = "19.0.20260326.0"
 dependencies = [
     "odoo-addon-account_analytic_tag==19.0.*",
     "odoo-addon-account_move_update_analytic==19.0.*",
     "odoo-addon-purchase_analytic==19.0.*",
+    "odoo-addon-sale_analytic_tag==19.0.*",
 ]
 classifiers=[
     "Programming Language :: Python",
