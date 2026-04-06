@@ -184,6 +184,33 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
         self.assertNotIn(self.account_b, accounts)
         self.assertIn(self.account_c, accounts)
 
+    @users("test-user")
+    def test_analytic_account_create_auto_department(self):
+        """Creating an analytic account without department_ids should auto-populate
+        them from the user's employee department, so the ir.rule doesn't block it."""
+        account = self.env["account.analytic.account"].create(
+            {
+                "name": "Test account auto department",
+                "plan_id": self.plan_a.id,
+                "company_id": self.env.company.id,
+            }
+        )
+        self.assertEqual(account.department_ids, self.department_a)
+
+    @users("test-user")
+    def test_analytic_account_create_explicit_department(self):
+        """Creating an analytic account with explicit department_ids should not
+        be overridden by the auto-population."""
+        account = self.env["account.analytic.account"].create(
+            {
+                "name": "Test account explicit department",
+                "plan_id": self.plan_a.id,
+                "department_ids": [Command.set(self.department_a.ids)],
+                "company_id": self.env.company.id,
+            }
+        )
+        self.assertEqual(account.department_ids, self.department_a)
+
     @users("test-manager")
     def test_analytic_data_manager(self):
         plans = self.env["account.analytic.plan"].search([])
