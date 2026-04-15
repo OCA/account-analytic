@@ -43,12 +43,14 @@ patch(AnalyticDistribution.prototype, "account_analytic_distribution_manual", {
     },
     async save() {
         await this._super();
-        await this.props.record.update({
-            manual_distribution_id: [
-                this.state_manual_distribution.id,
-                this.state_manual_distribution.label,
-            ],
-        });
+        if (this.state_manual_distribution.id) {
+            await this.props.record.update({
+                manual_distribution_id: [
+                    this.state_manual_distribution.id,
+                    this.state_manual_distribution.label,
+                ],
+            });
+        }
     },
     async refreshManualDistribution(manual_distribution_id) {
         if (manual_distribution_id === 0) {
