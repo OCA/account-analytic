@@ -3,7 +3,7 @@
 {
     "name": "Account Analytic Document Date",
     "summary": "Account Analytic Document Date",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "website": "https://github.com/OCA/account-analytic",
     "author": "APSL-Nagarro, Odoo Community Association (OCA)",
     "maintainers": ["mpascuall", "BernatObrador"],

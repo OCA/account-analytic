@@ -24,7 +24,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [account_analytic_account_tag](account_analytic_account_tag/) | 16.0.1.0.0 |  | Restore the tag_ids in account.analytic.account
 [account_analytic_distribution_manual](account_analytic_distribution_manual/) | 16.0.2.5.0 |  | Account analytic distribution manual
-[account_analytic_document_date](account_analytic_document_date/) | 16.0.1.0.1 | <a href='https://github.com/mpascuall'><img src='https://github.com/mpascuall.png' width='32' height='32' style='border-radius:50%;' alt='mpascuall'/></a> <a href='https://github.com/BernatObrador'><img src='https://github.com/BernatObrador.png' width='32' height='32' style='border-radius:50%;' alt='BernatObrador'/></a> | Account Analytic Document Date
+[account_analytic_document_date](account_analytic_document_date/) | 16.0.1.0.2 | <a href='https://github.com/mpascuall'><img src='https://github.com/mpascuall.png' width='32' height='32' style='border-radius:50%;' alt='mpascuall'/></a> <a href='https://github.com/BernatObrador'><img src='https://github.com/BernatObrador.png' width='32' height='32' style='border-radius:50%;' alt='BernatObrador'/></a> | Account Analytic Document Date
 [account_analytic_organization](account_analytic_organization/) | 16.0.1.0.1 | <a href='https://github.com/mpascuall'><img src='https://github.com/mpascuall.png' width='32' height='32' style='border-radius:50%;' alt='mpascuall'/></a> | Adds organization field on the partner so you can use it on your analytic
 [account_analytic_parent](account_analytic_parent/) | 16.0.1.0.1 |  | This module reintroduces the hierarchy to the analytic accounts.
 [account_analytic_required](account_analytic_required/) | 16.0.2.0.1 |  | Account Analytic Required
