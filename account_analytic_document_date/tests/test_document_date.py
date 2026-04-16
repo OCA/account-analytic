@@ -64,10 +64,12 @@ class TestAccountMoveDocumentDate(TransactionCase):
         self.assertEqual(invoice.analytic_document_date, analytic_line.document_date)
 
     def test_create_invoice_with_document_date(self):
-        document_date = datetime.now().date() + timedelta(days=1)
+        today = datetime.now().date()
+        document_date = today + timedelta(days=1)
         invoice = self.account_move_model.create(
             {
                 "move_type": "out_invoice",
+                "invoice_date": today,
                 "partner_id": self.partner.id,
                 "invoice_line_ids": [
                     (
