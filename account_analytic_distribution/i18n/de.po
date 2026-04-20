@@ -10,15 +10,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-03-02 23:08+0000\n"
-"PO-Revision-Date: 2020-01-24 15:13+0000\n"
-"Last-Translator: Malin Kienke <malin.kienke@initos.com>\n"
+"PO-Revision-Date: 2026-04-20 10:45+0000\n"
+"Last-Translator: Judith Massa <jsmassa@users.noreply.translation.odoo-"
+"community.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_analytic_tag_ids
@@ -96,7 +97,7 @@ msgstr "Verteilung"
 #: code:addons/account_analytic_distribution/models/account_analytic_distribution.py:39
 #, python-format
 msgid "Distribution name must be unique per Company!"
-msgstr "Bezeichnung der Verteilung muss je Unternehmen eindeutig sein."
+msgstr "Bezeichnung der Verteilung muss je Unternehmen eindeutig sein!"
 
 #. module: account_analytic_distribution
 #: model:ir.model.fields,field_description:account_analytic_distribution.field_account_analytic_distribution_rule_ids
