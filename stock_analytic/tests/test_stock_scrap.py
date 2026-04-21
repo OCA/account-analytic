@@ -9,30 +9,32 @@ class TestStockScrap(TransactionCase):
     def setUp(self):
         super().setUp()
 
-        self.product = self.env.ref("product.product_product_4")
+        self.product = self.env["product.product"].create(
+            {
+                "name": "Test Scrap Product",
+                "type": "consu",
+                "is_storable": True,
+            }
+        )
         self.warehouse = self.env.ref("stock.warehouse0")
         self.location = self.warehouse.lot_stock_id
-        self.analytic_distribution = dict(
-            {str(self.env.ref("analytic.analytic_agrolait").id): 100.0}
+        analytic_plan = self.env["account.analytic.plan"].create({"name": "Test Plan"})
+        analytic_account = self.env["account.analytic.account"].create(
+            {"name": "Test Analytic Account", "plan_id": analytic_plan.id}
         )
-        # analytic.analytic_agrolait belongs to analytic.analytic_plan_projects
+        self.analytic_distribution = {str(analytic_account.id): 100.0}
         self.analytic_applicability = self.env["account.analytic.applicability"].create(
             {
                 "business_domain": "stock_move",
                 "applicability": "optional",
-                "analytic_plan_id": self.env.ref("analytic.analytic_plan_projects").id,
+                "analytic_plan_id": analytic_plan.id,
             }
         )
 
     def __update_qty_on_hand_product(self, product, new_qty):
-        qty_wizard = self.env["stock.change.product.qty"].create(
-            {
-                "product_id": product.id,
-                "product_tmpl_id": product.product_tmpl_id.id,
-                "new_quantity": new_qty,
-            }
+        self.env["stock.quant"]._update_available_quantity(
+            product, self.location, new_qty
         )
-        qty_wizard.change_product_qty()
 
     def _create_scrap(self, analytic_distribution=False):
         scrap_data = {
