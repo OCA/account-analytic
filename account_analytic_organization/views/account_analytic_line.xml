@@ -16,7 +16,7 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
         <field name="arch" type="xml">
             <xpath expr="//search" position="inside">
-                 <field name="analytic_org" string="Analytic Organization" />
+                <field name="analytic_org" string="Analytic Organization" />
                 <filter
                     string="Analytic Organization"
                     name="group_by_analytic_org"
