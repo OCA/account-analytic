@@ -1,13 +1,13 @@
 <odoo>
     <record id="view_account_analytic_organization_tree" model="ir.ui.view">
-    <field name="name">account.analytic.organization.tree</field>
-    <field name="model">account.analytic.organization</field>
-    <field name="arch" type="xml">
-        <tree editable="top">
-            <field name="name" />
-            <field name="company_id" />
-        </tree>
-    </field>
+        <field name="name">account.analytic.organization.tree</field>
+        <field name="model">account.analytic.organization</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name" />
+                <field name="company_id" />
+            </tree>
+        </field>
     </record>
 
     <record id="account_analytic_organization_action" model="ir.actions.act_window">
