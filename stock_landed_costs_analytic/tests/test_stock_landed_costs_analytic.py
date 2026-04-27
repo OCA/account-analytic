@@ -15,9 +15,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         cls.ProductCategory = cls.env["product.category"]
         cls.Account = cls.env["account.account"]
 
-        analytic_plan = cls.env["account.analytic.plan"].create(
-            {"name": "Test Plan"}
-        )
+        analytic_plan = cls.env["account.analytic.plan"].create({"name": "Test Plan"})
         analytic_account_1 = cls.env["account.analytic.account"].create(
             {"name": "Analytic Account 1 Test", "plan_id": analytic_plan.id}
         )
