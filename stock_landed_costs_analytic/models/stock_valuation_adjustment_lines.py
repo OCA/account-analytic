@@ -8,11 +8,9 @@ class StockValuationAdjustmentLines(models.Model):
     _name = "stock.valuation.adjustment.lines"
     _inherit = ["stock.valuation.adjustment.lines", "analytic.mixin"]
 
-    def _create_account_move_line(
-        self, move, credit_account_id, debit_account_id, qty_out, already_out_account_id
-    ):
+    def _create_account_move_line(self, credit_account_id, debit_account_id, remaining_qty):
         res = super()._create_account_move_line(
-            move, credit_account_id, debit_account_id, qty_out, already_out_account_id
+            credit_account_id, debit_account_id, remaining_qty
         )
         cost_line = self.cost_line_id
         for line in res:
