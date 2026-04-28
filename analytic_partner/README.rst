@@ -51,7 +51,7 @@ To configure this module, you need to:
 Usage
 =====
 
-1. Go to **Invoicing > Accounting > Management > Analytic Items**.
+1. Go to **Invoicing > Accounting > Analytic Items**.
 2. Set the **other partner** in the form view of an the analytic entry.
 3. Go back to list view where you can search and group by this new
    field.

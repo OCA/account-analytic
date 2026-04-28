@@ -23,7 +23,10 @@
     <record model="ir.ui.view" id="view_account_analytic_line_filter">
         <field name="name">Analytic entries search (with partner)</field>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field
+            name="inherit_id"
+            ref="account.view_account_analytic_line_filter_inherit_account"
+        />
         <field name="arch" type="xml">
             <filter name="group_date" position="after">
                 <filter

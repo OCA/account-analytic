@@ -5,7 +5,7 @@
         <field name="domain">[('other_partner_id', 'child_of', active_id)]</field>
         <field name="name">Costs &amp; Revenues</field>
         <field name="res_model">account.analytic.line</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
     <record id="view_partner_form_analytic" model="ir.ui.view">
         <field name="name">res.partner.form.analytic</field>
