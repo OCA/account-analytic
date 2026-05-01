@@ -19,6 +19,7 @@
     "depends": ["stock_account", "analytic"],
     "data": [
         "views/account_analytic_plan_views.xml",
+        "views/res_config_settings_views.xml",
         "views/stock_move_views.xml",
         "views/stock_scrap_views.xml",
         "views/stock_move_line_views.xml",

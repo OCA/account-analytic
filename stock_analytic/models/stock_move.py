@@ -37,8 +37,8 @@ class StockMove(models.Model):
             if (
                 line[2]["account_id"]
                 != self.product_id.categ_id.property_stock_valuation_account_id.id
+                or self.company_id.stock_analytic_on_valuation
             ):
-                # Add analytic account in debit line
                 line[2].update({"analytic_distribution": self.analytic_distribution})
         return res
 
