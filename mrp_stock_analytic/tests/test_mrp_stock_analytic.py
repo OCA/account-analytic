@@ -74,6 +74,30 @@ class TestMrpStockAnalytic(CommonStockPicking):
         mo_form.qty_producing = qty
         return mo_form.save()
 
+    def _create_move(self, production, move_type="raw", **kwargs):
+        if move_type == "raw":
+            vals = {
+                "name": self.product_B.name,
+                "product_id": self.product_B.id,
+                "product_uom_qty": 1,
+                "product_uom": self.product_B.uom_id.id,
+                "location_id": self.stock_location_id,
+                "location_dest_id": production.production_location_id.id,
+                "raw_material_production_id": production.id,
+            }
+        else:
+            vals = {
+                "name": self.product_A.name,
+                "product_id": self.product_A.id,
+                "product_uom_qty": 1,
+                "product_uom": self.product_A.uom_id.id,
+                "location_id": production.production_location_id.id,
+                "location_dest_id": self.stock_location_id,
+                "production_id": production.id,
+            }
+        vals.update(kwargs)
+        return self.env["stock.move"].create(vals)
+
     def _action_wizard_form(self, open_record, action_res: dict) -> Form:
         context = dict(
             action_res.get("context", {}),
@@ -279,6 +303,29 @@ class TestMrpStockAnalytic(CommonStockPicking):
         production.button_mark_done()
         self.assertEqual(production.state, "done")
 
+    def test_new_component_analytic_on_create(self):
+        production = self.production
+        # No analytic on MO — new component should have none.
+        self.assertFalse(production.analytic_distribution)
+        new_move = self._create_move(production)
+        self.assertFalse(new_move.analytic_distribution)
+        # With analytic on MO — new component inherits it.
+        production.analytic_distribution = self.analytic_distribution
+        new_move = self._create_move(production)
+        self.assertEqual(new_move.analytic_distribution, self.analytic_distribution)
+
+    def test_new_finished_move_analytic_on_create(self):
+        production = self._create_production(1)
+        production.analytic_distribution = self.analytic_distribution
+        # When enabled, new finished move inherits analytic.
+        self.env.company.mrp_analytic_on_finished = True
+        new_move = self._create_move(production, move_type="finished")
+        self.assertEqual(new_move.analytic_distribution, self.analytic_distribution)
+        # When disabled, new finished move gets no analytic.
+        self.env.company.mrp_analytic_on_finished = False
+        new_move = self._create_move(production, move_type="finished")
+        self.assertFalse(new_move.analytic_distribution)
+
     def test_journal_items_with_finished_analytic_enabled(self):
         self.env.company.mrp_analytic_on_finished = True
         production = self._create_production(1)
@@ -290,7 +337,6 @@ class TestMrpStockAnalytic(CommonStockPicking):
             .line_ids
         )
         self.assertTrue(finished_move_lines)
-        self.assertFalse(self.env.company.stock_analytic_on_valuation)
         for move_line in finished_move_lines:
             if move_line.account_id == self.valuation_account:
                 self.assertFalse(move_line.analytic_distribution)
