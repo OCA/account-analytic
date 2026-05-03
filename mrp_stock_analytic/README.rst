@@ -29,11 +29,12 @@ MRP Stock Analytic
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
 Allows to assign the analytic distribution in the manufacturing order,
-which should propagate the value to the corresponding field of the
-related component stock moves.
+which propagates the value to the component stock moves. Optionally, it
+can also propagate to finished product moves (including byproducts) when
+the corresponding setting is enabled.
 
 This function can be useful when cost analysis needs to be done on
-flushed components.
+consumed components or finished products.
 
 Additionally, analytic distribution from manufacturing orders is
 propagated to WIP accounting entries. When creating WIP journal entries
@@ -53,6 +54,10 @@ Configuration
 =============
 
 Refer to the relevant section of the stock_analytic module.
+
+To propagate analytic distribution to finished product moves, enable
+**MRP Analytic on Finished Products** under *Settings > Inventory >
+Valuation*.
 
 Usage
 =====
