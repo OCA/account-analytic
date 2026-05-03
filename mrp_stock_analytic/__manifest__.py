@@ -11,6 +11,7 @@
     "data": [
         "wizard/mrp_wip_accounting_views.xml",
         "views/mrp_production_views.xml",
+        "views/res_config_settings_views.xml",
     ],
     "installable": True,
 }

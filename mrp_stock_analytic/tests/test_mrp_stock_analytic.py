@@ -1,6 +1,7 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo import Command
 from odoo.exceptions import ValidationError
 from odoo.tests import Form
 
@@ -39,7 +40,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
                 "product_tmpl_id": cls.product_A.product_tmpl_id.id,
                 "product_qty": 1.0,
                 "bom_line_ids": [
-                    (0, 0, {"product_id": cls.product_B.id, "product_qty": 1}),
+                    Command.create({"product_id": cls.product_B.id, "product_qty": 1}),
                 ],
             }
         )
@@ -72,6 +73,16 @@ class TestMrpStockAnalytic(CommonStockPicking):
         mo_form = Form(production)
         mo_form.qty_producing = qty
         return mo_form.save()
+
+    def _action_wizard_form(self, open_record, action_res: dict) -> Form:
+        context = dict(
+            action_res.get("context", {}),
+            active_model=open_record._name,
+            active_ids=open_record.ids,
+            active_id=open_record.id,
+        )
+        target = open_record.env[action_res["res_model"]].with_context(**context)
+        return Form(target)
 
     def test_propagate_analytic_distribution(self):
         production = self.production
@@ -117,15 +128,21 @@ class TestMrpStockAnalytic(CommonStockPicking):
                     move_line.analytic_distribution, self.analytic_distribution
                 )
 
-    def _action_wizard_form(self, open_record, action_res: dict) -> Form:
-        context = dict(
-            action_res.get("context", {}),
-            active_model=open_record._name,
-            active_ids=open_record.ids,
-            active_id=open_record.id,
+    def test_propagate_analytic_to_finished_moves(self):
+        self.env.company.mrp_analytic_on_finished = True
+        production = self._create_production(1)
+        production.analytic_distribution = self.analytic_distribution
+        self.assertEqual(
+            production.move_finished_ids.analytic_distribution,
+            self.analytic_distribution,
         )
-        target = open_record.env[action_res["res_model"]].with_context(**context)
-        return Form(target)
+        production.analytic_distribution = False
+        self.assertFalse(production.move_finished_ids.analytic_distribution)
+        # When disabled, finished moves should not be updated.
+        self.env.company.mrp_analytic_on_finished = False
+        production2 = self._create_production(1)
+        production2.analytic_distribution = self.analytic_distribution
+        self.assertFalse(production2.move_finished_ids.analytic_distribution)
 
     def test_analytic_propagation_backorder(self):
         edit_production = Form(self.production)
@@ -261,3 +278,23 @@ class TestMrpStockAnalytic(CommonStockPicking):
         production.analytic_distribution = {str(analytic_account.id): 100.0}
         production.button_mark_done()
         self.assertEqual(production.state, "done")
+
+    def test_journal_items_with_finished_analytic_enabled(self):
+        self.env.company.mrp_analytic_on_finished = True
+        production = self._create_production(1)
+        production.analytic_distribution = self.analytic_distribution
+        production.button_mark_done()
+        finished_move_lines = (
+            self.env["account.move"]
+            .search([("stock_move_id", "in", production.move_finished_ids.ids)])
+            .line_ids
+        )
+        self.assertTrue(finished_move_lines)
+        self.assertFalse(self.env.company.stock_analytic_on_valuation)
+        for move_line in finished_move_lines:
+            if move_line.account_id == self.valuation_account:
+                self.assertFalse(move_line.analytic_distribution)
+            else:
+                self.assertEqual(
+                    move_line.analytic_distribution, self.analytic_distribution
+                )
