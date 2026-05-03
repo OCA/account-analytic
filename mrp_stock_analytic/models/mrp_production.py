@@ -14,13 +14,12 @@ class MrpProduction(models.Model):
     )
 
     def _inverse_analytic_distribution(self):
-        """If analytic distribution is set on production, write it on all component
-        moves.
-        """
-        for production in self:
-            production.move_raw_ids.write(
-                {"analytic_distribution": production.analytic_distribution}
-            )
+        for rec in self:
+            rec.move_raw_ids.write({"analytic_distribution": rec.analytic_distribution})
+            if rec.company_id.mrp_analytic_on_finished:
+                rec.move_finished_ids.write(
+                    {"analytic_distribution": rec.analytic_distribution}
+                )
 
     def _validate_analytic_distribution(self):
         for rec in self:

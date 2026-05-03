@@ -1,9 +1,10 @@
 Allows to assign the analytic distribution in the manufacturing order,
-which should propagate the value to the corresponding field of the
-related component stock moves.
+which propagates the value to the component stock moves. Optionally,
+it can also propagate to finished product moves (including byproducts)
+when the corresponding setting is enabled.
 
 This function can be useful when cost analysis needs to be done on
-flushed components.
+consumed components or finished products.
 
 Additionally, analytic distribution from manufacturing orders is propagated
 to WIP accounting entries. When creating WIP journal entries through the WIP
