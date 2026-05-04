@@ -9,6 +9,4 @@ class AccountAnalyticOrganization(models.Model):
     _description = "Account Analytic Organization"
 
     name = fields.Char(required=True)
-    company_id = fields.Many2one(
-        "res.company", string="Company", default=lambda self: self.env.company
-    )
+    company_id = fields.Many2one("res.company", default=lambda self: self.env.company)

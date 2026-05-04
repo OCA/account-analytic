@@ -4,7 +4,7 @@
     "name": "Account Analytic Organization",
     "summary": """Adds organization field on the partner so you can use
       it on your analytic""",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Analytic Accounting",
     "license": "AGPL-3",
     "author": "Miquel Pascual, Bernat Obrador, Odoo Community Association (OCA)",
