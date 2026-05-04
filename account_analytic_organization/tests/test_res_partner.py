@@ -22,6 +22,6 @@ class TestResPartner(BaseCommon):
 
     def test_display_name(self):
         self.assertEqual(self.contact.display_name, "ACME, Bob")
-        self.assertEqual(self.delivery_address.display_name, "ACME, Delivery Address")
+        self.assertEqual(self.delivery_address.display_name, "ACME, Delivery")
         self.contact.analytic_org_id = self.organization
         self.assertEqual(self.contact.display_name, "ACME, Bob (North)")
