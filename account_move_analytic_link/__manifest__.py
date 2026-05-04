@@ -3,7 +3,7 @@
 
 {
     "name": "Account move analytic link",
-    "version": "18.0.1.0.1",
+    "version": "19.0.1.0.0",
     "category": "Accounting & Finance",
     "summary": "This module allows users to navigate from journal items that "
     "have analytic distribution assigned to the analytic items generated.",
