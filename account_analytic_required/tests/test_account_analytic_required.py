@@ -1,8 +1,7 @@
 # Copyright 2014 Acsone
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from datetime import datetime
 
-from odoo import exceptions
+from odoo import Command, exceptions, fields
 
 from odoo.addons.base.tests.common import BaseCommon
 
@@ -28,6 +27,7 @@ class TestAccountAnalyticRequired(BaseCommon):
                 "code": "X1020",
                 "name": "Product Sales - (test)",
                 "account_type": "income",
+                "company_ids": [Command.set(cls.env.company.ids)],
             }
         )
         cls.account_recv = cls.account_obj.create(
@@ -36,6 +36,7 @@ class TestAccountAnalyticRequired(BaseCommon):
                 "name": "Debtors - (test)",
                 "reconcile": True,
                 "account_type": "asset_receivable",
+                "company_ids": [Command.set(cls.env.company.ids)],
             }
         )
         cls.account_exp = cls.account_obj.create(
@@ -43,13 +44,16 @@ class TestAccountAnalyticRequired(BaseCommon):
                 "code": "X2110",
                 "name": "Expenses - (test)",
                 "account_type": "expense",
+                "company_ids": [Command.set(cls.env.company.ids)],
             }
         )
+
         cls.sales_journal = cls.env["account.journal"].create(
             {
                 "name": "Sales Journal - (test)",
                 "code": "TSAJ",
                 "type": "sale",
+                "company_id": cls.env.company.id,
             }
         )
         cls.analytic_distribution_1 = {
@@ -61,32 +65,36 @@ class TestAccountAnalyticRequired(BaseCommon):
 
     def _create_move(self, amount=100, **kwargs):
         with_analytic = kwargs.get("with_analytic")
-        date = datetime.now()
-        ml_obj = self.move_line_obj.with_context(check_move_validity=False)
-        move_vals = {"name": "/", "journal_id": self.sales_journal.id, "date": date}
+        move_vals = {
+            "move_type": "entry",
+            "journal_id": self.sales_journal.id,
+            "date": fields.Date.context_today(self.env.user),
+            "line_ids": [
+                Command.create(
+                    {
+                        "name": "/",
+                        "debit": 0,
+                        "credit": amount,
+                        "account_id": self.account_sales.id,
+                        "analytic_distribution": self.analytic_distribution_1
+                        if with_analytic
+                        else {},
+                    }
+                ),
+                Command.create(
+                    {
+                        "name": "/",
+                        "debit": amount,
+                        "credit": 0,
+                        "account_id": self.account_recv.id,
+                    }
+                ),
+            ],
+        }
         move = self.move_obj.create(move_vals)
-        move_line = ml_obj.create(
-            {
-                "move_id": move.id,
-                "name": "/",
-                "debit": 0,
-                "credit": amount,
-                "account_id": self.account_sales.id,
-                "analytic_distribution": self.analytic_distribution_1
-                if with_analytic
-                else {},
-            }
-        )
-        ml_obj.create(
-            {
-                "move_id": move.id,
-                "name": "/",
-                "debit": amount,
-                "credit": 0,
-                "account_id": self.account_recv.id,
-            }
-        )
-        return move_line
+        return move.line_ids.filtered(
+            lambda line: line.account_id == self.account_sales
+        )[:1]
 
     def _set_analytic_policy(self, policy, account=None):
         if account is None:
