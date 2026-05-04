@@ -21,3 +21,6 @@
   > - Nguyễn Minh Chiến \<<chien@trobz.com>\>
 
 - Jairo Llopis ([Moduon](https://www.moduon.team/))
+
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia
