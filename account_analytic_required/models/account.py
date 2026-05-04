@@ -58,11 +58,10 @@ class AccountMoveLine(models.Model):
             return self.env._(
                 "Analytic policy is set to 'Always' with account "
                 "'%(account)s' but the analytic account is missing in "
-                "the account move line with label '%(move)s'."
-            ) % {
-                "account": self.account_id.display_name,
-                "move": self.name or "",
-            }
+                "the account move line with label '%(move)s'.",
+                account=self.account_id.display_name,
+                move=self.name or "",
+            )
         elif analytic_policy == "never" and (self.analytic_distribution):
             analytic_account = self.analytic_distribution
             analytic_acc_ids = [int(k) for k in analytic_account.keys()]
@@ -72,12 +71,11 @@ class AccountMoveLine(models.Model):
             return self.env._(
                 "Analytic policy is set to 'Never' with account "
                 "'%(account)s' but the account move line with label '%(move)s' "
-                "has an analytic account '%(analytic_account)s'."
-            ) % {
-                "account": self.account_id.display_name,
-                "move": self.name or "",
-                "analytic_account": ", ".join(analytic_accs.mapped("name")),
-            }
+                "has an analytic account '%(analytic_account)s'.",
+                account=self.account_id.display_name,
+                move=self.name or "",
+                analytic_account=", ".join(analytic_accs.mapped("name")),
+            )
         elif (
             analytic_policy == "posted"
             and not self.analytic_distribution
@@ -86,11 +84,10 @@ class AccountMoveLine(models.Model):
             return self.env._(
                 "Analytic policy is set to 'Posted moves' with "
                 "account '%(account)s' but the analytic account is missing "
-                "in the account move line with label '%(move)s'."
-            ) % {
-                "account": self.account_id.display_name,
-                "move": self.name or "",
-            }
+                "in the account move line with label '%(move)s'.",
+                account=self.account_id.display_name,
+                move=self.name or "",
+            )
         return None
 
     @api.constrains("analytic_distribution", "account_id", "debit", "credit")
