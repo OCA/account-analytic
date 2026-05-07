@@ -18,7 +18,7 @@
             </xpath>
             <xpath
                 expr="//notebook/page[@name='operations']
-                /field[@name='move_ids_without_package']"
+                /field[@name='move_ids']"
                 position="attributes"
             >
                 <attribute name="context" operation="update">
