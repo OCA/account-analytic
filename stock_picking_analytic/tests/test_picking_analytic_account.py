@@ -9,8 +9,10 @@ class TestStockAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.product_id = cls.env.ref("product.product_product_9")
         cls.uom_id = cls.env.ref("uom.product_uom_unit")
+        cls.product_id = cls.env["product.product"].create(
+            {"name": "Test Product", "type": "consu", "uom_id": cls.uom_id.id}
+        )
         analytic_plan = cls.env["account.analytic.plan"].create({"name": "Plan Test"})
         analytic_account = cls.env["account.analytic.account"].create(
             {"name": "analytic account test", "plan_id": analytic_plan.id}
@@ -30,7 +32,6 @@ class TestStockAnalytic(TransactionCase):
                 "move_ids": [
                     Command.create(
                         {
-                            "name": "move test",
                             "product_id": cls.product_id.id,
                             "product_uom": cls.uom_id.id,
                             "location_id": cls.stock_location.id,
@@ -46,14 +47,14 @@ class TestStockAnalytic(TransactionCase):
         Check analytic distribution on line is set
         """
         picking = self.picking
-        self.assertTrue(picking.move_ids_without_package)
+        self.assertTrue(picking.move_ids)
         self.assertNotEqual(
-            picking.move_ids_without_package[0].analytic_distribution,
+            picking.move_ids[0].analytic_distribution,
             self.analytic_distribution,
         )
         picking.analytic_distribution = self.analytic_distribution
         self.assertEqual(
-            picking.move_ids_without_package[0].analytic_distribution,
+            picking.move_ids[0].analytic_distribution,
             self.analytic_distribution,
         )
 
@@ -62,12 +63,12 @@ class TestStockAnalytic(TransactionCase):
         Check analytic distribution on picking is set
         """
         picking = self.picking
-        self.assertTrue(picking.move_ids_without_package)
+        self.assertTrue(picking.move_ids)
         self.assertNotEqual(
-            picking.move_ids_without_package[0].analytic_distribution,
+            picking.move_ids[0].analytic_distribution,
             self.analytic_distribution,
         )
-        picking.move_ids_without_package.write(
+        picking.move_ids.write(
             {
                 "analytic_distribution": self.analytic_distribution,
             }
@@ -82,7 +83,7 @@ class TestStockAnalytic(TransactionCase):
         Set analytic distribution on void picking
         """
         picking = self.picking
-        picking.move_ids_without_package = False
+        picking.move_ids = False
         self.picking.analytic_distribution = self.analytic_distribution
         self.assertEqual(picking.analytic_distribution, self.analytic_distribution)
         self.assertEqual(
@@ -94,17 +95,16 @@ class TestStockAnalytic(TransactionCase):
         Check if no analytic distribution is set
         """
         picking = self.picking
-        picking.move_ids_without_package.write(
+        picking.move_ids.write(
             {
                 "analytic_distribution": self.analytic_distribution,
             }
         )
         self.picking.write(
             {
-                "move_ids_without_package": [
+                "move_ids": [
                     Command.create(
                         {
-                            "name": "move test 2",
                             "product_id": self.product_id.id,
                             "product_uom": self.uom_id.id,
                             "location_id": self.stock_location.id,

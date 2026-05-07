@@ -15,7 +15,7 @@ class StockPicking(models.Model):
     analytic_distribution = fields.Json(inverse="_inverse_analytic_distribution")
 
     @api.depends(
-        "move_ids_without_package.analytic_distribution",
+        "move_ids.analytic_distribution",
         "original_analytic_distribution",
     )
     def _compute_analytic_distribution(self):
@@ -63,7 +63,7 @@ class StockPicking(models.Model):
         """
         for picking in self:
             if picking.analytic_distribution:
-                picking.move_ids_without_package.write(
+                picking.move_ids.write(
                     {"analytic_distribution": picking.analytic_distribution}
                 )
             picking.original_analytic_distribution = picking.analytic_distribution
