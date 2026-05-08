@@ -62,8 +62,12 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         self.ensure_one()
         # Validate if mandatory plans has 100%
         self.with_context(validate_analytic=True)._validate_distribution()
-        if self.line_id:
-            self.line_id.analytic_distribution = self.analytic_distribution
-        else:
-            moves = self.env["account.move"].browse(self.env.context.get("active_ids"))
-            moves.invoice_line_ids.analytic_distribution = self.analytic_distribution
+        lines = (
+            self.line_id
+            or self.env["account.move"]
+            .browse(self.env.context.get("active_ids"))
+            .invoice_line_ids
+        )
+        lines.with_context(update_analytic=True).write(
+            {"analytic_distribution": self.analytic_distribution}
+        )
