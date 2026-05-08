@@ -108,6 +108,11 @@ msgid "Journal Entry"
 msgstr "Registrazione contabile"
 
 #. module: account_move_update_analytic
+#: model:ir.model,name:account_move_update_analytic.model_account_move_line
+msgid "Journal Item"
+msgstr ""
+
+#. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
 msgid "Last Updated by"
 msgstr "Ultimo aggiornamento di"
