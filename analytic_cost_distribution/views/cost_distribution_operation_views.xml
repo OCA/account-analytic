@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="indirect_cost_distribution_operation_view_tree" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.operation.list</field>
+        <field name="model">indirect.cost.distribution.operation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="distribution_date" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-success="state == 'done'"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="indirect_cost_distribution_operation_view_form" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.operation.form</field>
+        <field name="model">indirect.cost.distribution.operation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_compute"
+                        string="Compute"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_distribute"
+                        string="Distribute"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_reset_to_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        invisible="state != 'done'"
+                        confirm="This will delete all distributed lines. Are you sure?"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,done"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_distributed_lines"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-list-ul"
+                        >
+                            <field
+                                name="distributed_line_count"
+                                widget="statinfo"
+                                string="Distributed Lines"
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <label for="date_from" string="Period" />
+                            <div class="o_row">
+                                <field
+                                name="date_from"
+                                class="oe_inline"
+                                readonly="state == 'done'"
+                            /> -
+                                <field
+                                name="date_to"
+                                class="oe_inline"
+                                readonly="state == 'done'"
+                            />
+                            </div>
+                            <field
+                                name="distribution_date"
+                                readonly="state == 'done'"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                readonly="state == 'done'"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Distribution Lines" name="lines">
+                            <field
+                                name="line_ids"
+                                nolabel="1"
+                                readonly="state == 'done'"
+                            >
+                                <list editable="bottom" create="0" delete="0">
+                                    <field name="distribution_model_id" />
+                                    <field name="source_amount" />
+                                    <field
+                                        name="source_line_ids"
+                                        widget="many2many_tags"
+                                        optional="hide"
+                                    />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field
+                                name="notes"
+                                placeholder="Add any notes about this distribution operation..."
+                            />
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="indirect_cost_distribution_operation_view_search" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.operation.search</field>
+        <field name="model">indirect.cost.distribution.operation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <filter
+                    name="filter_draft"
+                    string="Draft"
+                    domain="[('state', '=', 'draft')]"
+                />
+                <filter
+                    name="filter_done"
+                    string="Done"
+                    domain="[('state', '=', 'done')]"
+                />
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_state"
+                        string="State"
+                        context="{'group_by': 'state'}"
+                    />
+                    <filter
+                        name="group_company"
+                        string="Company"
+                        context="{'group_by': 'company_id'}"
+                        groups="base.group_multi_company"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record
+        id="indirect_cost_distribution_operation_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Distribution Operations</field>
+        <field name="res_model">indirect.cost.distribution.operation</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first distribution operation
+            </p>
+            <p>
+                Distribution operations allow you to distribute indirect costs
+                to profit centres for a specific date range, based on the
+                configured distribution method.
+            </p>
+        </field>
+    </record>
+
+    <record id="indirect_cost_distribution_operation_line_view_form" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.operation.line.form</field>
+        <field name="model">indirect.cost.distribution.operation.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="distribution_model_id" />
+                    <field name="source_amount" />
+                </group>
+                <notebook>
+                    <page string="Source Lines" name="source_lines">
+                        <field name="source_line_ids" nolabel="1">
+                            <list>
+                                <field name="date" />
+                                <field name="name" />
+                                <field name="account_id" />
+                                <field name="amount" />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+</odoo>
