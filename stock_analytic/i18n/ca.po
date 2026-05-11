@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-19 22:13+0000\n"
-"PO-Revision-Date: 2024-09-11 16:15+0000\n"
-"Last-Translator: Jaume Planas <jaumeplan@gmail.com>\n"
+"PO-Revision-Date: 2026-05-11 08:37+0000\n"
+"Last-Translator: QuiJoQuim <quim.rebull@gmail.com>\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
@@ -45,7 +45,7 @@ msgstr "Precisió Analítica"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribució analítica (importable)"
 
 #. module: stock_analytic
 #: model:ir.model.fields,help:stock_analytic.field_stock_move__analytic_distribution_import
@@ -56,13 +56,16 @@ msgid ""
 "but using the analytic accounts names as keys of the dictionary, so it eases "
 "the human input."
 msgstr ""
+"Definint aquest camp, es definirà la distribució analítica en format JSON, "
+"utilitzant els noms dels comptes analítics com a claus del diccionari, així "
+"facilitant l'entrada per part de l'usuari."
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr ""
+msgstr "Compte analític de distribució"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
@@ -74,12 +77,12 @@ msgstr "Domini"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__manual_distribution_id
 msgid "Manual Distribution"
-msgstr ""
+msgstr "Distribució Manual"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__stock_picking_type_id
 msgid "Operation Type"
-msgstr ""
+msgstr "Tipus d'operació"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_move_line
@@ -105,7 +108,7 @@ msgstr "Regla d’estoc"
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_valuation_layer
 msgid "Stock Valuation Layer"
-msgstr ""
+msgstr "Capa de valoració d'estoc"
 
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_picking
