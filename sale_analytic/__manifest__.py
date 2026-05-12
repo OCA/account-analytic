@@ -3,7 +3,7 @@
 
 {
     "name": "Sale Analytic",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "Exo Software, Acsone SA/NV, Odoo Community Association (OCA)",
     "category": "Sale Management",
     "website": "https://github.com/OCA/account-analytic",

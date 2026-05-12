@@ -3,17 +3,18 @@
 
 
 from odoo import Command
-from odoo.tests import Form, TransactionCase
+from odoo.tests import Form
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestSaleAnalytic(TransactionCase):
+class TestSaleAnalytic(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env.user.groups_id |= cls.env.ref("analytic.group_analytic_accounting")
-        cls.partner = cls.env.ref("base.res_partner_12")
-        cls.product = cls.env.ref("product.product_product_9")
-        cls.uom = cls.env.ref("uom.product_uom_unit")
+        cls.env.user.group_ids += cls.env.ref("analytic.group_analytic_accounting")
+        cls.partner = cls.env["res.partner"].create({"name": "Test customer"})
+        cls.product = cls.env["product.product"].create({"name": "Test product"})
         analytic_plan = cls.env["account.analytic.plan"].create({"name": "Plan Test"})
         analytic_account_manual = cls.env["account.analytic.account"].create(
             {"name": "manual", "plan_id": analytic_plan.id}
