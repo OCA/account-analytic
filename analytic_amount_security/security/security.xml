@@ -4,7 +4,6 @@
         <!-- Change the implied ids to add constrain more or less the visibility scope -->
         <record id="group_allow_read_analytic_amount" model="res.groups">
             <field name="name">Allow to read analytic costs</field>
-            <field name="category_id" ref="base.module_category_hidden" />
         </record>
     </data>
     <data noupdate="1">
