@@ -33,7 +33,7 @@
                     <field name="account_id" />
                 </field>
                 <xpath expr="//group[1]" position="inside">
-                    <filter string="Account" context="{'group_by': 'account_id'}" help="Account" />
+                    <filter string="Account" name="account_id" context="{'group_by': 'account_id'}" />
                 </xpath>
             </field>
         </record>

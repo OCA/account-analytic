@@ -92,6 +92,7 @@ class AccountInvoiceLine(models.Model):
         return res
 
     def _set_additional_fields(self, invoice):
+        super()._set_additional_fields(invoice)
         if not self.account_analytic_id:
             rec = self.env['account.analytic.default'].account_get(
                 product_id=self.product_id.id,
@@ -101,7 +102,6 @@ class AccountInvoiceLine(models.Model):
             )
             if rec:
                 self.account_analytic_id = rec.analytic_id.id
-        super()._set_additional_fields(invoice)
 
 
 class AccountMoveLine(models.Model):
@@ -125,20 +125,21 @@ class AccountMoveLine(models.Model):
                 if rec:
                     line.analytic_account_id = rec.analytic_id.id
 
-    @api.model
-    def create(self, vals):
-        if 'analytic_account_id' not in vals:
-            rec = self.env['account.analytic.default'].account_get(
-                account_id=vals.get('account_id'))
-            if rec:
-                vals['analytic_account_id'] = rec.analytic_id.id
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'analytic_account_id' not in vals:
+                rec = self.env['account.analytic.default'].account_get(
+                    account_id=vals.get('account_id'))
+                if rec:
+                    vals['analytic_account_id'] = rec.analytic_id.id
+        return super().create(vals_list)
 
 
 class AccountMove(models.Model):
     _inherit = "account.move"
 
     @api.multi
-    def post(self):
+    def post(self, **kwargs):
         self.mapped('line_ids')._set_default_analytic_account()
-        return super().post()
+        return super().post(**kwargs)
