@@ -10,7 +10,7 @@
             ref="purchase_analytic.purchase_order_view_form_inherit_purchase_analytic"
         />
         <field name="arch" type="xml">
-            <field name="project_id" position="attributes">
+            <field name="analytic_distribution" position="attributes">
                 <attribute name="required">1</attribute>
             </field>
         </field>
