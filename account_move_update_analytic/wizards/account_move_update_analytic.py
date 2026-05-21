@@ -109,12 +109,58 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
                         # lines share both the same tax and the same analytic
                         # distribution, Odoo combines them into one tax line
                         # whose balance is the sum — amount matching fails, so
-                        # we fall back to distribution matching only.
-                        extra_lines = move.line_ids.filtered(
+                        # we check each candidate and split if needed.
+                        merged_candidates = move.line_ids.filtered(
                             lambda line: line.display_type == "tax"
                             and line.tax_line_id in analytic_taxes
                             and line.analytic_distribution == current_dist
                         )
+                        for merged_line in merged_candidates:
+                            expected_amount = expected.get(
+                                merged_line.tax_repartition_line_id.id, 0
+                            )
+                            can_split = (
+                                expected_amount
+                                and not move.currency_id.is_zero(
+                                    abs(merged_line.balance) - expected_amount
+                                )
+                                and not merged_line.move_id.inalterable_hash
+                            )
+                            if can_split:
+                                # Merged line: shrink to remaining amount,
+                                # create a new line for this product's share.
+                                sign = 1 if merged_line.balance >= 0 else -1
+                                new_balance = sign * expected_amount
+                                remaining_balance = merged_line.balance - new_balance
+                                ctx = dict(self.env.context, check_move_validity=False)
+                                merged_line.with_context(**ctx).write(
+                                    {
+                                        "debit": max(remaining_balance, 0),
+                                        "credit": max(-remaining_balance, 0),
+                                    }
+                                )
+                                self.env["account.move.line"].with_context(
+                                    **ctx
+                                ).create(
+                                    {
+                                        "move_id": move.id,
+                                        "account_id": merged_line.account_id.id,
+                                        "name": merged_line.name,
+                                        "partner_id": merged_line.partner_id.id,
+                                        "tax_line_id": merged_line.tax_line_id.id,
+                                        "tax_repartition_line_id": (
+                                            merged_line.tax_repartition_line_id.id
+                                        ),
+                                        "display_type": "tax",
+                                        "debit": max(new_balance, 0),
+                                        "credit": max(-new_balance, 0),
+                                        "analytic_distribution": (
+                                            self.analytic_distribution
+                                        ),
+                                    }
+                                )
+                            else:
+                                extra_lines |= merged_line
                 (
                     self.line_id | extra_lines
                 ).analytic_distribution = self.analytic_distribution
