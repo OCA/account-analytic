@@ -22,6 +22,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_analytic_default_account](account_analytic_default_account/) | 12.0.1.0.0 |  | Account Analytic Default Account
 [account_analytic_default_purchase](account_analytic_default_purchase/) | 12.0.1.0.0 |  | Set default values for analytic accounts in purchases
 [account_analytic_distribution_required](account_analytic_distribution_required/) | 12.0.2.0.0 |  | Account Analytic Distribution Required
 [account_analytic_line_name_text](account_analytic_line_name_text/) | 12.0.1.0.0 |  | Changes account analytic line name field to Text.
