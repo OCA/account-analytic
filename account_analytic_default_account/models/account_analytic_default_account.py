@@ -71,6 +71,12 @@ class AccountAnalyticDefaultAccount(models.Model):
             if index > best_index:
                 res = rec
                 best_index = index
+        # When searching by account_id (move line context without partner), do not
+        # return a catch-all record with no conditions set. Returning score-0 records
+        # here would cause any unconditional default to be applied to every accounting
+        # entry that lacks a specific rule, which is never the intended behaviour.
+        if account_id and best_index == 0:
+            return self.env['account.analytic.default']
         return res
 
 
