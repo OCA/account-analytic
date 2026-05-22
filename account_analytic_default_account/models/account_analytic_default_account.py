@@ -112,7 +112,8 @@ class AccountMoveLine(models.Model):
         for line in self:
             if line.account_id and not line.analytic_account_id:
                 rec = self.env['account.analytic.default'].account_get(
-                    account_id=line.account_id.id)
+                    account_id=line.account_id.id,
+                    company_id=line.company_id.id)
                 if rec:
                     line.analytic_account_id = rec.analytic_id.id
 
@@ -121,7 +122,8 @@ class AccountMoveLine(models.Model):
         for line in self:
             if not line.analytic_account_id:
                 rec = self.env['account.analytic.default'].account_get(
-                    account_id=line.account_id.id)
+                    account_id=line.account_id.id,
+                    company_id=line.company_id.id)
                 if rec:
                     line.analytic_account_id = rec.analytic_id.id
 
@@ -130,7 +132,8 @@ class AccountMoveLine(models.Model):
         for vals in vals_list:
             if 'analytic_account_id' not in vals:
                 rec = self.env['account.analytic.default'].account_get(
-                    account_id=vals.get('account_id'))
+                    account_id=vals.get('account_id'),
+                    company_id=vals.get('company_id'))
                 if rec:
                     vals['analytic_account_id'] = rec.analytic_id.id
         return super().create(vals_list)

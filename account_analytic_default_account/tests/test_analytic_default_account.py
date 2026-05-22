@@ -140,3 +140,35 @@ class TestAnalyticDefaultAccount(common.SavepointCase):
         self.assertEqual(move_line_1.analytic_account_id,
                          self.analytic_account_4)
         self.assertFalse(move_line_2.analytic_account_id.id)
+
+    def test_account_analytic_default_account_move_company(self):
+        """Company-specific analytic default wins over a generic one."""
+        analytic_account_5 = self.analytic_account_model.create(
+            {'name': 'test 5'})
+        main_company = self.env.user.company_id
+        # Company-specific record (score 2) should beat the generic
+        # account_sales record analytic_account_4 (score 1).
+        self.account_analytic_default_model.create({
+            'account_id': self.account_sales.id,
+            'company_id': main_company.id,
+            'analytic_id': analytic_account_5.id,
+        })
+        ml_obj = self.move_line_obj.with_context(check_move_validity=False)
+        move = self.move_obj.create({
+            'name': '/',
+            'journal_id': self.sales_journal.id,
+            'date': time.strftime('%Y') + '-07-25',
+        })
+        # Pass analytic_account_id so create() skips the lookup; we test
+        # _set_default_analytic_account which reads line.company_id correctly.
+        move_line = ml_obj.create({
+            'move_id': move.id,
+            'name': '/',
+            'debit': 0,
+            'credit': 100,
+            'account_id': self.account_sales.id,
+            'analytic_account_id': False,
+        })
+        self.assertEqual(move_line.company_id, main_company)
+        move_line._set_default_analytic_account()
+        self.assertEqual(move_line.analytic_account_id, analytic_account_5)
