@@ -6,36 +6,39 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 15:57+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_account_analytic_distribution_model
 msgid "Analytic Distribution Model"
-msgstr ""
+msgstr "Modelo Analítico de Distribución"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
-msgstr ""
+msgstr "Pedidos no punto de venda"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_session
 msgid "Point of Sale Session"
-msgstr ""
+msgstr "Sesión do Puto de Venda"
 
 #. module: pos_analytic_by_config
 #: model:ir.model.fields,field_description:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
 msgid "Pos Config"
-msgstr ""
+msgstr "Configuración de posición"
 
 #. module: pos_analytic_by_config
 #: model:ir.model.fields,help:pos_analytic_by_config.field_account_analytic_distribution_model__pos_config_id
 msgid ""
 "Select a Point of Sale for which the analytic distribution will be used"
 msgstr ""
+"Seleccione un punto de venda para o que se utilizará a distribución analítica"
