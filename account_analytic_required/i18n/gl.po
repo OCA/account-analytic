@@ -6,23 +6,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 15:57+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_account
 msgid "Account"
-msgstr ""
+msgstr "Conta"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__always
 msgid "Always"
-msgstr ""
+msgstr "Sempre"
 
 #. module: account_analytic_required
 #. odoo-python
@@ -32,6 +34,9 @@ msgid ""
 "Analytic policy is set to 'Always' with account '%(account)s' but the "
 "analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
+"A política analítica está configurada como \"Sempre\" para a conta '%"
+"(account)s' pero falta a conta análitica na liña de movemento da conta coa "
+"etiqueta '%(move)s'."
 
 #. module: account_analytic_required
 #. odoo-python
@@ -42,6 +47,9 @@ msgid ""
 " move line with label '%(move)s' has an analytic account "
 "'%(analytic_account)s'."
 msgstr ""
+"A política analítica está configurada como \"Nunca\" para a conta '%(account)"
+"s' pero a liña de movemento da conta coa etiqueta '%(move)s' ten unha conta "
+"analítica '%(analytic_account)s'."
 
 #. module: account_analytic_required
 #. odoo-python
@@ -51,31 +59,34 @@ msgid ""
 "Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
 "analytic account is missing in the account move line with label '%(move)s'."
 msgstr ""
+"A política analítica está configurada como \"Movementos publicados\" para a "
+"conta '%(account)s' pero falta a conta análitica na liña de movemento da "
+"conta coa etiqueta '%(move)s'."
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Apuntamentos contables"
 
 #. module: account_analytic_required
 #: model:ir.model,name:account_analytic_required.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Apuntamento contable"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__never
 msgid "Never"
-msgstr ""
+msgstr "Nunca"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,field_description:account_analytic_required.field_account_account__analytic_policy
 msgid "Policy for analytic account"
-msgstr ""
+msgstr "Política para a conta analítica"
 
 #. module: account_analytic_required
 #: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__posted
 msgid "Posted moves"
-msgstr ""
+msgstr "Movementos públicados"
 
 #. module: account_analytic_required
 #: model:ir.model.fields,help:account_analytic_required.field_account_account__analytic_policy
