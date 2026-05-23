@@ -6,46 +6,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 16:23+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: pos_analytic_by_config
 #: model:ir.model.fields,field_description:pos_analytic_by_config.field_pos_config__account_analytic_id
 #: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
 msgid "Analytic Account"
-msgstr ""
+msgstr "Conta analítica"
 
 #. module: pos_analytic_by_config
 #: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
 msgid "Analytic Account for this config."
-msgstr ""
+msgstr "Conta analítica para esta configuración."
 
 #. module: pos_analytic_by_config
 #: model_terms:ir.ui.view,arch_db:pos_analytic_by_config.view_pos_config_form
 msgid "Analytic Account that these orders link to"
-msgstr ""
+msgstr "Conta analítica relacionada con estes pedidos"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Artigo Diario"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_config
 msgid "Point of Sale Configuration"
-msgstr ""
+msgstr "Configuración do Punto de Venda"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_order
 msgid "Point of Sale Orders"
-msgstr ""
+msgstr "Pedidos no punto de venda"
 
 #. module: pos_analytic_by_config
 #: model:ir.model,name:pos_analytic_by_config.model_pos_session
 msgid "Point of Sale Session"
-msgstr ""
+msgstr "Sesión do Puto de Venda"
