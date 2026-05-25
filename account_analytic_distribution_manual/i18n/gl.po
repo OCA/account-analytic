@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-25 09:46+0000\n"
+"PO-Revision-Date: 2026-05-25 13:46+0000\n"
 "Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: none\n"
 "Language: gl\n"
@@ -51,7 +51,7 @@ msgstr "Nomes das contas analíticas"
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_account_ids
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Contas analíticas"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_search
@@ -61,12 +61,12 @@ msgstr "Buscar Distribución Analítica"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Liña analítica"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_analytic_mixin
 msgid "Analytic Mixin"
-msgstr ""
+msgstr "Mix analítico"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_precision
@@ -76,7 +76,7 @@ msgstr "Precisión Analítica"
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_account_ids
 msgid "Analytic accounts computed from analytic distribution."
-msgstr ""
+msgstr "Contas analíticas calculadas a partires da distribución analítica."
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution_import
@@ -92,7 +92,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribución analítica (importable)"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_line__manual_distribution_id
@@ -108,7 +108,7 @@ msgstr "Arquivado"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_base
 msgid "Base"
-msgstr ""
+msgstr "Base"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_account_names
@@ -116,6 +116,8 @@ msgid ""
 "Comma-separated analytic account names, in case it is useful to be included "
 "in the exported data."
 msgstr ""
+"Nomes de contas analíticas separadas por comas, en caso de que sea útil "
+"incluílos nos datos exportados."
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__company_id
@@ -150,6 +152,9 @@ msgid ""
 " but using the analytic accounts names as keys of the dictionary, so it "
 "eases the human input."
 msgstr ""
+"Se define este campo, configurará a distribución analítica en formato JSON, "
+"pero usando as contas analíticas como chaves do diccionario, esto facilitará "
+"a introdución manual."
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__display_name
@@ -164,12 +169,12 @@ msgstr "ID"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_invoice_report
 msgid "Invoices Statistics"
-msgstr ""
+msgstr "Estatísticas de facturas"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Artículo de diario"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual____last_update
@@ -214,7 +219,7 @@ msgstr "Distribucións analíticas manuais"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_move_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_stock_scrap__manual_distribution_id
 msgid "Manual Distribution"
-msgstr ""
+msgstr "Distribución manual"
 
 #. module: account_analytic_distribution_manual
 #. odoo-javascript
