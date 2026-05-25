@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-23 15:57+0000\n"
-"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
+"PO-Revision-Date: 2026-05-25 09:46+0000\n"
+"Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +24,12 @@ msgstr "Analítica"
 #. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_account_names
 msgid "Analytic Account Names"
-msgstr ""
+msgstr "Nomes de contas analíticas"
 
 #. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_account_ids
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Contas analíticas"
 
 #. module: stock_picking_analytic
 #: model:ir.model.fields,field_description:stock_picking_analytic.field_stock_picking__analytic_distribution_search
