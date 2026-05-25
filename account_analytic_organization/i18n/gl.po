@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-25 09:46+0000\n"
+"PO-Revision-Date: 2026-05-25 13:46+0000\n"
 "Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: none\n"
 "Language: gl\n"
@@ -66,7 +66,7 @@ msgstr "Nome"
 #. module: account_analytic_organization
 #: model:ir.model.fields,field_description:account_analytic_organization.field_account_analytic_organization__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_organization
 #: model:ir.model,name:account_analytic_organization.model_account_move_line
