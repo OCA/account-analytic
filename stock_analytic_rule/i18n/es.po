@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-23 06:38+0000\n"
-"PO-Revision-Date: 2025-06-23 06:38+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2026-05-25 17:46+0000\n"
+"Last-Translator: CoralNetkia <coral.rodriguez@netkia.es>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__amount_compute_type
@@ -146,6 +147,9 @@ msgid ""
 "but using the analytic accounts names as keys of the dictionary, so it eases "
 "the human input."
 msgstr ""
+"Definir este campo establecerá la distribución analítica en formato JSON, "
+"utilizando los nombres de las cuentas analíticas como claves del "
+"diccionario, lo que facilita la introducción manual por parte del usuario."
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
@@ -190,7 +194,7 @@ msgstr "Agrupar por"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__include_taxes
