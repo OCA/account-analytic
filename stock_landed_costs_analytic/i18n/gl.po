@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-25 09:46+0000\n"
+"PO-Revision-Date: 2026-05-25 13:46+0000\n"
 "Last-Translator: Cándido Martínez <candido@supermercadoscooperativos.com>\n"
 "Language-Team: none\n"
 "Language: gl\n"
@@ -50,13 +50,13 @@ msgstr "Precisión analítica"
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_account_ids
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_account_ids
 msgid "Analytic accounts computed from analytic distribution."
-msgstr ""
+msgstr "Contas analíticas calculadas a partires da distribución analítica."
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_import
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribución analítica (importable)"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_account_names
@@ -65,6 +65,8 @@ msgid ""
 "Comma-separated analytic account names, in case it is useful to be included "
 "in the exported data."
 msgstr ""
+"Nomes de contas analíticas separadas por comas, por se fora útil para os "
+"datos exportados."
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,help:stock_landed_costs_analytic.field_stock_landed_cost_lines__analytic_distribution_import
@@ -74,12 +76,15 @@ msgid ""
 " but using the analytic accounts names as keys of the dictionary, so it "
 "eases the human input."
 msgstr ""
+"Se define este campo, configurará a distribución analítica en formato JSON, "
+"pero usando as contas analíticas como chaves do diccionario, esto facilitará "
+"a introdución manual."
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_landed_cost_lines__manual_distribution_id
 #: model:ir.model.fields,field_description:stock_landed_costs_analytic.field_stock_valuation_adjustment_lines__manual_distribution_id
 msgid "Manual Distribution"
-msgstr ""
+msgstr "Distribución manual"
 
 #. module: stock_landed_costs_analytic
 #: model:ir.model,name:stock_landed_costs_analytic.model_stock_landed_cost_lines
