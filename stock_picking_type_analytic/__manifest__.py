@@ -6,7 +6,7 @@
     "summary": """
         Allows to define an analytic account on picking types in order to set
         it by default on pickings""",
-    "version": "14.0.1.0.0",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
@@ -19,4 +19,5 @@
     "data": [
         "views/stock_picking_type.xml",
     ],
+    "installable": True,
 }

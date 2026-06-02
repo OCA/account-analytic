@@ -5,10 +5,9 @@ from odoo import fields, models
 
 
 class StockPickingType(models.Model):
+    _name = "stock.picking.type"
+    _inherit = ["stock.picking.type", "analytic.mixin"]
 
-    _inherit = "stock.picking.type"
-
-    analytic_account_id = fields.Many2one(
-        comodel_name="account.analytic.account",
-        help="Choose an analytic account that will be used as default on new pickings",
+    analytic_distribution = fields.Json(
+        help="Choose an analytic distribution to use as default on new pickings",
     )
