@@ -7,9 +7,10 @@ from odoo import fields, models
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
-    analytic_account_id = fields.Many2one(
-        related="company_id.analytic_account_id", readonly=False
+    analytic_distribution = fields.Json(
+        related="company_id.analytic_distribution", readonly=False
     )
-    analytic_tag_ids = fields.Many2many(
-        related="company_id.analytic_tag_ids", readonly=False
+    analytic_precision = fields.Integer(related="company_id.analytic_precision")
+    distribution_analytic_account_ids = fields.Many2many(
+        related="company_id.distribution_analytic_account_ids", readonly=False
     )
