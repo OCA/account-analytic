@@ -4,8 +4,8 @@
 {
     "name": "Stock Warehouse Analytic",
     "summary": """
-        Allows to mention an analytic account on warehouse level""",
-    "version": "14.0.1.0.0",
+        Allows to mention an analytic distribution at warehouse level""",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
@@ -13,4 +13,5 @@
     "data": [
         "views/stock_warehouse.xml",
     ],
+    "installable": True,
 }
