@@ -4,8 +4,9 @@
 {
     "name": "Stock Inventory Analytic Warehouse Default",
     "summary": """
-        Allows to define the default analytic account for inventory from warehouse""",
-    "version": "14.0.1.0.0",
+        Allows to define the default analytic distribution for inventory adjustments
+        from warehouse""",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
@@ -13,4 +14,5 @@
         "stock_warehouse_analytic",
         "stock_inventory_analytic",
     ],
+    "installable": True,
 }

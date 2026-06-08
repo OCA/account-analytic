@@ -1,1 +1,1 @@
-from . import stock_inventory_line, stock_quant
+from . import stock_quant
