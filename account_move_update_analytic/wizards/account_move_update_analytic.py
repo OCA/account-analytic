@@ -68,6 +68,6 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
             .browse(self.env.context.get("active_ids"))
             .invoice_line_ids
         )
-        lines.with_context(update_analytic=True).write(
+        lines.with_context(update_analytic=True, force_delete=True).write(
             {"analytic_distribution": self.analytic_distribution}
         )
