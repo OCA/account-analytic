@@ -1,0 +1,11 @@
+- [Tecnativa](https://www.tecnativa.com):
+  - Pedro M. Baeza
+  - Luis M. Ontalba
+  - Cristina Martin R.
+  - Sergio Teruel
+  - Carlos Roca
+- [Ecosoft](https://ecosoft.co.th/):
+  - Pimolnat Suntian \<<pimolnats@ecosoft.co.th>\>
+- Daniel Reis \<<dreis@opensourceintegrators.com>\>
+- [APSL-Nagarro](<https://apsl.tech>):
+  - Bernat Obrador \<<bobrador@apsl.net>\>
