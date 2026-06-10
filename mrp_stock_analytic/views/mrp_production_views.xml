@@ -9,6 +9,7 @@
                 <field
                     name="analytic_distribution"
                     widget="analytic_distribution"
+                    options="{'product_field': 'product_id', 'business_domain': 'manufacturing_order'}"
                     groups="analytic.group_analytic_accounting"
                     readonly="state in ('done', 'cancel')"
                 />
