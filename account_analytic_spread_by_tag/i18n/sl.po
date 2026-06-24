@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-24 04:45+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,26 +15,27 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model,name:account_analytic_spread_by_tag.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "Analitični konto"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_tag__spread_filter_analytic_account_ids
 msgid "Analytic Accounts"
-msgstr ""
+msgstr "Analitični konti"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model,name:account_analytic_spread_by_tag.model_account_analytic_tag
 msgid "Analytic Tags"
-msgstr ""
+msgstr "Analitične oznake"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields.selection,name:account_analytic_spread_by_tag.selection__account_analytic_tag__spread_filter_operation__exclude
 msgid "Exclude"
-msgstr ""
+msgstr "Izloči"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields,help:account_analytic_spread_by_tag.field_account_analytic_tag__to_spread
@@ -41,53 +43,55 @@ msgid ""
 "If enabled, the move line amounts using this tag will be spread across"
 "             all the analytic accounts that use this same tag."
 msgstr ""
+"Če je ta možnost omogočena, se zneski postavk, ki uporabljajo to oznako, "
+"razporedijo med vse analitične konte, ki uporabljajo isto oznako."
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields.selection,name:account_analytic_spread_by_tag.selection__account_analytic_tag__spread_filter_operation__include
 msgid "Include"
-msgstr ""
+msgstr "Vključno"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model,name:account_analytic_spread_by_tag.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Dnevniška postavka"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_account__mapped_analytic_tag_ids
 msgid "Mapped Analytic Tag"
-msgstr ""
+msgstr "Mapirana analitična oznaka"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_tag__spread_filter_operation
 msgid "Operation"
-msgstr ""
+msgstr "Operacija"
 
 #. module: account_analytic_spread_by_tag
 #: model:ir.model.fields,field_description:account_analytic_spread_by_tag.field_account_analytic_tag__to_spread
 msgid "Spread analytic amounts"
-msgstr ""
+msgstr "Razširi analitične zneske"
 
 #. module: account_analytic_spread_by_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_acount_spread_form_view
 msgid "Spreading"
-msgstr ""
+msgstr "Širjenje"
 
 #. module: account_analytic_spread_by_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_tag_spread_form_view
 msgid "Spreading Configuration"
-msgstr ""
+msgstr "Nastavitve širjenja"
 
 #. module: account_analytic_spread_by_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_tag_spread_form_view
 msgid "Spreading Filters"
-msgstr ""
+msgstr "Filtri širjenja"
 
 #. module: account_analytic_spread_by_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_acount_spread_form_view
 msgid "Tags Mapping"
-msgstr ""
+msgstr "Mapiranje oznak"
 
 #. module: account_analytic_spread_by_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_spread_by_tag.account_analytic_tag_spread_search_view
 msgid "To Spread"
-msgstr ""
+msgstr "Za širjenje"
