@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-24 04:59+0000\n"
+"PO-Revision-Date: 2026-06-24 07:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -26,7 +26,7 @@ msgstr "%s (kopija)"
 #. module: account_analytic_distribution_manual
 #: model:ir.model,name:account_analytic_distribution_manual.model_account_analytic_distribution_manual
 msgid "Account analytic distribution manual"
-msgstr ""
+msgstr "Ročna analitična porazdelitev"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__active
@@ -36,7 +36,7 @@ msgstr "Aktivno"
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.actions.act_window,help:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 msgid "Add a new Manual Analytic Distributions"
-msgstr ""
+msgstr "Dodaj novo ročno analitično porazdelitev"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__analytic_distribution
@@ -74,7 +74,7 @@ msgstr "Analitična porazdelitev (možnost uvoza)"
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_line__manual_distribution_id
 msgid "Analytic distribution manual"
-msgstr ""
+msgstr "Ročna analitična porazdelitev"
 
 #. module: account_analytic_distribution_manual
 #: model_terms:ir.ui.view,arch_db:account_analytic_distribution_manual.view_account_analytic_distribution_manual_form
@@ -166,7 +166,7 @@ msgstr "Nalaganje..."
 #: model:ir.actions.act_window,name:account_analytic_distribution_manual.action_account_analytic_distribution_manual
 #: model:ir.ui.menu,name:account_analytic_distribution_manual.account_analytic_distribution_manual_menu
 msgid "Manual Analytic Distributions"
-msgstr ""
+msgstr "Ročne analitične porazdelitve"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_account_analytic_distribution_manual__manual_distribution_id
@@ -202,7 +202,7 @@ msgstr "Naziv..."
 #. odoo-javascript
 #: code:addons/account_analytic_distribution_manual/static/src/components/analytic_distribution/analytic_distribution.esm.js:0
 msgid "No Analytic Distribution Manual found"
-msgstr ""
+msgstr "Ročnih analitičnih porazdelitev ni najdenih"
 
 #. module: account_analytic_distribution_manual
 #: model:ir.model.constraint,message:account_analytic_distribution_manual.constraint_account_analytic_distribution_manual_unique_name_by_company
