@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_analytic_distribution_model_tree_view" model="ir.ui.view">
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_tree_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="before">
+                <field name="pos_config_id" optional="hide" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
