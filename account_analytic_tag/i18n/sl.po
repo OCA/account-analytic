@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 07:45+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,41 +15,44 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__active
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 #. module: account_analytic_tag
 #: model_terms:ir.actions.act_window,help:account_analytic_tag.account_analytic_tag_action
 msgid "Add a new tag"
-msgstr ""
+msgstr "Dodaj novo oznako"
 
 #. module: account_analytic_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_tag.res_config_settings_view_form
 msgid "Allows to tag analytic entries and to manage analytic distributions"
 msgstr ""
+"Omogoča označevanje analitičnih vnosov in upravljanje analitičnih "
+"porazdelitev"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid "Analytic Account filter"
-msgstr ""
+msgstr "Filter analitičnih kontov"
 
 #. module: account_analytic_tag
 #: model:res.groups,name:account_analytic_tag.group_analytic_tags
 msgid "Analytic Accounting Tags"
-msgstr ""
+msgstr "Oznake analitičnih kontov"
 
 #. module: account_analytic_tag
 #: model:ir.model,name:account_analytic_tag.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Analitična postavka"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__name
 msgid "Analytic Tag"
-msgstr ""
+msgstr "Analitična oznaka"
 
 #. module: account_analytic_tag
 #: model:ir.actions.act_window,name:account_analytic_tag.account_analytic_tag_action
@@ -58,38 +62,38 @@ msgstr ""
 #: model:ir.ui.menu,name:account_analytic_tag.account_analytic_tag_menu
 #: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_form_view
 msgid "Analytic Tags"
-msgstr ""
+msgstr "Analitične oznake"
 
 #. module: account_analytic_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_form_view
 #: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_view_search
 msgid "Archived"
-msgstr ""
+msgstr "Arhivirano"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__color
 msgid "Color Index"
-msgstr ""
+msgstr "Barvni indeks"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__company_id
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 #. module: account_analytic_tag
 #: model:ir.model,name:account_analytic_tag.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__display_name
@@ -97,7 +101,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__id
@@ -105,37 +109,39 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__id
 #: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_analytic_tag
 #: model:ir.model,name:account_analytic_tag.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Dnevniška postavka"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: account_analytic_tag
 #: model_terms:ir.ui.view,arch_db:account_analytic_tag.account_analytic_tag_view_search
 msgid "Search Analytic Tags"
-msgstr ""
+msgstr "Iskanje analitičnih oznak"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__active
 msgid "Set active to false to hide the Analytic Tag without removing it."
 msgstr ""
+"Nastavite vrednost 'active' na 'false', da skrijete analitično oznako, ne da "
+"bi jo odstranili."
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__tag_ids
 msgid "Tags"
-msgstr ""
+msgstr "Oznake"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
@@ -143,3 +149,7 @@ msgid ""
 "Without analytical account: This label will be set for all the analytical items generated.\n"
 " With analytical account: This label will be set only to the analytical items that have the same analytical account."
 msgstr ""
+"Brez analitičnega konta: Ta oznaka bo dodeljena vsem ustvarjenim analitičnim "
+"postavkam.\n"
+"Z analitičnim kontom: Ta oznaka bo dodeljena le tistim analitičnim "
+"postavkam, ki imajo isti analitični konto."
