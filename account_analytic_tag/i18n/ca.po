@@ -136,6 +136,11 @@ msgid "Tags"
 msgstr "Etiquetes"
 
 #. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_tax
+msgid "Tax"
+msgstr ""
+
+#. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
 "Without analytical account: This label will be set for all the analytical "

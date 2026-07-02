@@ -138,10 +138,17 @@ msgid "Tags"
 msgstr "Oznake"
 
 #. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_tax
+msgid "Tax"
+msgstr ""
+
+#. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
-"Without analytical account: This label will be set for all the analytical items generated.\n"
-" With analytical account: This label will be set only to the analytical items that have the same analytical account."
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
 msgstr ""
 "Brez analitičnega konta: Ta oznaka bo dodeljena vsem ustvarjenim analitičnim "
 "postavkam.\n"
