@@ -106,3 +106,17 @@ class TestAccountAnalyticTag(TestAccountAnalyticTagBase):
         self.assertNotIn(
             self.account_analytic_tag_b, self.line_a.analytic_line_ids.tag_ids
         )
+
+    def test_analytic_tags_in_tax(self):
+        tax = self.env["account.tax"].create(
+            {
+                "name": "account_analytic_tag tax example",
+                "amount_type": "percent",
+                "type_tax_use": "sale",
+                "amount": 10,
+                "analytic": True,
+            }
+        )
+        self.line_a.tax_ids = [(4, tax.id)]
+        tax_line = self.invoice.line_ids.filtered(lambda x, t=tax: x.tax_line_id == t)
+        self.assertEqual(self.account_analytic_tag_a, tax_line.analytic_tag_ids)
