@@ -93,12 +93,20 @@ msgid "Created on"
 msgstr "创建于"
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_tax__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "显示名称"
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_tax__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__id
 msgid "ID"
 msgstr "标识"
 
@@ -131,6 +139,11 @@ msgstr "将活跃状态设置为假以隐藏分析标签，而无需删除它。
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__tag_ids
 msgid "Tags"
 msgstr "标签"
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_tax
+msgid "Tax"
+msgstr ""
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id

@@ -95,12 +95,20 @@ msgid "Created on"
 msgstr "Créé le"
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_tax__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_tax__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
 
@@ -135,10 +143,17 @@ msgid "Tags"
 msgstr "Étiquettes"
 
 #. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_tax
+msgid "Tax"
+msgstr ""
+
+#. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
 msgid ""
-"Without analytical account: This label will be set for all the analytical items generated.\n"
-" With analytical account: This label will be set only to the analytical items that have the same analytical account."
+"Without analytical account: This label will be set for all the analytical "
+"items generated.\n"
+" With analytical account: This label will be set only to the analytical "
+"items that have the same analytical account."
 msgstr ""
 "Sans compte analytique : cette étiquette sera ajoutée sur toutes les lignes "
 "analytiques créées.\n"

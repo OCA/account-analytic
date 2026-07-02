@@ -94,12 +94,20 @@ msgid "Created on"
 msgstr "Criado em"
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_tax__display_name
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Nome Exibição"
 
 #. module: account_analytic_tag
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_tag__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_move_line__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_account_tax__id
+#: model:ir.model.fields,field_description:account_analytic_tag.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
 
@@ -133,6 +141,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_analytic_tag.field_account_analytic_line__tag_ids
 msgid "Tags"
 msgstr "Marcadores"
+
+#. module: account_analytic_tag
+#: model:ir.model,name:account_analytic_tag.model_account_tax
+msgid "Tax"
+msgstr ""
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
