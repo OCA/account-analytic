@@ -9,6 +9,7 @@ class PurchaseOrderLine(models.Model):
     analytic_tag_ids = fields.Many2many(
         comodel_name="account.analytic.tag",
         string="Analytic Tags",
+        check_company=True,
     )
 
     def _prepare_account_move_line(self, move=False):
