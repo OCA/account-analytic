@@ -11,6 +11,7 @@
         <field name="arch" type="xml">
             <field name="plan_id" position="after">
                 <field name="parent_id" string="Parent Analytic Account" />
+                <field name="level" />
             </field>
         </field>
     </record>
@@ -24,6 +25,7 @@
             </field>
             <field name="name" position="after">
                 <field name="complete_name" string="Name" />
+                <field name="level" optional="hide" />
             </field>
         </field>
     </record>
