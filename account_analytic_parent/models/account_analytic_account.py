@@ -33,6 +33,15 @@ class AccountAnalyticAccount(models.Model):
     complete_name = fields.Char(
         compute="_compute_complete_name", recursive=True, store=True
     )
+    level = fields.Integer(
+        compute="_compute_level", recursive=True, store=True, aggregator=False
+    )
+
+    @api.depends("child_ids", "child_ids.level")
+    def _compute_level(self):
+        for account in self:
+            children = account.child_ids
+            account.level = max(children.mapped("level")) + 1 if children else 0
 
     @api.depends("child_ids.line_ids.amount")
     def _compute_debit_credit_balance(self):
