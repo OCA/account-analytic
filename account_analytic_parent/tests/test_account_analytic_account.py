@@ -135,3 +135,25 @@ class TestAccountAnalyticRecursion(TransactionCase):
         display_name = f"[{self.analytic_son.code}] parent aa / son aa"
         self.assertEqual(self.analytic_son.complete_name, "parent aa / son aa")
         self.assertEqual(self.analytic_son.display_name, display_name)
+
+    def test_level(self):
+        self.assertEqual(self.analytic_son.level, 0)
+        self.assertEqual(self.analytic_parent2.level, 0)
+        self.assertEqual(self.analytic_parent1.level, 1)
+        self.assertEqual(self.analytic_parent3.level, 1)
+        # Deepening the tree bumps the whole chain
+        grandchild = self.create_analytic_account(
+            {
+                "name": "grandchild aa",
+                "code": "03",
+                "parent_id": self.analytic_son.id,
+                "plan_id": self.plan.id,
+            }
+        )
+        self.assertEqual(grandchild.level, 0)
+        self.assertEqual(self.analytic_son.level, 1)
+        self.assertEqual(self.analytic_parent1.level, 2)
+        # Removing the deepest branch restores previous levels
+        grandchild.unlink()
+        self.assertEqual(self.analytic_son.level, 0)
+        self.assertEqual(self.analytic_parent1.level, 1)
