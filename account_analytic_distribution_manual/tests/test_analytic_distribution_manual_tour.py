@@ -32,6 +32,9 @@ class TestAnalyticDistributionManual(DistributionManualCommon, HttpCase):
             )
         invoice = capt.records
         self.assertEqual(invoice.partner_id, self.partner_a)
+        self.assertEqual(
+            invoice.invoice_line_ids.manual_distribution_id, self.distribution_1
+        )
         self.assertEqual(len(invoice.invoice_line_ids.analytic_line_ids), 2)
 
         account_id_field = self.plan_a._column_name()
