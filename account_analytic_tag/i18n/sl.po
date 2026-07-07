@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-30 07:45+0000\n"
+"PO-Revision-Date: 2026-07-07 07:46+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -148,7 +148,7 @@ msgstr "Oznake"
 #. module: account_analytic_tag
 #: model:ir.model,name:account_analytic_tag.model_account_tax
 msgid "Tax"
-msgstr ""
+msgstr "Davek"
 
 #. module: account_analytic_tag
 #: model:ir.model.fields,help:account_analytic_tag.field_account_analytic_tag__account_analytic_id
