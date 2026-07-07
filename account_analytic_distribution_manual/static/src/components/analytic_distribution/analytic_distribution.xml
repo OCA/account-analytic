@@ -14,7 +14,6 @@
                     value="state_manual_distribution.label || ''"
                     sources="sourcesAnalyticDistributionManual()"
                     autoSelect="true"
-                    onSelect.alike="(option) => this.onSelectDistributionManual(option)"
                     onChange.alike="({inputValue}) => this.onChangeAutoCompleteDistributionManual(inputValue)"
                 />
             </div>

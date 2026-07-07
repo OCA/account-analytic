@@ -9,9 +9,7 @@ patch(AnalyticDistribution.prototype, {
         super.setup(...arguments);
         this.manual_distribution_by_id = {};
         this.state_manual_distribution = useState({
-            id: this.props.record.data.manual_distribution_id
-                ? this.props.record.data.manual_distribution_id[0]
-                : 0,
+            id: this.props.record.data.manual_distribution_id?.id || 0,
             label: "",
             analytic_distribution: [],
         });
@@ -25,9 +23,7 @@ patch(AnalyticDistribution.prototype, {
     async willUpdateRecord(record) {
         await super.willUpdateRecord(record);
         const current_manual_distribution_id = this.state_manual_distribution.id;
-        const new_manual_distribution_id = record.data.manual_distribution_id
-            ? this.props.record.data.manual_distribution_id[0]
-            : 0;
+        const new_manual_distribution_id = record.data.manual_distribution_id?.id || 0;
         const manual_distribution_Changed =
             current_manual_distribution_id !== new_manual_distribution_id;
         // If record is not dirty we need need to force the update of the
@@ -48,10 +44,10 @@ patch(AnalyticDistribution.prototype, {
         // saved state.
         await this.props.record.update({
             [this.props.name]: this.dataToJson(),
-            manual_distribution_id: [
-                this.state_manual_distribution.id,
-                this.state_manual_distribution.label,
-            ],
+            manual_distribution_id: {
+                id: this.state_manual_distribution.id,
+                display_name: this.state_manual_distribution.label,
+            },
         });
         if (this.props.multi_edit) {
             await this.jsonToData(this.props.record.data[this.props.name]);
@@ -133,16 +129,15 @@ patch(AnalyticDistribution.prototype, {
         const options = [];
         for (const record of records) {
             options.push({
-                value: record.id,
                 label: record.display_name,
-                analytic_distribution: record.analytic_distribution,
+                onSelect: () => this.onSelectDistributionManual(record),
             });
             this.manual_distribution_by_id[record.id] = record;
         }
         if (!options.length) {
             options.push({
                 label: _t("No Analytic Distribution Manual found"),
-                classList: "o_m2o_no_result",
+                cssClass: "o_m2o_no_result",
                 unselectable: true,
             });
         }
@@ -152,7 +147,7 @@ patch(AnalyticDistribution.prototype, {
         const args = {
             domain: domain,
             fields: ["id", "display_name", "analytic_distribution"],
-            context: [],
+            context: {},
         };
         if (limit) {
             args.limit = limit;
@@ -166,8 +161,9 @@ patch(AnalyticDistribution.prototype, {
     },
     searchAnalyticDistributionManualDomain(searchTerm) {
         const domain = [["name", "ilike", searchTerm]];
-        if (this.props.record.data.company_id) {
-            domain.push(["company_id", "=", this.props.record.data.company_id[0]]);
+        const company_id = this.props.record.data.company_id?.id;
+        if (company_id) {
+            domain.push(["company_id", "=", company_id]);
         }
         return domain;
     },
@@ -213,17 +209,15 @@ patch(AnalyticDistribution.prototype, {
         }
         this.state.formattedData.push(...formattedLines);
     },
-    async onSelectDistributionManual(option) {
-        const selected_option = Object.getPrototypeOf(option);
-
-        this.state_manual_distribution.id = selected_option.value;
-        this.state_manual_distribution.label = selected_option.label;
+    async onSelectDistributionManual(record) {
+        this.state_manual_distribution.id = record.id;
+        this.state_manual_distribution.label = record.display_name;
         this.state_manual_distribution.analytic_distribution =
-            selected_option.analytic_distribution;
+            record.analytic_distribution;
         // Clear all distribution
         this.state.formattedData = [];
 
-        await this.processSelectedOption(selected_option);
+        await this.processSelectedOption(record);
     },
 });
 

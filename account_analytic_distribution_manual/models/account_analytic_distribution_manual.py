@@ -15,13 +15,10 @@ class AccountAnalyticDistributionManual(models.Model):
         "res.company", required=True, default=lambda self: self.env.company
     )
 
-    _sql_constraints = [
-        (
-            "unique_name_by_company",
-            "unique(name, company_id)",
-            "The name must be unique per Company!",
-        ),
-    ]
+    _unique_name_by_company = models.Constraint(
+        "unique(name, company_id)",
+        "The name must be unique per Company!",
+    )
 
     def copy_data(self, default=None):
         default = dict(default or {})
