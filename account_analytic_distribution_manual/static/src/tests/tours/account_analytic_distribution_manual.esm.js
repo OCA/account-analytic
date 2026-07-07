@@ -1,6 +1,6 @@
 import {browser} from "@web/core/browser/browser";
 import {registry} from "@web/core/registry";
-import {stepUtils} from "@web_tour/tour_service/tour_utils";
+import {stepUtils} from "@web_tour/tour_utils";
 
 registry.category("web_tour.tours").add("account_analytic_distribution_manual", {
     test: true,
@@ -31,6 +31,23 @@ registry.category("web_tour.tours").add("account_analytic_distribution_manual", 
         {
             content: "Valid Customer",
             trigger: '.ui-menu-item a:contains("partner_a")',
+            run: "click",
+        },
+        // In Odoo 19 the product_id column is optional="conditional" (hidden
+        // by default), so enable it before adding a line.
+        {
+            content: "Open line fields list",
+            trigger: 'div[name="invoice_line_ids"] .o_optional_columns_dropdown_toggle',
+            run: "click",
+        },
+        {
+            content: "Show product column",
+            trigger: '.o-dropdown-item input[name="product_id"]',
+            run: "click",
+        },
+        {
+            content: "Close line fields list",
+            trigger: 'div[name="invoice_line_ids"] .o_optional_columns_dropdown_toggle',
             run: "click",
         },
         {
