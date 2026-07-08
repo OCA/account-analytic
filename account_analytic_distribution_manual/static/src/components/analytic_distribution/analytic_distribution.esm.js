@@ -37,14 +37,27 @@ patch(AnalyticDistribution.prototype, {
         }
     },
     async save() {
-        await super.save();
-        if (this.state_manual_distribution.id) {
-            await this.props.record.update({
-                manual_distribution_id: [
-                    this.state_manual_distribution.id,
-                    this.state_manual_distribution.label,
-                ],
-            });
+        if (!this.state_manual_distribution.id) {
+            return super.save();
+        }
+        // Send both fields in a single record.update() instead of calling
+        // super.save() followed by a second update: two sequential updates
+        // leave a window where a form save triggered right after closing the
+        // popup is processed between them, so the second update re-dirties
+        // the record after it was saved and the form never reaches the
+        // saved state.
+        await this.props.record.update({
+            [this.props.name]: this.dataToJson(),
+            manual_distribution_id: [
+                this.state_manual_distribution.id,
+                this.state_manual_distribution.label,
+            ],
+        });
+        if (this.props.multi_edit) {
+            await this.jsonToData(this.props.record.data[this.props.name]);
+            this.initialFormattedData = this.state.formattedData;
+            this.state.formattedData = [];
+            this.state.update_plan = {};
         }
     },
     async refreshManualDistribution(manual_distribution_id) {
@@ -168,7 +181,7 @@ patch(AnalyticDistribution.prototype, {
         const analyticAccountIds = Object.keys(selected_option.analytic_distribution)
             .map((key) => key.split(","))
             .flat()
-            .map((id) => parseInt(id));
+            .map((id) => parseInt(id, 10));
         const analyticAccountDict = analyticAccountIds.length
             ? await this.fetchAnalyticAccounts([["id", "in", analyticAccountIds]])
             : [];
