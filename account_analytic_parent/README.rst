@@ -32,6 +32,11 @@ This module reintroduces the hierarchy to the analytic accounts as it
 was in previous versions of Odoo. This module is a base module for other
 modules to manage the hierarchy concept in analytics.
 
+It also exposes a computed **Level** field expressing the depth of each
+account within its subtree: level 0 for a leaf account (no children),
+level 1 for a parent whose children are all leaves, level 2 for a
+grandparent...
+
 **Table of contents**
 
 .. contents::
@@ -69,24 +74,24 @@ Authors
 Contributors
 ------------
 
-- ForgeFlow <http://www.forgeflow.com>
-- Luxim d.o.o. <http://www.luxim.si>
-- Matmoz d.o.o. <http://www.matmoz.si>
-- Deneroteam. <dhaval@deneroteam.com>
-- SerpentCS <http://www.serpentcs.com/>
-- Pedro M. Baeza <pedro.baeza@tecnativa.com>
-- Vicent Cubells <vicent.cubells@tecnativa.com>
-- David Vidal <david.vidal@tecnativa.com>
-- Jaume Planas <jaume.planas@minorisa.net>
-- `CorporateHub <https://corporatehub.eu/>`__
+-  ForgeFlow <http://www.forgeflow.com>
+-  Luxim d.o.o. <http://www.luxim.si>
+-  Matmoz d.o.o. <http://www.matmoz.si>
+-  Deneroteam. <dhaval@deneroteam.com>
+-  SerpentCS <http://www.serpentcs.com/>
+-  Pedro M. Baeza <pedro.baeza@tecnativa.com>
+-  Vicent Cubells <vicent.cubells@tecnativa.com>
+-  David Vidal <david.vidal@tecnativa.com>
+-  Jaume Planas <jaume.planas@minorisa.net>
+-  `CorporateHub <https://corporatehub.eu/>`__
 
-  - Alexey Pelykh <alexey.pelykh@corphub.eu>
+   -  Alexey Pelykh <alexey.pelykh@corphub.eu>
 
-- Pedro Gonzalez <pedro.gonzalez@pesol.es>
-- Darius Žižys <darius@vialaurea.lt>
-- APSL - Nagarro <https://apsl.tech>
+-  Pedro Gonzalez <pedro.gonzalez@pesol.es>
+-  Darius Žižys <darius@vialaurea.lt>
+-  APSL - Nagarro <https://apsl.tech>
 
-  - Bernat Obrador
+   -  Bernat Obrador
 
 Maintainers
 -----------
