@@ -7,7 +7,7 @@
 # Copyright 2019 Pesol
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -51,48 +51,45 @@ class AccountAnalyticAccount(models.Model):
         """
         res = super()._compute_debit_credit_balance()
 
-        ResCurrency = self.env["res.currency"]
         AccountAnalyticLine = self.env["account.analytic.line"]
         user_currency_id = self.env.user.company_id.currency_id
 
         # Re-compute only accounts with children
-        for account in self.filtered("child_ids"):
+        for account in self:
+            if not account.child_ids:
+                continue
             domain = [("account_id", "child_of", account.id)]
 
-            credit_groups = AccountAnalyticLine.read_group(
+            credit_groups = AccountAnalyticLine._read_group(
                 domain=domain + [("amount", ">=", 0.0)],
-                fields=["currency_id", "amount"],
                 groupby=["currency_id"],
-                lazy=False,
+                aggregates=["amount:sum"],
             )
             credit = sum(
-                map(
-                    lambda x: ResCurrency.browse(x["currency_id"][0])._convert(
-                        x["amount"],
-                        user_currency_id,
-                        self.env.user.company_id,
-                        fields.Date.today(),
-                    ),
-                    credit_groups,
+                currency_id._convert(
+                    amount_sum,
+                    user_currency_id,
+                    self.env.user.company_id,
+                    fields.Date.today(),
                 )
+                for currency_id, amount_sum in credit_groups
+                if currency_id
             )
 
-            debit_groups = AccountAnalyticLine.read_group(
+            debit_groups = AccountAnalyticLine._read_group(
                 domain=domain + [("amount", "<", 0.0)],
-                fields=["currency_id", "amount"],
                 groupby=["currency_id"],
-                lazy=False,
+                aggregates=["amount:sum"],
             )
             debit = sum(
-                map(
-                    lambda x: ResCurrency.browse(x["currency_id"][0])._convert(
-                        x["amount"],
-                        user_currency_id,
-                        self.env.user.company_id,
-                        fields.Date.today(),
-                    ),
-                    debit_groups,
+                currency_id._convert(
+                    amount_sum,
+                    user_currency_id,
+                    self.env.user.company_id,
+                    fields.Date.today(),
                 )
+                for currency_id, amount_sum in debit_groups
+                if currency_id
             )
 
             account.debit = abs(debit)
@@ -103,7 +100,9 @@ class AccountAnalyticAccount(models.Model):
     @api.constrains("parent_id")
     def check_recursion(self):
         if self._has_cycle():
-            raise UserError(_("You can not create recursive analytic accounts."))
+            raise UserError(
+                self.env._("You can not create recursive analytic accounts.")
+            )
         return True
 
     @api.onchange("parent_id")
@@ -115,24 +114,29 @@ class AccountAnalyticAccount(models.Model):
     def _compute_complete_name(self):
         for account in self:
             if account.parent_id:
-                account.complete_name = _("%(parent)s / %(own)s") % {
-                    "parent": account.parent_id.complete_name,
-                    "own": account.name,
-                }
+                account.complete_name = self.env._(
+                    "%(parent)s / %(own)s",
+                    parent=account.parent_id.complete_name,
+                    own=account.name,
+                )
             else:
                 account.complete_name = account.name
 
     @api.constrains("active")
     def check_parent_active(self):
-        for account in self.filtered(
-            lambda a: a.active
-            and a.parent_id
-            and a.parent_id not in self
-            and not a.parent_id.active
-        ):
+        for account in self:
+            if (
+                not account.active
+                or not account.parent_id
+                or account.parent_id in self
+                or account.parent_id.active
+            ):
+                continue
             raise UserError(
-                _("Please activate first parent account %s")
-                % account.parent_id.complete_name
+                self.env._(
+                    "Please activate first parent account %(parent_name)s",
+                    parent_name=account.parent_id.name,
+                )
             )
 
     @api.depends("complete_name", "code", "partner_id.commercial_partner_id.name")
@@ -142,10 +146,11 @@ class AccountAnalyticAccount(models.Model):
             if analytic.code:
                 name = f"[{analytic.code}] {name}"
             if analytic.partner_id:
-                name = _("%(name)s - %(partner)s") % {
-                    "name": name,
-                    "partner": analytic.partner_id.commercial_partner_id.name,
-                }
+                name = self.env._(
+                    "%(name)s - %(partner)s",
+                    name=name,
+                    partner=analytic.partner_id.commercial_partner_id.name,
+                )
             analytic.display_name = name
 
     def write(self, vals):
