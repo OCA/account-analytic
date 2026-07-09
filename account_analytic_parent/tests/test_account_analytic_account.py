@@ -17,9 +17,9 @@ class TestAccountAnalyticRecursion(TransactionCase):
 
         cls.analytic_account_obj = cls.env["account.analytic.account"]
         cls.analytic_line_obj = cls.env["account.analytic.line"]
-        cls.partner1 = cls.env.ref("base.res_partner_1")
-        cls.partner2 = cls.env.ref("base.res_partner_2")
-        cls.plan = cls.env.ref("analytic.analytic_plan_departments")
+        cls.partner1 = cls.env["res.partner"].create({"name": "Test Partner 1"})
+        cls.partner2 = cls.env["res.partner"].create({"name": "Test Partner 2"})
+        cls.plan = cls.env["account.analytic.plan"].create({"name": "Test Plan"})
         cls.analytic_parent1 = cls.create_analytic_account(
             {
                 "name": "parent aa",
@@ -123,13 +123,13 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.assertEqual(self.analytic_parent3.balance, -50)
 
     def test_archive(self):
-        self.analytic_parent1.toggle_active()
+        self.analytic_parent1.action_archive()
         self.assertEqual(self.analytic_son.active, False)
-        self.analytic_parent1.toggle_active()
+        self.analytic_parent1.action_unarchive()
         self.assertEqual(self.analytic_son.active, False)
-        self.analytic_parent1.toggle_active()
+        self.analytic_parent1.action_archive()
         with self.assertRaises(UserError):
-            self.analytic_son.toggle_active()
+            self.analytic_son.action_unarchive()
 
     def test_name(self):
         display_name = f"[{self.analytic_son.code}] parent aa / son aa"
