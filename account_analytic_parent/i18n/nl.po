@@ -88,6 +88,11 @@ msgid "Internal"
 msgstr ""
 
 #. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__level
+msgid "Level"
+msgstr ""
+
+#. module: account_analytic_parent
 #: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
 msgid "Name"
 msgstr "Naam"
