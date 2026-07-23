@@ -207,10 +207,7 @@ class AccountAnalyticDistributionModel(models.Model):
             # To avoid massive recalculation of all lines just
             # recalculate the lines that has the same partner and account prefix
             raise ValidationError(
-                _(
-                    "You must select a partner and account prefix "
-                    "to recalculate lines."
-                )
+                _("You must select a partner and account prefix to recalculate lines.")
             )
 
         domain = []
