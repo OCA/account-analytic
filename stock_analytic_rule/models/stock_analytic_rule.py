@@ -68,6 +68,19 @@ class StockAnalyticRule(models.Model):
         default=lambda self: self.env.company,
         required=True,
     )
+    mandatory = fields.Boolean(
+        default=False,
+        help="If checked, couldn't validate a stock move"
+        " if it doesn't generate analytic lines.",
+    )
+    applicable_category_ids = fields.Many2many(
+        "product.category",
+        "stock_analytic_rule_category_rel",
+        "rule_id",
+        "category_id",
+        string="Applicable Categories",
+        help="If set, the rule will only be applied to products of these categories.",
+    )
 
     def copy(self, default=None):
         default = dict(default or {})
@@ -130,25 +143,34 @@ class StockAnalyticRule(models.Model):
         )
         return tax_result["total_included"]
 
-    def _get_amount_by_category(self, product, quantity):
+    def _get_amount_by_category(self, product, quantity, is_internal_move):
         """
         Computes the amount for the analytic line based on the product's category.
         This method is used when the amount_compute_type is set to 'category'.
         """
         category = product.categ_id
+        avg_price = category.avg_price
+        avg_weight = category.avg_weight
+
+        # Use custom computation for internal moves if the flag is set and it's
+        # an internal move
+        if is_internal_move and category.custom_computation_for_internal_moves:
+            avg_price = category.avg_price_for_internal_moves
+            avg_weight = category.avg_weight_for_internal_moves
+
         self._validation_checks(category)
-        return (category.avg_price * (category.avg_weight * quantity)) + (
-            (category.avg_weight * quantity) * category.supplement
+        return (avg_price * (avg_weight * quantity)) + (
+            (avg_weight * quantity) * category.supplement
         )
 
-    def _compute_amount(self, product, quantity, partner=None):
+    def _compute_amount(self, product, quantity, is_internal_move, partner=None):
         """
         Computes the amount for the analytic line.
         """
         if self.amount_compute_type == "product":
             return self._get_amount_by_product(product, quantity, partner)
 
-        return self._get_amount_by_category(product, quantity)
+        return self._get_amount_by_category(product, quantity, is_internal_move)
 
     def _prepare_analytic_line(
         self, amount, stock_move_id, financial_account_id, company_id
@@ -225,25 +247,41 @@ class StockAnalyticRule(models.Model):
         return analytic_lines
 
     def _validation_checks(self, category):
-        if not category.avg_weight > 0:
-            raise ValidationError(
-                _(
-                    """This move has to generate analytic
-                    lines so the category must have a weight greater than 0.\n
-                    Please, check the category %s weight."""
-                )
-                % category.name
+        if self.mandatory:
+            weight_error = (
+                category.avg_weight <= 0 and category.avg_weight_for_internal_moves <= 0
             )
+            price_error = (
+                category.avg_price <= 0 and category.avg_price_for_internal_moves <= 0
+            )
+            if weight_error:
+                raise ValidationError(
+                    _(
+                        """This move has to generate analytic
+                        lines so the category must have a weight greater than 0.\n
+                        Please, check the category %s weight."""
+                    )
+                    % category.name
+                )
 
-        if not category.avg_price > 0:
-            raise ValidationError(
-                _(
-                    """This move has to generate analytic lines
-                    so the category must have a price greater than 0.\n
-                    Please, check the category %s price."""
+            if price_error:
+                raise ValidationError(
+                    _(
+                        """This move has to generate analytic lines
+                        so the category must have a price greater than 0.\n
+                        Please, check the category %s price."""
+                    )
+                    % category.name
                 )
-                % category.name
-            )
+
+    def _is_applicable_to_category(self, product):
+        """Return True if the rule applies to the product category."""
+        self.ensure_one()
+
+        if not self.applicable_category_ids:
+            return True
+
+        return product.categ_id in self.applicable_category_ids
 
     @api.model
     def generate_analytic_lines(self, stock_move):
@@ -256,6 +294,9 @@ class StockAnalyticRule(models.Model):
         company_id = stock_move.company_id.id
         partner = stock_move.partner_id
 
+        move_type = stock_move.picking_id.picking_type_code
+        is_internal_move = move_type == "internal"
+
         record = self.search(
             [
                 ("location_from_ids", "in", [location_from_id]),
@@ -266,26 +307,29 @@ class StockAnalyticRule(models.Model):
             limit=1,
         )
 
-        if record:
+        if record and record._is_applicable_to_category(product):
             # If the stock moves matches with the rule criteria,
             # then generate the analytic lines.
-            amount = record._compute_amount(product, quantity, partner=partner)
+            amount = record._compute_amount(
+                product, quantity, is_internal_move, partner=partner
+            )
             record._create_analytic_lines(amount, product, stock_move.id, company_id)
             return
-        else:
-            # Look for the reversal rule, if it exists.
-            reversal = self.search(
-                [
-                    ("location_from_ids", "in", [location_dest_id]),
-                    ("location_dest_ids", "in", [location_from_id]),
-                    ("active", "=", True),
-                    ("company_id", "=", company_id),
-                ],
-                limit=1,
-            )
+        # Look for the reversal rule, if it exists.
+        reversal = self.search(
+            [
+                ("location_from_ids", "in", [location_dest_id]),
+                ("location_dest_ids", "in", [location_from_id]),
+                ("active", "=", True),
+                ("company_id", "=", company_id),
+            ],
+            limit=1,
+        )
 
-            if reversal:
-                amount = reversal._compute_amount(product, quantity, partner=partner)
-                reversal._create_analytic_lines(
-                    amount, product, stock_move.id, company_id, is_reversal=True
-                )
+        if reversal and reversal._is_applicable_to_category(product):
+            amount = reversal._compute_amount(
+                product, quantity, is_internal_move, partner=partner
+            )
+            reversal._create_analytic_lines(
+                amount, product, stock_move.id, company_id, is_reversal=True
+            )
