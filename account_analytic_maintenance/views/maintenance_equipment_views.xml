@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="maintenance_equipment_view_form_analytic" model="ir.ui.view">
+        <field name="name">
+            maintenance.equipment.form.analytic
+        </field>
+        <field name="model">maintenance.equipment</field>
+        <field name="inherit_id" ref="maintenance.hr_equipment_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group string="Accounting" groups="analytic.group_analytic_accounting">
+                    <field
+                        name="analytic_distribution"
+                        widget="analytic_distribution"
+                        groups="analytic.group_analytic_accounting"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
