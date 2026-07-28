@@ -22,6 +22,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[account_analytic_distribution_model_recalculate](account_analytic_distribution_model_recalculate/) | 19.0.1.0.0 | <a href='https://github.com/BernatObrador'><img src='https://github.com/BernatObrador.png' width='32' height='32' style='border-radius:50%;' alt='BernatObrador'/></a> | Add the possibility to change the analytic distribution of the journal items assigned by the distribution model
 [account_analytic_required](account_analytic_required/) | 19.0.1.0.0 |  | Account Analytic Required
 [account_analytic_sequence](account_analytic_sequence/) | 19.0.1.0.0 |  | Restore the analytic account sequence
 [account_analytic_tag](account_analytic_tag/) | 19.0.1.0.1 |  | Account Analytic Tag
