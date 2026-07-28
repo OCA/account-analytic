@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 (APSL - Nagarro) Bernat Obrador
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record
+        id="inherit_account_analytic_distribution_model_tree_view"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.list.inherit</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_tree_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="start_date" optional="show" />
+                <field name="end_date" optional="show" />
+            </xpath>
+            <xpath expr="//field[@name='analytic_distribution']" position="after">
+                <field name="recalculate" widget="boolean_toggle" optional="show" />
+                <button
+                    name="action_sync_lines"
+                    type="object"
+                    string="Sync"
+                    class="btn-secondary"
+                    invisible="not recalculate"
+                    help="Synchronize journal items created before the model existed."
+                />
+                <button
+                    name="action_recalculate_analytic_lines"
+                    type="object"
+                    string="Recalculate"
+                    class="btn-primary"
+                    invisible="not recalculate"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="inherit_account_analytic_distribution_model_form_view"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.form.inherit</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//group[field[@name='analytic_distribution']]"
+                position="after"
+            >
+                <group string="Recalculation" colspan="2">
+                    <field name="start_date" />
+                    <field name="end_date" />
+                    <field name="recalculate" />
+                    <button
+                        name="action_sync_lines"
+                        type="object"
+                        string="Sync Journal Items"
+                        class="btn-secondary"
+                        invisible="not recalculate"
+                    />
+                    <button
+                        name="action_recalculate_analytic_lines"
+                        type="object"
+                        string="Recalculate Journal Items"
+                        class="btn-primary"
+                        invisible="not recalculate"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_recalculate_analytic_distribution" model="ir.actions.server">
+        <field name="name">Recalculate Analytic Lines</field>
+        <field
+            name="model_id"
+            ref="analytic.model_account_analytic_distribution_model"
+        />
+        <field name="group_ids" eval="[(4, ref('account.group_account_user'))]" />
+        <field name="state">code</field>
+        <field name="code">action = records.action_recalculate_analytic_lines()</field>
+        <field
+            name="binding_model_id"
+            ref="analytic.model_account_analytic_distribution_model"
+        />
+    </record>
+</odoo>

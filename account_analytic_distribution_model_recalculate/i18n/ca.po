@@ -1,0 +1,134 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_distribution_model_recalculate
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-10 13:18+0000\n"
+"PO-Revision-Date: 2025-06-10 13:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+#, python-format
+msgid "%s analytic lines have been recalculated."
+msgstr "S'han recalculat %s línies analítiques."
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model,name:account_analytic_distribution_model_recalculate.model_account_analytic_distribution_model
+msgid "Analytic Distribution Model"
+msgstr "Model de distribució analític"
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+#, python-format
+msgid "Cannot have overlapping dates for the same partner and account prefix."
+msgstr ""
+"No es poden tenir dates que es sobreposin per al mateix contacte i prefix de "
+"compte."
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_move_line__distribution_model_id
+msgid "Distribution Model"
+msgstr "Model de Distribució"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__end_date
+msgid "End Date"
+msgstr "Data de Final"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_form_view
+msgid "Filter Dates"
+msgstr "Dates de Filtratge"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model.fields,help:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__recalculate
+msgid ""
+"If checked, you will be able to recalculate\n"
+"        the analytic lines that where  created by this model,\n"
+"        and still matches the model criteria"
+msgstr ""
+"Si està activat, podràs recalcular les línies analítiques que han estat "
+"creades per aquest model i que encara compleixen els criteris del model."
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model,name:account_analytic_distribution_model_recalculate.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunt comptable"
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+#, python-format
+msgid "No analytic lines have been recalculated."
+msgstr "No s'han recalculat línies analítiques."
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
+msgid "Recalculate"
+msgstr "Recalcular"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.actions.server,name:account_analytic_distribution_model_recalculate.action_recalculate_analytic_distribution
+msgid "Recalculate Analytic Lines"
+msgstr "Recalcular línies analítiques"
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+#, python-format
+msgid "Recalculation Complete"
+msgstr "Recalculació completada"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__start_date
+msgid "Start Date"
+msgstr "Data d'Inici"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
+msgid "Sync"
+msgstr "Sincronitzar"
+
+#. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
+msgid ""
+"Sync the journal items with the analytic distribution model. Used to sync "
+"lines that were generated before the model was created."
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+#, python-format
+msgid "The start date cannot be later than the end date."
+msgstr "La data d'inici no pot ser posterior a la data de finalització."
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+#, python-format
+msgid "You must select a partner and account prefix to recalculate lines."
+msgstr ""
+"Has de seleccionar un contacte i un prefix de compte per recalcular les "
+"línies."
+
+#~ msgid ""
+#~ "Sync the journal items with the analytic distribution model. Used to sync "
+#~ "lines that where generated before the model was created."
+#~ msgstr ""
+#~ "Sincronitza els elements del diari amb el model de distribució analítica. "
+#~ "S'utilitza per sincronitzar les línies que es van generar abans de la "
+#~ "creació del model."
