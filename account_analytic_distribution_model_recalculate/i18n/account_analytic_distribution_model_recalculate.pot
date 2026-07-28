@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,11 +16,12 @@ msgstr ""
 #. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
-#, python-format
-msgid "%s analytic lines have been recalculated."
+msgid "%s journal items have been updated."
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
 #: model:ir.model,name:account_analytic_distribution_model_recalculate.model_account_analytic_distribution_model
 msgid "Analytic Distribution Model"
 msgstr ""
@@ -28,13 +29,26 @@ msgstr ""
 #. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
-#, python-format
-msgid "Cannot have overlapping dates for the same partner and account prefix."
+msgid ""
+"Another analytic distribution model with the same conditions has an "
+"overlapping date range."
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
-#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_move_line__distribution_model_id
-msgid "Distribution Model"
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__display_name
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_move_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_move_line__distribution_model_ids
+msgid "Distribution Models"
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
+msgid "Enable recalculation before synchronizing journal items."
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
@@ -43,16 +57,16 @@ msgid "End Date"
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
-#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_form_view
-msgid "Filter Dates"
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__id
+#: model:ir.model.fields,field_description:account_analytic_distribution_model_recalculate.field_account_move_line__id
+msgid "ID"
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
 #: model:ir.model.fields,help:account_analytic_distribution_model_recalculate.field_account_analytic_distribution_model__recalculate
 msgid ""
-"If checked, you will be able to recalculate\n"
-"        the analytic lines that where  created by this model,\n"
-"        and still matches the model criteria"
+"If checked, you can synchronize and recalculate journal items that were "
+"created by this model and still match its criteria."
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
@@ -63,8 +77,7 @@ msgstr ""
 #. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
-#, python-format
-msgid "No analytic lines have been recalculated."
+msgid "No journal items have been updated."
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
@@ -79,9 +92,18 @@ msgid "Recalculate Analytic Lines"
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_form_view
+msgid "Recalculate Journal Items"
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_form_view
+msgid "Recalculation"
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
-#, python-format
 msgid "Recalculation Complete"
 msgstr ""
 
@@ -96,22 +118,29 @@ msgid "Sync"
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
-#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
-msgid ""
-"Sync the journal items with the analytic distribution model. Used to sync "
-"lines that were generated before the model was created."
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_form_view
+msgid "Sync Journal Items"
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
-#, python-format
+msgid "Synchronization Complete"
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#: model_terms:ir.ui.view,arch_db:account_analytic_distribution_model_recalculate.inherit_account_analytic_distribution_model_tree_view
+msgid "Synchronize journal items created before the model existed."
+msgstr ""
+
+#. module: account_analytic_distribution_model_recalculate
+#. odoo-python
+#: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
 msgid "The start date cannot be later than the end date."
 msgstr ""
 
 #. module: account_analytic_distribution_model_recalculate
 #. odoo-python
 #: code:addons/account_analytic_distribution_model_recalculate/models/account_analytic_distribution_model.py:0
-#, python-format
 msgid "You must select a partner and account prefix to recalculate lines."
 msgstr ""
