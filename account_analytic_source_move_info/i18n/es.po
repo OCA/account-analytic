@@ -1,0 +1,85 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_source_move_info
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-30 11:26+0000\n"
+"PO-Revision-Date: 2026-06-30 11:26+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model,name:account_analytic_source_move_info.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea Analítica"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_account_analytic_line__analytic_percentage
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_temp_analytic_line__analytic_percentage
+msgid "Analytic Percentage"
+msgstr "Porcentaje analítico"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_account_analytic_line__source_move_base_amount
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_temp_analytic_line__source_move_base_amount
+msgid "Base amount of the source journal entry."
+msgstr "Importe base del asiento contable origen."
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_account_analytic_line__source_move_line_base_amount
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_temp_analytic_line__source_move_line_base_amount
+msgid "Base amount of the source journal item."
+msgstr "Importe base del apunte contable origen."
+
+#. module: account_analytic_source_move_info
+#: model:ir.model,name:account_analytic_source_move_info.model_account_move_line
+msgid "Journal Item"
+msgstr "Apunte contable"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_account_analytic_line__source_move_total_analytic_percentage
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_temp_analytic_line__source_move_total_analytic_percentage
+msgid ""
+"Percentage of the source move base amount represented by this analytic line."
+msgstr ""
+"Porcentaje del importe base del asiento origen representado por esta línea "
+"analítica."
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_account_analytic_line__analytic_percentage
+#: model:ir.model.fields,help:account_analytic_source_move_info.field_temp_analytic_line__analytic_percentage
+msgid ""
+"Percentage used in the analytic distribution of the source journal item."
+msgstr ""
+"Porcentaje utilizado en la distribución analítica del apunte contable origen."
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_account_analytic_line__source_move_line_base_amount
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_temp_analytic_line__source_move_line_base_amount
+msgid "Source Journal Item Base"
+msgstr "Base del apunte contable origen"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_account_analytic_line__source_move_total_analytic_percentage
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_temp_analytic_line__source_move_total_analytic_percentage
+msgid "Source Move Analytic Percentage"
+msgstr "Porcentaje analítico del asiento origen"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_account_analytic_line__source_move_base_amount
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_temp_analytic_line__source_move_base_amount
+msgid "Source Move Base"
+msgstr "Base del asiento origen"
+
+#. module: account_analytic_source_move_info
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_account_analytic_line__source_move_currency_id
+#: model:ir.model.fields,field_description:account_analytic_source_move_info.field_temp_analytic_line__source_move_currency_id
+msgid "Source Move Currency"
+msgstr "Moneda del asiento origen"
