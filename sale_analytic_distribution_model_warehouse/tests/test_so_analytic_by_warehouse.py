@@ -1,6 +1,7 @@
 # Copyright 2025 Tecnativa - Christian Ramos
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+
 from odoo import Command
 
 from odoo.addons.base.tests.common import BaseCommon

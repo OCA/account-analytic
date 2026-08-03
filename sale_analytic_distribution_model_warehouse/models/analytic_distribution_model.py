@@ -20,6 +20,13 @@ class AccountAnalyticDistributionModel(models.Model):
         vals["warehouse_id"] = warehouse_id
         return super()._get_applicable_models(vals)
 
+    def _get_applicable_fields(self):
+        # Only reachable when account_analytic_distribution_model_recalculate is
+        # installed, therefore no error handling implemented
+        res = super()._get_applicable_fields()
+        res.append("warehouse_id")
+        return res
+
     @api.model
     def _get_default_search_domain_vals(self):
         res = super()._get_default_search_domain_vals()
