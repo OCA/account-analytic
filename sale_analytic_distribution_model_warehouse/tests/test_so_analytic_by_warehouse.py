@@ -37,6 +37,12 @@ class TestPosAnalyticConfig(BaseCommon):
                 "code": "WH2",
             }
         )
+        cls.warehouse3 = cls.env["stock.warehouse"].create(
+            {
+                "name": "Warehouse 3",
+                "code": "WH3",
+            }
+        )
         cls.analytic_distribution_model_1 = cls.env[
             "account.analytic.distribution.model"
         ].create(
@@ -62,11 +68,11 @@ class TestPosAnalyticConfig(BaseCommon):
             }
         )
 
-    def test_create_sale_order(self):
-        order = self.env["sale.order"].create(
+    def _create_order(self, warehouse):
+        return self.env["sale.order"].create(
             {
                 "partner_id": self.partner_a.id,
-                "warehouse_id": self.warehouse1.id,
+                "warehouse_id": warehouse.id,
                 "order_line": [
                     Command.create(
                         {"product_id": self.product_a.id, "product_uom_qty": 1}
@@ -74,22 +80,66 @@ class TestPosAnalyticConfig(BaseCommon):
                 ],
             }
         )
+
+    def test_create_sale_order(self):
+        order = self._create_order(self.warehouse1)
         self.assertEqual(
             order.order_line.analytic_distribution,
             {str(self.analytic_account.id): 100.0},
         )
-        order2 = self.env["sale.order"].create(
-            {
-                "partner_id": self.partner_a.id,
-                "warehouse_id": self.warehouse2.id,
-                "order_line": [
-                    Command.create(
-                        {"product_id": self.product_a.id, "product_uom_qty": 1}
-                    )
-                ],
-            }
-        )
+        order2 = self._create_order(self.warehouse2)
         self.assertEqual(
             order2.order_line.analytic_distribution,
             {str(self.analytic_account2.id): 100.0},
         )
+
+    def _add_line(self, order):
+        line_before = order.order_line
+        order.write(
+            {
+                "order_line": [
+                    Command.create(
+                        {"product_id": self.product_a.id, "product_uom_qty": 1}
+                    )
+                ]
+            }
+        )
+        return order.order_line - line_before
+
+    def test_change_warehouse_with_model(self):
+        order = self._create_order(self.warehouse1)
+        line1 = order.order_line
+        self.assertEqual(
+            line1.analytic_distribution,
+            {str(self.analytic_account.id): 100.0},
+        )
+        # The new warehouse has a distribution model, so it takes over the lines
+        # added before the change, leaving no trace of the previous distribution
+        order.warehouse_id = self.warehouse2
+        line2 = self._add_line(order)
+        self.assertEqual(
+            line1.analytic_distribution,
+            {str(self.analytic_account2.id): 100.0},
+        )
+        self.assertEqual(
+            line2.analytic_distribution,
+            {str(self.analytic_account2.id): 100.0},
+        )
+
+    def test_change_warehouse_without_model(self):
+        order = self._create_order(self.warehouse1)
+        line1 = order.order_line
+        self.assertEqual(
+            line1.analytic_distribution,
+            {str(self.analytic_account.id): 100.0},
+        )
+        # The new warehouse is absent from the models, so there's nothing to
+        # apply: the previous line keeps its distribution and the new one,
+        # having none to preserve, gets no distribution at all
+        order.warehouse_id = self.warehouse3
+        line2 = self._add_line(order)
+        self.assertEqual(
+            line1.analytic_distribution,
+            {str(self.analytic_account.id): 100.0},
+        )
+        self.assertFalse(line2.analytic_distribution)
