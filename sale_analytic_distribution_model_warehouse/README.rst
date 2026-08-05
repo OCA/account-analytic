@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ==========================================
 Sale Analytic Distribution Model warehouse
 ==========================================
@@ -17,7 +13,7 @@ Sale Analytic Distribution Model warehouse
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
@@ -74,6 +70,12 @@ on each sale order line.
 **Note:** Manual changes to the analytic distribution field are still
 possible if needed.
 
+**Note:** Changing the warehouse of the order may recompute the analytic
+distribution of all its lines. If the new warehouse has a distribution
+model, its result replaces the value of every line, manual values
+included. If it has none, the lines keep the distribution they already
+had.
+
 Bug Tracker
 ===========
 
@@ -99,6 +101,8 @@ Contributors
 
   - Christian Ramos
   - Pedro M. Baeza
+
+- `arielbarreiros96 <https://github.com/arielbarreiros96>`__
 
 Maintainers
 -----------

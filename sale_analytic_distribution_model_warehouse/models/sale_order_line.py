@@ -6,7 +6,7 @@ from odoo import api, models
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
-    @api.depends("order_id.partner_id", "product_id")
+    @api.depends("order_id.partner_id", "product_id", "order_id.warehouse_id")
     def _compute_analytic_distribution(self):
         for line in self:
             line = line.with_context(warehouse_id=line.order_id.warehouse_id.id)
