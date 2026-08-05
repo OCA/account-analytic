@@ -7,7 +7,7 @@
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "category": "Purchases, Accounting",
-    "version": "18.0.1.0.1",
+    "version": "18.0.1.0.2",
     "license": "AGPL-3",
     "depends": ["sale_stock"],
 }
