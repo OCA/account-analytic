@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Hr Expense Analytic Tag",
-    "version": "18.0.1.0.1",
+    "version": "18.0.1.0.2",
     "category": "Accounting & Finance",
     "website": "https://github.com/OCA/account-analytic",
     "author": "Tecnativa, Odoo Community Association (OCA)",
