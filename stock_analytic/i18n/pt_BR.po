@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * stock_analytic
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-19 22:13+0000\n"
+"PO-Revision-Date: 2023-10-28 13:31+0000\n"
+"Last-Translator: Adriano Prado <adrianojprado@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution
+msgid "Analytic Distribution"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_account_analytic_applicability
+msgid "Analytic Plan's Applicabilities"
+msgstr "Aplicabilidades do Plano Analítico"
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_precision
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_precision
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisão Analítica"
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution_import
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution_import
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,help:stock_analytic.field_stock_move__analytic_distribution_import
+#: model:ir.model.fields,help:stock_analytic.field_stock_move_line__analytic_distribution_import
+#: model:ir.model.fields,help:stock_analytic.field_stock_scrap__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__distribution_analytic_account_ids
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
+msgid "Domain"
+msgstr "Dominio"
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__manual_distribution_id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__manual_distribution_id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__manual_distribution_id
+msgid "Manual Distribution"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__stock_picking_type_id
+msgid "Operation Type"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_move_line
+msgid "Product Moves (Stock Move Line)"
+msgstr "Movimentos de produto (Linha de Movimentação de Estoque)"
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_scrap
+msgid "Scrap"
+msgstr "Sucatear"
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_move
+#: model:ir.model.fields.selection,name:stock_analytic.selection__account_analytic_applicability__business_domain__stock_move
+msgid "Stock Move"
+msgstr "Movimento de Estoque"
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_rule
+msgid "Stock Rule"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model,name:stock_analytic.model_stock_picking
+msgid "Transfer"
+msgstr "Transferir"
+
+#~ msgid "Analytic Distribution Search"
+#~ msgstr "Pesquisa de Distribuição Analítica"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítico"
+
+#~ msgid "Analytic Account"
+#~ msgstr "Conta analítica"
+
+#~ msgid "Analytic Tags"
+#~ msgstr "Etiquetas Analíticas"
+
+#~ msgid "Product"
+#~ msgstr "Produto"

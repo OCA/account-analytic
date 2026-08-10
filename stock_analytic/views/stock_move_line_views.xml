@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_move_line_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.tree (in stock_analytic)</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="hide"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
+                />
+            </field>
+        </field>
+    </record>
+
+    <!-- This view is disable because search on "analytic_distribution" is not available yet, so we do queries by hand when we need to search on keys. -->
+    <!-- <record id="stock_move_line_view_search" model="ir.ui.view">
+        <field name="name">stock.move.line.search (in stock_analytic)</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_search" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="analytic_distribution" />
+            </field>
+        </field>
+    </record> -->
+
+    <!-- In picking lines -->
+    <record id="view_move_line_detailed_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.detailed.tree (in stock_analytic)</field>
+        <field name="model">stock.move.line</field>
+        <field
+            name="inherit_id"
+            ref="stock.view_stock_move_line_detailed_operation_tree"
+        />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="hide"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
