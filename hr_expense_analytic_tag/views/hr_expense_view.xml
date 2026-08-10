@@ -11,6 +11,7 @@
                     groups="account_analytic_tag.group_analytic_tags"
                     widget="many2many_tags"
                     options="{'color_field': 'color'}"
+                    readonly="not is_editable"
                 />
             </field>
         </field>
