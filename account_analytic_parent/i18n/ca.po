@@ -1,0 +1,188 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_analytic_parent
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-30 02:40+0000\n"
+"PO-Revision-Date: 2024-05-28 16:40+0000\n"
+"Last-Translator: Santiago Payà <santiagopim@gmail.com>\n"
+"Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: account_analytic_parent
+#. odoo-python
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+msgid "%(name)s - %(partner)s"
+msgstr "%(name)s - %(partner)s"
+
+#. module: account_analytic_parent
+#. odoo-python
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+msgid "%(parent)s / %(own)s"
+msgstr "%(parent)s / %(own)s"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_administratif
+msgid "Administrative"
+msgstr "Administratiu"
+
+#. module: account_analytic_parent
+#: model:ir.model,name:account_analytic_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Compte analític"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__child_ids
+msgid "Child Accounts"
+msgstr "Comptes fills"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_commercial_marketing
+msgid "Commercial & Marketing"
+msgstr "Comercial & Màrqueting"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__complete_name
+msgid "Complete Name"
+msgstr "Nom complet"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_consultancy
+msgid "Consultancy"
+msgstr "Assessorament"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_customers
+msgid "Customers"
+msgstr "Clients"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_development
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_development
+msgid "Development"
+msgstr "En desenvolupament"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_in_house
+msgid "In House"
+msgstr "En l'emplaçament"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_integration
+msgid "Integration"
+msgstr "Integració"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_support_internal
+msgid "Internal"
+msgstr "Intern"
+
+#. module: account_analytic_parent
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_list
+msgid "Name"
+msgstr "Nom"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_online
+msgid "Online"
+msgstr "En línia"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_our_super_product_development
+msgid "Our Super Product Development"
+msgstr "El Nostre Súper Desenvolupament de Producte"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_paid
+msgid "Paid"
+msgstr "Pagat"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_id
+#: model_terms:ir.ui.view,arch_db:account_analytic_parent.view_account_analytic_account_form
+msgid "Parent Analytic Account"
+msgstr "Compte analític pare"
+
+#. module: account_analytic_parent
+#: model:ir.model.fields,field_description:account_analytic_parent.field_account_analytic_account__parent_path
+msgid "Parent Path"
+msgstr "Camí pare"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_partners
+msgid "Partners"
+msgstr "Socis"
+
+#. module: account_analytic_parent
+#. odoo-python
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+msgid "Please activate first parent account %s"
+msgstr "Primer activeu el compte pare %s"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_1
+msgid "Project 1"
+msgstr "Projecte 1"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_2
+msgid "Project 2"
+msgstr "Projecte 2"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p1
+msgid "Seagate P1"
+msgstr "P1 de Seagate"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_seagate_p2
+msgid "Seagate P2"
+msgstr "P2 de Seagate"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_stable
+msgid "Stable"
+msgstr "Estable"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_2_support
+#: model:account.analytic.account,name:account_analytic_parent.analytic_support
+msgid "Support"
+msgstr "Suport"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_journal_trainings
+#: model:account.analytic.account,name:account_analytic_parent.analytic_project_1_trainings
+#: model:account.analytic.account,name:account_analytic_parent.analytic_super_product_trainings
+msgid "Training"
+msgstr "Formació"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_trunk
+msgid "Trunk"
+msgstr "Bagul"
+
+#. module: account_analytic_parent
+#: model:account.analytic.account,name:account_analytic_parent.analytic_unpaid
+msgid "Unpaid"
+msgstr "Impagat"
+
+#. module: account_analytic_parent
+#. odoo-python
+#: code:addons/account_analytic_parent/models/account_analytic_account.py:0
+msgid "You can not create recursive analytic accounts."
+msgstr "No podeu crear comptes analítics recursius."
+
+#, python-format
+#~ msgid "[%(code)s] %(name)s"
+#~ msgstr "[%(code)s] %(name)s"
