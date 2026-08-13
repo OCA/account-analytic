@@ -161,3 +161,100 @@ class TestAccountAnalyticRequired(common.TransactionCase):
         move = line.move_id
         move.action_post()
         self.assertEqual(move.state, "posted")
+
+    # -- full analytic distribution -------------------------------------
+    def _set_full_distribution_required(self, required, account=None):
+        if account is None:
+            account = self.account_sales
+        account.analytic_full_distribution_required = required
+
+    def _second_plan_account(self):
+        plan = self.analytic_plan_obj.create({"name": "test aa plan 2"})
+        return self.analytic_account_obj.create(
+            {"name": "test aa 3 for distribution", "plan_id": plan.id}
+        )
+
+    def test_partial_distribution_allowed_by_default(self):
+        """The historical behaviour: the policy alone accepts 50%."""
+        self._set_analytic_policy("always")
+        line = self._create_move(with_analytic=True)
+        self.assertEqual(sum(line.analytic_distribution.values()), 50.0)
+
+    def test_partial_distribution_refused_when_full_is_required(self):
+        self._set_analytic_policy("always")
+        self._set_full_distribution_required(True)
+        with self.assertRaises(exceptions.ValidationError):
+            self._create_move(with_analytic=True)
+
+    def test_complete_distribution_accepted(self):
+        line = self._create_move(with_analytic=True)
+        self._set_analytic_policy("always")
+        self._set_full_distribution_required(True)
+        line.write(
+            {
+                "analytic_distribution": {
+                    str(self.analytic_account_1.id): 60.0,
+                    str(self.analytic_account_2.id): 40.0,
+                }
+            }
+        )
+        self.assertEqual(sum(line.analytic_distribution.values()), 100.0)
+
+    def test_each_plan_must_be_complete(self):
+        """Two plans, each covering the amount: 200% in total, and valid."""
+        other = self._second_plan_account()
+        line = self._create_move(with_analytic=True)
+        self._set_analytic_policy("always")
+        self._set_full_distribution_required(True)
+        line.write(
+            {
+                "analytic_distribution": {
+                    str(self.analytic_account_1.id): 100.0,
+                    str(other.id): 100.0,
+                }
+            }
+        )
+        self.assertEqual(len(line._analytic_distribution_by_root_plan()), 2)
+
+    def test_one_incomplete_plan_is_enough_to_refuse(self):
+        other = self._second_plan_account()
+        line = self._create_move(with_analytic=True)
+        self._set_analytic_policy("always")
+        self._set_full_distribution_required(True)
+        # Bring the line to a valid state before testing the refusal, so the
+        # savepoint of assertRaises does not flush the previous 50%.
+        line.write({"analytic_distribution": {str(self.analytic_account_1.id): 100.0}})
+        with self.assertRaises(exceptions.ValidationError):
+            line.write(
+                {
+                    "analytic_distribution": {
+                        str(self.analytic_account_1.id): 100.0,
+                        str(other.id): 50.0,
+                    }
+                }
+            )
+
+    def test_no_check_without_a_policy(self):
+        """The flag alone does nothing: it qualifies an existing policy."""
+        self._set_analytic_policy(False)
+        self._set_full_distribution_required(True)
+        self._create_move(with_analytic=True)
+
+    def test_no_check_on_the_never_policy(self):
+        self._set_analytic_policy("never")
+        self._set_full_distribution_required(True)
+        self._create_move(with_analytic=False)
+
+    def test_posted_policy_only_checks_once_posted(self):
+        self._set_analytic_policy("posted")
+        self._set_full_distribution_required(True)
+        line = self._create_move(with_analytic=True)
+        self.assertEqual(line.move_id.state, "draft")
+        with self.assertRaises(exceptions.ValidationError):
+            line.move_id.action_post()
+
+    def test_deleted_analytic_account_is_ignored(self):
+        """A distribution pointing at a removed account must not crash."""
+        line = self._create_move(with_analytic=True)
+        line.write({"analytic_distribution": {"999999999": 100.0}})
+        self.assertEqual(line._analytic_distribution_by_root_plan(), {})
