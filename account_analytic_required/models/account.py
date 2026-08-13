@@ -1,9 +1,13 @@
 # Copyright 2011-2020 Akretion - Alexis de Lattre
 # Copyright 2016-2020 Camptocamp SA
 # Copyright 2020 Druidoo - Iván Todorovich
+# Copyright 2026 PopSolutions
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
 from odoo import _, api, exceptions, fields, models
+from odoo.tools import float_compare
+
+FULL_DISTRIBUTION = 100.0
 
 
 class AccountAccount(models.Model):
@@ -29,11 +33,26 @@ class AccountAccount(models.Model):
             "account is present."
         ),
     )
+    analytic_full_distribution_required = fields.Boolean(
+        string="Require full analytic distribution",
+        help=(
+            "When the analytic policy requires an analytic account, also "
+            "require the distribution to be complete: every analytic plan "
+            "used on the line must total 100%.\n"
+            "Without this, a line distributed at 60% satisfies the policy and "
+            "the remaining 40% of the amount stays unallocated."
+        ),
+    )
 
     def _get_analytic_policy(self):
         """Extension point to obtain analytic policy for an account"""
         self.ensure_one()
         return self.analytic_policy
+
+    def _get_analytic_full_distribution_required(self):
+        """Extension point to obtain the full distribution requirement"""
+        self.ensure_one()
+        return self.analytic_full_distribution_required
 
 
 class AccountMove(models.Model):
@@ -47,6 +66,44 @@ class AccountMove(models.Model):
 
 class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
+
+    def _analytic_distribution_by_root_plan(self):
+        """Total percentage per root analytic plan, as core computes it."""
+        self.ensure_one()
+        totals = {}
+        analytic_accounts = self.env["account.analytic.account"].browse(
+            int(account_id) for account_id in (self.analytic_distribution or {})
+        )
+        for analytic_account in analytic_accounts.exists():
+            percentage = self.analytic_distribution[str(analytic_account.id)]
+            root_plan = analytic_account.root_plan_id
+            totals[root_plan] = totals.get(root_plan, 0.0) + percentage
+        return totals
+
+    def _check_analytic_full_distribution_msg(self):
+        """Message when the distribution is present but does not add up.
+
+        Checked per root plan rather than on the sum of the whole
+        distribution: a line split between a department plan and a project
+        plan legitimately adds up to 200%, while each plan on its own has to
+        cover the full amount.
+        """
+        self.ensure_one()
+        precision = self.env["decimal.precision"].precision_get("Percentage Analytic")
+        for root_plan, total in self._analytic_distribution_by_root_plan().items():
+            if float_compare(total, FULL_DISTRIBUTION, precision_digits=precision) != 0:
+                return _(
+                    "Account '%(account)s' requires a full analytic "
+                    "distribution, but the account move line with label "
+                    "'%(move)s' only distributes %(percentage)s%% of the "
+                    "analytic plan '%(plan)s'."
+                ) % {
+                    "account": self.account_id.display_name,
+                    "move": self.name or "",
+                    "percentage": total,
+                    "plan": root_plan.display_name,
+                }
+        return None
 
     def _check_analytic_required_msg(self):
         self.ensure_one()
@@ -91,6 +148,15 @@ class AccountMoveLine(models.Model):
                 "account": self.account_id.display_name,
                 "move": self.name or "",
             }
+        if (
+            self.analytic_distribution
+            and self.account_id._get_analytic_full_distribution_required()
+            and (
+                analytic_policy == "always"
+                or (analytic_policy == "posted" and self.move_id.state == "posted")
+            )
+        ):
+            return self._check_analytic_full_distribution_msg()
         return None
 
     @api.constrains("analytic_distribution", "account_id", "debit", "credit")

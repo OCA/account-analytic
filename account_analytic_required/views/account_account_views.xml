@@ -16,6 +16,11 @@
                     name="analytic_policy"
                     groups="analytic.group_analytic_accounting"
                 />
+                <field
+                    name="analytic_full_distribution_required"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{'invisible': [('analytic_policy', 'not in', ('always', 'posted'))]}"
+                />
             </field>
         </field>
     </record>
@@ -29,6 +34,11 @@
                 <field
                     name="analytic_policy"
                     groups="analytic.group_analytic_accounting"
+                />
+                <field
+                    name="analytic_full_distribution_required"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{'invisible': [('analytic_policy', 'not in', ('always', 'posted'))]}"
                 />
             </field>
         </field>

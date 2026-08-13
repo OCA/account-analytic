@@ -11,3 +11,6 @@
 
     * Nguyễn Minh Chiến <chien@trobz.com>
 * Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
+* `PopSolutions <https://popsolutions.co>`__:
+
+  * Marcos Mendez <mendez.foto@gmail.com>
