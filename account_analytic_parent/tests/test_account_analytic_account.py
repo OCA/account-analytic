@@ -125,3 +125,45 @@ class TestAccountAnalyticRecursion(TransactionCase):
         display_name = "[%s] parent aa / son aa" % self.analytic_son.code
         self.assertEqual(self.analytic_son.complete_name, "parent aa / son aa")
         self.assertEqual(self.analytic_son.display_name, display_name)
+
+    def test_debit_credit_balance_date_range(self):
+        self.analytic_line_obj.create(
+            {
+                "name": "Analytic line 2025",
+                "amount": 200,
+                "account_id": self.analytic_son.id,
+                "date": "2025-01-01",
+            }
+        )
+        self.analytic_line_obj.create(
+            {
+                "name": "Analytic line 2026 credit",
+                "amount": 300,
+                "account_id": self.analytic_son.id,
+                "date": "2026-06-01",
+            }
+        )
+        self.analytic_line_obj.create(
+            {
+                "name": "Analytic line 2026 debit",
+                "amount": -100,
+                "account_id": self.analytic_son.id,
+                "date": "2026-07-01",
+            }
+        )
+        self.analytic_line_obj.create(
+            {
+                "name": "Analytic line 2027",
+                "amount": 400,
+                "account_id": self.analytic_son.id,
+                "date": "2027-01-01",
+            }
+        )
+        account = self.analytic_parent1.with_context(
+            from_date="2026-01-01",
+            to_date="2026-12-31",
+        )
+        account._compute_debit_credit_balance()
+        self.assertEqual(account.credit, 450)
+        self.assertEqual(account.debit, 100)
+        self.assertEqual(account.balance, 350)

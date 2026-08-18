@@ -49,7 +49,10 @@ class AccountAnalyticAccount(models.Model):
         # Re-compute only accounts with children
         for account in self.filtered("child_ids"):
             domain = [("account_id", "child_of", account.id)]
-
+            if self._context.get("from_date", False):
+                domain.append(("date", ">=", self._context["from_date"]))
+            if self._context.get("to_date", False):
+                domain.append(("date", "<=", self._context["to_date"]))
             credit_groups = AccountAnalyticLine.read_group(
                 domain=domain + [("amount", ">=", 0.0)],
                 fields=["currency_id", "amount"],
