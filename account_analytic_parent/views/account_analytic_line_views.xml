@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- Include child accounts when browsing analytic lines from an account. -->
+    <record model="ir.actions.act_window" id="analytic.account_analytic_line_action">
+        <field name="domain">[('auto_account_id', 'child_of', active_id)]</field>
+    </record>
+</odoo>
