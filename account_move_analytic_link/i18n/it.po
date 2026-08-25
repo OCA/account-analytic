@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_analytic_link
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-10-31 09:36+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: account_move_analytic_link
+#: model:ir.model,name:account_move_analytic_link.model_account_move_line
+msgid "Journal Item"
+msgstr "Movimento contabile"
+
+#. module: account_move_analytic_link
+#: model_terms:ir.ui.view,arch_db:account_move_analytic_link.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_analytic_link.account_move_line_tree_view
+msgid "Open analytic items"
+msgstr "Apri registrazione contabile"
