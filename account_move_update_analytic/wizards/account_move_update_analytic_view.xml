@@ -23,6 +23,7 @@
                         <field name="account_id" invisible="1" />
                         <field name="move_type" invisible="1" />
                         <field name="amount" invisible="1" />
+                        <field name="active_model" invisible="1" />
                         <field
                             name="analytic_distribution"
                             widget="analytic_distribution"
