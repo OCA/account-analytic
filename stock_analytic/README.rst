@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ==============
 Stock Analytic
 ==============
@@ -17,7 +13,7 @@ Stock Analytic
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
@@ -46,6 +42,10 @@ Configuration
 As necessary, go to *Invoicing > Configuration > Analytic Plans*, open
 the relevant record and update the applicability for 'Stock Move'.
 
+To assign analytic distribution also to journal items for the stock
+valuation account, enable *Stock Analytic On Valuation* in *Inventory >
+Configuration > Settings > Valuation*.
+
 Usage
 =====
 
@@ -64,8 +64,9 @@ Assigned Journal Items created from Stock Move with Analytic Account
 If stock move automatically create journal entry, the journal entry will
 contain journal items with following rule:
 
-1. Journal item with account equal to product's valuation account will
-   not be assigned to any analytic account.
+1. By default, journal item with account equal to product's valuation
+   account will not be assigned to any analytic account. This behavior
+   can be changed in the settings (see Configuration).
 2. Journal item with account different to product's valuation account
    will be assigned to an analytic account according to the stock move's
    analytic account.
@@ -109,27 +110,27 @@ Authors
 Contributors
 ------------
 
-- Hanane ELKHAL <hanane@julius.fr>
-- Yvan Patry <yvan@julius.fr>
-- Pierre <pierre@julius.fr>
-- Mathieu VATEL <mathieu@julius.fr>
-- Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
-- Andhitia Rama <andhitia.r@gmail.com>
-- Michael Viriyananda <viriyananda.michael@gmail.com>
-- Aaron Henriquez <ahenriquez@forgeflow.com>
-- Jared Kipe <jared@hibou.io>
-- Alan Ramos <alan.ramos@jarsa.com.mx>
-- Mantas Šniukas <mantas@vialaurea.lt>
-- Marcos Oitabén <marcos.oitaben@dynapps.eu>
-- `Quartile <https://www.quartile.co>`__:
+-  Hanane ELKHAL <hanane@julius.fr>
+-  Yvan Patry <yvan@julius.fr>
+-  Pierre <pierre@julius.fr>
+-  Mathieu VATEL <mathieu@julius.fr>
+-  Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
+-  Andhitia Rama <andhitia.r@gmail.com>
+-  Michael Viriyananda <viriyananda.michael@gmail.com>
+-  Aaron Henriquez <ahenriquez@forgeflow.com>
+-  Jared Kipe <jared@hibou.io>
+-  Alan Ramos <alan.ramos@jarsa.com.mx>
+-  Mantas Šniukas <mantas@vialaurea.lt>
+-  Marcos Oitabén <marcos.oitaben@dynapps.eu>
+-  `Quartile <https://www.quartile.co>`__:
 
-  - Yoshi Tashiro
+   -  Yoshi Tashiro
 
-- `APSL-Nagarro <https://www.apsl.tech>`__
+-  `APSL-Nagarro <https://www.apsl.tech>`__
 
-  - Antoni Marroig <amarroig@apsl.net>
+   -  Antoni Marroig <amarroig@apsl.net>
 
-- Saran Lim. <saranl@ecosoft.co.th>
+-  Saran Lim. <saranl@ecosoft.co.th>
 
 Maintainers
 -----------
