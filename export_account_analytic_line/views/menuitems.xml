@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Analytic Items -->
+    <menuitem
+        id="account.menu_action_analytic_lines_tree"
+        name="Analytic Items"
+        parent="account.menu_finance_entries"
+        sequence="10"
+    />
+</odoo>
