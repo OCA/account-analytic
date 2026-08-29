@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_analytic_line_tree" model="ir.ui.view">
+        <field name="name">account.analytic.line.list.profit.cost.category</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <field name="amount" position="after">
+                <field name="profit_cost_category" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_form" model="ir.ui.view">
+        <field name="name">account.analytic.line.form.profit.cost.category</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
+        <field name="arch" type="xml">
+            <field name="amount" position="after">
+                <field name="profit_cost_category" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_line_filter" model="ir.ui.view">
+        <field name="name">account.analytic.line.filter.profit.cost.category</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field name="arch" type="xml">
+            <filter name="group_date" position="before">
+                <filter
+                    name="group_profit_cost_category"
+                    string="Profit/Cost Category"
+                    context="{'group_by': 'profit_cost_category'}"
+                />
+            </filter>
+            <field name="name" position="after">
+                <field name="profit_cost_category" />
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="indirect_cost_distribution_model_view_tree" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.model.list</field>
+        <field name="model">indirect.cost.distribution.model</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="not active">
+                <field name="name" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <field name="distribution_method" />
+                <field name="indirect_cost_plan_ids" widget="many2many_tags" />
+                <field name="profit_centre_plan_ids" widget="many2many_tags" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="indirect_cost_distribution_model_view_form" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.model.form</field>
+        <field name="model">indirect.cost.distribution.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="bg-danger"
+                        invisible="active"
+                    />
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="Distribution Model Name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <!--
+                                Not gated by groups="base.group_multi_company":
+                                that would strip the node from the arch for
+                                single-company users, so the default would not
+                                fire and _compute_allowed_plan_ids would see
+                                an empty company_id on "New".
+                            -->
+                            <field name="company_id" />
+                            <field name="distribution_method" />
+                            <field name="active" invisible="1" />
+                            <field
+                                name="allowed_indirect_cost_plan_ids"
+                                invisible="1"
+                            />
+                            <field
+                                name="allowed_profit_centre_plan_ids"
+                                invisible="1"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Indirect Cost Plans" name="indirect_cost_plans">
+                            <field
+                                name="indirect_cost_plan_ids"
+                                widget="many2many_tags"
+                                domain="[('id', 'in', allowed_indirect_cost_plan_ids)]"
+                            />
+                            <p class="text-muted">
+                                Select the analytic plans containing indirect costs
+                                to distribute. These must be under the indirect
+                                costs root plan configured in company settings.
+                            </p>
+                        </page>
+                        <page string="Profit Centre Plans" name="profit_centre_plans">
+                            <field
+                                name="profit_centre_plan_ids"
+                                widget="many2many_tags"
+                                domain="[('id', 'in', allowed_profit_centre_plan_ids)]"
+                            />
+                            <p class="text-muted">
+                                Select the analytic plans representing profit
+                                centres where costs will be distributed. Costs
+                                will be distributed proportionally based on the
+                                selected distribution method.
+                            </p>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="indirect_cost_distribution_model_view_search" model="ir.ui.view">
+        <field name="name">indirect.cost.distribution.model.search</field>
+        <field name="model">indirect.cost.distribution.model</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="distribution_method" />
+                <separator />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id="indirect_cost_distribution_model_action" model="ir.actions.act_window">
+        <field name="name">Distribution Models</field>
+        <field name="res_model">indirect.cost.distribution.model</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first distribution model
+            </p>
+            <p>
+                Distribution models define how indirect costs from specific
+                analytic plans are distributed to profit centre plans based on
+                timesheet hours or profits.
+            </p>
+        </field>
+    </record>
+</odoo>
