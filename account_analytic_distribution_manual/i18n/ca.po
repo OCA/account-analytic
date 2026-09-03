@@ -66,6 +66,7 @@ msgstr "Precisión Analítica"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense_split__analytic_distribution_import
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_maintenance_equipment__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
 msgid "Analytic distribution (importable)"
@@ -110,6 +111,7 @@ msgstr "Creat el"
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_analytic_mixin__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_hr_expense__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_hr_expense_split__analytic_distribution_import
+#: model:ir.model.fields,help:account_analytic_distribution_manual.field_maintenance_equipment__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_purchase_order_line__analytic_distribution_import
 #: model:ir.model.fields,help:account_analytic_distribution_manual.field_sale_order_line__analytic_distribution_import
 msgid ""
@@ -177,6 +179,7 @@ msgstr "Distribucions Analítiques Manuals"
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_analytic_mixin__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_hr_expense_split__manual_distribution_id
+#: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_maintenance_equipment__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_purchase_order_line__manual_distribution_id
 #: model:ir.model.fields,field_description:account_analytic_distribution_manual.field_sale_order_line__manual_distribution_id
 msgid "Manual Distribution"
