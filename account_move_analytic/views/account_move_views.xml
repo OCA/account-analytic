@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_invoice_tree_analytic" model="ir.ui.view">
+        <field name="name">account.invoice.list - Account Move Analytic</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="arch" type="xml">
+            <field name="invoice_origin" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    optional="hide"
+                    readonly="state in ('cancel', 'posted')"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_move_form_analytic" model="ir.ui.view">
+        <field name="name">account.move.form - Account Move Analytic</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <field name="invoice_date" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'account_field': 'account_id'}"
+                    readonly="state in ('cancel', 'posted')"
+                    invisible="move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')"
+                />
+            </field>
+            <field name="invoice_line_ids" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        "default_analytic_distribution": analytic_distribution,
+                    }
+                </attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
