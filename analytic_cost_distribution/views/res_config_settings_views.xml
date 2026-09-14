@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.analytic.cost.distribution</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='analytic']" position="inside">
+                <setting
+                    id="indirect_costs_root_plans"
+                    string="Indirect Costs Analytic Plans"
+                    help="Analytic plans whose accounts (and the accounts of their children plans) are considered indirect costs."
+                >
+                    <field
+                        name="indirect_costs_root_plan_ids"
+                        widget="many2many_tags"
+                    />
+                </setting>
+                <setting
+                    id="profit_centres_root_plans"
+                    string="Profit Centres Analytic Plans"
+                    help="Analytic plans whose accounts (and the accounts of their children plans) are considered profit centres."
+                >
+                    <field
+                        name="profit_centres_root_plan_ids"
+                        widget="many2many_tags"
+                    />
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
