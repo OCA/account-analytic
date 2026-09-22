@@ -70,7 +70,6 @@
         <field name="arch" type="xml">
             <field name="date" position="after">
                 <field name="department_id" />
-                <field name="account_department_id" />
             </field>
             <xpath expr="//filter[@name='group_date']" position="after">
                 <filter
@@ -82,11 +81,6 @@
                     name="department"
                     string="Department"
                     context="{'group_by':'department_id'}"
-                />
-                <filter
-                    name="account_department"
-                    string="Account Department"
-                    context="{'group_by':'account_department_id'}"
                 />
             </xpath>
         </field>
