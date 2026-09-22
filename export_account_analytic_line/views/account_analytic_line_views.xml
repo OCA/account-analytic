@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_analytic_line_form_inherit" model="ir.ui.view">
+        <field name="name">account.analytic.line.form.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field
+            name="inherit_id"
+            ref="account.view_account_analytic_line_form_inherit_account"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='analytic_item']/.." position="before">
+                <div class="oe_button_box" name="button_box">
+                    <!-- Journal Entry button -->
+                    <button
+                        name="button_open_journal_entry"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-bars"
+                        invisible="not move_line_id"
+                    >
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Journal Entry</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record
+        id="analytic.account_analytic_line_action_entries"
+        model="ir.actions.act_window"
+    >
+        <field name="context">{
+            'search_default_group_by_financial_account': 2,
+            'search_default_group_by_analytic_account': 3,
+            'search_default_fiscal_date': 1,
+            'create': 0,
+            'edit': 0,
+            'delete': 0
+            }
+        </field>
+    </record>
+</odoo>
