@@ -1,0 +1,2 @@
+- ForgeFlow S.L. <https://www.forgeflow.com>
+  - Jordi Sisquella <joan.sisquella@forgeflow.com>
