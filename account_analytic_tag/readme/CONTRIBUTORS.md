@@ -4,3 +4,5 @@
 
 - [APSL - Nagarro](https://apsl.tech/es/):
   - Miquel Pascual
+
+- Simone Rubino
