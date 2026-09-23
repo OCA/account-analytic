@@ -4,7 +4,7 @@
 import json
 from datetime import datetime, time
 
-from odoo import Command, _, api, fields, models
+from odoo import Command, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -71,13 +71,13 @@ class MrpWipAccounting(models.TransientModel):
             != 0
         ):
             raise UserError(
-                _(
+                self.env._(
                     "Please make sure the total credit amount equals "
                     "the total debit amount."
                 )
             )
         if self.reversal_date <= self.date:
-            raise UserError(_("Reversal date must be after the posting date."))
+            raise UserError(self.env._("Reversal date must be after the posting date."))
         move_line_vals = []
         for line in self.line_ids:
             vals = {
@@ -106,7 +106,7 @@ class MrpWipAccounting(models.TransientModel):
         move._reverse_moves(
             default_values_list=[
                 {
-                    "ref": _("Reversal of: %s", self.reference),
+                    "ref": self.env._("Reversal of: %s", self.reference),
                     "wip_production_ids": self.mo_ids.ids,
                     "date": self.reversal_date,
                 }

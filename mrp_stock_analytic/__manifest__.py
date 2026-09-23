@@ -3,7 +3,7 @@
 {
     "name": "MRP Stock Analytic",
     "summary": "Adds analytic distribution in manufacturing order",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "Quartile, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "category": "Manufacturing/Manufacturing",
