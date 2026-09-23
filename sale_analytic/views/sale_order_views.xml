@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sale_order_view_form_inherit_sale_analytic" model="ir.ui.view">
+        <field name="name">sale.order.form (sale_analytic)</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='partner_details']" position="inside">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    readonly="state == 'cancel' or locked"
+                />
+            </xpath>
+            <field name="order_line" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        "default_analytic_distribution": analytic_distribution,
+                    }
+                </attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+- Laetitia Gangloff \<<laetitia.gangloff@acsone.eu>\>
+- Cédric Pigeon \<<cedric.pigeon@acsone.eu>\>
+- Pimolnat Suntian \<<pimolnats@ecosoft.co.th>\>
+- [Jarsa](https://www.jarsa.com)
+  - Alan Ramos
+- Lois Rilo \<<lois.rilo@forgeflow.com>\>
+- [Quartile](https://www.quartile.co):
+  - Aung Ko Ko Lin
+- [Exo Software](https://www.exosoftware.pt):
+  - André Leite \<<andre.leite@exo.pt>\>
+  - Fábio Paiva \<<fabio.paiva@exo.pt>\>
