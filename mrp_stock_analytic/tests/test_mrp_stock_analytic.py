@@ -3,18 +3,27 @@
 
 from odoo import Command
 from odoo.exceptions import ValidationError
-from odoo.tests import Form
+from odoo.tests import Form, tagged
 
-from odoo.addons.stock_analytic.tests.test_stock_picking import CommonStockPicking
+from odoo.addons.stock_analytic.tests.common import CommonStockPicking
 
 
+@tagged("post_install", "-at_install")
 class TestMrpStockAnalytic(CommonStockPicking):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env.user.groups_id += cls.env.ref("analytic.group_analytic_accounting")
+        cls.env.user.group_ids += cls.env.ref("analytic.group_analytic_accounting")
         cls.stock_location_id = cls.env["ir.model.data"]._xmlid_to_res_id(
             "stock.stock_location_stock"
+        )
+        cls.production_account = cls.env["account.account"].create(
+            {
+                "name": "Test production",
+                "code": "tprod",
+                "account_type": "expense",
+                "company_ids": [Command.link(cls.company.id)],
+            }
         )
         cls.product_A = cls.env["product.product"].create(
             {
@@ -57,6 +66,9 @@ class TestMrpStockAnalytic(CommonStockPicking):
         )
         quants.action_apply_inventory()
         cls.production = cls._create_production(2)
+        cls.production.production_location_id.valuation_account_id = (
+            cls.production_account
+        )
         cls.wip_account_id = cls.env.company.account_production_wip_account_id.id
 
     @classmethod
@@ -77,7 +89,6 @@ class TestMrpStockAnalytic(CommonStockPicking):
     def _create_move(self, production, move_type="raw", **kwargs):
         if move_type == "raw":
             vals = {
-                "name": self.product_B.name,
                 "product_id": self.product_B.id,
                 "product_uom_qty": 1,
                 "product_uom": self.product_B.uom_id.id,
@@ -87,7 +98,6 @@ class TestMrpStockAnalytic(CommonStockPicking):
             }
         else:
             vals = {
-                "name": self.product_A.name,
                 "product_id": self.product_A.id,
                 "product_uom_qty": 1,
                 "product_uom": self.product_A.uom_id.id,
@@ -130,18 +140,18 @@ class TestMrpStockAnalytic(CommonStockPicking):
         self.assertNotEqual(production.analytic_distribution, False)
         production.button_mark_done()
         product_A_move_lines = (
-            self.env["account.move"]
-            .search([("stock_move_id", "=", production.move_finished_ids.id)])
-            .line_ids
+            production.move_finished_ids.account_move_id.line_ids.filtered(
+                lambda line: line.product_id == self.product_A
+            )
         )
         self.assertEqual(len(product_A_move_lines), 2)
         for move_line in product_A_move_lines:
             # No analytic distribution for journal items of the produced product.
             self.assertEqual(move_line.analytic_distribution, False)
         product_B_move_lines = (
-            self.env["account.move"]
-            .search([("stock_move_id", "=", production.move_raw_ids.id)])
-            .line_ids
+            production.move_raw_ids.account_move_id.line_ids.filtered(
+                lambda line: line.product_id == self.product_B
+            )
         )
         self.assertEqual(len(product_B_move_lines), 2)
         for move_line in product_B_move_lines:
@@ -232,7 +242,9 @@ class TestMrpStockAnalytic(CommonStockPicking):
         """Test WIP wizard correctly groups MOs by analytic distribution and
         creates separate WIP journal lines with respective distributions."""
         # Create a second analytic account for a different distribution
-        analytic_plan = self.env["account.analytic.plan"].create({"name": "Test Plan"})
+        analytic_plan = self.env["account.analytic.plan"].create(
+            {"name": "Test Plan 2"}
+        )
         analytic_account_2 = self.env["account.analytic.account"].create(
             {"name": "Test Analytic 2", "plan_id": analytic_plan.id}
         )
@@ -332,9 +344,9 @@ class TestMrpStockAnalytic(CommonStockPicking):
         production.analytic_distribution = self.analytic_distribution
         production.button_mark_done()
         finished_move_lines = (
-            self.env["account.move"]
-            .search([("stock_move_id", "in", production.move_finished_ids.ids)])
-            .line_ids
+            production.move_finished_ids.account_move_id.line_ids.filtered(
+                lambda line: line.product_id == self.product_A
+            )
         )
         self.assertTrue(finished_move_lines)
         for move_line in finished_move_lines:
