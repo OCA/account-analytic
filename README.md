@@ -40,6 +40,7 @@ addon | version | maintainers | summary
 [analytic_partner](analytic_partner/) | 18.0.1.0.0 |  | Search and group analytic entries by partner
 [hr_expense_analytic_tag](hr_expense_analytic_tag/) | 18.0.1.0.2 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Hr Expense Analytic Tag
 [hr_timesheet_analytic_tag](hr_timesheet_analytic_tag/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Hr Timesheet Analytic Tag
+[mrp_stock_analytic](mrp_stock_analytic/) | 18.0.1.0.0 | <a href='https://github.com/yostashiro'><img src='https://github.com/yostashiro.png' width='32' height='32' style='border-radius:50%;' alt='yostashiro'/></a> <a href='https://github.com/aungkokolin1997'><img src='https://github.com/aungkokolin1997.png' width='32' height='32' style='border-radius:50%;' alt='aungkokolin1997'/></a> | Adds analytic distribution in manufacturing order
 [pos_analytic_by_config](pos_analytic_by_config/) | 18.0.1.0.1 |  | Use analytic account defined on POS configuration for POS orders
 [product_analytic](product_analytic/) | 18.0.1.0.0 |  | Add analytic distribution models on products and product categories
 [purchase_analytic](purchase_analytic/) | 18.0.1.0.0 |  | Purchase Analytic
