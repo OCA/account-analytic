@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="sequence_indirect_cost_distribution_operation" model="ir.sequence">
+        <field name="name">Indirect Cost Distribution Operation</field>
+        <field name="code">indirect.cost.distribution.operation</field>
+        <field name="prefix">ICDO/</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False" />
+    </record>
+</odoo>

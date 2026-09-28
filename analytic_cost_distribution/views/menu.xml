@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="menu_indirect_cost_distribution_model"
+        name="Indirect Cost Distribution Models"
+        parent="account.menu_analytic_accounting"
+        action="indirect_cost_distribution_model_action"
+        groups="analytic.group_analytic_accounting"
+        sequence="10"
+    />
+
+    <menuitem
+        id="menu_indirect_cost_distribution_operation"
+        name="Cost Distribution"
+        parent="account.menu_finance_entries"
+        action="indirect_cost_distribution_operation_action"
+        groups="analytic.group_analytic_accounting"
+        sequence="32"
+    />
+</odoo>
