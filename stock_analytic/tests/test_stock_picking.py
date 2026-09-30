@@ -183,6 +183,25 @@ class TestStockPicking(CommonStockPicking):
         self._check_analytic_account_no_error(picking)
         self._check_analytic_consistency(picking)
 
+    def test_outgoing_picking_with_analytic_on_valuation(self):
+        self.env.company.stock_analytic_on_valuation = True
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_distribution,
+        )
+        self._update_qty_on_hand_product(self.product, 1)
+        self._confirm_picking_no_error(picking)
+        self._picking_done_no_error(picking)
+        self._check_account_move_no_error(picking)
+        move = picking.move_ids[0]
+        acc_lines = self.env["account.move.line"].search(
+            [["move_id.ref", "=", picking.name]]
+        )
+        for acc_line in acc_lines:
+            self.assertEqual(acc_line.analytic_distribution, move.analytic_distribution)
+
     def test_outgoing_picking_without_analytic_optional(self):
         # Create a general optional applicability for stock moves.
         self._create_analytic_applicability()

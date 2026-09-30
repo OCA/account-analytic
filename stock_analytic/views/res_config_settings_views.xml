@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.stock_analytic</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock_account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <setting id="group_lot_on_invoice" position="after">
+                <setting
+                    id="stock_analytic_on_valuation"
+                    help="Assign analytic distribution to journal items for the stock valuation account."
+                >
+                    <field name="stock_analytic_on_valuation" />
+                </setting>
+            </setting>
+        </field>
+    </record>
+</odoo>
