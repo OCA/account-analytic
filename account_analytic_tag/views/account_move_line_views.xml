@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ ~ Copyright 2025 Simone Rubino
+ ~ License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
 <odoo>
     <record id="view_move_line_tree" model="ir.ui.view">
         <field name="name">account.move.line.tree</field>
@@ -13,6 +18,30 @@
                     options="{'color_field': 'color'}"
                 />
             </field>
+        </field>
+    </record>
+
+    <record id="view_account_move_line_filter" model="ir.ui.view">
+        <field name="name">Add analytic tags to Journal Item search view</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account.view_account_move_line_filter" />
+        <field name="arch" type="xml">
+            <search position="inside">
+                <field
+                    name="analytic_tag_ids"
+                    groups="account_analytic_tag.group_analytic_tags"
+                />
+            </search>
+            <group position="inside">
+                <filter
+                    string="Analytic Tags"
+                    name="group_by_analytic_tags"
+                    context="{
+                        'group_by': 'analytic_tag_ids',
+                    }"
+                    groups="account_analytic_tag.group_analytic_tags"
+                />
+            </group>
         </field>
     </record>
 </odoo>
