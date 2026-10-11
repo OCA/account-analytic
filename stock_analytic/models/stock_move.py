@@ -70,11 +70,14 @@ class StockMove(models.Model):
         operation type.
         """
         self.ensure_one()
-        if self._is_in() and self._is_returned(valued_type="in"):
-            return False
-        elif self._is_out() and self._is_returned(valued_type="out"):
-            return False
-        elif self.company_id.anglo_saxon_accounting and self._is_dropshipped_returned():
+        if (
+            self._is_in()
+            and self._is_returned(valued_type="in")
+            or self._is_out()
+            and self._is_returned(valued_type="out")
+            or self.company_id.anglo_saxon_accounting
+            and self._is_dropshipped_returned()
+        ):
             return False
         return True
 
@@ -84,12 +87,10 @@ class StockMove(models.Model):
             if not move._need_validate_distribution():
                 continue
             move._validate_distribution(
-                **{
-                    "product": move.product_id.id,
-                    "picking_type": move.picking_type_id.id,
-                    "business_domain": "stock_move",
-                    "company_id": move.company_id.id,
-                }
+                product=move.product_id.id,
+                picking_type=move.picking_type_id.id,
+                business_domain="stock_move",
+                company_id=move.company_id.id,
             )
         return super()._action_done(cancel_backorder=cancel_backorder)
 

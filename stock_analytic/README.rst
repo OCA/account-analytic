@@ -109,27 +109,27 @@ Authors
 Contributors
 ------------
 
-- Hanane ELKHAL <hanane@julius.fr>
-- Yvan Patry <yvan@julius.fr>
-- Pierre <pierre@julius.fr>
-- Mathieu VATEL <mathieu@julius.fr>
-- Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
-- Andhitia Rama <andhitia.r@gmail.com>
-- Michael Viriyananda <viriyananda.michael@gmail.com>
-- Aaron Henriquez <ahenriquez@forgeflow.com>
-- Jared Kipe <jared@hibou.io>
-- Alan Ramos <alan.ramos@jarsa.com.mx>
-- Mantas Šniukas <mantas@vialaurea.lt>
-- Marcos Oitabén <marcos.oitaben@dynapps.eu>
-- `Quartile <https://www.quartile.co>`__:
+-  Hanane ELKHAL <hanane@julius.fr>
+-  Yvan Patry <yvan@julius.fr>
+-  Pierre <pierre@julius.fr>
+-  Mathieu VATEL <mathieu@julius.fr>
+-  Fabio Vílchez <fabio.vilchez@clearcorp.co.cr>
+-  Andhitia Rama <andhitia.r@gmail.com>
+-  Michael Viriyananda <viriyananda.michael@gmail.com>
+-  Aaron Henriquez <ahenriquez@forgeflow.com>
+-  Jared Kipe <jared@hibou.io>
+-  Alan Ramos <alan.ramos@jarsa.com.mx>
+-  Mantas Šniukas <mantas@vialaurea.lt>
+-  Marcos Oitabén <marcos.oitaben@dynapps.eu>
+-  `Quartile <https://www.quartile.co>`__:
 
-  - Yoshi Tashiro
+   -  Yoshi Tashiro
 
-- `APSL-Nagarro <https://www.apsl.tech>`__
+-  `APSL-Nagarro <https://www.apsl.tech>`__
 
-  - Antoni Marroig <amarroig@apsl.net>
+   -  Antoni Marroig <amarroig@apsl.net>
 
-- Saran Lim. <saranl@ecosoft.co.th>
+-  Saran Lim. <saranl@ecosoft.co.th>
 
 Maintainers
 -----------
