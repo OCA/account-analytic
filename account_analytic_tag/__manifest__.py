@@ -3,19 +3,19 @@
 
 {
     "name": "Account Analytic Tag",
-    "version": "19.0.1.0.1",
+    "version": "20.0.1.0.0",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "category": "Account",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["account", "analytic"],
     "data": [
         "security/analytic_security.xml",
-        "security/ir.model.access.csv",
         "views/account_analytic_line_views.xml",
         "views/account_analytic_tag_views.xml",
         "views/account_move_line_views.xml",
         "views/account_move_views.xml",
         "views/res_config_settings_views.xml",
+        "security/ir.access.csv",
     ],
     "license": "AGPL-3",
     "installable": True,
