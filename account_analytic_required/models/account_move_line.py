@@ -25,7 +25,7 @@ class AccountMoveLine(models.Model):
             )
         elif analytic_policy == "never" and (self.analytic_distribution):
             analytic_account = self.analytic_distribution
-            analytic_acc_ids = [int(k) for k in analytic_account.keys()]
+            analytic_acc_ids = [int(k) for k in analytic_account]
             analytic_accs = self.env["account.analytic.account"].browse(
                 analytic_acc_ids
             )

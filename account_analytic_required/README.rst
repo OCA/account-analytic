@@ -77,33 +77,33 @@ Authors
 Contributors
 ------------
 
-- Alexis de Lattre <alexis.delattre@akretion.com>
+-  Alexis de Lattre <alexis.delattre@akretion.com>
 
-- Stéphane Bidoul
+-  Stéphane Bidoul
 
-- Stefan Rijnhart
+-  Stefan Rijnhart
 
-- Laetitia Gangloff
+-  Laetitia Gangloff
 
-- Luc De Meyer, Noviat <info@noviat.com>
+-  Luc De Meyer, Noviat <info@noviat.com>
 
-- Yannick Vaucher <yannick.vaucher@camptocamp.com>
+-  Yannick Vaucher <yannick.vaucher@camptocamp.com>
 
-- Akim Juillerat <akim.juillerat@camptocamp.com>
+-  Akim Juillerat <akim.juillerat@camptocamp.com>
 
-- Raf Ven <raf.ven@dynapps.be>
+-  Raf Ven <raf.ven@dynapps.be>
 
-- Iván Todorovich <ivan.todorovich@druidoo.io>
+-  Iván Todorovich <ivan.todorovich@druidoo.io>
 
-- `Trobz <https://trobz.com>`__:
+-  `Trobz <https://trobz.com>`__:
 
-     - Nguyễn Minh Chiến <chien@trobz.com>
+      -  Nguyễn Minh Chiến <chien@trobz.com>
 
-- Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
+-  Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
 
-- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
 
-  - Bhavesh Heliconia
+   -  Bhavesh Heliconia
 
 Maintainers
 -----------
