@@ -6,9 +6,7 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-
-from odoo import Command
+from odoo import Command, fields
 
 from odoo.addons.base.tests.common import BaseCommon
 
@@ -117,10 +115,10 @@ class CommonStockPicking(BaseCommon):
             "product_id": self.product.id,
             "location_id": location_id.id,
             "location_dest_id": location_dest_id.id,
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "date_deadline": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "date": fields.Datetime.now(),
+            "date_deadline": fields.Datetime.now(),
             "procure_method": procure_method,
-            "product_uom": self.product.uom_id.id,
+            "uom_id": self.product.uom_id.id,
             "product_uom_qty": 1.0,
             "analytic_distribution": analytic_distribution or False,
         }
