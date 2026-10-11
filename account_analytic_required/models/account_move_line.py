@@ -23,9 +23,9 @@ class AccountMoveLine(models.Model):
                 account=self.account_id.display_name,
                 move=self.name or "",
             )
-        elif analytic_policy == "never" and (self.analytic_distribution):
+        if analytic_policy == "never" and (self.analytic_distribution):
             analytic_account = self.analytic_distribution
-            analytic_acc_ids = [int(k) for k in analytic_account.keys()]
+            analytic_acc_ids = [int(k) for k in analytic_account]
             analytic_accs = self.env["account.analytic.account"].browse(
                 analytic_acc_ids
             )
@@ -37,7 +37,7 @@ class AccountMoveLine(models.Model):
                 move=self.name or "",
                 analytic_account=", ".join(analytic_accs.mapped("name")),
             )
-        elif (
+        if (
             analytic_policy == "posted"
             and not self.analytic_distribution
             and self.move_id.state == "posted"
