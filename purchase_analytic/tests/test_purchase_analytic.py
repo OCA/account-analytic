@@ -9,6 +9,8 @@ from odoo.addons.product.tests.common import ProductCommon
 
 
 class TestPurchaseAnalytic(ProductCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

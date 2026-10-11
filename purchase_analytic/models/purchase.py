@@ -7,7 +7,7 @@ from odoo import api, fields, models
 
 class PurchaseOrder(models.Model):
     _name = "purchase.order"
-    _inherit = ["purchase.order", "analytic.mixin"]
+    _inherit = ["purchase.order", "analytic.mixin"]  # noqa: RUF012
 
     analytic_distribution = fields.Json(inverse="_inverse_analytic_distribution")
 
