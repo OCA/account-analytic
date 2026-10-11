@@ -16,9 +16,7 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
     product_id = fields.Many2one(related="line_id.product_id")
     account_id = fields.Many2one(related="line_id.account_id")
     move_type = fields.Selection(selection="_move_type_selection", readonly=True)
-    company_id = fields.Many2one(
-        comodel_name="res.company", string="Company", readonly=True
-    )
+    company_id = fields.Many2one(comodel_name="res.company", readonly=True)
     amount = fields.Float(
         compute="_compute_amount",
         readonly=True,
