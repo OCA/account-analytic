@@ -61,8 +61,8 @@ Authors
 Contributors
 ------------
 
-- Denis Roussel <denis.roussel@acsone.eu>
-- Raphaël Vicini <raphael.vicini@acsone.eu>
+-  Denis Roussel <denis.roussel@acsone.eu>
+-  Raphaël Vicini <raphael.vicini@acsone.eu>
 
 Maintainers
 -----------
