@@ -26,19 +26,15 @@ class TestHrExpenseAnalyticTagBase(TestExpenseCommon):
         return expense_form.save()
 
     def _action_post_expense(self):
-        res = self.expense.action_post()
-        if res:
-            wizard = (
-                self.env[res["res_model"]].with_context(**res["context"]).create({})
-            )
-            wizard.action_post_entry()
+        # Odoo 20: approval creates the draft move, posting it is done on the move
+        self.post_expenses(self.expense)
 
     @mute_logger("odoo.models.unlink")
     def _test_hr_expense_with_tag(self):
         """Tag without analytic accounts."""
         self.expense.analytic_distribution = {self.analytic_account_1.id: 100}
         self.expense.analytic_tag_ids = self.analytic_tag_1
-        self.expense._do_approve(check=False)
+        self.expense._do_approve()
         self._action_post_expense()
         move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
@@ -50,7 +46,7 @@ class TestHrExpenseAnalyticTagBase(TestExpenseCommon):
         """Tags without analytic accounts."""
         self.expense.analytic_distribution = {self.analytic_account_1.id: 100}
         self.expense.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
-        self.expense._do_approve(check=False)
+        self.expense._do_approve()
         self._action_post_expense()
         move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
@@ -67,7 +63,7 @@ class TestHrExpenseAnalyticTagBase(TestExpenseCommon):
             self.analytic_account_2.id: 50,
         }
         self.expense.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
-        self.expense._do_approve(check=False)
+        self.expense._do_approve()
         self._action_post_expense()
         move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
@@ -83,7 +79,7 @@ class TestHrExpenseAnalyticTagBase(TestExpenseCommon):
             self.analytic_account_1.id: 50,
         }
         self.expense.analytic_tag_ids = self.analytic_tag_1 + self.analytic_tag_2
-        self.expense._do_approve(check=False)
+        self.expense._do_approve()
         self._action_post_expense()
         move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
@@ -93,7 +89,7 @@ class TestHrExpenseAnalyticTagBase(TestExpenseCommon):
     @mute_logger("odoo.models.unlink")
     def _test_hr_expense_without_tags(self):
         self.expense.analytic_distribution = {self.analytic_account_1.id: 100}
-        self.expense._do_approve(check=False)
+        self.expense._do_approve()
         self._action_post_expense()
         move = self.expense.account_move_id
         tags = move.mapped("line_ids.analytic_line_ids.tag_ids")
