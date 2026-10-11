@@ -11,7 +11,7 @@ class AccountAnalyticTag(models.Model):
         default=True,
         help="Set active to false to hide the Analytic Tag without removing it.",
     )
-    company_id = fields.Many2one("res.company", string="Company")
+    company_id = fields.Many2one("res.company")
     account_analytic_id = fields.Many2one(
         comodel_name="account.analytic.account",
         string="Analytic Account filter",

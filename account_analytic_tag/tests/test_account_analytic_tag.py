@@ -8,6 +8,8 @@ from .common import TestAccountAnalyticTagBase
 
 @tagged("post_install", "-at_install")
 class TestAccountAnalyticTag(TestAccountAnalyticTagBase):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
