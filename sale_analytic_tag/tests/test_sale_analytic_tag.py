@@ -7,6 +7,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 @tagged("-at_install", "post_install")
 class TestSaleAnalyticTag(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
