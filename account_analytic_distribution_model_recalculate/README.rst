@@ -21,13 +21,13 @@ Account Analytic Distribution Model Recalculate
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/19.0/account_analytic_distribution_model_recalculate
+    :target: https://github.com/OCA/account-analytic/tree/20.0/account_analytic_distribution_model_recalculate
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-19-0/account-analytic-19-0-account_analytic_distribution_model_recalculate
+    :target: https://translation.odoo-community.org/projects/account-analytic-20-0/account-analytic-20-0-account_analytic_distribution_model_recalculate
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -48,34 +48,35 @@ Usage
 
 1. **Navigate to Analytic Distribution Models**
 
-- Go to Invoicing -> Configuration -> Analytic Distribution Models.
+-  Go to Invoicing -> Configuration -> Analytic Distribution Models.
 
 2. **Create or Edit a Distribution Model**
 
-- Create a new distribution model or edit an existing one.
-- Set the **Start Date** and **End Date** to define the active period
-  for the distribution. Only distributions within this date range will
-  be applied.
-- Define filters such as **Partner** and **Account Prefix** to control
-  when the model should apply.
+-  Create a new distribution model or edit an existing one.
+-  Set the **Start Date** and **End Date** to define the active period
+   for the distribution. Only distributions within this date range will
+   be applied.
+-  Define filters such as **Partner** and **Account Prefix** to control
+   when the model should apply.
 
 3. **Create an Invoice or Vendor Bill**
 
-- Select a customer and an account that match the conditions set in the
-  distribution model.
-- If the invoice has a date, the system will use it to filter applicable
-  distribution models; otherwise, it will use the current date.
+-  Select a customer and an account that match the conditions set in the
+   distribution model.
+-  If the invoice has a date, the system will use it to filter
+   applicable distribution models; otherwise, it will use the current
+   date.
 
 4. **Use the Recalculate Function**
 
-- Go to **Analytic Distribution Models**.
-- Enable the **Recalculate** option on the model you want to update.
-- Modify the analytic distribution as needed.
-- Click the **Recalculate** button. (Partner and account prefix needs to
-  be set)
-- All journal items originally updated using this model, and still
-  within its date range and matching its criteria, will be recalculated,
-  using the current distribution of the model.
+-  Go to **Analytic Distribution Models**.
+-  Enable the **Recalculate** option on the model you want to update.
+-  Modify the analytic distribution as needed.
+-  Click the **Recalculate** button. (Partner and account prefix needs
+   to be set)
+-  All journal items originally updated using this model, and still
+   within its date range and matching its criteria, will be
+   recalculated, using the current distribution of the model.
 
 **Sync Distribution Models with Journal Items**
 -----------------------------------------------
@@ -85,11 +86,11 @@ match the distribution model's criteria.
 
 This is especially useful in the following cases:
 
-- Journal items were created **before** the distribution model existed.
-- The model has been **updated or changed**, and you want to reassign
-  journal items accordingly.
-- You need to **sync lines** from other entries that now match the
-  model's conditions.
+-  Journal items were created **before** the distribution model existed.
+-  The model has been **updated or changed**, and you want to reassign
+   journal items accordingly.
+-  You need to **sync lines** from other entries that now match the
+   model's conditions.
 
 By syncing, the system will disassociate any previous links and reassign
 journal items based on the current configuration of the distribution
@@ -101,7 +102,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_analytic_distribution_model_recalculate%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_analytic_distribution_model_recalculate%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -117,10 +118,10 @@ Authors
 Contributors
 ------------
 
-- `APSL-Nagarro <https://apsl.tech>`__:
+-  `APSL-Nagarro <https://apsl.tech>`__:
 
-  - Bernat Obrador <bernat.obrador@nagarro.com>
-  - Antoni Marroig <antoni.marroig@nagarro.com>
+   -  Bernat Obrador <bernat.obrador@nagarro.com>
+   -  Antoni Marroig <antoni.marroig@nagarro.com>
 
 Maintainers
 -----------
@@ -143,6 +144,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-BernatObrador| 
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/19.0/account_analytic_distribution_model_recalculate>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/20.0/account_analytic_distribution_model_recalculate>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
