@@ -58,7 +58,7 @@ Migrated to odoo 16.
 
 Migrated to odoo 15.
 
-13.0.1.0.0 (2020-01-08)
+13.0.1.0.0 (2019-01-08)
 -----------------------
 
 Migrated to odoo 13.
@@ -99,17 +99,17 @@ Authors
 Contributors
 ------------
 
-- Laetitia Gangloff <laetitia.gangloff@acsone.eu>
-- Cédric Pigeon <cedric.pigeon@acsone.eu>
-- Pimolnat Suntian <pimolnats@ecosoft.co.th>
-- `Jarsa <https://www.jarsa.com>`__
+-  Laetitia Gangloff <laetitia.gangloff@acsone.eu>
+-  Cédric Pigeon <cedric.pigeon@acsone.eu>
+-  Pimolnat Suntian <pimolnats@ecosoft.co.th>
+-  `Jarsa <https://www.jarsa.com>`__
 
-  - Alan Ramos
+   -  Alan Ramos
 
-- Lois Rilo <lois.rilo@forgeflow.com>
-- `Quartile <https://www.quartile.co>`__:
+-  Lois Rilo <lois.rilo@forgeflow.com>
+-  `Quartile <https://www.quartile.co>`__:
 
-  - Aung Ko Ko Lin
+   -  Aung Ko Ko Lin
 
 Maintainers
 -----------
