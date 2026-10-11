@@ -3,10 +3,11 @@
 
 {
     "name": "Purchase Analytic Required",
-    "summary": """
-        This module introduces a constraint on Purchase Order form that
-        requires the analytic account to be filled in.""",
-    "version": "19.0.1.0.0",
+    "summary": (
+        "This module introduces a constraint on Purchase Order form that "
+        "requires the analytic account to be filled in."
+    ),
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",
     "maintainers": ["rousseldenis"],
