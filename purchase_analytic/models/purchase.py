@@ -2,12 +2,14 @@
 # Copyright 2022 ForgeFlow S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from typing import ClassVar
+
 from odoo import api, fields, models
 
 
 class PurchaseOrder(models.Model):
     _name = "purchase.order"
-    _inherit = ["purchase.order", "analytic.mixin"]
+    _inherit: ClassVar[list[str]] = ["purchase.order", "analytic.mixin"]
 
     analytic_distribution = fields.Json(inverse="_inverse_analytic_distribution")
 
