@@ -38,21 +38,21 @@ class TestStockScrap(TransactionCase):
 
     def _create_scrap(self, analytic_distribution=False):
         scrap_data = {
+            "is_scrap": True,
             "product_id": self.product.id,
-            "scrap_qty": 1.00,
-            "product_uom_id": self.product.uom_id.id,
+            "quantity": 1.00,
+            "uom_id": self.product.uom_id.id,
             "location_id": self.location.id,
             "analytic_distribution": analytic_distribution or False,
         }
-        return self.env["stock.scrap"].create(scrap_data)
+        return self.env["stock.move"].create(scrap_data)
 
     def _validate_scrap_no_error(self, scrap):
-        scrap.action_validate()
+        scrap.action_scrap()
         self.assertEqual(scrap.state, "done")
 
     def _check_analytic_distribution_no_error(self, scrap):
-        domain = [("name", "=", scrap.name)]
-        acc_lines = self.env["account.move.line"].search(domain)
+        acc_lines = scrap.account_move_id.line_ids
         for acc_line in acc_lines:
             if (
                 acc_line.account_id

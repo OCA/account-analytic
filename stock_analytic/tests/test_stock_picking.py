@@ -6,15 +6,20 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-
-from odoo import Command
+from odoo import Command, fields
 from odoo.exceptions import ValidationError
 
 from .common import CommonStockPicking
 
 
 class TestStockPicking(CommonStockPicking):
+    _test_user_groups = (
+        "base.group_user",
+        "stock.group_stock_manager",
+        "analytic.group_analytic_accounting",
+        "product.group_product_manager",
+    )
+
     def test_outgoing_picking_with_analytic(self):
         picking = self._create_picking(
             self.location,
@@ -101,8 +106,8 @@ class TestStockPicking(CommonStockPicking):
                 "product_id": self.product_2.id,
                 "location_id": self.location.id,
                 "location_dest_id": self.dest_location.id,
-                "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "product_uom_id": self.product_2.uom_id.id,
+                "date": fields.Datetime.now(),
+                "uom_id": self.product_2.uom_id.id,
                 "analytic_distribution": self.analytic_distribution,
                 "company_id": self.env.company.id,
                 "picking_id": picking.id,
@@ -204,3 +209,75 @@ class TestStockPicking(CommonStockPicking):
         self.assertTrue(procured_moves)
         for move in procured_moves:
             self.assertFalse(move.analytic_distribution)
+
+    def test_outgoing_picking_with_analytic_company_valuation_account(self):
+        # The stock valuation account can come from the company instead of the
+        # product category; that line must not get the analytic distribution.
+        self.product_categ.property_stock_valuation_account_id = False
+        self.company.sudo().account_stock_valuation_id = self.valuation_account
+        self.env.cr.cache.pop("account_product_accounts", None)
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_distribution,
+        )
+        self._update_qty_on_hand_product(self.product, 1)
+        self._confirm_picking_no_error(picking)
+        self._picking_done_no_error(picking)
+        self._check_account_move_no_error(picking)
+        self.assertIn(
+            self.valuation_account,
+            picking.move_ids.account_move_id.sudo().line_ids.account_id,
+        )
+        self._check_analytic_account_no_error(picking)
+
+    def test_moves_with_different_analytic_are_not_merged(self):
+        analytic_account_2 = self.env["account.analytic.account"].create(
+            {"name": "Test Analytic Account 2", "plan_id": self.analytic_plan.id}
+        )
+        analytic_distribution_2 = {str(analytic_account_2.id): 100.0}
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_distribution,
+        )
+        picking.action_confirm()
+        new_move = picking.move_ids.copy(
+            {
+                "picking_id": picking.id,
+                "product_uom_qty": 2.0,
+                "date_deadline": picking.move_ids.date_deadline,
+                "analytic_distribution": analytic_distribution_2,
+            }
+        )
+        new_move._action_confirm()
+        self.assertEqual(len(picking.move_ids), 2)
+        self.assertEqual(
+            sorted(picking.move_ids.mapped("product_uom_qty")),
+            [1.0, 2.0],
+        )
+
+    def test_moves_with_same_analytic_are_merged(self):
+        picking = self._create_picking(
+            self.location,
+            self.dest_location,
+            self.outgoing_picking_type,
+            self.analytic_distribution,
+        )
+        picking.action_confirm()
+        new_move = picking.move_ids.copy(
+            {
+                "picking_id": picking.id,
+                "product_uom_qty": 2.0,
+                "date_deadline": picking.move_ids.date_deadline,
+                "analytic_distribution": dict(self.analytic_distribution),
+            }
+        )
+        new_move._action_confirm()
+        self.assertEqual(len(picking.move_ids), 1)
+        self.assertEqual(picking.move_ids.product_uom_qty, 3.0)
+        self.assertEqual(
+            picking.move_ids.analytic_distribution, self.analytic_distribution
+        )

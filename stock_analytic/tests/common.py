@@ -6,9 +6,7 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-
-from odoo import Command
+from odoo import Command, fields
 
 from odoo.addons.base.tests.common import BaseCommon
 
@@ -117,10 +115,10 @@ class CommonStockPicking(BaseCommon):
             "product_id": self.product.id,
             "location_id": location_id.id,
             "location_dest_id": location_dest_id.id,
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "date_deadline": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "date": fields.Datetime.now(),
+            "date_deadline": fields.Datetime.now(),
             "procure_method": procure_method,
-            "product_uom": self.product.uom_id.id,
+            "uom_id": self.product.uom_id.id,
             "product_uom_qty": 1.0,
             "analytic_distribution": analytic_distribution or False,
         }
@@ -149,7 +147,9 @@ class CommonStockPicking(BaseCommon):
 
     def _check_analytic_account_no_error(self, picking):
         move = picking.move_ids[0]
-        acc_lines = move.account_move_id.line_ids
+        # The test user has no accounting rights: read the entry as superuser.
+        acc_lines = move.account_move_id.sudo().line_ids
+        self.assertTrue(acc_lines)
         for acc_line in acc_lines:
             if acc_line.account_id == self.valuation_account:
                 self.assertEqual(acc_line.analytic_distribution, False)
@@ -159,7 +159,7 @@ class CommonStockPicking(BaseCommon):
                 )
 
     def _check_no_analytic_account(self, picking):
-        acc_lines = picking.move_ids.mapped("account_move_id").mapped("line_ids")
+        acc_lines = picking.move_ids.account_move_id.sudo().line_ids
         analytic_lines = acc_lines.filtered(lambda line: line.analytic_distribution)
         self.assertEqual(len(analytic_lines), 0)
 

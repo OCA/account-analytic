@@ -11,7 +11,7 @@ from odoo import api, fields, models
 
 class StockMove(models.Model):
     _name = "stock.move"
-    _inherit = ["stock.move", "analytic.mixin"]
+    _inherit = ["stock.move", "analytic.mixin"]  # noqa: RUF012
 
     analytic_distribution = fields.Json(
         inverse="_inverse_analytic_distribution",
@@ -30,9 +30,9 @@ class StockMove(models.Model):
         res = super()._get_account_move_line_vals()
         if not self.analytic_distribution:
             return res
-        valuation_account_id = (
-            self.product_id.categ_id.property_stock_valuation_account_id.id
-        )
+        valuation_account_id = self.product_id._get_product_accounts()[
+            "stock_valuation"
+        ].id
         for line_vals in res:
             if line_vals.get("account_id") != valuation_account_id:
                 line_vals["analytic_distribution"] = self.analytic_distribution
@@ -64,22 +64,49 @@ class StockMove(models.Model):
             res.update({"analytic_distribution": self.analytic_distribution})
         return res
 
+    @api.model
+    def _prepare_merge_moves_distinct_fields(self):
+        """Do not merge moves that have a different analytic distribution"""
+        return super()._prepare_merge_moves_distinct_fields() + [
+            "analytic_distribution"
+        ]
+
+    def _merge_move_itemgetter(self, distinct_fields, excluded_fields=None):
+        """The analytic distribution is a dict, which is not hashable: compare it
+        as a frozenset of its items so that it can be part of the merge key.
+        """
+        excluded_fields = list(excluded_fields or [])
+        if (
+            "analytic_distribution" not in distinct_fields
+            or "analytic_distribution" in excluded_fields
+        ):
+            return super()._merge_move_itemgetter(distinct_fields, excluded_fields)
+        getter = super()._merge_move_itemgetter(
+            distinct_fields, excluded_fields + ["analytic_distribution"]
+        )
+        return lambda move: (
+            getter(move) + (frozenset((move.analytic_distribution or {}).items()),)
+        )
+
     def _need_validate_distribution(self):
         """Return moves are made outside the scope of the validation for now, since
         there could be cases where the necessity cannot be judged solely by the
         operation type.
         """
         self.ensure_one()
-        if (
+        return not (
             self._is_in()
             and self._is_returned(valued_type="in")
             or self._is_out()
             and self._is_returned(valued_type="out")
             or self.company_id.anglo_saxon_accounting
             and self._is_dropshipped_returned()
-        ):
-            return False
-        return True
+        )
+
+    def action_scrap(self):
+        return super(
+            StockMove, self.with_context(validate_analytic=True)
+        ).action_scrap()
 
     def _action_done(self, cancel_backorder=False):
         for move in self:
@@ -97,7 +124,7 @@ class StockMove(models.Model):
 
 class StockMoveLine(models.Model):
     _name = "stock.move.line"
-    _inherit = ["stock.move.line", "analytic.mixin"]
+    _inherit = ["stock.move.line", "analytic.mixin"]  # noqa: RUF012
 
     @api.model
     def _prepare_stock_move_vals(self):

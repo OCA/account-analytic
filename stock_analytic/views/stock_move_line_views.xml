@@ -51,4 +51,22 @@
             </field>
         </field>
     </record>
+
+    <!-- In batch transfer lines -->
+    <record id="view_move_line_from_batch_tree" model="ir.ui.view">
+        <field name="name">stock.move.line.from.batch.tree (in stock_analytic)</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_list_from_batch" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="hide"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
+                />
+            </field>
+        </field>
+    </record>
 </odoo>
