@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Inherit Form View to Modify it -->
     <record id="view_account_analytic_line_tree_inherit_tags" model="ir.ui.view">
