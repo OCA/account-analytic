@@ -48,7 +48,6 @@
         <field name="name">Update Analytic for selected Account Moves</field>
         <field name="res_model">account.move.update.analytic.wizard</field>
         <field name="view_mode">form</field>
-        <field name="context">{}</field>
         <field name="target">new</field>
     </record>
     <record
@@ -58,7 +57,6 @@
         <field name="name">Update Analytic</field>
         <field name="res_model">account.move.update.analytic.wizard</field>
         <field name="view_mode">form</field>
-        <field name="context">{}</field>
         <field name="target">new</field>
     </record>
 </odoo>
