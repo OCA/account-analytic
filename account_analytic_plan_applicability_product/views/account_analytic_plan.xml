@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Hunki Enterprises BV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<data>
+    <record id="view_account_analytic_plan_form" model="ir.ui.view">
+        <field name="model">account.analytic.plan</field>
+        <field
+            name="inherit_id"
+            ref="account.account_analytic_plan_form_view_inherit_account"
+        />
+        <field name="arch" type="xml">
+            <field name="product_categ_id" position="after">
+                <field name="product_ids" widget="many2many_tags" />
+            </field>
+        </field>
+    </record>
+</data>
