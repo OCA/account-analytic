@@ -1,12 +1,14 @@
 # Copyright 2021 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+import typing
+
 from odoo import api, fields, models
 
 
 class StockPicking(models.Model):
     _name = "stock.picking"
-    _inherit = ["stock.picking", "analytic.mixin"]
+    _inherit: typing.ClassVar[list[str]] = ["stock.picking", "analytic.mixin"]
 
     original_analytic_distribution = fields.Json(
         help="Technical field. Use to store the value of"
