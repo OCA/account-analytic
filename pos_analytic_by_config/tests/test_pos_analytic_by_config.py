@@ -40,10 +40,8 @@ class TestPosAnalyticConfig(CommonPosTest, TestPoSCommon):
             }
         )
         cls.config = cls.basic_config
-        # Set the cash payment method to False for split transactions
-        cls.config.payment_method_ids.filtered_domain(
-            [("type", "=", "cash")]
-        ).split_transactions = False
+        # Odoo 20: pos.payment.method.split_transactions was removed (no split
+        # cash payment method anymore), nothing to disable here.
         cls.session = cls.open_new_session(cls)
 
     def _create_order(self):
@@ -52,8 +50,12 @@ class TestPosAnalyticConfig(CommonPosTest, TestPoSCommon):
         self.pos_order = self.env["pos.order"].browse(int(order["pos.order"][0]["id"]))
 
     def _close_session(self, amount_paid):
-        self.session.post_closing_cash_details(amount_paid)
-        self.session.close_session_from_ui()
+        # Odoo 20: post_closing_cash_details() removed, the counted cash is
+        # given per payment method to close_session_from_ui()
+        cash_pm = self.session.payment_method_ids.filtered(
+            lambda pm: pm.type == "cash"
+        )[:1]
+        self.session.close_session_from_ui({cash_pm.id: amount_paid})
 
     def test_order_simple_receipt(self):
         """Simple tickets are grouped by account in single move lines"""
