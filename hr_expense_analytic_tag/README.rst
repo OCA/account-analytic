@@ -61,14 +61,14 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Víctor Martínez
-  - Pedro M. Baeza
+   -  Víctor Martínez
+   -  Pedro M. Baeza
 
-- `Ecosoft <https://ecosoft.co.th>`__:
+-  `Ecosoft <https://ecosoft.co.th>`__:
 
-  - Saran Lim.
+   -  Saran Lim.
 
 Maintainers
 -----------
