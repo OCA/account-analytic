@@ -6,16 +6,7 @@ from odoo import models
 class PosSession(models.Model):
     _inherit = "pos.session"
 
-    def _validate_session(
-        self,
-        balancing_account=False,
-        amount_to_balance=0,
-        bank_payment_method_diffs=None,
-    ):
+    def _validate_session_accounting(self):
         return super(
             PosSession, self.with_context(pos_config_id=self.config_id.id)
-        )._validate_session(
-            balancing_account=balancing_account,
-            amount_to_balance=amount_to_balance,
-            bank_payment_method_diffs=bank_payment_method_diffs,
-        )
+        )._validate_session_accounting()

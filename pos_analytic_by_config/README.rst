@@ -21,13 +21,13 @@ POS Analytic Config
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/19.0/pos_analytic_by_config
+    :target: https://github.com/OCA/account-analytic/tree/20.0/pos_analytic_by_config
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-19-0/account-analytic-19-0-pos_analytic_by_config
+    :target: https://translation.odoo-community.org/projects/account-analytic-20-0/account-analytic-20-0-pos_analytic_by_config
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -60,12 +60,12 @@ expected for your point of sale.
 Known issues / Roadmap
 ======================
 
-- Add ``account_analytic_id`` in ``pos.order`` so we can use it in
-  reports.
-- In ``13.0`` the session reconciliation has been refactored and thus
-  the journal items are now very simplified. There's no product detail
-  now, so we won't be able to analyze that level of detail anymore. For
-  invoices it remains as it was.
+-  Add ``account_analytic_id`` in ``pos.order`` so we can use it in
+   reports.
+-  In ``13.0`` the session reconciliation has been refactored and thus
+   the journal items are now very simplified. There's no product detail
+   now, so we won't be able to analyze that level of detail anymore. For
+   invoices it remains as it was.
 
 Bug Tracker
 ===========
@@ -73,7 +73,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20pos_analytic_by_config%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20pos_analytic_by_config%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -89,23 +89,23 @@ Authors
 Contributors
 ------------
 
-- `ACSONE SA/NV <https://www.acsone.eu>`__
+-  `ACSONE SA/NV <https://www.acsone.eu>`__
 
-  - Adrien Peiffer <adrien.peiffer@acsone.eu>
-  - Cédric Pigeon <cedric.pigeon@acsone.eu>
-  - Xavier Bouquiaux <xavier.bouquiaux@acsone.eu>
+   -  Adrien Peiffer <adrien.peiffer@acsone.eu>
+   -  Cédric Pigeon <cedric.pigeon@acsone.eu>
+   -  Xavier Bouquiaux <xavier.bouquiaux@acsone.eu>
 
-- `Tecnativa <https://www.tecnativa.com>`__
+-  `Tecnativa <https://www.tecnativa.com>`__
 
-  - David Vidal
+   -  David Vidal
 
-- `APSL-Nagarro <https://www.apsl.tech>`__
+-  `APSL-Nagarro <https://www.apsl.tech>`__
 
-  - Antoni Marroig <amarroig@apsl.net>
+   -  Antoni Marroig <amarroig@apsl.net>
 
-- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
 
-  - Bhavesh Heliconia
+   -  Bhavesh Heliconia
 
 Maintainers
 -----------
@@ -120,6 +120,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/19.0/pos_analytic_by_config>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/20.0/pos_analytic_by_config>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
