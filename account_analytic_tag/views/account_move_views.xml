@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Inherit Form View to Modify it -->
     <record id="account_move_analytic_tag_ids_form" model="ir.ui.view">

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="res_config_settings_view_form" model="ir.ui.view">
         <field
@@ -9,8 +9,8 @@
         <field name="arch" type="xml">
             <xpath expr="//setting[@id='track_costs_revenues']" position="after">
                 <div
-                    class="col-12 col-lg-6 o_setting_box"
                     id="tag_analytic_entries"
+                    class="col-12 col-lg-6 o_setting_box"
                     groups="account.group_account_user"
                 >
                     <div class="o_setting_left_pane">
