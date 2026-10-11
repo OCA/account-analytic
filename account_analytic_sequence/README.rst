@@ -60,18 +60,18 @@ Authors
 Contributors
 ------------
 
-- Benjamin Willig <benjamin.willig@acsone.eu>
-- `CorporateHub <https://corporatehub.eu/>`__
+-  Benjamin Willig <benjamin.willig@acsone.eu>
+-  `CorporateHub <https://corporatehub.eu/>`__
 
-  - Alexey Pelykh <alexey.pelykh@corphub.eu>
+   -  Alexey Pelykh <alexey.pelykh@corphub.eu>
 
-- Pierre Verkest <pierreverkest84@gmail.com>
-- Manuel Regidor <manuel.regidor@sygel.es>
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  Pierre Verkest <pierreverkest84@gmail.com>
+-  Manuel Regidor <manuel.regidor@sygel.es>
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Víctor Martínez
+   -  Víctor Martínez
 
-- Daniel Herreros <daniel.herreros@braintec.com>
+-  Daniel Herreros <daniel.herreros@braintec.com>
 
 Maintainers
 -----------
