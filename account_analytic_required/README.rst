@@ -21,13 +21,13 @@ Account Analytic Required
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
-    :target: https://github.com/OCA/account-analytic/tree/19.0/account_analytic_required
+    :target: https://github.com/OCA/account-analytic/tree/20.0/account_analytic_required
     :alt: OCA/account-analytic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/account-analytic-19-0/account-analytic-19-0-account_analytic_required
+    :target: https://translation.odoo-community.org/projects/account-analytic-20-0/account-analytic-20-0-account_analytic_required
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/account-analytic&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -62,7 +62,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/account-analytic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_analytic_required%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/account-analytic/issues/new?body=module:%20account_analytic_required%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -77,33 +77,33 @@ Authors
 Contributors
 ------------
 
-- Alexis de Lattre <alexis.delattre@akretion.com>
+-  Alexis de Lattre <alexis.delattre@akretion.com>
 
-- Stéphane Bidoul
+-  Stéphane Bidoul
 
-- Stefan Rijnhart
+-  Stefan Rijnhart
 
-- Laetitia Gangloff
+-  Laetitia Gangloff
 
-- Luc De Meyer, Noviat <info@noviat.com>
+-  Luc De Meyer, Noviat <info@noviat.com>
 
-- Yannick Vaucher <yannick.vaucher@camptocamp.com>
+-  Yannick Vaucher <yannick.vaucher@camptocamp.com>
 
-- Akim Juillerat <akim.juillerat@camptocamp.com>
+-  Akim Juillerat <akim.juillerat@camptocamp.com>
 
-- Raf Ven <raf.ven@dynapps.be>
+-  Raf Ven <raf.ven@dynapps.be>
 
-- Iván Todorovich <ivan.todorovich@druidoo.io>
+-  Iván Todorovich <ivan.todorovich@druidoo.io>
 
-- `Trobz <https://trobz.com>`__:
+-  `Trobz <https://trobz.com>`__:
 
-     - Nguyễn Minh Chiến <chien@trobz.com>
+      -  Nguyễn Minh Chiến <chien@trobz.com>
 
-- Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
+-  Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
 
-- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
 
-  - Bhavesh Heliconia
+   -  Bhavesh Heliconia
 
 Maintainers
 -----------
@@ -118,6 +118,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/19.0/account_analytic_required>`_ project on GitHub.
+This module is part of the `OCA/account-analytic <https://github.com/OCA/account-analytic/tree/20.0/account_analytic_required>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
