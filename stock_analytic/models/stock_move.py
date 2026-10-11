@@ -6,12 +6,14 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from typing import ClassVar
+
 from odoo import api, fields, models
 
 
 class StockMove(models.Model):
     _name = "stock.move"
-    _inherit = ["stock.move", "analytic.mixin"]
+    _inherit: ClassVar[list[str]] = ["stock.move", "analytic.mixin"]
 
     analytic_distribution = fields.Json(
         inverse="_inverse_analytic_distribution",
@@ -70,16 +72,19 @@ class StockMove(models.Model):
         operation type.
         """
         self.ensure_one()
-        if (
+        return not (
             self._is_in()
             and self._is_returned(valued_type="in")
             or self._is_out()
             and self._is_returned(valued_type="out")
             or self.company_id.anglo_saxon_accounting
             and self._is_dropshipped_returned()
-        ):
-            return False
-        return True
+        )
+
+    def action_scrap(self):
+        return super(
+            StockMove, self.with_context(validate_analytic=True)
+        ).action_scrap()
 
     def _action_done(self, cancel_backorder=False):
         for move in self:
@@ -97,7 +102,7 @@ class StockMove(models.Model):
 
 class StockMoveLine(models.Model):
     _name = "stock.move.line"
-    _inherit = ["stock.move.line", "analytic.mixin"]
+    _inherit: ClassVar[list[str]] = ["stock.move.line", "analytic.mixin"]
 
     @api.model
     def _prepare_stock_move_vals(self):
