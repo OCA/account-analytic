@@ -6,15 +6,15 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import datetime
-
-from odoo import Command
+from odoo import Command, fields
 from odoo.exceptions import ValidationError
 
 from .common import CommonStockPicking
 
 
 class TestStockPicking(CommonStockPicking):
+    _test_user_groups = None
+
     def test_outgoing_picking_with_analytic(self):
         picking = self._create_picking(
             self.location,
@@ -101,8 +101,8 @@ class TestStockPicking(CommonStockPicking):
                 "product_id": self.product_2.id,
                 "location_id": self.location.id,
                 "location_dest_id": self.dest_location.id,
-                "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "product_uom_id": self.product_2.uom_id.id,
+                "date": fields.Datetime.now(),
+                "uom_id": self.product_2.uom_id.id,
                 "analytic_distribution": self.analytic_distribution,
                 "company_id": self.env.company.id,
                 "picking_id": picking.id,
