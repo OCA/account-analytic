@@ -33,7 +33,7 @@ class TestStockAnalytic(TransactionCase):
                     Command.create(
                         {
                             "product_id": cls.product_id.id,
-                            "product_uom": cls.uom_id.id,
+                            "uom_id": cls.uom_id.id,
                             "location_id": cls.stock_location.id,
                             "location_dest_id": cls.customer_location.id,
                         },
@@ -106,7 +106,7 @@ class TestStockAnalytic(TransactionCase):
                     Command.create(
                         {
                             "product_id": self.product_id.id,
-                            "product_uom": self.uom_id.id,
+                            "uom_id": self.uom_id.id,
                             "location_id": self.stock_location.id,
                             "location_dest_id": self.customer_location.id,
                             "analytic_distribution": self.analytic_distribution_2,

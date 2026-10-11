@@ -6,7 +6,7 @@ from odoo import api, fields, models
 
 class StockPicking(models.Model):
     _name = "stock.picking"
-    _inherit = ["stock.picking", "analytic.mixin"]
+    _inherit = ["stock.picking", "analytic.mixin"]  # noqa: RUF012
 
     original_analytic_distribution = fields.Json(
         help="Technical field. Use to store the value of"
