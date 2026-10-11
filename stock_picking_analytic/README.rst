@@ -61,15 +61,15 @@ Authors
 Contributors
 ------------
 
-- Benoît Aimont <benoit.aimont@acsone.eu>
-- Denis Roussel <denis.roussel@acsone.eu>
-- `Quartile <https://www.quartile.co>`__:
+-  Benoît Aimont <benoit.aimont@acsone.eu>
+-  Denis Roussel <denis.roussel@acsone.eu>
+-  `Quartile <https://www.quartile.co>`__:
 
-  - Yoshi Tashiro
+   -  Yoshi Tashiro
 
-- `APSL-Nagarro <https://apsl.tech>`__:
+-  `APSL-Nagarro <https://apsl.tech>`__:
 
-  - Antoni Marroig <amarroig@apsl.net>
+   -  Antoni Marroig <amarroig@apsl.net>
 
 Maintainers
 -----------
