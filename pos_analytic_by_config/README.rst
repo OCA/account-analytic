@@ -60,12 +60,12 @@ expected for your point of sale.
 Known issues / Roadmap
 ======================
 
-- Add ``account_analytic_id`` in ``pos.order`` so we can use it in
-  reports.
-- In ``13.0`` the session reconciliation has been refactored and thus
-  the journal items are now very simplified. There's no product detail
-  now, so we won't be able to analyze that level of detail anymore. For
-  invoices it remains as it was.
+-  Add ``account_analytic_id`` in ``pos.order`` so we can use it in
+   reports.
+-  In ``13.0`` the session reconciliation has been refactored and thus
+   the journal items are now very simplified. There's no product detail
+   now, so we won't be able to analyze that level of detail anymore. For
+   invoices it remains as it was.
 
 Bug Tracker
 ===========
@@ -89,23 +89,23 @@ Authors
 Contributors
 ------------
 
-- `ACSONE SA/NV <https://www.acsone.eu>`__
+-  `ACSONE SA/NV <https://www.acsone.eu>`__
 
-  - Adrien Peiffer <adrien.peiffer@acsone.eu>
-  - Cédric Pigeon <cedric.pigeon@acsone.eu>
-  - Xavier Bouquiaux <xavier.bouquiaux@acsone.eu>
+   -  Adrien Peiffer <adrien.peiffer@acsone.eu>
+   -  Cédric Pigeon <cedric.pigeon@acsone.eu>
+   -  Xavier Bouquiaux <xavier.bouquiaux@acsone.eu>
 
-- `Tecnativa <https://www.tecnativa.com>`__
+-  `Tecnativa <https://www.tecnativa.com>`__
 
-  - David Vidal
+   -  David Vidal
 
-- `APSL-Nagarro <https://www.apsl.tech>`__
+-  `APSL-Nagarro <https://www.apsl.tech>`__
 
-  - Antoni Marroig <amarroig@apsl.net>
+   -  Antoni Marroig <amarroig@apsl.net>
 
-- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
 
-  - Bhavesh Heliconia
+   -  Bhavesh Heliconia
 
 Maintainers
 -----------
