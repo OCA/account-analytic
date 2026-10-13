@@ -46,10 +46,13 @@
         <field name="model">account.analytic.line</field>
         <field name="inherit_id" ref="analytic.view_account_analytic_line_form" />
         <field name="arch" type="xml">
-            <field name="company_id" position="after">
+            <xpath
+                expr="//group[@name='analytic_item']/field[@name='company_id']"
+                position="after"
+            >
                 <field name="department_id" />
                 <field name="account_department_id" />
-            </field>
+            </xpath>
         </field>
     </record>
     <record id="view_account_analytic_line_tree" model="ir.ui.view">
@@ -58,8 +61,8 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
         <field name="arch" type="xml">
             <field name="company_id" position="after">
-                <field name="department_id" />
-                <field name="account_department_id" />
+                <field name="department_id" optional="show" />
+                <field name="account_department_id" optional="show" />
             </field>
         </field>
     </record>
