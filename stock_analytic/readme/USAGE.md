@@ -11,8 +11,9 @@ You need to:
 If stock move automatically create journal entry, the journal entry will
 contain journal items with following rule:
 
-1.  Journal item with account equal to product's valuation account will
-    not be assigned to any analytic account.
+1.  By default, journal item with account equal to product's valuation
+    account will not be assigned to any analytic account. This behavior
+    can be changed in the settings (see Configuration).
 2.  Journal item with account different to product's valuation account
     will be assigned to an analytic account according to the stock
     move's analytic account.
