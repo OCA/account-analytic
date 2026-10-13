@@ -151,6 +151,40 @@ class TestAccountMoveUpdateAnalytic(AccountTestInvoicingCommon):
 
         self.assertEqual(line.analytic_distribution, self.incomplete_distribution)
 
+    def test_display_lines_do_not_block_optional_expense_allocations(self):
+        self._create_applicability_rule()
+        self._create_applicability_rule(
+            applicability="optional",
+            account_prefix=self.company_data["default_account_expense"].code,
+        )
+
+        for display_type in ("line_section", "line_note"):
+            with self.subTest(display_type=display_type):
+                bill = self._create_bill(post=False)
+                bill.invoice_line_ids.analytic_distribution = False
+                bill.invoice_line_ids = [
+                    Command.create(
+                        {
+                            "name": "Services",
+                            "display_type": display_type,
+                            "sequence": 0,
+                        }
+                    ),
+                ]
+                bill.action_post()
+                expense_lines = bill.invoice_line_ids.filtered(
+                    lambda line: line.display_type == "product"
+                )
+
+                self._create_wizard(
+                    bill, self.incomplete_distribution
+                ).update_analytic_lines()
+
+                self.assertEqual(
+                    expense_lines.mapped("analytic_distribution"),
+                    [self.incomplete_distribution] * 2,
+                )
+
     def test_vendor_bill_rule_does_not_apply_to_customer_invoice(self):
         self._create_applicability_rule()
         invoice = self._create_bill(move_type="out_invoice")
@@ -167,6 +201,17 @@ class TestAccountMoveUpdateAnalytic(AccountTestInvoicingCommon):
         self._create_applicability_rule(account_prefix=account.code)
         bill = self._create_bill(post=False)
         bill.invoice_line_ids[1].account_id = account
+        bill.action_post()
+
+        self._assert_rejected_update(bill, self.incomplete_distribution)
+
+    def test_display_lines_do_not_exempt_mandatory_expense_allocations(self):
+        self._create_applicability_rule()
+        bill = self._create_bill(post=False)
+        bill.invoice_line_ids = [
+            Command.create({"name": "Services", "display_type": display_type})
+            for display_type in ("line_section", "line_note")
+        ]
         bill.action_post()
 
         self._assert_rejected_update(bill, self.incomplete_distribution)
