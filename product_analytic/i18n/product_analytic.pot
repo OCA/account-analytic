@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* product_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_analytic
+#: model_terms:ir.ui.view,arch_db:product_analytic.product_normal_form_view
+#: model_terms:ir.ui.view,arch_db:product_analytic.view_category_property_form
+msgid "Analytic"
+msgstr ""
+
+#. module: product_analytic
+#: model:ir.model.fields,field_description:product_analytic.field_product_category__analytic_distribution_model_ids
+#: model:ir.model.fields,field_description:product_analytic.field_product_product__analytic_distribution_model_ids
+msgid "Analytic Distribution Models"
+msgstr ""
+
+#. module: product_analytic
+#: model:ir.model,name:product_analytic.model_product_category
+msgid "Product Category"
+msgstr ""
+
+#. module: product_analytic
+#: model:ir.model,name:product_analytic.model_product_product
+msgid "Product Variant"
+msgstr ""
