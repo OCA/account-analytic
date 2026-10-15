@@ -2,6 +2,7 @@
 # Copyright 2022 Moduon - Eduardo de Miguel
 # Copyright 2024 (Nagarro - APSL) - Bernat Obrador
 # Copyright 2025 Tecnativa - Víctor Martínez
+# Copyright 2026 Factor3
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models
@@ -75,10 +76,16 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
 
     def update_analytic_lines(self):
         self.ensure_one()
-        # Validate if mandatory plans has 100%
-        self.with_context(validate_analytic=True)._validate_distribution()
-        if self.line_id:
-            self.line_id.analytic_distribution = self.analytic_distribution
-        else:
+        lines = self.line_id
+        if not lines:
             moves = self.env["account.move"].browse(self.env.context.get("active_ids"))
-            moves.invoice_line_ids.analytic_distribution = self.analytic_distribution
+            lines = moves.invoice_line_ids
+        # Validate every line with its applicability context before writing anything.
+        for line in lines:
+            candidate = line.with_company(line.company_id).new(
+                {"analytic_distribution": self.analytic_distribution}, origin=line
+            )
+            candidate.with_context(
+                validate_analytic=True
+            )._validate_analytic_distribution()
+        lines.analytic_distribution = self.analytic_distribution
