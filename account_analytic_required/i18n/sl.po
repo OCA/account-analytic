@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-30 07:47+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr "Konto"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__always
+msgid "Always"
+msgstr "Vedno"
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account_move_line.py:0
+msgid ""
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
+msgstr ""
+"Analitični pravilnik je nastavljen na 'Vedno' s kontom '%(account)s', a v "
+"postavki temeljnice z oznako '%(move)s' manjka analitični konto."
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account_move_line.py:0
+msgid ""
+"Analytic policy is set to 'Never' with account '%(account)s' but the account"
+" move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
+msgstr ""
+"Analitični pravilnik je za konto '%(account)s' nastavljen na 'Nikoli', "
+"vendar ima postavka temeljnice z oznako '%(move)s' analitični konto '%"
+"(analytic_account)s'."
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account_move_line.py:0
+msgid ""
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
+msgstr ""
+"Analitični pravilnik je nastavljen na 'Knjižene postavke' s kontom '%"
+"(account)s', vendar analitični konto manjka v postavki temeljnice z oznako '%"
+"(move)s'."
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__display_name
+msgid "Display Name"
+msgstr "Prikazani naziv"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move__id
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_move_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Journal Entry"
+msgstr "Temeljnica"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr "Dnevniška postavka"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__never
+msgid "Never"
+msgstr "Nikoli"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__analytic_policy
+msgid "Policy for analytic account"
+msgstr "Pravilnik za analitični konto"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__posted
+msgid "Posted moves"
+msgstr "Vknjižbe"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account__analytic_policy
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Empty: The accountant is free to put an analytic account on an account move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic account.\n"
+"- Posted moves: The accountant will get an error message if no analytic account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is present."
+msgstr ""
+"Določa pravila za analitične konte.\n"
+"Če izberete:\n"
+"- Prazno: računovodja lahko prosto vpiše analitični konto v postavko "
+"temeljnice s to vrsto konta.\n"
+"- Vedno: računovodja bo prejel sporočilo o napaki, če ni analitičnega "
+"konta.\n"
+"- Vknjižene temeljnice: računovodja bo prejel sporočilo o napaki, če ob "
+"knjiženju temeljnice ni opredeljen noben analitični konto.\n"
+"- Nikoli: računovodja bo prejel sporočilo o napaki, če je analitični konto "
+"prisoten."
