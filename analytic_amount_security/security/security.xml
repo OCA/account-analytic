@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="0">
+        <!-- Change the implied ids to add constrain more or less the visibility scope -->
+        <record id="group_allow_read_analytic_amount" model="res.groups">
+            <field name="name">Allow to read analytic costs</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id="base.group_user" model="res.groups">
+            <field
+                name="implied_ids"
+                eval="[(4, ref('analytic_amount_security.group_allow_read_analytic_amount'))]"
+            />
+        </record>
+        <record id="analytic.group_analytic_accounting" model="res.groups">
+            <field
+                name="implied_ids"
+                eval="[(4, ref('analytic_amount_security.group_allow_read_analytic_amount'))]"
+            />
+        </record>
+    </data>
+</odoo>
