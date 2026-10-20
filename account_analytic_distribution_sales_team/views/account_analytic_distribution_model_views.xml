@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+    Inherit the Form View to add the "Sales Team" field
+    -->
+    <record
+        id="view_account_analytic_distribution_model_form_inherit_team"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.form.inherit.team</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_category_id']" position="after">
+                <field name="team_id" />
+            </xpath>
+        </field>
+    </record>
+
+    <!--
+    Inherit the Tree (List) View to add the "Sales Team" column
+    -->
+    <record
+        id="view_account_analytic_distribution_model_tree_inherit_team"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.tree.inherit.team</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_tree_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_category_id']" position="after">
+                <field name="team_id" optional="show" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
