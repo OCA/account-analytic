@@ -35,6 +35,7 @@ addon | version | maintainers | summary
 [pos_analytic_by_config](pos_analytic_by_config/) | 19.0.1.0.0 |  | Use analytic account defined on POS configuration for POS orders
 [purchase_analytic](purchase_analytic/) | 19.0.1.0.0 |  | Purchase Analytic
 [purchase_analytic_required](purchase_analytic_required/) | 19.0.1.0.0 | <a href='https://github.com/rousseldenis'><img src='https://github.com/rousseldenis.png' width='32' height='32' style='border-radius:50%;' alt='rousseldenis'/></a> | This module introduces a constraint on Purchase Order form that requires the analytic account to be filled in.
+[sale_analytic](sale_analytic/) | 19.0.1.0.0 | <a href='https://github.com/andrel-exo'><img src='https://github.com/andrel-exo.png' width='32' height='32' style='border-radius:50%;' alt='andrel-exo'/></a> | Sale Analytic
 [sale_analytic_tag](sale_analytic_tag/) | 19.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Sale Analytic Tag
 [stock_analytic](stock_analytic/) | 19.0.1.0.0 |  | Adds analytic distribution in stock move
 [stock_picking_analytic](stock_picking_analytic/) | 19.0.1.0.0 |  | Allows to define the analytic account on picking level
