@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_purchase_blanket_order_tree_inherit_analytic" model="ir.ui.view">
+        <field
+            name="name"
+        >purchase.blanket.order.tree (purchase_blanket_order_analytic)</field>
+        <field name="model">purchase.blanket.order</field>
+        <field
+            name="inherit_id"
+            ref="purchase_blanket_order.view_purchase_blanket_order_tree"
+        />
+        <field name="arch" type="xml">
+            <field name="validity_date" position="before">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                    optional="show"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_purchase_blanket_order_form_inherit_analytic" model="ir.ui.view">
+        <field
+            name="name"
+        >purchase.blanket.order.form (purchase_blanket_order_analytic)</field>
+        <field name="model">purchase.blanket.order</field>
+        <field
+            name="inherit_id"
+            ref="purchase_blanket_order.view_purchase_blanket_order_form"
+        />
+        <field name="arch" type="xml">
+            <field name="partner_ref" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                />
+                <field name="analytic_distribution" invisible="1" />
+            </field>
+            <field name="line_ids" position="attributes">
+                <attribute name="context" operation="update">
+                    {
+                        "default_analytic_distribution": analytic_distribution,
+                    }
+                </attribute>
+            </field>
+            <field name="product_id" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
