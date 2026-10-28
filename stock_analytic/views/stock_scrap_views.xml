@@ -15,4 +15,21 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_scrap_analytic_list" model="ir.ui.view">
+        <field name="name">stock.scrap.move.analytic.list</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_scrap_move_list" />
+        <field name="arch" type="xml">
+            <field name="location_dest_id" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    optional="hide"
+                    groups="analytic.group_analytic_accounting"
+                    options="{'product_field': 'product_id', 'business_domain': 'stock_move'}"
+                />
+            </field>
+        </field>
+    </record>
 </odoo>
