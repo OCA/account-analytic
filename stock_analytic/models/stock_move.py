@@ -6,14 +6,12 @@
 # Copyright 2023 Quartile Limited
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from typing import ClassVar
-
 from odoo import api, fields, models
 
 
 class StockMove(models.Model):
     _name = "stock.move"
-    _inherit: ClassVar[list[str]] = ["stock.move", "analytic.mixin"]
+    _inherit = ["stock.move", "analytic.mixin"]  # noqa: RUF012
 
     analytic_distribution = fields.Json(
         inverse="_inverse_analytic_distribution",
@@ -102,7 +100,7 @@ class StockMove(models.Model):
 
 class StockMoveLine(models.Model):
     _name = "stock.move.line"
-    _inherit: ClassVar[list[str]] = ["stock.move.line", "analytic.mixin"]
+    _inherit = ["stock.move.line", "analytic.mixin"]  # noqa: RUF012
 
     @api.model
     def _prepare_stock_move_vals(self):
