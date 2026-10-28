@@ -11,7 +11,7 @@
             >
                 <field
                     name="stock_picking_type_id"
-                    attrs="{'readonly': [('business_domain', '!=', 'stock_move')]}"
+                    readonly="business_domain != 'stock_move'"
                 />
             </xpath>
         </field>
