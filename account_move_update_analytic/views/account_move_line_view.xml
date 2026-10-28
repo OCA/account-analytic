@@ -13,7 +13,7 @@
                     type="action"
                     groups="analytic.group_analytic_accounting"
                     invisible="parent_state != 'posted'"
-                    icon="fa-tags"
+                    icon="sell"
                     title="Update analytic distribution"
                     aria-label="Update analytic distribution"
                 />

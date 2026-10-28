@@ -18,7 +18,7 @@
                     type="action"
                     groups="analytic.group_analytic_accounting"
                     column_invisible="parent.state != 'posted'"
-                    icon="fa-tags"
+                    icon="sell"
                     title="Update analytic distribution"
                     aria-label="Update analytic distribution"
                 />
@@ -34,7 +34,7 @@
                     groups="analytic.group_analytic_accounting"
                     column_invisible="parent.state != 'posted'"
                     invisible="display_type in ['line_section', 'line_note']"
-                    icon="fa-tags"
+                    icon="sell"
                     title="Update analytic distribution"
                     aria-label="Update analytic distribution"
                 />
@@ -50,7 +50,7 @@
         <field name="binding_model_id" ref="account.model_account_move" />
         <field
             name="group_ids"
-            eval="[(4, ref('analytic.group_analytic_accounting'))]"
+            eval="[Command.link(ref('analytic.group_analytic_accounting'))]"
         />
         <field name="binding_view_types">list,form</field>
         <field name="state">code</field>
