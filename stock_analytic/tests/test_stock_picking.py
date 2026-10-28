@@ -13,7 +13,12 @@ from .common import CommonStockPicking
 
 
 class TestStockPicking(CommonStockPicking):
-    _test_user_groups = None
+    _test_user_groups = (
+        "base.group_user",
+        "stock.group_stock_manager",
+        "analytic.group_analytic_accounting",
+        "product.group_product_manager",
+    )
 
     def test_outgoing_picking_with_analytic(self):
         picking = self._create_picking(
