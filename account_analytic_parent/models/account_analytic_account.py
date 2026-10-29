@@ -51,46 +51,51 @@ class AccountAnalyticAccount(models.Model):
         """
         res = super()._compute_debit_credit_balance()
 
+        def convert(groups):
+            return sum(
+                currency_id._convert(
+                    from_amount=amount_sum,
+                    to_currency=self.env.company.currency_id,
+                    company=self.env.company,
+                    date=fields.Date.today(),
+                )
+                for currency_id, amount_sum in groups
+                if currency_id
+            )
+
         AccountAnalyticLine = self.env["account.analytic.line"]
-        user_currency_id = self.env.user.company_id.currency_id
+        # Same filters as the standard computation
+        domain = [("company_id", "in", [False] + self.env.companies.ids)]
+        if self.env.context.get("from_date", False):
+            domain.append(("date", ">=", self.env.context["from_date"]))
+        if self.env.context.get("to_date", False):
+            domain.append(("date", "<=", self.env.context["to_date"]))
 
         # Re-compute only accounts with children
         for account in self:
             if not account.child_ids:
                 continue
-            domain = [("account_id", "child_of", account.id)]
-
-            credit_groups = AccountAnalyticLine._read_group(
-                domain=domain + [("amount", ">=", 0.0)],
-                groupby=["currency_id"],
-                aggregates=["amount:sum"],
-            )
-            credit = sum(
-                currency_id._convert(
-                    amount_sum,
-                    user_currency_id,
-                    self.env.user.company_id,
-                    fields.Date.today(),
+            credit = debit = 0.0
+            descendants = self.search([("id", "child_of", account.id)])
+            # Each plan stores its accounts in its own column of the lines
+            for plan, accounts in descendants.grouped("plan_id").items():
+                if not plan:
+                    continue
+                plan_domain = domain + [(plan._column_name(), "in", accounts.ids)]
+                credit += convert(
+                    AccountAnalyticLine._read_group(
+                        domain=plan_domain + [("amount", ">=", 0.0)],
+                        groupby=["currency_id"],
+                        aggregates=["amount:sum"],
+                    )
                 )
-                for currency_id, amount_sum in credit_groups
-                if currency_id
-            )
-
-            debit_groups = AccountAnalyticLine._read_group(
-                domain=domain + [("amount", "<", 0.0)],
-                groupby=["currency_id"],
-                aggregates=["amount:sum"],
-            )
-            debit = sum(
-                currency_id._convert(
-                    amount_sum,
-                    user_currency_id,
-                    self.env.user.company_id,
-                    fields.Date.today(),
+                debit += convert(
+                    AccountAnalyticLine._read_group(
+                        domain=plan_domain + [("amount", "<", 0.0)],
+                        groupby=["currency_id"],
+                        aggregates=["amount:sum"],
+                    )
                 )
-                for currency_id, amount_sum in debit_groups
-                if currency_id
-            )
 
             account.debit = abs(debit)
             account.credit = credit

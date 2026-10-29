@@ -122,6 +122,43 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.assertEqual(self.analytic_parent3.credit, 0)
         self.assertEqual(self.analytic_parent3.balance, -50)
 
+    def test_debit_credit_balance_other_plan(self):
+        plan = self.env["account.analytic.plan"].create({"name": "Other Plan"})
+        parent = self.create_analytic_account(
+            {"name": "other parent", "code": "11", "plan_id": plan.id}
+        )
+        son = self.create_analytic_account(
+            {
+                "name": "other son",
+                "code": "12",
+                "parent_id": parent.id,
+                "plan_id": plan.id,
+            }
+        )
+        column = plan._column_name()
+        self.assertNotEqual(column, "account_id")
+        self.analytic_line_obj.create(
+            {"name": "other son line", "amount": 100, column: son.id}
+        )
+        self.analytic_line_obj.create(
+            {"name": "other parent line", "amount": -30, column: parent.id}
+        )
+        self.assertEqual(son.balance, 100)
+        self.assertEqual(parent.credit, 100)
+        self.assertEqual(parent.debit, 30)
+        self.assertEqual(parent.balance, 70)
+
+    def test_debit_credit_balance_date_filter(self):
+        line = self.create_analytic_line("Old line son", self.analytic_son, 1000)
+        line.date = "2000-01-01"
+        # debit/credit do not depend on the context: drop the cached values
+        self.env.invalidate_all()
+        account = self.analytic_parent1.with_context(from_date="2001-01-01")
+        self.assertEqual(account.credit, 150)
+        self.env.invalidate_all()
+        account = self.analytic_parent1.with_context(to_date="2000-12-31")
+        self.assertEqual(account.credit, 1000)
+
     def test_archive(self):
         self.analytic_parent1.action_archive()
         self.assertEqual(self.analytic_son.active, False)
