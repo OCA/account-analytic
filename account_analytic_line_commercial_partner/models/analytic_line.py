@@ -10,6 +10,5 @@ class AccountAnalyticLine(models.Model):
     commercial_partner_id = fields.Many2one(
         comodel_name="res.partner",
         related="partner_id.commercial_partner_id",
-        store=True,
         readonly=True,
     )
