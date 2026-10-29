@@ -10,6 +10,15 @@ from odoo.addons.stock_analytic.tests.common import CommonStockPicking
 
 @tagged("post_install", "-at_install")
 class TestMrpStockAnalytic(CommonStockPicking):
+    _test_user_groups = (
+        "base.group_user",
+        "mrp.group_mrp_manager",
+        "stock.group_stock_manager",
+        "account.group_account_manager",
+        "analytic.group_analytic_accounting",
+        "product.group_product_manager",
+    )
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -78,7 +87,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
                 "product_id": cls.product_A.id,
                 "bom_id": cls.bom.id,
                 "product_qty": qty,
-                "product_uom_id": cls.product_A.uom_id.id,
+                "uom_id": cls.product_A.uom_id.id,
             }
         )
         production.action_confirm()
@@ -91,7 +100,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
             vals = {
                 "product_id": self.product_B.id,
                 "product_uom_qty": 1,
-                "product_uom": self.product_B.uom_id.id,
+                "uom_id": self.product_B.uom_id.id,
                 "location_id": self.stock_location_id,
                 "location_dest_id": production.production_location_id.id,
                 "raw_material_production_id": production.id,
@@ -100,7 +109,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
             vals = {
                 "product_id": self.product_A.id,
                 "product_uom_qty": 1,
-                "product_uom": self.product_A.uom_id.id,
+                "uom_id": self.product_A.uom_id.id,
                 "location_id": production.production_location_id.id,
                 "location_dest_id": self.stock_location_id,
                 "production_id": production.id,
@@ -163,7 +172,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
                 )
 
     def test_propagate_analytic_to_finished_moves(self):
-        self.env.company.mrp_analytic_on_finished = True
+        self.env.company.sudo().mrp_analytic_on_finished = True
         production = self._create_production(1)
         production.analytic_distribution = self.analytic_distribution
         self.assertEqual(
@@ -173,7 +182,7 @@ class TestMrpStockAnalytic(CommonStockPicking):
         production.analytic_distribution = False
         self.assertFalse(production.move_finished_ids.analytic_distribution)
         # When disabled, finished moves should not be updated.
-        self.env.company.mrp_analytic_on_finished = False
+        self.env.company.sudo().mrp_analytic_on_finished = False
         production2 = self._create_production(1)
         production2.analytic_distribution = self.analytic_distribution
         self.assertFalse(production2.move_finished_ids.analytic_distribution)
@@ -330,16 +339,16 @@ class TestMrpStockAnalytic(CommonStockPicking):
         production = self._create_production(1)
         production.analytic_distribution = self.analytic_distribution
         # When enabled, new finished move inherits analytic.
-        self.env.company.mrp_analytic_on_finished = True
+        self.env.company.sudo().mrp_analytic_on_finished = True
         new_move = self._create_move(production, move_type="finished")
         self.assertEqual(new_move.analytic_distribution, self.analytic_distribution)
         # When disabled, new finished move gets no analytic.
-        self.env.company.mrp_analytic_on_finished = False
+        self.env.company.sudo().mrp_analytic_on_finished = False
         new_move = self._create_move(production, move_type="finished")
         self.assertFalse(new_move.analytic_distribution)
 
     def test_journal_items_with_finished_analytic_enabled(self):
-        self.env.company.mrp_analytic_on_finished = True
+        self.env.company.sudo().mrp_analytic_on_finished = True
         production = self._create_production(1)
         production.analytic_distribution = self.analytic_distribution
         production.button_mark_done()

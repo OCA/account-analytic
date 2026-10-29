@@ -10,7 +10,7 @@ from odoo.exceptions import UserError
 
 class MrpWipAccountingLine(models.TransientModel):
     _name = "mrp.account.wip.accounting.line"
-    _inherit = ["mrp.account.wip.accounting.line", "analytic.mixin"]
+    _inherit = ("mrp.account.wip.accounting.line", "analytic.mixin")
 
     # Required by analytic.mixin for validating analytic distribution against
     # company-specific analytic plans (see analytic.mixin._validate_distribution)
@@ -55,7 +55,7 @@ class MrpWipAccounting(models.TransientModel):
         # Fall back to super for wizards without MOs
         unhandled = self.filtered(lambda w: not w.line_ids)
         if unhandled:
-            super(MrpWipAccounting, unhandled)._compute_line_ids()
+            return super(MrpWipAccounting, unhandled)._compute_line_ids()
 
     # TODO: Propose a refactor to the original method to minimize the change
     def confirm(self):

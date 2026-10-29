@@ -7,7 +7,7 @@ from odoo import fields, models
 
 class MrpProduction(models.Model):
     _name = "mrp.production"
-    _inherit = ["mrp.production", "analytic.mixin"]
+    _inherit = ("mrp.production", "analytic.mixin")
 
     analytic_distribution = fields.Json(
         inverse="_inverse_analytic_distribution",
@@ -31,6 +31,6 @@ class MrpProduction(models.Model):
             )
 
     def button_mark_done(self):
-        self = self.with_context(validate_analytic=True)
-        self._validate_analytic_distribution()
-        return super().button_mark_done()
+        productions = self.with_context(validate_analytic=True)
+        productions._validate_analytic_distribution()
+        return super(MrpProduction, productions).button_mark_done()
