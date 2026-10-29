@@ -56,7 +56,6 @@ class MrpWipAccounting(models.TransientModel):
         unhandled = self.filtered(lambda w: not w.line_ids)
         if unhandled:
             super(MrpWipAccounting, unhandled)._compute_line_ids()
-        return
 
     # TODO: Propose a refactor to the original method to minimize the change
     def confirm(self):
