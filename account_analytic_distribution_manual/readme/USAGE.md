@@ -4,3 +4,5 @@
     labeled "Manual Distribution" should appear at the top.
 4.  Select a record from the list, and it will be added to the
     distribution and the invoice lines.
+
+Watch [this video](https://youtu.be/1I9og80RByc?si=yAARPOwhWt6IJhO_) for an example of usage.
