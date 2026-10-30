@@ -1,0 +1,18 @@
+/*
+    Copyright 2025 Camptocamp SA (https://www.camptocamp.com).
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+*/
+.o_field_analytic_distribution {
+    .analytic_distribution_popup {
+        .rebalanceColumn {
+            width: 25px;
+        }
+        // Show the button only when the line is hovered
+        tr td.rebalanceColumn > span {
+            visibility: hidden;
+        }
+        tr:hover td.rebalanceColumn > span {
+            visibility: visible;
+        }
+    }
+}
