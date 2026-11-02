@@ -42,7 +42,7 @@ class MrpWipAccounting(models.TransientModel):
                 mo_groups.setdefault(key, self.env["mrp.production"])
                 mo_groups[key] |= mo
             # Create lines per group with analytic on WIP lines
-            cut_date = datetime.combine(wizard.date, time.max)
+            cut_date = wizard.date and datetime.combine(wizard.date, time.max)
             all_commands = [Command.clear()]
             for key, mos in mo_groups.items():
                 line_cmds = wizard._get_line_vals(mos, cut_date)
@@ -76,7 +76,7 @@ class MrpWipAccounting(models.TransientModel):
                     "the total debit amount."
                 )
             )
-        if self.reversal_date <= self.date:
+        if self.date and self.reversal_date <= self.date:
             raise UserError(_("Reversal date must be after the posting date."))
         move_line_vals = []
         for line in self.line_ids:
