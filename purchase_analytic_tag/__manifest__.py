@@ -11,7 +11,7 @@
     "installable": True,
     "auto_install": True,
     "data": [
-        "views/purchase_oder_view.xml",
+        "views/purchase_order_view.xml",
     ],
     "maintainers": ["victoralmau"],
 }
