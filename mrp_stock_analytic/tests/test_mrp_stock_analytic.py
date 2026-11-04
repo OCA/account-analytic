@@ -228,6 +228,18 @@ class TestMrpStockAnalytic(CommonStockPicking):
             wip_move_line.analytic_distribution, self.analytic_distribution
         )
 
+    def test_wip_accounting_clear_date(self):
+        """The date of the WIP wizard can be cleared, as in core"""
+        production = self.production
+        production.analytic_distribution = self.analytic_distribution
+        wizard_form = Form(
+            self.env["mrp.account.wip.accounting"].with_context(
+                active_ids=[production.id]
+            )
+        )
+        wizard_form.date = False
+        self.assertTrue(len(wizard_form.line_ids))
+
     def test_wip_accounting_multi_analytic_distribution(self):
         """Test WIP wizard correctly groups MOs by analytic distribution and
         creates separate WIP journal lines with respective distributions."""
