@@ -3,9 +3,7 @@
 
 {
     "name": "Sale Stock Analytic",
-    "summary": """
-        Copies the analytic account of the sale order and the analytic tags
-        of the sale order line to the stock move""",
+    "summary": "Copies the sale order line analytic distribution to stock moves",
     "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "author": "ACSONE SA/NV,Odoo Community Association (OCA)",

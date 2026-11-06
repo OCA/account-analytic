@@ -28,7 +28,7 @@ class TestSaleStockAnalytic(BaseCommon):
                 "name": "sale order line test",
                 "order_id": cls.sale_order.id,
                 "product_id": cls.product.id,
-                "analytic_distribution": dict({str(cls.analytic_account.id): 100.0}),
+                "analytic_distribution": {str(cls.analytic_account.id): 100.0},
             }
         )
 
