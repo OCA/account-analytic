@@ -16,9 +16,11 @@ class StockValuationAdjustmentLines(models.Model):
         )
         cost_line = self.cost_line_id
         for line in res:
-            if line[2]["account_id"] == cost_line.account_id.id:
-                if cost_line.analytic_distribution:
-                    line[2].update(
-                        {"analytic_distribution": cost_line.analytic_distribution}
-                    )
+            if (
+                line[2]["account_id"] == cost_line.account_id.id
+                and cost_line.analytic_distribution
+            ):
+                line[2].update(
+                    {"analytic_distribution": cost_line.analytic_distribution}
+                )
         return res
