@@ -1,10 +1,13 @@
 # Copyright 2020 ACSONE SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.tests.common import TransactionCase
+from odoo.tests import tagged
+
+from odoo.addons.stock_landed_costs.tests.common import TestStockLandedCostsCommon
 
 
-class TestStockLandedCostsAnalytic(TransactionCase):
+@tagged("post_install", "-at_install")
+class TestStockLandedCostsAnalytic(TestStockLandedCostsCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -12,7 +15,6 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         cls.Product = cls.env["product.product"]
         cls.Picking = cls.env["stock.picking"]
         cls.LandedCost = cls.env["stock.landed.cost"]
-        cls.ProductCategory = cls.env["product.category"]
         cls.Account = cls.env["account.account"]
 
         analytic_plan = cls.env["account.analytic.plan"].create({"name": "Test Plan"})
@@ -25,11 +27,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         cls.analytic_distribution_1 = {str(analytic_account_1.id): 100.0}
         cls.analytic_distribution_2 = {str(analytic_account_2.id): 100.0}
 
-        cls.picking_type_in = cls.env.ref("stock.picking_type_out")
-        cls.supplier_location = cls.env.ref("stock.stock_location_suppliers")
-        cls.customer_location = cls.env.ref("stock.stock_location_customers")
-
-        account_type = cls.env["account.account"].search([], limit=1).account_type
+        account_type = cls.Account.search([], limit=1).account_type
         cls.account_1 = cls.Account.create(
             {
                 "name": "Account 1 test",
@@ -46,7 +44,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
                 "reconcile": True,
             }
         )
-        cls.category = cls.ProductCategory.create(
+        cls.category = cls.env.ref("product.product_category_goods").copy(
             {
                 "name": "Product Category Test",
                 "property_cost_method": "fifo",
@@ -56,7 +54,7 @@ class TestStockLandedCostsAnalytic(TransactionCase):
         cls.product = cls.Product.create(
             {
                 "name": "Product Test",
-                "type": "consu",
+                "is_storable": True,
                 "standard_price": 1.0,
                 "categ_id": cls.category.id,
             }
@@ -75,28 +73,32 @@ class TestStockLandedCostsAnalytic(TransactionCase):
             }
         )
 
-        picking_vals = {
-            "name": "Landed Cost Picking Test",
-            "picking_type_id": cls.picking_type_in.id,
-            "location_id": cls.supplier_location.id,
-            "location_dest_id": cls.customer_location.id,
-            "move_ids": [
-                (
-                    0,
-                    0,
-                    {
-                        "name": "Move Test",
-                        "product_id": cls.product.id,
-                        "product_uom_qty": 5,
-                        "quantity": 5,
-                        "product_uom": cls.env.ref("uom.product_uom_unit").id,
-                        "location_id": cls.supplier_location.id,
-                        "location_dest_id": cls.customer_location.id,
-                    },
-                )
-            ],
-        }
-        picking_landed_cost = cls.Picking.create(picking_vals)
+        # The landed cost is only valued on a received move, so the picking is
+        # confirmed and validated before applying the cost on it.
+        picking_landed_cost = cls.Picking.create(
+            {
+                "picking_type_id": cls.warehouse.in_type_id.id,
+                "location_id": cls.supplier_location_id,
+                "location_dest_id": cls.warehouse.lot_stock_id.id,
+                "move_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": cls.product.id,
+                            "product_uom_qty": 5,
+                            "uom_id": cls.product.uom_id.id,
+                            "location_id": cls.supplier_location_id,
+                            "location_dest_id": cls.warehouse.lot_stock_id.id,
+                        },
+                    )
+                ],
+            }
+        )
+        picking_landed_cost.action_confirm()
+        picking_landed_cost.move_ids.quantity = 5
+        picking_landed_cost.button_validate()
+
         landed_cost_vals = {
             "company_id": cls.expenses_journal.company_id.id,
             "picking_ids": [picking_landed_cost.id],

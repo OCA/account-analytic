@@ -6,7 +6,7 @@ from odoo import models
 
 class StockValuationAdjustmentLines(models.Model):
     _name = "stock.valuation.adjustment.lines"
-    _inherit = ["stock.valuation.adjustment.lines", "analytic.mixin"]
+    _inherit = ("stock.valuation.adjustment.lines", "analytic.mixin")
 
     def _create_account_move_line(
         self, credit_account_id, debit_account_id, remaining_qty
