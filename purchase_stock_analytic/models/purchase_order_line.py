@@ -20,7 +20,7 @@ class PurchaseOrderLine(models.Model):
                 moves.write({"analytic_distribution": line.analytic_distribution})
         return res
 
-    def _prepare_stock_moves(self, picking):
+    def _prepare_stock_moves(self, picking=False):
         res = super()._prepare_stock_moves(picking)
         if not self.analytic_distribution:
             return res

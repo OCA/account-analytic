@@ -15,9 +15,11 @@ class TestPurchaseStockAnalytic(TransactionCase):
         cls.product_model = cls.env["product.product"]
         cls.res_partner_model = cls.env["res.partner"]
 
-        cls.analytic_distribution = {
-            str(cls.env.ref("analytic.analytic_agrolait").id): 100.0
-        }
+        analytic_plan = cls.env["account.analytic.plan"].create({"name": "Test plan"})
+        analytic_account = cls.env["account.analytic.account"].create(
+            {"name": "Test account", "plan_id": analytic_plan.id}
+        )
+        cls.analytic_distribution = {str(analytic_account.id): 100.0}
         cls.partner = cls.res_partner_model.create({"name": "Partner test"})
         cls.product = cls.product_model.create({"name": "Product test"})
 
@@ -33,11 +35,11 @@ class TestPurchaseStockAnalytic(TransactionCase):
                 "product_id": cls.product.id,
                 "analytic_distribution": cls.analytic_distribution,
                 "date_planned": fields.Datetime.today(),
-                "product_uom": cls.product.uom_po_id.id,
+                "uom_id": cls.product.uom_id.id,
             }
         )
 
     def test_purchase_stock_analytic(self):
         self.purchase_order.button_confirm()
-        self.move = self.purchase_order.picking_ids.move_ids_without_package
+        self.move = self.purchase_order.picking_ids.move_ids
         self.assertEqual(self.move.analytic_distribution, self.analytic_distribution)
