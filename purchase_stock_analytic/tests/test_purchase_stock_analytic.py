@@ -15,9 +15,9 @@ class TestPurchaseStockAnalytic(TransactionCase):
         cls.product_model = cls.env["product.product"]
         cls.res_partner_model = cls.env["res.partner"]
 
-        cls.analytic_distribution = dict(
-            {str(cls.env.ref("analytic.analytic_agrolait").id): 100.0}
-        )
+        cls.analytic_distribution = {
+            str(cls.env.ref("analytic.analytic_agrolait").id): 100.0
+        }
         cls.partner = cls.res_partner_model.create({"name": "Partner test"})
         cls.product = cls.product_model.create({"name": "Product test"})
 
