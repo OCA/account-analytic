@@ -5,6 +5,11 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestSaleStockAnalytic(BaseCommon):
+    _test_user_groups = (
+        "sales_team.group_sale_manager",
+        "analytic.group_analytic_accounting",
+    )
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
