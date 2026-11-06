@@ -43,6 +43,11 @@ msgid "Analytic Precision"
 msgstr "Precisión Analítica"
 
 #. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr "Distribución analítica (importable)"
+
+#. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
 msgid "Cancel"
 msgstr "Cancelar"
@@ -66,6 +71,17 @@ msgstr "Creado el"
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_distribution
 msgid "Current Analytic Distribution"
 msgstr "Distribución analítica actual"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,help:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+"Definiendo este campo, se establecerá la distribución analítica en formato "
+"JSON, pero utilizando los nombres de las cuentas analíticas como claves del "
+"diccionario, lo que facilita la introducción manual."
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move__display_name
@@ -103,6 +119,11 @@ msgstr "Última Actualzacíón por"
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_date
 msgid "Last Updated on"
 msgstr "Última Actualización el"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__manual_distribution_id
+msgid "Manual Distribution"
+msgstr "Distribución manual"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
@@ -143,21 +164,6 @@ msgstr "Actualización de las líneas analíticas"
 
 #~ msgid "Analytic Distribution Search"
 #~ msgstr "Búsqueda de distribución analítica"
-
-#~ msgid "Analytic distribution (importable)"
-#~ msgstr "Distribución analítica (importable)"
-
-#~ msgid ""
-#~ "Defining this field, it will set the analytical distribution in JSON "
-#~ "format, but using the analytic accounts names as keys of the dictionary, "
-#~ "so it eases the human input."
-#~ msgstr ""
-#~ "Definiendo este campo, se establecerá la distribución analítica en "
-#~ "formato JSON, pero utilizando los nombres de las cuentas analíticas como "
-#~ "claves del diccionario, lo que facilita la introducción manual."
-
-#~ msgid "Manual Distribution"
-#~ msgstr "Distribución manual"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Última Modificación el"
