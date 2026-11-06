@@ -24,7 +24,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_distribution
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_distribution
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_valuation_layer__analytic_distribution
 msgid "Analytic Distribution"
 msgstr ""
 
@@ -37,7 +36,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__analytic_precision
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__analytic_precision
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__analytic_precision
-#: model:ir.model.fields,field_description:stock_analytic.field_stock_valuation_layer__analytic_precision
 msgid "Analytic Precision"
 msgstr ""
 
@@ -59,6 +57,16 @@ msgid ""
 msgstr ""
 
 #. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__display_name
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__display_name
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_rule__display_name
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__distribution_analytic_account_ids
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__distribution_analytic_account_ids
@@ -68,6 +76,16 @@ msgstr ""
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__business_domain
 msgid "Domain"
+msgstr ""
+
+#. module: stock_analytic
+#: model:ir.model.fields,field_description:stock_analytic.field_account_analytic_applicability__id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move__id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_move_line__id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_picking__id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_rule__id
+#: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__id
+msgid "ID"
 msgstr ""
 
 #. module: stock_analytic
@@ -101,11 +119,6 @@ msgstr ""
 #. module: stock_analytic
 #: model:ir.model,name:stock_analytic.model_stock_rule
 msgid "Stock Rule"
-msgstr ""
-
-#. module: stock_analytic
-#: model:ir.model,name:stock_analytic.model_stock_valuation_layer
-msgid "Stock Valuation Layer"
 msgstr ""
 
 #. module: stock_analytic
