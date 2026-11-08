@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-16 03:41+0000\n"
-"PO-Revision-Date: 2026-03-26 10:45+0000\n"
+"PO-Revision-Date: 2026-11-08 16:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -68,7 +68,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_rule__display_name
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__distribution_analytic_account_ids
@@ -90,7 +90,7 @@ msgstr "Dominio"
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_rule__id
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_scrap__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: stock_analytic
 #: model:ir.model.fields,field_description:stock_analytic.field_stock_move__manual_distribution_id
