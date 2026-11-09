@@ -86,6 +86,11 @@ msgid "Analytic distribution (importable)"
 msgstr "Distribució Analítica"
 
 #. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__applicable_category_ids
+msgid "Applicable Categories"
+msgstr ""
+
+#. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
 msgid "Archived"
 msgstr "Arxivat"
@@ -96,9 +101,19 @@ msgid "Average Price"
 msgstr "Preu Mitjà"
 
 #. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_price_for_internal_moves
+msgid "Average Price for Internal Moves"
+msgstr ""
+
+#. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_weight
 msgid "Average Weight"
 msgstr "Pes Mitjà"
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_weight_for_internal_moves
+msgid "Average Weight for Internal Moves"
+msgstr ""
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -137,6 +152,11 @@ msgstr "Creat per"
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__create_date
 msgid "Created on"
 msgstr "Creat el"
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__custom_computation_for_internal_moves
+msgid "Custom Computation for Internal Moves"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_import
@@ -192,10 +212,29 @@ msgid "ID"
 msgstr "Identificador"
 
 #. module: stock_analytic_rule
+#: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__mandatory
+msgid ""
+"If checked, couldn't validate a stock move if it doesn't generate analytic "
+"lines."
+msgstr ""
+
+#. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__include_taxes
 msgid "If checked, the amount will include taxes when computed by product."
 msgstr ""
 "Si està marcat, l'import inclourà impostos quan es calculi per producte."
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,help:stock_analytic_rule.field_product_category__custom_computation_for_internal_moves
+msgid ""
+"If checked, the average price and weight for\n"
+"        internal moves will be used instead of the standard ones"
+msgstr ""
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__applicable_category_ids
+msgid "If set, the rule will only be applied to products of these categories."
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__include_taxes
@@ -216,6 +255,11 @@ msgstr "Actualitzat el"
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_form
 msgid "Locations"
 msgstr "Ubicacions"
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__mandatory
+msgid "Mandatory"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__manual_distribution_id
@@ -297,9 +341,23 @@ msgid "Supplement for Stock Analytic Models"
 msgstr "Suplement per a les regles analítiques d'estoc"
 
 #. module: stock_analytic_rule
+#: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_price_for_internal_moves
+msgid ""
+"This field is used to store the average price of\n"
+"        the products for internal moves"
+msgstr ""
+
+#. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_price
 msgid "This field is used to store the average price of the products"
 msgstr "Preu mitjà dels productes d'aquesta categoria"
+
+#. module: stock_analytic_rule
+#: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_weight_for_internal_moves
+msgid ""
+"This field is used to store the average weight of\n"
+"        the products for internal moves"
+msgstr ""
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_weight
@@ -317,14 +375,11 @@ msgstr "Aquest camp s’utilitza per complementar el cost del producte."
 #, python-format
 msgid ""
 "This move has to generate analytic\n"
-"                    lines so the category must have a weight greater than "
-"0.\n"
+"                        lines so the category must have a weight greater "
+"than 0.\n"
 "\n"
-"                    Please, check the category %s weight."
+"                        Please, check the category %s weight."
 msgstr ""
-"Aquest moviment ha de generar línies analítiques,\\ així que la categoria ha "
-"de tenir un preu superior a 0.\n"
-"Si us plau, comprova el pes de la categoria %s."
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -332,13 +387,10 @@ msgstr ""
 #, python-format
 msgid ""
 "This move has to generate analytic lines\n"
-"                    so the category must have a price greater than 0.\n"
+"                        so the category must have a price greater than 0.\n"
 "\n"
-"                    Please, check the category %s price."
+"                        Please, check the category %s price."
 msgstr ""
-"Aquest moviment ha de generar línies analítiques\n"
-", així que la categoria ha de tenir un pes superior a 0.\n"
-"Si us plau, comprova el pes de la categoria %s."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__location_dest_ids
@@ -354,3 +406,26 @@ msgstr "Ubicació de destí"
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_tree
 msgid "View"
 msgstr "Veure"
+
+#, python-format
+#~ msgid ""
+#~ "This move has to generate analytic\n"
+#~ "                    lines so the category must have a weight greater than "
+#~ "0.\n"
+#~ "\n"
+#~ "                    Please, check the category %s weight."
+#~ msgstr ""
+#~ "Aquest moviment ha de generar línies analítiques,\\ així que la categoria "
+#~ "ha de tenir un preu superior a 0.\n"
+#~ "Si us plau, comprova el pes de la categoria %s."
+
+#, python-format
+#~ msgid ""
+#~ "This move has to generate analytic lines\n"
+#~ "                    so the category must have a price greater than 0.\n"
+#~ "\n"
+#~ "                    Please, check the category %s price."
+#~ msgstr ""
+#~ "Aquest moviment ha de generar línies analítiques\n"
+#~ ", així que la categoria ha de tenir un pes superior a 0.\n"
+#~ "Si us plau, comprova el pes de la categoria %s."
