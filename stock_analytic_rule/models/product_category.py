@@ -16,6 +16,26 @@ class ProductCategory(models.Model):
         digits=(16, 2),
         help="""This field is used to store the average weight of the products""",
     )
+
+    custom_computation_for_internal_moves = fields.Boolean(
+        string="Custom Computation for Internal Moves",
+        help="""If checked, the average price and weight for
+        internal moves will be used instead of the standard ones""",
+    )
+
+    avg_price_for_internal_moves = fields.Float(
+        string="Average Price for Internal Moves",
+        digits=(16, 2),
+        help="""This field is used to store the average price of
+        the products for internal moves""",
+    )
+    avg_weight_for_internal_moves = fields.Float(
+        string="Average Weight for Internal Moves",
+        digits=(16, 2),
+        help="""This field is used to store the average weight of
+        the products for internal moves""",
+    )
+
     supplement = fields.Float(
         digits=(16, 2),
         help="""This field is used to supplement the cost of the product""",

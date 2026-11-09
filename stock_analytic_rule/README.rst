@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ===================
 Stock Analytic Rule
 ===================
@@ -17,7 +13,7 @@ Stock Analytic Rule
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
@@ -72,6 +68,20 @@ For each relevant product category, configure the following fields:
 - ``Average Price``: Base cost per unit.
 - ``Average Weight``: Used to scale the cost relative to quantity.
 - ``Supplement``: Additional surcharge applied on top of base cost.
+
+Custom Computation for Internal Moves
+-------------------------------------
+
+If **Custom Computation for Internal Moves** is enabled, specific values
+can be defined for internal transfers.
+
+When this option is checked, the following fields appear:
+
+- **Average Price for Internal Moves**
+- **Average Weight for Internal Moves**
+
+These values will be used **instead of** **Average Price** and **Average
+Weight** when calculating the total amount for internal stock moves.
 
 These values are used when the compute type is set to **Category**.
 
