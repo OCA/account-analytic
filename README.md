@@ -47,6 +47,7 @@ addon | version | maintainers | summary
 [purchase_analytic_distribution_model_warehouse](purchase_analytic_distribution_model_warehouse/) | 18.0.1.0.1 |  | Use analytic distribution models based on the picking type's warehouse in purchase orders
 [purchase_analytic_tag](purchase_analytic_tag/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Purchase Analytic Tag
 [purchase_stock_analytic](purchase_stock_analytic/) | 18.0.1.0.0 |  | Copies the analytic distribution of the purchase order itemto the stock move
+[sale_analytic](sale_analytic/) | 18.0.1.0.0 | <a href='https://github.com/andrel-exo'><img src='https://github.com/andrel-exo.png' width='32' height='32' style='border-radius:50%;' alt='andrel-exo'/></a> | Sale Analytic
 [sale_analytic_distribution_model_warehouse](sale_analytic_distribution_model_warehouse/) | 18.0.1.0.2 |  | Use analytic distribution models based on the warehouse in sale orders
 [sale_analytic_tag](sale_analytic_tag/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Sale Analytic Tag
 [stock_analytic](stock_analytic/) | 18.0.1.2.0 |  | Adds analytic distribution in stock move
