@@ -850,3 +850,75 @@ class TestStockAnalyticModel(TransactionCase):
             analytic_lines2,
             "Analytic lines should not be created for non-applicable category",
         )
+
+    def test_analytic_lines_with_expense_account(self):
+        expense_account = self.env["account.account"].create(
+            {
+                "name": "Expense Account",
+                "code": "6001239",
+            }
+        )
+        financial_account = self.env["account.account"].create(
+            {
+                "name": "Financial Account",
+                "code": "4001239",
+            }
+        )
+        self.stock_analytic_rule.write(
+            {
+                "financial_account_id": financial_account.id,
+                "expense_account_id": expense_account.id,
+            }
+        )
+
+        move = self.env["stock.move"].create(
+            {
+                "name": "Test Move",
+                "product_id": self.product.id,
+                "product_uom": self.product.uom_id.id,
+                "product_uom_qty": 2.0,
+                "quantity": 2.0,
+                "location_id": self.stock_location.id,
+                "location_dest_id": self.stock_location_2.id,
+                "state": "done",
+                "company_id": self.env.company.id,
+            }
+        )
+
+        # Verify that analytic lines were created with the correct accounts
+        analytic_lines = self.env["account.analytic.line"].search(
+            [("stock_move_id", "=", move.id)]
+        )
+
+        self.assertTrue(
+            any(
+                line.general_account_id.id == financial_account.id
+                for line in analytic_lines
+            ),
+            "Analytic lines should include the financial account",
+        )
+        self.assertTrue(
+            any(
+                line.general_account_id.id == expense_account.id
+                for line in analytic_lines
+            ),
+            "Analytic lines should include the expense account",
+        )
+
+        negative_lines = analytic_lines.filtered(lambda line: line.amount < 0)
+        positive_lines = analytic_lines.filtered(lambda line: line.amount > 0)
+
+        self.assertTrue(
+            all(
+                line.general_account_id.id == financial_account.id
+                for line in positive_lines
+            ),
+            "Positive analytic lines should have the financial account",
+        )
+        self.assertTrue(
+            all(
+                line.general_account_id.id == expense_account.id
+                for line in negative_lines
+            ),
+            "Negative analytic lines should have the expense account",
+        )

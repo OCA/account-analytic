@@ -61,6 +61,12 @@ class StockAnalyticRule(models.Model):
         domain=[("deprecated", "=", False)],
         help="Financial account to use for the analytic lines.",
     )
+    expense_account_id = fields.Many2one(
+        "account.account",
+        string="Expense Account",
+        domain=[("deprecated", "=", False)],
+        help="Expense account to use for the analytic lines.",
+    )
 
     active = fields.Boolean(default=True)
     company_id = fields.Many2one(
@@ -213,7 +219,7 @@ class StockAnalyticRule(models.Model):
                     self.analytic_distribution_negative,
                     stock_move_id,
                     company_id,
-                    self.financial_account_id,
+                    self.expense_account_id,
                 )
             )
 
