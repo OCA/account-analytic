@@ -103,6 +103,7 @@
                             <group string="Aditional Parameters" col="2">
                                 <group>
                                     <field name="financial_account_id" />
+                                    <field name="expense_account_id" />
                                     <field
                                         name="company_id"
                                         groups="base.group_multi_company"

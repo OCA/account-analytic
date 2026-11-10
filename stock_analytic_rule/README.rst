@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ===================
 Stock Analytic Rule
 ===================
@@ -17,7 +13,7 @@ Stock Analytic Rule
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
@@ -43,7 +39,14 @@ Key features:
 
   - Product list price.
   - Category-based formula:
-    ``(avg_price * (avg_weight * qty)) + ((avg_weight * qty) * supplement)``
+
+    - For products measured in units, total_weight is calculated as
+      quantity \* weight.
+    - The product's weight is used when available; otherwise, the
+      category's average weight (avg_weight) is used.
+    - For products measured in weight units (kg, grams, tonnes, etc.),
+      the quantity is automatically converted to kilograms, avoiding
+      double weight calculations.
 
 - Support for positive and negative analytic distributions.
 - Handles partial distributions and multi-account combinations.

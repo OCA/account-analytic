@@ -61,6 +61,12 @@ class StockAnalyticRule(models.Model):
         domain=[("deprecated", "=", False)],
         help="Financial account to use for the analytic lines.",
     )
+    expense_account_id = fields.Many2one(
+        "account.account",
+        string="Expense Account",
+        domain=[("deprecated", "=", False)],
+        help="Expense account to use for the analytic lines.",
+    )
 
     active = fields.Boolean(default=True)
     company_id = fields.Many2one(
@@ -142,25 +148,50 @@ class StockAnalyticRule(models.Model):
         )
         return tax_result["total_included"]
 
-    def _get_amount_by_category(self, product, quantity, is_internal_move):
+    def _get_amount_by_category(self, product, quantity, is_internal_move=False):
         """
-        Computes the amount for the analytic line based on the product's category.
-        This method is used when the amount_compute_type is set to 'category'.
+        Computes the analytic amount based on the product's category.
+
+        Uses the product weight when available, falling back to the category
+        average weight. For internal moves, applies the category-specific
+        price and average weight when configured.
+
+        If the product's UoM belongs to the weight category, the quantity
+        is converted directly to kilograms.
         """
         category = product.categ_id
-        avg_price = category.avg_price
-        avg_weight = category.avg_weight
 
-        # Use custom computation for internal moves if the flag is set and it's
-        # an internal move
-        if is_internal_move and category.custom_computation_for_internal_moves:
-            avg_price = category.avg_price_for_internal_moves
-            avg_weight = category.avg_weight_for_internal_moves
-
-        self._validation_checks(category)
-        return (avg_price * (avg_weight * quantity)) + (
-            (avg_weight * quantity) * category.supplement
+        # Determine whether to use internal move values
+        use_internal_values = (
+            is_internal_move and category.custom_computation_for_internal_moves
         )
+
+        avg_price = (
+            category.avg_price_for_internal_moves
+            if use_internal_values
+            else category.avg_price
+        )
+        avg_weight = (
+            category.avg_weight_for_internal_moves
+            if use_internal_values
+            else category.avg_weight
+        )
+
+        # Use product weight when available, otherwise category average weight
+        product_weight = (
+            product.product_weight
+            if "product_weight" in product._fields
+            else product.weight
+        )
+        weight = product_weight or avg_weight
+        total_weight = weight * quantity
+
+        # Convert directly to kg if the product UoM represents weight
+        kg_uom = self.env.ref("uom.product_uom_kgm", raise_if_not_found=False)
+        if kg_uom and product.uom_id.category_id == kg_uom.category_id:
+            total_weight = product.uom_id._compute_quantity(quantity, kg_uom)
+        self._validation_checks(category, avg_price, total_weight)
+        return (avg_price + category.supplement) * total_weight
 
     def _compute_amount(self, product, quantity, is_internal_move, partner=None):
         """
@@ -213,7 +244,7 @@ class StockAnalyticRule(models.Model):
                     self.analytic_distribution_negative,
                     stock_move_id,
                     company_id,
-                    self.financial_account_id,
+                    self.expense_account_id,
                 )
             )
 
@@ -245,33 +276,27 @@ class StockAnalyticRule(models.Model):
             analytic_lines.append(line_to_add)
         return analytic_lines
 
-    def _validation_checks(self, category):
-        if self.mandatory:
-            weight_error = (
-                category.avg_weight <= 0 and category.avg_weight_for_internal_moves <= 0
-            )
-            price_error = (
-                category.avg_price <= 0 and category.avg_price_for_internal_moves <= 0
-            )
-            if weight_error:
-                raise ValidationError(
-                    _(
-                        """This move has to generate analytic
-                        lines so the category must have a weight greater than 0.\n
-                        Please, check the category %s weight."""
-                    )
-                    % category.name
-                )
+    def _validation_checks(self, category, price, weight):
+        if not self.mandatory:
+            return
 
-            if price_error:
-                raise ValidationError(
-                    _(
-                        """This move has to generate analytic lines
-                        so the category must have a price greater than 0.\n
-                        Please, check the category %s price."""
-                    )
-                    % category.name
+        if weight <= 0:
+            raise ValidationError(
+                _(
+                    "This move must generate analytic lines, "
+                    "but no valid weight was found for category %(category)s."
                 )
+                % {"category": category.display_name}
+            )
+
+        if price <= 0:
+            raise ValidationError(
+                _(
+                    "This move must generate analytic lines, "
+                    "but no valid price was found for category %(category)s."
+                )
+                % {"category": category.display_name}
+            )
 
     def _is_applicable_to_category(self, product):
         """Return True if the rule applies to the product category."""
