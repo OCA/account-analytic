@@ -5,7 +5,10 @@ Key features:
 - Define stock movement rules by source and destination locations.
 - Compute analytic line amounts using either:
   - Product list price.
-  - Category-based formula: `(avg_price * (avg_weight * qty)) + ((avg_weight * qty) * supplement)`
+  - Category-based formula:
+    - For products measured in units, total_weight is calculated as quantity * weight.
+    - The product's weight is used when available; otherwise, the category's average weight (avg_weight) is used.
+    - For products measured in weight units (kg, grams, tonnes, etc.), the quantity is automatically converted to kilograms, avoiding double weight calculations.
 - Support for positive and negative analytic distributions.
 - Handles partial distributions and multi-account combinations.
 - Supports return pickings and reversal analytic lines.
