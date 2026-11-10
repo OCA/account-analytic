@@ -57,6 +57,9 @@ Usage
 4. Select a record from the list, and it will be added to the
    distribution and the invoice lines.
 
+Watch `this video <https://youtu.be/1I9og80RByc?si=yAARPOwhWt6IJhO_>`__
+for an example of usage.
+
 Known issues / Roadmap
 ======================
 
