@@ -1,0 +1,22 @@
+<odoo>
+    <record
+        id="view_account_analytic_distribution_model_tree_inherit"
+        model="ir.ui.view"
+    >
+        <field name="name">account.analytic.distribution.model.tree.inherit</field>
+        <field name="model">account.analytic.distribution.model</field>
+        <field
+            name="inherit_id"
+            ref="analytic.account_analytic_distribution_model_tree_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='account_prefix']" position="after">
+                <field
+                    name="affected_accounts"
+                    widget="many2many_tags"
+                    optional="show"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
