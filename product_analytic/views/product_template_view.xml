@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<odoo>
+    <record id="product_template_only_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.only.form.view.product.analytic</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="account.product_template_form_view" />
+        <field name="arch" type="xml">
+            <group name="properties" position="after">
+                <group
+                    name="analytic"
+                    string="Analytic"
+                    invisible="is_product_variant"
+                    groups="analytic.group_analytic_accounting,!product.group_product_variant"
+                >
+                    <field
+                        name="analytic_distribution_model_ids"
+                        nolabel="1"
+                        context="{'default_product_id': product_variant_id}"
+                    >
+                        <list editable="top">
+                            <field name="sequence" widget="handle" />
+                            <field name="prefix_placeholder" column_invisible="1" />
+                            <field
+                                name="account_prefix"
+                                optional="show"
+                                widget="char_with_placeholder_field"
+                                options="{'placeholder_field': 'prefix_placeholder'}"
+                            />
+                            <field name="partner_id" optional="show" />
+                            <field name="partner_category_id" optional="hide" />
+                            <field name="product_categ_id" optional="hide" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                optional="show"
+                            />
+                            <field
+                                name="analytic_distribution"
+                                widget="analytic_distribution"
+                                options="{'force_applicability': 'optional', 'disable_save': true}"
+                            />
+                        </list>
+                    </field>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
