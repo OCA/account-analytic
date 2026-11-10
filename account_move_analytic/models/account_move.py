@@ -29,6 +29,15 @@ class AccountMove(models.Model):
                         break
                 move.analytic_distribution = first_distribution
 
+    @api.onchange("analytic_distribution")
+    def _onchange_analytic_distribution(self):
+        if self.move_type not in INVOICE_TYPES or not self.analytic_distribution:
+            return
+        product_lines = self.invoice_line_ids.filtered(
+            lambda ln: ln.display_type not in ("line_section", "line_note")
+        )
+        product_lines.analytic_distribution = self.analytic_distribution
+
     def _inverse_analytic_distribution(self):
         for move in self:
             if move.move_type not in INVOICE_TYPES:

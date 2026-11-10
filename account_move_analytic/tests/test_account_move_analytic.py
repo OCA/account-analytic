@@ -129,6 +129,62 @@ class TestAccountMoveAnalytic(TransactionCase):
             self.analytic_distribution,
         )
 
+    def test_form_header_updates_lines(self):
+        other_account = self.analytic_account.copy({"name": "other"})
+        invoice = self._create_invoice()
+        invoice.write(
+            {
+                "invoice_line_ids": [
+                    Command.create(
+                        {
+                            "product_id": self.product.id,
+                            "quantity": 1,
+                            "price_unit": 100.0,
+                            "analytic_distribution": {str(other_account.id): 100},
+                        }
+                    )
+                ]
+            }
+        )
+        with Form(invoice) as invoice_form:
+            invoice_form.analytic_distribution = self.analytic_distribution
+            with invoice_form.invoice_line_ids.edit(0) as line:
+                self.assertEqual(line.analytic_distribution, self.analytic_distribution)
+        self.assertEqual(
+            invoice.invoice_line_ids.analytic_distribution,
+            self.analytic_distribution,
+        )
+
+    def test_line_analytic_kept_with_distribution_model(self):
+        model_account = self.analytic_account.copy({"name": "model"})
+        self.env["account.analytic.distribution.model"].create(
+            {
+                "product_id": self.product.id,
+                "analytic_distribution": {str(model_account.id): 100},
+            }
+        )
+        invoice = self.env["account.move"].create(
+            {
+                "move_type": "in_invoice",
+                "partner_id": self.partner.id,
+                "invoice_line_ids": [
+                    Command.create(
+                        {
+                            "product_id": self.product.id,
+                            "quantity": 1,
+                            "price_unit": 100.0,
+                            "analytic_distribution": self.analytic_distribution,
+                        }
+                    )
+                ],
+            }
+        )
+        self.assertEqual(
+            invoice.invoice_line_ids.analytic_distribution,
+            self.analytic_distribution,
+        )
+        self.assertEqual(invoice.analytic_distribution, self.analytic_distribution)
+
     def test_vendor_bill_analytic_distribution(self):
         bill = self._create_invoice(move_type="in_invoice")
         self._add_invoice_line(bill)
