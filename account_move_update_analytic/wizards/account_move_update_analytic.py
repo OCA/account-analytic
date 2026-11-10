@@ -26,6 +26,7 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
     current_analytic_distribution = fields.Json(
         related="line_id.analytic_distribution", string="Current Analytic Distribution"
     )
+    active_model = fields.Char("Model")
 
     def _move_type_selection(self):
         return self.env["account.move"].fields_get(allfields=["move_type"])[
@@ -41,11 +42,15 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
     def default_get(self, fields):
         rec = super().default_get(fields)
         active_id = self.env.context.get("active_id", False)
+        active_ids = self.env.context.get("active_ids", [])
         active_model = self.env.context.get("active_model", "account.move.line")
         line_id = self.env.context.get("default_line_id") or (
-            active_id if active_model == "account.move.line" else False
+            active_id
+            if active_model == "account.move.line" and len(active_ids) == 1
+            else False
         )
 
+        rec.update({"active_model": active_model})
         if line_id:
             aml = self.env["account.move.line"].browse(line_id)
             if aml:
@@ -79,6 +84,11 @@ class AccountMoveUpdateAnalytic(models.TransientModel):
         self.with_context(validate_analytic=True)._validate_distribution()
         if self.line_id:
             self.line_id.analytic_distribution = self.analytic_distribution
-        else:
+        elif self.active_model == "account.move.line":
+            lines = self.env["account.move.line"].browse(
+                self.env.context.get("active_ids")
+            )
+            lines.analytic_distribution = self.analytic_distribution
+        elif self.active_model == "account.move":
             moves = self.env["account.move"].browse(self.env.context.get("active_ids"))
             moves.invoice_line_ids.analytic_distribution = self.analytic_distribution
