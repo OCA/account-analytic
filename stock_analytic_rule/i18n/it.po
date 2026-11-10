@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-10-07 11:43+0000\n"
+"PO-Revision-Date: 2026-11-10 12:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__amount_compute_type
@@ -87,7 +87,7 @@ msgstr "Distribuzione analitica (importabile)"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__applicable_category_ids
 msgid "Applicable Categories"
-msgstr ""
+msgstr "Categorie applicabili"
 
 #. module: stock_analytic_rule
 #: model_terms:ir.ui.view,arch_db:stock_analytic_rule.view_stock_analytic_rule_search
@@ -102,7 +102,7 @@ msgstr "Prezzo medio"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_price_for_internal_moves
 msgid "Average Price for Internal Moves"
-msgstr ""
+msgstr "Prezzo medio per movimenti interni"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_weight
@@ -112,7 +112,7 @@ msgstr "Peso medio"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__avg_weight_for_internal_moves
 msgid "Average Weight for Internal Moves"
-msgstr ""
+msgstr "Peso medio per movimenti interni"
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -155,7 +155,7 @@ msgstr "Creato il"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_product_category__custom_computation_for_internal_moves
 msgid "Custom Computation for Internal Moves"
-msgstr ""
+msgstr "Calcolo personalizzato per movimenti interni"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__analytic_distribution_import
@@ -219,6 +219,8 @@ msgid ""
 "If checked, couldn't validate a stock move if it doesn't generate analytic "
 "lines."
 msgstr ""
+"Se selezionata, non sarà possibile validare un movimento di magazzino se non "
+"genera righe analitiche."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__include_taxes
@@ -232,11 +234,14 @@ msgid ""
 "If checked, the average price and weight for\n"
 "        internal moves will be used instead of the standard ones"
 msgstr ""
+"Se selezionata, verranno utilizzati il prezzo e il peso medi per\n"
+"        i movimenti interni invece di quelli standard"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_stock_analytic_rule__applicable_category_ids
 msgid "If set, the rule will only be applied to products of these categories."
 msgstr ""
+"Se impostato, la regola verrà applicata solo ai prodotti di queste categorie."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__include_taxes
@@ -261,7 +266,7 @@ msgstr "Ubicazioni"
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__mandatory
 msgid "Mandatory"
-msgstr ""
+msgstr "Obbligatoria"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__manual_distribution_id
@@ -346,6 +351,8 @@ msgid ""
 "This field is used to store the average price of\n"
 "        the products for internal moves"
 msgstr ""
+"Questo campo è utilizzato per salvare il prezzo medio\n"
+"        dei prodotti per i movimenti interni"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_price
@@ -358,6 +365,8 @@ msgid ""
 "This field is used to store the average weight of\n"
 "        the products for internal moves"
 msgstr ""
+"Questo campo è usato per salvare il peso medio\n"
+"        dei prodotti per i movimenti interni"
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,help:stock_analytic_rule.field_product_category__avg_weight
@@ -380,6 +389,11 @@ msgid ""
 "\n"
 "                        Please, check the category %s weight."
 msgstr ""
+"Questo movimento deve generare righe\n"
+"                        analitiche, quindi la categoria deve avere un peso "
+"maggiore di 0.\n"
+"\n"
+"                        Controllare il peso della categoria %s."
 
 #. module: stock_analytic_rule
 #. odoo-python
@@ -391,6 +405,11 @@ msgid ""
 "\n"
 "                        Please, check the category %s price."
 msgstr ""
+"Questo movimento deve generare righe analitiche,\n"
+"                        quindi la categoria deve avere un prezzo maggiore di "
+"0.\n"
+"\n"
+"                        Controllare il prezzo della categoria %s."
 
 #. module: stock_analytic_rule
 #: model:ir.model.fields,field_description:stock_analytic_rule.field_stock_analytic_rule__location_dest_ids
