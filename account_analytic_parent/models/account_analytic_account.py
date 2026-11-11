@@ -48,7 +48,7 @@ class AccountAnalyticAccount(models.Model):
 
         # Re-compute only accounts with children
         for account in self.filtered("child_ids"):
-            domain = [("account_id", "child_of", account.id)]
+            domain = [("auto_account_id", "child_of", account.id)]
 
             credit_groups = AccountAnalyticLine.read_group(
                 domain=domain + [("amount", ">=", 0.0)],

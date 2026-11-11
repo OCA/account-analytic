@@ -68,6 +68,23 @@ class TestAccountAnalyticRecursion(TransactionCase):
         )
         self.assertEqual(self.analytic_parent3.debit, 50)
 
+        self.other_plan = self.env.ref("analytic.analytic_plan_projects")
+        self.analytic_son_other_plan = self.create_analytic_account(
+            {
+                "name": "son other plan aa",
+                "code": "05",
+                "plan_id": self.other_plan.id,
+                "parent_id": self.analytic_parent2.id,
+            }
+        )
+        self.analytic_line_obj.create(
+            {
+                "name": "Analytic line son other plan",
+                "amount": 75,
+                self.other_plan._column_name(): self.analytic_son_other_plan.id,
+            }
+        )
+
     def create_analytic_account(self, values):
         if hasattr(self.analytic_account_obj, "_default_code"):
             values.pop("code")
@@ -111,8 +128,12 @@ class TestAccountAnalyticRecursion(TransactionCase):
         self.assertEqual(
             self.analytic_parent2.debit, 0, "Analytic account in the debit side"
         )
-        self.assertEqual(self.analytic_parent2.credit, 50, "Wrong amount")
-        self.assertEqual(self.analytic_parent2.balance, 50, "Wrong amount")
+        self.assertEqual(
+            self.analytic_parent2.credit,
+            125,
+            "Must include the own line plus the other-plan child",
+        )
+        self.assertEqual(self.analytic_parent2.balance, 125, "Wrong amount")
         self.assertEqual(self.analytic_parent3.debit, 50)
         self.assertEqual(self.analytic_parent3.credit, 0)
         self.assertEqual(self.analytic_parent3.balance, -50)
