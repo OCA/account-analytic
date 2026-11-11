@@ -1,6 +1,7 @@
-# Copyright 2025 Tecnativa - Víctor Martínez
+# Copyright 2025-2026 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import Command
+from odoo.exceptions import AccessError
 from odoo.tests import new_test_user
 from odoo.tests.common import users
 
@@ -8,6 +9,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestAnalyticHrDepartmentRestriction(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -116,10 +119,8 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
 
     @users("test-basic_user")
     def test_analytic_data_basic_user(self):
-        accounts = self.env["account.analytic.account"].search([])
-        self.assertNotIn(self.account_a, accounts)
-        self.assertNotIn(self.account_b, accounts)
-        self.assertNotIn(self.account_c, accounts)
+        with self.assertRaises(AccessError):
+            self.env["account.analytic.account"].search([])
 
     @users("test-user")
     def test_analytic_data_user(self):

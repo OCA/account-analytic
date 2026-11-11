@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,operation,domain
+access_analytic_account_department,Analytic account department restriction,analytic.model_account_analytic_account,,crud,analytic_department_domain
+access_analytic_plan_department,Analytic plan department restriction,analytic.model_account_analytic_plan,,crud,analytic_department_domain

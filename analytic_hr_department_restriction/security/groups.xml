@@ -2,7 +2,6 @@
 <odoo>
     <record id="group_analytic_accounting_without_department" model="res.groups">
         <field name="name">Analytic Accounting (without department)</field>
-        <field name="category_id" ref="base.module_category_hidden" />
         <field
             name="implied_ids"
             eval="[(4, ref('analytic.group_analytic_accounting'))]"

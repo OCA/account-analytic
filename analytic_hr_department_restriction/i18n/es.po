@@ -43,6 +43,3 @@ msgstr "Departamentos"
 #: model:ir.model,name:analytic_hr_department_restriction.model_ir_rule
 msgid "Record Rule"
 msgstr "Regla de registro"
-
-#~ msgid "Department"
-#~ msgstr "Departamento"

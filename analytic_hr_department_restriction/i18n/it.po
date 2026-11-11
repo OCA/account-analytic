@@ -42,6 +42,3 @@ msgstr "Reparti"
 #: model:ir.model,name:analytic_hr_department_restriction.model_ir_rule
 msgid "Record Rule"
 msgstr "Regola su record"
-
-#~ msgid "Department"
-#~ msgstr "Reparto"
