@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-account-analytic"
+version = "20.0.20261111.0"
+dependencies = [
+    "odoo-addon-analytic_amount_security==20.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 20.0",
+]
