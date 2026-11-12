@@ -7,6 +7,8 @@
 # Copyright 2019 Pesol
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
+from collections import defaultdict
+
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 
@@ -51,50 +53,57 @@ class AccountAnalyticAccount(models.Model):
         """
         res = super()._compute_debit_credit_balance()
 
+        domain = [("company_id", "in", [False] + self.env.companies.ids)]
+        if self.env.context.get("from_date"):
+            domain.append(("date", ">=", self.env.context["from_date"]))
+        if self.env.context.get("to_date"):
+            domain.append(("date", "<=", self.env.context["to_date"]))
+
         AccountAnalyticLine = self.env["account.analytic.line"]
-        user_currency_id = self.env.user.company_id.currency_id
+        company = self.env.company
+        today = fields.Date.today()
 
-        # Re-compute only accounts with children
-        for account in self:
-            if not account.child_ids:
+        # Re-compute only accounts with children, each plan uses its own
+        # column on analytic lines
+        for plan, accounts in self.grouped("plan_id").items():
+            parents = accounts.filtered("child_ids")
+            if not plan or not parents:
                 continue
-            domain = [("account_id", "child_of", account.id)]
+            column = plan._column_name()
+            subtree = self.search([("id", "child_of", parents.ids)])
 
-            credit_groups = AccountAnalyticLine._read_group(
-                domain=domain + [("amount", ">=", 0.0)],
-                groupby=["currency_id"],
-                aggregates=["amount:sum"],
-            )
-            credit = sum(
-                currency_id._convert(
-                    amount_sum,
-                    user_currency_id,
-                    self.env.user.company_id,
-                    fields.Date.today(),
-                )
-                for currency_id, amount_sum in credit_groups
-                if currency_id
-            )
+            # Own credit and debit of every account in the subtrees
+            own = defaultdict(lambda: [0.0, 0.0])
+            for index, sign_domain in enumerate(
+                [[("amount", ">=", 0.0)], [("amount", "<", 0.0)]]
+            ):
+                for account, currency, amount_sum in AccountAnalyticLine._read_group(
+                    domain=domain + [(column, "in", subtree.ids)] + sign_domain,
+                    groupby=[column, "currency_id"],
+                    aggregates=["amount:sum"],
+                ):
+                    if currency:
+                        own[account.id][index] += currency._convert(
+                            amount_sum, company.currency_id, company, today
+                        )
 
-            debit_groups = AccountAnalyticLine._read_group(
-                domain=domain + [("amount", "<", 0.0)],
-                groupby=["currency_id"],
-                aggregates=["amount:sum"],
-            )
-            debit = sum(
-                currency_id._convert(
-                    amount_sum,
-                    user_currency_id,
-                    self.env.user.company_id,
-                    fields.Date.today(),
-                )
-                for currency_id, amount_sum in debit_groups
-                if currency_id
-            )
+            # Add each account's own amounts to itself and its ancestors
+            totals = {parent_id: [0.0, 0.0] for parent_id in parents.ids}
+            for account in subtree:
+                if account.id not in own:
+                    continue
+                credit, debit = own[account.id]
+                for ancestor_id in account.parent_path.split("/")[:-1]:
+                    total = totals.get(int(ancestor_id))
+                    if total is not None:
+                        total[0] += credit
+                        total[1] += debit
 
-            account.debit = abs(debit)
-            account.credit = credit
-            account.balance = account.credit - account.debit
+            for parent in parents:
+                credit, debit = totals[parent.id]
+                parent.debit = abs(debit)
+                parent.credit = credit
+                parent.balance = parent.credit - parent.debit
         return res
 
     @api.constrains("parent_id")
