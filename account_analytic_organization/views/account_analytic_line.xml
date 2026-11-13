@@ -13,7 +13,10 @@
     <record id="view_account_analytic_line_search_inherit" model="ir.ui.view">
         <field name="name">account.analytic.line.search.inherit</field>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field
+            name="inherit_id"
+            ref="account.view_account_analytic_line_filter_inherit_account"
+        />
         <field name="arch" type="xml">
             <xpath expr="//search" position="inside">
                 <field name="analytic_org" string="Analytic Organization" />
