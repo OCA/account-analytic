@@ -24,3 +24,10 @@ class LineDepartmentCase(TransactionCase):
         aal = self.env["account.analytic.line"].with_user(self.user).new()
         department_id = aal.default_get(["department_id"]).get("department_id")
         self.assertFalse(department_id)
+
+    def test_analytic_items_search_view(self):
+        """The departments are available in the search of the Analytic Items"""
+        view = self.env.ref("account.view_account_analytic_line_filter_inherit_account")
+        arch = self.env["account.analytic.line"].get_view(view.id, "search")["arch"]
+        self.assertIn('name="department_id"', arch)
+        self.assertIn('name="account_department_id"', arch)
