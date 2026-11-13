@@ -6,16 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-05-17 20:38+0000\n"
-"Last-Translator: Rodrigo Macedo <sottomaiormacedotec@users.noreply."
-"translation.odoo-community.org>\n"
+"PO-Revision-Date: 2026-11-13 08:58+0000\n"
+"Last-Translator: Luis Felipe Miléo <mileo@kmee.com.br>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__account_id
@@ -30,12 +29,12 @@ msgstr "Assistente de atualização da conta analítica da movimentação"
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
 msgid "Analytic Distribution"
-msgstr ""
+msgstr "Distribuição Analítica"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_search
 msgid "Analytic Distribution Search"
-msgstr ""
+msgstr "Busca de Distribuição Analítica"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_precision
@@ -45,7 +44,7 @@ msgstr "Precisão Analítica"
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution_import
 msgid "Analytic distribution (importable)"
-msgstr ""
+msgstr "Distribuição analítica (importável)"
 
 #. module: account_move_update_analytic
 #: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
@@ -79,6 +78,9 @@ msgid ""
 "but using the analytic accounts names as keys of the dictionary, so it eases "
 "the human input."
 msgstr ""
+"Ao preencher este campo, a distribuição analítica é definida em formato "
+"JSON, mas usando os nomes das contas analíticas como chaves do dicionário, o "
+"que facilita a digitação."
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__display_name
@@ -88,7 +90,7 @@ msgstr "Nome Exibição"
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr ""
+msgstr "Conta Analítica da Distribuição"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__id
@@ -103,7 +105,7 @@ msgstr "Item Fatura"
 #. module: account_move_update_analytic
 #: model:ir.model,name:account_move_update_analytic.model_account_move
 msgid "Journal Entry"
-msgstr ""
+msgstr "Lançamento de Diário"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
@@ -118,12 +120,12 @@ msgstr "Última Atualização em"
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__manual_distribution_id
 msgid "Manual Distribution"
-msgstr ""
+msgstr "Distribuição Manual"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
 msgid "Move Type"
-msgstr ""
+msgstr "Tipo de Movimento"
 
 #. module: account_move_update_analytic
 #: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__product_id
