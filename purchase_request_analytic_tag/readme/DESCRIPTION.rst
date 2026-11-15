@@ -1,0 +1,1 @@
+This module adds the ``analytic_tag_ids`` field to purchase request lines and propagates the analytic tags to the resulting purchase order lines when a purchase order is created from a purchase request.
