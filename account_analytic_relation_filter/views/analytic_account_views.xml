@@ -1,0 +1,26 @@
+<odoo>
+    <record id="view_account_analytic_account_form" model="ir.ui.view">
+        <field name="name">account.analytic.account.form</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group[@name='main']" position="after">
+                <notebook>
+                    <page string="Related Accounts">
+                        <field name="relation_line_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="plan_id" domain="plan_id_domain" />
+                                <field name="plan_id_domain" invisible="1" />
+                                <field
+                                    name="account_ids"
+                                    widget="many2many_tags"
+                                    domain="[('plan_id', '=', plan_id)]"
+                                />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
