@@ -5,7 +5,7 @@
     "name": "Stock Inventory Analytic",
     "summary": """
         Allows to define the analytic account on inventory adjustments""",
-    "version": "17.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "AGPL-3",
     "author": "Open Source Integrators,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",

@@ -8,7 +8,6 @@ class TestInventoryAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.product_id = cls.env.ref("product.product_product_9")
         analytic_plan = cls.env["account.analytic.plan"].create({"name": "Plan Test"})
         analytic_account = cls.env["account.analytic.account"].create(
             {"name": "Analytic Test", "plan_id": analytic_plan.id}
@@ -73,3 +72,40 @@ class TestInventoryAnalytic(TransactionCase):
         )
         self.assertEqual(len(new_move), 1)
         self.assertEqual(new_move.analytic_distribution, self.analytic_distribution)
+
+    def test_inventory_analytic_increase(self):
+        """Check that analytic distribution is also set on incoming adjustments"""
+        self.env["stock.quant"]._update_available_quantity(
+            self.product, self.stock_location, 100
+        )
+        inventory_quant = self.env["stock.quant"].search(
+            [
+                ("location_id", "=", self.stock_location.id),
+                ("product_id", "=", self.product.id),
+            ]
+        )
+        inventory_quant.write(
+            {
+                "inventory_quantity": 130,
+                "analytic_distribution": self.analytic_distribution,
+            }
+        )
+        inventory_quant.action_apply_inventory()
+        self.assertEqual(
+            self.env["stock.quant"]._get_available_quantity(
+                self.product, self.stock_location
+            ),
+            130.0,
+        )
+        self.assertFalse(inventory_quant.analytic_distribution)
+        new_move = self.env["stock.move"].search(
+            [
+                ("product_id", "=", self.product.id),
+                ("location_dest_id", "=", self.stock_location.id),
+            ]
+        )
+        self.assertEqual(len(new_move), 1)
+        self.assertEqual(new_move.analytic_distribution, self.analytic_distribution)
+        self.assertEqual(
+            new_move.move_line_ids.analytic_distribution, self.analytic_distribution
+        )
