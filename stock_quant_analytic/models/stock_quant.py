@@ -15,6 +15,11 @@ class StockQuant(models.Model):
 
         return res
 
+    def action_set_inventory_quantity_to_zero(self):
+        res = super().action_set_inventory_quantity_to_zero()
+        self.analytic_distribution = False
+        return res
+
     def _get_inventory_move_values(self, qty, location_id, location_dest_id, out=False):
         """Called when user manually set a new quantity (via `inventory_quantity`)
         just before creating the corresponding stock move.

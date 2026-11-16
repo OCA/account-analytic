@@ -109,3 +109,24 @@ class TestInventoryAnalytic(TransactionCase):
         self.assertEqual(
             new_move.move_line_ids.analytic_distribution, self.analytic_distribution
         )
+
+    def test_inventory_analytic_clear(self):
+        """Check that clearing a count also clears its analytic distribution"""
+        self.env["stock.quant"]._update_available_quantity(
+            self.product, self.stock_location, 100
+        )
+        inventory_quant = self.env["stock.quant"].search(
+            [
+                ("location_id", "=", self.stock_location.id),
+                ("product_id", "=", self.product.id),
+            ]
+        )
+        inventory_quant.write(
+            {
+                "inventory_quantity": 70,
+                "analytic_distribution": self.analytic_distribution,
+            }
+        )
+        inventory_quant.action_set_inventory_quantity_to_zero()
+        self.assertFalse(inventory_quant.inventory_quantity_set)
+        self.assertFalse(inventory_quant.analytic_distribution)
