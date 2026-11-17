@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-account-analytic"
-version = "20.0.20261111.0"
+version = "20.0.20261117.0"
 dependencies = [
+    "odoo-addon-account_analytic_line_commercial_partner==20.0.*",
     "odoo-addon-analytic_amount_security==20.0.*",
 ]
 classifiers=[
