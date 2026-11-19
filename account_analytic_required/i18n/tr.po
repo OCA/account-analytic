@@ -1,0 +1,104 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_analytic_required
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-02-19 08:34+0000\n"
+"Last-Translator: Betül Öğmen <betulo@eska.biz>\n"
+"Language-Team: none\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_account
+msgid "Account"
+msgstr "Hesap"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__always
+msgid "Always"
+msgstr "Daima"
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account.py:0
+msgid ""
+"Analytic policy is set to 'Always' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
+msgstr ""
+"Analitik politika '%(account)s' hesabı ile 'Her Zaman' olarak ayarlanmış "
+"ancak '%(move)s' etiketli hesap hareket satırında analitik hesap eksik."
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account.py:0
+msgid ""
+"Analytic policy is set to 'Never' with account '%(account)s' but the account"
+" move line with label '%(move)s' has an analytic account "
+"'%(analytic_account)s'."
+msgstr ""
+"Analitik politika '%(account)s' hesabı için 'Asla' olarak ayarlanmış ancak '%"
+"(move)s' etiketli hesap hareket satırında '%(analytic_account)s' analitik "
+"hesabı bulunuyor."
+
+#. module: account_analytic_required
+#. odoo-python
+#: code:addons/account_analytic_required/models/account.py:0
+msgid ""
+"Analytic policy is set to 'Posted moves' with account '%(account)s' but the "
+"analytic account is missing in the account move line with label '%(move)s'."
+msgstr ""
+"Analitik politika '%(account)s' hesabı ile 'Gönderilen hareketler' olarak "
+"ayarlanmış ancak '%(move)s' etiketli hesap hareket satırında analitik hesap "
+"eksik."
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move
+msgid "Journal Entry"
+msgstr "Yevmiye Kaydı"
+
+#. module: account_analytic_required
+#: model:ir.model,name:account_analytic_required.model_account_move_line
+msgid "Journal Item"
+msgstr "Yevmiye Kalemi"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__never
+msgid "Never"
+msgstr "Asla"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,field_description:account_analytic_required.field_account_account__analytic_policy
+msgid "Policy for analytic account"
+msgstr "Analitik hesap politikası"
+
+#. module: account_analytic_required
+#: model:ir.model.fields.selection,name:account_analytic_required.selection__account_account__analytic_policy__posted
+msgid "Posted moves"
+msgstr "İşlenmiş hareketler"
+
+#. module: account_analytic_required
+#: model:ir.model.fields,help:account_analytic_required.field_account_account__analytic_policy
+msgid ""
+"Sets the policy for analytic accounts.\n"
+"If you select:\n"
+"- Empty: The accountant is free to put an analytic account on an account move line with this type of account.\n"
+"- Always: The accountant will get an error message if there is no analytic account.\n"
+"- Posted moves: The accountant will get an error message if no analytic account is defined when the move is posted.\n"
+"- Never: The accountant will get an error message if an analytic account is present."
+msgstr ""
+"Analitik hesaplar için politikayı belirler.\n"
+"Eğer şunu seçerseniz:\n"
+"-Boş: Muhasebeci, bu hesap türünde hesap hareket satırına analitik bir hesap "
+"eklemekte serbesttir.\n"
+"- Her Zaman: Analitik hesap yoksa muhasebeci bir hata mesajı alacaktır.\n"
+"- İşlenmiş Hareketler: İşlem kaydedilirken analitik hesap tanımlanmamışsa "
+"muhasebeci bir hata mesajı alacaktır.\n"
+"- Asla: Analitik bir hesap mevcutsa, muhasebeci bir hata mesajı alacaktır."
