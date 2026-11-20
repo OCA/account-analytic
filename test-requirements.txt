@@ -1,0 +1,2 @@
+odoo-addon-stock_analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/898/head#subdirectory=stock_analytic
+odoo-addon-stock_picking_analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/913/head#subdirectory=stock_picking_analytic
