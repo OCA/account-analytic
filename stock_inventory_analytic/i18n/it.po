@@ -1,0 +1,100 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* stock_inventory_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-03-06 12:47+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.2\n"
+
+#. module: stock_inventory_analytic
+#: model_terms:ir.ui.view,arch_db:stock_inventory_analytic.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">Default Analytic Values during Inventory "
+"Adjustment</span>"
+msgstr ""
+"<span class=\"o_form_label\">Valori analitici predefiniti nelle rettifiche "
+"di inventario</span>"
+
+#. module: stock_inventory_analytic
+#: model_terms:ir.ui.view,arch_db:stock_inventory_analytic.res_config_settings_view_form
+msgid "Analytic"
+msgstr "Analitica"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_stock_inventory_line__analytic_account_id
+#: model_terms:ir.ui.view,arch_db:stock_inventory_analytic.res_config_settings_view_form
+msgid "Analytic Account"
+msgstr "Conto analitico"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_stock_inventory_line__analytic_tag_ids
+#: model_terms:ir.ui.view,arch_db:stock_inventory_analytic.res_config_settings_view_form
+msgid "Analytic Tags"
+msgstr "Etichette analitiche"
+
+#. module: stock_inventory_analytic
+#: model:ir.model,name:stock_inventory_analytic.model_res_company
+msgid "Companies"
+msgstr "Aziende"
+
+#. module: stock_inventory_analytic
+#: model:ir.model,name:stock_inventory_analytic.model_res_config_settings
+msgid "Config Settings"
+msgstr "Impostazioni configurazione"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_company__analytic_account_id
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_config_settings__analytic_account_id
+msgid "Default Analytic Account on Inventory Adjustment Line"
+msgstr "Conto analitico predefinito nella riga rettifica di inventario"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_company__analytic_tag_ids
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_config_settings__analytic_tag_ids
+msgid "Default Analytic Tags on Inventory Adjustment Line"
+msgstr "Etichetta analitica predefinita nella riga rettifica di inventario"
+
+#. module: stock_inventory_analytic
+#: model_terms:ir.ui.view,arch_db:stock_inventory_analytic.res_config_settings_view_form
+msgid ""
+"Default value for Analytic Account and Analytic Tags on an Inventory "
+"Adjustment Line"
+msgstr ""
+"Valore predefinito per conto analitico e etichette analitiche in una riga "
+"rettifica di inventario"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_company__display_name
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_stock_inventory_line__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_company__id
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_config_settings__id
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_stock_inventory_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: stock_inventory_analytic
+#: model:ir.model,name:stock_inventory_analytic.model_stock_inventory_line
+msgid "Inventory Line"
+msgstr "Riga d'inventario"
+
+#. module: stock_inventory_analytic
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_company____last_update
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:stock_inventory_analytic.field_stock_inventory_line____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"

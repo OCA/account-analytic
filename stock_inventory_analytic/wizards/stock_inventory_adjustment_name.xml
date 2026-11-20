@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_inventory_adjustment_name_form_view" model="ir.ui.view">
+        <field name="name">stock.inventory.adjustment.name.form.view</field>
+        <field name="model">stock.inventory.adjustment.name</field>
+        <field
+            name="inherit_id"
+            ref="stock.stock_inventory_adjustment_name_form_view"
+        />
+        <field name="arch" type="xml">
+            <field name="counting_date" position="after">
+                <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
