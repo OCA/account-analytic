@@ -2,15 +2,18 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import Command
-from odoo.tests import Form, TransactionCase
+from odoo.tests import Form, tagged
+
+from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
 
-class TestAccountMoveAnalytic(TransactionCase):
+@tagged("post_install", "-at_install")
+class TestAccountMoveAnalytic(AccountTestInvoicingCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.env.user.group_ids |= cls.env.ref("analytic.group_analytic_accounting")
-        cls.partner = cls.env.ref("base.res_partner_12")
+        cls.partner = cls.env["res.partner"].create({"name": "Test Partner"})
         cls.product = cls.env["product.product"].create(
             {
                 "name": "Test Product",
