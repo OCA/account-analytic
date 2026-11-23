@@ -9,7 +9,7 @@ class TestAccountMoveAnalytic(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env.user.groups_id |= cls.env.ref("analytic.group_analytic_accounting")
+        cls.env.user.group_ids |= cls.env.ref("analytic.group_analytic_accounting")
         cls.partner = cls.env.ref("base.res_partner_12")
         cls.product = cls.env["product.product"].create(
             {

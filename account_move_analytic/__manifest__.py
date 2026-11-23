@@ -4,7 +4,7 @@
 {
     "name": "Invoice Analytic Distribution",
     "summary": "Analytic distribution at invoice and bill level",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
     "category": "Accounting",
     "website": "https://github.com/OCA/account-analytic",
