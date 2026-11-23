@@ -7,7 +7,7 @@
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Account",
     "website": "https://github.com/OCA/account-analytic",
-    "depends": ["account", "analytic"],
+    "depends": ["account"],
     "data": [],
     "license": "AGPL-3",
     "installable": True,
