@@ -57,3 +57,34 @@ class TestAnalyticMixinAnalyticAccount(TransactionCase):
         )
         self.assertFalse(distribution.analytic_account_ids)
         self.assertFalse(distribution.analytic_account_names)
+
+    def test_analytic_distribution_with_deleted_account(self):
+        """analytic_distribution is a JSON field, not protected by a foreign
+        key: it may reference deleted analytic accounts. The compute must
+        ignore them instead of raising an IntegrityError on the m2m table."""
+        deleted_account = self.env["account.analytic.account"].create(
+            {"name": "Deleted Account", "plan_id": self.analytic_plan_1.id}
+        )
+        deleted_account_id = deleted_account.id
+        distribution = self.env["account.analytic.distribution.model"].create(
+            {
+                "partner_id": self.partner.id,
+                "analytic_distribution": {
+                    self.analytic_account_1.id: 50,
+                    deleted_account_id: 50,
+                },
+            }
+        )
+        deleted_account.unlink()
+        # Trigger the recompute with the dangling id still in the distribution
+        distribution.analytic_distribution = {
+            self.analytic_account_1.id: 50,
+            self.analytic_account_2.id: 25,
+            deleted_account_id: 25,
+        }
+        # Force the m2m INSERT in database, where the foreign key is checked
+        distribution.flush_recordset()
+        self.assertEqual(
+            distribution.analytic_account_ids,
+            self.analytic_account_1 | self.analytic_account_2,
+        )
