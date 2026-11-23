@@ -3,7 +3,7 @@
 
 {
     "name": "Journal Items import Analytic Distribution",
-    "version": "17.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "Open Source Integrators, Odoo Community Association (OCA)",
     "category": "Account",
     "website": "https://github.com/OCA/account-analytic",
