@@ -1,0 +1,45 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* analytic_hr_department_restriction
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-16 14:25+0000\n"
+"PO-Revision-Date: 2026-04-08 12:45+0000\n"
+"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: analytic_hr_department_restriction
+#: model:ir.model,name:analytic_hr_department_restriction.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: analytic_hr_department_restriction
+#: model:res.groups,name:analytic_hr_department_restriction.group_analytic_accounting_without_department
+msgid "Analytic Accounting (without department)"
+msgstr "Contabilidad analítica (sin departamento)"
+
+#. module: analytic_hr_department_restriction
+#: model:ir.model,name:analytic_hr_department_restriction.model_account_analytic_plan
+msgid "Analytic Plans"
+msgstr "Planes analíticos"
+
+#. module: analytic_hr_department_restriction
+#: model:ir.model.fields,field_description:analytic_hr_department_restriction.field_account_analytic_account__department_ids
+#: model:ir.model.fields,field_description:analytic_hr_department_restriction.field_account_analytic_plan__department_ids
+#: model_terms:ir.ui.view,arch_db:analytic_hr_department_restriction.view_account_analytic_account_search
+msgid "Departments"
+msgstr "Departamentos"
+
+#. module: analytic_hr_department_restriction
+#: model:ir.model,name:analytic_hr_department_restriction.model_ir_rule
+msgid "Record Rule"
+msgstr "Regla de registro"

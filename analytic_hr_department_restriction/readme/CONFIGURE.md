@@ -1,0 +1,2 @@
+- Your user must have the "Analytic Accounting" permission.
+- Create an employee linked to your user with a defined department.
