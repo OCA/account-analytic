@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_account_analytic_tag_user,account.analytic.tag.user,account.analytic.tag,analytic.group_analytic_accounting,r,
+access_account_analytic_tag_manager,account.analytic.tag.manager,account.analytic.tag,account.group_account_manager,crud,
+analytic_tag_comp_rule,Analytic line multi company rule,account.analytic.tag,,crud,"['|',('company_id','=',False),('company_id', 'in', company_ids)]"
