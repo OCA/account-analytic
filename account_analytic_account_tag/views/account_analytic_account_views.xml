@@ -10,7 +10,6 @@
         <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
         <field name="arch" type="xml">
             <field name="plan_id" position="after">
-                <field name="id" invisible="1" />
                 <field
                     name="tag_ids"
                     widget="many2many_tags"
