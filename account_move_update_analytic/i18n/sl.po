@@ -1,0 +1,142 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_move_update_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-30 07:48+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__account_id
+msgid "Account"
+msgstr "Konto"
+
+#. module: account_move_update_analytic
+#: model:ir.model,name:account_move_update_analytic.model_account_move_update_analytic_wizard
+msgid "Account Move Update Analytic Account Wizard"
+msgstr "Čarovnik za posodobitev analitičnega konta na temeljnici"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__amount
+msgid "Amount"
+msgstr "Znesek"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Analitična porazdelitev"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__analytic_precision
+msgid "Analytic Precision"
+msgstr "Analitična natančnost"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Cancel"
+msgstr "Prekliči"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__company_id
+msgid "Company"
+msgstr "Družba"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__create_uid
+msgid "Created by"
+msgstr "Ustvaril"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__create_date
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__current_analytic_distribution
+msgid "Current Analytic Distribution"
+msgstr "Trenutna analitična porazdelitev"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move__display_name
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__display_name
+msgid "Display Name"
+msgstr "Prikazani naziv"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr "Distribucijski analitični konto"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move__id
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__line_id
+msgid "Invoice line"
+msgstr "Postavka računa"
+
+#. module: account_move_update_analytic
+#: model:ir.model,name:account_move_update_analytic.model_account_move
+msgid "Journal Entry"
+msgstr "Temeljnica"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Zadnji posodobil"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__write_date
+msgid "Last Updated on"
+msgstr "Zadnjič posodobljeno"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__move_type
+msgid "Move Type"
+msgstr "Tip premika"
+
+#. module: account_move_update_analytic
+#: model:ir.model.fields,field_description:account_move_update_analytic.field_account_move_update_analytic_wizard__product_id
+msgid "Product"
+msgstr "Proizvod"
+
+#. module: account_move_update_analytic
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_full_account_move_update_analytic
+#: model:ir.actions.server,name:account_move_update_analytic.action_view_account_move_update_analytic_full
+msgid "Update Analytic"
+msgstr "Posodobi analitiko"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update Analytic Distribution"
+msgstr "Posodobi analitično porazdelitev"
+
+#. module: account_move_update_analytic
+#: model:ir.actions.act_window,name:account_move_update_analytic.action_view_account_move_update_analytic
+msgid "Update Analytic for selected Account Moves"
+msgstr "Posodobi analitiko za izbrane temeljnice"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_form_view
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.account_move_line_tree_view
+msgid "Update analytic distribution"
+msgstr "Posodobi analitično porazdelitev"
+
+#. module: account_move_update_analytic
+#: model_terms:ir.ui.view,arch_db:account_move_update_analytic.view_account_move_update_analytic_account
+msgid "Update analytic lines"
+msgstr "Posodobi analitične postavke"
