@@ -10,4 +10,5 @@ class AccountAnalyticLine(models.Model):
         "line_id",
         "tag_id",
         string="Tags",
+        bypass_search_access=True,
     )
