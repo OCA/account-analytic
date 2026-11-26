@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_analytic_line_tree_source_move_info" model="ir.ui.view">
+        <field name="name">account.analytic.line.tree.source.move.info</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="source_move_line_base_amount" optional="show" />
+                <field name="analytic_percentage" optional="show" />
+                <field name="source_move_base_amount" optional="show" />
+                <field name="source_move_total_analytic_percentage" optional="show" />
+                <field name="source_move_currency_id" column_invisible="1" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
