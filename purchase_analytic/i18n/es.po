@@ -1,0 +1,70 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* purchase_analytic
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-05-25 17:46+0000\n"
+"Last-Translator: CoralNetkia <coral.rodriguez@netkia.es>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution
+msgid "Analytic Distribution"
+msgstr "Distribución Analítica"
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_precision
+msgid "Analytic Precision"
+msgstr "Precisión analítica"
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__analytic_distribution_import
+msgid "Analytic distribution (importable)"
+msgstr "Distribución Analítica (Importable)"
+
+#. module: purchase_analytic
+#: model:ir.model.fields,help:purchase_analytic.field_purchase_order__analytic_distribution_import
+msgid ""
+"Defining this field, it will set the analytical distribution in JSON format, "
+"but using the analytic accounts names as keys of the dictionary, so it eases "
+"the human input."
+msgstr ""
+"Definir este campo establecerá la distribución analítica en formato JSON, "
+"utilizando los nombres de las cuentas analíticas como claves del "
+"diccionario, lo que facilita la introducción manual por parte del usuario."
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr "Cuenta Analítica de Distribución"
+
+#. module: purchase_analytic
+#: model:ir.model.fields,field_description:purchase_analytic.field_purchase_order__manual_distribution_id
+msgid "Manual Distribution"
+msgstr "Distribución Manual"
+
+#. module: purchase_analytic
+#: model:ir.model,name:purchase_analytic.model_purchase_order
+msgid "Purchase Order"
+msgstr "Pedido de Compra"
+
+#~ msgid "Analytic Distribution Search"
+#~ msgstr "Búsqueda de distribución analítica"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítico"
+
+#~ msgid "Analytic Account"
+#~ msgstr "Cuenta Analítica"
+
+#~ msgid "The analytic account related to a purchase order."
+#~ msgstr "La cuenta analítica relacionada al pedido de compra."
