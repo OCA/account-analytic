@@ -10,7 +10,11 @@
         <field name="inherit_id" ref="product.product_normal_form_view" />
         <field name="arch" type="xml">
             <group name="properties" position="after">
-                <group name="analytic" string="Analytic">
+                <group
+                    name="analytic"
+                    string="Analytic"
+                    groups="analytic.group_analytic_accounting"
+                >
                     <field name="analytic_distribution_model_ids">
                         <list open_form_view="True" editable="top">
                             <field name="sequence" widget="handle" />

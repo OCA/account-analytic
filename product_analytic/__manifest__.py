@@ -12,7 +12,10 @@
     "author": "Akretion, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/account-analytic",
     "depends": ["account"],
-    "data": ["views/product_view.xml"],
+    "data": [
+        "views/product_view.xml",
+        "views/product_template_view.xml",
+    ],
     "demo": ["demo/product_demo.xml"],
     "installable": True,
 }
