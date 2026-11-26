@@ -1,0 +1,2 @@
+- [Scalizer](https://www.scalizer.fr):
+  - Vincent Barrat \<<vincent@scalizer.fr>\>
