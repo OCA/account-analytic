@@ -1,0 +1,2 @@
+odoo-addon-account_payment_analytic @ git+https://github.com/OCA/account-analytic.git@refs/pull/960/head#subdirectory=account_payment_analytic
+odoo-addon-account_payment_line @ git+https://github.com/OCA/account-payment.git@refs/pull/970/head#subdirectory=account_payment_line
