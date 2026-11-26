@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_account_analytic_account_form" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.mapping</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="mapping" string="Analytic Mapping">
+                    <field name="mapped_account_ids" nolabel="1">
+                        <list create="false" no_open="1">
+                            <field name="display_name" string="Mapped Account" />
+                            <field name="root_plan_id" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                optional="show"
+                            />
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
