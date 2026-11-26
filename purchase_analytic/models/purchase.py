@@ -21,9 +21,10 @@ class PurchaseOrder(models.Model):
         If no lines, respect value given by the user.
         """
         for po in self:
-            if po.order_line:
-                al = po.order_line[0].analytic_distribution or False
-                for ol in po.order_line:
+            lines = po.order_line.filtered(lambda line: not line.display_type)
+            if lines:
+                al = lines[0].analytic_distribution or False
+                for ol in lines:
                     if ol.analytic_distribution != al:
                         al = False
                         break
@@ -42,3 +43,17 @@ class PurchaseOrder(models.Model):
             self.order_line.update(
                 {"analytic_distribution": self.analytic_distribution}
             )
+
+
+class PurchaseOrderLine(models.Model):
+    _inherit = "purchase.order.line"
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("analytic_distribution") or vals.get("display_type"):
+                continue
+            order = self.env["purchase.order"].browse(vals.get("order_id"))
+            if order.analytic_distribution:
+                vals["analytic_distribution"] = order.analytic_distribution
+        return super().create(vals_list)
