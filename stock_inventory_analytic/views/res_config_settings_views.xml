@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form></field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <block id="production_lot_info" position="after">
+                <block
+                    title="Analytic"
+                    class="row mt16 o_settings_container"
+                    groups="analytic.group_analytic_accounting"
+                >
+                    <setting
+                        id="analytic_setting"
+                        company_dependent="1"
+                        groups="base.group_no_one"
+                        help="Default Analytic Distribution for Inventory Adjustments"
+                    >
+                        <group>
+                            <field
+                                name="analytic_distribution"
+                                widget="analytic_distribution"
+                            />
+                        </group>
+                    </setting>
+                </block>
+            </block>
+        </field>
+    </record>
+</odoo>
