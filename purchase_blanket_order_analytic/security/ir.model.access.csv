@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_blanket_order_analytic_user,purchase.blanket.order.analytic.user,model_purchase_blanket_order,analytic.group_analytic_accounting,1,0,0,0
+access_purchase_blanket_order_analytic_manager,purchase.blanket.order.analytic.manager,model_purchase_blanket_order,analytic.group_analytic_accounting,1,1,1,1
+access_purchase_blanket_order_line_analytic_user,purchase.blanket.order.line.analytic.user,model_purchase_blanket_order_line,analytic.group_analytic_accounting,1,0,0,0
+access_purchase_blanket_order_line_analytic_manager,purchase.blanket.order.line.analytic.manager,model_purchase_blanket_order_line,analytic.group_analytic_accounting,1,1,1,1

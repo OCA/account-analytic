@@ -1,0 +1,1 @@
+from . import test_purchase_blanket_order_analytic
