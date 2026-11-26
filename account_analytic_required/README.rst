@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 =========================
 Account Analytic Required
 =========================
@@ -13,7 +17,7 @@ Account Analytic Required
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Faccount--analytic-lightgray.png?logo=github
@@ -31,6 +35,11 @@ Account Analytic Required
 This module adds an option *analytic policy* on accounts.
 You have the choice between 4 policies : *always*, *never*, *posted moves* and empty (*optional*).
 
+It also adds an option *require full analytic distribution*, which checks
+that the distribution actually adds up: a policy on its own is satisfied by
+any analytic account, including a line distributed at 60% that leaves the
+remaining 40% of the amount unallocated.
+
 **Table of contents**
 
 .. contents::
@@ -45,6 +54,19 @@ If you want to have an analytic account on all your *expenses*,
 set the policy to *always* for the account of type *expense*.
 If you try to save a journal items with an account of type *expense*
 without analytic account, you will get an error message.
+
+If you also want the distribution to be complete, tick *Require full analytic
+distribution* on the account. It applies on top of the *always* and *posted
+moves* policies, and is checked per analytic plan: a line split between a
+department plan and a project plan legitimately adds up to 200%, while each
+plan on its own has to cover the full amount.
+
+Odoo does have a native 100% check, but it only covers plans configured as
+*mandatory* through the analytic applicability rules, and it only runs when
+the request carries the ``validate_analytic`` context, which the posting
+buttons set. Posting from code, from a cron, from an import or over RPC skips
+it. The check added here is a model constraint, so it applies on every write
+whatever the origin, and it is configured per account rather than per plan.
 
 Bug Tracker
 ===========
@@ -80,6 +102,9 @@ Contributors
 
     * Nguyễn Minh Chiến <chien@trobz.com>
 * Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
+* `PopSolutions <https://popsolutions.co>`__:
+
+  * Marcos Mendez <mendez.foto@gmail.com>
 
 Other credits
 ~~~~~~~~~~~~~
