@@ -28,4 +28,5 @@ class AccountAnalyticPlan(models.Model):
                 other_plans = self.search([("id", "in", other_plans.ids)])
             else:
                 project_plan = other_plans = self
-        return project_plan, other_plans
+        # An iterator, as in core: some callers use next() on it
+        return iter((project_plan, other_plans))
