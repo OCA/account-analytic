@@ -197,3 +197,18 @@ class TestAnalyticHrDepartmentRestriction(BaseCommon):
         self.assertIn(self.account_a, accounts)
         self.assertIn(self.account_b, accounts)
         self.assertIn(self.account_c, accounts)
+
+    def test_move_project_sub_plan(self):
+        """Moving a plan removes the hierarchy fields left empty, which needs
+        `_get_all_plans()` to return an iterator, as in core."""
+        plan_model = self.env["account.analytic.plan"]
+        project_plan, _other_plans = plan_model._get_all_plans()
+        plan_x = plan_model.create(
+            {"name": "Test plan X", "parent_id": project_plan.id}
+        )
+        plan_y = plan_model.create(
+            {"name": "Test plan Y", "parent_id": project_plan.id}
+        )
+        plan_z = plan_model.create({"name": "Test plan Z", "parent_id": plan_x.id})
+        plan_z.parent_id = plan_y
+        self.assertEqual(plan_z.parent_id, plan_y)
